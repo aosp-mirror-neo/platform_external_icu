@@ -1381,6 +1381,17 @@ public class DateFormatSymbols implements Serializable, Cloneable {
         }
     }
 
+    // BEGIN Android-added: Add a getter for ampmsNarrow
+    /**
+     * Returns narrow am/pm strings. For example: "a" and "p".
+     * @return narrow ampm strings
+     * @internal
+     */
+    public String[] getAmpmNarrowStrings() {
+        return duplicate(ampmsNarrow);
+    }
+    // END Android-added: Add a getter for ampmsNarrow
+
     /**
      * Returns the time separator string. For example: ":".
      * @return the time separator string.
