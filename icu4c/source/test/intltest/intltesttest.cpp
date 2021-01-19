@@ -34,7 +34,7 @@ class IntlTestTest : public IntlTest {
         }
 
       protected:
-        virtual void LL_message(std::u16string_view message, UBool newline) override {
+        virtual void LL_message(UnicodeString message, UBool newline, UBool /*isErr*/) override {
             currentLogLine += message;
             if (newline) {
                 *lastLogLine = currentLogLine;

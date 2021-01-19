@@ -460,7 +460,7 @@ public:
 
     virtual int32_t IncDataErrorCount();
 
-    virtual UBool callTest( IntlTest& testToBeCalled, char* par );
+    virtual UBool callTest( IntlTest& testToBeCalled, char* par, const char* basename = "");
 
 
     UBool       verbose;
@@ -509,10 +509,16 @@ private:
     int32_t     numProps;
 
 protected:
-
-    virtual void LL_message(std::u16string_view message, UBool newline);
+    std::string   currErr; // Error message of the current test case
 
 #if U_SHOW_CPLUSPLUS_API
+    // BEGIN Android-changed: Enclose LL_ methods with U_SHOW_CPLUSPLUS_API because they depend on
+    // UnicodeString, which is only available when this flag is enabled.
+    virtual void LL_err_message( const UnicodeString& message, UBool newline );
+    virtual void LL_message( UnicodeString message, UBool newlin, UBool isErr = false );
+    // END Android-changed: Enclose LL_ methods with U_SHOW_CPLUSPLUS_API because they depend on
+    // UnicodeString, which is only available when this flag is enabled.
+
     // used for collation result reporting, defined here for convenience
 
     static UnicodeString &prettify(const UnicodeString &source, UnicodeString &target);
