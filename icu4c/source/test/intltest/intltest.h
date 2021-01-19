@@ -544,7 +544,6 @@ public:
 // static members
 public:
     static IntlTest* gTest;
-    static const char* fgDataDir;
 
 };
 
