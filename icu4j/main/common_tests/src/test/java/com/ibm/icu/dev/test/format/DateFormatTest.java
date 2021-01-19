@@ -5778,8 +5778,8 @@ public class DateFormatTest extends CoreTestFmwk {
 
         // Buddhist calendar
         oneCalendarTest(new Locale("th", "TH", "TH"),
-                "๒๕ กันยายน ๒๕๖๘ เวลา ๑๙:๔๗",
-                "พฤหัส ๒๕ กันยายน ๒๕๖๘ เวลา ๑๙:๔๗ GMT-๗");
+                "๒๕ กันยายน ค.ศ. ๒๐๒๕ เวลา ๑๙:๔๗",
+                "พฤหัส ๒๕ กันยายน ๒๐๒๕ เวลา ๑๙:๔๗ GMT-๗");
         oneCalendarTest(Locale.forLanguageTag("en-US-u-ca-buddhist"),
                 "September 25, 2568 BE at 7:47\u202FPM",
                 "Thu, September 25, 2568 BE at 7:47\u202FPM PDT");
