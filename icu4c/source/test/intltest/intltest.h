@@ -386,7 +386,7 @@ public:
 
     virtual int32_t IncDataErrorCount();
 
-    virtual UBool callTest( IntlTest& testToBeCalled, char* par );
+    virtual UBool callTest( IntlTest& testToBeCalled, char* par, const char* basename = "");
 
 
     UBool       verbose;
@@ -417,8 +417,10 @@ private:
     int32_t     numProps;
 
 protected:
+    std::string   currErr; // Error message of the current test case
 
-    virtual void LL_message(std::u16string_view message, UBool newline);
+    virtual void LL_err_message( const UnicodeString& message, UBool newline );
+    virtual void LL_message( UnicodeString message, UBool newlin, UBool isErr = false );
 
 #if U_SHOW_CPLUSPLUS_API
     // used for collation result reporting, defined here for convenience
