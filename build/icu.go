@@ -47,11 +47,13 @@ func init() {
 			InDirectDeps("libicuuc").
 			WithOsClass(android.Device).
 			NotIn(device_allowlist...).
+			Without("name", "ndk_translation_package").
 			Because("libicuuc is not intended to be used on device"),
 		android.NeverAllow().
 			InDirectDeps("libicui18n").
 			WithOsClass(android.Device).
 			NotIn(device_allowlist...).
+			Without("name", "ndk_translation_package").
 			Because("libicui18n is not intended to be used on device"),
 	)
 }
