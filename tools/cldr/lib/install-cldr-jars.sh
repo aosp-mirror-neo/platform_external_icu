@@ -94,9 +94,14 @@ run_with_logging mvn -B install:install-file \
   -Dfile="${CLDR_TOOLS_DIR}/cldr-code/target/cldr-code.jar"
 
 echo "Syncing local Maven repository..."
-run_with_logging mvn -B dependency:purge-local-repository \
+# Android-changed: Add -DreResolve=false due to b/411034502 to avoid resolution on the remote repo.
+# Android-changed: Add -X for debug logs.
+# Documentation of the maven plugin:
+# https://maven.apache.org/plugins/maven-dependency-plugin/purge-local-repository-mojo.html
+run_with_logging mvn -X -B dependency:purge-local-repository \
   -Dproject.parent.relativePath="" \
-  -DmanualIncludes=org.unicode.cldr:cldr-api:jar 
+  -DmanualIncludes=org.unicode.cldr:cldr-api:jar \
+  -DreResolve=false
 
 echo "All done!"
 echo "Log file: ${LOG_FILE}"
