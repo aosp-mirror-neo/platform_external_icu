@@ -1,15 +1,13 @@
 {
   "presubmit": [
     {
+      "name": "CtsIcuTestCases"
+    },
+    {
       "name": "CtsIcu4cTestCases"
     },
     {
       "name": "minikin_tests"
-    }
-  ],
-  "postsubmit-large": [
-    {
-      "name": "CtsIcuTestCases"
     }
   ],
   "ravenwood-postsubmit": [
