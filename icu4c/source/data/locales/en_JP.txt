@@ -1,0 +1,257 @@
+﻿// © 2016 and later: Unicode, Inc. and others.
+// License & terms of use: http://www.unicode.org/copyright.html
+// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+en_JP{
+    calendar{
+        generic{
+            DateTimePatterns{
+                "H:mm:ss zzzz",
+                "H:mm:ss z",
+                "H:mm:ss",
+                "H:mm",
+                "EEEE, MMMM d, y G",
+                "MMMM d, y G",
+                "MMM d, y G",
+                "GGGGG y/MM/dd",
+                "{1}, {0}",
+                "{1}, {0}",
+                "{1}, {0}",
+                "{1}, {0}",
+                "{1}, {0}",
+            }
+            availableFormats{
+                EHm{"E H:mm"}
+                EHms{"E H:mm:ss"}
+                GyMd{"GGGGG y/MM/dd"}
+                H{"H"}
+                Hm{"H:mm"}
+                Hms{"H:mm:ss"}
+                MEd{"E, MM/dd"}
+                Md{"MM/dd"}
+                yyyyM{"GGGGG y/MM"}
+                yyyyMEd{"GGGGG y/MM/dd, E"}
+                yyyyMd{"GGGGG y/MM/dd"}
+            }
+            intervalFormats{
+                Gy{
+                    G{"G y – G y"}
+                    y{"G y – y"}
+                }
+                GyM{
+                    G{"GGGGG y/MM – GGGGG y/MM"}
+                    M{"GGGGG y/MM – y/MM"}
+                    y{"GGGGG y/MM – y/MM"}
+                }
+                GyMEd{
+                    G{"GGGGG y/MM/dd, E  – GGGGG y/MM/dd, E"}
+                    M{"GGGGG y/MM/dd, E – y/MM/dd, E"}
+                    d{"GGGGG y/MM/dd, E – E, y/MM/dd, E"}
+                    y{"GGGGG y/MM/dd, E – E, y/MM/dd, E"}
+                }
+                GyMd{
+                    G{"GGGGG y/MM/dd – GGGGG y/MM/dd"}
+                    M{"GGGGG y/MM/dd – y/MM/dd"}
+                    d{"GGGGG y/MM/dd – y/MM/dd"}
+                    y{"GGGGG y/MM/dd – y/MM/dd"}
+                }
+                H{
+                    H{"H – H"}
+                }
+                Hm{
+                    H{"H:mm – H:mm"}
+                    m{"H:mm – H:mm"}
+                }
+                Hmv{
+                    H{"H:mm – H:mm v"}
+                    m{"H:mm – H:mm v"}
+                }
+                Hv{
+                    H{"H – H v"}
+                }
+                MEd{
+                    M{"E, MM/dd – E, MM/dd"}
+                    d{"E, MM/dd – E, MM/dd"}
+                }
+                Md{
+                    M{"MM/dd – MM/dd"}
+                    d{"MM/dd – MM/dd"}
+                }
+                yM{
+                    M{"GGGGG y/MM – y/MM"}
+                    y{"GGGGG y/MM – yMM"}
+                }
+                yMEd{
+                    M{"GGGGG y/MM/dd, E – y/MM/dd, E"}
+                    d{"GGGGG y/MM/dd, E – y/MM/dd, E"}
+                    y{"GGGGG y/MM/dd, E – y/MM/dd, E"}
+                }
+                yMd{
+                    M{"GGGGG y/MM/dd – y/MM/dd"}
+                    d{"GGGGG y/MM/dd – y/MM/dd"}
+                    y{"GGGGG y/MM/dd – y/MM/dd"}
+                }
+            }
+        }
+        gregorian{
+            DateTimePatterns{
+                "H:mm:ss zzzz",
+                "H:mm:ss z",
+                "H:mm:ss",
+                "H:mm",
+                "EEEE, MMMM d, y",
+                "MMMM d, y",
+                "MMM d, y",
+                "y/MM/dd",
+                "{1}, {0}",
+                "{1}, {0}",
+                "{1}, {0}",
+                "{1}, {0}",
+                "{1}, {0}",
+            }
+            DateTimeSkeletons{
+                "Hmmsszzzz",
+                "Hmmssz",
+                "Hmmss",
+                "Hmm",
+                "yMMMMEEEEd",
+                "yMMMMd",
+                "yMMMd",
+                "yMd",
+            }
+            availableFormats{
+                GyMd{"y/MM/dd G"}
+                H{"H"}
+                Hm{"H:mm"}
+                Hms{"H:mm:ss"}
+                Hmsv{"H:mm:ss v"}
+                Hmv{"H:mm v"}
+                MEd{"E, MM/dd"}
+                Md{"MM/dd"}
+                yM{"y/MM"}
+                yMEd{"E, y/MM/dd"}
+                yMd{"y/MM/dd"}
+            }
+            intervalFormats{
+                GyM{
+                    G{"MM/y G – MM/y G"}
+                    M{"MM/y – MM/y G"}
+                    y{"MM/y – MM/y G"}
+                }
+                GyMEd{
+                    G{"E, y/MM/dd G – E, y/MM/dd G"}
+                    M{"E, y/MM/dd – E, y/MM/dd G"}
+                    d{"E, y/MM/dd – E, y/MM/dd G"}
+                    y{"E, y/MM/dd – E, y/MM/dd G"}
+                }
+                GyMd{
+                    G{"y/MM/dd G – y/MM/dd G"}
+                    M{"y/MM/dd – y/MM/dd G"}
+                    d{"y/MM/dd – y/MM/dd G"}
+                    y{"y/MM/dd – y/MM/dd G"}
+                }
+                yM{
+                    M{"MM/y – MM/y"}
+                    y{"MM/y – MM/y"}
+                }
+                yMEd{
+                    M{"E, y/MM/dd – E, y/MM/dd"}
+                    d{"E, y/MM/dd – E, y/MM/dd"}
+                    y{"E, y/MM/dd – E, y/MM/dd"}
+                }
+                yMd{
+                    M{"y/MM/dd – y/MM/dd"}
+                    d{"y/MM/dd – y/MM/dd"}
+                    y{"y/MM/dd – y/MM/dd"}
+                }
+            }
+        }
+        japanese{
+            DateTimePatterns{
+                "H:mm:ss zzzz",
+                "H:mm:ss z",
+                "H:mm:ss",
+                "H:mm",
+                "EEEE, MMMM d, y G",
+                "MMMM d, y G",
+                "MMM d, y G",
+                "GGGGG y/MM/dd",
+                "{1}, {0}",
+                "{1} 'at' {0}",
+                "{1} 'at' {0}",
+                "{1}, {0}",
+                "{1}, {0}",
+            }
+            availableFormats{
+                EEEEd{"EEEE d"}
+                GyMMMEEEEd{"EEEE, MMM d, y G"}
+                MEEEEd{"EEEE, MM/dd"}
+                MMMEEEEd{"EEEE, MMM d"}
+                yyyyM{"GGGGG y/MM"}
+                yyyyMEEEEd{"EEEE, MMM d, y GGGGG"}
+                yyyyMEd{"GGGGG y/MM/dd EEEE"}
+                yyyyMM{"MM y G"}
+                yyyyMMMd{"G y MMM d"}
+                yyyyMd{"GGGGG y/MM/dd"}
+            }
+            intervalFormats{
+                Gy{
+                    G{"G y – G y"}
+                    y{"G y – y"}
+                }
+                GyM{
+                    G{"GGGGG y/MM – GGGGG y/MM"}
+                    M{"GGGGG y/MM – y/MM"}
+                    y{"GGGGG y/MM – y/MM"}
+                }
+                GyMEd{
+                    G{"GGGGG y/MM/dd, E  – GGGGG y/MM/dd, E"}
+                    M{"GGGGG y/MM/dd, E – y/MM/dd, E"}
+                    d{"GGGGG y/MM/dd, E – E, y/MM/dd, E"}
+                    y{"GGGGG y/MM/dd, E – E, y/MM/dd, E"}
+                }
+                GyMd{
+                    G{"GGGGG y/MM/dd – GGGGG y/MM/dd"}
+                    M{"GGGGG y/MM/dd – y/MM/dd"}
+                    d{"GGGGG y/MM/dd – y/MM/dd"}
+                    y{"GGGGG y/MM/dd – y/MM/dd"}
+                }
+                H{
+                    H{"H – H"}
+                }
+                Hm{
+                    H{"H:mm – H:mm"}
+                    m{"H:mm – H:mm"}
+                }
+                Hmv{
+                    H{"H:mm – H:mm v"}
+                    m{"H:mm – H:mm v"}
+                }
+                Hv{
+                    H{"H – H v"}
+                }
+                MEd{
+                    M{"E, MM/dd – E, MM/dd"}
+                    d{"E, MM/dd – E, MM/dd"}
+                }
+                Md{
+                    M{"MM/dd – MM/dd"}
+                    d{"MM/dd – MM/dd"}
+                }
+                yM{
+                    M{"GGGGG y/MM – y/MM"}
+                    y{"GGGGG y/MM – yMM"}
+                }
+                yMEd{
+                    M{"GGGGG y/MM/dd, E – y/MM/dd, E"}
+                    d{"GGGGG y/MM/dd, E – y/MM/dd, E"}
+                    y{"GGGGG y/MM/dd, E – y/MM/dd, E"}
+                }
+                yMd{
+                    M{"GGGGG y/MM/dd – y/MM/dd"}
+                    d{"GGGGG y/MM/dd – y/MM/dd"}
+                    y{"GGGGG y/MM/dd – y/MM/dd"}
+                }
+            }
+        }
+    }
+}

@@ -1303,6 +1303,696 @@ en_XA{
                 "[MMMM d, y G 'one' 'two']",
                 "[MMM d, y G 'one' 'two']",
                 "[M/d/y GGGGG 'one' 'two']",
+                "[{1}, {0} 'one' 'two']",
+                "[{1} 'åţ' {0} 'one' 'two']",
+                "[{1} 'åţ' {0} 'one' 'two']",
+                "[{1}, {0} 'one' 'two']",
+                "[{1}, {0} 'one' 'two']",
+            }
+            DateTimePatterns%atTime{
+                "[{1} 'åţ' {0} 'one' 'two']",
+                "[{1} 'åţ' {0} 'one' 'two']",
+                "[{1}, {0} 'one' 'two']",
+                "[{1}, {0} 'one' 'two']",
+            }
+            DateTimeSkeletons{
+                "ahmmsszzzz",
+                "ahmmssz",
+                "ahmmss",
+                "ahmm",
+                "[GyMMMMEEEEd 'one' 'two']",
+                "[GyMMMMd 'one' 'two']",
+                "[GyMMMd 'one']",
+                "[GGGGGyMd 'one' 'two']",
+            }
+            availableFormats{
+                E{"[ccc 'one']"}
+                Ed{"[d E 'one']"}
+                Gy{"[y G 'one']"}
+                GyMMM{"[MMM y G 'one' 'two']"}
+                GyMMMEd{"[E, MMM d, y G 'one' 'two']"}
+                GyMMMd{"[MMM d, y G 'one' 'two']"}
+                GyMd{"[M/d/y GGGGG 'one' 'two']"}
+                H{"[HH 'one']"}
+                Hms{"[HH:mm:ss 'one' 'two']"}
+                M{"[L 'one']"}
+                MEEEEd{"[EEEE, M/d 'one' 'two']"}
+                MEd{"[E, M/d 'one']"}
+                MMM{"[LLL 'one']"}
+                MMMEd{"[E, MMM d 'one' 'two']"}
+                MMMMd{"[MMMM d 'one']"}
+                MMMd{"[MMM d 'one']"}
+                Md{"[M/d 'one']"}
+                d{"[d 'one']"}
+                h{"[h a 'one']"}
+                hm{"[h:mm a 'one']"}
+                hms{"[h:mm:ss a 'one' 'two']"}
+                y{"[y G 'one']"}
+                yyyy{"[y G 'one']"}
+                yyyyM{"[M/y GGGGG 'one' 'two']"}
+                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}
+                yyyyMM{"[MM y GGGGG 'one' 'two']"}
+                yyyyMMM{"[MMM y G 'one' 'two']"}
+                yyyyMMMEd{"[E, MMM d, y G 'one' 'two']"}
+                yyyyMMMM{"[MMMM y G 'one' 'two']"}
+                yyyyMMMd{"[MMM d, y G 'one' 'two']"}
+                yyyyMd{"[M/d/y GGGGG 'one' 'two']"}
+                yyyyQQQ{"[QQQ y G 'one' 'two']"}
+                yyyyQQQQ{"[QQQQ y G 'one' 'two']"}
+            }
+            eras{
+                abbreviated{
+                    "[Ţåîķå one]",
+                    "[Ĥåķûçĥî one two]",
+                    "[Ĥåķûĥō one]",
+                    "[Šĥûçĥō one]",
+                    "[Ţåîĥō one]",
+                    "[Ķéîûñ one]",
+                    "[Ŵåðō one]",
+                    "[Ŕéîķî one]",
+                    "[Ýōŕō one]",
+                    "[Ĵîñķî one]",
+                    "[Ţéñþýō one]",
+                    "[Ţéñþýō‐ķåñþō one two]",
+                    "[Ţéñþýō‐šĥōĥō one two]",
+                    "[Ţéñþýō‐ĥōĵî one two]",
+                    "[Ţéñþýō‐ĵîñĝö one two]",
+                    "[Ĵîñĝö‐ķéîûñ one two]",
+                    "[Ĥōķî one]",
+                    "[Ţéñ’ō one]",
+                    "[Éñŕýåķû one two]",
+                    "[Ðåîðō one]",
+                    "[Ķōñîñ one]",
+                    "[Ţéñçĥō one]",
+                    "[Ĵōŵå one]",
+                    "[Ķåšĥō one]",
+                    "[Ñîñĵû one]",
+                    "[Šåîķō one]",
+                    "[Ţéñ’åñ one]",
+                    "[Ĵōĝåñ one]",
+                    "[Ĝåñĝýō one]",
+                    "[Ñîññå one]",
+                    "[Ķåñþýō one]",
+                    "[Šĥōţåî one]",
+                    "[Éñĝî one]",
+                    "[Éñçĥō one]",
+                    "[Ĵōĥéî one]",
+                    "[Ţéñĝýō one]",
+                    "[Ţéñŕýåķû one two]",
+                    "[Ţéñţöķû one two]",
+                    "[Ōŵå one]",
+                    "[Ķōĥō one]",
+                    "[Åññå one]",
+                    "[Ţéñŕöķû one two]",
+                    "[Ţéñ’éñ one]",
+                    "[Ĵōĝéñ one]",
+                    "[Ţéñĝéñ one]",
+                    "[Éîķåñ one]",
+                    "[Ķåññå one]",
+                    "[Éîéñ one]",
+                    "[Éîšö one]",
+                    "[Šĥōŕýåķû one two]",
+                    "[Çĥōţöķû one two]",
+                    "[Çĥōĥō one]",
+                    "[Ķåñķō one]",
+                    "[Çĥōŵå one]",
+                    "[Ķåññîñ one]",
+                    "[Ĵîåñ one]",
+                    "[Ṁåñĵû one]",
+                    "[Çĥōĝéñ one]",
+                    "[Çĥōŕýåķû one two]",
+                    "[Çĥōķýū one]",
+                    "[Ķåñţöķû one two]",
+                    "[Éîšĥō one]",
+                    "[Ţéñĝî one]",
+                    "[Ķōĥéî one]",
+                    "[Ĵîŕýåķû one two]",
+                    "[Éñķýū one]",
+                    "[Ĵōĥō one]",
+                    "[Ĵōŕýåķû one two]",
+                    "[Éîĥō one]",
+                    "[Ōţöķû one]",
+                    "[Ķåñĵî one]",
+                    "[Ķåĥō one]",
+                    "[Éîçĥō one]",
+                    "[Ĵōţöķû one]",
+                    "[Ķōŵå one]",
+                    "[Çĥōĵî one]",
+                    "[Ķåĵō one]",
+                    "[Ţéññîñ one]",
+                    "[Ţéñ’éî one]",
+                    "[Éîķýū one]",
+                    "[Ĝéñ’éî one]",
+                    "[Ĥōåñ one]",
+                    "[Ţéñĵî one]",
+                    "[Ðåîĵî one]",
+                    "[Ţéñšĥō one]",
+                    "[Çĥōšĥō one]",
+                    "[Ĥōéñ one]",
+                    "[Éîĵî one]",
+                    "[Ķōĵî one]",
+                    "[Ţéñ’ýō one]",
+                    "[Ķýūåñ one]",
+                    "[Ñîñþéî one]",
+                    "[Ķýūĵû one]",
+                    "[Ĥōĝéñ one]",
+                    "[Ĥéîĵî one]",
+                    "[Éîŕýåķû one two]",
+                    "[Ōĥō one]",
+                    "[Çĥōķåñ one]",
+                    "[Éîɱåñ one]",
+                    "[Ñîñ’åñ one]",
+                    "[Ķåō one]",
+                    "[Ĵōåñ one]",
+                    "[Åñĝéñ one]",
+                    "[Ĵîšĥō one]",
+                    "[Ýōŵå one]",
+                    "[Ĵûéî one]",
+                    "[Ĝéñŕýåķû one two]",
+                    "[Ɓûñĵî one]",
+                    "[Ķéñķýū one]",
+                    "[Šĥōĵî one]",
+                    "[Ķéññîñ one]",
+                    "[Ĝéñķýū one]",
+                    "[Ķéñ’éî one]",
+                    "[Ĵōĝéñ one]",
+                    "[Ķéñŕýåķû one two]",
+                    "[Ķéɱþö one]",
+                    "[Ĵōķýū one]",
+                    "[Ĵōō one]",
+                    "[Ĝéññîñ one]",
+                    "[Ķåŕöķû one]",
+                    "[Åñţéî one]",
+                    "[Ķåñĝî one]",
+                    "[Ĵōéî one]",
+                    "[Ţéñþûķû one two]",
+                    "[Ɓûñŕýåķû one two]",
+                    "[Ķåţéî one]",
+                    "[Ŕýåķûñîñ one two]",
+                    "[Éñ’ō one]",
+                    "[Ñîñĵî one]",
+                    "[Ķåñĝéñ one]",
+                    "[Ĥōĵî one]",
+                    "[Ķéñçĥō one]",
+                    "[Ķōĝéñ one]",
+                    "[Šĥōķå one]",
+                    "[Šĥōĝéñ one]",
+                    "[Ɓûñ’ō one]",
+                    "[Ķōçĥō one]",
+                    "[Ɓûñ’éî one]",
+                    "[Ķéñĵî one]",
+                    "[Ķōåñ one]",
+                    "[Šĥōō one]",
+                    "[Éîñîñ one]",
+                    "[Šĥōåñ one]",
+                    "[Ķéñĝéñ one]",
+                    "[Ķåĝéñ one]",
+                    "[Ţöķûĵî one]",
+                    "[Éñķýō one]",
+                    "[Ōçĥō one]",
+                    "[Šĥōŵå one]",
+                    "[Ɓûñþō one]",
+                    "[Ĝéñ’ō one]",
+                    "[Ĝéñķō one]",
+                    "[Šĥōçĥū one]",
+                    "[Ķåŕýåķû one two]",
+                    "[Ĝéñţöķû one two]",
+                    "[Ĝéñķō one]",
+                    "[Ķéñɱû one]",
+                    "[Éñĝéñ one]",
+                    "[Ķōķöķû one]",
+                    "[Šĥōĥéî one]",
+                    "[Ķéñţöķû one two]",
+                    "[Ɓûñçĥū one]",
+                    "[Ţéñĵû one]",
+                    "[Ķōŕýåķû one two]",
+                    "[Ķōŵå one]",
+                    "[Ĝéñçĥū one]",
+                    "[Šĥîţöķû one two]",
+                    "[Ķåķéî one]",
+                    "[Ķōō one]",
+                    "[Ṁéîţöķû one two]",
+                    "[Ōéî one]",
+                    "[Šĥōçĥō one]",
+                    "[Éîķýō one]",
+                    "[Ķåķîţšû one two]",
+                    "[Ɓûñ’åñ one]",
+                    "[Ĥōţöķû one]",
+                    "[Ķýōţöķû one two]",
+                    "[Ķōšĥō one]",
+                    "[Çĥōŕöķû one two]",
+                    "[Ķåñšĥō one]",
+                    "[Ɓûñšĥō one]",
+                    "[Ōñîñ one]",
+                    "[Ɓûñɱéî one]",
+                    "[Çĥōķýō one]",
+                    "[Éñţöķû one]",
+                    "[Ṁéîō one]",
+                    "[Ɓûñķî one]",
+                    "[Éîšĥō one]",
+                    "[Ðåîéî one]",
+                    "[Ķýōŕöķû one two]",
+                    "[Ţéñƀûñ one]",
+                    "[Ķōĵî one]",
+                    "[Éîŕöķû one]",
+                    "[Ĝéñķî one]",
+                    "[Ţéñšĥō one]",
+                    "[Ɓûñŕöķû one two]",
+                    "[Ķéîçĥō one]",
+                    "[Ĝéññå one]",
+                    "[Ķåñ’éî one]",
+                    "[Šĥōĥō one]",
+                    "[Ķéîåñ one]",
+                    "[Ĵōō one]",
+                    "[Ṁéîŕéķî one two]",
+                    "[Ṁåñĵî one]",
+                    "[Ķåñƀûñ one]",
+                    "[Éñþō one]",
+                    "[Ţéññå one]",
+                    "[Ĵōķýō one]",
+                    "[Ĝéñŕöķû one two]",
+                    "[Ĥōéî one]",
+                    "[Šĥōţöķû one two]",
+                    "[Ķýōĥō one]",
+                    "[Ĝéñƀûñ one]",
+                    "[Ķåñþō one]",
+                    "[Éñķýō one]",
+                    "[Ķåñ’éñ one]",
+                    "[Ĥōŕéķî one]",
+                    "[Ṁéîŵå one]",
+                    "[Åñ’éî one]",
+                    "[Ţéñɱéî one]",
+                    "[Ķåñšéî one]",
+                    "[Ķýōŵå one]",
+                    "[Ɓûñķå one]",
+                    "[Ɓûñšéî one]",
+                    "[Ţéñþō one]",
+                    "[Ķōķå one]",
+                    "[Ķåéî one]",
+                    "[Åñšéî one]",
+                    "[Ṁåñ’éñ one]",
+                    "[Ɓûñķýū one]",
+                    "[Ĝéñĵî one]",
+                    "[Ķéîō one]",
+                    "[Ṁéîĵî one]",
+                    "[Ţåîšĥō one]",
+                    "[Šĥōŵå one]",
+                    "[Ĥéîšéî one]",
+                    "[Ŕéîŵå one]",
+                }
+                narrow{
+                    "[Ţåîķå one]",
+                    "[Ĥåķûçĥî one two]",
+                    "[Ĥåķûĥō one]",
+                    "[Šĥûçĥō one]",
+                    "[Ţåîĥō one]",
+                    "[Ķéîûñ one]",
+                    "[Ŵåðō one]",
+                    "[Ŕéîķî one]",
+                    "[Ýōŕō one]",
+                    "[Ĵîñķî one]",
+                    "[Ţéñþýō one]",
+                    "[Ţéñþýō‐ķåñþō one two]",
+                    "[Ţéñþýō‐šĥōĥō one two]",
+                    "[Ţéñþýō‐ĥōĵî one two]",
+                    "[Ţéñþýō‐ĵîñĝö one two]",
+                    "[Ĵîñĝö‐ķéîûñ one two]",
+                    "[Ĥōķî one]",
+                    "[Ţéñ’ō one]",
+                    "[Éñŕýåķû one two]",
+                    "[Ðåîðō one]",
+                    "[Ķōñîñ one]",
+                    "[Ţéñçĥō one]",
+                    "[Ĵōŵå one]",
+                    "[Ķåšĥō one]",
+                    "[Ñîñĵû one]",
+                    "[Šåîķō one]",
+                    "[Ţéñ’åñ one]",
+                    "[Ĵōĝåñ one]",
+                    "[Ĝåñĝýō one]",
+                    "[Ñîññå one]",
+                    "[Ķåñþýō one]",
+                    "[Šĥōţåî one]",
+                    "[Éñĝî one]",
+                    "[Éñçĥō one]",
+                    "[Ĵōĥéî one]",
+                    "[Ţéñĝýō one]",
+                    "[Ţéñŕýåķû one two]",
+                    "[Ţéñţöķû one two]",
+                    "[Ōŵå one]",
+                    "[Ķōĥō one]",
+                    "[Åññå one]",
+                    "[Ţéñŕöķû one two]",
+                    "[Ţéñ’éñ one]",
+                    "[Ĵōĝéñ one]",
+                    "[Ţéñĝéñ one]",
+                    "[Éîķåñ one]",
+                    "[Ķåññå one]",
+                    "[Éîéñ one]",
+                    "[Éîšö one]",
+                    "[Šĥōŕýåķû one two]",
+                    "[Çĥōţöķû one two]",
+                    "[Çĥōĥō one]",
+                    "[Ķåñķō one]",
+                    "[Çĥōŵå one]",
+                    "[Ķåññîñ one]",
+                    "[Ĵîåñ one]",
+                    "[Ṁåñĵû one]",
+                    "[Çĥōĝéñ one]",
+                    "[Çĥōŕýåķû one two]",
+                    "[Çĥōķýū one]",
+                    "[Ķåñţöķû one two]",
+                    "[Éîšĥō one]",
+                    "[Ţéñĝî one]",
+                    "[Ķōĥéî one]",
+                    "[Ĵîŕýåķû one two]",
+                    "[Éñķýū one]",
+                    "[Ĵōĥō one]",
+                    "[Ĵōŕýåķû one two]",
+                    "[Éîĥō one]",
+                    "[Ōţöķû one]",
+                    "[Ķåñĵî one]",
+                    "[Ķåĥō one]",
+                    "[Éîçĥō one]",
+                    "[Ĵōţöķû one]",
+                    "[Ķōŵå one]",
+                    "[Çĥōĵî one]",
+                    "[Ķåĵō one]",
+                    "[Ţéññîñ one]",
+                    "[Ţéñ’éî one]",
+                    "[Éîķýū one]",
+                    "[Ĝéñ’éî one]",
+                    "[Ĥōåñ one]",
+                    "[Ţéñĵî one]",
+                    "[Ðåîĵî one]",
+                    "[Ţéñšĥō one]",
+                    "[Çĥōšĥō one]",
+                    "[Ĥōéñ one]",
+                    "[Éîĵî one]",
+                    "[Ķōĵî one]",
+                    "[Ţéñ’ýō one]",
+                    "[Ķýūåñ one]",
+                    "[Ñîñþéî one]",
+                    "[Ķýūĵû one]",
+                    "[Ĥōĝéñ one]",
+                    "[Ĥéîĵî one]",
+                    "[Éîŕýåķû one two]",
+                    "[Ōĥō one]",
+                    "[Çĥōķåñ one]",
+                    "[Éîɱåñ one]",
+                    "[Ñîñ’åñ one]",
+                    "[Ķåō one]",
+                    "[Ĵōåñ one]",
+                    "[Åñĝéñ one]",
+                    "[Ĵîšĥō one]",
+                    "[Ýōŵå one]",
+                    "[Ĵûéî one]",
+                    "[Ĝéñŕýåķû one two]",
+                    "[Ɓûñĵî one]",
+                    "[Ķéñķýū one]",
+                    "[Šĥōĵî one]",
+                    "[Ķéññîñ one]",
+                    "[Ĝéñķýū one]",
+                    "[Ķéñ’éî one]",
+                    "[Ĵōĝéñ one]",
+                    "[Ķéñŕýåķû one two]",
+                    "[Ķéɱþö one]",
+                    "[Ĵōķýū one]",
+                    "[Ĵōō one]",
+                    "[Ĝéññîñ one]",
+                    "[Ķåŕöķû one]",
+                    "[Åñţéî one]",
+                    "[Ķåñĝî one]",
+                    "[Ĵōéî one]",
+                    "[Ţéñþûķû one two]",
+                    "[Ɓûñŕýåķû one two]",
+                    "[Ķåţéî one]",
+                    "[Ŕýåķûñîñ one two]",
+                    "[Éñ’ō one]",
+                    "[Ñîñĵî one]",
+                    "[Ķåñĝéñ one]",
+                    "[Ĥōĵî one]",
+                    "[Ķéñçĥō one]",
+                    "[Ķōĝéñ one]",
+                    "[Šĥōķå one]",
+                    "[Šĥōĝéñ one]",
+                    "[Ɓûñ’ō one]",
+                    "[Ķōçĥō one]",
+                    "[Ɓûñ’éî one]",
+                    "[Ķéñĵî one]",
+                    "[Ķōåñ one]",
+                    "[Šĥōō one]",
+                    "[Éîñîñ one]",
+                    "[Šĥōåñ one]",
+                    "[Ķéñĝéñ one]",
+                    "[Ķåĝéñ one]",
+                    "[Ţöķûĵî one]",
+                    "[Éñķýō one]",
+                    "[Ōçĥō one]",
+                    "[Šĥōŵå one]",
+                    "[Ɓûñþō one]",
+                    "[Ĝéñ’ō one]",
+                    "[Ĝéñķō one]",
+                    "[Šĥōçĥū one]",
+                    "[Ķåŕýåķû one two]",
+                    "[Ĝéñţöķû one two]",
+                    "[Ĝéñķō one]",
+                    "[Ķéñɱû one]",
+                    "[Éñĝéñ one]",
+                    "[Ķōķöķû one]",
+                    "[Šĥōĥéî one]",
+                    "[Ķéñţöķû one two]",
+                    "[Ɓûñçĥū one]",
+                    "[Ţéñĵû one]",
+                    "[Ķōŕýåķû one two]",
+                    "[Ķōŵå one]",
+                    "[Ĝéñçĥū one]",
+                    "[Šĥîţöķû one two]",
+                    "[Ķåķéî one]",
+                    "[Ķōō one]",
+                    "[Ṁéîţöķû one two]",
+                    "[Ōéî one]",
+                    "[Šĥōçĥō one]",
+                    "[Éîķýō one]",
+                    "[Ķåķîţšû one two]",
+                    "[Ɓûñ’åñ one]",
+                    "[Ĥōţöķû one]",
+                    "[Ķýōţöķû one two]",
+                    "[Ķōšĥō one]",
+                    "[Çĥōŕöķû one two]",
+                    "[Ķåñšĥō one]",
+                    "[Ɓûñšĥō one]",
+                    "[Ōñîñ one]",
+                    "[Ɓûñɱéî one]",
+                    "[Çĥōķýō one]",
+                    "[Éñţöķû one]",
+                    "[Ṁéîō one]",
+                    "[Ɓûñķî one]",
+                    "[Éîšĥō one]",
+                    "[Ðåîéî one]",
+                    "[Ķýōŕöķû one two]",
+                    "[Ţéñƀûñ one]",
+                    "[Ķōĵî one]",
+                    "[Éîŕöķû one]",
+                    "[Ĝéñķî one]",
+                    "[Ţéñšĥō one]",
+                    "[Ɓûñŕöķû one two]",
+                    "[Ķéîçĥō one]",
+                    "[Ĝéññå one]",
+                    "[Ķåñ’éî one]",
+                    "[Šĥōĥō one]",
+                    "[Ķéîåñ one]",
+                    "[Ĵōō one]",
+                    "[Ṁéîŕéķî one two]",
+                    "[Ṁåñĵî one]",
+                    "[Ķåñƀûñ one]",
+                    "[Éñþō one]",
+                    "[Ţéññå one]",
+                    "[Ĵōķýō one]",
+                    "[Ĝéñŕöķû one two]",
+                    "[Ĥōéî one]",
+                    "[Šĥōţöķû one two]",
+                    "[Ķýōĥō one]",
+                    "[Ĝéñƀûñ one]",
+                    "[Ķåñþō one]",
+                    "[Éñķýō one]",
+                    "[Ķåñ’éñ one]",
+                    "[Ĥōŕéķî one]",
+                    "[Ṁéîŵå one]",
+                    "[Åñ’éî one]",
+                    "[Ţéñɱéî one]",
+                    "[Ķåñšéî one]",
+                    "[Ķýōŵå one]",
+                    "[Ɓûñķå one]",
+                    "[Ɓûñšéî one]",
+                    "[Ţéñþō one]",
+                    "[Ķōķå one]",
+                    "[Ķåéî one]",
+                    "[Åñšéî one]",
+                    "[Ṁåñ’éñ one]",
+                    "[Ɓûñķýū one]",
+                    "[Ĝéñĵî one]",
+                    "[Ķéîō one]",
+                    "[Ṁ one]",
+                    "[Ţ one]",
+                    "[Š one]",
+                    "[Ĥ one]",
+                    "[Ŕ one]",
+                }
+            }
+            intervalFormats{
+                Bh{
+                    B{"[h B – h B 'one' 'two']"}
+                    h{"[h – h B 'one' 'two']"}
+                }
+                Bhm{
+                    B{"[h:mm B – h:mm B 'one' 'two' 'three']"}
+                    h{"[h:mm – h:mm B 'one' 'two']"}
+                    m{"[h:mm – h:mm B 'one' 'two']"}
+                }
+                Gy{
+                    G{"[y G – y G 'one' 'two']"}
+                    y{"[y – y G 'one' 'two']"}
+                }
+                GyM{
+                    G{"[M/y GGGGG – M/y GGGGG 'one' 'two' 'three']"}
+                    M{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+                    y{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+                }
+                GyMEd{
+                    G{"[E, M/d/y GGGGG – E, M/d/y GGGGG 'one' 'two' 'three' 'four']"}
+                    M{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                    d{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                    y{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                }
+                GyMMM{
+                    G{"[MMM y G – MMM y G 'one' 'two' 'three']"}
+                    M{"[MMM – MMM y G 'one' 'two']"}
+                    y{"[MMM y – MMM y G 'one' 'two' 'three']"}
+                }
+                GyMMMEd{
+                    G{"[E, MMM d, y G – E, MMM d, y G 'one' 'two' 'three' 'four']"}
+                    M{"[E, MMM d – E, MMM d, y G 'one' 'two' 'three']"}
+                    d{"[E, MMM d – E, MMM d, y G 'one' 'two' 'three']"}
+                    y{"[E, MMM d, y – E, MMM d, y G 'one' 'two' 'three' 'four']"}
+                }
+                GyMMMd{
+                    G{"[MMM d, y G – MMM d, y G 'one' 'two' 'three']"}
+                    M{"[MMM d – MMM d, y G 'one' 'two' 'three']"}
+                    d{"[MMM d – d, y G 'one' 'two']"}
+                    y{"[MMM d, y – MMM d, y G 'one' 'two' 'three']"}
+                }
+                GyMd{
+                    G{"[M/d/y GGGGG – M/d/y GGGGG 'one' 'two' 'three']"}
+                    M{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                    d{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                    y{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                }
+                H{
+                    H{"[HH – HH 'one' 'two']"}
+                }
+                Hm{
+                    H{"[HH:mm – HH:mm 'one' 'two']"}
+                    m{"[HH:mm – HH:mm 'one' 'two']"}
+                }
+                Hmv{
+                    H{"[HH:mm – HH:mm v 'one' 'two' 'three']"}
+                    m{"[HH:mm – HH:mm v 'one' 'two' 'three']"}
+                }
+                Hv{
+                    H{"[HH – HH v 'one' 'two']"}
+                }
+                M{
+                    M{"[M – M 'one']"}
+                }
+                MEd{
+                    M{"[E, M/d – E, M/d 'one' 'two' 'three']"}
+                    d{"[E, M/d – E, M/d 'one' 'two' 'three']"}
+                }
+                MMM{
+                    M{"[MMM – MMM 'one' 'two']"}
+                }
+                MMMEd{
+                    M{"[E, MMM d – E, MMM d 'one' 'two' 'three']"}
+                    d{"[E, MMM d – E, MMM d 'one' 'two' 'three']"}
+                }
+                MMMd{
+                    M{"[MMM d – MMM d 'one' 'two']"}
+                    d{"[MMM d – d 'one' 'two']"}
+                }
+                Md{
+                    M{"[M/d – M/d 'one' 'two']"}
+                    d{"[M/d – M/d 'one' 'two']"}
+                }
+                d{
+                    d{"[d – d 'one']"}
+                }
+                fallback{"[{0} – {1} 'one' 'two']"}
+                h{
+                    a{"[h a – h a 'one' 'two']"}
+                    h{"[h – h a 'one' 'two']"}
+                }
+                hm{
+                    a{"[h:mm a – h:mm a 'one' 'two' 'three']"}
+                    h{"[h:mm – h:mm a 'one' 'two']"}
+                    m{"[h:mm – h:mm a 'one' 'two']"}
+                }
+                hmv{
+                    a{"[h:mm a – h:mm a v 'one' 'two' 'three']"}
+                    h{"[h:mm – h:mm a v 'one' 'two' 'three']"}
+                    m{"[h:mm – h:mm a v 'one' 'two' 'three']"}
+                }
+                hv{
+                    a{"[h a – h a v 'one' 'two']"}
+                    h{"[h – h a v 'one' 'two']"}
+                }
+                y{
+                    y{"[y – y G 'one' 'two']"}
+                }
+                yM{
+                    M{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+                    y{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+                }
+                yMEd{
+                    M{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                    d{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                    y{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                }
+                yMMM{
+                    M{"[MMM – MMM y G 'one' 'two']"}
+                    y{"[MMM y – MMM y G 'one' 'two' 'three']"}
+                }
+                yMMMEd{
+                    M{"[E, MMM d – E, MMM d, y G 'one' 'two' 'three']"}
+                    d{"[E, MMM d – E, MMM d, y G 'one' 'two' 'three']"}
+                    y{"[E, MMM d, y – E, MMM d, y G 'one' 'two' 'three' 'four']"}
+                }
+                yMMMM{
+                    M{"[MMMM – MMMM y G 'one' 'two' 'three']"}
+                    y{"[MMMM y – MMMM y G 'one' 'two' 'three']"}
+                }
+                yMMMd{
+                    M{"[MMM d – MMM d, y G 'one' 'two' 'three']"}
+                    d{"[MMM d – d, y G 'one' 'two']"}
+                    y{"[MMM d, y – MMM d, y G 'one' 'two' 'three']"}
+                }
+                yMd{
+                    M{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                    d{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                    y{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                }
+            }
+        }
+        roc{
+            DateTimePatterns{
+                "h:mm:ss a zzzz",
+                "h:mm:ss a z",
+                "h:mm:ss a",
+                "h:mm a",
+                "[EEEE, MMMM d, y G 'one' 'two' 'three']",
+                "[MMMM d, y G 'one' 'two']",
+                "[MMM d, y G 'one' 'two']",
+                "[M/d/y GGGGG 'one' 'two']",
                 "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
@@ -1319,12 +2009,189 @@ en_XA{
                 "[GyMMMd 'one']",
                 "[GGGGGyMd 'one' 'two']",
             }
-        }
-        roc{
+            availableFormats{
+                Bh{"[h B 'one']"}
+                Bhm{"[h:mm B 'one']"}
+                Bhms{"[h:mm:ss B 'one' 'two']"}
+                E{"[ccc 'one']"}
+                Ed{"[d E 'one']"}
+                Gy{"[y G 'one']"}
+                GyMMM{"[MMM y G 'one' 'two']"}
+                GyMMMEd{"[E, MMM d, y G 'one' 'two']"}
+                GyMMMd{"[MMM d, y G 'one' 'two']"}
+                GyMd{"[M/d/y G 'one' 'two']"}
+                H{"[HH 'one']"}
+                Hm{"[HH:mm 'one']"}
+                Hms{"[HH:mm:ss 'one' 'two']"}
+                M{"[L 'one']"}
+                MEd{"[E, M/d 'one']"}
+                MMM{"[LLL 'one']"}
+                MMMEd{"[E, MMM d 'one' 'two']"}
+                MMMMd{"[MMMM d 'one']"}
+                MMMd{"[MMM d 'one']"}
+                Md{"[M/d 'one']"}
+                d{"[d 'one']"}
+                h{"[h a 'one']"}
+                hm{"[h:mm a 'one']"}
+                hms{"[h:mm:ss a 'one' 'two']"}
+                y{"[y G 'one']"}
+                yyyy{"[y G 'one']"}
+                yyyyM{"[M/y GGGGG 'one' 'two']"}
+                yyyyMEd{"[E, M/d/y GGGGG 'one' 'two']"}
+                yyyyMMM{"[MMM y G 'one' 'two']"}
+                yyyyMMMEd{"[E, MMM d, y G 'one' 'two']"}
+                yyyyMMMM{"[MMMM y G 'one' 'two']"}
+                yyyyMMMd{"[MMM d, y G 'one' 'two']"}
+                yyyyMd{"[M/d/y GGGGG 'one' 'two']"}
+                yyyyQQQ{"[QQQ y G 'one' 'two']"}
+                yyyyQQQQ{"[QQQQ y G 'one' 'two']"}
+            }
             eras{
                 abbreviated{
                     "[Ɓ·Ŕ·Ö·Ç· one two]",
                     "[Ṁîñĝûö one]",
+                }
+            }
+            intervalFormats{
+                Bh{
+                    B{"[h B – h B 'one' 'two']"}
+                    h{"[h – h B 'one' 'two']"}
+                }
+                Bhm{
+                    B{"[h:mm B – h:mm B 'one' 'two' 'three']"}
+                    h{"[h:mm – h:mm B 'one' 'two']"}
+                    m{"[h:mm – h:mm B 'one' 'two']"}
+                }
+                Gy{
+                    G{"[y G – y G 'one' 'two']"}
+                    y{"[y – y G 'one' 'two']"}
+                }
+                GyM{
+                    G{"[M/y GGGGG – M/y GGGGG 'one' 'two' 'three']"}
+                    M{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+                    y{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+                }
+                GyMEd{
+                    G{"[E, M/d/y GGGGG – E, M/d/y GGGGG 'one' 'two' 'three' 'four']"}
+                    M{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                    d{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                    y{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                }
+                GyMMM{
+                    G{"[MMM y G – MMM y G 'one' 'two' 'three']"}
+                    M{"[MMM – MMM y G 'one' 'two']"}
+                    y{"[MMM y – MMM y G 'one' 'two' 'three']"}
+                }
+                GyMMMEd{
+                    G{"[E, MMM d, y G – E, MMM d, y G 'one' 'two' 'three' 'four']"}
+                    M{"[E, MMM d – E, MMM d, y G 'one' 'two' 'three']"}
+                    d{"[E, MMM d – E, MMM d, y G 'one' 'two' 'three']"}
+                    y{"[E, MMM d, y – E, MMM d, y G 'one' 'two' 'three' 'four']"}
+                }
+                GyMMMd{
+                    G{"[MMM d, y G – MMM d, y G 'one' 'two' 'three']"}
+                    M{"[MMM d – MMM d, y G 'one' 'two' 'three']"}
+                    d{"[MMM d – d, y G 'one' 'two']"}
+                    y{"[MMM d, y – MMM d, y G 'one' 'two' 'three']"}
+                }
+                GyMd{
+                    G{"[M/d/y GGGGG – M/d/y GGGGG 'one' 'two' 'three']"}
+                    M{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                    d{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                    y{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                }
+                H{
+                    H{"[HH – HH 'one' 'two']"}
+                }
+                Hm{
+                    H{"[HH:mm – HH:mm 'one' 'two']"}
+                    m{"[HH:mm – HH:mm 'one' 'two']"}
+                }
+                Hmv{
+                    H{"[HH:mm – HH:mm v 'one' 'two' 'three']"}
+                    m{"[HH:mm – HH:mm v 'one' 'two' 'three']"}
+                }
+                Hv{
+                    H{"[HH – HH v 'one' 'two']"}
+                }
+                M{
+                    M{"[M – M 'one']"}
+                }
+                MEd{
+                    M{"[E, M/d – E, M/d 'one' 'two' 'three']"}
+                    d{"[E, M/d – E, M/d 'one' 'two' 'three']"}
+                }
+                MMM{
+                    M{"[MMM – MMM 'one' 'two']"}
+                }
+                MMMEd{
+                    M{"[E, MMM d – E, MMM d 'one' 'two' 'three']"}
+                    d{"[E, MMM d – E, MMM d 'one' 'two' 'three']"}
+                }
+                MMMd{
+                    M{"[MMM d – MMM d 'one' 'two']"}
+                    d{"[MMM d – d 'one' 'two']"}
+                }
+                Md{
+                    M{"[M/d – M/d 'one' 'two']"}
+                    d{"[M/d – M/d 'one' 'two']"}
+                }
+                d{
+                    d{"[d – d 'one']"}
+                }
+                fallback{"[{0} – {1} 'one' 'two']"}
+                h{
+                    a{"[h a – h a 'one' 'two']"}
+                    h{"[h – h a 'one' 'two']"}
+                }
+                hm{
+                    a{"[h:mm a – h:mm a 'one' 'two' 'three']"}
+                    h{"[h:mm – h:mm a 'one' 'two']"}
+                    m{"[h:mm – h:mm a 'one' 'two']"}
+                }
+                hmv{
+                    a{"[h:mm a – h:mm a v 'one' 'two' 'three']"}
+                    h{"[h:mm – h:mm a v 'one' 'two' 'three']"}
+                    m{"[h:mm – h:mm a v 'one' 'two' 'three']"}
+                }
+                hv{
+                    a{"[h a – h a v 'one' 'two']"}
+                    h{"[h – h a v 'one' 'two']"}
+                }
+                y{
+                    y{"[y – y G 'one' 'two']"}
+                }
+                yM{
+                    M{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+                    y{"[M/y – M/y GGGGG 'one' 'two' 'three']"}
+                }
+                yMEd{
+                    M{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                    d{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                    y{"[E, M/d/y – E, M/d/y GGGGG 'one' 'two' 'three']"}
+                }
+                yMMM{
+                    M{"[MMM – MMM y G 'one' 'two']"}
+                    y{"[MMM y – MMM y G 'one' 'two' 'three']"}
+                }
+                yMMMEd{
+                    M{"[E, MMM d – E, MMM d, y G 'one' 'two' 'three']"}
+                    d{"[E, MMM d – E, MMM d, y G 'one' 'two' 'three']"}
+                    y{"[E, MMM d, y – E, MMM d, y G 'one' 'two' 'three' 'four']"}
+                }
+                yMMMM{
+                    M{"[MMMM – MMMM y G 'one' 'two' 'three']"}
+                    y{"[MMMM y – MMMM y G 'one' 'two' 'three']"}
+                }
+                yMMMd{
+                    M{"[MMM d – MMM d, y G 'one' 'two' 'three']"}
+                    d{"[MMM d – d, y G 'one' 'two']"}
+                    y{"[MMM d, y – MMM d, y G 'one' 'two' 'three']"}
+                }
+                yMd{
+                    M{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                    d{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
+                    y{"[M/d/y – M/d/y GGGGG 'one' 'two' 'three']"}
                 }
             }
         }

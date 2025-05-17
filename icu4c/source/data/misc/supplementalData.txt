@@ -20410,6 +20410,7 @@ supplementalData:table(nofallback){
             "en_AI",
             "en_AU",
             "en_BB",
+            "en_BD",
             "en_BM",
             "en_BS",
             "en_BW",
@@ -20446,8 +20447,10 @@ supplementalData:table(nofallback){
             "en_KN",
             "en_KY",
             "en_LC",
+            "en_LK",
             "en_LR",
             "en_LS",
+            "en_MA",
             "en_MG",
             "en_MO",
             "en_MS",
@@ -20467,6 +20470,7 @@ supplementalData:table(nofallback){
             "en_PN",
             "en_PW",
             "en_RW",
+            "en_SA",
             "en_SB",
             "en_SC",
             "en_SD",
@@ -20498,11 +20502,15 @@ supplementalData:table(nofallback){
             "en_CZ",
             "en_DE",
             "en_DK",
+            "en_EE",
             "en_ES",
             "en_FI",
             "en_FR",
+            "en_GE",
             "en_HU",
             "en_IT",
+            "en_LT",
+            "en_LV",
             "en_NL",
             "en_NO",
             "en_PL",
@@ -20511,6 +20519,7 @@ supplementalData:table(nofallback){
             "en_SE",
             "en_SI",
             "en_SK",
+            "en_UA",
         }
         en_IN{"hi_Latn"}
         es_419{
@@ -36038,6 +36047,13 @@ supplementalData:table(nofallback){
             }
             preferred{"h"}
         }
+        en_CD{
+            allowed{
+                "H",
+                "hB",
+            }
+            preferred{"H"}
+        }
         en_HK{
             allowed{
                 "h",
@@ -36057,6 +36073,15 @@ supplementalData:table(nofallback){
             preferred{"H"}
         }
         en_MY{
+            allowed{
+                "h",
+                "hb",
+                "H",
+                "hB",
+            }
+            preferred{"h"}
+        }
+        en_TW{
             allowed{
                 "h",
                 "hb",
