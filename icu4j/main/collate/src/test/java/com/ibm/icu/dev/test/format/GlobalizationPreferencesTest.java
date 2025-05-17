@@ -635,10 +635,13 @@ public class GlobalizationPreferencesTest extends TestFmwk {
         }
 
         // Set a list of locales
-        logln("Set locales - en, en_JP, en_GB");
+        // Android-changed: Android supports en_JP. Use en_AQ instead of en_JP for test.
+        // logln("Set locales - en, en_JP, en_GB");
+        logln("Set locales - en, en_AQ, en_GB");
         ULocale[] locales = new ULocale[3];
         locales[0] = new ULocale("en");
-        locales[1] = new ULocale("en_JP");
+        // locales[1] = new ULocale("en_JP");
+        locales[1] = new ULocale("en_AQ");
         locales[2] = new ULocale("en_GB");
         gp.setLocales(locales);
 
