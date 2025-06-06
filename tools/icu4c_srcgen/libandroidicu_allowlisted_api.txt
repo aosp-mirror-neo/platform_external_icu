@@ -94,6 +94,7 @@ UCNV_TO_U_CALLBACK_STOP
 ucol_close
 ucol_open
 ucol_setAttribute
+ucol_setStrength
 ucol_strcoll
 ucol_strcollIter
 ucsdet_close

@@ -295,6 +295,9 @@ UCollator * ucol_open_android(const char * loc, UErrorCode * status) {
 void ucol_setAttribute_android(UCollator * coll, UColAttribute attr, UColAttributeValue value, UErrorCode * status) {
   ucol_setAttribute(coll, attr, value, status);
 }
+void ucol_setStrength_android(UCollator * coll, UCollationStrength strength) {
+  ucol_setStrength(coll, strength);
+}
 UCollationResult ucol_strcoll_android(const UCollator * coll, const UChar * source, int32_t sourceLength, const UChar * target, int32_t targetLength) {
   return ucol_strcoll(coll, source, sourceLength, target, targetLength);
 }
