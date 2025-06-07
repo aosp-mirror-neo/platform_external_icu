@@ -92,6 +92,7 @@ LIBANDROIDICU_EXTERNAL_1 {
     ucol_close_android; # apex
     ucol_open_android; # apex
     ucol_setAttribute_android; # apex
+    ucol_setStrength_android; # apex
     ucol_strcoll_android; # apex
     ucol_strcollIter_android; # apex
     ucsdet_close_android; # apex
