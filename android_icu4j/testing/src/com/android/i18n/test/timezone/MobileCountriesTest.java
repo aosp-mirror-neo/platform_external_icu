@@ -65,4 +65,14 @@ public class MobileCountriesTest {
         assertThrows(NullPointerException.class,
                 () -> MobileCountries.create("222", Set.of("gr"), null));
     }
+
+    @Test
+    public void createMobileCountries_withMnc_expectNormalised() {
+        MobileCountries mobileCountries = MobileCountries.create("222", "111", Set.of("GR"), "GR");
+
+        assertEquals("222", mobileCountries.getMcc());
+        assertEquals("111", mobileCountries.getMnc());
+        assertEquals(Set.of("gr"), mobileCountries.getCountryIsoCodes());
+        assertEquals("gr", mobileCountries.getDefaultCountryIsoCode());
+    }
 }
