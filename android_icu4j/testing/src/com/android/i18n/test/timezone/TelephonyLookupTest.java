@@ -26,7 +26,6 @@ import android.icu.testsharding.MainTestShard;
 
 import com.android.i18n.timezone.MobileCountries;
 import com.android.i18n.timezone.TelephonyLookup;
-import com.android.i18n.timezone.TelephonyNetwork;
 import com.android.i18n.timezone.TelephonyNetworkFinder;
 import com.android.internal.telephony.MccTable;
 
@@ -94,8 +93,8 @@ public class TelephonyLookupTest {
                   </mobile_countries>
                 </telephony_lookup>
                 """;
-        TelephonyNetwork expectedTelephonyNetwork1 =
-                TelephonyNetwork.create("123", "456", "gb");
+        MobileCountries expectedTelephonyNetwork1 =
+                MobileCountries.create("123", "456", Set.of("gb"), "gb");
         MobileCountries expectedMobileCountries1 =
                 MobileCountries.create("202", Set.of("gr"), "gr");
 
@@ -113,8 +112,8 @@ public class TelephonyLookupTest {
                   </mobile_countries>
                 </telephony_lookup>
                 """;
-        TelephonyNetwork expectedTelephonyNetwork2 =
-                TelephonyNetwork.create("234", "567", "fr");
+        MobileCountries expectedTelephonyNetwork2 =
+                MobileCountries.create("234", "567", Set.of("fr"), "fr");
         MobileCountries expectedMobileCountries2 =
                 MobileCountries.create("505", Set.of("au", "nf"), "au");
 
@@ -274,8 +273,8 @@ public class TelephonyLookupTest {
 
     @Test
     public void xmlParsing_unexpectedComments() throws Exception {
-        TelephonyNetwork expectedTelephonyNetwork =
-                TelephonyNetwork.create("123", "456", "gb");
+        MobileCountries expectedTelephonyNetwork =
+                MobileCountries.create("123", "456", Set.of("gb"), "gb");
         MobileCountries expectedMobileCountries =
                 MobileCountries.create("202", Set.of("gr"), "gr");
 
@@ -308,9 +307,9 @@ public class TelephonyLookupTest {
 
     @Test
     public void xmlParsing_unexpectedElementsIgnored() throws Exception {
-        TelephonyNetwork expectedTelephonyNetwork =
-                TelephonyNetwork.create("123", "456", "gb");
-        List<TelephonyNetwork> expectedNetworks = list(expectedTelephonyNetwork);
+        MobileCountries expectedTelephonyNetwork =
+                MobileCountries.create("123", "456", Set.of("gb"), "gb");
+        List<MobileCountries> expectedNetworks = list(expectedTelephonyNetwork);
         MobileCountries expectedMobileCountries =
                 MobileCountries.create("202", Set.of("gr"), "gr");
         List<MobileCountries> expectedMobileCountriesList = list(expectedMobileCountries);
@@ -346,7 +345,7 @@ public class TelephonyLookupTest {
                 telephonyLookup.getTelephonyNetworkFinder().getAllMobileCountries());
 
         expectedNetworks = list(expectedTelephonyNetwork,
-                TelephonyNetwork.create("234", "567", "fr"));
+                MobileCountries.create("234", "567", Set.of("fr"), "fr"));
         expectedMobileCountriesList = list(expectedMobileCountries,
                 MobileCountries.create("204", Set.of("nl"), "nl"));
         telephonyLookup = validate("<telephony_lookup>\n"
@@ -375,9 +374,9 @@ public class TelephonyLookupTest {
 
     @Test
     public void xmlParsing_unexpectedTextIgnored() throws Exception {
-        TelephonyNetwork expectedTelephonyNetwork =
-                TelephonyNetwork.create("123", "456", "gb");
-        List<TelephonyNetwork> expectedNetworks = list(expectedTelephonyNetwork);
+        MobileCountries expectedTelephonyNetwork =
+                MobileCountries.create("123", "456", Set.of("gb"), "gb");
+        List<MobileCountries> expectedNetworks = list(expectedTelephonyNetwork);
         MobileCountries expectedMobileCountries =
                 MobileCountries.create("202", Set.of("gr"), "gr");
         List<MobileCountries> expectedMobileCountriesList = list(expectedMobileCountries);
@@ -523,7 +522,7 @@ public class TelephonyLookupTest {
                 """
                 <telephony_lookup>
                  <networks>
-                 <network mcc="123" mnc="456" countryCode="GB"/>
+                  <network mcc="123" mnc="456" countryCode="GB"/>
                  </networks>
                  <mobile_countries>
                   <mobile_country mcc="202">
@@ -571,8 +570,8 @@ public class TelephonyLookupTest {
                         """);
 
         TelephonyNetworkFinder telephonyNetworkFinder = telephonyLookup.getTelephonyNetworkFinder();
-        TelephonyNetwork expectedNetwork1 = TelephonyNetwork.create("123", "456", "gb");
-        TelephonyNetwork expectedNetwork2 = TelephonyNetwork.create("234", "567", "fr");
+        MobileCountries expectedNetwork1 = MobileCountries.create("123", "456", Set.of("gb"), "gb");
+        MobileCountries expectedNetwork2 = MobileCountries.create("234", "567", Set.of("fr"), "fr");
         MobileCountries expectedMobileCountries1 =
                 MobileCountries.create("202", Set.of("gr"), "gr");
         MobileCountries expectedMobileCountries2 =
@@ -585,9 +584,9 @@ public class TelephonyLookupTest {
                 list(expectedMobileCountries1, expectedMobileCountries2),
                 telephonyNetworkFinder.getAllMobileCountries());
 
-        assertEquals(expectedNetwork1, telephonyNetworkFinder.findNetworkByMccMnc("123", "456"));
-        assertEquals(expectedNetwork2, telephonyNetworkFinder.findNetworkByMccMnc("234", "567"));
-        assertNull(telephonyNetworkFinder.findNetworkByMccMnc("999", "999"));
+        assertEquals(expectedNetwork1, telephonyNetworkFinder.findCountriesByMccMnc("123", "456"));
+        assertEquals(expectedNetwork2, telephonyNetworkFinder.findCountriesByMccMnc("234", "567"));
+        assertNull(telephonyNetworkFinder.findCountriesByMccMnc("999", "999"));
 
         assertEquals(expectedMobileCountries1, telephonyNetworkFinder.findCountriesByMcc("202"));
         assertEquals(expectedMobileCountries2, telephonyNetworkFinder.findCountriesByMcc("505"));

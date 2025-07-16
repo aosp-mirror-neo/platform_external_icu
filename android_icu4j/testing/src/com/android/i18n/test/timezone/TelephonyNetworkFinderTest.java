@@ -24,7 +24,6 @@ import static org.junit.Assert.assertThrows;
 import android.icu.testsharding.MainTestShard;
 
 import com.android.i18n.timezone.MobileCountries;
-import com.android.i18n.timezone.TelephonyNetwork;
 import com.android.i18n.timezone.TelephonyNetworkFinder;
 
 import org.junit.Before;
@@ -46,9 +45,9 @@ public class TelephonyNetworkFinderTest {
 
     @Before
     public void setup() {
-        List<TelephonyNetwork> networkList = List.of(
-                TelephonyNetwork.create("123", "456", "gb"),
-                TelephonyNetwork.create("234", "567", "gb"));
+        List<MobileCountries> networkList = List.of(
+                MobileCountries.create("123", "456", Set.of("gb"), "gb"),
+                MobileCountries.create("234", "567", Set.of("gb"), "gb"));
 
         List<MobileCountries> mobileCountriesList = List.of(
                 MobileCountries.create("234", Set.of("uk"), "uk"),
@@ -59,13 +58,13 @@ public class TelephonyNetworkFinderTest {
 
     @Test
     public void telephonyFinder_shouldFindNetworks() {
-        TelephonyNetwork network = TelephonyNetwork.create("123", "456", "gb");
+        MobileCountries network = MobileCountries.create("123", "456", Set.of("gb"), "gb");
 
-        assertEquals(network, finder.findNetworkByMccMnc("123", "456"));
-        assertNull(finder.findNetworkByMccMnc("XXX", "XXX"));
-        assertNull(finder.findNetworkByMccMnc("123", "XXX"));
-        assertNull(finder.findNetworkByMccMnc("456", "123"));
-        assertNull(finder.findNetworkByMccMnc("111", "222"));
+        assertEquals(network, finder.findCountriesByMccMnc("123", "456"));
+        assertNull(finder.findCountriesByMccMnc("XXX", "XXX"));
+        assertNull(finder.findCountriesByMccMnc("123", "XXX"));
+        assertNull(finder.findCountriesByMccMnc("456", "123"));
+        assertNull(finder.findCountriesByMccMnc("111", "222"));
         assertEquals(2, finder.getAllNetworks().size());
     }
 

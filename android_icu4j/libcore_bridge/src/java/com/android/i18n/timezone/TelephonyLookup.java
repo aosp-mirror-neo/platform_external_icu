@@ -23,7 +23,6 @@ import static com.android.i18n.timezone.XmlUtils.findNextStartTagOrEndTagNoRecur
 import static com.android.i18n.timezone.XmlUtils.findNextStartTagOrThrowNoRecurse;
 import static com.android.i18n.timezone.XmlUtils.normalizeCountryIso;
 
-import com.android.i18n.timezone.TelephonyNetwork.MccMnc;
 import com.android.i18n.timezone.XmlUtils.ReaderSupplier;
 import com.android.i18n.util.Log;
 
@@ -400,13 +399,14 @@ public final class TelephonyLookup {
      * {@link TelephonyNetworkFinder}.
      */
     private static class TelephonyNetworksExtractor implements TelephonyNetworkProcessor {
-        private List<TelephonyNetwork> networksList = new ArrayList<>(10 /* default */);
+        private List<MobileCountries> networkOverrides = new ArrayList<>(10 /* default */);
         private List<MobileCountries> mobileCountries = new ArrayList<>();
 
         @Override
         public void processNetwork(String mcc, String mnc, String countryIso, String debugInfo) {
-            TelephonyNetwork network = TelephonyNetwork.create(mcc, mnc, countryIso);
-            networksList.add(network);
+            MobileCountries network = MobileCountries.create(mcc, mnc, Set.of(countryIso),
+                    countryIso);
+            networkOverrides.add(network);
         }
 
         @Override
@@ -416,7 +416,7 @@ public final class TelephonyLookup {
         }
 
         TelephonyNetworkFinder getTelephonyNetworkFinder() {
-            return TelephonyNetworkFinder.create(networksList, mobileCountries);
+            return TelephonyNetworkFinder.create(networkOverrides, mobileCountries);
         }
     }
 
