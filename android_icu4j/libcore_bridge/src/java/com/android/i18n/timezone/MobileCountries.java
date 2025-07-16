@@ -19,6 +19,7 @@ package com.android.i18n.timezone;
 import static java.util.stream.Collectors.toUnmodifiableSet;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 
 import java.util.Objects;
 import java.util.Set;
@@ -32,11 +33,26 @@ import java.util.Set;
 public final class MobileCountries {
 
     private final String mcc;
+    @Nullable
+    private final String mnc;
     private final String defaultCountryIsoCode;
     private final Set<String> countryIsoCodes;
 
+    /**
+     * Creates a new {@link MobileCountries} for a given MCC.
+     */
+    @libcore.api.CorePlatformApi
     public static MobileCountries create(String mcc, Set<String> countryIsoCodes,
             String defaultCountryIsoCode) {
+        return create(mcc, /* mnc= */ null, countryIsoCodes, defaultCountryIsoCode);
+    }
+
+    /**
+     * Creates a new {@link MobileCountries} for a given MCC and MNC.
+     */
+    @libcore.api.CorePlatformApi
+    public static MobileCountries create(String mcc, @Nullable String mnc,
+            Set<String> countryIsoCodes, String defaultCountryIsoCode) {
         Objects.requireNonNull(mcc);
         Objects.requireNonNull(countryIsoCodes);
         Objects.requireNonNull(defaultCountryIsoCode);
@@ -44,17 +60,18 @@ public final class MobileCountries {
         Set<String> normalizedCountryIsos = countryIsoCodes.stream()
                 .map(XmlUtils::normalizeCountryIso)
                 .collect(toUnmodifiableSet());
-        return new MobileCountries(Objects.requireNonNull(mcc), normalizedCountryIsos,
+        return new MobileCountries(Objects.requireNonNull(mcc), mnc, normalizedCountryIsos,
                 XmlUtils.normalizeCountryIso(defaultCountryIsoCode));
     }
 
-    private MobileCountries(String mcc, Set<String> countryIsoCodes,
+    private MobileCountries(String mcc, @Nullable String mnc, Set<String> countryIsoCodes,
             String defaultCountryIsoCode) {
         if (!countryIsoCodes.contains(Objects.requireNonNull(defaultCountryIsoCode))) {
             throw new IllegalArgumentException(
                     "The default country ISO code was not found in the set of country ISO codes");
         }
         this.mcc = Objects.requireNonNull(mcc);
+        this.mnc = mnc;
         this.countryIsoCodes = Objects.requireNonNull(countryIsoCodes);
         this.defaultCountryIsoCode = Objects.requireNonNull(defaultCountryIsoCode);
     }
@@ -66,6 +83,15 @@ public final class MobileCountries {
     @NonNull
     public String getMcc() {
         return mcc;
+    }
+
+    /**
+     * Returns the MNC of the network.
+     */
+    @libcore.api.CorePlatformApi
+    @Nullable
+    public String getMnc() {
+        return mnc;
     }
 
     /**
@@ -92,7 +118,9 @@ public final class MobileCountries {
             return true;
         }
         if (o instanceof MobileCountries that) {
-            return mcc.equals(that.mcc) && countryIsoCodes.equals(that.countryIsoCodes)
+            return mcc.equals(that.mcc)
+                    && Objects.equals(mnc, that.mnc)
+                    && countryIsoCodes.equals(that.countryIsoCodes)
                     && defaultCountryIsoCode.equals(that.defaultCountryIsoCode);
         }
         return false;
@@ -100,13 +128,14 @@ public final class MobileCountries {
 
     @Override
     public int hashCode() {
-        return Objects.hash(mcc, countryIsoCodes, defaultCountryIsoCode);
+        return Objects.hash(mcc, mnc, countryIsoCodes, defaultCountryIsoCode);
     }
 
     @Override
     public String toString() {
         return "MobileCountries{"
                 + "mcc=" + mcc
+                + ", mnc=" + mnc
                 + ", countryIsoCodes='" + countryIsoCodes
                 + ", defaultCountryIsoCode='" + defaultCountryIsoCode + '\''
                 + '}';

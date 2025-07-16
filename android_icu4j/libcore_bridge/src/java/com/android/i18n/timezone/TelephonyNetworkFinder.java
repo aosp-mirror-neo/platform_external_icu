@@ -21,7 +21,6 @@ import static com.android.i18n.timezone.XmlUtils.normalizeCountryIso;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 
-import com.android.i18n.timezone.TelephonyNetwork.MccMnc;
 import com.android.i18n.util.Log;
 
 import java.util.ArrayList;
@@ -41,11 +40,11 @@ import java.util.Set;
 @libcore.api.CorePlatformApi
 public final class TelephonyNetworkFinder {
 
-    private final Map<MccMnc, TelephonyNetwork> networksMap;
-    private final List<TelephonyNetwork> networksList;
+    private final Map<MccMnc, MobileCountries> networksMap;
+    private final List<MobileCountries> networkOverrides;
     private final Map<String, MobileCountries> countriesByMcc;
 
-    public static TelephonyNetworkFinder create(List<TelephonyNetwork> networksList,
+    public static TelephonyNetworkFinder create(List<MobileCountries> networksList,
             List<MobileCountries> mobileCountriesList) {
         Set<String> validCountryIsoCodes = new HashSet<>();
         for (String validCountryIsoCode : Locale.getISOCountries()) {
@@ -53,15 +52,15 @@ public final class TelephonyNetworkFinder {
         }
 
         /* Generate network map */
-        Map<MccMnc, TelephonyNetwork> networksMap = new HashMap<>();
-        for (TelephonyNetwork network : networksList) {
-            if (!validCountryIsoCodes.contains(network.getCountryIsoCode())) {
-                Log.w("Unrecognized country code: " + network.getCountryIsoCode()
+        Map<MccMnc, MobileCountries> networksMap = new HashMap<>();
+        for (MobileCountries network : networksList) {
+            if (!validCountryIsoCodes.contains(network.getDefaultCountryIsoCode())) {
+                Log.w("Unrecognized country code: " + network.getDefaultCountryIsoCode()
                         + " for telephony network=" + network);
             }
 
-            MccMnc mccMnc = network.getMccMnc();
-            TelephonyNetwork existingEntry = networksMap.put(mccMnc, network);
+            MccMnc mccMnc = new MccMnc(network.getMcc(), network.getMnc());
+            MobileCountries existingEntry = networksMap.put(mccMnc, network);
             if (existingEntry != null) {
                 Log.w("Duplicate MccMnc detected for " + mccMnc
                         + ". New entry=" + network + " replacing previous entry.");
@@ -101,10 +100,10 @@ public final class TelephonyNetworkFinder {
                 countriesByMcc);
     }
 
-    private TelephonyNetworkFinder(List<TelephonyNetwork> networksList,
-            Map<MccMnc, TelephonyNetwork> networksMap,
+    private TelephonyNetworkFinder(List<MobileCountries> networkOverrides,
+            Map<MccMnc, MobileCountries> networksMap,
             Map<String, MobileCountries> countriesByMcc) {
-        this.networksList = networksList;
+        this.networkOverrides = networkOverrides;
         this.networksMap = networksMap;
         this.countriesByMcc = countriesByMcc;
     }
@@ -115,7 +114,8 @@ public final class TelephonyNetworkFinder {
      * returned, e.g. if they operate in countries other than the one suggested by their MCC.
      */
     @libcore.api.CorePlatformApi
-    public TelephonyNetwork findNetworkByMccMnc(String mcc, String mnc) {
+    @Nullable
+    public MobileCountries findCountriesByMccMnc(@NonNull String mcc, @Nullable String mnc) {
         return networksMap.get(new MccMnc(mcc, mnc));
     }
 
@@ -130,8 +130,8 @@ public final class TelephonyNetworkFinder {
     }
 
     // @VisibleForTesting
-    public List<TelephonyNetwork> getAllNetworks() {
-        return networksList;
+    public List<MobileCountries> getAllNetworks() {
+        return networkOverrides;
     }
 
     // @VisibleForTesting
