@@ -48,10 +48,6 @@ cc_library_shared {
     // The whole implementation comes from the intermediate library libicu_static because
     // ndk_headers/ has symbol name collisions with the headers in libicuuc/libicui18n.
     whole_static_libs: ["libicu_static"],
-    shared_libs: [
-        "libicuuc",
-        "libicui18n",
-    ],
     apex_available: [
         "com.android.i18n",
     ],
@@ -62,6 +58,17 @@ cc_library_shared {
     target: {
         android: {
             version_script: "libicu.map.txt",
+            shared_libs: [
+                "libicuuc",
+                "libicui18n",
+            ],
+        },
+        host: {
+            whole_static_libs: [
+                "libicuuc",
+                "libicui18n",
+                "libicuuc_stubdata",
+            ],
         },
     },
 }
