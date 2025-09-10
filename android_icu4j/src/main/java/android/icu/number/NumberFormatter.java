@@ -526,8 +526,8 @@ public final class NumberFormatter {
      *            The skeleton string off of which to base this NumberFormatter.
      * @return An {@link UnlocalizedNumberFormatter}, to be used for chaining.
      * @throws SkeletonSyntaxException If the given string is not a valid number formatting skeleton.
-     * @hide unsupported on Android
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static UnlocalizedNumberFormatter forSkeleton(String skeleton) {
         return NumberSkeletonImpl.getOrCreate(skeleton);
     }

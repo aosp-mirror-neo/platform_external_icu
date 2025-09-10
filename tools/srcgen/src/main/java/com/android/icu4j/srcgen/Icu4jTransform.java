@@ -736,7 +736,6 @@ public class Icu4jTransform {
       // cause app crashing on older devices.
       // See the syntax details in https://github.com/unicode-org/icu/blob/master/docs/userguide/format_parse/numbers/skeletons.md.
       "method:android.icu.number.NumberFormatterSettings#toSkeleton()",
-      "method:android.icu.number.NumberFormatter#forSkeleton(String)",
       "method:android.icu.text.BreakIterator#registerInstance(BreakIterator,Locale,int)",
       "method:android.icu.text.BreakIterator#registerInstance(BreakIterator,ULocale,int)",
       "method:android.icu.text.BreakIterator#unregister(Object)",
