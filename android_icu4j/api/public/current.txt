@@ -1808,6 +1808,7 @@ package android.icu.number {
   }
 
   public final class NumberFormatter {
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public static android.icu.number.UnlocalizedNumberFormatter forSkeleton(String);
     method public static android.icu.number.UnlocalizedNumberFormatter with();
     method public static android.icu.number.LocalizedNumberFormatter withLocale(java.util.Locale);
     method public static android.icu.number.LocalizedNumberFormatter withLocale(android.icu.util.ULocale);
