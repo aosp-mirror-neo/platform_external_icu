@@ -13,23 +13,23 @@ The below contains the steps and commands in order to upgrade the ICU version in
 2. Generate a github read-access token and setup a local ~/.m2/setting.xml
    * See http://cldr.unicode.org/development/maven. This is required to download
      the prebuilt ICU to break the circular dependency between CLDR and icu.
-3. Check out aosp/main
-   * http://go/repo-init/aosp-main-with-phones
+3. Check out goog/main
+   * http://go/repo-init/git_main
 
 # Branch Structure
 1. `external/icu` project in the AOSP,
    * We **rebase** Android-specific patches on the `icu-staging` branch. Then we merge into
-     `aosp/main` later.
+     `goog/main` later.
 2. `external/cldr` project
-   * We use the **`aosp/upstream-release-cldr** as the mirror of the upstream release branch.
+   * We use the **`goog/upstream-release-cldr** as the mirror of the upstream release branch.
      We don’t modify this branch with Android patches, but merge this branch
-     into aosp/main where the Android patches are located.
+     into goog/main where the Android patches are located.
 
 # Verifying the cleanliness
 1. Build the clean source of AOSP
    ```shell
    source build/envsetup.sh
-   lunch aosp_cf_x86_64_phone-trunk_staging-userdebug
+   lunch cf_x86_64_phone-trunk_staging-userdebug
    m
    ```
    The build should succeed. Otherwise, your local repo may be broken. Please consider to re-sync.
@@ -68,8 +68,8 @@ The below contains the steps and commands in order to upgrade the ICU version in
     export CLDR_UPSTREAM_BRANCH=release-${CLDR_VERSION}
 
     cd ${ANDROID_BUILD_TOP}/external/cldr
-    git fetch aosp upstream-release-cldr
-    git branch ${CLDR_UPSTREAM_BRANCH} --track aosp/upstream-release-cldr
+    git fetch goog upstream-release-cldr
+    git branch ${CLDR_UPSTREAM_BRANCH} --track goog/upstream-release-cldr
     git checkout ${CLDR_UPSTREAM_BRANCH}
 
     git clone https://github.com/unicode-org/cldr.git ${UPSTREAM_CLDR_GIT}
@@ -90,13 +90,13 @@ The below contains the steps and commands in order to upgrade the ICU version in
     repo upload --cbr .
     ```
 
-   2b. Merge the upstream sources with patches in `aosp/main`
+   2b. Merge the upstream sources with patches in `goog/main`
     ```shell
     export CLDR_BRANCH=cldr${CLDR_VERSION}-main
-    git branch ${CLDR_BRANCH} --track aosp/main
+    git branch ${CLDR_BRANCH} --track goog/main
     git checkout ${CLDR_BRANCH}
     git merge ${CLDR_UPSTREAM_BRANCH} -m "
-    Merge CLDR ${CLDR_VERSION} in upstream-release-cldr into aosp/main
+    Merge CLDR ${CLDR_VERSION} in upstream-release-cldr into goog/main
 
     Bug: ${ICU_UPGRADE_BUG}
     Test: external/icu/tools/updatecldrdata.py
@@ -119,13 +119,13 @@ The below contains the steps and commands in order to upgrade the ICU version in
     cd ${ANDROID_BUILD_TOP}/external/icu
     export ICU_BRANCH=icu-staging
     export UPSTREAM_RELEASE_TAG=release-${ICU_VERSION}-${ICU_MINOR_VERSION}
-    git fetch aosp main ${ICU_BRANCH}
-    git branch ${ICU_BRANCH} --track aosp/${ICU_BRANCH}
+    git fetch goog main ${ICU_BRANCH}
+    git branch ${ICU_BRANCH} --track goog/${ICU_BRANCH}
     git checkout ${ICU_BRANCH}
     # Merge main into the staging branch.
-    git merge --no-ff aosp/main -m
+    git merge --no-ff goog/main -m
     "
-    Merge branch aosp/main into ${ICU_BRANCH}
+    Merge branch goog/main into ${ICU_BRANCH}
 
     Bug: ${ICU_UPGRADE_BUG}
     Test: n/a
@@ -145,7 +145,7 @@ The below contains the steps and commands in order to upgrade the ICU version in
 
     git add -A
     git commit -F- <<EOF
-    Copy ICU ${UPSTREAM_RELEASE_TAG} into aosp/${ICU_BRANCH}
+    Copy ICU ${UPSTREAM_RELEASE_TAG} into goog/${ICU_BRANCH}
 
     Copy the files with the following commands:
     find icu4j/ -type f,d ! -regex ".*/\(Android.mk\|Android.bp\|adjust_icudt_path.mk\|liblayout-jarjar-rules.txt\|.gitignore\|AndroidTest.xml\)" -delete
@@ -168,10 +168,11 @@ The below contains the steps and commands in order to upgrade the ICU version in
         ```
    4b. Cherry-pick the patches since the ICU upgrade
       * Find the patches with this query.
-           https://r.android.com/q/%2522Android+patch%2522+project:platform/external/icu+status:merged+-owner:automerger+-owner:android-build-coastguard-worker%2540google.com+branch:main
+         * AOSP gerrit: https://r.android.com/q/%2522Android+patch%2522+project:platform/external/icu+status:merged+-owner:automerger+-owner:android-build-coastguard-worker%2540google.com+branch:main
+         * Internal gerrit: https://googleplex-android-review.git.corp.google.com/q/%2522Android+patch%2522+project:platform/external/icu+status:merged+-owner:automerger+-owner:android-build-coastguard-worker%2540google.com+branch:main
    4c. Reset `Change-Id` in the cherry-picked CLs
       * ```shell
-        THE_COPY_COMMIT=$(git log --pretty=format:'%h' -n 1 --grep "Copy ICU ${UPSTREAM_RELEASE_TAG} into aosp/${ICU_BRANCH}")
+        THE_COPY_COMMIT=$(git log --pretty=format:'%h' -n 1 --grep "Copy ICU ${UPSTREAM_RELEASE_TAG} into goog/${ICU_BRANCH}")
         git filter-branch -f --msg-filter 'sed "s/Change-Id: .*//g"' ${THE_COPY_COMMIT}..HEAD
         git rebase -i ${THE_COPY_COMMIT} # It should open vim
         # Replace pick with reword in vim `%s/pick /reword /g`
@@ -372,16 +373,16 @@ The below contains the steps and commands in order to upgrade the ICU version in
       * To verify the test change in ART MTS, run `m mts && mts-tradefed run mts-art` on Android S.
       * To verify the test change on LUCI bot, run `art/tools/run-libcore-tests.sh --mode=host`, because LUCI uses older ICU versions.
 
-7. Upload the CLs to gerrit for code reviews from `aosp/icu${ICU_VERSION}` in `external/icu` and `aosp/upstream-release-cldr` in `external/cldr`
+7. Upload the CLs to gerrit for code reviews from `goog/icu-staging` in `external/icu` and `goog/upstream-release-cldr` in `external/cldr`
     ```shell
     repo upload --cbr -o nokeycheck -o uploadvalidator~skip --no-verify .
     ```
-8. Merge `aosp/icu*` branch to aosp/main
+8. Merge `goog/icu*` branch to goog/main
     ```shell
     cd $ANDROID_BUILD_TOP/external/icu
     repo start icu${ICU_VERSION}-main .
-    git merge --no-ff icu${ICU_VERSION} -m "
-    Merge branch aosp/icu${ICU_VERSION} into aosp/main
+    git merge --no-ff icu-staging -m "
+    Merge branch goog/icu-staging into goog/main
 
     Bug: ${ICU_UPGRADE_BUG}
     Test: atest CtsIcu4cTestCases CtsIcuTestCases CtsLibcoreTestCases CtsLibcoreOjTestCases CtsBionicTestCases CtsTextTestCases minikin_tests
@@ -396,7 +397,7 @@ The below contains the steps and commands in order to upgrade the ICU version in
           app compatibility issues if the app depends on them. However, app
          has been warned to check the availability before invoking them.
           https://developer.android.com/reference/android/icu/text/Transliterator#getAvailableIDs()
-10. After submitting all the CLs to aosp/main, expose the new stable ICU4J APIs to Android SDK
+10. After submitting all the CLs to goog/main, expose the new stable ICU4J APIs to Android SDK
     ```shell
     rm tools/srcgen/allowlisted-public-api.txt
     ./tools/generate_android_icu4j.sh
@@ -420,13 +421,11 @@ The below contains the steps and commands in order to upgrade the ICU version in
    Hi, Libcore and ICU team,
 
    ICU <version> just landed Android AOSP.
-   https://android.googlesource.com/platform/external/icu/+/main/README.version
-   as well as Android S (or Android 12).
-   https://googleplex-android.googlesource.com/platform/external/icu/+/sc-dev/README.version
+   https://googleplex-android.googlesource.com/platform/external/icu/+/main/METADATA
 
    Note:
    - Contains bug fixes / build changes with a small set of API methods added.
-   - Unicode stays at version 14, and no new version has been published yet.
+   - Unicode stays at version 16, and no new version has been published yet.
    ```
 
 
