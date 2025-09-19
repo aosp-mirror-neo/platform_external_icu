@@ -26,6 +26,17 @@ package {
 // 'external/icu/icu4c/source/stubdata/icudt 48l.dat'
 dat_file = "icu*.dat"
 
+// This filegroup is needed for art-host-test suite and need to be
+// include in the art-host-test.zip.
+filegroup {
+    name: "icu_dat",
+    srcs: [dat_file],
+    visibility: [
+        "//art:__subpackages__",
+        "//build/soong:__subpackages__",
+    ],
+}
+
 prebuilt_etc {
     name: "apex_icu.dat",
     src: dat_file,
