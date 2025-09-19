@@ -210,5 +210,9 @@
   {
     "@location": "method:android.icu.number.NumberFormatter#forSkeleton(String)",
     "value": "com.android.icu.Flags.FLAG_ICU_26Q2_API"
+  },
+  {
+    "@location": "type:android.icu.number.SkeletonSyntaxException",
+    "value": "com.android.icu.Flags.FLAG_ICU_26Q2_API"
   }
 ]

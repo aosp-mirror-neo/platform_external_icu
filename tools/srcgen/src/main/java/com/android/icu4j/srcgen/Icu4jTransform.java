@@ -114,6 +114,7 @@ public class Icu4jTransform {
       "android.icu.number.Scale",
       "android.icu.number.ScientificNotation",
       "android.icu.number.SimpleNotation",
+      "android.icu.number.SkeletonSyntaxException",
       "android.icu.number.UnlocalizedNumberFormatter",
       "android.icu.number.UnlocalizedNumberRangeFormatter",
       "android.icu.text.AlphabeticIndex",
