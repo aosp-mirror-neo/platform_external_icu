@@ -7,8 +7,8 @@ package android.icu.number;
  * Exception used for illegal number skeleton strings.
  *
  * @see NumberFormatter
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
 public class SkeletonSyntaxException extends IllegalArgumentException {
     private static final long serialVersionUID = 7733971331648360554L;
 
