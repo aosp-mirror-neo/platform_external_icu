@@ -1872,6 +1872,7 @@ package android.icu.number {
     method public T sign(android.icu.number.NumberFormatter.SignDisplay);
     method public T symbols(android.icu.text.DecimalFormatSymbols);
     method public T symbols(android.icu.text.NumberingSystem);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public String toSkeleton();
     method public T unit(android.icu.util.MeasureUnit);
     method public T unitWidth(android.icu.number.NumberFormatter.UnitWidth);
     method public T usage(String);

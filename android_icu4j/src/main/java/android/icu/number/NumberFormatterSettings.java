@@ -609,8 +609,8 @@ public abstract class NumberFormatterSettings<T extends NumberFormatterSettings<
      * @return A number skeleton string with behavior corresponding to this number formatter.
      * @throws UnsupportedOperationException
      *             If the number formatter has an option that cannot be represented in a skeleton string.
-     * @hide unsupported on Android
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public String toSkeleton() {
         return NumberSkeletonImpl.generate(resolve());
     }
