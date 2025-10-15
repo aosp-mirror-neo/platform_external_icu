@@ -114,6 +114,7 @@ public class Icu4jTransform {
       "android.icu.number.Scale",
       "android.icu.number.ScientificNotation",
       "android.icu.number.SimpleNotation",
+      "android.icu.number.SkeletonSyntaxException",
       "android.icu.number.UnlocalizedNumberFormatter",
       "android.icu.number.UnlocalizedNumberRangeFormatter",
       "android.icu.text.AlphabeticIndex",
@@ -731,12 +732,6 @@ public class Icu4jTransform {
       "field:android.icu.util.MeasureUnit#JIGGER",
       "field:android.icu.util.MeasureUnit#PINCH",
       "field:android.icu.util.MeasureUnit#QUART_IMPERIAL",
-      // Skeleton syntax can evolve over time. Currently, the skeleton APIs are not prioritized to
-      // be public. Android developers could easily miss the API version check for new syntax and
-      // cause app crashing on older devices.
-      // See the syntax details in https://github.com/unicode-org/icu/blob/master/docs/userguide/format_parse/numbers/skeletons.md.
-      "method:android.icu.number.NumberFormatterSettings#toSkeleton()",
-      "method:android.icu.number.NumberFormatter#forSkeleton(String)",
       "method:android.icu.text.BreakIterator#registerInstance(BreakIterator,Locale,int)",
       "method:android.icu.text.BreakIterator#registerInstance(BreakIterator,ULocale,int)",
       "method:android.icu.text.BreakIterator#unregister(Object)",

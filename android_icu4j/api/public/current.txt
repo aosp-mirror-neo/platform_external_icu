@@ -1808,6 +1808,7 @@ package android.icu.number {
   }
 
   public final class NumberFormatter {
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public static android.icu.number.UnlocalizedNumberFormatter forSkeleton(String);
     method public static android.icu.number.UnlocalizedNumberFormatter with();
     method public static android.icu.number.LocalizedNumberFormatter withLocale(java.util.Locale);
     method public static android.icu.number.LocalizedNumberFormatter withLocale(android.icu.util.ULocale);
@@ -1871,6 +1872,7 @@ package android.icu.number {
     method public T sign(android.icu.number.NumberFormatter.SignDisplay);
     method public T symbols(android.icu.text.DecimalFormatSymbols);
     method public T symbols(android.icu.text.NumberingSystem);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public String toSkeleton();
     method public T unit(android.icu.util.MeasureUnit);
     method public T unitWidth(android.icu.number.NumberFormatter.UnitWidth);
     method public T usage(String);
@@ -1940,6 +1942,11 @@ package android.icu.number {
   }
 
   public class SimpleNotation extends android.icu.number.Notation {
+  }
+
+  @FlaggedApi("com.android.icu.icu_26q2_api") public class SkeletonSyntaxException extends java.lang.IllegalArgumentException {
+    ctor public SkeletonSyntaxException(String, CharSequence);
+    ctor public SkeletonSyntaxException(String, CharSequence, Throwable);
   }
 
   public class UnlocalizedNumberFormatter extends android.icu.number.NumberFormatterSettings<android.icu.number.UnlocalizedNumberFormatter> {

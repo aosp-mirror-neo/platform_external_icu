@@ -26,6 +26,17 @@ package {
 // 'external/icu/icu4c/source/stubdata/icudt 48l.dat'
 dat_file = "icu*.dat"
 
+// This filegroup is needed for art-host-test suite and need to be
+// include in the art-host-test.zip.
+filegroup {
+    name: "icu_dat",
+    srcs: [dat_file],
+    visibility: [
+        "//art:__subpackages__",
+        "//build/soong:__subpackages__",
+    ],
+}
+
 prebuilt_etc {
     name: "apex_icu.dat",
     src: dat_file,
@@ -47,4 +58,19 @@ prebuilt_root_host {
         targets: ["layoutlib"],
         dir: "layoutlib_native/icu",
     },
+}
+
+java_library {
+    name: "icu-data_host_robolectric",
+    host_supported: true,
+    device_supported: false,
+    java_resources: [
+        dat_file,
+    ],
+    // Robolectric expects the .dat file to be in a specific location.
+    // This jarjar rule renames the .dat file to the expected name.
+    jarjar_rules: "robo-jarjar-rules.txt",
+    visibility: [
+        "//external/robolectric",
+    ],
 }

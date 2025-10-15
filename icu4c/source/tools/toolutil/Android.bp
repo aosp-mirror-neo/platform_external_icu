@@ -38,4 +38,20 @@ cc_library_static {
         "libicuuc",
         "libicui18n",
     ],
+
+    // TODO: package.cpp doesn't compile cleanly with -Wformat on ILP32.
+    // external/icu/icu4c/source/tools/toolutil/package.cpp:1293:9: error: format specifies type 'unsigned long' but the argument has type 'unsigned int' [-Werror,-Wformat]
+    // 1292 |     fprintf(stderr, "icupkg: Out of memory trying to allocate %lu bytes for %d items\n",
+    arch: {
+        arm: {
+            cflags: [
+                "-Wno-format",
+            ],
+        },
+        x86: {
+            cflags: [
+                "-Wno-format",
+            ],
+        },
+    },
 }

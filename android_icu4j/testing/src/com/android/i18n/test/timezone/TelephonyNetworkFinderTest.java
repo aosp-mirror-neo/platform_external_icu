@@ -17,35 +17,69 @@
 package com.android.i18n.test.timezone;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-
-import com.android.i18n.timezone.TelephonyNetwork;
-import com.android.i18n.timezone.TelephonyNetworkFinder;
-
-import org.junit.Test;
+import static org.junit.Assert.assertThrows;
 
 import android.icu.testsharding.MainTestShard;
 
-import java.util.Arrays;
+import com.android.i18n.timezone.MobileCountries;
+import com.android.i18n.timezone.TelephonyNetworkFinder;
+
+import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import java.util.List;
+import java.util.Set;
+
+import platform.test.runner.parameterized.ParameterizedAndroidJunit4;
+import platform.test.runner.parameterized.Parameters;
 
 @MainTestShard
 public class TelephonyNetworkFinderTest {
 
-    @Test
-    public void testCreateAndLookups() {
-        TelephonyNetwork network = TelephonyNetwork.create("123", "456", "gb");
-        List<TelephonyNetwork> networkList = list(network);
-        TelephonyNetworkFinder finder = TelephonyNetworkFinder.create(networkList);
-        assertEquals(network, finder.findNetworkByMccMnc("123", "456"));
-        assertNull(finder.findNetworkByMccMnc("XXX", "XXX"));
-        assertNull(finder.findNetworkByMccMnc("123", "XXX"));
-        assertNull(finder.findNetworkByMccMnc("456", "123"));
-        assertNull(finder.findNetworkByMccMnc("111", "222"));
-        assertEquals(networkList, finder.getAll());
+    private TelephonyNetworkFinder finder;
+
+    @Before
+    public void setup() {
+        List<MobileCountries> networkList = List.of(
+                MobileCountries.create("123", "456", Set.of("gb"), "gb"),
+                MobileCountries.create("234", "567", Set.of("gb"), "gb"));
+
+        List<MobileCountries> mobileCountriesList = List.of(
+                MobileCountries.create("234", Set.of("uk"), "uk"),
+                MobileCountries.create("310", Set.of("uk", "us"), "us"));
+
+        finder = TelephonyNetworkFinder.create(networkList, mobileCountriesList);
     }
 
-    private static <X> List<X> list(X... values) {
-        return Arrays.asList(values);
+    @Test
+    public void telephonyFinder_shouldFindNetworks() {
+        MobileCountries network = MobileCountries.create("123", "456", Set.of("gb"), "gb");
+
+        assertEquals(network, finder.findCountriesByMccMnc("123", "456"));
+        assertNull(finder.findCountriesByMccMnc("XXX", "XXX"));
+        assertNull(finder.findCountriesByMccMnc("123", "XXX"));
+        assertNull(finder.findCountriesByMccMnc("456", "123"));
+        assertNull(finder.findCountriesByMccMnc("111", "222"));
+        assertEquals(2, finder.getAllNetworks().size());
+    }
+
+    @Test
+    public void telephonyFinder_shouldFindCountries() {
+        MobileCountries countries = MobileCountries.create("310", Set.of("uk", "us"), "us");
+
+        assertEquals(countries, finder.findCountriesByMcc("310"));
+        assertNotNull(finder.findCountriesByMcc("234"));
+        assertEquals(2, finder.getAllMobileCountries().size());
+    }
+
+    @Test
+    public void telephonyFinder_countryIsoCodes_cannotBeTamperedWith() {
+        MobileCountries found = finder.findCountriesByMcc("310");
+        assertThrows(UnsupportedOperationException.class, () -> found.getCountryIsoCodes().add("gb"));
     }
 }

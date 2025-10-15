@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -256,7 +257,7 @@ bool IcuRegistration::pathExists(const std::string& path) {
 
 // Identical to TzDataSetVersion#CURRENT_MAJOR_FORMAT_VERSION.
 // LINT.IfChange
-static const std::string CURRENT_MAJOR_FORMAT_VERSION = "8";
+static const std::string CURRENT_MAJOR_FORMAT_VERSION = "9";
 // LINT.ThenChange(external/icu/android_icu4j/libcore_bridge/src/java/com/android/i18n/timezone/TzDataSetVersion.java)
 
 std::string IcuRegistration::getTimeZoneModulePath() {
