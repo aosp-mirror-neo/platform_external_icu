@@ -68,6 +68,8 @@ cc_defaults {
         "-Wno-unused-parameter",
         "-Wno-unused-const-variable",
         "-Wno-unneeded-internal-declaration",
+        // This warning can be re-enabled once ICU is updated from upstream.
+        "-Wno-unnecessary-virtual-specifier",
         "-DUCONFIG_USE_ML_PHRASE_BREAKING=1",
     ],
     target: {
