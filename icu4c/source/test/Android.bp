@@ -40,6 +40,8 @@ cc_defaults {
         "-Wno-unused-function",
         "-Wno-unused-parameter",
         "-Wno-unused-variable",
+        // This warning can be re-enabled once ICU is updated from upstream.
+        "-Wno-unnecessary-virtual-specifier",
         "-DUCONFIG_USE_ML_PHRASE_BREAKING=1",
     ],
     shared_libs: [

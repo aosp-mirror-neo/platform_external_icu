@@ -50,6 +50,8 @@ cc_library_shared {
         "-Wall",
         "-Wextra",
         "-Werror",
+        // This warning can be re-enabled once ICU is updated from upstream.
+        "-Wno-unnecessary-virtual-specifier",
     ],
     cppflags: ["-DU_USING_ICU_NAMESPACE=0"],
     target: {
