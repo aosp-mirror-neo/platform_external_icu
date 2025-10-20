@@ -24,6 +24,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
@@ -42,7 +43,11 @@ import com.ibm.icu.util.VersionInfo;
  * for information on how to update with each new release.
  * @author markdavis
  */
-@RunWith(JUnit4.class)
+// Android-removed: Disable generateUnitTestsUpdate() test as it's failing because the path in
+// icu codebase is not the same with the one from Android. As it's stated in the description
+// of the MeasureUnitGeneratorTest class this is not a real test so coverage won't be affected.
+// @RunWith(JUnit4.class)
+@Ignore
 public class MeasureUnitGeneratorTest extends CoreTestFmwk {
 
     private static class OrderedPair<F extends Comparable<F>, S extends Comparable<S>> extends Pair<F, S> implements Comparable<OrderedPair<F, S>> {
