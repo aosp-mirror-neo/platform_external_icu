@@ -206,5 +206,17 @@
   {
     "@location": "field:android.icu.util.VersionInfo#UNICODE_16_0",
     "value": "com.android.icu.Flags.FLAG_ICU_25Q2_API"
+  },
+  {
+    "@location": "method:android.icu.number.NumberFormatter#forSkeleton(String)",
+    "value": "com.android.icu.Flags.FLAG_ICU_26Q2_API"
+  },
+  {
+    "@location": "type:android.icu.number.SkeletonSyntaxException",
+    "value": "com.android.icu.Flags.FLAG_ICU_26Q2_API"
+  },
+  {
+    "@location": "method:android.icu.number.NumberFormatterSettings#toSkeleton()",
+    "value": "com.android.icu.Flags.FLAG_ICU_26Q2_API"
   }
 ]
