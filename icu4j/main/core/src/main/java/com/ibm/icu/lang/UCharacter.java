@@ -4167,12 +4167,12 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * See https://www.unicode.org/reports/tr39/#Identifier_Status_and_Type.
      *
      * @see UProperty#IDENTIFIER_STATUS
-     * @draft ICU 75
+     * @stable ICU 75
      */
     public enum IdentifierStatus {
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         RESTRICTED,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         ALLOWED,
     }
 
@@ -4181,32 +4181,32 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * See https://www.unicode.org/reports/tr39/#Identifier_Status_and_Type.
      *
      * @see UProperty#IDENTIFIER_TYPE
-     * @draft ICU 75
+     * @stable ICU 75
      */
     public enum IdentifierType {
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         NOT_CHARACTER,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         DEPRECATED,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         DEFAULT_IGNORABLE,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         NOT_NFKC,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         NOT_XID,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         EXCLUSION,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         OBSOLETE,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         TECHNICAL,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         UNCOMMON_USE,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         LIMITED_USE,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         INCLUSION,
-        /** @draft ICU 75 */
+        /** @stable ICU 75 */
         RECOMMENDED,
     }
 
@@ -4716,7 +4716,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param c code point
      * @param type Identifier_Type to check
      * @return true if type is in Identifier_Type(c)
-     * @draft ICU 75
+     * @stable ICU 75
      */
     public static final boolean hasIdentifierType(int c, IdentifierType type) {
         return UCharacterProperty.INSTANCE.hasIDType(c, type);
@@ -4740,7 +4740,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param c code point
      * @param types output set
      * @return number of values in c's Identifier_Type
-     * @draft ICU 75
+     * @stable ICU 75
      */
     public static final int getIdentifierTypes(int c, EnumSet<IdentifierType> types) {
         return UCharacterProperty.INSTANCE.getIDTypes(c, types);
@@ -5494,23 +5494,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         }
         throw new IllegalArgumentException("Not a valid surrogate pair");
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * {@icu} Returns a code point corresponding to the two surrogate code units.
-     *
-     * @param lead the lead char
-     * @param trail the trail char
-     * @return code point if surrogate characters are valid.
-     * @exception IllegalArgumentException thrown when the code units do
-     *            not form a valid code point
-     * @stable ICU 2.1
-     */
-    public static int getCodePoint(char lead, char trail)
-    {
-        return getCodePoint((int) lead, (int) trail);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * {@icu} Returns the code point corresponding to the BMP code point.
@@ -6460,19 +6443,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         return (codePoint & LEAD_SURROGATE_BITMASK) == LEAD_SURROGATE_BITS;
     }
 
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#isHighSurrogate},
-     *
-     * @param ch the char to check
-     * @return true if ch is a high (lead) surrogate
-     * @stable ICU 3.0
-     */
-    public static boolean isHighSurrogate(char ch) {
-        return isHighSurrogate((int) ch);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
-
     /**
      * Same as {@link Character#isLowSurrogate},
      * except that the ICU version accepts <code>int</code> for code points.
@@ -6485,19 +6455,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
     public static boolean isLowSurrogate(int codePoint) {
         return (codePoint & TRAIL_SURROGATE_BITMASK) == TRAIL_SURROGATE_BITS;
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#isLowSurrogate},
-     *
-     * @param ch the char to check
-     * @return true if ch is a low (trail) surrogate
-     * @stable ICU 3.0
-     */
-    public static boolean isLowSurrogate(char ch) {
-        return isLowSurrogate((int) ch);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#isSurrogatePair},
@@ -6512,20 +6469,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
     public static final boolean isSurrogatePair(int high, int low) {
         return isHighSurrogate(high) && isLowSurrogate(low);
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#isSurrogatePair}.
-     *
-     * @param high the high (lead) char
-     * @param low the low (trail) char
-     * @return true if high, low form a surrogate pair
-     * @stable ICU 3.0
-     */
-    public static final boolean isSurrogatePair(char high, char low) {
-        return isSurrogatePair((int) high, (int) low);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#charCount}.
@@ -6557,22 +6500,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         // see ICU4C U16_GET_SUPPLEMENTARY()
         return (high << 10) + low - U16_SURROGATE_OFFSET;
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#toCodePoint}.
-     * Returns the code point represented by the two surrogate code units.
-     * This does not check the surrogate pair for validity.
-     *
-     * @param high the high (lead) surrogate
-     * @param low the low (trail) surrogate
-     * @return the code point formed by the surrogate pair
-     * @stable ICU 3.0
-     */
-    public static final int toCodePoint(char high, char low) {
-        return toCodePoint((int) high, (int) low);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#codePointAt(CharSequence, int)}.

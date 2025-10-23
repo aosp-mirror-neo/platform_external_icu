@@ -648,9 +648,7 @@ public class TestCharset extends TestFmwk {
                 logln("finish: " + hex(finishArray));
             }
         } catch (CharacterCodingException ex) {
-            // Android patch: Skip tests that fail with customized data.
-            logln(converter + " roundtrip test failed: " + ex.getMessage());
-            // Android patch end.
+            errln(converter + " roundtrip test failed: " + ex.getMessage());
             ex.printStackTrace(System.err);
         }
 
@@ -682,9 +680,7 @@ public class TestCharset extends TestFmwk {
                 }
             } else {
                 if (result.isError()) {
-                    // Android patch: Skip tests that fail with customized data.
-                    logln("Error should not have occurred while encoding HZ.(" + i + ")");
-                    // Android patch end.
+                    errln("Error should not have occurred while encoding HZ.(" + i + ")");
                 }
             }
         }
@@ -806,8 +802,8 @@ public class TestCharset extends TestFmwk {
         int[] badposindices = new int[n];
         int[] malfindices = new int[n];
         int[] unmapindices = new int[n];
-        ArrayList pass = new ArrayList();
-        ArrayList exempt = new ArrayList();
+        ArrayList<String> pass = new ArrayList<>();
+        ArrayList<String> exempt = new ArrayList<>();
 
         outer: for (int conv=0; conv<converters.length; conv++) {
             String converter = (String)converters[conv];
@@ -833,13 +829,11 @@ public class TestCharset extends TestFmwk {
             } catch (CharacterCodingException ex) {
                 errln("Unexpected CharacterCodingException: " + ex.getMessage());
                 return;
-            // Android patch: Skip tests that fail with customized data.
-            } catch (RuntimeException | CoderMalfunctionError ex) {
+            } catch (RuntimeException ex) {
                 if (!currentlybad) {currentlybad = true; badcount++; logln(""); }
-                logln(converter + " " + ex.getClass().getName() + ": " + ex.getMessage());
+                errln(converter + " " + ex.getClass().getName() + ": " + ex.getMessage());
                 continue outer;
             }
-            // Android patch end.
 
             encoder.onUnmappableCharacter(CodingErrorAction.REPORT);
             encoder.onMalformedInput(CodingErrorAction.REPORT);
@@ -1628,9 +1622,9 @@ public class TestCharset extends TestFmwk {
 
     @Test
     public void TestAvailableCharsets() {
-        SortedMap map = Charset.availableCharsets();
-        Set keySet = map.keySet();
-        Iterator iter = keySet.iterator();
+        SortedMap<String, Charset> map = Charset.availableCharsets();
+        Set<String> keySet = map.keySet();
+        Iterator<String> iter = keySet.iterator();
         while(iter.hasNext()){
             logln("Charset name: "+iter.next().toString());
         }
@@ -2386,10 +2380,8 @@ public class TestCharset extends TestFmwk {
             if(!result.isError()){
                 byte[] expected = {(byte)0xA9, (byte)0xA5, (byte)0xAF, (byte)0xFE, (byte)0xA2, (byte)0xAE};
                 if(!equals(expected, out.array())){
-                    // Android patch: Skip tests that fail with customized data.
-                    logln("Did not get the expected result for substitution bytes. Got: "+
+                    errln("Did not get the expected result for substitution bytes. Got: "+
                            hex(out.array()));
-                    // Android patch end.
                 }
                 logln("Output: "+  hex(out.array()));
             }else{

@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 da{
     durationUnits{
         hm{"h.mm"}
@@ -346,6 +346,18 @@ da{
             }
             permyriad{
                 gender{"common"}
+            }
+            portion-per-1e9{
+                case{
+                    genitive{
+                        one{"{0} milliardtedels"}
+                        other{"{0} milliardtedeles"}
+                    }
+                }
+                dnam{"milliardtedele"}
+                gender{"common"}
+                one{"{0} milliardtedel"}
+                other{"{0} milliardtedele"}
             }
         }
         consumption{
@@ -2190,6 +2202,9 @@ da{
             permyriad{
                 one{"{0} ‱"}
                 other{"{0} ‱"}
+            }
+            portion-per-1e9{
+                dnam{"dele/milliard"}
             }
         }
         consumption{

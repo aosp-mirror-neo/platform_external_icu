@@ -199,16 +199,10 @@ public class LocaleDataTest extends CoreTestFmwk{
 
     @Test
     public void TestExemplarSet(){
-        HashSet  testedExemplars = new HashSet();
+        HashSet<ExemplarGroup> testedExemplars = new HashSet<>();
         int equalCount = 0;
         for(int i=0; i<availableLocales.length; i++){
             ULocale locale = availableLocales[i];
-            // BEGIN Android-added: Exclude pseudo locales since they are not present in CLDR data.
-            if ("XA".equals(locale.getCountry()) || "XB".equals(locale.getCountry())) {
-                // skip pseudo-locales
-                continue;
-            }
-            // END Android-added: Exclude pseudo locales since they are not present in CLDR data.
             int[] scriptCodes = UScript.getCode(locale);
             if (scriptCodes==null) {
                 // I hate the JDK's solution for deprecated language codes.
@@ -277,15 +271,9 @@ public class LocaleDataTest extends CoreTestFmwk{
     @Test
     public void TestExemplarSet2(){
         int equalCount = 0;
-        HashSet  testedExemplars = new HashSet();
+        HashSet<ExemplarGroup> testedExemplars = new HashSet<>();
         for(int i=0; i<availableLocales.length; i++){
             ULocale locale = availableLocales[i];
-            // BEGIN Android-added: Exclude pseudo locales since they are not present in CLDR data.
-            if ("XA".equals(locale.getCountry()) || "XB".equals(locale.getCountry())) {
-                // skip pseudo-locales
-                continue;
-            }
-            // END Android-added: Exclude pseudo locales since they are not present in CLDR data.
             LocaleData ld = LocaleData.getInstance(locale);
             int[] scriptCodes = UScript.getCode(locale);
             if (scriptCodes==null) {

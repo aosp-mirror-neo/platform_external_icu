@@ -1,9 +1,9 @@
 // © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 
 {
-    "cldrVersion": "46",
+    "cldrVersion": "47",
     "aliases": {
         "ars": "ar_SA",
         "az_AZ": "az_Latn_AZ",
@@ -67,7 +67,6 @@
         "en_AT": "en_150",
         "en_AU": "en_001",
         "en_BB": "en_001",
-        "en_BD": "en_001",
         "en_BE": "en_150",
         "en_BM": "en_001",
         "en_BS": "en_001",
@@ -84,7 +83,6 @@
         "en_DG": "en_001",
         "en_DK": "en_150",
         "en_DM": "en_001",
-        "en_EE": "en_150",
         "en_ER": "en_001",
         "en_ES": "en_150",
         "en_FI": "en_150",
@@ -94,11 +92,11 @@
         "en_FR": "en_150",
         "en_GB": "en_001",
         "en_GD": "en_001",
-        "en_GE": "en_150",
         "en_GG": "en_001",
         "en_GH": "en_001",
         "en_GI": "en_001",
         "en_GM": "en_001",
+        "en_GS": "en_001",
         "en_GY": "en_001",
         "en_HK": "en_001",
         "en_HU": "en_150",
@@ -116,12 +114,8 @@
         "en_KN": "en_001",
         "en_KY": "en_001",
         "en_LC": "en_001",
-        "en_LK": "en_001",
         "en_LR": "en_001",
         "en_LS": "en_001",
-        "en_LT": "en_150",
-        "en_LV": "en_150",
-        "en_MA": "en_001",
         "en_MG": "en_001",
         "en_MO": "en_001",
         "en_MS": "en_001",
@@ -146,7 +140,6 @@
         "en_PW": "en_001",
         "en_RO": "en_150",
         "en_RW": "en_001",
-        "en_SA": "en_001",
         "en_SB": "en_001",
         "en_SC": "en_001",
         "en_SD": "en_001",
@@ -165,7 +158,6 @@
         "en_TT": "en_001",
         "en_TV": "en_001",
         "en_TZ": "en_001",
-        "en_UA": "en_150",
         "en_UG": "en_001",
         "en_VC": "en_001",
         "en_VG": "en_001",

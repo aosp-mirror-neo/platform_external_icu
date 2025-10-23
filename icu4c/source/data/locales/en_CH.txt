@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 en_CH{
     %%Parent{"en_150"}
     NumberElements{
@@ -128,13 +128,13 @@ en_CH{
                 "HH:mm:ss z",
                 "HH:mm:ss",
                 "HH:mm",
-                "EEEE, d MMMM y G",
-                "d MMMM y G",
-                "d MMM y G",
+                "EEEE, MMMM d, y G",
+                "MMMM d, y G",
+                "MMM d, y G",
                 "M.d.y GGGGG",
                 "{1}, {0}",
-                "{1} 'at' {0}",
-                "{1} 'at' {0}",
+                "{1}, {0}",
+                "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
             }

@@ -2154,33 +2154,30 @@ public class CalendarRegressionTest extends CoreTestFmwk {
         Locale loc = new Locale("en", "TH");
         Calendar cal = Calendar.getInstance(loc);
         String calType = cal.getType();
-        // Android patch: Force default Gregorian calendar.
-        if ( !calType.equals("gregorian")) {
-            errln("FAIL: Calendar type for en_TH should still be gregorian");
+        if ( !calType.equals("buddhist")) {
+            errln("FAIL: Calendar type for en_TH should still be buddhist");
         }
-        // Android patch end.
     }
 
     @Test
     public void TestGetKeywordValuesForLocale(){
 
-        // Android patch: Force default Gregorian calendar.
         final String[][] PREFERRED = {
             {"root",        "gregorian"},
             {"und",         "gregorian"},
             {"en_US",       "gregorian"},
             {"en_029",      "gregorian"},
-            {"th_TH",       "gregorian", "buddhist"},
-            {"und_TH",      "gregorian", "buddhist"},
-            {"en_TH",       "gregorian", "buddhist"},
+            {"th_TH",       "buddhist", "gregorian"},
+            {"und_TH",      "buddhist", "gregorian"},
+            {"en_TH",       "buddhist", "gregorian"},
             {"he_IL",       "gregorian", "hebrew", "islamic", "islamic-civil", "islamic-tbla"},
             {"ar_EG",       "gregorian", "coptic", "islamic", "islamic-civil", "islamic-tbla"},
             {"ja",          "gregorian", "japanese"},
             {"ps_Guru_IN",  "gregorian", "indian"},
-            {"th@calendar=gregorian",   "gregorian", "buddhist"},
+            {"th@calendar=gregorian",   "buddhist", "gregorian"},
             {"en@calendar=islamic",     "gregorian"},
             {"zh_TW",       "gregorian", "roc", "chinese"},
-            {"ar_IR",       "gregorian", "persian", "islamic", "islamic-civil", "islamic-tbla"},  // android-changed
+            {"ar_IR",       "persian", "gregorian", "islamic", "islamic-civil", "islamic-tbla"},
             {"th@rg=SAZZZZ", "gregorian", "islamic-umalqura", "islamic", "islamic-rgsa"},
 
             // tests for ICU-22364
@@ -2194,10 +2191,9 @@ public class CalendarRegressionTest extends CoreTestFmwk {
             { "zh_TW@rg=AUnsw",        "gregorian" }, // three-letter subdivision code
             { "zh_TW@rg=EE130",        "gregorian" }, // three-digit subdivision code
         };
-        // Android patch end.
 
         String[] ALL = Calendar.getKeywordValuesForLocale("calendar", ULocale.getDefault(), false);
-        HashSet ALLSET = new HashSet();
+        HashSet<String> ALLSET = new HashSet<>();
         for (int i = 0; i < ALL.length; i++) {
             if (ALL[i] == "unknown") {
                 errln("Calendar.getKeywordValuesForLocale should not return \"unknown\"");
@@ -2722,5 +2718,33 @@ public class CalendarRegressionTest extends CoreTestFmwk {
 
     }
 
+    @Test
+    public void TestMaxActualLimitsWithoutGet23006() {
+        Calendar calendar = Calendar.getInstance(new Locale("zh_zh@calendar=chinese"));
+        // set day equal to 8th August 2025 in Gregorian calendar
+        // this is a leap month in Chinese calendar
+        GregorianCalendar gc = new GregorianCalendar(TimeZone.GMT_ZONE);
+        gc.clear();
+        gc.set(2025, Calendar.AUGUST, 8);
+        calendar.setTimeInMillis(gc.getTimeInMillis());
+        int actualMaximumBeforeCallingGet = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        assertTrue("get(ERA)", calendar.get(Calendar.ERA) > 0); // calling get will cause to compute fields
+        int actualMaximumAfterCallingGet = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        assertEquals("calling getActualMaximum before/after calling get should be the same",
+            actualMaximumBeforeCallingGet, actualMaximumAfterCallingGet);
+        assertEquals("calling getActualMaximum before should return 29",
+            29, actualMaximumBeforeCallingGet);
+
+        gc.set(2026, Calendar.AUGUST, 8);
+        calendar.setTimeInMillis(gc.getTimeInMillis());
+        actualMaximumBeforeCallingGet = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        assertTrue("get(ERA)", calendar.get(Calendar.ERA) > 0); // calling get will cause to compute fields
+        actualMaximumAfterCallingGet = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        assertEquals("calling getActualMaximum before/after calling get should be the same",
+            actualMaximumBeforeCallingGet, actualMaximumAfterCallingGet);
+        assertEquals("calling getActualMaximum before should return 30",
+            30, actualMaximumBeforeCallingGet);
+
+    }
 }
 //eof

@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import org.junit.Test;
@@ -57,7 +56,7 @@ public class TestLocaleValidity extends CoreTestFmwk {
                 {"OK", "en-u-ca-buddhist"},
                 {"OK", "en-u-ca-islamic-umalqura"}, // additive
                 {"OK", "en-u-cf-account"},
-                {"OK", "en-u-co-big5han"},
+                {"{u, co-big5han}", "en-u-co-big5han"}, // deprecated in 47
                 {"OK", "en-u-cu-adp"},
                 {"OK", "en-u-fw-fri"},
                 {"OK", "en-u-dx-thai"},
@@ -107,7 +106,7 @@ public class TestLocaleValidity extends CoreTestFmwk {
 
                 // really long case
 
-                {"OK", "en-u-ca-buddhist-ca-islamic-umalqura-cf-account-co-big5han-cu-adp-fw-fri-hc-h11-ka-noignore-kb-false-kc-false-kf-false-kk-false-kn-false-kr-latn-digit-symbol-ks-identic-kv-currency-nu-ahom-sd-usny-tz-adalv-va-posix"},
+                {"OK", "en-u-ca-buddhist-ca-islamic-umalqura-cf-account-co-pinyin-cu-adp-fw-fri-hc-h11-ka-noignore-kb-false-kc-false-kf-false-kk-false-kn-false-kr-latn-digit-symbol-ks-identic-kv-currency-nu-ahom-sd-usny-tz-adalv-va-posix"},
 
                 // root is canonicalized to the root locale (ICU-20273)
                 {"OK", "root"},
@@ -187,7 +186,7 @@ public class TestLocaleValidity extends CoreTestFmwk {
         final LinkedHashSet<String> foundKeys = new LinkedHashSet<String>();
         check(tests, foundKeys, Datasubtype.regular, Datasubtype.unknown);
 
-        LinkedHashSet<String> missing = new LinkedHashSet(KeyTypeData.getBcp47Keys());
+        LinkedHashSet<String> missing = new LinkedHashSet<>(KeyTypeData.getBcp47Keys());
         missing.removeAll(foundKeys);
         if (!assertEquals("Missing keys", Collections.EMPTY_SET, missing)) {
             // print out template for missing cases for adding
@@ -313,9 +312,9 @@ public class TestLocaleValidity extends CoreTestFmwk {
 
     private static void showAll() {
         Map<Datatype, Map<Datasubtype, ValiditySet>> data = ValidIdentifiers.getData();
-        for (Entry<Datatype, Map<Datasubtype, ValiditySet>> e1 : data.entrySet()) {
+        for (Map.Entry<Datatype, Map<Datasubtype, ValiditySet>> e1 : data.entrySet()) {
             System.out.println(e1.getKey());
-            for (Entry<Datasubtype, ValiditySet> e2 : e1.getValue().entrySet()) {
+            for (Map.Entry<Datasubtype, ValiditySet> e2 : e1.getValue().entrySet()) {
                 System.out.println("\t" + e2.getKey());
                 System.out.println("\t\t" + e2.getValue());
             }

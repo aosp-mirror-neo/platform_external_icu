@@ -12,44 +12,51 @@ import org.junit.runners.JUnit4;
 import com.ibm.icu.dev.test.CoreTestFmwk;
 
 @SuppressWarnings({"static-method", "javadoc"})
-// Android-removed: Disable MF2 tests until it's enabled on Android.
-// The test fails due to missing json file bundled in CtsIcuTestCases.
-// @RunWith(JUnit4.class)
+@RunWith(JUnit4.class)
 public class CoreTest extends CoreTestFmwk {
-    private static final String[] JSON_FILES = {"alias-selector-annotations.json",
-                                                "duplicate-declarations.json",
-                                                "icu-parser-tests.json",
-                                                "icu-test-functions.json",
-                                                "icu-test-previous-release.json",
-                                                "icu-test-selectors.json",
-                                                "invalid-number-literals-diagnostics.json",
-                                                "invalid-options.json",
-                                                "markup.json",
-                                                "matches-whitespace.json",
-                                                "more-data-model-errors.json",
-                                                "more-functions.json",
-                                                "resolution-errors.json",
-                                                "runtime-errors.json",
-                                                "spec/data-model-errors.json",
-                                                "spec/syntax-errors.json",
-                                                "spec/syntax.json",
-                                                "spec/functions/date.json",
-                                                "spec/functions/datetime.json",
-                                                "spec/functions/integer.json",
-                                                "spec/functions/number.json",
-                                                "spec/functions/string.json",
-                                                "spec/functions/time.json",
-                                                "syntax-errors-diagnostics.json",
-                                                "syntax-errors-diagnostics-multiline.json",
-                                                "syntax-errors-end-of-input.json",
-                                                "syntax-errors-reserved.json",
-                                                "tricky-declarations.json",
-                                                "unsupported-expressions.json",
-                                                "unsupported-statements.json",
-                                                "valid-tests.json"};
 
-    // Android-removed: Disable MF2 tests until it's enabled on Android.
-    // @Test
+    private static final String[] JSON_FILES = {
+            "alias-selector-annotations.json",
+            "duplicate-declarations.json",
+            "icu-parser-tests.json",
+            "icu-test-functions.json",
+            "icu-test-previous-release.json",
+            "icu-test-selectors.json",
+            "invalid-number-literals-diagnostics.json",
+            "invalid-options.json",
+            "markup.json",
+            "matches-whitespace.json",
+            "more-data-model-errors.json",
+            "more-functions.json",
+            "normalization.json",
+            "resolution-errors.json",
+            "runtime-errors.json",
+            "spec/bidi.json",
+            "spec/data-model-errors.json",
+            "spec/syntax-errors.json",
+            "spec/syntax.json",
+            "spec/fallback.json",
+            "spec/functions/currency.json",
+            "spec/functions/date.json",
+            "spec/functions/datetime.json",
+            "spec/functions/integer.json",
+            "spec/functions/math.json", // FAILS 2 / 16, chaining to select
+            "spec/functions/number.json",
+            "spec/functions/string.json",
+            "spec/functions/time.json",
+            "spec/pattern-selection.json",
+            "spec/u-options.json", // FAILS 1 / 11, `:u:` on markup, issue #1005
+            "syntax-errors-diagnostics.json",
+            "syntax-errors-diagnostics-multiline.json",
+            "syntax-errors-end-of-input.json",
+            "syntax-errors-reserved.json",
+            "tricky-declarations.json",
+            "unsupported-expressions.json",
+            "unsupported-statements.json",
+            "valid-tests.json"
+    };
+
+    @Test
     public void test() throws Exception {
         for (String jsonFile : JSON_FILES) {
             try (Reader reader = TestUtils.jsonReader(jsonFile)) {

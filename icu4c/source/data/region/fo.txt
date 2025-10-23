@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 fo{
     Countries{
         001{"heimur"}
@@ -112,7 +112,7 @@ fo{
         EZ{"Evrasona"}
         FI{"Finnland"}
         FJ{"Fiji"}
-        FK{"Falklandsoyggjar (Islas Malvinas)"}
+        FK{"Falklandsoyggjar"}
         FM{"Mikronesiasamveldið"}
         FO{"Føroyar"}
         FR{"Frakland"}
@@ -135,7 +135,7 @@ fo{
         GU{"Guam"}
         GW{"Guinea-Bissau"}
         GY{"Gujana"}
-        HK{"Hong Kong"}
+        HK{"Hong Kong SAR Kina"}
         HM{"Heard og McDonaldoyggjar"}
         HN{"Honduras"}
         HR{"Kroatia"}
@@ -189,7 +189,7 @@ fo{
         ML{"Mali"}
         MM{"Myanmar (Burma)"}
         MN{"Mongolia"}
-        MO{"Makao"}
+        MO{"Makao SAR Kina"}
         MP{"Norðaru Mariuoyggjar"}
         MQ{"Martinique"}
         MR{"Móritania"}
@@ -224,7 +224,7 @@ fo{
         PM{"Saint Pierre & Miquelon"}
         PN{"Pitcairnoyggjar"}
         PR{"Puerto Riko"}
-        PS{"Palestina"}
+        PS{"Palestinskt landøki"}
         PT{"Portugal"}
         PW{"Palau"}
         PY{"Paraguai"}
@@ -304,9 +304,13 @@ fo{
     }
     Countries%short{
         GB{"UK"}
+        HK{"Hong Kong"}
+        MO{"Makao"}
+        PS{"Palestina"}
         US{"USA"}
     }
     Countries%variant{
+        FK{"Falklandsoyggjar (Islas Malvinas)"}
         NZ{"Aotearoa Nýsæland"}
         SZ{"Svasiland"}
     }

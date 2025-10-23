@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 yo_BJ{
     Countries{
         003{"Àríwá Amɛ́ríkà"}
@@ -50,7 +50,7 @@ yo_BJ{
         GE{"Gɔgia"}
         GF{"Firenshi Guana"}
         GS{"Gúúsù Georgia àti Gúúsù Àwɔn Erékùsù Sandwich"}
-        HK{"Hong Kong"}
+        HK{"Agbègbè Ìshàkóso Ìshúná Hong Kong Tí Shánà Ń Darí"}
         IC{"Ɛrékùsù Kánárì"}
         ID{"Indonéshíà"}
         IL{"Iserɛli"}
@@ -65,7 +65,7 @@ yo_BJ{
         LC{"Lushia"}
         LI{"Lɛshitɛnisiteni"}
         MH{"Etikun Máshali"}
-        MO{"Màkáò"}
+        MO{"Agbègbè Ìshàkóso Pàtàkì Macao"}
         MZ{"Moshamibiku"}
         NF{"Erékùsù Nɔ́úfókì"}
         NO{"Nɔɔwii"}
@@ -74,7 +74,7 @@ yo_BJ{
         PF{"Firenshi Polinesia"}
         PM{"Pɛɛri ati mikuloni"}
         PR{"Pɔto Riko"}
-        PS{"Palɛsítínì"}
+        PS{"Agbègbè ara Palɛsítínì"}
         PT{"Pɔ́túgà"}
         QO{"Agbègbè Òshɔ́ɔ́níà"}
         RS{"Sɛ́bíà"}
@@ -115,6 +115,9 @@ yo_BJ{
     }
     Countries%chagos{
         IO{"Àkójɔpɔ̀ Àwɔn Erékùshù Shágòsì"}
+    }
+    Countries%short{
+        PS{"Palɛsítínì"}
     }
     Countries%variant{
         CZ{"Shɛ́ɛ́kì Olómìnira"}

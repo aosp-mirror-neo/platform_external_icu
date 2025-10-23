@@ -709,17 +709,13 @@ static void TestUDataOpenChoiceDemo1(void) {
     type="typ";
     result=udata_openChoice(fullTestDataPath, type, name[3], isAcceptable1, NULL, &status);
     if(status != U_INVALID_FORMAT_ERROR){
-        // Android-changed: Android does not try to load ICU data from other files. See  gDataFileAccess = UDATA_NO_FILES in udata.cpp.
-        // log_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
-        log_data_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
+        log_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
     }
 
     status=U_USELESS_COLLATOR_ERROR;
     result=udata_openChoice(fullTestDataPath, type, name[3], isAcceptable1, NULL, &status);
     if(status != U_USELESS_COLLATOR_ERROR){
-        // Android-changed: Android does not try to load ICU data from other files. See  gDataFileAccess = UDATA_NO_FILES in udata.cpp.
-        // log_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
-        log_data_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
+        log_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
     }
 }
 
@@ -1143,18 +1139,7 @@ static void TestICUDataName(void)
     switch(U_CHARSET_FAMILY)
     {
     case U_ASCII_FAMILY:
-          switch((int)U_IS_BIG_ENDIAN)
-          {
-          case 1:
-                typeChar = 'b';
-                break;
-          case 0:
-                typeChar = 'l';
-                break;
-          default:
-                log_err("Expected 1 or 0 for U_IS_BIG_ENDIAN, got %d!\n", U_IS_BIG_ENDIAN);
-                /* return; */
-          }
+          typeChar = U_IS_BIG_ENDIAN ? 'b' : 'l';
           break;
     case U_EBCDIC_FAMILY:
         typeChar = 'e';

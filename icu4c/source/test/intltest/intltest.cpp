@@ -20,7 +20,7 @@
 #include <string.h>
 #include <cmath>
 #include <math.h>
-#include <iostream>
+#include <string_view>
 
 #include "unicode/ctest.h" // for str_timeDelta
 #include "unicode/curramt.h"
@@ -424,10 +424,72 @@ IntlTest::prettify(const UnicodeString &source, UBool parseBackslash)
  *                       tests dynamically load some data.
  */
 void IntlTest::setICU_DATA() {
-    // Android-changed: Do not u_setDataDirectory because libicuuc.so initializes itself.
-    #if !defined(ANDROID_USE_ICU_REG)
-    u_setDataDirectory(ctest_dataOutDir());
-    #endif
+    const char *original_ICU_DATA = getenv("ICU_DATA");
+
+    if (original_ICU_DATA != nullptr && *original_ICU_DATA != 0) {
+        /*  If the user set ICU_DATA, don't second-guess the person. */
+        return;
+    }
+
+    // U_TOPBUILDDIR is set by the makefiles on UNIXes when building cintltst and intltst
+    //              to point to the top of the build hierarchy, which may or
+    //              may not be the same as the source directory, depending on
+    //              the configure options used.  At any rate,
+    //              set the data path to the built data from this directory.
+    //              The value is complete with quotes, so it can be used
+    //              as-is as a string constant.
+
+#if defined (U_TOPBUILDDIR)
+    {
+        static char env_string[] = U_TOPBUILDDIR
+                "data" U_FILE_SEP_STRING
+                "out" U_FILE_SEP_STRING
+                "build" U_FILE_SEP_STRING;
+        u_setDataDirectory(env_string);
+        return;
+    }
+
+#else
+    // Use #else so we don't get compiler warnings due to the return above.
+
+    /* On Windows, the file name obtained from __FILE__ includes a full path.
+     *             This file is "wherever\icu\source\test\cintltst\cintltst.c"
+     *             Change to    "wherever\icu\source\data"
+     */
+    {
+        char p[sizeof(__FILE__) + 10];
+        char *pBackSlash;
+        int i;
+
+        strcpy(p, __FILE__);
+        /* We want to back over three '\' chars.                            */
+        /*   Only Windows should end up here, so looking for '\' is safe.   */
+        for (i=1; i<=3; i++) {
+            pBackSlash = strrchr(p, U_FILE_SEP_CHAR);
+            if (pBackSlash != nullptr) {
+                *pBackSlash = 0;        /* Truncate the string at the '\'   */
+            }
+        }
+
+        if (pBackSlash != nullptr) {
+            /* We found and truncated three names from the path.
+             *  Now append "source\data" and set the environment
+             */
+            strcpy(pBackSlash, U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING);
+            u_setDataDirectory(p);     /*  p is "ICU_DATA=wherever\icu\source\data"    */
+            return;
+        }
+        else {
+            /* __FILE__ on MSVC7 does not contain the directory */
+            u_setDataDirectory(".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING);
+            return;
+        }
+    }
+#endif
+
+    /* No location for the data dir was identifiable.
+     *   Add other fallbacks for the test data location here if the need arises
+     */
 }
 
 
@@ -440,13 +502,13 @@ IntlTest* IntlTest::gTest = nullptr;
 
 static int32_t execCount = 0;
 
-void it_log( UnicodeString message )
+void it_log(std::u16string_view message)
 {
     if (IntlTest::gTest)
         IntlTest::gTest->log( message );
 }
 
-void it_logln( UnicodeString message )
+void it_logln(std::u16string_view message)
 {
     if (IntlTest::gTest)
         IntlTest::gTest->logln( message );
@@ -458,13 +520,13 @@ void it_logln()
         IntlTest::gTest->logln();
 }
 
-void it_info( UnicodeString message )
+void it_info(std::u16string_view message)
 {
     if (IntlTest::gTest)
         IntlTest::gTest->info( message );
 }
 
-void it_infoln( UnicodeString message )
+void it_infoln(std::u16string_view message)
 {
     if (IntlTest::gTest)
         IntlTest::gTest->infoln( message );
@@ -482,29 +544,46 @@ void it_err()
         IntlTest::gTest->err();
 }
 
-void it_err( UnicodeString message )
+void it_err(std::u16string_view message)
 {
     if (IntlTest::gTest)
         IntlTest::gTest->err( message );
 }
 
-void it_errln( UnicodeString message )
+void it_errln(std::u16string_view message)
 {
     if (IntlTest::gTest)
         IntlTest::gTest->errln( message );
 }
 
-void it_dataerr( UnicodeString message )
+void it_dataerr(std::u16string_view message)
 {
     if (IntlTest::gTest)
         IntlTest::gTest->dataerr( message );
 }
 
-void it_dataerrln( UnicodeString message )
+void it_dataerrln(std::u16string_view message)
 {
     if (IntlTest::gTest)
         IntlTest::gTest->dataerrln( message );
 }
+
+void it_logln(const char* message) {
+    it_logln(UnicodeString(message));
+}
+
+void it_err(const char* message) {
+    it_err(UnicodeString(message));
+}
+
+void it_errln(const char* message) {
+    it_errln(UnicodeString(message));
+}
+
+void it_dataerrln(const char* message) {
+    it_dataerrln(UnicodeString(message));
+}
+
 
 IntlTest::IntlTest()
 {
@@ -546,15 +625,13 @@ void IntlTest::setCaller( IntlTest* callingTest )
     }
 }
 
-UBool IntlTest::callTest( IntlTest& testToBeCalled, char* par, const char* basename)
+UBool IntlTest::callTest( IntlTest& testToBeCalled, char* par )
 {
     execCount--; // correct a previously assumed test-exec, as this only calls a subtest
     testToBeCalled.setCaller( this );
-    strcpy(testToBeCalled.basePath, basename);
-    strcat(testToBeCalled.basePath, this->basePath);
-    UBool result = testToBeCalled.runTest( testPath, par, testToBeCalled.basePath);
-    strcpy(testToBeCalled.basePath, basename); // reset it.
-    strcat(testToBeCalled.basePath, this->basePath);
+    strcpy(testToBeCalled.basePath, this->basePath );
+    UBool result = testToBeCalled.runTest( testPath, par, testToBeCalled.basePath );
+    strcpy(testToBeCalled.basePath, this->basePath ); // reset it.
     return result;
 }
 
@@ -685,27 +762,6 @@ void IntlTest::runIndexedTest( int32_t /*index*/, UBool /*exec*/, const char* & 
 }
 
 
-static std::string string_replace_all(std::string str, const std::string& from, const std::string& to) {
-    size_t start = 0;
-    while((start = str.find(from, start)) != std::string::npos) {
-        str.replace(start, from.length(), to);
-        start += to.length();
-    }
-    return str;
-}
-
-/**
- * Escape some known characters, but the list is not perfect.
- */
-static std::string escape_xml_attribute(std::string str) {
-    str = string_replace_all(str, "&", "&amp;");
-    str = string_replace_all(str, "\"", "&quot;");
-    str = string_replace_all(str, "'", "&apos;");
-    str = string_replace_all(str, "<", "&lt;");
-    str = string_replace_all(str, ">", "&gt;");
-    return str;
-}
-
 UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
 {
     int32_t    index = 0;
@@ -746,12 +802,11 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
             execCount++;
             char msg[256];
             snprintf(msg, sizeof(msg), "%s {", name);
-            LL_message(msg, true);
+            LL_message(UnicodeString(msg), true);
             UDate timeStart = uprv_getRawUTCtime();
             strcpy(saveBaseLoc,name);
             strcat(saveBaseLoc,"/");
 
-            currErr = ""; // Reset the current error message
             strcpy(currName, name); // set
             this->runIndexedTest( index, true, name, par );
             currName[0]=0; // reset
@@ -769,9 +824,7 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
             strcpy(saveBaseLoc,name);
 
 
-            std::string err = currErr;
-            err = escape_xml_attribute(err);
-            ctest_xml_testcase(name, baseName, secs, (lastErrorCount!=errorCount)?err.c_str():nullptr);
+            ctest_xml_testcase(baseName, name, secs, (lastErrorCount!=errorCount)?"err":nullptr);
             
 
             saveBaseLoc[0]=0; /* reset path */
@@ -793,11 +846,11 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
             }
             LL_indentlevel -= 3;
             if (lastTestFailed) {
-                LL_message( "", true);
+                LL_message({}, true);
             }
-            LL_message( msg, true);
+            LL_message(UnicodeString(msg), true);
             if (lastTestFailed) {
-                LL_message( "", true);
+                LL_message({}, true);
             }
             LL_indentlevel += 3;
         }
@@ -814,7 +867,7 @@ UBool IntlTest::runTestLoop( char* testname, char* par, char *baseName )
 /**
 * Adds given string to the log if we are in verbose mode.
 */
-void IntlTest::log( const UnicodeString &message )
+void IntlTest::log(std::u16string_view message)
 {
     if( verbose ) {
         LL_message( message, false );
@@ -825,7 +878,7 @@ void IntlTest::log( const UnicodeString &message )
 * Adds given string to the log if we are in verbose mode. Adds a new line to
 * the given message.
 */
-void IntlTest::logln( const UnicodeString &message )
+void IntlTest::logln(std::u16string_view message)
 {
     if( verbose ) {
         LL_message( message, true );
@@ -835,14 +888,14 @@ void IntlTest::logln( const UnicodeString &message )
 void IntlTest::logln()
 {
     if( verbose ) {
-        LL_message( "", true );
+        LL_message({}, true );
     }
 }
 
 /**
 * Unconditionally adds given string to the log.
 */
-void IntlTest::info( const UnicodeString &message )
+void IntlTest::info(std::u16string_view message)
 {
   LL_message( message, false );
 }
@@ -851,14 +904,14 @@ void IntlTest::info( const UnicodeString &message )
 * Unconditionally adds given string to the log. Adds a new line to
 * the given message.
 */
-void IntlTest::infoln( const UnicodeString &message )
+void IntlTest::infoln(std::u16string_view message)
 {
   LL_message( message, true );
 }
 
 void IntlTest::infoln()
 {
-  LL_message( "", true );
+  LL_message({}, true );
 }
 
 int32_t IntlTest::IncErrorCount()
@@ -880,19 +933,19 @@ void IntlTest::err()
     IncErrorCount();
 }
 
-void IntlTest::err( const UnicodeString &message )
+void IntlTest::err(std::u16string_view message)
 {
     IncErrorCount();
-    if (!no_err_msg) LL_err_message( message, false );
+    if (!no_err_msg) LL_message( message, false );
 }
 
-void IntlTest::errln( const UnicodeString &message )
+void IntlTest::errln(std::u16string_view message)
 {
     IncErrorCount();
-    if (!no_err_msg) LL_err_message( message, true );
+    if (!no_err_msg) LL_message( message, true );
 }
 
-void IntlTest::dataerr( const UnicodeString &message )
+void IntlTest::dataerr(std::u16string_view message)
 {
     IncDataErrorCount();
 
@@ -900,10 +953,10 @@ void IntlTest::dataerr( const UnicodeString &message )
         IncErrorCount();
     }
 
-    if (!no_err_msg) LL_err_message( message, false );
+    if (!no_err_msg) LL_message( message, false );
 }
 
-void IntlTest::dataerrln( const UnicodeString &message )
+void IntlTest::dataerrln(std::u16string_view message)
 {
     int32_t errCount = IncDataErrorCount();
     UnicodeString msg;
@@ -916,14 +969,14 @@ void IntlTest::dataerrln( const UnicodeString &message )
 
     if (!no_err_msg) {
       if ( errCount == 1) {
-          LL_err_message( msg + " - (Are you missing data?)", true ); // only show this message the first time
+          LL_message( msg + " - (Are you missing data?)", true ); // only show this message the first time
       } else {
-          LL_err_message( msg , true );
+          LL_message( msg , true );
       }
     }
 }
 
-void IntlTest::errcheckln(UErrorCode status, const UnicodeString &message ) {
+void IntlTest::errcheckln(UErrorCode status, std::u16string_view message) {
     if (status == U_FILE_ACCESS_ERROR || status == U_MISSING_RESOURCE_ERROR) {
         dataerrln(message);
     } else {
@@ -976,7 +1029,7 @@ UBool IntlTest::logKnownIssue(const char *ticket) {
   return logKnownIssue(ticket, UnicodeString());
 }
 
-UBool IntlTest::logKnownIssue(const char *ticket, const UnicodeString &msg) {
+UBool IntlTest::logKnownIssue(const char *ticket, std::u16string_view msg) {
   if(noKnownIssues) return false;
 
   char fullpath[2048];
@@ -1073,7 +1126,7 @@ void IntlTest::errcheckln(UErrorCode status, const char *fmt, ...)
 
 void IntlTest::printErrors()
 {
-     IntlTest::LL_err_message(errorList, true);
+     IntlTest::LL_message(errorList, true);
 }
 
 UBool IntlTest::printKnownIssues()
@@ -1087,12 +1140,8 @@ UBool IntlTest::printKnownIssues()
   }
 }
 
-void IntlTest::LL_err_message( const UnicodeString& message, UBool newline ) {
-    this->LL_message(message, newline, true);
-}
 
-
-void IntlTest::LL_message( UnicodeString message, UBool newline, UBool isErr )
+void IntlTest::LL_message(std::u16string_view message, UBool newline)
 {
     // Synchronize this function.
     // All error messages generated by tests funnel through here.
@@ -1126,24 +1175,22 @@ void IntlTest::LL_message( UnicodeString message, UBool newline, UBool isErr )
     length = indent.extract(1, indent.length(), buffer, sizeof(buffer));
     if (length > 0) {
         fwrite(buffer, sizeof(*buffer), length, static_cast<FILE*>(testoutfp));
-        if (isErr) currErr.append(buffer, length);
     }
 
     // replace each LineFeed by the indentation string
-    message.findAndReplace(UnicodeString(static_cast<char16_t>('\n')), indent);
+    UnicodeString us(message);
+    us.findAndReplace(UnicodeString(static_cast<char16_t>('\n')), indent);
 
     // stream out the message
-    length = message.extract(0, message.length(), buffer, sizeof(buffer));
+    length = us.extract(0, us.length(), buffer, sizeof(buffer));
     if (length > 0) {
         length = length > 30000 ? 30000 : length;
         fwrite(buffer, sizeof(*buffer), length, static_cast<FILE*>(testoutfp));
-        if (isErr) currErr.append(buffer, length);
     }
 
     if (newline) {
         char newLine = '\n';
         fwrite(&newLine, sizeof(newLine), 1, static_cast<FILE*>(testoutfp));
-        if (isErr) currErr += newLine;
     }
 
     // A newline usually flushes the buffer, but
@@ -1479,7 +1526,8 @@ main(int argc, char* argv[])
                 char* name = argv[i];
                 fprintf(stdout, "\n=== Handling test: %s: ===\n", name);
 
-                char baseName[1024] = "/";
+                char baseName[1024];
+                snprintf(baseName, sizeof(baseName), "/%s/", name);
 
                 char* parameter = strchr( name, '@' );
                 if (parameter) {
@@ -1504,6 +1552,9 @@ main(int argc, char* argv[])
 #if !UCONFIG_NO_FORMATTING
     CalendarTimeZoneTest::cleanup();
 #endif
+
+    free(_testDataPath);
+    _testDataPath = nullptr;
 
     Locale lastDefaultLocale;
     if (originalLocale != lastDefaultLocale) {
@@ -1572,16 +1623,51 @@ main(int argc, char* argv[])
     if(ctest_xml_fini())
       return 1;
 
-#ifdef ZERO_EXIT_CODE_FOR_FAILURES
-    // Exit code 0 to indicate the test completed.
-    return 0;
-#else
     return major.getErrors();
-#endif
 }
 
 const char* IntlTest::loadTestData(UErrorCode& err){
-    return ctest_loadTestData(&err);
+    if ( _testDataPath == nullptr){
+        const char*      directory=nullptr;
+        UResourceBundle* test =nullptr;
+        char* tdpath=nullptr;
+        const char* tdrelativepath;
+
+#if defined (U_TOPBUILDDIR)
+        tdrelativepath = "test" U_FILE_SEP_STRING "testdata" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING;
+        directory = U_TOPBUILDDIR;
+#else
+        tdrelativepath = ".." U_FILE_SEP_STRING "test" U_FILE_SEP_STRING "testdata" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING;
+        directory = pathToDataDirectory();
+#endif
+
+        tdpath = static_cast<char*>(malloc(sizeof(char) * ((strlen(directory) * strlen(tdrelativepath)) + 100)));
+
+        if (tdpath == nullptr) {
+            err = U_MEMORY_ALLOCATION_ERROR;
+            it_dataerrln(UnicodeString("Could not allocate memory for _testDataPath ") + u_errorName(err));
+            return "";
+        }
+
+        /* u_getDataDirectory shoul return \source\data ... set the
+         * directory to ..\source\data\..\test\testdata\out\testdata
+         */
+        strcpy(tdpath, directory);
+        strcat(tdpath, tdrelativepath);
+        strcat(tdpath,"testdata");
+
+        test=ures_open(tdpath, "testtypes", &err);
+
+        if (U_FAILURE(err)) {
+            err = U_FILE_ACCESS_ERROR;
+            it_dataerrln(UnicodeString("Could not load testtypes.res in testdata bundle with path ") + tdpath + UnicodeString(" - ") + u_errorName(err));
+            return "";
+        }
+        ures_close(test);
+        _testDataPath = tdpath;
+        return _testDataPath;
+    }
+    return _testDataPath;
 }
 
 const char* IntlTest::getTestDataPath(UErrorCode& err) {
@@ -1593,7 +1679,23 @@ const char* IntlTest::getTestDataPath(UErrorCode& err) {
  * Note: this function is parallel with C loadSourceTestData in cintltst.c
  */
 const char *IntlTest::getSourceTestData(UErrorCode& /*err*/) {
-    return ctest_testDataDir();
+    const char *srcDataDir = nullptr;
+#ifdef U_TOPSRCDIR
+    srcDataDir = U_TOPSRCDIR U_FILE_SEP_STRING"test" U_FILE_SEP_STRING "testdata" U_FILE_SEP_STRING;
+#else
+    srcDataDir = ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING "test" U_FILE_SEP_STRING "testdata" U_FILE_SEP_STRING;
+    FILE *f = fopen(".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING "test" U_FILE_SEP_STRING "testdata" U_FILE_SEP_STRING "rbbitst.txt", "r");
+    if (f) {
+        /* We're in icu/source/test/intltest/ */
+        fclose(f);
+    }
+    else {
+        /* We're in icu/source/test/intltest/Platform/(Debug|Release) */
+        srcDataDir = ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING
+                     "test" U_FILE_SEP_STRING "testdata" U_FILE_SEP_STRING;
+    }
+#endif
+    return srcDataDir;
 }
 
 static bool fileExists(const char* fileName) {
@@ -1693,10 +1795,72 @@ char *IntlTest::getUnidataPath(char path[]) {
     return nullptr;
 }
 
+const char* IntlTest::fgDataDir = nullptr;
+
 /* returns the path to icu/source/data */
 const char *  IntlTest::pathToDataDirectory()
 {
-    return ctest_dataSrcDir();
+
+    if(fgDataDir != nullptr) {
+        return fgDataDir;
+    }
+
+    /* U_TOPSRCDIR is set by the makefiles on UNIXes when building cintltst and intltst
+    //              to point to the top of the build hierarchy, which may or
+    //              may not be the same as the source directory, depending on
+    //              the configure options used.  At any rate,
+    //              set the data path to the built data from this directory.
+    //              The value is complete with quotes, so it can be used
+    //              as-is as a string constant.
+    */
+#if defined (U_TOPSRCDIR)
+    {
+        fgDataDir = U_TOPSRCDIR  U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+    }
+#else
+
+    /* On Windows, the file name obtained from __FILE__ includes a full path.
+     *             This file is "wherever\icu\source\test\cintltst\cintltst.c"
+     *             Change to    "wherever\icu\source\data"
+     */
+    {
+        static char p[sizeof(__FILE__) + 10];
+        char *pBackSlash;
+        int i;
+
+        strcpy(p, __FILE__);
+        /* We want to back over three '\' chars.                            */
+        /*   Only Windows should end up here, so looking for '\' is safe.   */
+        for (i=1; i<=3; i++) {
+            pBackSlash = strrchr(p, U_FILE_SEP_CHAR);
+            if (pBackSlash != nullptr) {
+                *pBackSlash = 0;        /* Truncate the string at the '\'   */
+            }
+        }
+
+        if (pBackSlash != nullptr) {
+            /* We found and truncated three names from the path.
+            *  Now append "source\data" and set the environment
+            */
+            strcpy(pBackSlash, U_FILE_SEP_STRING "data" U_FILE_SEP_STRING );
+            fgDataDir = p;
+        }
+        else {
+            /* __FILE__ on MSVC7 does not contain the directory */
+            FILE *file = fopen(".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "Makefile.in", "r");
+            if (file) {
+                fclose(file);
+                fgDataDir = ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+            }
+            else {
+                fgDataDir = ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING ".." U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+            }
+        }
+    }
+#endif
+
+    return fgDataDir;
+
 }
 
 /*
@@ -1793,8 +1957,8 @@ static inline char16_t toHex(int32_t i) {
     return static_cast<char16_t>(i + (i < 10 ? 0x30 : (0x41 - 10)));
 }
 
-static UnicodeString& escape(const UnicodeString& s, UnicodeString& result) {
-    for (int32_t i=0; i<s.length(); ++i) {
+static UnicodeString& escape(std::u16string_view s, UnicodeString& result) {
+    for (int32_t i=0; i<static_cast<int32_t>(s.length()); ++i) {
         char16_t c = s[i];
         if (c <= static_cast<char16_t>(0x7F)) {
             result += c;
@@ -1869,8 +2033,8 @@ UBool IntlTest::assertSuccess(const char* message, UErrorCode ec, UBool possible
 }
 
 UBool IntlTest::assertEquals(const char* message,
-                             const UnicodeString& expected,
-                             const UnicodeString& actual,
+                             std::u16string_view expected,
+                             std::u16string_view actual,
                              UBool possibleDataError) {
     if (expected != actual) {
         if (possibleDataError) {
@@ -1909,6 +2073,22 @@ UBool IntlTest::assertEquals(const char* message,
     }
 #endif
     return true;
+}
+
+UBool IntlTest::assertEquals(const char* message, const char* expected,
+                             std::u16string_view actual, UBool possibleDataError) {
+    return assertEquals(
+        message,
+        UnicodeString(expected), actual,
+        possibleDataError);
+}
+
+UBool IntlTest::assertEquals(const char* message, std::u16string_view expected,
+                             const char* actual, UBool possibleDataError) {
+    return assertEquals(
+        message,
+        expected, UnicodeString(actual),
+        possibleDataError);
 }
 
 UBool IntlTest::assertEquals(const char* message,
@@ -2018,10 +2198,10 @@ UBool IntlTest::assertEquals(const char* message,
 
 
 #if !UCONFIG_NO_FORMATTING
-UBool IntlTest::assertEquals(const char* message,
-                             const Formattable& expected,
-                             const Formattable& actual,
-                             UBool possibleDataError) {
+UBool IntlTest::assertEqualFormattables(const char* message,
+                                        const Formattable& expected,
+                                        const Formattable& actual,
+                                        UBool possibleDataError) {
     if (expected != actual) {
         if (possibleDataError) {
             dataerrln(UnicodeString("FAIL: ") + message + "; got " +
@@ -2128,7 +2308,7 @@ UBool IntlTest::assertEqualsNear(const char* message,
 
 static char ASSERT_BUF[256];
 
-static const char* extractToAssertBuf(const UnicodeString& message) {
+static const char* extractToAssertBuf(std::u16string_view message) {
     UnicodeString buf;
     escape(message, buf);
     buf.extract(0, 0x7FFFFFFF, ASSERT_BUF, sizeof(ASSERT_BUF) - 1, nullptr);
@@ -2136,82 +2316,87 @@ static const char* extractToAssertBuf(const UnicodeString& message) {
     return ASSERT_BUF;
 }
 
-UBool IntlTest::assertTrue(const UnicodeString& message, UBool condition, UBool quiet, UBool possibleDataError) {
+UBool IntlTest::assertTrue(std::u16string_view message, UBool condition, UBool quiet, UBool possibleDataError) {
     return assertTrue(extractToAssertBuf(message), condition, quiet, possibleDataError);
 }
 
-UBool IntlTest::assertFalse(const UnicodeString& message, UBool condition, UBool quiet, UBool possibleDataError) {
+UBool IntlTest::assertFalse(std::u16string_view message, UBool condition, UBool quiet, UBool possibleDataError) {
     return assertFalse(extractToAssertBuf(message), condition, quiet, possibleDataError);
 }
 
-UBool IntlTest::assertSuccess(const UnicodeString& message, UErrorCode ec) {
+UBool IntlTest::assertSuccess(std::u16string_view message, UErrorCode ec) {
     return assertSuccess(extractToAssertBuf(message), ec);
 }
 
-UBool IntlTest::assertEquals(const UnicodeString& message,
-                             const UnicodeString& expected,
-                             const UnicodeString& actual,
+UBool IntlTest::assertEquals(std::u16string_view message,
+                             std::u16string_view expected,
+                             std::u16string_view actual,
                              UBool possibleDataError) {
     return assertEquals(extractToAssertBuf(message), expected, actual, possibleDataError);
 }
 
-UBool IntlTest::assertEquals(const UnicodeString& message,
+UBool IntlTest::assertEquals(std::u16string_view message,
                              const char* expected,
                              const char* actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(const UnicodeString& message,
+UBool IntlTest::assertEquals(std::u16string_view message,
                              UBool expected,
                              UBool actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(const UnicodeString& message,
+UBool IntlTest::assertEquals(std::u16string_view message,
                              int32_t expected,
                              int32_t actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(const UnicodeString& message,
+UBool IntlTest::assertEquals(std::u16string_view message,
                              int64_t expected,
                              int64_t actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(const UnicodeString& message,
+UBool IntlTest::assertEquals(std::u16string_view message,
                              double expected,
                              double actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(const UnicodeString& message,
+UBool IntlTest::assertEquals(std::u16string_view message,
                              UErrorCode expected,
                              UErrorCode actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(const UnicodeString& message,
+UBool IntlTest::assertEquals(std::u16string_view message,
                              const UnicodeSet& expected,
                              const UnicodeSet& actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertEquals(const UnicodeString& message,
+UBool IntlTest::assertEquals(std::u16string_view message,
                              const std::vector<std::string>& expected,
                              const std::vector<std::string>& actual) {
     return assertEquals(extractToAssertBuf(message), expected, actual);
 }
-UBool IntlTest::assertNotEquals(const UnicodeString &message,
+UBool IntlTest::assertNotEquals(std::u16string_view message,
                                 int32_t expectedNot,
                                 int32_t actual) {
     return assertNotEquals(extractToAssertBuf(message), expectedNot, actual);
 }
-UBool IntlTest::assertEqualsNear(const UnicodeString& message,
+UBool IntlTest::assertEqualsNear(std::u16string_view message,
                                  double expected,
                                  double actual,
                                  double delta) {
     return assertEqualsNear(extractToAssertBuf(message), expected, actual, delta);
 }
 
+UBool IntlTest::assertEquals(std::u16string_view message, const char* expected,
+                             std::u16string_view actual, UBool possibleDataError) {
+    return assertEquals(message, UnicodeString(expected), actual, possibleDataError);
+}
+
 #if !UCONFIG_NO_FORMATTING
-UBool IntlTest::assertEquals(const UnicodeString& message,
-                             const Formattable& expected,
-                             const Formattable& actual) {
-    return assertEquals(extractToAssertBuf(message), expected, actual);
+UBool IntlTest::assertEqualFormattables(std::u16string_view message,
+                                        const Formattable& expected,
+                                        const Formattable& actual) {
+    return assertEqualFormattables(extractToAssertBuf(message), expected, actual);
 }
 #endif
 

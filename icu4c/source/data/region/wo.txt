@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 wo{
     Countries{
         001{"àddina"}
@@ -223,7 +223,7 @@ wo{
         PM{"Saŋ Peer ak Mikeloŋ"}
         PN{"Duni Pitkayirn"}
         PR{"Porto Riko"}
-        PS{"Palestine"}
+        PS{"réew yu Palestine"}
         PT{"Portigaal"}
         PW{"Palaw"}
         PY{"Paraguwe"}
@@ -297,6 +297,9 @@ wo{
         ZM{"Sàmbi"}
         ZW{"Simbabwe"}
         ZZ{"Gox buñ xamul"}
+    }
+    Countries%short{
+        PS{"Palestine"}
     }
     Countries%variant{
         TL{"Timor oriental"}
