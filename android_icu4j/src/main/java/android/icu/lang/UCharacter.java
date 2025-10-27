@@ -3644,12 +3644,11 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      *
      * @see UProperty#IDENTIFIER_STATUS
      * @hide Only a subset of ICU is exposed in Android
-     * @hide draft / provisional / internal are hidden on Android
      */
     public enum IdentifierStatus {
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         RESTRICTED,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         ALLOWED,
     }
 
@@ -3659,32 +3658,31 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      *
      * @see UProperty#IDENTIFIER_TYPE
      * @hide Only a subset of ICU is exposed in Android
-     * @hide draft / provisional / internal are hidden on Android
      */
     public enum IdentifierType {
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         NOT_CHARACTER,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         DEPRECATED,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         DEFAULT_IGNORABLE,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         NOT_NFKC,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         NOT_XID,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         EXCLUSION,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         OBSOLETE,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         TECHNICAL,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         UNCOMMON_USE,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         LIMITED_USE,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         INCLUSION,
-        /** @hide draft / provisional / internal are hidden on Android*/
+        /***/
         RECOMMENDED,
     }
 
@@ -4167,7 +4165,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param c code point
      * @param type Identifier_Type to check
      * @return true if type is in Identifier_Type(c)
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public static final boolean hasIdentifierType(int c, IdentifierType type) {
         return UCharacterProperty.INSTANCE.hasIDType(c, type);
@@ -4191,7 +4189,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param c code point
      * @param types output set
      * @return number of values in c's Identifier_Type
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public static final int getIdentifierTypes(int c, EnumSet<IdentifierType> types) {
         return UCharacterProperty.INSTANCE.getIDTypes(c, types);

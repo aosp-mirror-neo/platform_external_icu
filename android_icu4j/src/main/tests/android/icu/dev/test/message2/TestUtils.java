@@ -7,10 +7,7 @@ package android.icu.dev.test.message2;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
@@ -29,6 +27,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import android.icu.message2.MFFunctionRegistry;
 import android.icu.message2.MessageFormatter;
+import android.icu.message2.MessageFormatter.BidiIsolation;
+import android.icu.message2.MessageFormatter.ErrorHandlingBehavior;
 
 /** Utility class, has no test methods. */
 @Ignore("Utility class, has no test methods.")
@@ -37,7 +37,16 @@ public class TestUtils {
     static final Gson GSON = new GsonBuilder()
         .setDateFormat("yyyy-MM-dd HH:mm:ss")
         .registerTypeAdapter(Sources.class, new StringToListAdapter())
+        .registerTypeAdapter(ExpErrors.class, new ExpectedErrorAdapter())
         .create();
+
+    private static final MFFunctionRegistry TEST_REGISTRY = MFFunctionRegistry.builder()
+            .setFormatter("test:function", new TestFunctionFactory("function"))
+            .setFormatter("test:format", new TestFunctionFactory("format"))
+            .setFormatter("test:select", new TestFunctionFactory("select"))
+            .setSelector("test:function", new TestFunctionFactory("function"))
+            .setSelector("test:select", new TestFunctionFactory("select"))
+            .build();
 
     // ======= Legacy TestCase utilities, no json-compatible ========
 
@@ -132,8 +141,8 @@ public class TestUtils {
     }
 
     static boolean expectsErrors(DefaultTestProperties defaults, Unit unit) {
-        return (unit.expErrors != null && !unit.expErrors.isEmpty())
-            || (defaults.expErrors != null && defaults.expErrors.length > 0);
+        return (unit.expErrors != null && unit.expErrors.expectErrors())
+            || (defaults.getExpErrors().expectErrors());
     }
 
     static void runTestCase(DefaultTestProperties defaults, Unit unit) {
@@ -141,7 +150,7 @@ public class TestUtils {
     }
 
     static void runTestCase(DefaultTestProperties defaults, Unit unit, Param[] params) {
-        if (unit.ignoreJava != null) {
+        if (unit == null || unit.ignoreJava != null) {
             return;
         }
 
@@ -154,14 +163,31 @@ public class TestUtils {
 
         // We can call the "complete" constructor with null values, but we want to test that
         // all constructors work properly.
-        MessageFormatter.Builder mfBuilder =
-                MessageFormatter.builder().setPattern(pattern.toString());
+        MessageFormatter.Builder mfBuilder = MessageFormatter.builder()
+                .setPattern(pattern.toString())
+                .setFunctionRegistry(TEST_REGISTRY);
+
+        if (expectsErrors(defaults, unit)) {
+            mfBuilder.setErrorHandlingBehavior(ErrorHandlingBehavior.STRICT);
+        }
         if (unit.locale != null && !unit.locale.isEmpty()) {
             mfBuilder.setLocale(Locale.forLanguageTag(unit.locale));
-        } else if (defaults.locale != null) {
-            mfBuilder.setLocale(Locale.forLanguageTag(defaults.locale));
+        } else if (defaults.getLocale() != null) {
+            mfBuilder.setLocale(Locale.forLanguageTag(defaults.getLocale()));
         } else {
             mfBuilder.setLocale(Locale.US);
+        }
+        if (defaults.getBidiIsolation() != null) {
+            switch (defaults.getBidiIsolation()) {
+                case "none":
+                    mfBuilder.setBidiIsolation(BidiIsolation.NONE);
+                    break;
+                case "default":
+                    mfBuilder.setBidiIsolation(BidiIsolation.DEFAULT);
+                    break;
+                default:
+                    // Nothing
+            }
         }
 
         try {
@@ -175,7 +201,9 @@ public class TestUtils {
             if (expectsErrors(defaults, unit)) {
                 fail(reportCase(unit)
                         + "\nExpected error, but it didn't happen.\n"
-                        + "Result: '" + result + "'");
+                        + "Result: '" + result + "'\n"
+                        + "Params: " + Arrays.toString(params) + "\n"
+                        + "Errors expected: " + unit.expErrors);
             } else {
                 if (unit.exp != null) {
                     assertEquals(reportCase(unit), unit.exp, result);
@@ -194,8 +222,16 @@ public class TestUtils {
         return unit.toString();
     }
 
-    static Reader jsonReader(String jsonFileName) {
-        InputStream json = TestUtils.class.getResourceAsStream(jsonFileName);
-        return new BufferedReader(new InputStreamReader(json, StandardCharsets.UTF_8));
+    static Reader jsonReader(String jsonFileName) throws URISyntaxException, IOException {
+        Path json = getTestFile(TestUtils.class, jsonFileName);
+        return Files.newBufferedReader(json, StandardCharsets.UTF_8);
+    }
+
+    private static Path getTestFile(Class<?> cls, String fileName) throws URISyntaxException, IOException {
+        String packageName = cls.getPackage().getName().replace('.', '/');
+        URI getPath = cls.getClassLoader().getResource(packageName).toURI();
+        Path filePath = Paths.get(getPath);
+        Path json = Paths.get(fileName);
+        return filePath.resolve(json);
     }
 }

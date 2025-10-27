@@ -410,9 +410,9 @@ public class ULocaleTest extends CoreTestFmwk {
      */
     void checkObject(String requestedLocale, Object obj,
             String expReqValid, String expValidActual) {
-        Class[] getLocaleParams = new Class[] { ULocale.Type.class };
+        Class<?>[] getLocaleParams = new Class<?>[] { ULocale.Type.class };
         try {
-            Class cls = obj.getClass();
+            Class<?> cls = obj.getClass();
             Method getLocale = cls.getMethod("getLocale", getLocaleParams);
             ULocale valid = (ULocale) getLocale.invoke(obj, new Object[] {
                     ULocale.VALID_LOCALE });
@@ -1493,12 +1493,12 @@ public class ULocaleTest extends CoreTestFmwk {
             logln("Testing locale " + localeID + " ...");
             ULocale loc = new ULocale(localeID);
 
-            Iterator it = loc.getKeywords();
-            Iterator it2 = ULocale.getKeywords(localeID);
+            Iterator<String> it = loc.getKeywords();
+            Iterator<String> it2 = ULocale.getKeywords(localeID);
             //it and it2 are not equal here. No way to verify their equivalence yet.
             while(it.hasNext()) {
-                String key = (String)it.next();
-                String key2 = (String)it2.next();
+                String key = it.next();
+                String key2 = it2.next();
                 if (!key.equals(key2)) {
                     errln("FAIL: static and non-static getKeywords returned different results.");
                 }
@@ -1681,7 +1681,8 @@ public class ULocaleTest extends CoreTestFmwk {
     }
 
     //Hashtables for storing expected display of keys/types of locale in English and Chinese
-    private static Map[] h = new Map[2];
+    @SuppressWarnings("unchecked")
+    private static Map<String, String>[] h = new Map[2];
 
     private static final String ACCEPT_LANGUAGE_TESTS[][]  =  {
         /*#      result  fallback? */
@@ -2727,12 +2728,12 @@ public class ULocaleTest extends CoreTestFmwk {
                     "bn_IN"
                 }, {
                     "und_CD",
-                    "sw_Latn_CD",
-                    "sw_CD"
+                    "fr_Latn_CD",
+                    "fr_CD"
                 }, {
                     "und_CF",
-                    "fr_Latn_CF",
-                    "fr_CF"
+                    "sg_Latn_CF",
+                    "sg"
                 }, {
                     "und_CG",
                     "fr_Latn_CG",
@@ -2795,8 +2796,8 @@ public class ULocaleTest extends CoreTestFmwk {
                     "de"
                 }, {
                     "und_DJ",
-                    "aa_Latn_DJ",
-                    "aa_DJ"
+                    "fr_Latn_DJ",
+                    "fr_DJ"
                 }, {
                     "und_DK",
                     "da_Latn_DK",
@@ -3339,8 +3340,8 @@ public class ULocaleTest extends CoreTestFmwk {
                     "it_SM"
                 }, {
                     "und_SN",
-                    "fr_Latn_SN",
-                    "fr_SN"
+                    "wo_Latn_SN",
+                    "wo"
                 }, {
                     "und_SO",
                     "so_Latn_SO",
@@ -3371,8 +3372,8 @@ public class ULocaleTest extends CoreTestFmwk {
                     "syr"
                 }, {
                     "und_TD",
-                    "fr_Latn_TD",
-                    "fr_TD"
+                    "ar_Arab_TD",
+                    "ar_TD"
                 }, {
                     "und_TG",
                     "fr_Latn_TG",
@@ -4165,7 +4166,15 @@ public class ULocaleTest extends CoreTestFmwk {
                     "und_US",
                     "en_Latn_US",
                     "en"
-                }
+                }, {
+                    "th@x=private",
+                    "th_Thai_TH@x=private",
+                    "th@x=private",
+                }, {
+                    "und@x=private",
+                    "en_Latn_US@x=private",
+                    "en@x=private",
+               }
         };
 
         for (int i = 0; i < full_data.length; i++) {
@@ -5717,14 +5726,9 @@ public class ULocaleTest extends CoreTestFmwk {
             assertEquals("addLikelySubtags(" + test.source + ") should be unchanged",
                 l, ULocale.addLikelySubtags(l));
         } else {
-            if ( ( test.source.equals("und-Latn-MU") || test.source.equals("und-Latn-RS") || test.source.equals("und-Latn-SL")
-                || test.source.equals("und-Latn-TK") || test.source.equals("und-Latn-ZM") )
-                && logKnownIssue("CLDR-18002", "Incorrect Likely Subtags for some entries modified in CLDR 46") ) {
-                    return;
-                }
-              assertEquals("addLikelySubtags(" + test.source + ")",
-                  test.addLikely, ULocale.addLikelySubtags(l).toLanguageTag());
-              }
+            assertEquals("addLikelySubtags(" + test.source + ")",
+                test.addLikely, ULocale.addLikelySubtags(l).toLanguageTag());
+        }
         if (test.removeFavorRegion.equals("FAIL")) {
             assertEquals("minimizeSubtags(" + test.source + ") should be unchanged",
                 l, ULocale.minimizeSubtags(l));

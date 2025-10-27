@@ -12,9 +12,6 @@
 
 package android.icu.dev.test.duration;
 
-import java.util.Collection;
-import java.util.Iterator;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -31,9 +28,7 @@ public class ResourceBasedPeriodFormatterDataServiceTest extends CoreTestFmwk {
   public void testAvailable() {
     ResourceBasedPeriodFormatterDataService service =
         ResourceBasedPeriodFormatterDataService.getInstance();
-    Collection locales = service.getAvailableLocales();
-    for (Iterator i = locales.iterator(); i.hasNext();) {
-      String locale = (String)i.next();
+    for (String locale : service.getAvailableLocales()) {
       PeriodFormatterData pfd = service.get(locale);
       assertFalse(locale + ": " + pfd.pluralization(), -1 == pfd.pluralization());
     }

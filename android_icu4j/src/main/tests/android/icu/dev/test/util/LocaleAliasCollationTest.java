@@ -42,7 +42,7 @@ public class LocaleAliasCollationTest extends android.icu.dev.test.TestFmwk {
 
     private static final int _LOCALE_NUMBER = _LOCALES.length;
     private ULocale[] available = null;
-    private HashMap availableMap = new HashMap();
+    private HashMap<String, String> availableMap = new HashMap<>();
     private static final ULocale _DEFAULT_LOCALE = ULocale.US;
 
     public LocaleAliasCollationTest() {

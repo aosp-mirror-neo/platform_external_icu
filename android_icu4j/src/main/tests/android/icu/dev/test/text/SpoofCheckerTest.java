@@ -852,8 +852,8 @@ public class SpoofCheckerTest extends CoreTestFmwk {
     @Test
     public void testScriptSet() {
         try {
-            Class ScriptSet = Class.forName("android.icu.text.SpoofChecker$ScriptSet");
-            Constructor ctor = ScriptSet.getDeclaredConstructor();
+            Class<?> ScriptSet = Class.forName("android.icu.text.SpoofChecker$ScriptSet");
+            Constructor<?> ctor = ScriptSet.getDeclaredConstructor();
             ctor.setAccessible(true);
             BitSet ss = (BitSet) ctor.newInstance();
 

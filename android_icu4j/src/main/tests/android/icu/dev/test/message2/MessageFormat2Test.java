@@ -132,7 +132,8 @@ public class MessageFormat2Test extends CoreTestFmwk {
     @Test
     public void testPlural() {
         String message = ""
-                + ".match {$count :number}\n"
+                + ".input {$count :number}\n"
+                + ".match $count\n"
                 + " 1 {{You have one notification.}}\n"
                 + " * {{You have {$count} notifications.}}";
 
@@ -150,7 +151,8 @@ public class MessageFormat2Test extends CoreTestFmwk {
     @Test
     public void testPluralOrdinal() {
         String message = ""
-                + ".match {$place :number select=ordinal}\n"
+                + ".input {$place :number select=ordinal}\n"
+                + ".match $place\n"
                 + "  1  {{You got the gold medal}}\n"
                 + "  2  {{You got the silver medal}}\n"
                 + "  3  {{You got the bronze medal}}\n"
@@ -206,7 +208,7 @@ public class MessageFormat2Test extends CoreTestFmwk {
             return new TemperatureFormatterImpl(nf, this);
         }
 
-        static private class TemperatureFormatterImpl implements Formatter {
+        private static class TemperatureFormatterImpl implements Formatter {
             private final TemperatureFormatterFactory formatterFactory;
             private final LocalizedNumberFormatter nf;
             private final Map<String, LocalizedNumberFormatter> cachedFormatters =
@@ -335,7 +337,8 @@ public class MessageFormat2Test extends CoreTestFmwk {
     @Test
     public void testPluralWithOffset() {
         String message = ""
-                + ".match {$count :number icu:offset=2}\n"
+                + ".input {$count :number icu:offset=2}\n"
+                + ".match $count\n"
                 + " 1   {{Anna}}\n"
                 + " 2   {{Anna and Bob}}\n"
                 + " one {{Anna, Bob, and {$count :number icu:offset=2} other guest}}\n"
@@ -364,7 +367,7 @@ public class MessageFormat2Test extends CoreTestFmwk {
     public void testPluralWithOffsetAndLocalVar() {
         String message = ""
                 + ".local $foo = {$count :number icu:offset=2}"
-                + ".match {$foo :number}\n" // should "inherit" the offset
+                + ".match $foo\n" // should "inherit" the offset
                 + " 1   {{Anna}}\n"
                 + " 2   {{Anna and Bob}}\n"
                 + " one {{Anna, Bob, and {$foo} other guest}}\n"
@@ -393,7 +396,7 @@ public class MessageFormat2Test extends CoreTestFmwk {
     public void testPluralWithOffsetAndLocalVar2() {
         String message = ""
                 + ".local $foo = {$amount :number icu:skeleton=|.00/w|}\n"
-                + ".match {$foo :number}\n" // should "inherit" the offset
+                + ".match $foo\n" // should "inherit" the offset
                 + " 1   {{Last dollar}}\n"
                 + " one {{{$foo} dollar}}\n"
                 + " *   {{{$foo} dollars}}";
@@ -415,7 +418,7 @@ public class MessageFormat2Test extends CoreTestFmwk {
     public void testPluralWithOffsetAndLocalVar2Options() {
         String message = ""
                 + ".local $foo = {$amount :number minumumFractionalDigits=2}\n"
-                + ".match {$foo :number}\n" // should "inherit" the offset
+                + ".match $foo\n" // should "inherit" the offset
                 + " 1   {{Last dollar}}\n"
                 + " one {{{$foo} dollar}}\n"
                 + " *   {{{$foo} dollars}}";
@@ -450,7 +453,8 @@ public class MessageFormat2Test extends CoreTestFmwk {
     @Test
     public void testVariableOptionsInSelector() {
         String messageVar = ""
-                + ".match {$count :number icu:offset=$delta}\n"
+                + ".input {$count :number icu:offset=$delta}\n"
+                + ".match $count\n"
                 + " 1   {{A}}\n"
                 + " 2   {{A and B}}\n"
                 + " one {{A, B, and {$count :number icu:offset=$delta} more character}}\n"
@@ -468,7 +472,8 @@ public class MessageFormat2Test extends CoreTestFmwk {
                 mfVar.formatToString(Args.of("count", 7, "delta", 2)));
 
         String messageVar2 = ""
-                + ".match {$count :number icu:offset=$delta}\n"
+                + ".input {$count :number icu:offset=$delta}\n"
+                + ".match $count\n"
                 + " 1 {{Exactly 1}}\n"
                 + " 2 {{Exactly 2}}\n"
                 + " * {{Count = {$count :number icu:offset=$delta} and delta={$delta}.}}";
@@ -508,7 +513,7 @@ public class MessageFormat2Test extends CoreTestFmwk {
     public void testVariableOptionsInSelectorWithLocalVar() {
         String messageFix = ""
                 + ".local $offCount = {$count :number icu:offset=2}"
-                + ".match {$offCount :number}\n"
+                + ".match $offCount\n"
                 + " 1   {{A}}\n"
                 + " 2   {{A and B}}\n"
                 + " one {{A, B, and {$offCount} more character}}\n"
@@ -523,7 +528,7 @@ public class MessageFormat2Test extends CoreTestFmwk {
 
         String messageVar = ""
                 + ".local $offCount = {$count :number icu:offset=$delta}"
-                + ".match {$offCount :number}\n"
+                + ".match $offCount\n"
                 + " 1   {{A}}\n"
                 + " 2   {{A and B}}\n"
                 + " one {{A, B, and {$offCount} more character}}\n"
@@ -542,7 +547,7 @@ public class MessageFormat2Test extends CoreTestFmwk {
 
         String messageVar2 = ""
                 + ".local $offCount = {$count :number icu:offset=$delta}"
-                + ".match {$offCount :number}\n"
+                + ".match $offCount\n"
                 + " 1 {{Exactly 1}}\n"
                 + " 2 {{Exactly 2}}\n"
                 + " * {{Count = {$count}, OffCount = {$offCount}, and delta={$delta}.}}";

@@ -52,6 +52,9 @@ import android.icu.impl.data.TokenIterator;
 import android.icu.impl.number.PatternStringUtils;
 import android.icu.math.BigDecimal;
 import android.icu.math.MathContext;
+import android.icu.number.LocalizedNumberFormatter;
+import android.icu.number.NumberFormatter;
+import android.icu.number.NumberFormatter.UnitWidth;
 import android.icu.text.CompactDecimalFormat;
 import android.icu.text.CurrencyPluralInfo;
 import android.icu.text.DecimalFormat;
@@ -67,6 +70,7 @@ import android.icu.text.UnicodeSet;
 import android.icu.util.Currency;
 import android.icu.util.Currency.CurrencyUsage;
 import android.icu.util.CurrencyAmount;
+import android.icu.util.MeasureUnit;
 import android.icu.util.ULocale;
 import android.icu.testsharding.MainTestShard;
 
@@ -3184,7 +3188,7 @@ public class NumberFormatTest extends CoreTestFmwk {
         double expected = 12345;
         DecimalFormatSymbols sym = new DecimalFormatSymbols(Locale.US);
         DecimalFormat fmt = new DecimalFormat("#.#", sym);
-        ArrayList errors = new ArrayList();
+        ArrayList<String> errors = new ArrayList<>();
 
         ParseThreadJB5358[] threads = new ParseThreadJB5358[numThreads];
         for (int i = 0; i < numThreads; i++) {
@@ -3201,7 +3205,7 @@ public class NumberFormatTest extends CoreTestFmwk {
         if (errors.size() != 0) {
             StringBuffer errBuf = new StringBuffer();
             for (int i = 0; i < errors.size(); i++) {
-                errBuf.append((String)errors.get(i));
+                errBuf.append(errors.get(i));
                 errBuf.append("\n");
             }
             errln("FAIL: " + errBuf);
@@ -3212,9 +3216,9 @@ public class NumberFormatTest extends CoreTestFmwk {
         private final DecimalFormat decfmt;
         private final String numstr;
         private final double expect;
-        private final ArrayList errors;
+        private final ArrayList<String> errors;
 
-        public ParseThreadJB5358(DecimalFormat decfmt, String numstr, double expect, ArrayList errors) {
+        public ParseThreadJB5358(DecimalFormat decfmt, String numstr, double expect, ArrayList<String> errors) {
             this.decfmt = decfmt;
             this.numstr = numstr;
             this.expect = expect;
@@ -4796,7 +4800,7 @@ public class NumberFormatTest extends CoreTestFmwk {
         while (iterator.getIndex() != iterator.getEndIndex()) {
             int start = iterator.getRunStart();
             int end = iterator.getRunLimit();
-            Iterator it = iterator.getAttributes().keySet().iterator();
+            Iterator<AttributedCharacterIterator.Attribute> it = iterator.getAttributes().keySet().iterator();
             AttributedCharacterIterator.Attribute attribute = (AttributedCharacterIterator.Attribute) it.next();
             // For positions with both INTEGER and GROUPING attributes, we want the GROUPING attribute.
             if (it.hasNext() && attribute.equals(NumberFormat.Field.INTEGER)) {
@@ -7057,6 +7061,114 @@ public class NumberFormatTest extends CoreTestFmwk {
                                 + ppos.getIndex() + ", " + num.doubleValue());
             }
 
+        }
+    }
+
+    @Test
+    public void TestArbitraryConstantFormatting() {
+
+        class TestData {
+            String unitIdentifier;
+            Integer inputValue;
+            String expectedOutput;
+            UnitWidth width;
+            ULocale locale;
+
+            public TestData(String unitIdentifier, Integer inputValue, UnitWidth width, ULocale locale,
+                    String expectedOutput) {
+                this.unitIdentifier = unitIdentifier;
+                this.inputValue = inputValue;
+                this.expectedOutput = expectedOutput;
+                this.width = width;
+                this.locale = locale;
+            }
+        }
+
+        TestData[] testData = {
+                new TestData("meter-per-kelvin-second", 2, UnitWidth.FULL_NAME, ULocale.ENGLISH,
+                        "2 meters per second-kelvin"),
+                new TestData("meter-per-100-kelvin-second", 3, UnitWidth.FULL_NAME, ULocale.ENGLISH,
+                        "3 meters per 100-second-kelvin"),
+                new TestData("meter-per-kelvin-second", 1, UnitWidth.FULL_NAME, ULocale.ENGLISH,
+                        "1 meter per second-kelvin"),
+                new TestData("meter-per-1000", 1, UnitWidth.FULL_NAME, ULocale.ENGLISH, "1 meter per 1000"),
+                new TestData("meter-per-1000-second", 1, UnitWidth.FULL_NAME, ULocale.ENGLISH,
+                        "1 meter per 1000-second"),
+                new TestData("meter-per-1000-second-kelvin", 1, UnitWidth.FULL_NAME, ULocale.ENGLISH,
+                        "1 meter per 1000-second-kelvin"),
+                new TestData("meter-per-1-second-kelvin-per-kilogram", 1, UnitWidth.FULL_NAME, ULocale.ENGLISH,
+                        "1 meter per 1-kilogram-second-kelvin"),
+                new TestData("meter-second-per-kilogram-kelvin", 1, UnitWidth.FULL_NAME, ULocale.ENGLISH,
+                        "1 meter-second per kilogram-kelvin"),
+                new TestData("meter-second-per-1000-kilogram-kelvin", 1, UnitWidth.FULL_NAME, ULocale.ENGLISH,
+                        "1 meter-second per 1000-kilogram-kelvin"),
+                new TestData("meter-second-per-1000-kilogram-kelvin", 1, UnitWidth.SHORT, ULocale.ENGLISH,
+                        "1 m⋅sec/1000⋅kg⋅K"),
+                new TestData("meter-second-per-1000-kilogram-kelvin", 1, UnitWidth.FULL_NAME, ULocale.GERMAN,
+                        "1 Meter⋅Sekunde pro 1000⋅Kilogramm⋅Kelvin"),
+                new TestData("meter-second-per-1000-kilogram-kelvin", 1, UnitWidth.SHORT, ULocale.GERMAN,
+                        "1 m⋅Sek./1000⋅kg⋅K"),
+        };
+
+        for (TestData testCase : testData) {
+            MeasureUnit unit = MeasureUnit.forIdentifier(testCase.unitIdentifier);
+            LocalizedNumberFormatter formatter = NumberFormatter.withLocale(testCase.locale).unit(unit)
+                    .unitWidth(testCase.width);
+
+            String formatted = formatter.format(testCase.inputValue).toString();
+            assertEquals(
+                    "Unit: " + testCase.unitIdentifier + ", Width: " + testCase.width + ", Input: "
+                            + testCase.inputValue,
+                    testCase.expectedOutput, formatted);
+        }
+
+    }
+
+    @Test
+    public void TestPortionFormat() {
+        class TestCase {
+            String unitIdentifier;
+            String locale;
+            double inputValue;
+            String expectedOutput;
+
+            TestCase(String unitIdentifier, String locale, double inputValue, String expectedOutput) {
+                this.unitIdentifier = unitIdentifier;
+                this.locale = locale;
+                this.inputValue = inputValue;
+                this.expectedOutput = expectedOutput;
+            }
+        }
+
+        TestCase[] testCases = {
+                new TestCase("portion-per-1e9", "en-US", 1, "1 part per billion"),
+                new TestCase("portion-per-1e9", "en-US", 2, "2 parts per billion"),
+                new TestCase("portion-per-1e9", "en-US", 1000000, "1,000,000 parts per billion"),
+                new TestCase("portion-per-1e9", "de-DE", 1000000, "1.000.000 Milliardstel"),
+                new TestCase("portion-per-1e1", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+                new TestCase("portion-per-1e2", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+                new TestCase("portion-per-1e3", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+                new TestCase("portion-per-1e4", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+                new TestCase("portion-per-1e5", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+                new TestCase("portion-per-1e6", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+                new TestCase("portion-per-1e7", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+                new TestCase("portion-per-1e8", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+        };
+
+        for (TestCase testCase : testCases) {
+            if (testCase.unitIdentifier.compareTo("portion-per-1e9") != 0) {
+                logKnownIssue("CLDR-18274", "The data for portion-per-XYZ is not determined yet.");
+                continue;
+            }
+            MeasureUnit unit = MeasureUnit.forIdentifier(testCase.unitIdentifier);
+            LocalizedNumberFormatter formatter = NumberFormatter.withLocale(ULocale.forLanguageTag(testCase.locale))
+                    .unit(unit)
+                    .unitWidth(UnitWidth.FULL_NAME);
+            String formatted = formatter.format(testCase.inputValue).toString();
+            assertEquals(
+                    "Unit: " + testCase.unitIdentifier + ", Locale: " + testCase.locale + ", Input: "
+                            + testCase.inputValue,
+                    testCase.expectedOutput, formatted);
         }
     }
 }

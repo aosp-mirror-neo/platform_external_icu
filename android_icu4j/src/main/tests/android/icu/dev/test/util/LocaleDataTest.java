@@ -202,7 +202,7 @@ public class LocaleDataTest extends CoreTestFmwk{
 
     @Test
     public void TestExemplarSet(){
-        HashSet  testedExemplars = new HashSet();
+        HashSet<ExemplarGroup> testedExemplars = new HashSet<>();
         int equalCount = 0;
         for(int i=0; i<availableLocales.length; i++){
             ULocale locale = availableLocales[i];
@@ -280,7 +280,7 @@ public class LocaleDataTest extends CoreTestFmwk{
     @Test
     public void TestExemplarSet2(){
         int equalCount = 0;
-        HashSet  testedExemplars = new HashSet();
+        HashSet<ExemplarGroup> testedExemplars = new HashSet<>();
         for(int i=0; i<availableLocales.length; i++){
             ULocale locale = availableLocales[i];
             // BEGIN Android-added: Exclude pseudo locales since they are not present in CLDR data.

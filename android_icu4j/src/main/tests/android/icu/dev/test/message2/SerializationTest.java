@@ -31,13 +31,13 @@ public class SerializationTest extends CoreTestFmwk {
             ".input {$a :number} {{Hello world!}}",
             ".local $b = {$a :number} {{Hello world!}}",
             ".local $c = {1 :number} {{Hello {userName}}}",
-            ".match {$count :number}\n"
+            ".input {$count :number} .match $count\n"
                     + "one {{You deleted {$count} file}}\n"
                     + "*   {{You deleted {$count} files}}",
-            ".match {$count :number}\n"
+            ".input {$count :number} .match $count\n"
                     + "one {{You deleted {$count} file}}\n"
                     + "*   {{You deleted {$count} files}}",
-            ".match {$place :number select=ordinal}\n"
+            ".input {$place :number select=ordinal} .match $place\n"
                     + "*   {{You fininshed in the {$place}th place}}\n"
                     + "two {{You fininshed in the {$place}nd place}}\n"
                     + "one {{You fininshed in the {$place}st place}}\n"
@@ -45,7 +45,8 @@ public class SerializationTest extends CoreTestFmwk {
                     + "2   {{You got the silver medal}}\n"
                     + "3   {{You got the bronze medal}}\n"
                     + "few {{You fininshed in the {$place}rd place}}",
-            ".match {$fileCount :number} {$folderCount :number}\n"
+            ".input {$fileCount :number}\n.input {$folderCount :number}\n"
+                    + ".match $fileCount $folderCount\n"
                     + "*   *   {{You deleted {$fileCount} files in {$folderCount} folders}}\n"
                     + "one one {{You deleted {$fileCount} file in {$folderCount} folder}}\n"
                     + "one *   {{You deleted {$fileCount} file in {$folderCount} folders}}\n"
@@ -55,26 +56,26 @@ public class SerializationTest extends CoreTestFmwk {
             "{|3.1415| :number minimumFractionDigits=5} dollars",
             "{|3.1415| :number maximumFractionDigits=2} dollars",
             ".local $c = {$count :number minimumFractionDigits=2}\n"
-                    + ".match {$c}\n"
+                    + ".match $c\n"
                     + "one {{{$c} dollar}}\n"
                     + "*   {{{$c} dollars}}",
             ".local $c = {1 :number minimumFractionDigits=2}\n"
-                    + ".match {$c}\n"
+                    + ".match $c\n"
                     + "one {{{$c} dollar}}\n"
                     + "*   {{{$c} dollars}}",
             ".local $c = {1 :number}\n"
-                    + ".match {$c}\n"
+                    + ".match $c\n"
                     + "one {{{$c} dollar}}\n"
                     + "*   {{{$c} dollars}}",
             ".local $c = {1.25 :number}\n"
-                    + ".match {$c}\n"
+                    + ".match $c\n"
                     + "one {{{$c} dollar}}\n"
                     + "*   {{{$c} dollars}}",
             ".local $c = {1.25 :number maximumFractionDigits=0}\n"
-                    + ".match {$c}\n"
+                    + ".match $c\n"
                     + "one {{{$c} dollar}}\n"
                     + "*   {{{$c} dollars}}",
-            ".match {$count :number} 1 {{one}} * {{other}}",
+            ".input {$count :number} .match $count 1 {{one}} * {{other}}",
         };
         for (String test : testStrings) {
             checkOneString(test);
@@ -99,7 +100,7 @@ public class SerializationTest extends CoreTestFmwk {
                         .replaceAll("\\|([\\d\\.]+)\\|", "$1")
                         // Naive normalization for `|asBaC12|` to `asBaC12`
                         .replaceAll("\\|([a-zA-Z\\d]+)\\|", "$1")
-                        .replaceAll(" \\}", "}")
+                        .replaceAll(" }", "}")
                         .trim();
         assertEquals("Serialization different from to the initial source", pattern, parsed);
     }

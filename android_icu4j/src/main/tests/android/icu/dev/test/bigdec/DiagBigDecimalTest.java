@@ -22,7 +22,6 @@ import android.icu.dev.test.CoreTestFmwk;
 import android.icu.dev.test.TestFmwk;
 import android.icu.dev.test.TestUtil;
 import android.icu.dev.test.TestUtil.JavaVendor;
-import android.icu.math.BigDecimal;
 import android.icu.testsharding.MainTestShard;
 
 /* ------------------------------------------------------------------ */

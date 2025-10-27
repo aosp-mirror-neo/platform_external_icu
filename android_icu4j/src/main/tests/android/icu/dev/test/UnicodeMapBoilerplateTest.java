@@ -20,7 +20,7 @@ import android.icu.testsharding.MainTestShard;
  * Moved from UnicodeMapTest
  */
 @MainTestShard
-public class UnicodeMapBoilerplateTest extends TestBoilerplate<UnicodeMap> {
+public class UnicodeMapBoilerplateTest extends TestBoilerplate<UnicodeMap<String>> {
 
     private static String[] TEST_VALUES = {"A", "B", "C", "D", "E", "F"};
 
@@ -35,7 +35,7 @@ public class UnicodeMapBoilerplateTest extends TestBoilerplate<UnicodeMap> {
     /* (non-Javadoc)
      * @see android.icu.dev.test.TestBoilerplate#_hasSameBehavior(java.lang.Object, java.lang.Object)
      */
-    protected boolean _hasSameBehavior(UnicodeMap a, UnicodeMap b) {
+    protected boolean _hasSameBehavior(UnicodeMap<String> a, UnicodeMap<String> b) {
         // we are pretty confident in the equals method, so won't bother with this right now.
         return true;
     }
@@ -43,9 +43,9 @@ public class UnicodeMapBoilerplateTest extends TestBoilerplate<UnicodeMap> {
     /* (non-Javadoc)
      * @see android.icu.dev.test.TestBoilerplate#_addTestObject(java.util.List)
      */
-    protected boolean _addTestObject(List<UnicodeMap> list) {
+    protected boolean _addTestObject(List<UnicodeMap<String>> list) {
         if (list.size() > 30) return false;
-        UnicodeMap result = new UnicodeMap();
+        UnicodeMap<String> result = new UnicodeMap<>();
         for (int i = 0; i < 50; ++i) {
             int start = random.nextInt(25);
             String value = TEST_VALUES[random.nextInt(TEST_VALUES.length)];
