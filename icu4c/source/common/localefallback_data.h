@@ -1161,17 +1161,18 @@ const int32_t defaultScriptTable[] = {
 const char parentLocaleChars[] =
     "az_Arab\0az_Cyrl\0bal_Latn\0blt_Latn\0bm_Nkoo\0bs_Cyrl\0byn_Latn\0"
     "cu_Glag\0dje_Arab\0dyo_Arab\0en_001\0en_150\0en_AG\0en_AI\0en_AT\0"
-    "en_AU\0en_BB\0en_BE\0en_BM\0en_BS\0en_BW\0en_BZ\0en_CC\0en_CH\0"
-    "en_CK\0en_CM\0en_CX\0en_CY\0en_CZ\0en_DE\0en_DG\0en_DK\0en_DM\0"
-    "en_Dsrt\0en_ER\0en_ES\0en_FI\0en_FJ\0en_FK\0en_FM\0en_FR\0en_GB\0"
-    "en_GD\0en_GG\0en_GH\0en_GI\0en_GM\0en_GS\0en_GY\0en_HK\0en_HU\0"
-    "en_ID\0en_IE\0en_IL\0en_IM\0en_IN\0en_IO\0en_IT\0en_JE\0en_JM\0"
-    "en_KE\0en_KI\0en_KN\0en_KY\0en_LC\0en_LR\0en_LS\0en_MG\0en_MO\0"
-    "en_MS\0en_MT\0en_MU\0en_MV\0en_MW\0en_MY\0en_NA\0en_NF\0en_NG\0"
-    "en_NL\0en_NO\0en_NR\0en_NU\0en_NZ\0en_PG\0en_PK\0en_PL\0en_PN\0"
-    "en_PT\0en_PW\0en_RO\0en_RW\0en_SB\0en_SC\0en_SD\0en_SE\0en_SG\0"
-    "en_SH\0en_SI\0en_SK\0en_SL\0en_SS\0en_SX\0en_SZ\0en_Shaw\0en_TC\0"
-    "en_TK\0en_TO\0en_TT\0en_TV\0en_TZ\0en_UG\0en_VC\0en_VG\0en_VU\0"
+    "en_AU\0en_BB\0en_BD\0en_BE\0en_BM\0en_BS\0en_BW\0en_BZ\0en_CC\0"
+    "en_CH\0en_CK\0en_CM\0en_CX\0en_CY\0en_CZ\0en_DE\0en_DG\0en_DK\0"
+    "en_DM\0en_Dsrt\0en_EE\0en_ER\0en_ES\0en_FI\0en_FJ\0en_FK\0en_FM\0"
+    "en_FR\0en_GB\0en_GD\0en_GE\0en_GG\0en_GH\0en_GI\0en_GM\0en_GS\0"
+    "en_GY\0en_HK\0en_HU\0en_ID\0en_IE\0en_IL\0en_IM\0en_IN\0en_IO\0"
+    "en_IT\0en_JE\0en_JM\0en_KE\0en_KI\0en_KN\0en_KY\0en_LC\0en_LK\0"
+    "en_LR\0en_LS\0en_LT\0en_LV\0en_MA\0en_MG\0en_MO\0en_MS\0en_MT\0"
+    "en_MU\0en_MV\0en_MW\0en_MY\0en_NA\0en_NF\0en_NG\0en_NL\0en_NO\0"
+    "en_NR\0en_NU\0en_NZ\0en_PG\0en_PK\0en_PL\0en_PN\0en_PT\0en_PW\0"
+    "en_RO\0en_RW\0en_SA\0en_SB\0en_SC\0en_SD\0en_SE\0en_SG\0en_SH\0"
+    "en_SI\0en_SK\0en_SL\0en_SS\0en_SX\0en_SZ\0en_Shaw\0en_TC\0en_TK\0"
+    "en_TO\0en_TT\0en_TV\0en_TZ\0en_UA\0en_UG\0en_VC\0en_VG\0en_VU\0"
     "en_WS\0en_ZA\0en_ZM\0en_ZW\0es_419\0es_AR\0es_BO\0es_BR\0es_BZ\0"
     "es_CL\0es_CO\0es_CR\0es_CU\0es_DO\0es_EC\0es_GT\0es_HN\0es_JP\0"
     "es_MX\0es_NI\0es_PA\0es_PE\0es_PR\0es_PY\0es_SV\0es_US\0es_UY\0"
@@ -1185,199 +1186,208 @@ const char parentLocaleChars[] =
     "yue_Hans\0zh_Hant\0zh_Hant_HK\0zh_Hant_MO\0";
 
 const int32_t parentLocaleTable[] = {
-    0, 1146,  // az_Arab -> root
-    8, 1146,  // az_Cyrl -> root
-    16, 1146,  // bal_Latn -> root
-    25, 1146,  // blt_Latn -> root
-    34, 1146,  // bm_Nkoo -> root
-    42, 1146,  // bs_Cyrl -> root
-    50, 1146,  // byn_Latn -> root
-    59, 1146,  // cu_Glag -> root
-    67, 1146,  // dje_Arab -> root
-    76, 1146,  // dyo_Arab -> root
+    0, 1200,  // az_Arab -> root
+    8, 1200,  // az_Cyrl -> root
+    16, 1200,  // bal_Latn -> root
+    25, 1200,  // blt_Latn -> root
+    34, 1200,  // bm_Nkoo -> root
+    42, 1200,  // bs_Cyrl -> root
+    50, 1200,  // byn_Latn -> root
+    59, 1200,  // cu_Glag -> root
+    67, 1200,  // dje_Arab -> root
+    76, 1200,  // dyo_Arab -> root
     92, 85,  // en_150 -> en_001
     99, 85,  // en_AG -> en_001
     105, 85,  // en_AI -> en_001
     111, 92,  // en_AT -> en_150
     117, 85,  // en_AU -> en_001
     123, 85,  // en_BB -> en_001
-    129, 92,  // en_BE -> en_150
-    135, 85,  // en_BM -> en_001
-    141, 85,  // en_BS -> en_001
-    147, 85,  // en_BW -> en_001
-    153, 85,  // en_BZ -> en_001
-    159, 85,  // en_CC -> en_001
-    165, 92,  // en_CH -> en_150
-    171, 85,  // en_CK -> en_001
-    177, 85,  // en_CM -> en_001
-    183, 85,  // en_CX -> en_001
-    189, 85,  // en_CY -> en_001
-    195, 92,  // en_CZ -> en_150
-    201, 92,  // en_DE -> en_150
-    207, 85,  // en_DG -> en_001
-    213, 92,  // en_DK -> en_150
-    219, 85,  // en_DM -> en_001
-    225, 1146,  // en_Dsrt -> root
-    233, 85,  // en_ER -> en_001
-    239, 92,  // en_ES -> en_150
-    245, 92,  // en_FI -> en_150
-    251, 85,  // en_FJ -> en_001
-    257, 85,  // en_FK -> en_001
-    263, 85,  // en_FM -> en_001
-    269, 92,  // en_FR -> en_150
-    275, 85,  // en_GB -> en_001
-    281, 85,  // en_GD -> en_001
-    287, 85,  // en_GG -> en_001
-    293, 85,  // en_GH -> en_001
-    299, 85,  // en_GI -> en_001
-    305, 85,  // en_GM -> en_001
-    311, 85,  // en_GS -> en_001
-    317, 85,  // en_GY -> en_001
-    323, 85,  // en_HK -> en_001
-    329, 92,  // en_HU -> en_150
-    335, 85,  // en_ID -> en_001
-    341, 85,  // en_IE -> en_001
-    347, 85,  // en_IL -> en_001
-    353, 85,  // en_IM -> en_001
-    359, 85,  // en_IN -> en_001
-    365, 85,  // en_IO -> en_001
-    371, 92,  // en_IT -> en_150
-    377, 85,  // en_JE -> en_001
-    383, 85,  // en_JM -> en_001
-    389, 85,  // en_KE -> en_001
-    395, 85,  // en_KI -> en_001
-    401, 85,  // en_KN -> en_001
-    407, 85,  // en_KY -> en_001
-    413, 85,  // en_LC -> en_001
-    419, 85,  // en_LR -> en_001
-    425, 85,  // en_LS -> en_001
-    431, 85,  // en_MG -> en_001
-    437, 85,  // en_MO -> en_001
-    443, 85,  // en_MS -> en_001
-    449, 85,  // en_MT -> en_001
-    455, 85,  // en_MU -> en_001
-    461, 85,  // en_MV -> en_001
-    467, 85,  // en_MW -> en_001
-    473, 85,  // en_MY -> en_001
-    479, 85,  // en_NA -> en_001
-    485, 85,  // en_NF -> en_001
-    491, 85,  // en_NG -> en_001
-    497, 92,  // en_NL -> en_150
-    503, 92,  // en_NO -> en_150
-    509, 85,  // en_NR -> en_001
-    515, 85,  // en_NU -> en_001
-    521, 85,  // en_NZ -> en_001
-    527, 85,  // en_PG -> en_001
-    533, 85,  // en_PK -> en_001
-    539, 92,  // en_PL -> en_150
-    545, 85,  // en_PN -> en_001
-    551, 92,  // en_PT -> en_150
-    557, 85,  // en_PW -> en_001
-    563, 92,  // en_RO -> en_150
-    569, 85,  // en_RW -> en_001
-    575, 85,  // en_SB -> en_001
-    581, 85,  // en_SC -> en_001
-    587, 85,  // en_SD -> en_001
-    593, 92,  // en_SE -> en_150
-    599, 85,  // en_SG -> en_001
-    605, 85,  // en_SH -> en_001
-    611, 92,  // en_SI -> en_150
-    617, 92,  // en_SK -> en_150
-    623, 85,  // en_SL -> en_001
-    629, 85,  // en_SS -> en_001
-    635, 85,  // en_SX -> en_001
-    641, 85,  // en_SZ -> en_001
-    647, 1146,  // en_Shaw -> root
-    655, 85,  // en_TC -> en_001
-    661, 85,  // en_TK -> en_001
-    667, 85,  // en_TO -> en_001
-    673, 85,  // en_TT -> en_001
-    679, 85,  // en_TV -> en_001
-    685, 85,  // en_TZ -> en_001
-    691, 85,  // en_UG -> en_001
-    697, 85,  // en_VC -> en_001
-    703, 85,  // en_VG -> en_001
-    709, 85,  // en_VU -> en_001
-    715, 85,  // en_WS -> en_001
-    721, 85,  // en_ZA -> en_001
-    727, 85,  // en_ZM -> en_001
-    733, 85,  // en_ZW -> en_001
-    746, 739,  // es_AR -> es_419
-    752, 739,  // es_BO -> es_419
-    758, 739,  // es_BR -> es_419
-    764, 739,  // es_BZ -> es_419
-    770, 739,  // es_CL -> es_419
-    776, 739,  // es_CO -> es_419
-    782, 739,  // es_CR -> es_419
-    788, 739,  // es_CU -> es_419
-    794, 739,  // es_DO -> es_419
-    800, 739,  // es_EC -> es_419
-    806, 739,  // es_GT -> es_419
-    812, 739,  // es_HN -> es_419
-    818, 739,  // es_JP -> es_419
-    824, 739,  // es_MX -> es_419
-    830, 739,  // es_NI -> es_419
-    836, 739,  // es_PA -> es_419
-    842, 739,  // es_PE -> es_419
-    848, 739,  // es_PR -> es_419
-    854, 739,  // es_PY -> es_419
-    860, 739,  // es_SV -> es_419
-    866, 739,  // es_US -> es_419
-    872, 739,  // es_UY -> es_419
-    878, 739,  // es_VE -> es_419
-    884, 1146,  // ff_Adlm -> root
-    892, 1146,  // ff_Arab -> root
-    906, 1146,  // ha_Arab -> root
-    914, 359,  // hi_Latn -> en_IN
-    922, 900,  // ht -> fr_HT
-    925, 1146,  // iu_Latn -> root
-    933, 1146,  // kaa_Latn -> root
-    942, 1146,  // kk_Arab -> root
-    950, 1146,  // kok_Latn -> root
-    959, 1146,  // ks_Deva -> root
-    967, 1146,  // ku_Arab -> root
-    975, 1146,  // kxv_Deva -> root
-    984, 1146,  // kxv_Orya -> root
-    993, 1146,  // kxv_Telu -> root
-    1002, 1146,  // ky_Arab -> root
-    1010, 1146,  // ky_Latn -> root
-    1018, 1146,  // ml_Arab -> root
-    1026, 1146,  // mn_Mong -> root
-    1034, 1146,  // mni_Mtei -> root
-    1043, 1146,  // ms_Arab -> root
-    1051, 1057,  // nb -> no
-    1054, 1057,  // nn -> no
-    1060, 1057,  // no_NO -> no
-    1066, 1146,  // pa_Arab -> root
-    1074, 1128,  // pt_AO -> pt_PT
-    1080, 1128,  // pt_CH -> pt_PT
-    1086, 1128,  // pt_CV -> pt_PT
-    1092, 1128,  // pt_FR -> pt_PT
-    1098, 1128,  // pt_GQ -> pt_PT
-    1104, 1128,  // pt_GW -> pt_PT
-    1110, 1128,  // pt_LU -> pt_PT
-    1116, 1128,  // pt_MO -> pt_PT
-    1122, 1128,  // pt_MZ -> pt_PT
-    1134, 1128,  // pt_ST -> pt_PT
-    1140, 1128,  // pt_TL -> pt_PT
-    1151, 1146,  // sat_Deva -> root
-    1160, 1146,  // sd_Deva -> root
-    1168, 1146,  // sd_Khoj -> root
-    1176, 1146,  // sd_Sind -> root
-    1184, 1146,  // shi_Latn -> root
-    1193, 1146,  // so_Arab -> root
-    1201, 1146,  // sr_Latn -> root
-    1209, 1146,  // sw_Arab -> root
-    1217, 1146,  // tg_Arab -> root
-    1225, 1146,  // ug_Cyrl -> root
-    1233, 1146,  // uz_Arab -> root
-    1241, 1146,  // uz_Cyrl -> root
-    1249, 1146,  // vai_Latn -> root
-    1258, 1146,  // wo_Arab -> root
-    1266, 1146,  // yo_Arab -> root
-    1274, 1146,  // yue_Hans -> root
-    1283, 1146,  // zh_Hant -> root
-    1302, 1291,  // zh_Hant_MO -> zh_Hant_HK
+    129, 85,  // en_BD -> en_001
+    135, 92,  // en_BE -> en_150
+    141, 85,  // en_BM -> en_001
+    147, 85,  // en_BS -> en_001
+    153, 85,  // en_BW -> en_001
+    159, 85,  // en_BZ -> en_001
+    165, 85,  // en_CC -> en_001
+    171, 92,  // en_CH -> en_150
+    177, 85,  // en_CK -> en_001
+    183, 85,  // en_CM -> en_001
+    189, 85,  // en_CX -> en_001
+    195, 85,  // en_CY -> en_001
+    201, 92,  // en_CZ -> en_150
+    207, 92,  // en_DE -> en_150
+    213, 85,  // en_DG -> en_001
+    219, 92,  // en_DK -> en_150
+    225, 85,  // en_DM -> en_001
+    231, 1200,  // en_Dsrt -> root
+    239, 92,  // en_EE -> en_150
+    245, 85,  // en_ER -> en_001
+    251, 92,  // en_ES -> en_150
+    257, 92,  // en_FI -> en_150
+    263, 85,  // en_FJ -> en_001
+    269, 85,  // en_FK -> en_001
+    275, 85,  // en_FM -> en_001
+    281, 92,  // en_FR -> en_150
+    287, 85,  // en_GB -> en_001
+    293, 85,  // en_GD -> en_001
+    299, 92,  // en_GE -> en_150
+    305, 85,  // en_GG -> en_001
+    311, 85,  // en_GH -> en_001
+    317, 85,  // en_GI -> en_001
+    323, 85,  // en_GM -> en_001
+    329, 85,  // en_GS -> en_001
+    335, 85,  // en_GY -> en_001
+    341, 85,  // en_HK -> en_001
+    347, 92,  // en_HU -> en_150
+    353, 85,  // en_ID -> en_001
+    359, 85,  // en_IE -> en_001
+    365, 85,  // en_IL -> en_001
+    371, 85,  // en_IM -> en_001
+    377, 85,  // en_IN -> en_001
+    383, 85,  // en_IO -> en_001
+    389, 92,  // en_IT -> en_150
+    395, 85,  // en_JE -> en_001
+    401, 85,  // en_JM -> en_001
+    407, 85,  // en_KE -> en_001
+    413, 85,  // en_KI -> en_001
+    419, 85,  // en_KN -> en_001
+    425, 85,  // en_KY -> en_001
+    431, 85,  // en_LC -> en_001
+    437, 85,  // en_LK -> en_001
+    443, 85,  // en_LR -> en_001
+    449, 85,  // en_LS -> en_001
+    455, 92,  // en_LT -> en_150
+    461, 92,  // en_LV -> en_150
+    467, 85,  // en_MA -> en_001
+    473, 85,  // en_MG -> en_001
+    479, 85,  // en_MO -> en_001
+    485, 85,  // en_MS -> en_001
+    491, 85,  // en_MT -> en_001
+    497, 85,  // en_MU -> en_001
+    503, 85,  // en_MV -> en_001
+    509, 85,  // en_MW -> en_001
+    515, 85,  // en_MY -> en_001
+    521, 85,  // en_NA -> en_001
+    527, 85,  // en_NF -> en_001
+    533, 85,  // en_NG -> en_001
+    539, 92,  // en_NL -> en_150
+    545, 92,  // en_NO -> en_150
+    551, 85,  // en_NR -> en_001
+    557, 85,  // en_NU -> en_001
+    563, 85,  // en_NZ -> en_001
+    569, 85,  // en_PG -> en_001
+    575, 85,  // en_PK -> en_001
+    581, 92,  // en_PL -> en_150
+    587, 85,  // en_PN -> en_001
+    593, 92,  // en_PT -> en_150
+    599, 85,  // en_PW -> en_001
+    605, 92,  // en_RO -> en_150
+    611, 85,  // en_RW -> en_001
+    617, 85,  // en_SA -> en_001
+    623, 85,  // en_SB -> en_001
+    629, 85,  // en_SC -> en_001
+    635, 85,  // en_SD -> en_001
+    641, 92,  // en_SE -> en_150
+    647, 85,  // en_SG -> en_001
+    653, 85,  // en_SH -> en_001
+    659, 92,  // en_SI -> en_150
+    665, 92,  // en_SK -> en_150
+    671, 85,  // en_SL -> en_001
+    677, 85,  // en_SS -> en_001
+    683, 85,  // en_SX -> en_001
+    689, 85,  // en_SZ -> en_001
+    695, 1200,  // en_Shaw -> root
+    703, 85,  // en_TC -> en_001
+    709, 85,  // en_TK -> en_001
+    715, 85,  // en_TO -> en_001
+    721, 85,  // en_TT -> en_001
+    727, 85,  // en_TV -> en_001
+    733, 85,  // en_TZ -> en_001
+    739, 92,  // en_UA -> en_150
+    745, 85,  // en_UG -> en_001
+    751, 85,  // en_VC -> en_001
+    757, 85,  // en_VG -> en_001
+    763, 85,  // en_VU -> en_001
+    769, 85,  // en_WS -> en_001
+    775, 85,  // en_ZA -> en_001
+    781, 85,  // en_ZM -> en_001
+    787, 85,  // en_ZW -> en_001
+    800, 793,  // es_AR -> es_419
+    806, 793,  // es_BO -> es_419
+    812, 793,  // es_BR -> es_419
+    818, 793,  // es_BZ -> es_419
+    824, 793,  // es_CL -> es_419
+    830, 793,  // es_CO -> es_419
+    836, 793,  // es_CR -> es_419
+    842, 793,  // es_CU -> es_419
+    848, 793,  // es_DO -> es_419
+    854, 793,  // es_EC -> es_419
+    860, 793,  // es_GT -> es_419
+    866, 793,  // es_HN -> es_419
+    872, 793,  // es_JP -> es_419
+    878, 793,  // es_MX -> es_419
+    884, 793,  // es_NI -> es_419
+    890, 793,  // es_PA -> es_419
+    896, 793,  // es_PE -> es_419
+    902, 793,  // es_PR -> es_419
+    908, 793,  // es_PY -> es_419
+    914, 793,  // es_SV -> es_419
+    920, 793,  // es_US -> es_419
+    926, 793,  // es_UY -> es_419
+    932, 793,  // es_VE -> es_419
+    938, 1200,  // ff_Adlm -> root
+    946, 1200,  // ff_Arab -> root
+    960, 1200,  // ha_Arab -> root
+    968, 377,  // hi_Latn -> en_IN
+    976, 954,  // ht -> fr_HT
+    979, 1200,  // iu_Latn -> root
+    987, 1200,  // kaa_Latn -> root
+    996, 1200,  // kk_Arab -> root
+    1004, 1200,  // kok_Latn -> root
+    1013, 1200,  // ks_Deva -> root
+    1021, 1200,  // ku_Arab -> root
+    1029, 1200,  // kxv_Deva -> root
+    1038, 1200,  // kxv_Orya -> root
+    1047, 1200,  // kxv_Telu -> root
+    1056, 1200,  // ky_Arab -> root
+    1064, 1200,  // ky_Latn -> root
+    1072, 1200,  // ml_Arab -> root
+    1080, 1200,  // mn_Mong -> root
+    1088, 1200,  // mni_Mtei -> root
+    1097, 1200,  // ms_Arab -> root
+    1105, 1111,  // nb -> no
+    1108, 1111,  // nn -> no
+    1114, 1111,  // no_NO -> no
+    1120, 1200,  // pa_Arab -> root
+    1128, 1182,  // pt_AO -> pt_PT
+    1134, 1182,  // pt_CH -> pt_PT
+    1140, 1182,  // pt_CV -> pt_PT
+    1146, 1182,  // pt_FR -> pt_PT
+    1152, 1182,  // pt_GQ -> pt_PT
+    1158, 1182,  // pt_GW -> pt_PT
+    1164, 1182,  // pt_LU -> pt_PT
+    1170, 1182,  // pt_MO -> pt_PT
+    1176, 1182,  // pt_MZ -> pt_PT
+    1188, 1182,  // pt_ST -> pt_PT
+    1194, 1182,  // pt_TL -> pt_PT
+    1205, 1200,  // sat_Deva -> root
+    1214, 1200,  // sd_Deva -> root
+    1222, 1200,  // sd_Khoj -> root
+    1230, 1200,  // sd_Sind -> root
+    1238, 1200,  // shi_Latn -> root
+    1247, 1200,  // so_Arab -> root
+    1255, 1200,  // sr_Latn -> root
+    1263, 1200,  // sw_Arab -> root
+    1271, 1200,  // tg_Arab -> root
+    1279, 1200,  // ug_Cyrl -> root
+    1287, 1200,  // uz_Arab -> root
+    1295, 1200,  // uz_Cyrl -> root
+    1303, 1200,  // vai_Latn -> root
+    1312, 1200,  // wo_Arab -> root
+    1320, 1200,  // yo_Arab -> root
+    1328, 1200,  // yue_Hans -> root
+    1337, 1200,  // zh_Hant -> root
+    1356, 1345,  // zh_Hant_MO -> zh_Hant_HK
 };
 
 

@@ -3,7 +3,6 @@
 // Generated using tools/cldr/cldr-to-icu/
 lrc_IQ{
     calendar{
-        default{"gregorian"}
         gregorian{
             DateTimePatterns{
                 "h:mm:ss a zzzz",

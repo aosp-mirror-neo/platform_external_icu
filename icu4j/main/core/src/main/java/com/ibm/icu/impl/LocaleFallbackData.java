@@ -1089,6 +1089,7 @@ class LocaleFallbackData {
         t.put("en_AT", "en_150");
         t.put("en_AU", "en_001");
         t.put("en_BB", "en_001");
+        t.put("en_BD", "en_001");
         t.put("en_BE", "en_150");
         t.put("en_BM", "en_001");
         t.put("en_BS", "en_001");
@@ -1106,6 +1107,7 @@ class LocaleFallbackData {
         t.put("en_DK", "en_150");
         t.put("en_DM", "en_001");
         t.put("en_Dsrt", "root");
+        t.put("en_EE", "en_150");
         t.put("en_ER", "en_001");
         t.put("en_ES", "en_150");
         t.put("en_FI", "en_150");
@@ -1115,6 +1117,7 @@ class LocaleFallbackData {
         t.put("en_FR", "en_150");
         t.put("en_GB", "en_001");
         t.put("en_GD", "en_001");
+        t.put("en_GE", "en_150");
         t.put("en_GG", "en_001");
         t.put("en_GH", "en_001");
         t.put("en_GI", "en_001");
@@ -1137,8 +1140,12 @@ class LocaleFallbackData {
         t.put("en_KN", "en_001");
         t.put("en_KY", "en_001");
         t.put("en_LC", "en_001");
+        t.put("en_LK", "en_001");
         t.put("en_LR", "en_001");
         t.put("en_LS", "en_001");
+        t.put("en_LT", "en_150");
+        t.put("en_LV", "en_150");
+        t.put("en_MA", "en_001");
         t.put("en_MG", "en_001");
         t.put("en_MO", "en_001");
         t.put("en_MS", "en_001");
@@ -1163,6 +1170,7 @@ class LocaleFallbackData {
         t.put("en_PW", "en_001");
         t.put("en_RO", "en_150");
         t.put("en_RW", "en_001");
+        t.put("en_SA", "en_001");
         t.put("en_SB", "en_001");
         t.put("en_SC", "en_001");
         t.put("en_SD", "en_001");
@@ -1182,6 +1190,7 @@ class LocaleFallbackData {
         t.put("en_TT", "en_001");
         t.put("en_TV", "en_001");
         t.put("en_TZ", "en_001");
+        t.put("en_UA", "en_150");
         t.put("en_UG", "en_001");
         t.put("en_VC", "en_001");
         t.put("en_VG", "en_001");
