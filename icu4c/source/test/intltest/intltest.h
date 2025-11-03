@@ -419,8 +419,10 @@ private:
 protected:
     std::string   currErr; // Error message of the current test case
 
+#if U_SHOW_CPLUSPLUS_API
     virtual void LL_err_message( const UnicodeString& message, UBool newline );
     virtual void LL_message( UnicodeString message, UBool newlin, UBool isErr = false );
+#endif
 
 #if U_SHOW_CPLUSPLUS_API
     // used for collation result reporting, defined here for convenience
