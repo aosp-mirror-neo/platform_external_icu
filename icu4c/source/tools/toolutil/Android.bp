@@ -27,8 +27,6 @@ cc_library_static {
     export_include_dirs: ["."],
     rtti: true,
     cppflags: [
-        // This warning can be re-enabled once ICU is updated from upstream.
-        "-Wno-unnecessary-virtual-specifier",
         "-DU_TOOLUTIL_IMPLEMENTATION",
         "-DANDROID_LINK_SHARED_ICU4C",
     ],
