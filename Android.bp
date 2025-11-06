@@ -58,7 +58,19 @@ filegroup {
 }
 
 cc_defaults {
+    name: "icu_common_cflags",
+    cflags: select(release_flag("RELEASE_BUILD_CLANG_VERSION"), {
+        "clang-r584948": [
+            // http://b/452729455. It can be re-enabled once ICU is updated from upstream.
+            "-Wno-unnecessary-virtual-specifier",
+        ],
+        default: [],
+    }),
+}
+
+cc_defaults {
     name: "icu4c_defaults",
+    defaults: ["icu_common_cflags"],
     cflags: [
         "-Wall",
         "-Werror",
