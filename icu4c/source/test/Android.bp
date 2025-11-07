@@ -31,6 +31,7 @@ subdirs = [
 
 cc_defaults {
     name: "icu_test_defaults",
+    defaults: ["icu_common_cflags"],
     gtest: false,
     rtti: true,
     cflags: [

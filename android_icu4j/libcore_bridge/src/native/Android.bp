@@ -28,6 +28,7 @@ package {
 
 cc_library_shared {
     name: "libicu_jni",
+    defaults: ["icu_common_cflags"],
     host_supported: true,
     visibility: [
         "//art/tools/ahat",
