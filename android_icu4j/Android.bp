@@ -214,6 +214,8 @@ java_sdk_library {
         ":android_icu4j_public_api_files",
     ],
     libs: [
+        // Needed for FlaggedApi and possibly others.
+        "framework-api-annotations-lib",
         "icu_aconfig_flags_lib",
     ],
     droiddoc_options: [
