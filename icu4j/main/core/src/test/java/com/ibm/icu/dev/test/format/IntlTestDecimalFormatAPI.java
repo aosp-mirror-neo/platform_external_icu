@@ -129,7 +129,7 @@ public class IntlTestDecimalFormatAPI extends CoreTestFmwk
 
         logln("Testing clone() and equality operators");
 
-        Format clone = def.clone();
+        Format clone = (Format) def.clone();
         if( ! def.equals(clone)) {
             errln("ERROR: Clone() failed");
         }

@@ -52,7 +52,7 @@ final class BreakTransliterator extends Transliterator {
         // typically over 2000 ms.
         // Using a holder class for safe init without a volatile-read.
         if (bi == null) bi = WordBreakIteratorHolder.BI;
-        return bi.clone();
+        return (BreakIterator) bi.clone();
     }
 
     ///CLOVER:OFF
