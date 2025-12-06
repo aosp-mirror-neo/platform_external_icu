@@ -350,7 +350,7 @@ es_MX{
             relativeTime{
                 future{
                     one{"en {0} h"}
-                    other{"en {0} n"}
+                    other{"en {0} h"}
                 }
             }
         }
