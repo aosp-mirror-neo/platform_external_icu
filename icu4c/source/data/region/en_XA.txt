@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 en_XA{
     Countries{
         001{"[ŵöŕļð one]"}
@@ -304,8 +304,10 @@ en_XA{
     }
     Countries%short{
         BA{"[Ɓöšñîå one]"}
+        CC{"[Çöçöš Îšļåñðš one two]"}
         GB{"[ÛĶ one]"}
         MM{"[Ṁýåñɱåŕ one two]"}
+        PN{"[Þîţçåîŕñ one two]"}
         UN{"[ÛÑ one]"}
         US{"[ÛŠ one]"}
     }

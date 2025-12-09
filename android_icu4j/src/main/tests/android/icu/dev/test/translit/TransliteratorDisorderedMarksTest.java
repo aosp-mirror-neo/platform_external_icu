@@ -6,7 +6,6 @@ package android.icu.dev.test.translit;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -105,7 +104,7 @@ public class TransliteratorDisorderedMarksTest extends TestFmwk {
         }
 
 
-        for (Entry<Integer, UnicodeSet> x : leadToSources.entrySet()) {
+        for (Map.Entry<Integer, UnicodeSet> x : leadToSources.entrySet()) {
             Integer lead = x.getKey();
             UnicodeSet sources = x.getValue();
             UnicodeSet trailSet = leadToTrail.get(lead);

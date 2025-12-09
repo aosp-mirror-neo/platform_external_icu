@@ -56,9 +56,9 @@ public final class ICUResourceBundleTest extends CoreTestFmwk {
             // It does not work well in eclipse plug-in test because of class loader configuration??
             // For now, specify resource path explicitly in this test case
             //Enumeration en = testLoader.getResources("META-INF");
-            Enumeration en = testLoader.getResources("android.icu.dev.data");
+            Enumeration<URL> en = testLoader.getResources("android.icu.dev.data");
             for(;en.hasMoreElements();) {
-                URL url = (URL)en.nextElement();
+                URL url = en.nextElement();
                 if (url == null) {
                     warnln("could not load resource data");
                     return;
@@ -908,7 +908,7 @@ public final class ICUResourceBundleTest extends CoreTestFmwk {
             @Override
             protected UResourceBundle getParent() {return null;}
             @Override
-            public Enumeration getKeys() {return null;}
+            public Enumeration<String> getKeys() {return null;}
             @Override
             protected Object handleGetObject(String aKey) {return null;}
         }
@@ -970,7 +970,7 @@ public final class ICUResourceBundleTest extends CoreTestFmwk {
         }
         //reset the default
         ULocale.setDefault(defaultLocale);
-        Enumeration keys = bundle.getKeys();
+        Enumeration<String> keys = bundle.getKeys();
         int i=0;
         while(keys.hasMoreElements()){
             logln("key: "+ keys.nextElement());
@@ -1203,7 +1203,7 @@ public final class ICUResourceBundleTest extends CoreTestFmwk {
             // enrure is that we don't crash with a StackOverflowError when trying to retrieve the bundle
         }
         ULocale.setDefault(oldDefaultLocale);
-	}
+    }
         
     @Test
     public void TestPersonUnits() {

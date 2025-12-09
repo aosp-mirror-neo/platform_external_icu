@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 en_XA{
     units{
         acceleration{
@@ -204,6 +204,11 @@ en_XA{
                 dnam{"[þéŕɱýŕîåð one two]"}
                 one{"[{0} þéŕɱýŕîåð one two]"}
                 other{"[{0} þéŕɱýŕîåð one two]"}
+            }
+            portion-per-1e9{
+                dnam{"[þåŕţš þéŕ ƀîļļîöñ one two three]"}
+                one{"[{0} þåŕţ þéŕ ƀîļļîöñ one two three]"}
+                other{"[{0} þåŕţš þéŕ ƀîļļîöñ one two three]"}
             }
         }
         consumption{
@@ -1278,6 +1283,11 @@ en_XA{
                 dnam{"[þéŕɱýŕîåð one two]"}
                 one{"[{0}‱ one]"}
                 other{"[{0}‱ one]"}
+            }
+            portion-per-1e9{
+                dnam{"[þåŕţš⁄ƀîļļîöñ one two]"}
+                one{"[{0} þþƀ one two]"}
+                other{"[{0} þþƀ one two]"}
             }
         }
         consumption{
