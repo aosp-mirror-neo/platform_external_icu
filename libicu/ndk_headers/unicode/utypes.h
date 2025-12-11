@@ -582,12 +582,13 @@ typedef enum UErrorCode {
     U_MF_DUPLICATE_DECLARATION_ERROR, /**< The same variable is declared in more than one .local or .input declaration. \xrefitem internal "Internal"  "Internal List"  Do not use. This API is for internal use only. ICU 75 technology preview \xrefitem deprecated "Deprecated" "Deprecated List" This API is for technology preview only. */
     U_MF_OPERAND_MISMATCH_ERROR,     /**< An operand provided to a function does not have the required form for that function \xrefitem internal "Internal"  "Internal List"  Do not use. This API is for internal use only. ICU 75 technology preview \xrefitem deprecated "Deprecated" "Deprecated List" This API is for technology preview only. */
     U_MF_DUPLICATE_VARIANT_ERROR, /**< A message includes a variant with the same key list as another variant. \xrefitem internal "Internal"  "Internal List"  Do not use. This API is for internal use only. ICU 76 technology preview \xrefitem deprecated "Deprecated" "Deprecated List" This API is for technology preview only. */
+    U_MF_BAD_OPTION,             /**< An option value provided to a function does not have the required form for that option. \xrefitem internal "Internal"  "Internal List"  Do not use. This API is for internal use only. ICU 77 technology preview \xrefitem deprecated "Deprecated" "Deprecated List" This API is for technology preview only. */
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal formatting API error code.
      * \xrefitem deprecated "Deprecated" "Deprecated List" ICU 58 The numeric value may change over time, see ICU ticket #12420.
      */
-    U_FMT_PARSE_ERROR_LIMIT = 0x10120,
+    U_FMT_PARSE_ERROR_LIMIT = 0x10121,
 #endif  // U_HIDE_DEPRECATED_API
 
     /*

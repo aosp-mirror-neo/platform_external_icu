@@ -1004,7 +1004,7 @@ public class TestMessageFormat extends CoreTestFmwk {
     // This tests passing named arguments instead of numbers to format().
     @Test
     public void testFormatNamedArguments() {
-        Map arguments = new HashMap();
+        Map<String, Object> arguments = new HashMap<>();
         arguments.put("startDate", new Date(871068000000L));
 
         StringBuffer result = new StringBuffer();
@@ -1038,7 +1038,7 @@ public class TestMessageFormat extends CoreTestFmwk {
         String source = "abc =sep= def";
 
         try {
-            Map fmt_map = msg.parseToMap(source);
+            Map<String, Object> fmt_map = msg.parseToMap(source);
             if (fmt_map.keySet().size() != 2) {
                 errln("*** MSG parse (ustring, count, err) count err.");
             } else {
@@ -1050,7 +1050,7 @@ public class TestMessageFormat extends CoreTestFmwk {
         }
 
         ParsePosition pp = new ParsePosition(0);
-        Map fmt_map = msg.parseToMap(source, pp);
+        Map<String, Object> fmt_map = msg.parseToMap(source, pp);
         if (pp.getIndex()==0 || fmt_map==null) {
             errln("*** MSG parse (ustring, parsepos., count) error.");
         } else {
@@ -1064,7 +1064,7 @@ public class TestMessageFormat extends CoreTestFmwk {
 
         pp.setIndex(0);
 
-        Map fmta = (Map) msg.parseObject( source, pp );
+        Map<String, Object> fmta = (Map<String, Object>) msg.parseObject( source, pp );
         if (pp.getIndex() == 0) {
             errln("*** MSG parse (ustring, Object, parsepos ) error.");
         } else {
@@ -1232,7 +1232,7 @@ public class TestMessageFormat extends CoreTestFmwk {
             errln("should not use named arguments");
         }
 
-        Map map12 = new HashMap();
+        Map<String, Object> map12 = new HashMap<>();
         map12.put("1", "one");
         map12.put("2", "two");
 
@@ -1243,7 +1243,7 @@ public class TestMessageFormat extends CoreTestFmwk {
         }
 
         try {
-            Map mapResult = mf.parseToMap(target);
+            Map<String, Object> mapResult = mf.parseToMap(target);
             if (!map12.equals(mapResult)) {
                 errln("expected " + map12 + " but got " + mapResult);
             }
@@ -1251,7 +1251,7 @@ public class TestMessageFormat extends CoreTestFmwk {
             errln("unexpected exception: " + e.getMessage());
         }
 
-        Map map10 = new HashMap();
+        Map<String, Object> map10 = new HashMap<>();
         map10.put("1", "one");
         map10.put("0", "zero");
         target = "X:{2} Y:one";
@@ -1262,7 +1262,7 @@ public class TestMessageFormat extends CoreTestFmwk {
 
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
         DateFormat timeFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM);
-        Map fmtMap = new HashMap();
+        Map<String, Format> fmtMap = new HashMap<>();
         fmtMap.put("1", dateFormat);
         fmtMap.put("2", timeFormat);
         mf.setFormatsByArgumentName(fmtMap);
@@ -1275,7 +1275,7 @@ public class TestMessageFormat extends CoreTestFmwk {
             // expect this
         }
 
-        Map argMap = new HashMap();
+        Map<String, Object> argMap = new HashMap<>();
         argMap.put("1", date);
         argMap.put("2", date);
         target = "X:5:17:00\u202FAM Y:Dec 17, 1990";
@@ -1294,7 +1294,7 @@ public class TestMessageFormat extends CoreTestFmwk {
                     "other {Ce sont # fichiers}} dans la liste.",
                     new ULocale("fr"));
             Object objArray[] = {0L};
-            HashMap objMap = new HashMap();
+            HashMap<String, Object> objMap = new HashMap<>();
             objMap.put("argument", objArray[0]);
             String result = msgFmt.format(objArray);
             if (!result.equals("C'est 0,0 fichier dans la liste.")) {
@@ -1319,7 +1319,7 @@ public class TestMessageFormat extends CoreTestFmwk {
                       "sont # fichiers}} dans la liste.",
                     new ULocale("fr"));
             Object objArray[] = {0L};
-            HashMap objMap = new HashMap();
+            HashMap<String, Object> objMap = new HashMap<>();
             objMap.put("argument", objArray[0]);
             String result = mfNum.format(objArray);
             if (!result.equals(mfAlpha.format(objMap))) {
@@ -1342,7 +1342,7 @@ public class TestMessageFormat extends CoreTestFmwk {
                       "zavodov}} in the directory.",
                     new ULocale("uk"));
             Object objArray[] = {4L};
-            HashMap objMap = new HashMap();
+            HashMap<String, Object> objMap = new HashMap<>();
             objMap.put("argument", objArray[0]);
             String result = mfNum.format(objArray);
             if (!result.equals(mfAlpha.format(objMap))) {
@@ -1589,12 +1589,12 @@ public class TestMessageFormat extends CoreTestFmwk {
         final SimpleDateFormat dateFormat = new SimpleDateFormat("'year:'yy 'month:'MM 'day:'dd");
         dateFormat.setTimeZone(TimeZone.getTimeZone("Etc/GMT"));
         ms.setFormatByArgumentName("date", dateFormat);
-        Map map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("number", 1234);
         map.put("date", new Date(0,0,0));
         String result = ms.format(map);
         assertEquals("setFormatByArgumentName", "1234.000 year:99 month:12 day:31", result);
-        Set formatNames = ms.getArgumentNames();
+        Set<String> formatNames = ms.getArgumentNames();
         assertEquals("Format Names match", formatNames, map.keySet());
         assertEquals("Decimal", decimalFormat, ms.getFormatByArgumentName("number"));
         assertEquals("Date", dateFormat, ms.getFormatByArgumentName("date"));
@@ -1622,7 +1622,7 @@ public class TestMessageFormat extends CoreTestFmwk {
 
         Object[] args0 = new Object[] { "tmp", new Date(1184777888000L), 15, 2 };
 
-        HashMap args1 = new HashMap();
+        HashMap<String, Object> args1 = new HashMap<>();
         args1.put("arg0", "tmp");
         args1.put("arg1", new Date(1184777888000L));
         args1.put("arg2", 15);
@@ -1683,12 +1683,12 @@ public class TestMessageFormat extends CoreTestFmwk {
             AttributedCharacterIterator expectedAcit = expectedAttributedStrings[i].getIterator();
 
             // Check available attributes
-            Set attrSet = acit.getAllAttributeKeys();
-            Set expectedAttrSet = expectedAcit.getAllAttributeKeys();
+            Set<AttributedCharacterIterator.Attribute> attrSet = acit.getAllAttributeKeys();
+            Set<AttributedCharacterIterator.Attribute> expectedAttrSet = expectedAcit.getAllAttributeKeys();
             if (attrSet.size() != expectedAttrSet.size()) {
                 errln("FAIL: Number of attribute keys is " + attrSet.size() + " expected: " + expectedAttrSet.size());
             }
-            Iterator attrIterator = attrSet.iterator();
+            Iterator<AttributedCharacterIterator.Attribute> attrIterator = attrSet.iterator();
             while (attrIterator.hasNext()) {
                 AttributedCharacterIterator.Attribute attr = (AttributedCharacterIterator.Attribute) attrIterator
                         .next();
@@ -1711,16 +1711,16 @@ public class TestMessageFormat extends CoreTestFmwk {
                     buf.append(c);
                     expectedAcit.setIndex(indexExp);
 
-                    Map attrs = acit.getAttributes();
-                    Map attrsExp = expectedAcit.getAttributes();
+                    Map<AttributedCharacterIterator.Attribute, Object> attrs = acit.getAttributes();
+                    Map<AttributedCharacterIterator.Attribute, Object> attrsExp = expectedAcit.getAttributes();
                     if (attrs.size() != attrsExp.size()) {
                         errln("FAIL: Number of attributes associated with index " + index + " is " + attrs.size()
                                 + " expected: " + attrsExp.size());
                     } else {
                         // Check all attributes at the index
-                        Iterator entryIterator = attrsExp.entrySet().iterator();
+                        Iterator<Map.Entry<AttributedCharacterIterator.Attribute, Object>> entryIterator = attrsExp.entrySet().iterator();
                         while (entryIterator.hasNext()) {
-                            Map.Entry entry = (Map.Entry) entryIterator.next();
+                            Map.Entry<AttributedCharacterIterator.Attribute, Object> entry = entryIterator.next();
                             if (attrs.containsKey(entry.getKey())) {
                                 Object value = attrs.get(entry.getKey());
                                 assertEquals("Attribute value at index " + index, entry.getValue(), value);

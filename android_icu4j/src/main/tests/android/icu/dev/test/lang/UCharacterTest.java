@@ -2991,7 +2991,7 @@ public final class UCharacterTest extends CoreTestFmwk
     @Test
     public void TestBlockData()
     {
-        Class ubc = UCharacter.UnicodeBlock.class;
+        Class<UCharacter.UnicodeBlock> ubc = UCharacter.UnicodeBlock.class;
 
         for (int b = 1; b < UCharacter.UnicodeBlock.COUNT; b += 1) {
             UCharacter.UnicodeBlock blk = UCharacter.UnicodeBlock.getInstance(b);

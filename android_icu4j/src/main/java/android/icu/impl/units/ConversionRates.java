@@ -61,6 +61,10 @@ public class ConversionRates {
             result = result.multiply(getFactorToBase(singleUnit));
         }
 
+        if (measureUnit.getConstantDenominator() != 0) {
+            result = result.divide(BigDecimal.valueOf(measureUnit.getConstantDenominator()));
+        }
+
         return result;
     }
 
@@ -186,7 +190,7 @@ public class ConversionRates {
 
 
                     String keyString = key.toString();
-                    String valueString = value.toString().replace(" ", "");
+                    String valueString = value.toString().replaceAll(" ", "");
                     if ("target".equals(keyString)) {
                         target = valueString;
                     } else if ("factor".equals(keyString)) {

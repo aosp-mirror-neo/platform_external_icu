@@ -21,7 +21,7 @@ import android.icu.util.ULocale;
  *         .locale(ULocale.UK)
  *         .formatRange(750, 1.2)
  *         .toString();
- * // => "750 m - 1.2 km"
+ * // =&gt; "750 m - 1.2 km"
  * </pre>
  * <p>
  * Like NumberFormatter, NumberRangeFormatter instances (i.e., LocalizedNumberRangeFormatter

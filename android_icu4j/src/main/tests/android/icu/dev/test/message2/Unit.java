@@ -4,7 +4,6 @@
 
 package android.icu.dev.test.message2;
 
-import java.util.List;
 import java.util.StringJoiner;
 
 // Class corresponding to the json test files.
@@ -16,7 +15,7 @@ class Unit {
     final Param[] params;
     final String exp;
     final String ignoreJava;
-    final List<Error> expErrors;
+    final ExpErrors expErrors;
 
     Unit(
             Sources src,
@@ -24,7 +23,7 @@ class Unit {
             Param[] params,
             String exp,
             String ignoreJava,
-            List<Error> expErrors) {
+            ExpErrors expErrors) {
         this.src = src;
         this.locale = locale;
         this.params = params;
@@ -33,7 +32,7 @@ class Unit {
         this.expErrors = expErrors;
     }
 
-    class Error {
+    static class Error {
         final String name;
         final String type;
 
@@ -63,6 +62,9 @@ class Unit {
         if (exp != null) {
             result.add("exp=" + escapeString(exp));
         }
+        if (ignoreJava != null) {
+            result.add("ignoreJava=" + ignoreJava);
+        }
         return result.toString();
     }
 
@@ -80,7 +82,7 @@ class Unit {
         Param[] newParams = other.params != null ? other.params : this.params;
         String newExp = other.exp != null ? other.exp : this.exp;
         String newIgnore = other.ignoreJava != null ? other.ignoreJava : this.ignoreJava;
-        List<Error> newExpErrors = other.expErrors != null ? other.expErrors : this.expErrors;
+        ExpErrors newExpErrors = other.expErrors != null ? other.expErrors : this.expErrors;
         return new Unit(newSrc, newLocale, newParams, newExp, newIgnore, newExpErrors);
     }
 
