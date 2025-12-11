@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 en_XA{
     zoneStrings{
         "America:St_Barthelemy"{
@@ -67,6 +67,9 @@ en_XA{
         }
         "Pacific:Norfolk"{
             ec{"[Ñöŕƒöļķ Îšļåñð one two]"}
+        }
+        "Pacific:Wake"{
+            ec{"[Ŵåķé Îšļåñð one two]"}
         }
         "meta:Acre"{
             ld{"[Åçŕé Šûɱɱéŕ Ţîɱé one two three]"}
@@ -235,7 +238,7 @@ en_XA{
             ls{"[Ɓŕåšîļîå Šţåñðåŕð Ţîɱé one two three]"}
         }
         "meta:Brunei"{
-            ls{"[Ɓŕûñéî Ðåŕûššåļåɱ Ţîɱé one two three]"}
+            ls{"[Ɓŕûñéî Ţîɱé one two]"}
         }
         "meta:Cape_Verde"{
             ld{"[Çåþé Ṽéŕðé Šûɱɱéŕ Ţîɱé one two three]"}
@@ -288,10 +291,10 @@ en_XA{
             ls{"[Ðåṽîš Ţîɱé one two]"}
         }
         "meta:DumontDUrville"{
-            ls{"[Ðûɱöñţ‐ð’Ûŕṽîļļé Ţîɱé one two three]"}
+            ls{"[Ðûɱöñţ ð’Ûŕṽîļļé Ţîɱé one two three]"}
         }
         "meta:East_Timor"{
-            ls{"[Éåšţ Ţîɱöŕ Ţîɱé one two three]"}
+            ls{"[Ţîɱöŕ‐Ļéšţé Ţîɱé one two three]"}
         }
         "meta:Easter"{
             ld{"[Éåšţéŕ Îšļåñð Šûɱɱéŕ Ţîɱé one two three]"}
@@ -434,9 +437,9 @@ en_XA{
             ls{"[Ĵåþåñ Šţåñðåŕð Ţîɱé one two three]"}
         }
         "meta:Kamchatka"{
-            ld{"[Þéţŕöþåṽļöṽšķ‐Ķåɱçĥåţšķî Šûɱɱéŕ Ţîɱé one two three four]"}
-            lg{"[Þéţŕöþåṽļöṽšķ‐Ķåɱçĥåţšķî Ţîɱé one two three four]"}
-            ls{"[Þéţŕöþåṽļöṽšķ‐Ķåɱçĥåţšķî Šţåñðåŕð Ţîɱé one two three four five]"}
+            ld{"[Ķåɱçĥåţķå Šûɱɱéŕ Ţîɱé one two three]"}
+            lg{"[Ķåɱçĥåţķå Ţîɱé one two]"}
+            ls{"[Ķåɱçĥåţķå Šţåñðåŕð Ţîɱé one two three]"}
         }
         "meta:Kazakhstan"{
             ls{"[Ķåžåķĥšţåñ Ţîɱé one two three]"}
@@ -557,7 +560,7 @@ en_XA{
             ls{"[Ƒéŕñåñðö ðé Ñöŕöñĥå Šţåñðåŕð Ţîɱé one two three four]"}
         }
         "meta:North_Mariana"{
-            ls{"[Ñöŕţĥ Ṁåŕîåñå Îšļåñðš Ţîɱé one two three]"}
+            ls{"[Ñöŕţĥéŕñ Ṁåŕîåñå Îšļåñðš Ţîɱé one two three four]"}
         }
         "meta:Novosibirsk"{
             ld{"[Ñöṽöšîƀîŕšķ Šûɱɱéŕ Ţîɱé one two three]"}
@@ -607,10 +610,10 @@ en_XA{
             ls{"[Þîţçåîŕñ Ţîɱé one two]"}
         }
         "meta:Ponape"{
-            ls{"[Þöñåþé Ţîɱé one two]"}
+            ls{"[Þöĥñþéî Ţîɱé one two]"}
         }
         "meta:Pyongyang"{
-            ls{"[Þýöñĝýåñĝ Ţîɱé one two]"}
+            ls{"[Ñöŕţĥ Ķöŕéå Ţîɱé one two three]"}
         }
         "meta:Qyzylorda"{
             ld{"[Ǫýžýļöŕðå Šûɱɱéŕ Ţîɱé one two three]"}
@@ -660,9 +663,9 @@ en_XA{
             ls{"[Ţåĥîţî Ţîɱé one two]"}
         }
         "meta:Taipei"{
-            ld{"[Ţåîþéî Ðåýļîĝĥţ Ţîɱé one two three]"}
-            lg{"[Ţåîþéî Ţîɱé one two]"}
-            ls{"[Ţåîþéî Šţåñðåŕð Ţîɱé one two three]"}
+            ld{"[Ţåîŵåñ Ðåýļîĝĥţ Ţîɱé one two three]"}
+            lg{"[Ţåîŵåñ Ţîɱé one two]"}
+            ls{"[Ţåîŵåñ Šţåñðåŕð Ţîɱé one two three]"}
         }
         "meta:Tajikistan"{
             ls{"[Ţåĵîķîšţåñ Ţîɱé one two three]"}

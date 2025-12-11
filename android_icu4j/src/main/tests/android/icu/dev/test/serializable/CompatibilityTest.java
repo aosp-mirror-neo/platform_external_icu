@@ -129,7 +129,7 @@ public class CompatibilityTest extends CoreTestFmwk
     }
 
     private List<FileHolder> getFileList(URL dataURL) throws IOException {
-        List<FileHolder> classList = new ArrayList();
+        List<FileHolder> classList = new ArrayList<>();
 
         File topDir = new File(dataURL.getPath());
         File dataDirs[] = topDir.listFiles(new FileFilter() {
@@ -160,7 +160,7 @@ public class CompatibilityTest extends CoreTestFmwk
     }
 
     private List<FileHolder> getJarList(URL jarURL) throws IOException {
-        List<FileHolder> classList = new ArrayList();
+        List<FileHolder> classList = new ArrayList<>();
 
         String prefix = jarURL.getPath();
         int ix = prefix.indexOf("!/");
@@ -178,7 +178,7 @@ public class CompatibilityTest extends CoreTestFmwk
 
             JarURLConnection conn = (JarURLConnection) jarURL.openConnection();
             jarFile = conn.getJarFile();
-            Enumeration entries = jarFile.entries();
+            Enumeration<JarEntry> entries = jarFile.entries();
             while (entries.hasMoreElements()) {
                 JarEntry entry = (JarEntry) entries.nextElement();
                 if (!entry.isDirectory()) {

@@ -176,7 +176,12 @@ public class MFDataModel {
      */
     @Deprecated
     public static class CatchallKey implements LiteralOrCatchallKey {
+        final static String AS_KEY_STRING = "<<::CatchallKey::>>";
         // String value; // Always '*' in MF2
+
+        public static boolean isCatchAll(String key) {
+            return AS_KEY_STRING.equals(key);
+        }
     }
 
     // Patterns
@@ -228,7 +233,7 @@ public class MFDataModel {
     @Deprecated
     public interface Expression extends PatternPart {
         // Provides a common type for all kind of expressions:
-        // LiteralExpression, VariableExpression, FunctionExpression, UnsupportedExpression, Markup
+        // LiteralExpression, VariableExpression, FunctionExpression, Markup
     }
 
     /**
@@ -239,7 +244,7 @@ public class MFDataModel {
     @Deprecated
     public static class LiteralExpression implements Expression {
         public final Literal arg;
-        public final Annotation annotation;
+        public final Function function;
         public final List<Attribute> attributes;
 
         /**
@@ -247,9 +252,9 @@ public class MFDataModel {
          * @hide draft / provisional / internal are hidden on Android
          */
         @Deprecated
-        public LiteralExpression(Literal arg, Annotation annotation, List<Attribute> attributes) {
+        public LiteralExpression(Literal arg, Function function, List<Attribute> attributes) {
             this.arg = arg;
-            this.annotation = annotation;
+            this.function = function;
             this.attributes = attributes;
         }
     }
@@ -262,7 +267,7 @@ public class MFDataModel {
     @Deprecated
     public static class VariableExpression implements Expression {
         public final VariableRef arg;
-        public final Annotation annotation;
+        public final Function function;
         public final List<Attribute> attributes;
 
         /**
@@ -271,9 +276,9 @@ public class MFDataModel {
          */
         @Deprecated
         public VariableExpression(
-                VariableRef arg, Annotation annotation, List<Attribute> attributes) {
+                VariableRef arg, Function function, List<Attribute> attributes) {
             this.arg = arg;
-            this.annotation = annotation;
+            this.function = function;
             this.attributes = attributes;
         }
     }
@@ -284,8 +289,19 @@ public class MFDataModel {
      * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
-    public interface Annotation {
-        // Provides a common type for FunctionAnnotation, UnsupportedAnnotation
+    public static class Function {
+        public final String name;
+        public final Map<String, Option> options;
+
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
+        public Function(String name, Map<String, Option> options) {
+            this.name = name;
+            this.options = options;
+        }
     }
 
     /**
@@ -295,7 +311,7 @@ public class MFDataModel {
      */
     @Deprecated
     public static class FunctionExpression implements Expression {
-        public final FunctionAnnotation annotation;
+        public final Function function;
         public final List<Attribute> attributes;
 
         /**
@@ -303,8 +319,8 @@ public class MFDataModel {
          * @hide draft / provisional / internal are hidden on Android
          */
         @Deprecated
-        public FunctionExpression(FunctionAnnotation annotation, List<Attribute> attributes) {
-            this.annotation = annotation;
+        public FunctionExpression(Function function, List<Attribute> attributes) {
+            this.function = function;
             this.attributes = attributes;
         }
     }
@@ -379,27 +395,6 @@ public class MFDataModel {
         @Deprecated
         public VariableRef(String name) {
             this.name = name;
-        }
-    }
-
-    /**
-     * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
-     * @hide draft / provisional / internal are hidden on Android
-     */
-    @Deprecated
-    public static class FunctionAnnotation implements Annotation {
-        public final String name;
-        public final Map<String, Option> options;
-
-        /**
-         * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
-         */
-        @Deprecated
-        public FunctionAnnotation(String name, Map<String, Option> options) {
-            this.name = name;
-            this.options = options;
         }
     }
 

@@ -37,7 +37,7 @@ public interface TestDataModule {
     /**
      * @return Iterator<TestData>
      */
-    public Iterator getTestDataIterator();
+    public Iterator<TestData> getTestDataIterator();
 
     public static class Factory{
 
@@ -75,11 +75,11 @@ public interface TestDataModule {
         /**
          * @return Iterator<DataMap>
          */
-        public Iterator getSettingsIterator();
+        public Iterator<DataMap> getSettingsIterator();
         /**
          * @return Iterator<DataMap>
          */
-        public Iterator getDataIterator();
+        public Iterator<DataMap> getDataIterator();
     }
 
     /**

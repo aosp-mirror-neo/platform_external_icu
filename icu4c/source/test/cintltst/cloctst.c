@@ -288,6 +288,9 @@ void addLocaleTest(TestNode** root)
     TESTCASE(TestBug20321UnicodeLocaleKey);
     TESTCASE(TestUsingDefaultWarning);
     TESTCASE(TestBug21449InfiniteLoop);
+    TESTCASE(TestBug23031VaPosix);
+    TESTCASE(TestBug23031VaPosixManyExtensions);
+    TESTCASE(TestBug23031VaPosixManyVariants);
     TESTCASE(TestExcessivelyLongIDs);
 #if !UCONFIG_NO_FORMATTING
     TESTCASE(TestUldnNameVariants);
@@ -2884,7 +2887,7 @@ static void TestDisplayNameWarning(void) {
  * starts with `prefix' plus an additional element, that is, string ==
  * prefix + '_' + x, then return 1.  Otherwise return a value < 0.
  */
-static UBool _loccmp(const char* string, const char* prefix) {
+static int32_t _loccmp(const char* string, const char* prefix) {
     int32_t slen = (int32_t)uprv_strlen(string),
             plen = (int32_t)uprv_strlen(prefix);
     int32_t c = uprv_strncmp(string, prefix, plen);
@@ -3929,6 +3932,13 @@ const char* const basic_maximize_data[][2] = {
     // ICU-22545 & ICU-22742
     "ru_XC",
     "ru_Cyrl_XC"
+  }, {
+    // ICU-22765
+    "und@x=private",
+    "en_Latn_US@x=private",
+  }, {
+    "th@x=private",
+    "th_Thai_TH@x=private",
   }
 };
 
@@ -4632,12 +4642,12 @@ const char* const full_data[][3] = {
     "bn_IN"
   }, {
     "und_CD",
-    "sw_Latn_CD",
-    "sw_CD"
+    "fr_Latn_CD",
+    "fr_CD"
   }, {
     "und_CF",
-    "fr_Latn_CF",
-    "fr_CF"
+    "sg_Latn_CF",
+    "sg"
   }, {
     "und_CG",
     "fr_Latn_CG",
@@ -4704,8 +4714,8 @@ const char* const full_data[][3] = {
     "de"
   }, {
     "und_DJ",
-    "aa_Latn_DJ",
-    "aa_DJ"
+    "fr_Latn_DJ",
+    "fr_DJ"
   }, {
     "und_DK",
     "da_Latn_DK",
@@ -5256,8 +5266,8 @@ const char* const full_data[][3] = {
     "it_SM"
   }, {
     "und_SN",
-    "fr_Latn_SN",
-    "fr_SN"
+    "wo_Latn_SN",
+    "wo"
   }, {
     "und_SO",
     "so_Latn_SO",
@@ -5284,8 +5294,8 @@ const char* const full_data[][3] = {
     "si"
   }, {
     "und_TD",
-    "fr_Latn_TD",
-    "fr_TD"
+    "ar_Arab_TD",
+    "ar_TD"
   }, {
     "und_TG",
     "fr_Latn_TG",
@@ -7443,6 +7453,63 @@ static void TestBug21449InfiniteLoop(void) {
     // The issue causes an infinite loop to occur when looking up a non-existent resource for the invalid locale ID,
     // so the test is considered passed if the call to the API below returns anything at all.
     uloc_getDisplayLanguage(invalidLocaleId, invalidLocaleId, NULL, 0, &status);
+}
+
+// Test case for ICU-23031
+static void TestBug23031VaPosix(void) {
+    static const char tag[] = "en-US-u-va-posIX";
+    static const char expected[] = "POSIX";
+
+    UErrorCode status = U_ZERO_ERROR;
+    char actual[32];
+    int32_t len = uloc_getVariant(tag, actual, UPRV_LENGTHOF(actual), &status);
+    if (U_FAILURE(status)) {
+        log_err("ERROR: in uloc_getVariant  %s\n", myErrorName(status));
+    }
+    if (len < 1) {
+        log_err("FAIL: uloc_getVariant() returned %d\n", len);
+    }
+    if (uprv_strcmp(actual, expected) != 0) {
+        log_err("FAIL: uloc_getVariant() Wanted %s, got %s\n", expected, actual);
+    }
+}
+
+// Test case for ICU-23031
+static void TestBug23031VaPosixManyExtensions(void) {
+    static const char tag[] = "en-US-u-co-search-va-posIX-kc";
+    static const char expected[] = "POSIX";
+
+    UErrorCode status = U_ZERO_ERROR;
+    char actual[32];
+    int32_t len = uloc_getVariant(tag, actual, UPRV_LENGTHOF(actual), &status);
+    if (U_FAILURE(status)) {
+        log_err("ERROR: in uloc_getVariant  %s\n", myErrorName(status));
+    }
+    if (len < 1) {
+        log_err("FAIL: uloc_getVariant() returned %d\n", len);
+    }
+    if (uprv_strcmp(actual, expected) != 0) {
+        log_err("FAIL: uloc_getVariant() Wanted %s, got %s\n", expected, actual);
+    }
+}
+
+// Test case for ICU-23031
+static void TestBug23031VaPosixManyVariants(void) {
+    static const char tag[] = "en-US-fonIPA-u-va-posIX";
+    static const char expected[] = "FONIPA_POSIX";
+
+    UErrorCode status = U_ZERO_ERROR;
+    char actual[32];
+    int32_t len = uloc_getVariant(tag, actual, UPRV_LENGTHOF(actual), &status);
+    if (U_FAILURE(status)) {
+        log_err("ERROR: in uloc_getVariant  %s\n", myErrorName(status));
+    }
+    if (len < 1) {
+        log_err("FAIL: uloc_getVariant() returned %d\n", len);
+    }
+    if (uprv_strcmp(actual, expected) != 0) {
+        log_err("FAIL: uloc_getVariant() Wanted %s, got %s\n", expected, actual);
+    }
 }
 
 // rdar://79296849 and https://unicode-org.atlassian.net/browse/ICU-21639

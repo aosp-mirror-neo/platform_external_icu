@@ -8,12 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 
-import android.icu.message2.MFDataModel.Annotation;
 import android.icu.message2.MFDataModel.Attribute;
 import android.icu.message2.MFDataModel.CatchallKey;
 import android.icu.message2.MFDataModel.Declaration;
 import android.icu.message2.MFDataModel.Expression;
-import android.icu.message2.MFDataModel.FunctionAnnotation;
+import android.icu.message2.MFDataModel.Function;
 import android.icu.message2.MFDataModel.FunctionExpression;
 import android.icu.message2.MFDataModel.InputDeclaration;
 import android.icu.message2.MFDataModel.Literal;
@@ -81,7 +80,15 @@ public class MFSerializer {
         result.append(".match");
         for (Expression selector : message.selectors) {
             result.append(' ');
-            expressionToString(selector);
+            if (selector instanceof VariableExpression) {
+                VariableExpression ve = (VariableExpression) selector;
+                literalOrVariableRefToString(ve.arg);
+            } else {
+                // TODO: we have a (valid?) data model, so do we really want to fail?
+                // It is very close to release, so I am a bit reluctant to add a throw.
+                // I tried, and none of the unit tests fail (as expected). But still feels unsafe.
+                expressionToString(selector);
+            }
         }
         for (Variant variant : message.variants) {
             variantToString(variant);
@@ -154,7 +161,7 @@ public class MFSerializer {
 
     private void functionExpressionToString(FunctionExpression fe) {
         result.append('{');
-        annotationToString(fe.annotation);
+        functionToString(fe.function);
         attributesToString(fe.attributes);
         result.append('}');
     }
@@ -174,17 +181,17 @@ public class MFSerializer {
         }
     }
 
-    private void annotationToString(Annotation annotation) {
-        if (annotation == null) {
+    private void functionToString(Function function) {
+        if (function == null) {
             return;
         }
-        if (annotation instanceof FunctionAnnotation) {
+        if (function instanceof Function) {
             addSpaceIfNeeded();
             result.append(":");
-            result.append(((FunctionAnnotation) annotation).name);
-            optionsToString(((FunctionAnnotation) annotation).options);
+            result.append(((Function) function).name);
+            optionsToString(((Function) function).options);
         } else {
-            errorType("Annotation", annotation);
+            errorType("Function", function);
         }
     }
 
@@ -195,7 +202,7 @@ public class MFSerializer {
         result.append('{');
         literalOrVariableRefToString(ve.arg);
         needSpace = true;
-        annotationToString(ve.annotation);
+        functionToString(ve.function);
         attributesToString(ve.attributes);
         result.append('}');
         needSpace = false;
@@ -253,7 +260,7 @@ public class MFSerializer {
         result.append('{');
         literalOrVariableRefToString(le.arg);
         needSpace = true;
-        annotationToString(le.annotation);
+        functionToString(le.function);
         attributesToString(le.attributes);
         result.append('}');
     }

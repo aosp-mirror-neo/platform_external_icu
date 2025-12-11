@@ -9,11 +9,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringJoiner;
 
-import android.icu.message2.MFDataModel.Annotation;
 import android.icu.message2.MFDataModel.CatchallKey;
 import android.icu.message2.MFDataModel.Declaration;
 import android.icu.message2.MFDataModel.Expression;
-import android.icu.message2.MFDataModel.FunctionAnnotation;
+import android.icu.message2.MFDataModel.Function;
 import android.icu.message2.MFDataModel.FunctionExpression;
 import android.icu.message2.MFDataModel.InputDeclaration;
 import android.icu.message2.MFDataModel.Literal;
@@ -71,7 +70,7 @@ class MFDataModelValidator {
             for (LiteralOrCatchallKey key : variant.keys) {
                 if (key instanceof CatchallKey) {
                     catchAllCount++;
-                    fakeKey.add("*");
+                    fakeKey.add(CatchallKey.AS_KEY_STRING);
                 } else if (key instanceof Literal) {
                     fakeKey.add(((Literal) key).value);
                 }
@@ -141,29 +140,31 @@ class MFDataModelValidator {
     private void validateExpression(Expression expression, boolean fromInput)
             throws MFParseException {
         String argName = null;
-        Annotation annotation = null;
+        boolean wasLiteral = false;
+        Function function = null;
         if (expression instanceof Literal) {
             // ...{foo}... or ...{|foo|}... or ...{123}...
             // does not declare anything
         } else if (expression instanceof LiteralExpression) {
             LiteralExpression le = (LiteralExpression) expression;
             argName = le.arg.value;
-            annotation = le.annotation;
+            function = le.function;
+            wasLiteral = true;
         } else if (expression instanceof VariableExpression) {
             VariableExpression ve = (VariableExpression) expression;
             // ...{$foo :bar opt1=|str| opt2=$x opt3=$y}...
             // .input {$foo :number} => declares `foo`, if already declared is an error
             // .local $a={$foo} => declares `a`, but only used `foo`, does not declare it
             argName = ve.arg.name;
-            annotation = ve.annotation;
+            function = ve.function;
         } else if (expression instanceof FunctionExpression) {
             // ...{$foo :bar opt1=|str| opt2=$x opt3=$y}...
             FunctionExpression fe = (FunctionExpression) expression;
-            annotation = fe.annotation;
+            function = fe.function;
         }
 
-        if (annotation instanceof FunctionAnnotation) {
-            FunctionAnnotation fa = (FunctionAnnotation) annotation;
+        if (function instanceof Function) {
+            Function fa = (Function) function;
             if (fa.options != null) {
                 for (Option opt : fa.options.values()) {
                     LiteralOrVariableRef val = opt.value;
@@ -185,7 +186,10 @@ class MFDataModelValidator {
                 addVariableDeclaration(argName);
             } else {
                 // Remember that we've seen it, to complain if there is a declaration later
-                declaredVars.add(argName);
+                if (!wasLiteral) {
+                    // We don't consider {|bar| :func} to be a declaration of a "bar" variable
+                    declaredVars.add(argName);
+                }
             }
         }
     }
