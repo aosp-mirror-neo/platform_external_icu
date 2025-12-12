@@ -237,9 +237,13 @@ typedef HANDLE MemoryMap;
         pData->map = (char *)data + length;
         pData->pHeader=(const DataHeader *)data;
         pData->mapAddr = data;
-        // Android-changed: madvise on Android for performance reason.
 #if U_PLATFORM == U_PF_IPHONE || U_PLATFORM == U_PF_ANDROID
+    // Apparently supported from Android 23 and higher:
+    //   https://github.com/ggml-org/llama.cpp/pull/3631
+    // Checking for the flag itself is safer than checking for __ANDROID_API__.
+#   ifdef POSIX_MADV_RANDOM
         posix_madvise(data, length, POSIX_MADV_RANDOM);
+#   endif
 #endif
         return true;
     }

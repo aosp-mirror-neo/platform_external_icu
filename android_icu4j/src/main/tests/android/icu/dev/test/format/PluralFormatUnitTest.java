@@ -218,11 +218,11 @@ public class PluralFormatUnitTest extends CoreTestFmwk {
 
     @Test
     public void TestSamples() {
-        Map<ULocale,Set<ULocale>> same = new LinkedHashMap();
+        Map<ULocale,Set<ULocale>> same = new LinkedHashMap<>();
         for (ULocale locale : PluralRules.getAvailableULocales()) {
             ULocale otherLocale = PluralRules.getFunctionalEquivalent(locale, null);
             Set<ULocale> others = same.get(otherLocale);
-            if (others == null) same.put(otherLocale, others = new LinkedHashSet());
+            if (others == null) same.put(otherLocale, others = new LinkedHashSet<>());
             others.add(locale);
             continue;
         }

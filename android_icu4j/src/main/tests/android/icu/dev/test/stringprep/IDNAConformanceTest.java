@@ -16,7 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -41,7 +41,7 @@ public class IDNAConformanceTest extends CoreTestFmwk {
     @Test
     public void TestConformance() {
 
-        TreeMap inputData = null;
+        TreeMap<Integer, Map<String, String>> inputData = null;
 
         try {
             inputData = ReadInput.getInputData();
@@ -53,11 +53,8 @@ public class IDNAConformanceTest extends CoreTestFmwk {
             return;
         }
 
-        Set keyMap = inputData.keySet();
-        for (Iterator iter = keyMap.iterator(); iter.hasNext();) {
-            Long element = (Long) iter.next();
-            HashMap tempHash = (HashMap) inputData.get(element);
-
+        Set<Integer> keyMap = inputData.keySet();
+        for (Map<String, String> tempHash : inputData.values()) {
             //get all attributes from input data
             String passfail = (String) tempHash.get("passfail");
             String desc = (String) tempHash.get("desc");
@@ -247,16 +244,16 @@ public class IDNAConformanceTest extends CoreTestFmwk {
      */
     public static class ReadInput {
 
-        public static TreeMap getInputData() throws IOException,
+        public static TreeMap<Integer, Map<String, String>> getInputData() throws IOException,
                 UnsupportedEncodingException {
 
-            TreeMap result = new TreeMap();
+            TreeMap<Integer, Map<String, String>> result = new TreeMap<>();
             BufferedReader in = TestUtil.getDataReader("IDNATestInput.txt", "utf-8");
             try {
                 String tempStr = null;
                 int records = 0;
                 boolean firstLine = true;
-                HashMap hashItem = new HashMap();
+                HashMap<String, String> hashItem = new HashMap<>();
 
                 while ((tempStr = in.readLine()) != null) {
                     //ignore the first line if it's "====="
@@ -295,9 +292,9 @@ public class IDNAConformanceTest extends CoreTestFmwk {
                     //if met "=====", it means this item is finished
                     if ("=====".equals(tempStr)) {
                         //set them into result, using records number as key
-                        result.put((long)records, hashItem);
+                        result.put(records, hashItem);
                         //create another hash item and continue
-                        hashItem = new HashMap();
+                        hashItem = new HashMap<>();
                         records++;
                         continue;
                     }

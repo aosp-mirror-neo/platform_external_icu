@@ -7,14 +7,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ibm.icu.message2.MessageFormatter;
-
 /**
  * Convenience class that provides the same functionality as
  * <code>Map.of</code> introduced in JDK 11, which can't be used yet for ICU4J.
  *
- * <p>The returned Map is immutable, to prove that the {@link MessageFormatter}
- * does not change it</p>
+ * <p>The returned Map is immutable, to prove that the
+ * {@link com.ibm.icu.message2.MessageFormatter} does not change it</p>
  */
 @SuppressWarnings("javadoc")
 public class Args {

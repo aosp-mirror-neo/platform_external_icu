@@ -1,9 +1,9 @@
 // © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 
 {
-    "cldrVersion": "46",
+    "cldrVersion": "47",
     "aliases": {
         "ars": "ar_SA",
         "az_AZ": "az_Latn_AZ",
@@ -99,6 +99,7 @@
         "en_GH": "en_001",
         "en_GI": "en_001",
         "en_GM": "en_001",
+        "en_GS": "en_001",
         "en_GY": "en_001",
         "en_HK": "en_001",
         "en_HU": "en_150",

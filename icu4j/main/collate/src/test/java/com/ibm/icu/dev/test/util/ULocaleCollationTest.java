@@ -150,9 +150,9 @@ public class ULocaleCollationTest extends TestFmwk {
      */
     void checkObject(String requestedLocale, Object obj,
             String expReqValid, String expValidActual) {
-        Class[] getLocaleParams = new Class[] { ULocale.Type.class };
+        Class<?>[] getLocaleParams = new Class[] { ULocale.Type.class };
         try {
-            Class cls = obj.getClass();
+            Class<?> cls = obj.getClass();
             Method getLocale = cls.getMethod("getLocale", getLocaleParams);
             ULocale valid = (ULocale) getLocale.invoke(obj, new Object[] {
                     ULocale.VALID_LOCALE });
@@ -314,18 +314,17 @@ public class ULocaleCollationTest extends TestFmwk {
                     expected.add(new UiListItem(new ULocale(rawRow[2]), new ULocale(rawRow[3]), rawRow[0], rawRow[1]));
                 }
                 List<UiListItem> newList = names.getUiList(list, false, collator);
-                // Android-changed: Checking nameInSelf is not necessary.
-                if (expected.size() != newList.size()) {
-                    errln(list.toString() + ": wrong size" + expected + ", " + newList);
-                } else {
-                    String msgHead = list.toString() + ":";
-                    for (int i = 0; i < expected.size(); ++i) {
-                        UiListItem expectedItem = expected.get(i);
-                        UiListItem newItem = newList.get(i);
-                        assertEquals(msgHead + i+":minimized", expectedItem.minimized, newItem.minimized);
-                        assertEquals(msgHead + i+":modified", expectedItem.modified, newItem.modified);
-                        assertEquals(msgHead + i+":nameInDisplayLocale", expectedItem.nameInDisplayLocale, newItem.nameInDisplayLocale);
+                if (!expected.equals(newList)) {
+                    if (expected.size() != newList.size()) {
+                        errln(list.toString() + ": wrong size" + expected + ", " + newList);
+                    } else {
+//                        errln(list.toString());
+                        for (int i = 0; i < expected.size(); ++i) {
+                            assertEquals(i + "", expected.get(i), newList.get(i));
+                        }
                     }
+                } else {
+                    assertEquals(list.toString(), expected, newList);
                 }
             }
         } finally {

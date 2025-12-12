@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 en{
     zoneStrings{
         "Antarctica:Macquarie"{
@@ -43,6 +43,9 @@ en{
         }
         "Pacific:Norfolk"{
             ec{"Norfolk Island"}
+        }
+        "Pacific:Wake"{
+            ec{"Wake Island"}
         }
         "meta:Acre"{
             ld{"Acre Summer Time"}
@@ -211,7 +214,7 @@ en{
             ls{"Brasilia Standard Time"}
         }
         "meta:Brunei"{
-            ls{"Brunei Darussalam Time"}
+            ls{"Brunei Time"}
         }
         "meta:Cape_Verde"{
             ld{"Cape Verde Summer Time"}
@@ -264,10 +267,10 @@ en{
             ls{"Davis Time"}
         }
         "meta:DumontDUrville"{
-            ls{"Dumont-d’Urville Time"}
+            ls{"Dumont d’Urville Time"}
         }
         "meta:East_Timor"{
-            ls{"East Timor Time"}
+            ls{"Timor-Leste Time"}
         }
         "meta:Easter"{
             ld{"Easter Island Summer Time"}
@@ -410,9 +413,9 @@ en{
             ls{"Japan Standard Time"}
         }
         "meta:Kamchatka"{
-            ld{"Petropavlovsk-Kamchatski Summer Time"}
-            lg{"Petropavlovsk-Kamchatski Time"}
-            ls{"Petropavlovsk-Kamchatski Standard Time"}
+            ld{"Kamchatka Summer Time"}
+            lg{"Kamchatka Time"}
+            ls{"Kamchatka Standard Time"}
         }
         "meta:Kazakhstan"{
             ls{"Kazakhstan Time"}
@@ -533,7 +536,7 @@ en{
             ls{"Fernando de Noronha Standard Time"}
         }
         "meta:North_Mariana"{
-            ls{"North Mariana Islands Time"}
+            ls{"Northern Mariana Islands Time"}
         }
         "meta:Novosibirsk"{
             ld{"Novosibirsk Summer Time"}
@@ -583,10 +586,10 @@ en{
             ls{"Pitcairn Time"}
         }
         "meta:Ponape"{
-            ls{"Ponape Time"}
+            ls{"Pohnpei Time"}
         }
         "meta:Pyongyang"{
-            ls{"Pyongyang Time"}
+            ls{"North Korea Time"}
         }
         "meta:Qyzylorda"{
             ld{"Qyzylorda Summer Time"}
@@ -636,9 +639,9 @@ en{
             ls{"Tahiti Time"}
         }
         "meta:Taipei"{
-            ld{"Taipei Daylight Time"}
-            lg{"Taipei Time"}
-            ls{"Taipei Standard Time"}
+            ld{"Taiwan Daylight Time"}
+            lg{"Taiwan Time"}
+            ls{"Taiwan Standard Time"}
         }
         "meta:Tajikistan"{
             ls{"Tajikistan Time"}

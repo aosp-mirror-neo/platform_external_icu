@@ -1,6 +1,6 @@
 ﻿// © 2016 and later: Unicode, Inc. and others.
 // License & terms of use: http://www.unicode.org/copyright.html
-// Generated using tools/cldr/cldr-to-icu/build-icu-data.xml
+// Generated using tools/cldr/cldr-to-icu/
 en_XA{
     Keys{
         calendar{"[Çåļéñðåŕ one two]"}
@@ -168,7 +168,6 @@ en_XA{
         csw{"[Šŵåɱþý Çŕéé one two]"}
         cu{"[Çĥûŕçĥ Šļåṽîç one two]"}
         cv{"[Çĥûṽåšĥ one two]"}
-        cwd{"[Ŵööðš Çŕéé one two]"}
         cy{"[Ŵéļšĥ one]"}
         da{"[Ðåñîšĥ one]"}
         dak{"[Ðåķöţå one]"}
@@ -270,7 +269,6 @@ en_XA{
         hak{"[Ĥåķķå Çĥîñéšé one two]"}
         haw{"[Ĥåŵåîîåñ one two]"}
         hax{"[Šöûţĥéŕñ Ĥåîðå one two]"}
-        hdn{"[Ñöŕţĥéŕñ Ĥåîðå one two]"}
         he{"[Ĥéƀŕéŵ one]"}
         hi{"[Ĥîñðî one]"}
         hi_Latn{"[Ĥîñðî (Ļåţîñ) one two]"}
@@ -297,7 +295,6 @@ en_XA{
         ig{"[Îĝƀö one]"}
         ii{"[Šîçĥûåñ Ýî one two]"}
         ik{"[Îñûþîåǫ one two]"}
-        ike{"[Éåšţéŕñ Çåñåðîåñ Îñûķţîţûţ one two three]"}
         ikt{"[Ŵéšţéŕñ Çåñåðîåñ Îñûķţîţûţ one two three]"}
         ilo{"[Îļöķö one]"}
         inh{"[Îñĝûšĥ one]"}
@@ -483,7 +480,6 @@ en_XA{
         oj{"[Öĵîƀŵå one]"}
         ojb{"[Ñöŕţĥŵéšţéŕñ Öĵîƀŵå one two three]"}
         ojc{"[Çéñţŕåļ Öĵîƀŵå one two]"}
-        ojg{"[Éåšţéŕñ Öĵîƀŵå one two]"}
         ojs{"[Öĵî‐Çŕéé one two]"}
         ojw{"[Ŵéšţéŕñ Öĵîƀŵå one two]"}
         oka{"[Öķåñåĝåñ one two]"}
@@ -707,6 +703,7 @@ en_XA{
         zza{"[Žåžå one]"}
     }
     Languages%long{
+        cr{"[Ŵööðš Çŕéé one two]"}
         zh{"[Ṁåñðåŕîñ Çĥîñéšé one two three]"}
         zh_Hans{"[Šîɱþļîƒîéð Ṁåñðåŕîñ Çĥîñéšé one two three four]"}
         zh_Hant{"[Ţŕåðîţîöñåļ Ṁåñðåŕîñ Çĥîñéšé one two three four]"}

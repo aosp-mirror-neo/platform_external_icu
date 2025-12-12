@@ -677,14 +677,14 @@ typedef enum UProperty {
      * \xrefitem stable "Stable" "Stable List" ICU 63
      */
     UCHAR_VERTICAL_ORIENTATION=0x1018,
-#ifndef U_HIDE_DRAFT_API
     /**
      * Enumerated property Identifier_Status.
      * Used for UTS #39 General Security Profile for Identifiers
      * (https://www.unicode.org/reports/tr39/#General_Security_Profile).
-     * \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75
+     * \xrefitem stable "Stable" "Stable List" ICU 75
      */
     UCHAR_IDENTIFIER_STATUS=0x1019,
+#ifndef U_HIDE_DRAFT_API
     /**
      * Enumerated property Indic_Conjunct_Break.
      * Used in the grapheme cluster break algorithm in UAX #29.
@@ -798,7 +798,6 @@ typedef enum UProperty {
     UCHAR_SCRIPT_EXTENSIONS=0x7000,
     /** First constant for Unicode properties with unusual value types. \xrefitem stable "Stable" "Stable List" ICU 4.6 */
     UCHAR_OTHER_PROPERTY_START=UCHAR_SCRIPT_EXTENSIONS,
-#ifndef U_HIDE_DRAFT_API
     /**
      * Miscellaneous property Identifier_Type.
      * Used for UTS #39 General Security Profile for Identifiers
@@ -810,10 +809,9 @@ typedef enum UProperty {
      *
      * @see u_hasIDType
      * @see u_getIDTypes
-     * \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75
+     * \xrefitem stable "Stable" "Stable List" ICU 75
      */
     UCHAR_IDENTIFIER_TYPE=0x7001,
-#endif  // U_HIDE_DRAFT_API
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the last constant for Unicode properties with unusual value types.
@@ -2793,13 +2791,12 @@ typedef enum UVerticalOrientation {
     U_VO_UPRIGHT,
 } UVerticalOrientation;
 
-#ifndef U_HIDE_DRAFT_API
 /**
  * Identifier Status constants.
  * See https://www.unicode.org/reports/tr39/#Identifier_Status_and_Type.
  *
  * @see UCHAR_IDENTIFIER_STATUS
- * \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75
+ * \xrefitem stable "Stable" "Stable List" ICU 75
  */
 typedef enum UIdentifierStatus {
     /*
@@ -2808,9 +2805,9 @@ typedef enum UIdentifierStatus {
      *     U_ID_STATUS_<Unicode Identifier_Status value name>
      */
 
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_STATUS_RESTRICTED,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_STATUS_ALLOWED,
 } UIdentifierStatus;
 
@@ -2819,7 +2816,7 @@ typedef enum UIdentifierStatus {
  * See https://www.unicode.org/reports/tr39/#Identifier_Status_and_Type.
  *
  * @see UCHAR_IDENTIFIER_TYPE
- * \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75
+ * \xrefitem stable "Stable" "Stable List" ICU 75
  */
 typedef enum UIdentifierType {
     /*
@@ -2828,32 +2825,31 @@ typedef enum UIdentifierType {
      *     U_ID_TYPE_<Unicode Identifier_Type value name>
      */
 
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_NOT_CHARACTER,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_DEPRECATED,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_DEFAULT_IGNORABLE,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_NOT_NFKC,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_NOT_XID,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_EXCLUSION,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_OBSOLETE,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_TECHNICAL,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_UNCOMMON_USE,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_LIMITED_USE,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_INCLUSION,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 75 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 75 */
     U_ID_TYPE_RECOMMENDED,
 } UIdentifierType;
-#endif  // U_HIDE_DRAFT_API
 
 /**
  * Check a binary Unicode property for a code point.
@@ -4059,11 +4055,9 @@ u_isIDPart(UChar32 c) __INTRODUCED_IN(31);
 
 
 
-#ifndef U_HIDE_DRAFT_API
 
 
 
-#endif  // U_HIDE_DRAFT_API
 
 /**
  * Determines if the specified character should be regarded
