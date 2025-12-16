@@ -159,7 +159,8 @@ def main():
     'java',
     '-jar',
     'target/cldr-to-icu-1.0-SNAPSHOT-jar-with-dependencies.jar',
-    '--cldrDataDir=' + cldr_production_tmp_dir
+    '--cldrDataDir=' + cldr_production_tmp_dir,
+    '--includePseudoLocales'
   ])
 
   # 5c. Update the CLDR testData files needed by ICU4C/J tests

@@ -24,6 +24,7 @@ package {
 
 cc_library_static {
     name: "libicutoolutil",
+    defaults: ["icu_common_cflags"],
     export_include_dirs: ["."],
     rtti: true,
     cppflags: [

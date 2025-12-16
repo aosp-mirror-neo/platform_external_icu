@@ -56,9 +56,16 @@ The below contains the steps and commands in order to upgrade the ICU version in
    export ICU_MINOR_VERSION=1
    export CLDR_VERSION=46
    export ICU_UPGRADE_BUG=1234567890 # buganizer bug
-   # Initially empty directory to store upstream source
-   export UPSTREAM_CLDR_GIT=/media/user/disk/icu-git/cldr
-   export UPSTREAM_ICU_GIT=/media/user/disk/icu-git/icu
+   ```
+   * Set the path where you want to store the upstream ICU and CLDR sources
+   ```shell
+   export UPSTREAM_CLDR_GIT=</path/to/directory/on/your/disk/cldr>
+   export UPSTREAM_ICU_GIT=</path/to/directory/on/your/disk/icu>
+   ```
+   * Initialize empty directories to store upstream sources if the above directories needs to be created.
+   ```shell
+   mkdir -p ${UPSTREAM_CLDR_GIT}
+   mkdir -p ${UPSTREAM_ICU_GIT}
    ```
 
 2. Copy the CLDR sources into the `upstream-release-cldr` branch
@@ -87,7 +94,7 @@ The below contains the steps and commands in order to upgrade the ICU version in
     Test: n/a
     EOF
     # Upload this CL to upstream-release-cldr branch
-    repo upload --cbr .
+    repo upload --cbr -o nokeycheck -o uploadvalidator~skip --no-verify .
     ```
 
    2b. Merge the upstream sources with patches in `goog/main`
@@ -111,8 +118,9 @@ The below contains the steps and commands in order to upgrade the ICU version in
 
    2d. Upload the CL to main branch
     ```shell
-    repo upload --cbr .
+    repo upload --cbr -o nokeycheck -o uploadvalidator~skip --no-verify .
     ```
+      * Note: if the remote server fails when uploading the merge commit, take a look at the workarounds in http://b/365619260
 
 3. Copy ICU upstream sources into external/icu
     ```shell
@@ -131,19 +139,19 @@ The below contains the steps and commands in order to upgrade the ICU version in
     Test: n/a
     "
     # Clone the upstream CLDR repo locally to ${UPSTREAM_ICU_GIT}
-    test -d ${UPSTREAM_ICU_GIT} || git clone https://github.com/unicode-org/icu.git ${UPSTREAM_ICU_GIT}
+    test -d ${UPSTREAM_ICU_GIT}/.git || git clone https://github.com/unicode-org/icu.git ${UPSTREAM_ICU_GIT}
 
     git --git-dir=${UPSTREAM_ICU_GIT}/.git --work-tree=${UPSTREAM_ICU_GIT} fetch
     git --git-dir=${UPSTREAM_ICU_GIT}/.git --work-tree=${UPSTREAM_ICU_GIT} checkout ${UPSTREAM_RELEASE_TAG}
-    find icu4j/ -type f,d ! -regex ".*/\(Android.mk\|Android.bp\|adjust_icudt_path.mk\|liblayout-jarjar-rules.txt\|.gitignore\|AndroidTest.xml\)" -delete
-    find icu4c/ -type f,d ! -regex ".*/\(Android.mk\|Android.bp\|.gitignore\|AndroidTest.xml\|robo-jarjar-rules.txt\)" -delete
-    cp -r ${UPSTREAM_ICU_GIT}/icu4j .
-    cp -r ${UPSTREAM_ICU_GIT}/icu4c .
-    git checkout HEAD -- icu4c/.gitignore icu4j/.gitignore # Android has extra .gitignores. Use our version.
-    rm -r tools/cldr
-    cp -r ${UPSTREAM_ICU_GIT}/tools/cldr tools/cldr
+    find icu4j/ -type f,d ! -regex ".*/\(Android.mk\|Android.bp\|adjust_icudt_path.mk\|liblayout-jarjar-rules.txt\|.gitignore\|AndroidTest.xml\)" -delete && \
+    find icu4c/ -type f,d ! -regex ".*/\(Android.mk\|Android.bp\|.gitignore\|AndroidTest.xml\|robo-jarjar-rules.txt\)" -delete && \
+    cp -r ${UPSTREAM_ICU_GIT}/icu4j . && \
+    cp -r ${UPSTREAM_ICU_GIT}/icu4c . && \
+    git checkout HEAD -- icu4c/.gitignore icu4j/.gitignore  && # Android has extra .gitignores. Use our version. \
+    rm -r tools/cldr && \
+    cp -r ${UPSTREAM_ICU_GIT}/tools/cldr tools/cldr && \
 
-    git add -A
+    git add -A && \
     git commit -F- <<EOF
     Copy ICU ${UPSTREAM_RELEASE_TAG} into goog/${ICU_BRANCH}
 
@@ -166,7 +174,9 @@ The below contains the steps and commands in order to upgrade the ICU version in
         ```shell
         git cherry-pick <first_patch_in_the_chain>~1..<last_patch_in_the_chain>
         ```
-   4b. Cherry-pick the patches since the ICU upgrade
+      * If any cherry-picks causes conflicts, please resolve them carefully.
+          * If the patch and a upstream commit resolves the same issue, or the patch has been upstreamed, the patch can be discarded.
+   4b. Cherry-pick theq patches since the ICU upgrade
       * Find the patches with this query.
          * AOSP gerrit: https://r.android.com/q/%2522Android+patch%2522+project:platform/external/icu+status:merged+-owner:automerger+-owner:android-build-coastguard-worker%2540google.com+branch:main
          * Internal gerrit: https://googleplex-android-review.git.corp.google.com/q/%2522Android+patch%2522+project:platform/external/icu+status:merged+-owner:automerger+-owner:android-build-coastguard-worker%2540google.com+branch:main
@@ -185,9 +195,9 @@ The below contains the steps and commands in order to upgrade the ICU version in
    5a. Update icu source data files
    ```shell
    croot external/icu
-   tools/updatecldrdata.py
+   tools/updatecldrdata.py  && \
 
-   git add -A
+   git add -A && \
    git commit  -F- <<EOF
    Regenerated source data files with Android CLDR patches
 
@@ -200,8 +210,8 @@ The below contains the steps and commands in order to upgrade the ICU version in
 
    5b. Update icu binary data files
    ```shell
-   tools/updateicudata.py
-   git add -A
+   tools/updateicudata.py  && \
+   git add -A && \
    git commit -F- <<EOF
    Regenerated binary data files with Android ICU patches
 
@@ -215,8 +225,8 @@ The below contains the steps and commands in order to upgrade the ICU version in
    5c. Pin the public API surface temporarily
       * We will later expose the new APIs after submitting the version upgrade CLs.
    ```shell
-   ./tools/srcgen/generate_allowlisted_public_api.sh
-   git add -A
+   ./tools/srcgen/generate_allowlisted_public_api.sh && \
+   git add -A && \
    git commit -F- <<EOF
    Pin the current API list
 
@@ -227,9 +237,9 @@ The below contains the steps and commands in order to upgrade the ICU version in
    5d. Regenerate android_icu4j/
       * Commands
       ```shell
-      tools/srcgen/generate_android_icu4j.sh
+      tools/srcgen/generate_android_icu4j.sh && \
 
-      git add -A
+      git add -A && \
       git commit -F- <<EOF
       Regenerate android_icu4j/ from icu4j/
 
@@ -304,8 +314,8 @@ The below contains the steps and commands in order to upgrade the ICU version in
    ```shell
    cd $ANDROID_BUILD_TOP/system/timezone
    repo start ${ICU_BRANCH} .
-   ./update-tzdata.py
-   git add -A
+   ./update-tzdata.py && \
+   git add -A && \
    git commit -F- <<EOF
    Regenerate data files for ICU ${ICU_VERSION} upgrade
 
@@ -339,23 +349,19 @@ The below contains the steps and commands in order to upgrade the ICU version in
      android-libcore-team@ how to deal with the updates, because they may need to cherry-pick
      them into tzdata module updates.
 
-   5i. Update the version numbers in the METADATA
-      1. Update the external/icu/README.version
-      2. Update version and upgrade date in external/cldr/METADATA
-      3. `git commit` the file change
-
-   5j. Regenerate frameworks/base/libs/androidfw/LocaleDataTables.cpp
+   5i. Regenerate frameworks/base/libs/androidfw/LocaleDataLookup.cpp
    ```shell
    croot frameworks/base
-   ./tools/localedata/extract_icu_data.py $ANDROID_BUILD_TOP > libs/androidfw/LocaleDataTables.cpp
+   repo start icu${ICU_VERSION} .
+   ./tools/localedata/extract_icu_data.py $ANDROID_BUILD_TOP > libs/androidfw/LocaleDataLookup.cpp
    git commit -a -F- <<EOF
-   Regenerate LocaleDataTables.cpp due to ICU ${ICU_VERSION} upgrade
+   Regenerate LocaleDataLookup.cpp due to ICU ${ICU_VERSION} upgrade
 
    The command:
-   ./tools/localedata/extract_icu_data.py \$ANDROID_BUILD_TOP > libs/androidfw/LocaleDataTables.cpp
+   ./tools/localedata/extract_icu_data.py \$ANDROID_BUILD_TOP > libs/androidfw/LocaleDataLookup.cpp
 
    Bug: ${ICU_UPGRADE_BUG}
-   Test: atest FrameworksCoreTests:android.text.format
+   Test: atest libandroidfw_tests FrameworksCoreTests:android.text.format
    EOF
    ```
 6. Build and run test
@@ -363,6 +369,16 @@ The below contains the steps and commands in order to upgrade the ICU version in
    6a. Build by `m droid cts`
 
    6b. Run the device tests by `atest CtsIcu4cTestCases CtsIcuTestCases CtsLibcoreTestCases CtsLibcoreOjTestCases CtsBionicTestCases CtsTextTestCases minikin_tests -- --abi x86_64 # the primary ABI`
+      * If running `CtsIcu4cTestCases` causes a native crash, e.g. `exit code 137`, check `adb logcat` for native crash dump.
+      * If the native crash dump isn't found, try to run the following shell command before checking the logcat again.
+      * ```shell
+        m CtsIcu4cTestCases && \
+        adb push out/soong/.intermediates/external/icu/icu4c/source/test/intltest/intltest64/android_x86_64_silvermont/intltest64 /data/local/tmp/intltest && \ # replace android_x86_64_silvermont if you are not using cuttlefish.
+        adb push out/host/linux-x86/testcases/CtsIcu4cTestCases/icu4c_test_data.zip /data/local/tmp/icu4c_test_data.zip && \
+        adb shell unzip -o -d /data/local/tmp/ /data/local/tmp/icu4c_test_data.zip && \
+        adb shell chmod a+x /data/local/tmp/intltest && \
+        adb shell /data/local/tmp/intltest -w -x /data/local/tmp/intltest_res.xml
+        ```
 
    6c. [No longer needed] Run the host-side test by
       * ICU4J host-side test `ant check`
@@ -388,7 +404,12 @@ The below contains the steps and commands in order to upgrade the ICU version in
     Test: atest CtsIcu4cTestCases CtsIcuTestCases CtsLibcoreTestCases CtsLibcoreOjTestCases CtsBionicTestCases CtsTextTestCases minikin_tests
     "
     ```
-9. Upload and submit changes from external/icu, external/cldr, libcore, frameworks/base, system/timezone
+9. Update the version numbers in the METADATA
+   9a. Update the external/icu/METADATA in `git_main`
+   9b. Update version and upgrade date in external/cldr/METADATA
+   9c. `git commit` the file change
+
+10. Upload and submit changes from external/icu, external/cldr, libcore, frameworks/base, system/timezone
 
     10a. `repo upload --cbr -o uploadvalidator~skip --no-verify .`
 
@@ -397,7 +418,8 @@ The below contains the steps and commands in order to upgrade the ICU version in
           app compatibility issues if the app depends on them. However, app
          has been warned to check the availability before invoking them.
           https://developer.android.com/reference/android/icu/text/Transliterator#getAvailableIDs()
-10. After submitting all the CLs to goog/main, expose the new stable ICU4J APIs to Android SDK
+
+11. After submitting all the CLs to goog/main, expose the new stable ICU4J APIs to Android SDK
     ```shell
     rm tools/srcgen/allowlisted-public-api.txt
     ./tools/generate_android_icu4j.sh
@@ -414,7 +436,7 @@ The below contains the steps and commands in order to upgrade the ICU version in
     Test: atest CtsIcuTestCases
     EOF
     ```
-11. Send email android-libcore@ and icu-team@ to announce this.
+12. Send email android-libcore@ and icu-team@ to announce this.
     1. Some Android teams may have dependency on the new ICU version for other features.
     2. Email template
    ```text
