@@ -23,7 +23,7 @@ import com.ibm.icu.text.UTF16;
  *
  * What are first, last, and getBeginIndex doing here?!?!?!
  */
-public class ReplaceableUCharacterIterator extends UCharacterIterator implements Cloneable {
+public class ReplaceableUCharacterIterator extends UCharacterIterator {
 
     // public constructor ------------------------------------------------------
 
@@ -71,9 +71,9 @@ public class ReplaceableUCharacterIterator extends UCharacterIterator implements
      * @return copy of this iterator
      */
     @Override
-    public ReplaceableUCharacterIterator clone(){
+    public Object clone(){
         try {
-          return (ReplaceableUCharacterIterator) super.clone();
+          return super.clone();
         } catch (CloneNotSupportedException e) {
             return null; // never invoked
         }

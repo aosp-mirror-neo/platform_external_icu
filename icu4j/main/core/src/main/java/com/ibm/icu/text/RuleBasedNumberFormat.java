@@ -547,7 +547,7 @@ import com.ibm.icu.util.UResourceBundleIterator;
  * @see PluralRules
  * @stable ICU 2.0
  */
-public class RuleBasedNumberFormat extends NumberFormat implements Cloneable {
+public class RuleBasedNumberFormat extends NumberFormat {
 
     //-----------------------------------------------------------------------
     // constants
@@ -908,8 +908,8 @@ public class RuleBasedNumberFormat extends NumberFormat implements Cloneable {
      * @stable ICU 2.0
      */
     @Override
-    public RuleBasedNumberFormat clone() {
-        return (RuleBasedNumberFormat) super.clone();
+    public Object clone() {
+        return super.clone();
     }
 
     /**
@@ -1490,7 +1490,7 @@ public class RuleBasedNumberFormat extends NumberFormat implements Cloneable {
      */
     public void setDecimalFormatSymbols(DecimalFormatSymbols newSymbols) {
         if (newSymbols != null) {
-            decimalFormatSymbols = newSymbols.clone();
+            decimalFormatSymbols = (DecimalFormatSymbols) newSymbols.clone();
             if (decimalFormat != null) {
                 decimalFormat.setDecimalFormatSymbols(decimalFormatSymbols);
             }

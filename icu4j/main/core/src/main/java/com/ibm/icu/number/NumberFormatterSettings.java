@@ -341,7 +341,7 @@ public abstract class NumberFormatterSettings<T extends NumberFormatterSettings<
      * @stable ICU 60
      */
     public T symbols(DecimalFormatSymbols symbols) {
-        symbols = symbols.clone();
+        symbols = (DecimalFormatSymbols) symbols.clone();
         return create(KEY_SYMBOLS, symbols);
     }
 

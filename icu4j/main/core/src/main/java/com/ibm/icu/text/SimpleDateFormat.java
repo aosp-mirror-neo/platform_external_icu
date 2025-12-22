@@ -386,7 +386,7 @@ import com.ibm.icu.util.UResourceBundle;
  * @author       Mark Davis, Chen-Lieh Huang, Alan Liu
  * @stable ICU 2.0
  */
-public class SimpleDateFormat extends DateFormat implements Cloneable {
+public class SimpleDateFormat extends DateFormat {
 
     // the official serial version ID which says cryptically
     // which version we're compatible with
@@ -711,7 +711,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
      */
     public SimpleDateFormat(String pattern, DateFormatSymbols formatData)
     {
-        this(pattern, formatData.clone(), null, null, null, true, null);
+        this(pattern, (DateFormatSymbols)formatData.clone(), null, null, null, true, null);
     }
 
     /**
@@ -721,7 +721,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
     @Deprecated
     public SimpleDateFormat(String pattern, DateFormatSymbols formatData, ULocale loc)
     {
-        this(pattern, formatData.clone(), null, null, loc, true,null);
+        this(pattern, (DateFormatSymbols)formatData.clone(), null, null, loc, true,null);
     }
 
     /**
@@ -732,7 +732,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
      */
     SimpleDateFormat(String pattern, DateFormatSymbols formatData, Calendar calendar, ULocale locale,
                      boolean useFastFormat, String override) {
-        this(pattern, formatData.clone(), calendar.clone(), null, locale, useFastFormat,override);
+        this(pattern, (DateFormatSymbols)formatData.clone(), (Calendar)calendar.clone(), null, locale, useFastFormat,override);
     }
 
     /*
@@ -928,7 +928,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
         defaultCenturyBase = baseTime;
         // clone to avoid messing up date stored in calendar object
         // when this method is called while parsing
-        Calendar tmpCal = calendar.clone();
+        Calendar tmpCal = (Calendar)calendar.clone();
         tmpCal.setTimeInMillis(baseTime);
         tmpCal.add(Calendar.YEAR, -80);
         defaultCenturyStart = tmpCal.getTime();
@@ -1761,7 +1761,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
                 }
                 // Note, the call to UCharacter.toTitleCase below is the only place that
                 // (the clone of) capitalizationBrkIter is actually used.
-                BreakIterator mutableCapitalizationBrkIter = capitalizationBrkIter.clone();
+                BreakIterator mutableCapitalizationBrkIter = (BreakIterator)capitalizationBrkIter.clone();
                 String firstField = buf.substring(bufstart); // bufstart or beginOffset, should be the same
                 String firstFieldTitleCase = UCharacter.toTitleCase(locale, firstField, mutableCapitalizationBrkIter,
                                                      UCharacter.TITLECASE_NO_LOWERCASE | UCharacter.TITLECASE_NO_BREAK_ADJUSTMENT);
@@ -2353,7 +2353,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
                 // stop working if Calendar.clone() is ever rewritten to call complete().
                 Calendar copy;
                 if (ambiguousYear[0]) { // the two-digit year == the default start year
-                    copy = cal.clone();
+                    copy = (Calendar)cal.clone();
                     Date parsedDate = copy.getTime();
                     if (parsedDate.before(getDefaultCenturyStart())) {
                         // We can't use add here because that does a complete() first.
@@ -2361,7 +2361,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
                     }
                 }
                 if (tztype != TimeType.UNKNOWN) {
-                    copy = cal.clone();
+                    copy = (Calendar)cal.clone();
                     TimeZone tz = copy.getTimeZone();
                     BasicTimeZone btz = null;
                     if (tz instanceof BasicTimeZone) {
@@ -3751,7 +3751,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
      */
     public DateFormatSymbols getDateFormatSymbols()
     {
-        return formatData.clone();
+        return (DateFormatSymbols)formatData.clone();
     }
 
     /**
@@ -3761,7 +3761,7 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
      */
     public void setDateFormatSymbols(DateFormatSymbols newFormatSymbols)
     {
-        this.formatData = newFormatSymbols.clone();
+        this.formatData = (DateFormatSymbols)newFormatSymbols.clone();
     }
 
     /**
@@ -3805,9 +3805,9 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
      * @stable ICU 2.0
      */
     @Override
-    public SimpleDateFormat clone() {
+    public Object clone() {
         SimpleDateFormat other = (SimpleDateFormat) super.clone();
-        other.formatData = formatData.clone();
+        other.formatData = (DateFormatSymbols) formatData.clone();
         // We must create a new copy of work buffer used by
         // the fast numeric field format code.
         if (this.decimalBuf != null) {

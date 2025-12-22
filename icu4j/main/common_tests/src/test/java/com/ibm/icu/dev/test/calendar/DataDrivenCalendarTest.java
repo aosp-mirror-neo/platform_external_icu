@@ -258,7 +258,7 @@ public class DataDrivenCalendarTest extends CoreTestFmwk {
             }
 
             // to calendar - copy of from calendar
-            Calendar toCalendar = fromCalendar.clone();
+            Calendar toCalendar = (Calendar)fromCalendar.clone();
 
             /// perform op on 'to calendar'
             for (int q=0; q<paramsSet.fieldCount(); q++) {

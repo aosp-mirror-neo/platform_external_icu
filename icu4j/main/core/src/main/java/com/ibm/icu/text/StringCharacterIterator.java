@@ -30,7 +30,7 @@ import com.ibm.icu.util.ICUCloneNotSupportedException;
  */
 @Deprecated
 ///CLOVER:OFF
-public final class StringCharacterIterator implements CharacterIterator, Cloneable
+public final class StringCharacterIterator implements CharacterIterator
 {
     private String text;
     private int begin;
@@ -298,10 +298,12 @@ public final class StringCharacterIterator implements CharacterIterator, Cloneab
      */
     @Override
     @Deprecated
-    public StringCharacterIterator clone()
+    public Object clone()
     {
         try {
-            return (StringCharacterIterator) super.clone();
+            StringCharacterIterator other
+            = (StringCharacterIterator) super.clone();
+            return other;
         }
         catch (CloneNotSupportedException e) {
             throw new ICUCloneNotSupportedException(e);

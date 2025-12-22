@@ -35,7 +35,7 @@ import com.ibm.icu.impl.Grego;
  *
  * @stable ICU 3.8
  */
-public class VTimeZone extends BasicTimeZone implements Cloneable {
+public class VTimeZone extends BasicTimeZone {
 
     private static final long serialVersionUID = -6851467294127795902L;
 
@@ -383,7 +383,7 @@ public class VTimeZone extends BasicTimeZone implements Cloneable {
      * @stable ICU 3.8
      */
     @Override
-    public VTimeZone clone() {
+    public Object clone() {
         if (isFrozen()) {
             return this;
         }
@@ -2124,7 +2124,7 @@ public class VTimeZone extends BasicTimeZone implements Cloneable {
      * @stable ICU 49
      */
     @Override
-    public VTimeZone cloneAsThawed() {
+    public TimeZone cloneAsThawed() {
         VTimeZone vtz = (VTimeZone)super.cloneAsThawed();
         vtz.tz = (BasicTimeZone)tz.cloneAsThawed();
         vtz.isFrozen = false;

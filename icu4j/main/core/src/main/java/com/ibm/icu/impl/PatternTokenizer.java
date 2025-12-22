@@ -39,7 +39,7 @@ public class PatternTokenizer {
     private String pattern;
     
     public UnicodeSet getIgnorableCharacters() {
-        return ignorableCharacters.clone();
+        return (UnicodeSet) ignorableCharacters.clone();
     }
     /**
      * Sets the characters to be ignored in parsing, eg new UnicodeSet("[:pattern_whitespace:]");
@@ -47,15 +47,15 @@ public class PatternTokenizer {
      * @return A PatternTokenizer object in which characters are specified as ignored characters.
      */
     public PatternTokenizer setIgnorableCharacters(UnicodeSet ignorableCharacters) {
-        this.ignorableCharacters = ignorableCharacters.clone();
+        this.ignorableCharacters = (UnicodeSet) ignorableCharacters.clone();
         needingQuoteCharacters = null;
         return this;
     }
     public UnicodeSet getSyntaxCharacters() {
-        return syntaxCharacters.clone();
+        return (UnicodeSet) syntaxCharacters.clone();
     }
     public UnicodeSet getExtraQuotingCharacters() {
-        return extraQuotingCharacters.clone();
+        return (UnicodeSet) extraQuotingCharacters.clone();
     }
     /**
      *  Sets the characters to be interpreted as syntax characters in parsing, eg new UnicodeSet("[:pattern_syntax:]")
@@ -63,7 +63,7 @@ public class PatternTokenizer {
      * @return A PatternTokenizer object in which characters are specified as syntax characters.
      */
     public PatternTokenizer setSyntaxCharacters(UnicodeSet syntaxCharacters) {
-        this.syntaxCharacters = syntaxCharacters.clone();
+        this.syntaxCharacters = (UnicodeSet) syntaxCharacters.clone();
         needingQuoteCharacters = null;
         return this;
     }   
@@ -73,13 +73,13 @@ public class PatternTokenizer {
      * @return A PatternTokenizer object in which characters are specified as extra quoting characters.
      */
     public PatternTokenizer setExtraQuotingCharacters(UnicodeSet syntaxCharacters) {
-        this.extraQuotingCharacters = syntaxCharacters.clone();
+        this.extraQuotingCharacters = (UnicodeSet) syntaxCharacters.clone();
         needingQuoteCharacters = null;
         return this;
     }   
     
     public UnicodeSet getEscapeCharacters() {
-        return escapeCharacters.clone();
+        return (UnicodeSet) escapeCharacters.clone();
     }
     /**
      * Set characters to be escaped in literals, in quoteLiteral and normalize, eg new UnicodeSet("[^\\u0020-\\u007E]");
@@ -87,7 +87,7 @@ public class PatternTokenizer {
      * @return A PatternTokenizer object in which characters are specified as escape characters.
      */
     public PatternTokenizer setEscapeCharacters(UnicodeSet escapeCharacters) {
-        this.escapeCharacters = escapeCharacters.clone();
+        this.escapeCharacters = (UnicodeSet) escapeCharacters.clone();
         return this;
     }
     public boolean isUsingQuote() {

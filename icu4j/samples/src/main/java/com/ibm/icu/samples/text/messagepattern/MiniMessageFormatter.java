@@ -32,7 +32,7 @@ public final class MiniMessageFormatter implements Freezable<MiniMessageFormatte
     }
 
     public MiniMessageFormatter(MessagePattern msg) {
-        this.msg=msg.clone();
+        this.msg=(MessagePattern)msg.clone();
     }
 
     public MiniMessageFormatter(String msg) {

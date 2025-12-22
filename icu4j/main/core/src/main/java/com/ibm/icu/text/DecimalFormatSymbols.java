@@ -1231,12 +1231,14 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
      * @stable ICU 2.0
      */
     @Override
-    public DecimalFormatSymbols clone() {
+    public Object clone() {
         try {
-            return (DecimalFormatSymbols) super.clone();
+            return super.clone();
             // other fields are bit-copied
         } catch (CloneNotSupportedException e) {
+            ///CLOVER:OFF
             throw new ICUCloneNotSupportedException(e);
+            ///CLOVER:ON
         }
     }
 

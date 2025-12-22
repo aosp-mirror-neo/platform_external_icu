@@ -46,7 +46,7 @@ import com.ibm.icu.util.CodePointTrie;
  *
  * @stable ICU 2.0
  */
-public class RuleBasedBreakIterator extends BreakIterator implements Cloneable {
+public class RuleBasedBreakIterator extends BreakIterator {
     //=======================================================================
     // Constructors & Factories
     //=======================================================================
@@ -164,11 +164,11 @@ public class RuleBasedBreakIterator extends BreakIterator implements Cloneable {
      * @stable ICU 2.0
      */
     @Override
-    public RuleBasedBreakIterator clone()  {
+    public Object clone()  {
         RuleBasedBreakIterator result;
         result = (RuleBasedBreakIterator)super.clone();
         if (fText != null) {
-            result.fText = (CharacterIterator)fText.clone();
+            result.fText = (CharacterIterator)(fText.clone());
         }
         result.fLookAheadMatches = new int[fRData.fFTable.fLookAheadResultsSize];
         result.fBreakCache = result.new BreakCache(fBreakCache);
@@ -1274,7 +1274,7 @@ public class RuleBasedBreakIterator extends BreakIterator implements Cloneable {
          */
         DictionaryCache(DictionaryCache src)  {
             try {
-                fBreaks = src.fBreaks.clone();
+                fBreaks = (DictionaryBreakEngine.DequeI)src.fBreaks.clone();
             }
             catch (CloneNotSupportedException e) {
                 throw new RuntimeException(e);

@@ -712,7 +712,7 @@ public class DecimalFormatProperties implements Cloneable, Serializable {
         // TODO: In order to maintain immutability, we have to perform a clone here.
         // It would be better to just retire CurrencyPluralInfo entirely.
         if (currencyPluralInfo != null) {
-            currencyPluralInfo = currencyPluralInfo.clone();
+            currencyPluralInfo = (CurrencyPluralInfo) currencyPluralInfo.clone();
         }
         this.currencyPluralInfo = currencyPluralInfo;
         return this;

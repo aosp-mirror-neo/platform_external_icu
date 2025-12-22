@@ -8,7 +8,7 @@ import java.text.CharacterIterator;
  * Implement the Java CharacterIterator interface on a CharSequence.
  * Intended for internal use by ICU only.
  */
-public class CSCharacterIterator implements CharacterIterator, Cloneable {
+public class CSCharacterIterator implements CharacterIterator {
 
     private int index;
     private CharSequence seq;
@@ -98,7 +98,7 @@ public class CSCharacterIterator implements CharacterIterator, Cloneable {
 
     /** @{inheritDoc} */
     @Override
-    public CSCharacterIterator clone() {
+    public Object clone() {
         CSCharacterIterator copy = new CSCharacterIterator(seq);
         copy.setIndex(index);
         return copy;

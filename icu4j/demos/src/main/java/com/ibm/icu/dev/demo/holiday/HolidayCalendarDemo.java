@@ -505,7 +505,7 @@ public class HolidayCalendarDemo extends DemoApplet
 
         private void calculate()
         {
-            Calendar c = fCalendar.clone(); // Temporary copy
+            Calendar c = (Calendar)fCalendar.clone(); // Temporary copy
 
             fStartOfMonth = startOfMonth(fStartOfMonth);
 
@@ -656,7 +656,7 @@ public class HolidayCalendarDemo extends DemoApplet
             Font numberFont = new Font("Helvetica",Font.PLAIN,12);
             // not used Font holidayFont = DemoUtility.creditFont;
 
-            Calendar c = fCalendar.clone();
+            Calendar c = (Calendar)fCalendar.clone();
             c.setTime(fStartOfMonth);
 
             for (int i = 1, h = 0; i <= daysInMonth; i++) {

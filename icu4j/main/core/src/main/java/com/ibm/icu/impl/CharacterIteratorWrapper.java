@@ -18,7 +18,7 @@ import com.ibm.icu.text.UCharacterIterator;
  * @author ram
  */
 
-public class CharacterIteratorWrapper extends UCharacterIterator implements Cloneable {
+public class CharacterIteratorWrapper extends UCharacterIterator {
 
     private CharacterIterator iterator;
 
@@ -127,7 +127,7 @@ public class CharacterIteratorWrapper extends UCharacterIterator implements Clon
      * @see UCharacterIterator#clone()
      */
     @Override
-    public CharacterIteratorWrapper clone(){
+    public Object clone(){
         try {
             CharacterIteratorWrapper result = (CharacterIteratorWrapper) super.clone();
             result.iterator = (CharacterIterator)this.iterator.clone();

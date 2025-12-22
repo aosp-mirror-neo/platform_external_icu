@@ -231,10 +231,10 @@ public abstract class BreakIterator implements Cloneable
      * @stable ICU 2.0
      */
     @Override
-    public BreakIterator clone()
+    public Object clone()
     {
         try {
-            return (BreakIterator) super.clone();
+            return super.clone();
         }
         catch (CloneNotSupportedException e) {
             ///CLOVER:OFF
@@ -943,7 +943,7 @@ public abstract class BreakIterator implements Cloneable
 
         BreakIteratorCache(ULocale where, BreakIterator iter) {
             this.where = where;
-            this.iter = iter.clone();
+            this.iter = (BreakIterator) iter.clone();
         }
 
         ULocale getLocale() {
@@ -951,7 +951,7 @@ public abstract class BreakIterator implements Cloneable
         }
 
         BreakIterator createBreakInstance() {
-            return iter.clone();
+            return (BreakIterator) iter.clone();
         }
     }
 

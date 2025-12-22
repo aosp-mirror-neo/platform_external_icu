@@ -95,7 +95,7 @@ class NumberFormatServiceShim extends NumberFormat.NumberFormatShim {
         if (fmt == null) {
             throw new MissingResourceException("Unable to construct NumberFormat", "", "");
         }
-        fmt = fmt.clone();
+        fmt = (NumberFormat)fmt.clone();
 
         // If we are creating a currency type formatter, then we may have to set the currency
         // explicitly, since the actualLoc may be different than the desiredLocale

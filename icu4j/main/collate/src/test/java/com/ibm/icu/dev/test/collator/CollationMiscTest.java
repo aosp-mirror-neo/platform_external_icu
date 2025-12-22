@@ -3492,7 +3492,7 @@ public class CollationMiscTest extends TestFmwk {
             return;
         }
         try {
-            myCollation = originalCollation.clone();
+            myCollation = (Collator) originalCollation.clone();
         } catch (Exception e) {
             warnln("ERROR: in creation of rule based collator");
             return;
@@ -3717,7 +3717,7 @@ public class CollationMiscTest extends TestFmwk {
 
         Collator myClone = null;
         try {
-            myClone = myCollation.clone();
+            myClone = (Collator) myCollation.clone();
         } catch (CloneNotSupportedException e) {
             // should not happen - clone is implemented in Collator
             errln("ERROR: unable to clone collator.");

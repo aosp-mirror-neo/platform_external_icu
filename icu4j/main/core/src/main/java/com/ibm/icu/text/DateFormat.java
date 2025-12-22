@@ -1682,7 +1682,7 @@ public abstract class DateFormat extends UFormat {
      */
     public void setNumberFormat(NumberFormat newNumberFormat)
     {
-        numberFormat = newNumberFormat.clone();
+        numberFormat = (NumberFormat)newNumberFormat.clone();
         fixNumberFormatForDates(numberFormat);
     }
 
@@ -1895,12 +1895,12 @@ public abstract class DateFormat extends UFormat {
      * @stable ICU 2.0
      */
     @Override
-    public DateFormat clone()
+    public Object clone()
     {
         DateFormat other = (DateFormat) super.clone();
-        other.calendar = calendar.clone();
+        other.calendar = (Calendar) calendar.clone();
         if (numberFormat != null) {
-            other.numberFormat = numberFormat.clone();
+            other.numberFormat = (NumberFormat) numberFormat.clone();
         }
         return other;
     }

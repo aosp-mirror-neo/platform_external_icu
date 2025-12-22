@@ -365,7 +365,7 @@ import com.ibm.icu.util.ULocale.Category;
  * @author       Markus Scherer
  * @stable ICU 3.0
  */
-public class MessageFormat extends UFormat implements Cloneable {
+public class MessageFormat extends UFormat {
 
     // Incremented by 1 for ICU 4.8's new format.
     static final long serialVersionUID = 7136212545847378652L;
@@ -1454,7 +1454,7 @@ public class MessageFormat extends UFormat implements Cloneable {
      * @stable ICU 3.0
      */
     @Override
-    public MessageFormat clone() {
+    public Object clone() {
         MessageFormat other = (MessageFormat) super.clone();
 
         if (customFormatArgStarts != null) {
@@ -1477,11 +1477,11 @@ public class MessageFormat extends UFormat implements Cloneable {
             other.cachedFormatters = null;
         }
 
-        other.msgPattern = msgPattern == null ? null : msgPattern.clone();
+        other.msgPattern = msgPattern == null ? null : (MessagePattern)msgPattern.clone();
         other.stockDateFormatter =
-                stockDateFormatter == null ? null : stockDateFormatter.clone();
+                stockDateFormatter == null ? null : (DateFormat) stockDateFormatter.clone();
         other.stockNumberFormatter =
-                stockNumberFormatter == null ? null : stockNumberFormatter.clone();
+                stockNumberFormatter == null ? null : (NumberFormat) stockNumberFormatter.clone();
 
         other.pluralProvider = null;
         other.ordinalProvider = null;

@@ -1144,7 +1144,7 @@ public class ChineseCalendar extends Calendar {
         if (resolveFields(MONTH_PRECEDENCE) == MONTH) {
             return internalGet(MONTH);
         }
-        Calendar temp = clone();
+        Calendar temp = (Calendar) clone();
         temp.set(Calendar.MONTH, 0);
         temp.set(Calendar.IS_LEAP_MONTH, 0);
         temp.set(Calendar.DATE, 1);
@@ -1179,7 +1179,7 @@ public class ChineseCalendar extends Calendar {
     @Override
     public int getActualMaximum(int field) {
         if (field == DAY_OF_MONTH) {
-            Calendar cal = clone();
+            Calendar cal = (Calendar) clone();
             cal.setLenient(true);
             cal.prepareGetActual(field, false);
             int eyear = cal.get(EXTENDED_YEAR);

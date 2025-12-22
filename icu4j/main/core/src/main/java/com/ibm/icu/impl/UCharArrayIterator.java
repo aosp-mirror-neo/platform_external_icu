@@ -17,7 +17,7 @@ import com.ibm.icu.text.UCharacterIterator;
  *
  */
 
-public final class UCharArrayIterator extends UCharacterIterator implements Cloneable {
+public final class UCharArrayIterator extends UCharacterIterator {
     private final char[] text;
     private final int start;
     private final int limit;
@@ -84,9 +84,9 @@ public final class UCharArrayIterator extends UCharacterIterator implements Clon
      * @return copy of this iterator
      */
     @Override
-    public UCharArrayIterator clone() {
+    public Object clone(){
         try {
-          return (UCharArrayIterator) super.clone();
+          return super.clone();
         } catch (CloneNotSupportedException e) {
             return null; // never invoked
         }

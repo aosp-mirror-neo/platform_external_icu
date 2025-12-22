@@ -169,7 +169,7 @@ import com.ibm.icu.util.ULocale.Category;
  * @author Deborah Goldsmith, Mark Davis, Chen-Lieh Huang, Alan Liu
  * @stable ICU 2.0
  */
-public class GregorianCalendar extends Calendar implements Cloneable {
+public class GregorianCalendar extends Calendar {
     // jdk1.4.2 serialver
     private static final long serialVersionUID = 9199388694351062137L;
 
@@ -675,7 +675,7 @@ public class GregorianCalendar extends Calendar implements Cloneable {
              * Feb 29 must be allowed to shift to Mar 1 when setting the year.
              */
             {
-                Calendar cal = clone();
+                Calendar cal = (Calendar) clone();
                 cal.setLenient(true);
 
                 int era = cal.get(ERA);
@@ -937,13 +937,4 @@ public class GregorianCalendar extends Calendar implements Cloneable {
         return factory;
     }
     */
-
-    /**
-     * {@inheritDoc}
-     * @stable ICU 2.0
-     */
-    @Override
-    public GregorianCalendar clone() {
-        return (GregorianCalendar) super.clone();
-    }
 }

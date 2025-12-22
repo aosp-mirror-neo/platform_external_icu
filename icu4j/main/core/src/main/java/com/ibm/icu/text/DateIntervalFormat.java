@@ -270,7 +270,7 @@ import com.ibm.icu.util.UResourceBundle;
  * @stable ICU 4.0
  */
 
-public class DateIntervalFormat extends UFormat implements Cloneable {
+public class DateIntervalFormat extends UFormat {
 
     /**
      * An immutable class containing the result of a date interval formatting operation.
@@ -526,8 +526,8 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
         fSkeleton = skeleton;
         fInfo = dtItvInfo;
         isDateIntervalInfoDefault = false;
-        fFromCalendar = fDateFormat.getCalendar().clone();
-        fToCalendar = fDateFormat.getCalendar().clone();
+        fFromCalendar = (Calendar) fDateFormat.getCalendar().clone();
+        fToCalendar = (Calendar) fDateFormat.getCalendar().clone();
         initializePattern(null);
     }
 
@@ -538,8 +538,8 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
         fSkeleton = skeleton;
         fInfo = new DateIntervalInfo(locale).freeze();
         isDateIntervalInfoDefault = true;
-        fFromCalendar = fDateFormat.getCalendar().clone();
-        fToCalendar = fDateFormat.getCalendar().clone();
+        fFromCalendar = (Calendar) fDateFormat.getCalendar().clone();
+        fToCalendar = (Calendar) fDateFormat.getCalendar().clone();
         initializePattern(LOCAL_PATTERN_CACHE);
 }
 
@@ -798,7 +798,7 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
     {
         // clone. If it is frozen, clone returns itself, otherwise, clone
         // returns a copy.
-        dtitvinf = dtitvinf.clone();
+        dtitvinf = (DateIntervalInfo)dtitvinf.clone();
         DateTimePatternGenerator generator = DateTimePatternGenerator.getInstance(locale);
         return new DateIntervalFormat(skeleton, dtitvinf, new SimpleDateFormat(generator.getBestPattern(skeleton), locale));
     }
@@ -810,13 +810,13 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      * @stable ICU 4.0
      */
     @Override
-    public synchronized DateIntervalFormat clone()
+    public synchronized Object clone()
     {
         DateIntervalFormat other = (DateIntervalFormat) super.clone();
-        other.fDateFormat = fDateFormat.clone();
-        other.fInfo = fInfo.clone();
-        other.fFromCalendar = fFromCalendar.clone();
-        other.fToCalendar = fToCalendar.clone();
+        other.fDateFormat = (SimpleDateFormat) fDateFormat.clone();
+        other.fInfo = (DateIntervalInfo) fInfo.clone();
+        other.fFromCalendar = (Calendar) fFromCalendar.clone();
+        other.fToCalendar = (Calendar) fToCalendar.clone();
         other.fDatePattern = fDatePattern;
         other.fTimePattern = fTimePattern;
         other.fDateTimeFormat = fDateTimeFormat;
@@ -1339,7 +1339,7 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      */
     public DateIntervalInfo getDateIntervalInfo()
     {
-        return fInfo.clone();
+        return (DateIntervalInfo)fInfo.clone();
     }
 
 
@@ -1352,7 +1352,7 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
     {
         // clone it. If it is frozen, the clone returns itself.
         // Otherwise, clone returns a copy
-        fInfo = newItvPattern.clone();
+        fInfo = (DateIntervalInfo)newItvPattern.clone();
         this.isDateIntervalInfoDefault = false;
         fInfo.freeze(); // freeze it
         if ( fDateFormat != null ) {
@@ -1371,7 +1371,7 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
             // Here we clone, like other getters here, but unlike
             // DateFormat.getTimeZone() and Calendar.getTimeZone()
             // which return the TimeZone from the Calendar's zone variable
-            return fDateFormat.getTimeZone().clone();
+            return (TimeZone)(fDateFormat.getTimeZone().clone());
         }
         // If fDateFormat is null (unexpected), return default timezone.
         return TimeZone.getDefault();
@@ -1386,7 +1386,7 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
     public void setTimeZone(TimeZone zone)
     {
         // zone is cloned once for all three usages below:
-        TimeZone zoneToSet = zone.clone();
+        TimeZone zoneToSet = (TimeZone)zone.clone();
         if (fDateFormat != null) {
             fDateFormat.setTimeZone(zoneToSet);
         }
@@ -1439,7 +1439,7 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      */
     public synchronized DateFormat getDateFormat()
     {
-        return fDateFormat.clone();
+        return (DateFormat)fDateFormat.clone();
     }
 
 

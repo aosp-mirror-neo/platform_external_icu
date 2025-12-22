@@ -306,7 +306,7 @@ import com.ibm.icu.util.VersionInfo;
  * @see UnicodeSetIterator
  * @see UnicodeSetSpanner
  */
-public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Comparable<UnicodeSet>, Freezable<UnicodeSet>, Cloneable {
+public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Comparable<UnicodeSet>, Freezable<UnicodeSet> {
     private static final SortedSet<String> EMPTY_STRINGS =
             Collections.unmodifiableSortedSet(new TreeSet<String>());
 
@@ -529,7 +529,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * @stable ICU 2.0
      */
     @Override
-    public UnicodeSet clone() {
+    public Object clone() {
         if (isFrozen()) {
             return this;
         }
@@ -4003,7 +4003,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
         if (src.hasStrings() || src.getRangeCount() > sensitive.getRangeCount()) {
             return sensitive.cloneAsThawed().retainAll(src);
         } else {
-            return src.clone().retainAll(sensitive);
+            return ((UnicodeSet) src.clone()).retainAll(sensitive);
         }
     }
 

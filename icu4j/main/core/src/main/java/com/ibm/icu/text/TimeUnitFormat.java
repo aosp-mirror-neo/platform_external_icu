@@ -63,7 +63,7 @@ import com.ibm.icu.util.UResourceBundle;
  * @deprecated ICU 53 use {@link MeasureFormat} instead.
  */
 @Deprecated
-public class TimeUnitFormat extends MeasureFormat implements Cloneable {
+public class TimeUnitFormat extends MeasureFormat {
 
     /**
      * Constant for full name style format.
@@ -154,7 +154,7 @@ public class TimeUnitFormat extends MeasureFormat implements Cloneable {
     private TimeUnitFormat(ULocale locale, int style, NumberFormat numberFormat) {
         this(locale, style);
         if (numberFormat != null) {
-            setNumberFormat(numberFormat.clone());
+            setNumberFormat((NumberFormat) numberFormat.clone());
         }
     }
 
@@ -223,7 +223,7 @@ public class TimeUnitFormat extends MeasureFormat implements Cloneable {
     @Override
     @Deprecated
     public NumberFormat getNumberFormat() {
-        return format.clone();
+        return (NumberFormat) format.clone();
     }
 
     @Override
@@ -560,9 +560,9 @@ public class TimeUnitFormat extends MeasureFormat implements Cloneable {
      */
     @Deprecated
     @Override
-    public TimeUnitFormat clone() {
+    public Object clone() {
         TimeUnitFormat result = (TimeUnitFormat) super.clone();
-        result.format = format.clone();
+        result.format = (NumberFormat) format.clone();
         return result;
     }
     // End boilerplate.

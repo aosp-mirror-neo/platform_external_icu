@@ -649,7 +649,7 @@ public final class RelativeDateTimeFormatter {
         if (nf == null) {
             nf = NumberFormat.getInstance(locale);
         } else {
-            nf = nf.clone();
+            nf = (NumberFormat) nf.clone();
         }
         return new RelativeDateTimeFormatter(
                 data.qualitativeUnitMap,
@@ -1069,7 +1069,7 @@ public final class RelativeDateTimeFormatter {
         // This class is thread-safe, yet numberFormat is not. To ensure thread-safety of this
         // class we must guarantee that only one thread at a time uses our numberFormat.
         synchronized (numberFormat) {
-            return numberFormat.clone();
+            return (NumberFormat) numberFormat.clone();
         }
     }
 

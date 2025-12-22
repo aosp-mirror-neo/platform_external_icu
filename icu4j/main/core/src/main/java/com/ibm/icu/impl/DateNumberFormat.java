@@ -27,7 +27,7 @@ import com.ibm.icu.util.UResourceBundle;
  * used by SimpleDateFormat implementation.
  * This class is not thread-safe.
  */
-public final class DateNumberFormat extends NumberFormat implements Cloneable {
+public final class DateNumberFormat extends NumberFormat {
 
     private static final long serialVersionUID = -6315692826916346953L;
 
@@ -277,7 +277,7 @@ public final class DateNumberFormat extends NumberFormat implements Cloneable {
     }
 
     @Override
-    public DateNumberFormat clone() {
+    public Object clone() {
         DateNumberFormat dnfmt = (DateNumberFormat)super.clone();
         dnfmt.digits = this.digits.clone();
         dnfmt.decimalBuf = new char[DECIMAL_BUF_SIZE];

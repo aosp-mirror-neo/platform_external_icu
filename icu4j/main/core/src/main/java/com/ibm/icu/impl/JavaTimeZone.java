@@ -27,7 +27,7 @@ import com.ibm.icu.util.TimeZone;
  * This TimeZone subclass is returned by the TimeZone factory method getTimeZone(String)
  * when the default timezone type in TimeZone class is TimeZone.TIMEZONE_JDK.
  */
-public class JavaTimeZone extends TimeZone implements Cloneable {
+public class JavaTimeZone extends TimeZone {
 
     private static final long serialVersionUID = 6977448185543929364L;
 
@@ -227,7 +227,7 @@ public class JavaTimeZone extends TimeZone implements Cloneable {
      * @see com.ibm.icu.util.TimeZone#clone()
      */
     @Override
-    public JavaTimeZone clone() {
+    public Object clone() {
         if (isFrozen()) {
             return this;
         }
@@ -271,7 +271,7 @@ public class JavaTimeZone extends TimeZone implements Cloneable {
      * @see com.ibm.icu.util.TimeZone#cloneAsThawed()
      */
     @Override
-    public JavaTimeZone cloneAsThawed() {
+    public TimeZone cloneAsThawed() {
         JavaTimeZone tz = (JavaTimeZone)super.cloneAsThawed();
         tz.javatz = (java.util.TimeZone)javatz.clone();
         tz.javacal = new java.util.GregorianCalendar(javatz);  // easier than synchronized javacal.clone()

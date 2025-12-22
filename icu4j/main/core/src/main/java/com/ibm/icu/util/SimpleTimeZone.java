@@ -31,7 +31,7 @@ import com.ibm.icu.impl.Grego;
  * @author   Deborah Goldsmith, Mark Davis, Chen-Lieh Huang, Alan Liu
  * @stable ICU 2.0
  */
-public class SimpleTimeZone extends BasicTimeZone implements Cloneable {
+public class SimpleTimeZone extends BasicTimeZone {
     private static final long serialVersionUID = -7034676239311322769L;
 
     /**
@@ -1213,7 +1213,7 @@ public class SimpleTimeZone extends BasicTimeZone implements Cloneable {
      * @stable ICU 2.0
      */
     @Override
-    public SimpleTimeZone clone() {
+    public Object clone() {
         if (isFrozen()) {
             return this;
         }
@@ -1444,7 +1444,7 @@ public class SimpleTimeZone extends BasicTimeZone implements Cloneable {
      * @stable ICU 49
      */
     @Override
-    public SimpleTimeZone cloneAsThawed() {
+    public TimeZone cloneAsThawed() {
         SimpleTimeZone tz = (SimpleTimeZone)super.cloneAsThawed();
         tz.isFrozen = false;
         return tz;

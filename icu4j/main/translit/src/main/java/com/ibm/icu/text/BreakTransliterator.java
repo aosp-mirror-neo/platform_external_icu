@@ -19,7 +19,7 @@ import com.ibm.icu.util.ULocale;
  * Inserts the specified characters at word breaks. To restrict it to particular characters, use a filter.
  * TODO: this is an internal class, and only temporary. Remove it once we have \b notation in Transliterator.
  */
-final class BreakTransliterator extends Transliterator implements Cloneable {
+final class BreakTransliterator extends Transliterator {
     private BreakIterator bi;
     private String insertion;
 
@@ -390,10 +390,12 @@ final class BreakTransliterator extends Transliterator implements Cloneable {
         * @return A copy of this
         */
         @Override
-        public ReplaceableCharacterIterator clone()
+        public Object clone()
         {
             try {
-                return (ReplaceableCharacterIterator) super.clone();
+                ReplaceableCharacterIterator other
+                = (ReplaceableCharacterIterator) super.clone();
+                return other;
             }
             catch (CloneNotSupportedException e) {
                 throw new ICUCloneNotSupportedException();

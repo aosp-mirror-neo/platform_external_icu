@@ -94,7 +94,7 @@ public class MicroProps implements Cloneable, MicroPropsGenerator {
     @Override
     public MicroProps processQuantity(DecimalQuantity quantity) {
         if (immutable) {
-            return this.clone();
+            return (MicroProps) this.clone();
         } else if (exhausted) {
             // Safety check
             throw new AssertionError("Cannot re-use a mutable MicroProps in the quantity chain");
@@ -105,9 +105,9 @@ public class MicroProps implements Cloneable, MicroPropsGenerator {
     }
 
     @Override
-    public MicroProps clone() {
+    public Object clone() {
         try {
-            return (MicroProps) super.clone();
+            return super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }

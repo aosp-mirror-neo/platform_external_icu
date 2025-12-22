@@ -184,7 +184,7 @@ import com.ibm.icu.util.VersionInfo;
  * @author Syn Wee Quek
  * @stable ICU 2.8
  */
-public final class RuleBasedCollator extends Collator implements Cloneable {
+public final class RuleBasedCollator extends Collator {
     // public constructors ---------------------------------------------------
 
     /**
@@ -245,7 +245,7 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
      * @stable ICU 2.8
      */
     @Override
-    public RuleBasedCollator clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         if (isFrozen()) {
             return this;
         }
