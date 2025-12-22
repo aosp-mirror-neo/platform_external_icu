@@ -16,6 +16,7 @@ public class TestDataElements_testtypes extends ListResourceBundle {
     /**
      * Overrides ListResourceBundle
      */
+    @Override
     public final Object[][] getContents() {
           return  contents;
     }
@@ -29,7 +30,7 @@ public class TestDataElements_testtypes extends ListResourceBundle {
                 },
                 {
                     "emptyarray",
-                    new String[] { 
+                    new String[] {
                     },
                 },
                 {
@@ -117,13 +118,13 @@ public class TestDataElements_testtypes extends ListResourceBundle {
                 },
                 {
                     "string",
-                    new String[] { 
+                    new String[] {
                     },
                 },
                 {
                     "stringTable",
                     new Object[]{
-                        new String[] { 
+                        new String[] {
                         },
 
                     },

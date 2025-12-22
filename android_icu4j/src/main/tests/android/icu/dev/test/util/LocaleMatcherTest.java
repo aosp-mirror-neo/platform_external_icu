@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import android.icu.dev.test.CoreTestFmwk;
+import android.icu.impl.ICUDebug;
 import android.icu.impl.locale.LikelySubtags;
 import android.icu.impl.locale.XCldrStub.FileUtilities;
 import android.icu.util.LocaleMatcher;
@@ -44,6 +45,7 @@ import android.icu.testsharding.MainTestShard;
 @MainTestShard
 @RunWith(JUnitParamsRunner.class)
 public class LocaleMatcherTest extends CoreTestFmwk {
+    private static final boolean DEBUG = ICUDebug.enabled("localematchertest");
     private static final ULocale ZH_MO = new ULocale("zh_MO");
     private static final ULocale ZH_HK = new ULocale("zh_HK");
 
@@ -827,11 +829,17 @@ public class LocaleMatcherTest extends CoreTestFmwk {
             timeLocaleMatcher(desired, matcherLong, WARM_UP_ITERATIONS);
             timeLocaleMatcher(desired, matcherVeryLong, WARM_UP_ITERATIONS);
             long tns = timeLocaleMatcher(desired, matcherShort, BENCHMARK_ITERATIONS);
-            System.out.format("New Duration (few  supported):\t%s\t%d\tnanos\n", desired, tns);
+            if (DEBUG) {
+                System.out.format("New Duration (few  supported):\t%s\t%d\tnanos\n", desired, tns);
+            }
             long tnl = timeLocaleMatcher(desired, matcherLong, BENCHMARK_ITERATIONS);
-            System.out.format("New Duration (med. supported):\t%s\t%d\tnanos\n", desired, tnl);
+            if (DEBUG) {
+                System.out.format("New Duration (med. supported):\t%s\t%d\tnanos\n", desired, tnl);
+            }
             long tnv = timeLocaleMatcher(desired, matcherVeryLong, BENCHMARK_ITERATIONS);
-            System.out.format("New Duration (many supported):\t%s\t%d\tnanos\n", desired, tnv);
+            if (DEBUG) {
+                System.out.format("New Duration (many supported):\t%s\t%d\tnanos\n", desired, tnv);
+            }
         }
 
         maximizePerf();
@@ -862,8 +870,10 @@ public class LocaleMatcherTest extends CoreTestFmwk {
         t = timeMaximize(list, iterations);
         int length = 0;
         for (@SuppressWarnings("unused") ULocale locale : list) { ++length; }
-        System.out.println("maximize: " + (t / iterations / length) + " ns/locale: " +
-                t + " ns / " + iterations + " iterations / " + length + " locales");
+        if (DEBUG) {
+            System.out.println("maximize: " + (t / iterations / length) + " ns/locale: " +
+                    t + " ns / " + iterations + " iterations / " + length + " locales");
+        }
     }
 
     // returns total ns not per iteration
@@ -1010,7 +1020,7 @@ public class LocaleMatcherTest extends CoreTestFmwk {
                         Integer prevIndex = uniqueTests.get(inputs);
                         if (prevIndex == null) {
                             uniqueTests.put(inputs, tests.size());
-                        } else {
+                        } else if (DEBUG) {
                             System.out.println("Locale matcher test case on line " + test.lineNr
                                     + " is a duplicate of line " + tests.get(prevIndex).lineNr);
                         }
@@ -1022,7 +1032,9 @@ public class LocaleMatcherTest extends CoreTestFmwk {
                 }
             }
         }
-        System.out.println("Number of duplicate locale matcher test cases: " + (tests.size() - uniqueTests.size()));
+        if (DEBUG) {
+            System.out.println("Number of duplicate locale matcher test cases: " + (tests.size() - uniqueTests.size()));
+        }
         return tests;
     }
 

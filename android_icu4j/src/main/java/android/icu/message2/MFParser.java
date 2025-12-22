@@ -46,15 +46,18 @@ public class MFParser {
     }
 
     // Parser proper
+    // abnf: message           = simple-message / complex-message
+    // abnf: simple-message    = o [simple-start pattern]
+    // abnf: complex-message   = o *(declaration o) complex-body o
     private MFDataModel.Message parseImpl() throws MFParseException {
         MFDataModel.Message result;
         // Determine if message is simple or complex; this requires
         // looking through whitespace.
         int savedPosition = input.getPosition();
-        skipOptionalWhitespaces();
+        skipOptionalWhitespaces(); // This is the `o` skipped for simple-message & complex-message
         int cp = input.peekChar();
         // abnf: message = simple-message / complex-message
-        if (cp == '.') { // declarations or .match
+        if (cp == '.') { // declarations or .match, makes it a complex message
             // No need to restore whitespace
             result = getComplexMessage();
         } else if (cp == '{') { // `{` or `{{`
@@ -110,14 +113,18 @@ public class MFParser {
                 MFDataModel.Expression ph = getPlaceholder();
                 return ph;
             default:
-                String plainText = getText();
+                String plainText = getTextCharOrEscapedChar();
                 MFDataModel.StringPart sp = new MFDataModel.StringPart(plainText);
                 return sp;
         }
     }
 
-    // abnf: text-char = content-char / ws / "." / "@" / "|"
-    private String getText() {
+    // abnf: text-char = %x01-5B ; omit NULL (%x00) and \ (%x5C)
+    // abnf:         / %x5D-7A ; omit { (%x7B)
+    // abnf:         / %x7C ; omit } (%x7D)
+    // abnf:         / %x7E-10FFFF
+    // abnf: escaped-char = backslash ( backslash / "{" / "|" / "}" )
+    private String getTextCharOrEscapedChar() {
         StringBuilder result = new StringBuilder();
         while (true) {
             int cp = input.readCodePoint();
@@ -134,16 +141,11 @@ public class MFParser {
                         result.appendCodePoint(cp);
                     }
                     break;
-                case '.':
-                case '@':
-                case '|':
-                    result.appendCodePoint(cp);
-                    break;
                 default:
-                    if (StringUtils.isContentChar(cp) || StringUtils.isWhitespace(cp)) {
+                    if (StringUtils.isTextChar(cp)) { // text-char
                         result.appendCodePoint(cp);
                     } else {
-                        input.backup(1);
+                        input.backup(Character.charCount(cp));
                         return result.toString();
                     }
             }
@@ -186,7 +188,7 @@ public class MFParser {
         return result;
     }
 
-    private MFDataModel.Function getFunction(boolean whitespaceRequired) throws MFParseException {
+    private MFDataModel.FunctionRef getFunction(boolean whitespaceRequired) throws MFParseException {
         int position = input.getPosition();
 
         // Handle absent function first (before parsing mandatory whitespace)
@@ -216,7 +218,7 @@ public class MFParser {
                 String identifier = getIdentifier();
                 checkCondition(identifier != null, "Function name missing");
                 Map<String, MFDataModel.Option> options = getOptions();
-                return new MFDataModel.Function(identifier, options);
+                return new MFDataModel.FunctionRef(identifier, options);
             default:
                 // OK to continue and return null, it is an error.
         }
@@ -224,7 +226,7 @@ public class MFParser {
         return null;
     }
 
-    private MFDataModel.Function getMarkupFunction() throws MFParseException {
+    private MFDataModel.FunctionRef getMarkupFunction() throws MFParseException {
         skipOptionalWhitespaces();
 
         int cp = input.peekChar();
@@ -239,7 +241,7 @@ public class MFParser {
                 String identifier = getIdentifier();
                 checkCondition(identifier != null, "Function name missing");
                 Map<String, MFDataModel.Option> options = getOptions();
-                return new MFDataModel.Function(identifier, options);
+                return new MFDataModel.FunctionRef(identifier, options);
             default:
                 // function or something else,
                 return null;
@@ -248,10 +250,10 @@ public class MFParser {
 
     // abnf: literal-expression = "{" o literal [s function] *(s attribute) o "}"
     private MFDataModel.Expression getLiteralExpression() throws MFParseException {
-        MFDataModel.Literal literal = getLiteral(false);
+        MFDataModel.Literal literal = getLiteral(true);
         checkCondition(literal != null, "Literal expression expected.");
 
-        MFDataModel.Function function = null;
+        MFDataModel.FunctionRef function = null;
         boolean hasWhitespace = StringUtils.isWhitespace(input.peekChar());
         if (hasWhitespace) { // we might have an function
             function = getFunction(true);
@@ -275,7 +277,7 @@ public class MFParser {
     // abnf: variable-expression = "{" o variable [s function] *(s attribute) o "}"
     private MFDataModel.VariableExpression getVariableExpression() throws MFParseException {
         MFDataModel.VariableRef variableRef = getVariableRef();
-        MFDataModel.Function function = getFunction(true);
+        MFDataModel.FunctionRef function = getFunction(true);
         List<MFDataModel.Attribute> attributes = getAttributes();
         // Variable without a function, for example {$foo}
         return new MFDataModel.VariableExpression(variableRef, function, attributes);
@@ -283,12 +285,12 @@ public class MFParser {
 
     // abnf: function-expression = "{" o function *(s attribute) o "}"
     private MFDataModel.Expression getFunctionExpression() throws MFParseException {
-        MFDataModel.Function function = getFunction(false);
+        MFDataModel.FunctionRef function = getFunction(false);
         List<MFDataModel.Attribute> attributes = getAttributes();
 
-        if (function instanceof MFDataModel.Function) {
+        if (function instanceof MFDataModel.FunctionRef) {
             return new MFDataModel.FunctionExpression(
-                    (MFDataModel.Function) function, attributes);
+                    (MFDataModel.FunctionRef) function, attributes);
         } else {
             error("Unexpected function : " + function);
         }
@@ -304,7 +306,7 @@ public class MFParser {
         MFDataModel.Markup.Kind kind =
                 cp == '/' ? MFDataModel.Markup.Kind.CLOSE : MFDataModel.Markup.Kind.OPEN;
 
-        MFDataModel.Function function = getMarkupFunction();
+        MFDataModel.FunctionRef function = getMarkupFunction();
         List<MFDataModel.Attribute> attributes = getAttributes();
 
         // Parse optional whitespace after attribute list
@@ -316,8 +318,8 @@ public class MFParser {
             input.readCodePoint();
         }
 
-        if (function instanceof MFDataModel.Function) {
-            MFDataModel.Function fa = (MFDataModel.Function) function;
+        if (function instanceof MFDataModel.FunctionRef) {
+            MFDataModel.FunctionRef fa = (MFDataModel.FunctionRef) function;
             return new MFDataModel.Markup(kind, fa.name, fa.options, attributes);
         }
 
@@ -370,18 +372,19 @@ public class MFParser {
         if (namespace == null) {
             return null;
         }
+        int position = input.getPosition();
         int cp = input.readCodePoint();
         if (cp == ':') { // the previous name was namespace
             String name = getName();
             checkCondition(name != null, "Expected name after namespace '" + namespace + "'");
             return namespace + ":" + name;
         } else {
-            input.backup(1);
+            input.gotoPosition(position);
         }
         return namespace;
     }
 
-    // abnf helper: *(s option)
+    // abnf helper, does not exist as such in message.abnf: *(s option)
     private Map<String, MFDataModel.Option> getOptions() throws MFParseException {
         Map<String, MFDataModel.Option> options = new LinkedHashMap<>();
         boolean first = true;
@@ -438,16 +441,14 @@ public class MFParser {
 
     // abnf: literal = quoted-literal / unquoted-literal
     private MFDataModel.Literal getLiteral(boolean normalize) throws MFParseException {
-        int cp = input.readCodePoint();
+        int cp = input.peekChar();
         switch (cp) {
             case '|': // quoted-literal
                 // abnf: quoted-literal = "|" *(quoted-char / escaped-char) "|"
-                input.backup(1);
                 MFDataModel.Literal ql = getQuotedLiteral(normalize);
                 return ql;
             default: // unquoted-literal
-                // abnf: unquoted-literal = name / number-literal
-                input.backup(1);
+                // abnf: unquoted-literal = 1*name-char
                 MFDataModel.Literal unql = getUnQuotedLiteral(normalize);
                 return unql;
         }
@@ -491,25 +492,29 @@ public class MFParser {
         return new MFDataModel.Literal(normalize ? StringUtils.toNfc(result) : result.toString());
     }
 
+    // abnf: unquoted-literal = 1*name-char
     private MFDataModel.Literal getUnQuotedLiteral(boolean normalize) throws MFParseException {
-        String name = getName();
-        if (name != null) {
-            return new MFDataModel.Literal(normalize ? StringUtils.toNfc(name) : name);
+        int savedPosition = input.getPosition();
+        StringBuilder result = new StringBuilder();
+        int cp = input.readCodePoint();
+        checkCondition(cp != EOF, "Expected unquoted-literal.");
+        if (!StringUtils.isNameChar(cp)) {
+            input.gotoPosition(savedPosition);
+            return null;
         }
-        return getNumberLiteral();
-    }
-
-    // abnf: ; number-literal matches JSON number (https://www.rfc-editor.org/rfc/rfc8259#section-6)
-    // abnf: number-literal = ["-"] (%x30 / (%x31-39 *DIGIT)) ["." 1*DIGIT] [%i"e" ["-" / "+"] 1*DIGIT]
-    private static final Pattern RE_NUMBER_LITERAL =
-            Pattern.compile("^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+\\-]?[0-9]+)?");
-
-    private MFDataModel.Literal getNumberLiteral() {
-        String numberString = peekWithRegExp(RE_NUMBER_LITERAL);
-        if (numberString != null) {
-            return new MFDataModel.Literal(numberString);
+        result.appendCodePoint(cp);
+        while (true) {
+            cp = input.readCodePoint();
+            if (StringUtils.isNameChar(cp)) {
+                result.appendCodePoint(cp);
+            } else if (cp == EOF) {
+                break;
+            } else {
+                input.backup(Character.charCount(cp));
+                break;
+            }
         }
-        return null;
+        return new MFDataModel.Literal(normalize ? StringUtils.toNfc(result.toString()) : result.toString());
     }
 
     /*
@@ -788,7 +793,7 @@ public class MFParser {
             } else if (cp == EOF) {
                 break;
             } else {
-                input.backup(1);
+                input.backup(Character.charCount(cp));
                 break;
             }
         }

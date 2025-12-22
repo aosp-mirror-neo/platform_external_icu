@@ -7,6 +7,7 @@ package android.icu.impl.units;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import android.icu.impl.ICUData;
 import android.icu.impl.ICUResourceBundle;
@@ -24,8 +25,15 @@ public class UnitsData {
     // data once, and provide access to it via static methods. (Partial change
     // has been done already.)
 
+
+
+    // Array of alias IDs.
+    private static List<UnitAliases.Alias> aliases = null;
+
     // Array of simple unit IDs.
     private static String[] simpleUnits = null;
+
+
 
     // Maps from the value associated with each simple unit ID to a category
     // index number.
@@ -44,6 +52,14 @@ public class UnitsData {
         return simpleUnits;
     }
 
+    public static List<UnitAliases.Alias> getAliases() {
+        return aliases;
+    }
+
+    public static String getReplacementFromAliasIndex(int aliasIndex) {
+        return aliases.get(aliasIndex).replacement;
+    }
+
     static {
         // Read simple units
         ICUResourceBundle resource;
@@ -52,6 +68,10 @@ public class UnitsData {
         resource.getAllItemsWithFallback("convertUnits", sink);
         simpleUnits = sink.simpleUnits;
         simpleUnitCategories = sink.simpleUnitCategories;
+
+        // Read aliases
+        UnitAliases unitAliases = new UnitAliases();
+        aliases = unitAliases.getAliases();
     }
 
     public ConversionRates getConversionRates() {
@@ -173,6 +193,9 @@ public class UnitsData {
     public static class Constants {
         // TODO: consider moving the Trie-offset-related constants into
         // MeasureUnitImpl.java, the only place they're being used?
+
+        // Trie value offset for aliases, e.g. "portion" replaced by "part"
+        public static final int kAliasOffset = 51200; // This will give a very big space for the units ids.
 
         // Trie value offset for simple units, e.g. "gram", "nautical-mile",
         // "fluid-ounce-imperial".

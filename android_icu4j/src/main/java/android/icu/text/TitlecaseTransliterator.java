@@ -41,8 +41,6 @@ class TitlecaseTransliterator extends Transliterator {
     private final ULocale locale;
 
     private final UCaseProps csp;
-    private ReplaceableContextIterator iter;
-    private StringBuilder result;
     private int caseLocale;
 
    /**
@@ -54,8 +52,6 @@ class TitlecaseTransliterator extends Transliterator {
         // Need to look back 2 characters in the case of "can't"
         setMaximumContextLength(2);
         csp=UCaseProps.INSTANCE;
-        iter=new ReplaceableContextIterator();
-        result = new StringBuilder();
         caseLocale = UCaseProps.getCaseLocale(locale);
     }
 
@@ -63,7 +59,7 @@ class TitlecaseTransliterator extends Transliterator {
      * Implements {@link Transliterator#handleTransliterate}.
      */
     @Override
-    protected synchronized void handleTransliterate(Replaceable text,
+    protected void handleTransliterate(Replaceable text,
                                        Position offsets, boolean isIncremental) {
         // TODO reimplement, see ustrcase.c
         // using a real word break iterator
@@ -75,6 +71,9 @@ class TitlecaseTransliterator extends Transliterator {
         if (offsets.start >= offsets.limit) {
             return;
         }
+
+        ReplaceableContextIterator iter = new ReplaceableContextIterator();
+        StringBuilder result = new StringBuilder();
 
         // case type: >0 cased (UCaseProps.LOWER etc.)  ==0 uncased  <0 case-ignorable
         int type;
@@ -108,8 +107,6 @@ class TitlecaseTransliterator extends Transliterator {
         iter.setIndex(offsets.start);
         iter.setLimit(offsets.limit);
         iter.setContextLimits(offsets.contextStart, offsets.contextLimit);
-
-        result.setLength(0);
 
         // Walk through original string
         // If there is a case change, modify corresponding position in replaceable

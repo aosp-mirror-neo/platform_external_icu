@@ -30,6 +30,7 @@ import android.icu.util.UResourceTypeMismatchException;
  */
 public abstract class ExceptionHandler implements SerializableTestUtility.Handler
 {
+    @Override
     public boolean hasSameBehavior(Object a, Object b)
     {
         Exception ea = (Exception) a;
@@ -40,67 +41,72 @@ public abstract class ExceptionHandler implements SerializableTestUtility.Handle
 
     static class ArabicShapingExceptionHandler extends ExceptionHandler
     {
+        @Override
         public Object[] getTestObjects()
         {
             Locale locales[] = SerializableTestUtility.getLocales();
             ArabicShapingException exceptions[] = new ArabicShapingException[locales.length];
-            
+
             for (int i = 0; i < locales.length; i += 1) {
                 exceptions[i] = new ArabicShapingException(locales[i].toString());
             }
-            
+
             return exceptions;
         }
     }
-    
+
     static class StringPrepParseExceptionHandler extends ExceptionHandler
     {
+        @Override
         public Object[] getTestObjects()
         {
             Locale locales[] = SerializableTestUtility.getLocales();
             String rules = "This is a very odd little set of rules, just for testing, you know...";
             StringPrepParseException exceptions[] = new StringPrepParseException[locales.length];
-            
+
             for (int i = 0; i < locales.length; i += 1) {
                 exceptions[i] = new StringPrepParseException(locales[i].toString(), i, rules, i);
             }
-            
+
             return exceptions;
         }
     }
-    
+
     static class UResourceTypeMismatchExceptionHandler extends ExceptionHandler
     {
+        @Override
         public Object[] getTestObjects()
         {
             Locale locales[] = SerializableTestUtility.getLocales();
             UResourceTypeMismatchException exceptions[] = new UResourceTypeMismatchException[locales.length];
-            
+
             for (int i = 0; i < locales.length; i += 1) {
                 exceptions[i] = new UResourceTypeMismatchException(locales[i].toString());
             }
-            
+
             return exceptions;
         }
     }
-    
+
     static class InvalidFormatExceptionHandler extends ExceptionHandler
     {
+        @Override
         public Object[] getTestObjects()
         {
             Locale locales[] = SerializableTestUtility.getLocales();
             InvalidFormatException exceptions[] = new InvalidFormatException[locales.length];
-            
+
             for (int i = 0; i < locales.length; i += 1) {
                 exceptions[i] = new InvalidFormatException(locales[i].toString());
             }
-            
+
             return exceptions;
         }
     }
 
     static class IllformedLocaleExceptionHandler extends ExceptionHandler
     {
+        @Override
         public Object[] getTestObjects()
         {
             IllformedLocaleException[] exceptions = new IllformedLocaleException[2];
@@ -108,6 +114,7 @@ public abstract class ExceptionHandler implements SerializableTestUtility.Handle
             exceptions[1] = new IllformedLocaleException("msg2", 5);
             return exceptions;
         }
+        @Override
         public boolean hasSameBehavior(Object a, Object b)
         {
             IllformedLocaleException ifeA = (IllformedLocaleException) a;
@@ -121,6 +128,7 @@ public abstract class ExceptionHandler implements SerializableTestUtility.Handle
 
     static class LocaleSyntaxExceptionHandler extends ExceptionHandler
     {
+        @Override
         public Object[] getTestObjects()
         {
             LocaleSyntaxException[] exceptions = new LocaleSyntaxException[2];
@@ -128,6 +136,7 @@ public abstract class ExceptionHandler implements SerializableTestUtility.Handle
             exceptions[1] = new LocaleSyntaxException("msg2", 5);
             return exceptions;
         }
+        @Override
         public boolean hasSameBehavior(Object a, Object b)
         {
             LocaleSyntaxException ifeA = (LocaleSyntaxException) a;
@@ -141,6 +150,7 @@ public abstract class ExceptionHandler implements SerializableTestUtility.Handle
 
     static class IllegalIcuArgumentExceptionHandler extends ExceptionHandler
     {
+        @Override
         public Object[] getTestObjects()
         {
             IllegalIcuArgumentException[] exceptions = {
@@ -152,6 +162,7 @@ public abstract class ExceptionHandler implements SerializableTestUtility.Handle
 
     static class SkeletonSyntaxExceptionHandler extends ExceptionHandler
     {
+        @Override
         public Object[] getTestObjects()
         {
             SkeletonSyntaxException[] exceptions = {

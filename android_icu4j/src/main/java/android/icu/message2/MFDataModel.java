@@ -46,7 +46,17 @@ public class MFDataModel {
      */
     @Deprecated
     public static class PatternMessage implements Message {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<Declaration> declarations;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final Pattern pattern;
 
         /**
@@ -67,8 +77,23 @@ public class MFDataModel {
      */
     @Deprecated
     public static class SelectMessage implements Message {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<Declaration> declarations;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<Expression> selectors;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<Variant> variants;
 
         /**
@@ -103,7 +128,17 @@ public class MFDataModel {
      */
     @Deprecated
     public static class InputDeclaration implements Declaration {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String name;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final VariableExpression value;
 
         /**
@@ -124,7 +159,17 @@ public class MFDataModel {
      */
     @Deprecated
     public static class LocalDeclaration implements Declaration {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String name;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final Expression value;
 
         /**
@@ -155,7 +200,17 @@ public class MFDataModel {
      */
     @Deprecated
     public static class Variant implements LiteralOrCatchallKey {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<LiteralOrCatchallKey> keys;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final Pattern value;
 
         /**
@@ -179,9 +234,20 @@ public class MFDataModel {
         final static String AS_KEY_STRING = "<<::CatchallKey::>>";
         // String value; // Always '*' in MF2
 
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public static boolean isCatchAll(String key) {
             return AS_KEY_STRING.equals(key);
         }
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
+        public CatchallKey() {}
     }
 
     // Patterns
@@ -194,6 +260,11 @@ public class MFDataModel {
      */
     @Deprecated
     public static class Pattern {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<PatternPart> parts;
 
         Pattern() {
@@ -218,6 +289,11 @@ public class MFDataModel {
      */
     @Deprecated
     public static class StringPart implements PatternPart {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String value;
 
         StringPart(String value) {
@@ -243,8 +319,23 @@ public class MFDataModel {
      */
     @Deprecated
     public static class LiteralExpression implements Expression {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final Literal arg;
-        public final Function function;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
+        public final FunctionRef function;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<Attribute> attributes;
 
         /**
@@ -252,7 +343,7 @@ public class MFDataModel {
          * @hide draft / provisional / internal are hidden on Android
          */
         @Deprecated
-        public LiteralExpression(Literal arg, Function function, List<Attribute> attributes) {
+        public LiteralExpression(Literal arg, FunctionRef function, List<Attribute> attributes) {
             this.arg = arg;
             this.function = function;
             this.attributes = attributes;
@@ -266,8 +357,23 @@ public class MFDataModel {
      */
     @Deprecated
     public static class VariableExpression implements Expression {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final VariableRef arg;
-        public final Function function;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
+        public final FunctionRef function;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<Attribute> attributes;
 
         /**
@@ -276,7 +382,7 @@ public class MFDataModel {
          */
         @Deprecated
         public VariableExpression(
-                VariableRef arg, Function function, List<Attribute> attributes) {
+                VariableRef arg, FunctionRef function, List<Attribute> attributes) {
             this.arg = arg;
             this.function = function;
             this.attributes = attributes;
@@ -289,8 +395,18 @@ public class MFDataModel {
      * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
-    public static class Function {
+    public static class FunctionRef {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String name;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final Map<String, Option> options;
 
         /**
@@ -298,7 +414,7 @@ public class MFDataModel {
          * @hide draft / provisional / internal are hidden on Android
          */
         @Deprecated
-        public Function(String name, Map<String, Option> options) {
+        public FunctionRef(String name, Map<String, Option> options) {
             this.name = name;
             this.options = options;
         }
@@ -311,7 +427,17 @@ public class MFDataModel {
      */
     @Deprecated
     public static class FunctionExpression implements Expression {
-        public final Function function;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
+        public final FunctionRef function;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<Attribute> attributes;
 
         /**
@@ -319,7 +445,7 @@ public class MFDataModel {
          * @hide draft / provisional / internal are hidden on Android
          */
         @Deprecated
-        public FunctionExpression(Function function, List<Attribute> attributes) {
+        public FunctionExpression(FunctionRef function, List<Attribute> attributes) {
             this.function = function;
             this.attributes = attributes;
         }
@@ -332,7 +458,17 @@ public class MFDataModel {
      */
     @Deprecated
     public static class Attribute {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String name;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final LiteralOrVariableRef value;
 
         /**
@@ -367,6 +503,11 @@ public class MFDataModel {
      */
     @Deprecated
     public static class Literal implements LiteralOrVariableRef, LiteralOrCatchallKey {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String value;
 
         /**
@@ -386,6 +527,11 @@ public class MFDataModel {
      */
     @Deprecated
     public static class VariableRef implements LiteralOrVariableRef {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String name;
 
         /**
@@ -405,7 +551,17 @@ public class MFDataModel {
      */
     @Deprecated
     public static class Option {
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String name;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final LiteralOrVariableRef value;
 
         /**
@@ -434,9 +590,29 @@ public class MFDataModel {
             STANDALONE
         }
 
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final Kind kind;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final String name;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final Map<String, Option> options;
+        /**
+         * @deprecated This API is for technology preview only.
+         * @hide draft / provisional / internal are hidden on Android
+         */
+        @Deprecated
         public final List<Attribute> attributes;
 
         /**

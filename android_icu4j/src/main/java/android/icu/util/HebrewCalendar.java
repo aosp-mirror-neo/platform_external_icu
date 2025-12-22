@@ -26,7 +26,7 @@ import android.icu.util.ULocale.Category;
  * solar year (approximately 365.24 days) is not an even multiple of
  * the lunar month (approximately 29.53 days) an extra "leap month" is
  * inserted in 7 out of every 19 years.  To make matters even more
- * interesting, the start of a year can be delayed by up to three days
+ * interesting, the start of a year can be delayed by up to two days
  * in order to prevent certain holidays from falling on the Sabbath and
  * to prevent certain illegal year lengths.  Finally, the lengths of certain
  * months can vary depending on the number of days in the year.
@@ -417,7 +417,7 @@ public class HebrewCalendar extends Calendar {
      * <p>
      * <b>Note:</b> You should always use {@link #roll roll} and add rather
      * than attempting to perform arithmetic operations directly on the fields
-     * of a <tt>HebrewCalendar</tt>.  Since the {@link #MONTH MONTH} field behaves
+     * of a {@code HebrewCalendar}.  Since the {@link #MONTH MONTH} field behaves
      * discontinuously in non-leap years, simple arithmetic can give invalid results.
      * <p>
      * @param field     the time field.
@@ -504,7 +504,7 @@ public class HebrewCalendar extends Calendar {
      * <p>
      * <b>Note:</b> You should always use roll and {@link #add add} rather
      * than attempting to perform arithmetic operations directly on the fields
-     * of a <tt>HebrewCalendar</tt>.  Since the {@link #MONTH MONTH} field behaves
+     * of a {@code HebrewCalendar}.  Since the {@link #MONTH MONTH} field behaves
      * discontinuously in non-leap years, simple arithmetic can give invalid results.
      * <p>
      * @param field     the time field.
@@ -606,7 +606,7 @@ public class HebrewCalendar extends Calendar {
                 day += 1;
                 wd = (int)(day % 7);
             }
-            if (wd == 1 && frac > 15*HOUR_PARTS+204 && !isLeapYear(year) ) {
+            else if (wd == 1 && frac > 15*HOUR_PARTS+204 && !isLeapYear(year) ) {
                 // If the new moon falls after 3:11:20am (15h204p from the previous noon)
                 // on a Tuesday and it is not a leap year, postpone by 2 days.
                 // This prevents 356-day years.
@@ -636,7 +636,7 @@ public class HebrewCalendar extends Calendar {
     }*/
 
     /**
-     * Returns the the type of a given year.
+     * Returns the type of a given year.
      *  0   "Deficient" year with 353 or 383 days
      *  1   "Normal"    year with 354 or 384 days
      *  2   "Complete"  year with 355 or 385 days
@@ -885,6 +885,18 @@ public class HebrewCalendar extends Calendar {
         return "hebrew";
     }
 
+    private static final int HEBREW_CALENDAR_RELATED_YEAR_DIFFERENCE = -3760;
+
+    /**
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Override
+    @Deprecated
+    protected final int getRelatedYearDifference() {
+        return HEBREW_CALENDAR_RELATED_YEAR_DIFFERENCE;
+    }
+
     //-------------------------------------------------------------------------
     // Temporal Calendar API.
     //-------------------------------------------------------------------------
@@ -892,6 +904,7 @@ public class HebrewCalendar extends Calendar {
      * {@inheritDoc}
      */
     @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
+    @Override
     public boolean inTemporalLeapYear() {
         return isLeapYear(get(EXTENDED_YEAR));
     }
@@ -913,6 +926,7 @@ public class HebrewCalendar extends Calendar {
      * @return       One of 13 possible strings in {"M01".. "M05", "M05L", "M06" .. "M12"}.
      */
     @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
+    @Override
     public String getTemporalMonthCode() {
         return gTemporalMonthCodesForHebrew[get(MONTH)];
     }
@@ -928,6 +942,7 @@ public class HebrewCalendar extends Calendar {
      * @param temporalMonth The value to be set for temporal monthCode.
      */
     @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
+    @Override
     public void setTemporalMonthCode( String temporalMonth ) {
         if (temporalMonth.length() == 3 || temporalMonth.length() == 4) {
             for (int m = 0; m < gTemporalMonthCodesForHebrew.length; m++) {
@@ -949,6 +964,7 @@ public class HebrewCalendar extends Calendar {
      * @deprecated This API is ICU internal only.
      * @hide draft / provisional / internal are hidden on Android
      */
+    @Override
     @Deprecated
     protected int internalGetMonth()
     {

@@ -19,6 +19,7 @@ import android.icu.testsharding.MainTestShard;
 // The test fails due to missing json file bundled in CtsIcuTestCases.
 // @RunWith(JUnit4.class)
 public class CoreTest extends CoreTestFmwk {
+    private static final boolean DEBUG = false;
 
     private static final String[] JSON_FILES = {
             "alias-selector-annotations.json",
@@ -27,7 +28,6 @@ public class CoreTest extends CoreTestFmwk {
             "icu-test-functions.json",
             "icu-test-previous-release.json",
             "icu-test-selectors.json",
-            "invalid-number-literals-diagnostics.json",
             "invalid-options.json",
             "markup.json",
             "matches-whitespace.json",
@@ -45,8 +45,9 @@ public class CoreTest extends CoreTestFmwk {
             "spec/functions/date.json",
             "spec/functions/datetime.json",
             "spec/functions/integer.json",
-            "spec/functions/math.json", // FAILS 2 / 16, chaining to select
+            "spec/functions/offset.json",
             "spec/functions/number.json",
+            "spec/functions/percent.json",
             "spec/functions/string.json",
             "spec/functions/time.json",
             "spec/pattern-selection.json",
@@ -66,8 +67,14 @@ public class CoreTest extends CoreTestFmwk {
     public void test() throws Exception {
         for (String jsonFile : JSON_FILES) {
             try (Reader reader = TestUtils.jsonReader(jsonFile)) {
+                if (DEBUG) {
+                    System.out.println("==== " + jsonFile);
+                }
                 MF2Test tests = TestUtils.GSON.fromJson(reader, MF2Test.class);
                 for (Unit unit : tests.tests) {
+                    if (DEBUG) {
+                        System.out.println("    " + unit);
+                    }
                     TestUtils.runTestCase(tests.defaultTestProperties, unit);
                 }
             }
