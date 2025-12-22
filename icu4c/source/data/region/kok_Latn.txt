@@ -113,7 +113,7 @@ kok_Latn{
         EZ{"Yuro kxetr"}
         FI{"Finland"}
         FJ{"Fiji"}
-        FK{"Fokland Zunve"}
+        FK{"Malvinas Zunve"}
         FM{"Maicronesia"}
         FO{"Fero Zunve"}
         FR{"Frans"}
@@ -225,7 +225,7 @@ kok_Latn{
         PM{"São Pedro ani Miquelão"}
         PN{"Pitcairn Zunve"}
         PR{"Porto Rico"}
-        PS{"Palestin"}
+        PS{"Palestini Prant"}
         PT{"Portugal"}
         PW{"Palau"}
         PY{"Paraguay"}
@@ -301,11 +301,7 @@ kok_Latn{
     Countries%chagos{
         IO{"Xagos Zunve"}
     }
-    Countries%short{
-        PS{"Palestini Prant"}
-    }
     Countries%variant{
-        FK{"Malvinas Zunve"}
         NZ{"Aoteroa"}
         TL{"Udent Timor"}
     }

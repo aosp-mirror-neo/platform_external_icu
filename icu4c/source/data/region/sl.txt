@@ -112,7 +112,7 @@ sl{
         EZ{"evroobmočje"}
         FI{"Finska"}
         FJ{"Fidži"}
-        FK{"Falklandski otoki"}
+        FK{"Falklandski otoki (Malvini)"}
         FM{"Mikronezija"}
         FO{"Ferski otoki"}
         FR{"Francija"}
@@ -135,7 +135,7 @@ sl{
         GU{"Gvam"}
         GW{"Gvineja Bissau"}
         GY{"Gvajana"}
-        HK{"Posebno upravno območje Ljudske republike Kitajske Hongkong"}
+        HK{"Hongkong"}
         HM{"Heardov otok in McDonaldovi otoki"}
         HN{"Honduras"}
         HR{"Hrvaška"}
@@ -189,7 +189,7 @@ sl{
         ML{"Mali"}
         MM{"Mjanmar (Burma)"}
         MN{"Mongolija"}
-        MO{"Posebno upravno območje Kitajske Makav"}
+        MO{"Makav"}
         MP{"Severni Marianski otoki"}
         MQ{"Martinik"}
         MR{"Mavretanija"}
@@ -224,7 +224,7 @@ sl{
         PM{"Sveta Peter in Mihael"}
         PN{"Pitcairn"}
         PR{"Portoriko"}
-        PS{"Palestinsko ozemlje"}
+        PS{"Palestina"}
         PT{"Portugalska"}
         PW{"Palav"}
         PY{"Paragvaj"}
@@ -304,9 +304,6 @@ sl{
     }
     Countries%short{
         GB{"ZK"}
-        HK{"Hongkong"}
-        MO{"Makav"}
-        PS{"Palestina"}
         UN{"ZN"}
         US{"ZDA"}
     }
@@ -315,7 +312,6 @@ sl{
         CG{"Kongo (Republika)"}
         CI{"Côte d’Ivoire"}
         CZ{"Češka republika"}
-        FK{"Falklandski otoki (Malvini)"}
         NZ{"Aotearoa Nova Zelandija"}
         SZ{"Svazi"}
         TL{"Vzhodni Timor"}

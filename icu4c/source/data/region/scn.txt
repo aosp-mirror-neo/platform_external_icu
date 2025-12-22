@@ -112,7 +112,7 @@ scn{
         EZ{"Zuna Euru"}
         FI{"Fillannia"}
         FJ{"Figi"}
-        FK{"Ìsuli Falkland"}
+        FK{"Ìsuli Falkland (Ìsuli Marvini)"}
         FM{"Micrunisia"}
         FO{"Ìsuli Faroe"}
         FR{"Franza"}
@@ -135,7 +135,7 @@ scn{
         GU{"Guam"}
         GW{"Guinìa-Bissau"}
         GY{"Guiana"}
-        HK{"Hong Kong RAS dâ Cina"}
+        HK{"Hong Kong"}
         HM{"Ìsuli Heard e McDonald"}
         HN{"Hunnuras"}
         HR{"Cruazzia"}
@@ -189,7 +189,7 @@ scn{
         ML{"Mali"}
         MM{"Myanmar (Birmania)"}
         MN{"Mungolia"}
-        MO{"Macau RAS dâ Cina"}
+        MO{"Macau"}
         MP{"Ìsuli Marianna di Tramuntana"}
         MQ{"Martinica"}
         MR{"Mauritania"}
@@ -224,7 +224,7 @@ scn{
         PM{"S. Pierre e Miquelon"}
         PN{"Ìsuli Pitcairn"}
         PR{"Portu Ricu"}
-        PS{"Tirritori Palistinesi"}
+        PS{"Palistina"}
         PT{"Purtugallu"}
         PW{"Palau"}
         PY{"Paraguay"}
@@ -304,16 +304,12 @@ scn{
     }
     Countries%short{
         GB{"RJ"}
-        HK{"Hong Kong"}
-        MO{"Macau"}
-        PS{"Palistina"}
         US{"SJ"}
     }
     Countries%variant{
         CD{"Congu (RDC)"}
         CG{"Congu (Ripùbblica)"}
         CZ{"Ripùbblica Ceca"}
-        FK{"Ìsuli Falkland (Ìsuli Marvini)"}
         NZ{"Aotearoa Nova Zilannia"}
         SZ{"Swazzilannia"}
         TL{"Timor di Livanti"}

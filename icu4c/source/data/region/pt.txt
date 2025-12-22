@@ -112,7 +112,7 @@ pt{
         EZ{"zona do euro"}
         FI{"Finlândia"}
         FJ{"Fiji"}
-        FK{"Ilhas Malvinas"}
+        FK{"Ilhas Malvinas (Ilhas Falkland)"}
         FM{"Micronésia"}
         FO{"Ilhas Faroé"}
         FR{"França"}
@@ -135,7 +135,7 @@ pt{
         GU{"Guam"}
         GW{"Guiné-Bissau"}
         GY{"Guiana"}
-        HK{"Hong Kong, RAE da China"}
+        HK{"Hong Kong"}
         HM{"Ilhas Heard e McDonald"}
         HN{"Honduras"}
         HR{"Croácia"}
@@ -189,7 +189,7 @@ pt{
         ML{"Mali"}
         MM{"Mianmar (Birmânia)"}
         MN{"Mongólia"}
-        MO{"Macau, RAE da China"}
+        MO{"Macau"}
         MP{"Ilhas Marianas do Norte"}
         MQ{"Martinica"}
         MR{"Mauritânia"}
@@ -224,7 +224,7 @@ pt{
         PM{"São Pedro e Miquelão"}
         PN{"Ilhas Pitcairn"}
         PR{"Porto Rico"}
-        PS{"Territórios palestinos"}
+        PS{"Palestina"}
         PT{"Portugal"}
         PW{"Palau"}
         PY{"Paraguai"}
@@ -303,9 +303,6 @@ pt{
         IO{"Arquipélago de Chagos"}
     }
     Countries%short{
-        HK{"Hong Kong"}
-        MO{"Macau"}
-        PS{"Palestina"}
         UN{"ONU"}
         US{"EUA"}
     }
@@ -314,7 +311,6 @@ pt{
         CG{"Congo"}
         CI{"Côte d’Ivoire"}
         CZ{"República Tcheca"}
-        FK{"Ilhas Malvinas (Ilhas Falkland)"}
         NZ{"Aotearoa da Nova Zelândia"}
         SZ{"Suazilândia"}
         TL{"República Democrática de Timor-Leste"}

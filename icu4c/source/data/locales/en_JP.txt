@@ -201,15 +201,6 @@ en_JP{
                 yyyyQQQQ{"G y QQQQ"}
             }
             intervalFormats{
-                Bh{
-                    B{"h B – h B"}
-                    h{"h – h B"}
-                }
-                Bhm{
-                    B{"h:mm B – h:mm B"}
-                    h{"h:mm – h:mm B"}
-                    m{"h:mm – h:mm B"}
-                }
                 Gy{
                     G{"G y – G y"}
                     y{"G y – y"}
@@ -248,9 +239,6 @@ en_JP{
                     d{"G y/MM/dd – y/MM/dd"}
                     y{"G y/MM/dd – y/MM/dd"}
                 }
-                H{
-                    H{"HH – HH"}
-                }
                 Hm{
                     H{"H:mm – H:mm"}
                     m{"H:mm – H:mm"}
@@ -262,49 +250,9 @@ en_JP{
                 Hv{
                     H{"H – H v"}
                 }
-                M{
-                    M{"M – M"}
-                }
                 MEd{
                     M{"M/dd, E – MM/dd, E"}
                     d{"MM/dd, E – MM/dd, E"}
-                }
-                MMM{
-                    M{"MMM – MMM"}
-                }
-                MMMEd{
-                    M{"E, MMM d – E, MMM d"}
-                    d{"E, MMM d – E, MMM d"}
-                }
-                MMMd{
-                    M{"MMM d – MMM d"}
-                    d{"MMM d – d"}
-                }
-                Md{
-                    M{"M/d – M/d"}
-                    d{"M/d – M/d"}
-                }
-                d{
-                    d{"d – d"}
-                }
-                fallback{"{0} – {1}"}
-                h{
-                    a{"h a – h a"}
-                    h{"h – h a"}
-                }
-                hm{
-                    a{"h:mm a – h:mm a"}
-                    h{"h:mm – h:mm a"}
-                    m{"h:mm – h:mm a"}
-                }
-                hmv{
-                    a{"h:mm a – h:mm a v"}
-                    h{"h:mm – h:mm a v"}
-                    m{"h:mm – h:mm a v"}
-                }
-                hv{
-                    a{"h a – h a v"}
-                    h{"h – h a v"}
                 }
                 y{
                     y{"y – y"}

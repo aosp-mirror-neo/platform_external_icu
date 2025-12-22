@@ -96,6 +96,11 @@ en{
         "Pacific:Galapagos"{
             ec{"Galápagos Islands"}
         }
+        "Pacific:Honolulu"{
+            sd{"HDT"}
+            sg{"HST"}
+            ss{"HST"}
+        }
         "Pacific:Kwajalein"{
             ec{"Kwajalein Atoll"}
         }
