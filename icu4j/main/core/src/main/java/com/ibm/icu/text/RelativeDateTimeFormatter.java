@@ -11,7 +11,6 @@ package com.ibm.icu.text;
 import java.io.InvalidObjectException;
 import java.text.AttributedCharacterIterator;
 import java.text.Format;
-import java.text.FieldPosition;
 import java.util.EnumMap;
 import java.util.Locale;
 
@@ -162,49 +161,49 @@ public final class RelativeDateTimeFormatter {
 
         /**
          * Quarters
-         * @draft ICU 76
+         * @stable ICU 76
          */
         QUARTERS,
 
         /**
          * Sundays
-         * @draft ICU 76
+         * @stable ICU 76
          */
         SUNDAYS,
 
         /**
          * Mondays
-         * @draft ICU 76
+         * @stable ICU 76
          */
         MONDAYS,
 
         /**
          * Tuesdays
-         * @draft ICU 76
+         * @stable ICU 76
          */
         TUESDAYS,
 
         /**
          * Wednesdays
-         * @draft ICU 76
+         * @stable ICU 76
          */
         WEDNESDAYS,
 
         /**
          * Thursdays
-         * @draft ICU 76
+         * @stable ICU 76
          */
         THURSDAYS,
 
         /**
          * Fridays
-         * @draft ICU 76
+         * @stable ICU 76
          */
         FRIDAYS,
 
         /**
          * Saturdays
-         * @draft ICU 76
+         * @stable ICU 76
          */
         SATURDAYS,
     }
@@ -649,13 +648,13 @@ public final class RelativeDateTimeFormatter {
         if (nf == null) {
             nf = NumberFormat.getInstance(locale);
         } else {
-            nf = (NumberFormat) nf.clone();
+            nf = nf.clone();
         }
         return new RelativeDateTimeFormatter(
                 data.qualitativeUnitMap,
                 data.relUnitPatternMap,
-                // Android-changed: use MessageFormat instead of SimpleFormatterImpl (b/63745717).
-                data.dateTimePattern,
+                SimpleFormatterImpl.compileToStringMinMaxArguments(
+                        data.dateTimePattern, new StringBuilder(), 2, 2),
                 PluralRules.forLocale(locale),
                 nf,
                 style,
@@ -1051,13 +1050,8 @@ public final class RelativeDateTimeFormatter {
      * @stable ICU 53
      */
     public String combineDateAndTime(String relativeDateString, String timeString) {
-        // BEGIN Android-changed: use MessageFormat instead of SimpleFormatterImpl (b/63745717).
-        MessageFormat msgFmt = new MessageFormat("");
-        msgFmt.applyPattern(combinedDateAndTime, MessagePattern.ApostropheMode.DOUBLE_REQUIRED);
-        StringBuffer combinedDateTimeBuffer = new StringBuffer(128);
-        return msgFmt.format(new Object[] { timeString, relativeDateString},
-                combinedDateTimeBuffer, new FieldPosition(0)).toString();
-        // END Android-changed: use MessageFormat instead of SimpleFormatterImpl (b/63745717).
+        return SimpleFormatterImpl.formatCompiledPattern(
+                combinedDateAndTime, timeString, relativeDateString);
     }
 
     /**
@@ -1069,7 +1063,7 @@ public final class RelativeDateTimeFormatter {
         // This class is thread-safe, yet numberFormat is not. To ensure thread-safety of this
         // class we must guarantee that only one thread at a time uses our numberFormat.
         synchronized (numberFormat) {
-            return (NumberFormat) numberFormat.clone();
+            return numberFormat.clone();
         }
     }
 
@@ -1171,8 +1165,7 @@ public final class RelativeDateTimeFormatter {
     private final EnumMap<Style, EnumMap<AbsoluteUnit, EnumMap<Direction, String>>> qualitativeUnitMap;
     private final EnumMap<Style, EnumMap<RelativeUnit, String[][]>> patternMap;
 
-    // Android-changed: use MessageFormat instead of SimpleFormatterImpl (b/63745717).
-    private final String combinedDateAndTime;  // MessageFormat pattern for combining date and time.
+    private final String combinedDateAndTime;  // compiled SimpleFormatter pattern
     private final PluralRules pluralRules;
     private final NumberFormat numberFormat;
 

@@ -85,6 +85,7 @@ ro{
         CN{"China"}
         CO{"Columbia"}
         CP{"Insula Clipperton"}
+        CQ{"Sark"}
         CR{"Costa Rica"}
         CU{"Cuba"}
         CV{"Capul Verde"}
@@ -111,7 +112,7 @@ ro{
         EZ{"Zona euro"}
         FI{"Finlanda"}
         FJ{"Fiji"}
-        FK{"Insulele Falkland (Insulele Malvine)"}
+        FK{"Insulele Falkland"}
         FM{"Micronezia"}
         FO{"Insulele Feroe"}
         FR{"Franța"}
@@ -134,7 +135,7 @@ ro{
         GU{"Guam"}
         GW{"Guineea-Bissau"}
         GY{"Guyana"}
-        HK{"Hong Kong"}
+        HK{"R.A.S. Hong Kong, China"}
         HM{"Insula Heard și Insulele McDonald"}
         HN{"Honduras"}
         HR{"Croația"}
@@ -188,7 +189,7 @@ ro{
         ML{"Mali"}
         MM{"Myanmar (Birmania)"}
         MN{"Mongolia"}
-        MO{"Macao"}
+        MO{"R.A.S. Macao, China"}
         MP{"Insulele Mariane de Nord"}
         MQ{"Martinica"}
         MR{"Mauritania"}
@@ -223,7 +224,7 @@ ro{
         PM{"Saint-Pierre și Miquelon"}
         PN{"Insulele Pitcairn"}
         PR{"Puerto Rico"}
-        PS{"Palestina"}
+        PS{"Teritoriile Palestiniene"}
         PT{"Portugalia"}
         PW{"Palau"}
         PY{"Paraguay"}
@@ -302,6 +303,9 @@ ro{
         IO{"Arhipelagul Chagos"}
     }
     Countries%short{
+        HK{"Hong Kong"}
+        MO{"Macao"}
+        PS{"Palestina"}
         UN{"ONU"}
         US{"S.U.A."}
     }
@@ -310,9 +314,10 @@ ro{
         CG{"Congo (Republica)"}
         CI{"Coasta de Fildeș"}
         CZ{"Republica Cehă"}
+        FK{"Insulele Falkland (Insulele Malvine)"}
         NZ{"Aotearoa Noua Zeelandă"}
         SZ{"Swaziland"}
         TL{"Timorul de Est"}
-        TR{"Türkiye"}
+        TR{"TR-variant"}
     }
 }

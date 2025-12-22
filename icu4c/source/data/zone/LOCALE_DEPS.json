@@ -3,7 +3,7 @@
 // Generated using tools/cldr/cldr-to-icu/
 
 {
-    "cldrVersion": "47",
+    "cldrVersion": "48",
     "aliases": {
         "ars": "ar_SA",
         "az_AZ": "az_Latn_AZ",
@@ -19,6 +19,7 @@
         "iw": "he",
         "iw_IL": "he_IL",
         "ks_IN": "ks_Arab_IN",
+        "ku_SY": "ku_Latn_SY",
         "kxv_IN": "kxv_Latn_IN",
         "mni_IN": "mni_Beng_IN",
         "mo": "ro",
@@ -67,7 +68,6 @@
         "en_AT": "en_150",
         "en_AU": "en_001",
         "en_BB": "en_001",
-        "en_BD": "en_001",
         "en_BE": "en_150",
         "en_BM": "en_001",
         "en_BS": "en_001",
@@ -117,12 +117,10 @@
         "en_KN": "en_001",
         "en_KY": "en_001",
         "en_LC": "en_001",
-        "en_LK": "en_001",
         "en_LR": "en_001",
         "en_LS": "en_001",
         "en_LT": "en_150",
         "en_LV": "en_150",
-        "en_MA": "en_001",
         "en_MG": "en_001",
         "en_MO": "en_001",
         "en_MS": "en_001",
@@ -147,7 +145,6 @@
         "en_PW": "en_001",
         "en_RO": "en_150",
         "en_RW": "en_001",
-        "en_SA": "en_001",
         "en_SB": "en_001",
         "en_SC": "en_001",
         "en_SD": "en_001",
@@ -199,6 +196,7 @@
         "es_VE": "es_419",
         "ff_Adlm": "root",
         "hi_Latn": "en_IN",
+        "kk_Arab": "root",
         "kok_Latn": "root",
         "ks_Deva": "root",
         "kxv_Deva": "root",

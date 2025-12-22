@@ -25,6 +25,7 @@ import java.util.TreeMap;
 
 import com.ibm.icu.impl.CacheBase;
 import com.ibm.icu.impl.CalendarUtil;
+import com.ibm.icu.impl.EraRules;
 import com.ibm.icu.impl.ICUData;
 import com.ibm.icu.impl.ICUResourceBundle;
 import com.ibm.icu.impl.SoftCache;
@@ -493,6 +494,15 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * @serial
      */
     String ampms[] = null;
+
+    /**
+     * wide AM and PM strings. For example: "ante meridiem" and "post meridiem".  An array of
+     * 2 strings, indexed by <code>Calendar.AM</code> and
+     * <code>Calendar.PM</code>.
+     * These strings are uncommon but exist in a handful of locales.
+     * @serial
+     */
+    String ampmsWide[] = null;
 
     /**
      * narrow AM and PM strings. For example: "a" and "p".  An array of
@@ -1318,7 +1328,7 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * @stable ICU 2.0
      */
     public String[] getAmPmStrings() {
-        return duplicate(ampms);
+        return getAmPmStrings(FORMAT, ABBREVIATED);
     }
 
     /**
@@ -1327,19 +1337,49 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * @stable ICU 2.0
      */
     public void setAmPmStrings(String[] newAmpms) {
-        ampms = duplicate(newAmpms);
+        setAmPmStrings(newAmpms, FORMAT, ABBREVIATED);
     }
 
-    // BEGIN Android-added: Add a getter for ampmsNarrow
     /**
-     * Returns narrow am/pm strings. For example: "a" and "p".
-     * @return narrow ampm strings
-     * @internal
+     * Returns am/pm strings with the specified width. For example: "AM" and "PM".
+     * @param context  The usage context. Currently ignored; FORMAT names always returned.
+     * @param width    The width or the AM/PM strings,
+     *                 either WIDE, ABBREVIATED, or NARROW.
+     * @return the weekday strings.
+     * @draft ICU 78
      */
-    public String[] getAmpmNarrowStrings() {
-        return duplicate(ampmsNarrow);
+    public String[] getAmPmStrings(int context, int width) {
+        switch (width) {
+        case WIDE:
+            return duplicate(ampmsWide);
+        case NARROW:
+            return duplicate(ampmsNarrow);
+        default:
+            return duplicate(ampms);
+        }
     }
-    // END Android-added: Add a getter for ampmsNarrow
+
+    /**
+     * Sets am/pm strings with the specified width. For example: "AM" and "PM".
+     * @param newAmpms the new ampm strings.
+     * @param context  The usage context. Currently ignored; always sets FORMAT names.
+     * @param width    The width or the AM/PM strings,
+     *                 either WIDE, ABBREVIATED, or NARROW.
+     * @draft ICU 78
+     */
+    public void setAmPmStrings(String[] newAmpms, int context, int width) {
+        switch (width) {
+        case WIDE:
+            ampmsWide = duplicate(newAmpms);
+            break;
+        case NARROW:
+            ampmsNarrow = duplicate(newAmpms);
+            break;
+        default:
+            ampms = duplicate(newAmpms);
+            break;
+        }
+    }
 
     /**
      * Returns the time separator string. For example: ":".
@@ -1465,15 +1505,12 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * @stable ICU 2.0
      */
     @Override
-    public Object clone()
+    public DateFormatSymbols clone()
     {
         try {
-            DateFormatSymbols other = (DateFormatSymbols)super.clone();
-            return other;
+            return (DateFormatSymbols)super.clone();
         } catch (CloneNotSupportedException e) {
-            ///CLOVER:OFF
             throw new ICUCloneNotSupportedException(e);
-            ///CLOVER:ON
         }
     }
 
@@ -1516,6 +1553,7 @@ public class DateFormatSymbols implements Serializable, Cloneable {
                 && Utility.arrayEquals(standaloneShorterWeekdays, that.standaloneShorterWeekdays)
                 && Utility.arrayEquals(standaloneNarrowWeekdays, that.standaloneNarrowWeekdays)
                 && Utility.arrayEquals(ampms, that.ampms)
+                && Utility.arrayEquals(ampmsWide, that.ampmsWide)
                 && Utility.arrayEquals(ampmsNarrow, that.ampmsNarrow)
                 && Utility.arrayEquals(abbreviatedDayPeriods, that.abbreviatedDayPeriods)
                 && Utility.arrayEquals(wideDayPeriods, that.wideDayPeriods)
@@ -1541,17 +1579,10 @@ public class DateFormatSymbols implements Serializable, Cloneable {
     static final int millisPerHour = 60*60*1000;
 
     // DateFormatSymbols cache
-    // Android-changed: Load extra data, e.g. narrow quarters.
-    /*
     private static CacheBase<String, DateFormatSymbols, ULocale> DFSCACHE =
         new SoftCache<String, DateFormatSymbols, ULocale>() {
             @Override
             protected DateFormatSymbols createInstance(String key, ULocale locale) {
-    */
-    private static CacheBase<String, AospExtendedDateFormatSymbols, ULocale> DFSCACHE =
-        new SoftCache<String, AospExtendedDateFormatSymbols, ULocale>() {
-            @Override
-            protected AospExtendedDateFormatSymbols createInstance(String key, ULocale locale) {
                 // Extract the type string from the key.
                 // Otherwise we would have to create a pair object that
                 // carries both the locale and the type.
@@ -1562,9 +1593,7 @@ public class DateFormatSymbols implements Serializable, Cloneable {
                     typeLimit = key.length();
                 }
                 String type = key.substring(typeStart, typeLimit);
-                // Android-changed: Load extra data, e.g. narrow quarters.
-                // return new DateFormatSymbols(locale, null, type);
-                return new AospExtendedDateFormatSymbols(locale, null, type);
+                return new DateFormatSymbols(locale, null, type);
             }
         };
 
@@ -1578,91 +1607,14 @@ public class DateFormatSymbols implements Serializable, Cloneable {
     // We may need to deescalate this API to @internal.
     protected void initializeData(ULocale desiredLocale, String type)
     {
-        // Android-changed: Load extra data, e.g. narrow quarters.
-        // DateFormatSymbols dfs = DFSCACHE.getInstance(key, desiredLocale);
-        DateFormatSymbols dfs = getExtendedInstance(desiredLocale, type).dfs;
-        initializeData(dfs);
-    }
-
-    // BEGIN Android-added: Narrow quarters needed to implement the Q/q symbols in DateTimeFormatter
-    private static AospExtendedDateFormatSymbols getExtendedInstance(ULocale desiredLocale,
-            String type) {
-        // BEGIN taken from initializeData(ULocale desiredLocale, String type)
         String key = desiredLocale.getBaseName() + '+' + type;
         String ns = desiredLocale.getKeywordValue("numbers");
         if (ns != null && ns.length() > 0) {
             key += '+' + ns;
         }
-        // END taken from initializeData(ULocale desiredLocale, String type)
-        return DFSCACHE.getInstance(key, desiredLocale);
+        DateFormatSymbols dfs = DFSCACHE.getInstance(key, desiredLocale);
+        initializeData(dfs);
     }
-
-    /**
-     * @internal used by {@link com.android.icu.text.ExtendedDateFormatSymbols} to load extra data
-     */
-    public static AospExtendedDateFormatSymbols getExtendedInstance(ULocale locale) {
-        return getExtendedInstance(locale, CalendarUtil.getCalendarType(locale));
-    }
-
-    /**
-     * This class contains an instance of {@link DateFormatSymbols}, and the extra fields needed
-     * by libcore. The below alternative implementations are considered, but creating this new class
-     * is better.
-     * 1. Use {@link ICUResourceBundle#getWithFallback(String)} directly to load the extra data, but
-     *    the logic of resolving date related resources is complicated, and needs to handle resource
-     *    alias.
-     *    - With this class re-using {@link CalendarDataSink} to load the data, this Android
-     *      patch does not need to resolve the resource alias ourselves. Resource alias is used
-     *      extensively in date related data, because in some locales, the narrow format could be
-     *      the same as abbreviated format.
-     * 2. Store the extra fields in {@link DateFormatSymbols}. This change may become visible to
-     *    all apps because {@link DateFormatSymbols} is serializable.
-     *    - This class is not serializable, and not visible to any public app.
-     * 3. Provide narrow quarters from the existing API {@link #getQuarters(int, int)}. However,
-     *    the method documentation explicitly states that {@link #NARROW} is not allowed.
-     *
-     * @internal used by {@link com.android.icu.text.ExtendedDateFormatSymbols} to load extra data
-     */
-    public static class AospExtendedDateFormatSymbols {
-
-        private final DateFormatSymbols dfs;
-        private String[] narrowQuarters;
-        private String[] standaloneNarrowQuarters;
-
-        /**
-         * @internal
-         */
-        public DateFormatSymbols getDateFormatSymbols() {
-            return dfs;
-        }
-
-        /**
-         * Note that the implementation should mirror {@link #getQuarters(int, int)}.
-         *
-         * @param context    The quarter context, FORMAT or STANDALONE.
-         * @throws IllegalArgumentException for bad context or no data.
-         * @internal
-         */
-        public String[] getNarrowQuarters(int context) {
-            String [] returnValue = null;
-            if (context == FORMAT) {
-                returnValue = narrowQuarters;
-            } else if (context == STANDALONE) {
-                returnValue = standaloneNarrowQuarters;
-            }
-            if (returnValue == null) {
-                throw new IllegalArgumentException("Bad context or no data exist");
-            }
-            return returnValue.clone();
-        }
-
-        private AospExtendedDateFormatSymbols(ULocale desiredLocale, ICUResourceBundle b,
-                String calendarType) {
-            // This constructor should initialize all other fields, e.g. narrowQuarters.
-            dfs = new DateFormatSymbols(desiredLocale, b, calendarType, this);
-        }
-    }
-    // END Android-added: Narrow quarters needed to implement the Q/q symbols in DateTimeFormatter
 
     /**
      * Initializes format symbols using another instance.
@@ -1688,6 +1640,7 @@ public class DateFormatSymbols implements Serializable, Cloneable {
         this.standaloneShorterWeekdays = dfs.standaloneShorterWeekdays;
         this.standaloneNarrowWeekdays = dfs.standaloneNarrowWeekdays;
         this.ampms = dfs.ampms;
+        this.ampmsWide = dfs.ampmsWide;
         this.ampmsNarrow = dfs.ampmsNarrow;
         this.timeSeparator = dfs.timeSeparator;
         this.shortQuarters = dfs.shortQuarters;
@@ -1964,17 +1917,50 @@ public class DateFormatSymbols implements Serializable, Cloneable {
     }
 
     /** Private, for cache.getInstance(). */
-    // BEGIN Android-changed: Load extra data, e.g. narrow quarters, from the patched constructor.
-    /*
     private DateFormatSymbols(ULocale desiredLocale, ICUResourceBundle b, String calendarType) {
         initializeData(desiredLocale, b, calendarType);
     }
+
+    /**
+     * Convert era names map from CalendarSink to array, filling in missing values from fallback.
+     * @internal
+     * @deprecated This API is ICU internal only.
      */
-    private DateFormatSymbols(ULocale desiredLocale, ICUResourceBundle b, String calendarType,
-            AospExtendedDateFormatSymbols aospExtendedDateFormatSymbols) {
-        initializeData(desiredLocale, b, calendarType, aospExtendedDateFormatSymbols);
+    @Deprecated
+    protected String[] initEras(String erasKey, Map<String, Map<String, String>> maps,
+            ICUResourceBundle calBundle, int maxEra) {
+        Map<String, String> eraNamesTable = maps.get(erasKey);
+        if (eraNamesTable == null) {
+            return null;
+        }
+        ICUResourceBundle calErasWidthBundle = calBundle.findWithFallback(erasKey);
+        String[] eraArray = new String[maxEra + 1];
+        if (eraArray != null) {
+            for (int eraCode = 0; eraCode <= maxEra; eraCode++) {
+                String eraKey = Integer.toString(eraCode);
+                String eraName = eraNamesTable.get(eraKey);
+                if (eraName != null) {
+                    eraArray[eraCode] = eraName;
+                } else {
+                    // For a map, the sink does not seem to fill in parent entries for keys
+                    // that do not exist in the current bundle, that is why we need to explicitly
+                    // fill these in. Also true in ICU4C. Also pre-set to empty string in case
+                    // there is no parent entry.
+                    eraArray[eraCode] = "";
+                    if (calErasWidthBundle != null) {
+                        ICUResourceBundle calErasWidthKeyBundle = calErasWidthBundle.findWithFallback(eraKey);
+                        if (calErasWidthKeyBundle != null) {
+                            eraName = calErasWidthKeyBundle.getString();
+                            if (eraName != null) {
+                                eraArray[eraCode] = eraName;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return eraArray;
     }
-    // END Android-changed: Load extra data, e.g. narrow quarters, from the patched constructor.
 
     /**
      * Initializes format symbols for the locale and calendar type
@@ -1988,18 +1974,14 @@ public class DateFormatSymbols implements Serializable, Cloneable {
     // This API was accidentally marked as @stable ICU 3.0 formerly.
     protected void initializeData(ULocale desiredLocale, ICUResourceBundle b, String calendarType)
     {
-        // Android-changed: Load extra data,e.g. narrow quarters, from the patched initializeData().
-        initializeData(desiredLocale, b, calendarType, null /*aospExtendedDateFormatSymbols*/);
-    }
-
-    private void initializeData(ULocale desiredLocale, ICUResourceBundle b, String calendarType,
-            AospExtendedDateFormatSymbols aospExtendedDateFormatSymbols) {
         // Create a CalendarSink to load this data and a resource bundle
         CalendarDataSink calendarSink = new CalendarDataSink();
         if (b == null) {
             b = (ICUResourceBundle) UResourceBundle
                     .getBundleInstance(ICUData.ICU_BASE_NAME, desiredLocale);
         }
+        // Save the calendarType (with fallback) for later use with initEras:
+        String calTypeForEras = ((calendarType!=null)? calendarType : "gregorian");
 
         // Iterate over the resource bundle data following the fallbacks through different calendar types
         while (calendarType != null) {
@@ -2036,9 +2018,23 @@ public class DateFormatSymbols implements Serializable, Cloneable {
         Map<String, String[]> arrays = calendarSink.arrays;
         Map<String, Map<String, String>> maps = calendarSink.maps;
 
-        eras = arrays.get("eras/abbreviated");
-        eraNames = arrays.get("eras/wide");
-        narrowEras = arrays.get("eras/narrow");
+        // Era setup: Get maxEra from EraRules, get the calendar's era bundle:
+        EraRules eraRules = null;
+        try {
+            eraRules = EraRules.getInstance(calTypeForEras, false);
+        } catch (MissingResourceException e) {
+            // call IDs unsupported in supplmental era rules such as
+            // "iso8601" or bogus "unknown"; fix for here and for
+            // calBundle:
+            calTypeForEras = "gregorian";
+            eraRules = EraRules.getInstance(calTypeForEras, false);
+        }
+        int maxEra = (eraRules != null)? eraRules.getMaxEraCode() : 0;
+        ICUResourceBundle calBundle = b.findWithFallback("calendar/" + calTypeForEras);
+
+        eras = initEras("eras/abbreviated", maps, calBundle, maxEra);
+        eraNames = initEras("eras/wide", maps, calBundle, maxEra);
+        narrowEras = initEras("eras/narrow", maps, calBundle, maxEra);
 
         months = arrays.get("monthNames/format/wide");
         shortMonths = arrays.get("monthNames/format/abbreviated");
@@ -2104,7 +2100,8 @@ public class DateFormatSymbols implements Serializable, Cloneable {
         standaloneNarrowWeekdays[0] = "";  // 1-based
         System.arraycopy(snWeekdays, 0, standaloneNarrowWeekdays, 1, snWeekdays.length);
 
-        ampms = arrays.get("AmPmMarkers");
+        ampms = arrays.get("AmPmMarkersAbbr");
+        ampmsWide = arrays.get("AmPmMarkers");
         ampmsNarrow = arrays.get("AmPmMarkersNarrow");
 
         quarters = arrays.get("quarters/format/wide");
@@ -2121,15 +2118,6 @@ public class DateFormatSymbols implements Serializable, Cloneable {
         standaloneAbbreviatedDayPeriods = loadDayPeriodStrings(maps.get("dayPeriod/stand-alone/abbreviated"), abbreviatedDayPeriods);
         standaloneWideDayPeriods = loadDayPeriodStrings(maps.get("dayPeriod/stand-alone/wide"), standaloneAbbreviatedDayPeriods);
         standaloneNarrowDayPeriods = loadDayPeriodStrings(maps.get("dayPeriod/stand-alone/narrow"), standaloneAbbreviatedDayPeriods);
-
-        // BEGIN Android-changed: Load narrow quarters needed for the Q/q symbols in DateTimeFormatter.
-        if (aospExtendedDateFormatSymbols != null) {
-            aospExtendedDateFormatSymbols.narrowQuarters =
-                    arrays.get("quarters/format/narrow");
-            aospExtendedDateFormatSymbols.standaloneNarrowQuarters =
-                    arrays.get("quarters/stand-alone/narrow");
-        }
-        // END Android-changed: Load narrow quarters needed for the Q/q symbols in DateTimeFormatter.
 
         for (int i = 0; i < DT_MONTH_PATTERN_COUNT; i++) {
             String monthPatternPath = LEAP_MONTH_PATTERNS_PATHS[i];
@@ -2364,7 +2352,7 @@ public class DateFormatSymbols implements Serializable, Cloneable {
             }
         }
         if (calType == null) {
-            calType = className.replaceAll("Calendar", "").toLowerCase(Locale.ENGLISH);
+            calType = className.replace("Calendar", "").toLowerCase(Locale.ENGLISH);
         }
 
         initializeData(locale, calType);
@@ -2474,9 +2462,9 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * Returns the locale that was used to create this object, or null.
      * This may may differ from the locale requested at the time of
      * this object's creation.  For example, if an object is created
-     * for locale <tt>en_US_CALIFORNIA</tt>, the actual data may be
-     * drawn from <tt>en</tt> (the <i>actual</i> locale), and
-     * <tt>en_US</tt> may be the most specific locale that exists (the
+     * for locale {@code en_US_CALIFORNIA}, the actual data may be
+     * drawn from {@code en} (the <i>actual</i> locale), and
+     * {@code en_US} may be the most specific locale that exists (the
      * <i>valid</i> locale).
      *
      * <p>Note: This method will be implemented in ICU 3.0; ICU 2.8

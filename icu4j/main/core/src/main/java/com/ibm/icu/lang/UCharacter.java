@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.PrimitiveIterator;
+import java.util.stream.IntStream;
 
 import com.ibm.icu.impl.CaseMapImpl;
 import com.ibm.icu.impl.EmojiProps;
@@ -1338,6 +1341,25 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         /** @stable ICU 76 */
         public static final int TULU_TIGALARI_ID = 338; /*[11380]*/
 
+        // New blocks in Unicode 17.0.0
+
+        /** @stable ICU 78 */
+        public static final int BERIA_ERFE_ID = 339; /*[16EA0]*/
+        /** @stable ICU 78 */
+        public static final int CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J_ID = 340; /*[323B0]*/
+        /** @stable ICU 78 */
+        public static final int MISCELLANEOUS_SYMBOLS_SUPPLEMENT_ID = 341; /*[1CEC0]*/
+        /** @stable ICU 78 */
+        public static final int SHARADA_SUPPLEMENT_ID = 342; /*[11B60]*/
+        /** @stable ICU 78 */
+        public static final int SIDETIC_ID = 343; /*[10940]*/
+        /** @stable ICU 78 */
+        public static final int TAI_YO_ID = 344; /*[1E6C0]*/
+        /** @stable ICU 78 */
+        public static final int TANGUT_COMPONENTS_SUPPLEMENT_ID = 345; /*[18D80]*/
+        /** @stable ICU 78 */
+        public static final int TOLONG_SIKI_ID = 346; /*[11DB0]*/
+
         /**
          * One more than the highest normal UnicodeBlock value.
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.BLOCK).
@@ -1345,7 +1367,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
          */
         @Deprecated
-        public static final int COUNT = 339;
+        public static final int COUNT = 347;
 
         // blocks objects ---------------------------------------------------
 
@@ -2813,6 +2835,29 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         public static final UnicodeBlock TULU_TIGALARI =
                 new UnicodeBlock("TULU_TIGALARI", TULU_TIGALARI_ID);
 
+        // New blocks in Unicode 17.0.0
+
+        /** @stable ICU 78 */
+        public static final UnicodeBlock BERIA_ERFE = new UnicodeBlock("BERIA_ERFE", BERIA_ERFE_ID);
+        /** @stable ICU 78 */
+        public static final UnicodeBlock CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J =
+                new UnicodeBlock("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J", CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J_ID);
+        /** @stable ICU 78 */
+        public static final UnicodeBlock MISCELLANEOUS_SYMBOLS_SUPPLEMENT =
+                new UnicodeBlock("MISCELLANEOUS_SYMBOLS_SUPPLEMENT", MISCELLANEOUS_SYMBOLS_SUPPLEMENT_ID);
+        /** @stable ICU 78 */
+        public static final UnicodeBlock SHARADA_SUPPLEMENT =
+                new UnicodeBlock("SHARADA_SUPPLEMENT", SHARADA_SUPPLEMENT_ID);
+        /** @stable ICU 78 */
+        public static final UnicodeBlock SIDETIC = new UnicodeBlock("SIDETIC", SIDETIC_ID);
+        /** @stable ICU 78 */
+        public static final UnicodeBlock TAI_YO = new UnicodeBlock("TAI_YO", TAI_YO_ID);
+        /** @stable ICU 78 */
+        public static final UnicodeBlock TANGUT_COMPONENTS_SUPPLEMENT =
+                new UnicodeBlock("TANGUT_COMPONENTS_SUPPLEMENT", TANGUT_COMPONENTS_SUPPLEMENT_ID);
+        /** @stable ICU 78 */
+        public static final UnicodeBlock TOLONG_SIKI = new UnicodeBlock("TOLONG_SIKI", TOLONG_SIKI_ID);
+
         /**
          * @stable ICU 2.4
          */
@@ -3454,6 +3499,9 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         /** @stable ICU 76 */
         public static final int KASHMIRI_YEH = 104;
 
+        /** @stable ICU 78 */
+        public static final int THIN_NOON = 105;
+
         /**
          * One more than the highest normal JoiningGroup value.
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.JoiningGroup).
@@ -3461,7 +3509,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
          */
         @Deprecated
-        public static final int COUNT = 105;
+        public static final int COUNT = 106;
     }
 
     /**
@@ -3886,6 +3934,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         public static final int VIRAMA_FINAL = 46;  /*[VF]*/
         /** @stable ICU 74 */
         public static final int VIRAMA = 47;  /*[VI]*/
+        /** @stable ICU 78 */
+        public static final int UNAMBIGUOUS_HYPHEN = 48;  /*[HH]*/
         /**
          * One more than the highest normal LineBreak value.
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.LINE_BREAK).
@@ -3893,7 +3943,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
          */
         @Deprecated
-        public static final int COUNT = 48;
+        public static final int COUNT = 49;
     }
 
     /**
@@ -4132,16 +4182,16 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * See https://unicode.org/reports/tr44/#Indic_Conjunct_Break
      *
      * @see UProperty#INDIC_CONJUNCT_BREAK
-     * @draft ICU 76
+     * @stable ICU 76
      */
     public enum IndicConjunctBreak {
-        /** @draft ICU 76 */
+        /** @stable ICU 76 */
         NONE,
-        /** @draft ICU 76 */
+        /** @stable ICU 76 */
         CONSONANT,
-        /** @draft ICU 76 */
+        /** @stable ICU 76 */
         EXTEND,
-        /** @draft ICU 76 */
+        /** @stable ICU 76 */
         LINKER,
     }
 
@@ -5495,23 +5545,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         throw new IllegalArgumentException("Not a valid surrogate pair");
     }
 
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * {@icu} Returns a code point corresponding to the two surrogate code units.
-     *
-     * @param lead the lead char
-     * @param trail the trail char
-     * @return code point if surrogate characters are valid.
-     * @exception IllegalArgumentException thrown when the code units do
-     *            not form a valid code point
-     * @stable ICU 2.1
-     */
-    public static int getCodePoint(char lead, char trail)
-    {
-        return getCodePoint((int) lead, (int) trail);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
-
     /**
      * {@icu} Returns the code point corresponding to the BMP code point.
      *
@@ -6426,14 +6459,143 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
     public static final int MIN_CODE_POINT = Character.MIN_CODE_POINT;
 
     /**
+     * Is cp a Unicode code point U+0000..U+10FFFF?
+     * See <a href="https://www.unicode.org/glossary/#code_point">Unicode Glossary: Code Point</a>.
      * Equivalent to {@link Character#isValidCodePoint}.
      *
      * @param cp the code point to check
      * @return true if cp is a valid code point
      * @stable ICU 3.0
+     * @see allCodePoints
+     * @see allCodePointsStream
+     * @see isScalarValue
      */
     public static final boolean isValidCodePoint(int cp) {
         return cp >= 0 && cp <= MAX_CODE_POINT;
+    }
+
+    /**
+     * {@icu} Is cp a Unicode scalar value, that is, a non-surrogate code point?
+     * Only scalar values can be represented in well-formed UTF-8/16/32.
+     * See <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode Glossary:
+     * Unicode Scalar Value</a>.
+     *
+     * @param cp the code point to check
+     * @return true if cp is a Unicode scalar value
+     * @draft ICU 78
+     * @see allScalarValues
+     * @see allScalarValuesStream
+     * @see isValidCodePoint
+     */
+    public static final boolean isScalarValue(int cp) {
+        return (0 <= cp && cp < 0xd800) || (0xe000 <= cp && cp <= MAX_CODE_POINT);
+    }
+
+    private static final class CodePointsIterator implements PrimitiveIterator.OfInt {
+        private int c = 0;
+        private final boolean skipSurrogates;
+
+        private CodePointsIterator(boolean skipSurrogates) {
+            this.skipSurrogates = skipSurrogates;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return c <= 0x10ffff;
+        }
+
+        @Override
+        public int nextInt() {
+            if (c > 0x10ffff) {
+                throw new NoSuchElementException();
+            }
+            int result = c;
+            ++c;
+            if (skipSurrogates && c == 0xd800) {
+                c = 0xe000;
+            }
+            return result;
+        }
+    }
+
+    private static final class CodePoints implements IterableOfInt {
+        private static final CodePoints ALL_CODE_POINTS = new CodePoints(false);
+        private static final CodePoints ALL_SCALAR_VALUES = new CodePoints(true);
+
+        private final boolean skipSurrogates;
+
+        private CodePoints(boolean skipSurrogates) {
+            this.skipSurrogates = skipSurrogates;
+        }
+
+        @Override
+        public PrimitiveIterator.OfInt iterator() {
+            return new CodePointsIterator(skipSurrogates);
+        }
+    }
+
+    /**
+     * {@icu} Returns an IterableOfInt over all Unicode code points U+0000..U+10FFFF.
+     * See <a href="https://www.unicode.org/glossary/#code_point">Unicode Glossary: Code Point</a>.
+     *
+     * <p>Intended for test and builder code.
+     *
+     * @return an IterableOfInt over all Unicode code points U+0000..U+10FFFF.
+     * @draft ICU 78
+     * @see isValidCodePoint
+     * @see allScalarValues
+     */
+    public static final IterableOfInt allCodePoints() {
+        return CodePoints.ALL_CODE_POINTS;
+    }
+
+    /**
+     * {@icu} Returns an IterableOfInt over all Unicode scalar values U+0000..U+D7FF & U+E000..U+10FFFF.
+     * See <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode Glossary:
+     * Unicode Scalar Value</a>.
+     *
+     * <p>Intended for test and builder code.
+     *
+     * @return an IterableOfInt over all Unicode scalar values.
+     * @draft ICU 78
+     * @see isScalarValue
+     * @see allCodePoints
+     */
+    public static final IterableOfInt allScalarValues() {
+        return CodePoints.ALL_SCALAR_VALUES;
+    }
+
+    /**
+     * {@icu} Returns an IntStream over all Unicode code points U+0000..U+10FFFF.
+     * See <a href="https://www.unicode.org/glossary/#code_point">Unicode Glossary: Code Point</a>.
+     *
+     * <p>Intended for test and builder code.
+     *
+     * @return an IntStream over all Unicode code points U+0000..U+10FFFF.
+     * @draft ICU 78
+     * @see isValidCodePoint
+     * @see allScalarValuesStream
+     */
+    public static final IntStream allCodePointsStream() {
+        return IntStream.rangeClosed(0, 0x10ffff);
+    }
+
+    /**
+     * {@icu} Returns an IntStream over all Unicode scalar values U+0000..U+D7FF & U+E000..U+10FFFF.
+     * See <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode Glossary:
+     * Unicode Scalar Value</a>.
+     *
+     * <p>Intended for test and builder code.
+     *
+     * @return an IntStream over all Unicode scalar values.
+     * @draft ICU 78
+     * @see isScalarValue
+     * @see allCodePointsStream
+     */
+    public static final IntStream allScalarValuesStream() {
+        return IntStream.concat(
+                IntStream.rangeClosed(0, 0xd7ff),
+                IntStream.rangeClosed(0xe000, 0x10ffff));
     }
 
     /**
@@ -6460,19 +6622,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         return (codePoint & LEAD_SURROGATE_BITMASK) == LEAD_SURROGATE_BITS;
     }
 
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#isHighSurrogate},
-     *
-     * @param ch the char to check
-     * @return true if ch is a high (lead) surrogate
-     * @stable ICU 3.0
-     */
-    public static boolean isHighSurrogate(char ch) {
-        return isHighSurrogate((int) ch);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
-
     /**
      * Same as {@link Character#isLowSurrogate},
      * except that the ICU version accepts <code>int</code> for code points.
@@ -6485,19 +6634,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
     public static boolean isLowSurrogate(int codePoint) {
         return (codePoint & TRAIL_SURROGATE_BITMASK) == TRAIL_SURROGATE_BITS;
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#isLowSurrogate},
-     *
-     * @param ch the char to check
-     * @return true if ch is a low (trail) surrogate
-     * @stable ICU 3.0
-     */
-    public static boolean isLowSurrogate(char ch) {
-        return isLowSurrogate((int) ch);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#isSurrogatePair},
@@ -6513,19 +6649,18 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         return isHighSurrogate(high) && isLowSurrogate(low);
     }
 
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
     /**
-     * Same as {@link Character#isSurrogatePair}.
+     * {@icu} Is cp a Unicode noncharacter?
+     * See <a href="https://www.unicode.org/glossary/#noncharacter">Unicode Glossary:
+     * Noncharacter</a>.
      *
-     * @param high the high (lead) char
-     * @param low the low (trail) char
-     * @return true if high, low form a surrogate pair
-     * @stable ICU 3.0
+     * @param cp the code point to check
+     * @return true if cp is a Unicode noncharacter code point
+     * @draft ICU 78
      */
-    public static final boolean isSurrogatePair(char high, char low) {
-        return isSurrogatePair((int) high, (int) low);
+    public static final boolean isNoncharacter(int cp) {
+        return cp >= 0xfdd0 && (cp <= 0xfdef || (cp & 0xfffe) == 0xfffe) && cp <= MAX_CODE_POINT;
     }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#charCount}.
@@ -6557,22 +6692,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         // see ICU4C U16_GET_SUPPLEMENTARY()
         return (high << 10) + low - U16_SURROGATE_OFFSET;
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#toCodePoint}.
-     * Returns the code point represented by the two surrogate code units.
-     * This does not check the surrogate pair for validity.
-     *
-     * @param high the high (lead) surrogate
-     * @param low the low (trail) surrogate
-     * @return the code point formed by the surrogate pair
-     * @stable ICU 3.0
-     */
-    public static final int toCodePoint(char high, char low) {
-        return toCodePoint((int) high, (int) low);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#codePointAt(CharSequence, int)}.

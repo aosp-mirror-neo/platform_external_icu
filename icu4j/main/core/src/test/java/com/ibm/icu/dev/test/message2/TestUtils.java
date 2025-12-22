@@ -6,10 +6,7 @@ package com.ibm.icu.dev.test.message2;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -43,11 +40,9 @@ public class TestUtils {
         .create();
 
     private static final MFFunctionRegistry TEST_REGISTRY = MFFunctionRegistry.builder()
-            .setFormatter("test:function", new TestFunctionFactory("function"))
-            .setFormatter("test:format", new TestFunctionFactory("format"))
-            .setFormatter("test:select", new TestFunctionFactory("select"))
-            .setSelector("test:function", new TestFunctionFactory("function"))
-            .setSelector("test:select", new TestFunctionFactory("select"))
+            .setFunction("test:function", new TestFunctionFactory("function"))
+            .setFunction("test:format", new TestFunctionFactory("format"))
+            .setFunction("test:select", new TestFunctionFactory("select"))
             .build();
 
     // ======= Legacy TestCase utilities, no json-compatible ========
@@ -123,7 +118,7 @@ public class TestUtils {
                 @SuppressWarnings("unchecked")
                 Map<String, Object> innerMap = (Map<String, Object>) pair.value;
                 if (innerMap.size() == 1 && innerMap.containsKey("decimal")
-                    && innerMap.get("decimal") instanceof String) {
+                        && innerMap.get("decimal") instanceof String) {
                     String decimalValue = (String) innerMap.get("decimal");
                     params[i] = new Param(pair.name, new com.ibm.icu.math.BigDecimal(decimalValue));
                 }
@@ -224,8 +219,16 @@ public class TestUtils {
         return unit.toString();
     }
 
-    static Reader jsonReader(String jsonFileName) {
-        InputStream json = TestUtils.class.getResourceAsStream(jsonFileName);
-        return new BufferedReader(new InputStreamReader(json, StandardCharsets.UTF_8));
+    static Reader jsonReader(String jsonFileName) throws URISyntaxException, IOException {
+        Path json = getTestFile(TestUtils.class, jsonFileName);
+        return Files.newBufferedReader(json, StandardCharsets.UTF_8);
+    }
+
+    private static Path getTestFile(Class<?> cls, String fileName) throws URISyntaxException, IOException {
+        String packageName = cls.getPackage().getName().replace('.', '/');
+        URI getPath = cls.getClassLoader().getResource(packageName).toURI();
+        Path filePath = Paths.get(getPath);
+        Path json = Paths.get(fileName);
+        return filePath.resolve(json);
     }
 }

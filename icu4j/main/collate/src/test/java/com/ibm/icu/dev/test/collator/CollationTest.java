@@ -1342,9 +1342,7 @@ public class CollationTest extends TestFmwk {
             coll = new RuleBasedCollator(rules.toString());
         } catch (Exception e) {
             logln(rules.toString());
-            // Android patch: Add --omitCollationRules to genrb.
-            logln("RuleBasedCollator(rules) failed - " + e.getMessage());
-            // Android patch end.
+            errln("RuleBasedCollator(rules) failed - " + e.getMessage());
             coll = null;
         }
     }
@@ -1676,7 +1674,7 @@ public class CollationTest extends TestFmwk {
         BufferedReader in = null;
 
         try {
-            in = TestUtil.getDataReader("collationtest.txt", "UTF-8");
+            in = TestUtil.getUtf8DataReader("collationtest.txt");
 
             // Read a new line if necessary.
             // Sub-parsers leave the first line set that they do not handle.

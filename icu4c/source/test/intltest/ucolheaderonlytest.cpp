@@ -29,10 +29,7 @@ void UColHeaderOnlyTest::runIndexedTest(int32_t index, UBool exec, const char*& 
         logln("TestSuite UColHeaderOnlyTest: ");
     }
     TESTCASE_AUTO_BEGIN;
-    // Android-removed: The tests were failing due to a crash with an exit code 139 and
-    // "Cause: trying to execute non-executable memory" error message. Disable until the root cause
-    // of the crash is fixed.
-    //TESTCASE_AUTO(TestPredicateTypes);
+    TESTCASE_AUTO(TestPredicateTypes);
     TESTCASE_AUTO_END;
 }
 

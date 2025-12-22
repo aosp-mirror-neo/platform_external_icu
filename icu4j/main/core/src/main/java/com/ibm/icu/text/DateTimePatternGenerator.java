@@ -423,7 +423,11 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
 
         if (list != null) {
             defaultHourFormatChar = defaultCharFromLocale != null ? defaultCharFromLocale : list[0].charAt(0);
-            allowedHourFormats = Arrays.copyOfRange(list, 1, list.length - 1);
+            if (list.length > 1) {
+                allowedHourFormats = Arrays.copyOfRange(list, 1, list.length);
+            } else {
+                allowedHourFormats = LAST_RESORT_ALLOWED_HOUR_FORMAT;
+            }
         } else {
             allowedHourFormats = LAST_RESORT_ALLOWED_HOUR_FORMAT;
             defaultHourFormatChar = (defaultCharFromLocale != null) ? defaultCharFromLocale : allowedHourFormats[0].charAt(0);
@@ -721,44 +725,16 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
         return getBestPattern(skeleton, null, options);
     }
 
-    // BEGIN Android-added: http://b/170233598 Allow duplicate fields
-    /**
-     * Return the best pattern matching the input skeleton. It is guaranteed to
-     * have all of the fields in the skeleton.
-     *
-     * @param skeleton The skeleton is a pattern containing only the variable fields.
-     *            For example, "MMMdd" and "mmhh" are skeletons.
-     * @param options MATCH_xxx options for forcing the length of specified fields in
-     *            the returned pattern to match those in the skeleton (when this would
-     *            not happen otherwise). For default behavior, use MATCH_NO_OPTIONS.
-     * @param allowDuplicateFields allows duplicated field in the skeleton
-     * @return Best pattern matching the input skeleton (and options).
-     * @internal
-     */
-    public String getBestPattern(String skeleton, int options, boolean allowDuplicateFields) {
-        return getBestPattern(skeleton, null, options, allowDuplicateFields);
-    }
-
-    private String getBestPattern(String skeleton, DateTimeMatcher skipMatcher, int options) {
-        return getBestPattern(skeleton, skipMatcher, options, false);
-    }
-    // END Android-added: http://b/170233598 Allow duplicate fields
-
     /*
      * getBestPattern which takes optional skip matcher
      */
-    // Android-changed: http://b/170233598 Allow duplicate fields
-    // private String getBestPattern(String skeleton, DateTimeMatcher skipMatcher, int options) {
-    private String getBestPattern(String skeleton, DateTimeMatcher skipMatcher, int options,
-            boolean allowDuplicateFields) {
+    private String getBestPattern(String skeleton, DateTimeMatcher skipMatcher, int options) {
         EnumSet<DTPGflags> flags = EnumSet.noneOf(DTPGflags.class);
         // Replace hour metacharacters 'j', 'C', and 'J', set flags as necessary
         String skeletonMapped = mapSkeletonMetacharacters(skeleton, flags);
         String datePattern, timePattern;
         synchronized(this) {
-            // Android-changed: http://b/170233598 Allow duplicate fields
-            // current.set(skeletonMapped, fp, false);
-            current.set(skeletonMapped, fp, allowDuplicateFields);
+            current.set(skeletonMapped, fp, false);
             PatternWithMatcher bestWithMatcher = getBestRaw(current, -1, _distanceInfo, skipMatcher);
             if (_distanceInfo.missingFieldMask == 0 && _distanceInfo.extraFieldMask == 0) {
                 // we have a good item. Adjust the field types
@@ -1712,7 +1688,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      */
     @Override
     public DateTimePatternGenerator cloneAsThawed() {
-        DateTimePatternGenerator result = (DateTimePatternGenerator) (this.clone());
+        DateTimePatternGenerator result = this.clone();
         frozen = false;
         return result;
     }
@@ -1724,9 +1700,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      */
     @Override
     @SuppressWarnings("unchecked")
-    public Object clone() {
+    public DateTimePatternGenerator clone() {
         try {
-            DateTimePatternGenerator result = (DateTimePatternGenerator) (super.clone());
+            DateTimePatternGenerator result = (DateTimePatternGenerator) super.clone();
             result.skeleton2pattern = (TreeMap<DateTimeMatcher, PatternWithSkeletonFlag>) skeleton2pattern.clone();
             result.basePattern_pattern = (TreeMap<String, PatternWithSkeletonFlag>) basePattern_pattern.clone();
             result.dateTimeFormats = dateTimeFormats.clone();
@@ -2433,7 +2409,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
                     //    options bits can be used to override this.
                     // 2. There is a specified skeleton for the found pattern and one of the following is true:
                     //    a) The length of the field in the skeleton (skelFieldLen) is equal to reqFieldLen.
-                    //    b) The pattern field is numeric and the skeleton field is not, or vice versa.
+                    //    b) The pattern field is numeric and the requested field is not, or vice versa.
                     //
                     // Old behavior was:
                     // normally we just replace the field. However HOUR is special; we only change the length
@@ -2456,10 +2432,10 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
                         // https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table for more info)
                         int skelFieldLen = matcherWithSkeleton.original.getFieldLength(type);
                         boolean patFieldIsNumeric = variableField.isNumeric();
-                        boolean skelFieldIsNumeric = matcherWithSkeleton.fieldIsNumeric(type);
+                        boolean reqFieldIsNumeric = inputRequest.fieldIsNumeric(type);
                         if (skelFieldLen == reqFieldLen
-                                || (patFieldIsNumeric && !skelFieldIsNumeric)
-                                || (skelFieldIsNumeric && !patFieldIsNumeric)) {
+                                || (patFieldIsNumeric && !reqFieldIsNumeric)
+                                || (reqFieldIsNumeric && !patFieldIsNumeric)) {
                             // don't adjust the field length in the found pattern
                             adjFieldLen = fieldBuilder.length();
                         }

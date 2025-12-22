@@ -453,11 +453,9 @@ public class IBMCalendarTest extends CalendarTestFmwk {
         // Thai locale
         Calendar cal = Calendar.getInstance(new ULocale("th_TH"));
         String type = cal.getType();
-        // Android patch: Force default Gregorian calendar.
-        if (!type.equals("gregorian")) {
-            errln("FAIL: Gregorian calendar is not returned for locale " + cal.toString());
+        if (!type.equals("buddhist")) {
+            errln("FAIL: Buddhist calendar is not returned for locale " + cal.toString());
         }
-        // Android patch end.
     }
 
     /**
@@ -1226,7 +1224,6 @@ public class IBMCalendarTest extends CalendarTestFmwk {
                 "th@rg=SA",		// ignore malformed rg tag, use buddhist
         };
 
-        // Android patch: Force default Gregorian calendar regardless of region.
         String[] types = {
                 "gregorian",
                 "japanese",
@@ -1234,12 +1231,12 @@ public class IBMCalendarTest extends CalendarTestFmwk {
                 "japanese",
                 "buddhist",
                 "gregorian",
+                "buddhist",
                 "gregorian",
                 "gregorian",
-                "gregorian",
-                "gregorian",
-                "gregorian",
-                "gregorian",
+                "buddhist",
+                "buddhist",
+                "buddhist",
                 "gregorian",    // iso8601 is a gregorian sub type
                 "gregorian",
                 "gregorian",
@@ -1248,10 +1245,9 @@ public class IBMCalendarTest extends CalendarTestFmwk {
                 "japanese",
                 "gregorian",
                 "gregorian",
-                "gregorian",
-                "gregorian",
+                "buddhist",
+                "buddhist",
         };
-        // Android patch end.
 
         for (int i = 0; i < locs.length; i++) {
             Calendar cal = Calendar.getInstance(new ULocale(locs[i]));
@@ -1382,7 +1378,7 @@ public class IBMCalendarTest extends CalendarTestFmwk {
         assertEquals("Default repeated wall time option", cal.getRepeatedWallTimeOption(), Calendar.WALLTIME_LAST);
         assertEquals("Default skipped wall time option", cal.getSkippedWallTimeOption(), Calendar.WALLTIME_LAST);
 
-        Calendar cal2 = (Calendar)cal.clone();
+        Calendar cal2 = cal.clone();
 
         assertTrue("Equality", cal2.equals(cal));
         assertTrue("Hash code", cal.hashCode() == cal2.hashCode());
@@ -1714,6 +1710,7 @@ public class IBMCalendarTest extends CalendarTestFmwk {
 
     @Test
     public void TestAddRollEra0AndEraBounds() {
+        // When era 0 is deleted in some calendars, this test will need to be modified
         final String[] localeIDs = {
             // calendars with non-modern era 0 that goes backwards, max era == 1
             "en@calendar=gregorian",
@@ -2240,7 +2237,7 @@ public class IBMCalendarTest extends CalendarTestFmwk {
         Calendar base = Calendar.getInstance(TimeZone.GMT_ZONE, new ULocale(locale));
         Date test = Calendar.getInstance().getTime();
 
-        Calendar r = (Calendar)base.clone();
+        Calendar r = base.clone();
         int lastDay = 1;
         String type = base.getType();
         boolean ignoreOrdinaryMonth12Bug = (!quick) && (type.equals("chinese") || type.equals("dangi"));

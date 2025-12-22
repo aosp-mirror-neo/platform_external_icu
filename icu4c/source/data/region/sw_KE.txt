@@ -29,7 +29,6 @@ sw_KE{
         BT{"Bhutani"}
         BY{"Belarusi"}
         CC{"Visiwa vya Kokos (Keeling)"}
-        CD{"Kongo - Kinshasa"}
         CV{"Kepuvede"}
         CW{"Kurakao"}
         EA{"Keuta na Melilla"}
@@ -62,7 +61,7 @@ sw_KE{
         PL{"Polandi"}
         PM{"St. Pierre na Miquelon"}
         PR{"Pwetoriko"}
-        PS{"Palestina"}
+        PS{"Himaya za Palestina"}
         PY{"Paragwai"}
         QA{"Katari"}
         QO{"Eneo la Oceania"}

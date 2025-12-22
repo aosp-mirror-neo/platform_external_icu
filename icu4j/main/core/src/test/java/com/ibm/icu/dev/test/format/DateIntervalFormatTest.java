@@ -21,6 +21,7 @@ import java.text.ParseException;
 import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
@@ -28,6 +29,7 @@ import java.util.Locale;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.junit.runners.model.MultipleFailureException;
 
 import com.ibm.icu.dev.test.CoreTestFmwk;
 import com.ibm.icu.dev.test.TestFmwk;
@@ -63,9 +65,10 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
     /**
      * Test format
+     * @throws MultipleFailureException
      */
     @Test
-    public void TestFormat() {
+    public void TestFormat() throws MultipleFailureException {
         // first item is date pattern
         // followed by a group of locale/from_data/to_data/skeleton/interval_data
         // Note that from_data/to_data are specified using era names from root, for the calendar specified by locale.
@@ -437,19 +440,19 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
                 "zh", "CE 2007 10 10 10:10:10", "CE 2008 10 10 10:10:10", "hm", "2007/10/10 \\u4e0a\\u534810:10 \\u2013 2008/10/10 \\u4e0a\\u534810:10",
 
-                "zh", "CE 2007 10 10 10:10:10", "CE 2007 11 10 10:10:10", "dMMMMy", "2007\\u5e7410\\u670810\\u65e5\\u81f311\\u670810\\u65e5",
+                "zh", "CE 2007 10 10 10:10:10", "CE 2007 11 10 10:10:10", "dMMMMy", "2007\\u5E74\\u5341\\u670810\\u65E5\\u2009\\u2013\\u2009\\u5341\\u4E00\\u670810\\u65E5",
 
                 "zh", "CE 2007 10 10 10:10:10", "CE 2007 11 10 10:10:10", "dMMMM", "10\\u670810\\u65e5\\u81f311\\u670810\\u65e5",
 
-                "zh", "CE 2007 10 10 10:10:10", "CE 2007 11 10 10:10:10", "MMMMy", "2007\\u5e7410\\u6708\\u81f311\\u6708",
+                "zh", "CE 2007 10 10 10:10:10", "CE 2007 11 10 10:10:10", "MMMMy", "2007\\u5e7410\\u6708 \\u2013 11\\u6708",
 
                 "zh", "CE 2007 10 10 10:10:10", "CE 2007 11 10 10:10:10", "EEEEdMMMM", "10\\u670810\\u65e5\\u661f\\u671f\\u4e09\\u81f311\\u670810\\u65e5\\u661f\\u671f\\u516d",
 
-                "zh", "CE 2007 10 10 10:10:10", "CE 2007 11 10 10:10:10", "hmv", "2007/10/10 \\u6D1B\\u6749\\u77F6\\u65F6\\u95F4 \\u4E0A\\u534810:10 \\u2013 2007/11/10 \\u6D1B\\u6749\\u77F6\\u65F6\\u95F4 \\u4E0A\\u534810:10",
+                "zh", "CE 2007 10 10 10:10:10", "CE 2007 11 10 10:10:10", "hmv", "2007/10/10 \\u6D1B\\u6749\\u77F6\\u65F6\\u95F4\\u4E0A\\u534810:10 \\u2013 2007/11/10 \\u6D1B\\u6749\\u77F6\\u65F6\\u95F4\\u4E0A\\u534810:10",
 
-                "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "EEEEdMMMMy", "2007\\u5e7411\\u670810\\u65e5\\u661f\\u671f\\u516d\\u81f320\\u65e5\\u661f\\u671f\\u4e8c",
+                "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "EEEEdMMMMy", "2007\\u5E74\\u5341\\u4E00\\u670810\\u65E5\\u661F\\u671F\\u516D\\u2009\\u2013\\u2009\\u5341\\u4E00\\u670820\\u65E5\\u661F\\u671F\\u4E8C",
 
-                "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "dMMMMy", "2007\\u5e7411\\u670810\\u65e5\\u81f320\\u65e5",
+                "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "dMMMMy", "2007\\u5e74\\u5341\\u4e00\\u670810\\u65e5\\u2009\\u2013\\u200920\\u65e5",
 
                 "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "dMMMM", "11\\u670810\\u65e5\\u81f320\\u65e5",
 
@@ -478,7 +481,7 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
                 "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "MMMM", "\\u5341\\u4E00\\u6708", // (fixed expected result per ticket 6872<-6626 and others)
 
-                "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "hmz", "2007/11/10 GMT-8 \\u4e0a\\u534810:10 \\u2013 2007/11/20 GMT-8 \\u4e0a\\u534810:10",
+                "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "hmz", "2007/11/10 GMT-8\\u4e0a\\u534810:10 \\u2013 2007/11/20 GMT-8\\u4e0a\\u534810:10",
 
                 "zh", "CE 2007 11 10 10:10:10", "CE 2007 11 20 10:10:10", "h", "2007/11/10 \\u4e0a\\u534810\\u65f6 \\u2013 2007/11/20 \\u4e0a\\u534810\\u65f6",
 
@@ -617,7 +620,7 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
                 "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 14:10:10", "hmz", "10:00\\u202FAM\\u2009\\u2013\\u20092:10\\u202FPM GMT-8",
 
-                "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 14:10:10", "h", "10 Uhr AM\\u2009\\u2013\\u20092 Uhr PM",
+                "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 14:10:10", "h", "10 AM – 2 PM",
 
                 "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 10:20:10", "EEEEdMMM", "Mittwoch, 10. Jan.",
 
@@ -627,11 +630,11 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
                 "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 10:20:10", "hmz", "10:00\\u201310:20\\u202FAM GMT-8",
 
-                "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 10:20:10", "h", "10 Uhr AM",
+                "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 10:20:10", "h", "10\\u202FAM",
 
-                "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 10:20:10", "hv", "10 Uhr AM Los Angeles (Ortszeit)",
+                "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 10:20:10", "hv", "10\\u202FAM Los Angeles (Ortszeit)",
 
-                "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 10:20:10", "hz", "10 Uhr AM GMT-8",
+                "de", "CE 2007 01 10 10:00:10", "CE 2007 01 10 10:20:10", "hz", "10\\u202FAM GMT-8",
 
                 "de", "CE 2007 01 10 10:10:10", "CE 2007 01 10 10:10:20", "EEEEdMMMy", "Mittwoch, 10. Jan. 2007",
 
@@ -647,62 +650,56 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
                 "de", "CE 2007 01 10 10:10:10", "CE 2007 01 10 10:10:20", "jmz", "10:10 GMT-8",
 
-                "de", "CE 2007 01 10 10:10:10", "CE 2007 01 10 10:10:20", "h", "10 Uhr AM",
+                "de", "CE 2007 01 10 10:10:10", "CE 2007 01 10 10:10:20", "h", "10\\u202FAM",
 
-                "de", "CE 2007 01 10 10:10:10", "CE 2007 01 10 10:10:20", "hv", "10 Uhr AM Los Angeles (Ortszeit)",
+                "de", "CE 2007 01 10 10:10:10", "CE 2007 01 10 10:10:20", "hv", "10\\u202FAM Los Angeles (Ortszeit)",
 
-                "de", "CE 2007 01 10 10:10:10", "CE 2007 01 10 10:10:20", "hz", "10 Uhr AM GMT-8",
+                "de", "CE 2007 01 10 10:10:10", "CE 2007 01 10 10:10:20", "hz", "10\\u202FAM GMT-8",
 
                 // Thai (default calendar buddhist)
 
-                // Android patch: Force default Gregorian calendar.
-
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "EEEEdMMMy", "\\u0E27\\u0E31\\u0E19\\u0E40\\u0E2A\\u0E32\\u0E23\\u0E4C\\u0E17\\u0E35\\u0E48 10 \\u0E15.\\u0E04. 2550 \\u2013 \\u0E27\\u0E31\\u0E19\\u0E2D\\u0E32\\u0E17\\u0E34\\u0E15\\u0E22\\u0E4C\\u0E17\\u0E35\\u0E48 10 \\u0E15.\\u0E04. 2551",
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "EEEEdMMMy", "\\u0E27\\u0E31\\u0E19\\u0E1E\\u0E38\\u0E18\\u0E17\\u0E35\\u0E48 10 \\u0E15.\\u0E04. 2550 \\u2013 \\u0E27\\u0E31\\u0E19\\u0E28\\u0E38\\u0E01\\u0E23\\u0E4C\\u0E17\\u0E35\\u0E48 10 \\u0E15.\\u0E04. 2551",
 
 
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "dMMM", "10 \\u0E15.\\u0E04. 2550 \\u2013 10 \\u0E15.\\u0E04. 2551",
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "dMMM", "10 \\u0E15.\\u0E04. 2550 \\u2013 10 \\u0E15.\\u0E04. 2551",
 
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "MMMy", "\\u0E15.\\u0E04. 2550 \\u2013 \\u0E15.\\u0E04. 2551",
-
-
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "EdMy", "ส. 10/10/2550 – อา. 10/10/2551",
-
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "dMy", "10/10/2550 \\u2013 10/10/2551",
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "MMMy", "\\u0E15.\\u0E04. 2550 \\u2013 \\u0E15.\\u0E04. 2551",
 
 
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "EdMy", "\\u0E2A. 10/10/2550 \\u2013 \\u0E2D\\u0E32. 10/10/2551",
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "My", "10/2550 \\u2013 10/2551",
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "EdMy", "\\u0E1E\\u0E38\\u0E18 10/10/2550 \\u2013 \\u0E28\\u0E38\\u0E01\\u0E23\\u0E4C 10/10/2551",
 
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "EdM", "ส. 10/10/2550 – อา. 10/10/2551",
-
-
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "y", "2550\\u20132551",
-
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "EdM", "\\u0E2A. 10/10/2550 \\u2013 \\u0E2D\\u0E32. 10/10/2551",
-                "th", "2550 10 10 10:10:10", "2551 10 10 10:10:10", "M", "10/2550 \\u2013 10/2551",
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "dMy", "10/10/2550 \\u2013 10/10/2551",
 
 
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "EEEEdMMMy", "วันเสาร์ที่ 10 ต.ค. – วันอังคารที่ 10 พ.ย. 2550",
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "My", "10/2550 \\u2013 10/2551",
+
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "EdM", "\\u0E1E\\u0E38\\u0E18 10/10/2550 \\u2013 \\u0E28\\u0E38\\u0E01\\u0E23\\u0E4C 10/10/2551",
 
 
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "dMMM", "10 \\u0E15.\\u0E04. \\u2013 10 \\u0E1E.\\u0E22.",
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "y", "2550\\u20132551",
 
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "EEEEdMMMy", "\\u0E27\\u0E31\\u0E19\\u0E40\\u0E2A\\u0E32\\u0E23\\u0E4C\\u0E17\\u0E35\\u0E48 10 \\u0E15.\\u0E04. \\u2013 \\u0E27\\u0E31\\u0E19\\u0E2D\\u0E31\\u0E07\\u0E04\\u0E32\\u0E23\\u0E17\\u0E35\\u0E48 10 \\u0E1E.\\u0E22. 2550",
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "MMMy", "\\u0E15.\\u0E04.\\u2013\\u0E1E.\\u0E22. 2550",
-
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "dM", "10/10 \\u2013 10/11",
-
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "My", "10/2550 \\u2013 11/2550",
+                "th", "BE 2550 10 10 10:10:10", "BE 2551 10 10 10:10:10", "M", "10/2550 \\u2013 10/2551",
 
 
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "d", "10/10 \\u2013 10/11",
-
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "y", "2550",
+                "th", "BE 2550 10 10 10:10:10", "BE 2550 11 10 10:10:10", "EEEEdMMMy", "\\u0E27\\u0E31\\u0E19\\u0E1E\\u0E38\\u0E18\\u0E17\\u0E35\\u0E48 10 \\u0E15.\\u0E04. \\u2013 \\u0E27\\u0E31\\u0E19\\u0E40\\u0E2A\\u0E32\\u0E23\\u0E4C\\u0E17\\u0E35\\u0E48 10 \\u0E1E.\\u0E22. 2550",
 
 
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "MMM", "ต.ค. – พ.ย.",
+                "th", "BE 2550 10 10 10:10:10", "BE 2550 11 10 10:10:10", "dMMM", "10 \\u0E15.\\u0E04. \\u2013 10 \\u0E1E.\\u0E22.",
 
-                "th", "2550 10 10 10:10:10", "2550 11 10 10:10:10", "y", "2550",
+                "th", "BE 2550 10 10 10:10:10", "BE 2550 11 10 10:10:10", "MMMy", "\\u0E15.\\u0E04.\\u2013\\u0E1E.\\u0E22. 2550",
+
+                "th", "BE 2550 10 10 10:10:10", "BE 2550 11 10 10:10:10", "dM", "10/10 \\u2013 10/11",
+
+                "th", "BE 2550 10 10 10:10:10", "BE 2550 11 10 10:10:10", "My", "10/2550 \\u2013 11/2550",
+
+
+                "th", "BE 2550 10 10 10:10:10", "BE 2550 11 10 10:10:10", "d", "10/10 \\u2013 10/11",
+
+                "th", "BE 2550 10 10 10:10:10", "BE 2550 11 10 10:10:10", "y", "\\u0e1e.\\u0e28. 2550",
+
+
+                "th", "BE 2550 10 10 10:10:10", "BE 2550 11 10 10:10:10", "MMM", "\u0E15.\u0E04.\u2013\u0E1E.\u0E22.",
+
                 // Tests for Japanese calendar with eras, including new era in 2019 (Heisei 31 through April 30, then new era)
 
                 "en-u-ca-japanese", "H 31 03 15 09:00:00", "H 31 04 15 09:00:00", "GyMMMd", "Mar 15\u2009\u2013\u2009Apr 15, 31 Heisei",
@@ -728,7 +725,6 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
                 "ja-u-ca-japanese", "H 31 04 15 09:00:00", DateFormat.JP_ERA_2019_NARROW+" 1 05 15 09:00:00", "GGGGGyMd", "H31/04/15\uFF5E"+DateFormat.JP_ERA_2019_NARROW+"1/05/15",
 
-                // Android patch end.
         };
         expect(DATA, DATA.length);
     }
@@ -736,9 +732,10 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
     /**
      * Test handling of hour and day period metacharacters
+     * @throws MultipleFailureException
      */
     @Test
-    public void TestHourMetacharacters() {
+    public void TestHourMetacharacters() throws MultipleFailureException {
         // first item is date pattern
         // followed by a group of locale/from_data/to_data/skeleton/interval_data
         // Note that from_data/to_data are specified using era names from root, for the calendar specified by locale.
@@ -759,7 +756,7 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
             // baseline (h and H)
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "hh", "12\\u2009\\u2013\\u20091\\u202FAM",
-            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "HH", "00\\u201301 Uhr",
+            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "HH", "00–01 Uhr",
 
             // k and K (ICU-21154 and ICU-21156)
             // (should behave the same as h and H if not overridden in locale ID)
@@ -768,17 +765,17 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
             // (overriding hour cycle in locale ID should affect both h and K [or both H and k])
             "en-u-hc-h11", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "hh", "0\\u2009\\u2013\\u20091\\u202FAM",
             "en-u-hc-h11", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "KK", "0\\u2009\\u2013\\u20091\\u202FAM",
-            "de-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "HH", "24\\u201301 Uhr",
-            "de-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "kk", "24\\u201301 Uhr",
+            "de-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "HH", "24–01 Uhr",
+            "de-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "kk", "24–01 Uhr",
             // (overriding hour cycle to h11 should NOT affect H and k; overriding to h24 should NOT affect h and K)
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "HH", "00\\u2009\\u2013\\u200901",
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "kk", "00\\u2009\\u2013\\u200901",
             "en-u-hc-h11", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "HH", "00\\u2009\\u2013\\u200901",
             "en-u-hc-h11", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "kk", "00\\u2009\\u2013\\u200901",
-            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "hh", "12\\u2009\\u2013\\u20091 Uhr AM",
-            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "KK", "12\\u2009\\u2013\\u20091 Uhr AM",
-            "de-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "hh", "12\\u2009\\u2013\\u20091 Uhr AM",
-            "de-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "KK", "12\\u2009\\u2013\\u20091 Uhr AM",
+            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "hh", "12\\u2009\\u2013\\u20091\\u202FAM",
+            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "KK", "12\\u2009\\u2013\\u20091\\u202FAM",
+            "de-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "hh", "12\\u2009\\u2013\\u20091\\u202FAM",
+            "de-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "KK", "12\\u2009\\u2013\\u20091\\u202FAM",
 
             // different lengths of the 'a' field
             "en", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "ha", "10\\u202FAM\\u2009\\u2013\\u20091\\u202FPM",
@@ -791,10 +788,10 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "jj", "12\\u2009\\u2013\\u20091\\u202FAM",
             "en", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "jjjjj", "10\\u202Fa\\u2009\\u2013\\u20091\\u202Fp",
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "jjjjj", "12\\u2009\\u2013\\u20091\\u202Fa",
-            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "jj", "10\\u201313 Uhr",
-            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "jj", "00\\u201301 Uhr",
-            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "jjjjj", "10\\u201313 Uhr",
-            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "jjjjj", "00\\u201301 Uhr",
+            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "jj", "10–13 Uhr",
+            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "jj", "00–01 Uhr",
+            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "jjjjj", "10–13 Uhr",
+            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "jjjjj", "00–01 Uhr",
 
             // b and B
             "en", "CE 2010 09 27 10:00:00", "CE 2010 09 27 12:00:00", "hb", "10\\u202FAM\\u2009\\u2013\\u200912\\u202Fnoon",
@@ -806,8 +803,8 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
             // J
             "en", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "J", "10\\u2009\\u2013\\u20091",
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "J", "12\\u2009\\u2013\\u20091",
-            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "J", "10\\u201313 Uhr",
-            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "J", "00\\u201301 Uhr",
+            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "J", "10–13 Uhr",
+            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "J", "00–01 Uhr",
 
             // C
             // (for English and German, C should do the same thing as j)
@@ -815,10 +812,10 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "CC", "12\\u2009\\u2013\\u20091\\u202FAM",
             "en", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "CCCCC", "10\\u202Fa\\u2009\\u2013\\u20091\\u202Fp",
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "CCCCC", "12\\u2009\\u2013\\u20091\\u202Fa",
-            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "CC", "10\\u201313 Uhr",
-            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "CC", "00\\u201301 Uhr",
-            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "CCCCC", "10\\u201313 Uhr",
-            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "CCCCC", "00\\u201301 Uhr",
+            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "CC", "10–13 Uhr",
+            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "CC", "00–01 Uhr",
+            "de", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "CCCCC", "10–13 Uhr",
+            "de", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "CCCCC", "00–01 Uhr",
             // (for zh_HK and hi_IN, j maps to ha, but C maps to hB)
             "zh_HK", "CE 2010 09 27 10:00:00", "CE 2010 09 27 13:00:00", "jj", "\\u4E0A\\u534810\\u6642\\u81F3\\u4E0B\\u53481\\u6642",
             "zh_HK", "CE 2010 09 27 00:00:00", "CE 2010 09 27 01:00:00", "jj", "\\u4E0A\\u534812\\u6642\\u81F31\\u6642",
@@ -840,7 +837,7 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
             "en-gb-u-hc-h24", "CE 2010 09 27 00:00:00", "CE 2010 09 27 13:00:00", "kk", "24\\u201313",
 
             // regression test for ICU-21343
-            "de", "CE 2010 09 27 01:00:00", "CE 2010 09 27 10:00:00", "KK", "1\\u2009\\u2013\\u200910 Uhr AM",
+            "de", "CE 2010 09 27 01:00:00", "CE 2010 09 27 10:00:00", "KK", "1\\u2009\\u2013\\u200910\\u202FAM",
 
             // regression test for ICU-21154 (single-date ranges should use the same hour cycle as multi-date ranges)
             "en", "CE 2010 09 27 00:00:00", "CE 2010 09 27 00:00:00", "hh", "12\\u202FAM",
@@ -858,9 +855,11 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
     }
 
 
-    private void expect(String[] data, int data_length) {
+    private void expect(String[] data, int data_length) throws MultipleFailureException {
         int i = 0;
         String pattern = data[i++];
+
+        List<Throwable> allErrs = new LinkedList<>();
 
         while (i<data_length) {
             String locName = data[i++];
@@ -891,8 +890,12 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
             String expected = data[i++];
             String formatted = dtitvfmt.format(dtitv);
             if ( !formatted.equals(Utility.unescape(expected)) )  {
-                errln("\"" + locName + "\\" + oneSkeleton + "\\" + datestr + "\\" + datestr_2 + "\"\t expected: " + expected +"\tgot: " + formatted + "\n");
+                allErrs.add(new AssertionError("\"" + locName + "\\" + oneSkeleton + "\\" + datestr + "\\" + datestr_2 + "\"\t expected: " + expected +"\tgot: " + formatted + "\n"));
             }
+        }
+        // throw 1 exception wth all of the errs
+        if(!allErrs.isEmpty()) {
+            throw new MultipleFailureException(allErrs);
         }
     }
 
@@ -1123,8 +1126,8 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
             FieldPosition pos = new FieldPosition(0);
             StringBuffer str = new StringBuffer("");
             DateFormat dtfmt = dtitvfmt.getDateFormat();
-            Calendar fromCalendar = (Calendar) dtfmt.getCalendar().clone();
-            Calendar toCalendar = (Calendar) dtfmt.getCalendar().clone();
+            Calendar fromCalendar = dtfmt.getCalendar().clone();
+            Calendar toCalendar = dtfmt.getCalendar().clone();
             fromCalendar.setTimeInMillis(dtitv.getFromDate());
             toCalendar.setTimeInMillis(dtitv.getToDate());
             dtitvfmt.format(fromCalendar, toCalendar, str, pos);
@@ -1296,8 +1299,8 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
                 SimpleDateFormat dtfmt = (SimpleDateFormat) DateFormat.getDateInstance(style, loc);
                 FieldPosition pos = new FieldPosition(0);
                 StringBuffer str = new StringBuffer("");
-                Calendar fromCalendar = (Calendar) dtfmt.getCalendar().clone();
-                Calendar toCalendar = (Calendar) dtfmt.getCalendar().clone();
+                Calendar fromCalendar = dtfmt.getCalendar().clone();
+                Calendar toCalendar = dtfmt.getCalendar().clone();
                 fromCalendar.setTimeInMillis(dtitv.getFromDate());
                 toCalendar.setTimeInMillis(dtitv.getToDate());
                 dtfmt.intervalFormatByAlgorithm(fromCalendar, toCalendar, str, pos);
@@ -1317,7 +1320,7 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
             logln("new DateIntervalInfo(new ULocale(\"th_TH\")).toString() - " + diiStr);
 
             // equals also had the similar problem
-            DateIntervalInfo dii1 = (DateIntervalInfo)dii.clone();
+            DateIntervalInfo dii1 = dii.clone();
             if (!dii.equals(dii1)) {
                 errln("FAIL: Cloned DateIntervalInfo is not equal to the source");
             }
@@ -1395,7 +1398,7 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
     @Test
     public void TestClone(){
         DateIntervalInfo dii = new DateIntervalInfo(new ULocale("en_US"));
-        DateIntervalInfo dii_clone = (DateIntervalInfo) dii.clone();
+        DateIntervalInfo dii_clone = dii.clone();
         dii_clone.freeze();
 
         // Tests when "if ( frozen )" is true
@@ -1639,7 +1642,7 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
         checkDefaultPrivateConstructor(DateIntervalFormat.class);
 
         // Check clone
-        DateIntervalFormat dtitvfmtClone = (DateIntervalFormat) dtitvfmt.clone();
+        DateIntervalFormat dtitvfmtClone = dtitvfmt.clone();
         assertEquals("DateIntervalFormat.clone() failed", dtitvfmt.format(dtitv), dtitvfmtClone.format(dtitv));
 
         // Coverage for getInstance
@@ -2430,19 +2433,19 @@ public class DateIntervalFormatTest extends CoreTestFmwk {
 
         FormattedDateInterval formatted = roc.formatToValue(bothAfterMG);
         assertEquals("roc calendar - both dates in MG Era",
-                     "民國1/1/2 上午6時\u2009\u2013\u2009民國2/1/2 上午6時",
+                     "民國1/1/2上午6時\u2009\u2013\u2009民國2/1/2上午6時",
                      formatted.toString());
         List<Field> expectedFields = getFields(formatted);
 
         formatted = roc.formatToValue(beforeAfterMG);
         assertEquals("roc calendar - prior MG Era and in MG Era",
-                     "民國前1/1/2 上午6時\u2009\u2013\u2009民國2/1/2 上午6時",
+                     "民國前1/1/2上午6時\u2009\u2013\u2009民國2/1/2上午6時",
                      formatted.toString());
         verifyFields(formatted, expectedFields);
 
         formatted = roc.formatToValue(bothBeforeMG);
         assertEquals("roc calendar - both dates prior MG Era",
-                     "民國前2/1/2 上午6時\u2009\u2013\u2009民國前1/1/2 上午6時",
+                     "民國前2/1/2上午6時\u2009\u2013\u2009民國前1/1/2上午6時",
                      formatted.toString());
         verifyFields(formatted, expectedFields);
     }

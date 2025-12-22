@@ -85,6 +85,7 @@ bs{
         CN{"Kina"}
         CO{"Kolumbija"}
         CP{"Ostrvo Clipperton"}
+        CQ{"Sark"}
         CR{"Kostarika"}
         CU{"Kuba"}
         CV{"Zelenortska Ostrva"}
@@ -111,7 +112,7 @@ bs{
         EZ{"Eurozona"}
         FI{"Finska"}
         FJ{"Fidži"}
-        FK{"Folklandska (Malvinska) ostrva"}
+        FK{"Folklandska ostrva"}
         FM{"Mikronezija"}
         FO{"Farska ostrva"}
         FR{"Francuska"}
@@ -134,7 +135,7 @@ bs{
         GU{"Guam"}
         GW{"Gvineja-Bisao"}
         GY{"Gvajana"}
-        HK{"Hong Kong"}
+        HK{"Hong Kong (SAR Kina)"}
         HM{"Ostrvo Heard i arhipelag McDonald"}
         HN{"Honduras"}
         HR{"Hrvatska"}
@@ -188,7 +189,7 @@ bs{
         ML{"Mali"}
         MM{"Mijanmar"}
         MN{"Mongolija"}
-        MO{"Makao"}
+        MO{"Makao (SAR Kina)"}
         MP{"Sjeverna Marijanska ostrva"}
         MQ{"Martinik"}
         MR{"Mauritanija"}
@@ -223,7 +224,7 @@ bs{
         PM{"Sveti Petar i Mikelon"}
         PN{"Pitkernska Ostrva"}
         PR{"Porto Riko"}
-        PS{"Palestina"}
+        PS{"Palestinska Teritorija"}
         PT{"Portugal"}
         PW{"Palau"}
         PY{"Paragvaj"}
@@ -303,6 +304,9 @@ bs{
     }
     Countries%short{
         GB{"UK"}
+        HK{"Hong Kong"}
+        MO{"Makao"}
+        PS{"Palestina"}
         UN{"UN"}
         US{"SAD"}
     }
@@ -310,6 +314,7 @@ bs{
         CD{"DR Kongo"}
         CG{"Republika Kongo"}
         CZ{"Češka Republika"}
+        FK{"Folklandska (Malvinska) ostrva"}
         NZ{"Novi Zeland Aotearoa"}
         SZ{"Svazilend"}
     }

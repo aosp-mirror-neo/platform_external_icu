@@ -14,6 +14,7 @@
 
 package com.ibm.icu.dev.test.collator;
 
+import java.nio.charset.StandardCharsets;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.Arrays;
@@ -313,7 +314,7 @@ public class CollationAPITest extends TestFmwk {
 
         // Code coverage for dummy "not designed" hashCode() which does "assert false".
         try {
-            iterator1.hashCode();  // We don't expect any particular value.
+            var unused = iterator1.hashCode();  // We don't expect any particular value.
         } catch (AssertionError ignored) {
             // Expected to be thrown if assertions are enabled.
         }
@@ -496,10 +497,8 @@ public class CollationAPITest extends TestFmwk {
         doAssert((col.getDecomposition() == Collator.NO_DECOMPOSITION), "Decomposition mode = Collator.NO_DECOMPOSITION");
 
 
-        // Android patch: Add --omitCollationRules to genrb.
-        // RuleBasedCollator rcol = (RuleBasedCollator)Collator.getInstance(new Locale("da", "DK"));
-        // doAssert(rcol.getRules().length() != 0, "da_DK rules does not have length 0");
-        // Android patch end.
+        RuleBasedCollator rcol = (RuleBasedCollator)Collator.getInstance(new Locale("da", "DK"));
+        doAssert(rcol.getRules().length() != 0, "da_DK rules does not have length 0");
 
         try {
             col = Collator.getInstance(Locale.FRENCH);
@@ -532,8 +531,7 @@ public class CollationAPITest extends TestFmwk {
 
         String colrules = ((RuleBasedCollator)col).getRules();
         String junkrules = ((RuleBasedCollator)junk).getRules();
-        doAssert(colrules == junkrules || colrules.equals(junkrules),
-                   "The default collation should be returned.");
+        assertSame("The default collation should be returned.", colrules, junkrules);
         Collator frCol = null;
         try {
             frCol = Collator.getInstance(Locale.CANADA_FRENCH);
@@ -682,8 +680,7 @@ public class CollationAPITest extends TestFmwk {
         for (int index = 0; index < someCollators.length; index ++)
         {
             try {
-                someClonedCollators[index]
-                            = (RuleBasedCollator)someCollators[index].clone();
+                someClonedCollators[index] = someCollators[index].clone();
             } catch (CloneNotSupportedException e) {
                 errln("Error cloning collator");
             }
@@ -773,7 +770,7 @@ public class CollationAPITest extends TestFmwk {
             public RawCollationKey getRawCollationKey(String source,
                                                       RawCollationKey key)
             {
-                byte temp1[] = source.getBytes();
+                byte temp1[] = source.getBytes(StandardCharsets.UTF_8);
                 byte temp2[] = new byte[temp1.length + 1];
                 System.arraycopy(temp1, 0, temp2, 0, temp1.length);
                 temp2[temp1.length] = 0;
@@ -835,7 +832,7 @@ public class CollationAPITest extends TestFmwk {
                   "string comparison");
         }
         CollationKey key = col1.getCollationKey(abc);
-        byte temp1[] = abc.getBytes();
+        byte temp1[] = abc.getBytes(StandardCharsets.UTF_8);
         byte temp2[] = new byte[temp1.length + 1];
         System.arraycopy(temp1, 0, temp2, 0, temp1.length);
         temp2[temp1.length] = 0;
@@ -853,7 +850,7 @@ public class CollationAPITest extends TestFmwk {
         // they are overridden by any subclass that supports their features.
 
         assertEquals("compare(strings as Object)", 0,
-                col1.compare(new StringBuilder("abc"), new StringBuffer("abc")));
+                col1.compare(new StringBuilder("abc"), new StringBuilder("abc")));
 
         col1.setStrength(Collator.SECONDARY);
         assertNotEquals("getStrength()", Collator.PRIMARY, col1.getStrength());
@@ -1463,7 +1460,7 @@ public class CollationAPITest extends TestFmwk {
         dump("c1", c1);
         try{
             logln("\ninit c2");
-            RuleBasedCollator c2 = (RuleBasedCollator)c1.clone();
+            RuleBasedCollator c2 = c1.clone();
             c2.setUpperCaseFirst(!c2.isUpperCaseFirst());
             dump("c0", c0);
             dump("c1", c1);

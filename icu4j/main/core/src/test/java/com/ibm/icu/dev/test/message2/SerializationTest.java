@@ -23,7 +23,7 @@ public class SerializationTest extends CoreTestFmwk {
             "{{.Hello world!}}",
             "Hello {userName}",
             "Hello {$userName}",
-            "Hello {|-12345.12+e10|}",
+            "Hello {-12345.12+e10}",
             "Hello {$count :something max=10 min=1.1416 opt1=someString opt2=|a b \\| c| @a1 @a2=|| @a3=|str|}",
             ".input {$a :number} {{Hello world!}}",
             ".local $b = {$a :number} {{Hello world!}}",
@@ -97,7 +97,7 @@ public class SerializationTest extends CoreTestFmwk {
                         .replaceAll("\\|([\\d\\.]+)\\|", "$1")
                         // Naive normalization for `|asBaC12|` to `asBaC12`
                         .replaceAll("\\|([a-zA-Z\\d]+)\\|", "$1")
-                        .replaceAll(" \\}", "}")
+                        .replaceAll(" }", "}")
                         .trim();
         assertEquals("Serialization different from to the initial source", pattern, parsed);
     }

@@ -118,15 +118,6 @@ ConversionTest::TestToUnicode() {
                 s.extract(0, 0x7fffffff, charset, sizeof(charset), "");
                 cc.charset=charset;
 
-                // BEGIN android-added
-                // To save space, Android does not build full ISO-2022-CN tables.
-                // We skip the TestGetKeywordValuesForLocale for counting available collations.
-                if (strlen(charset) >= 8 &&
-                    strncmp(charset+4, "2022-CN", 4) == 0) {
-                    continue;
-                }
-                // END android-added
-
                 cc.bytes=testCase->getBinary(cc.bytesLength, "bytes", errorCode);
                 unicode=testCase->getString("unicode", errorCode);
                 cc.unicode=unicode.getBuffer();
@@ -239,15 +230,6 @@ ConversionTest::TestFromUnicode() {
                 s=testCase->getString("charset", errorCode);
                 s.extract(0, 0x7fffffff, charset, sizeof(charset), "");
                 cc.charset=charset;
-
-                // BEGIN android-added
-                // To save space, Android does not build full ISO-2022-CN tables.
-                // We skip the TestGetKeywordValuesForLocale for counting available collations.
-                if (strlen(charset) >= 8 &&
-                    strncmp(charset+4, "2022-CN", 4) == 0) {
-                    continue;
-                }
-                // END android-added
 
                 unicode=testCase->getString("unicode", errorCode);
                 cc.unicode=unicode.getBuffer();
@@ -401,15 +383,6 @@ ConversionTest::TestGetUnicodeSet() {
 
                 s=testCase->getString("charset", errorCode);
                 s.extract(0, 0x7fffffff, charset, sizeof(charset), "");
-
-                // BEGIN android-added
-                // To save space, Android does not build full ISO-2022-CN tables.
-                // We skip the TestGetKeywordValuesForLocale for counting available collations.
-                if (strlen(charset) >= 8 &&
-                    strncmp(charset+4, "2022-CN", 4) == 0) {
-                    continue;
-                }
-                // END android-added
 
                 map=testCase->getString("map", errorCode);
                 mapnot=testCase->getString("mapnot", errorCode);
@@ -843,7 +816,7 @@ ConversionTest::TestUTF8ToUTF8Overflow() {
     assertEquals("illFormed number of bytes written", 0, length);
     errorLength = UPRV_LENGTHOF(errorBytes);
     ucnv_getInvalidChars(cnv1.getAlias(), errorBytes, &errorLength, errorCode);
-    assertEquals("illFormed truncated errorLength", 2, static_cast<int32_t>(errorLength));
+    assertEquals("illFormed truncated errorLength", 2, errorLength);
     if (errorLength == 2) {
         assertEquals("illFormed truncated errorBytes", 0xf191, 
                      (static_cast<int32_t>(static_cast<uint8_t>(errorBytes[0])) << 8) | static_cast<uint8_t>(errorBytes[1]));
@@ -860,7 +833,7 @@ ConversionTest::TestUTF8ToUTF8Overflow() {
     assertEquals("illFormed trail byte number of bytes written", 0, length);
     errorLength = UPRV_LENGTHOF(errorBytes);
     ucnv_getInvalidChars(cnv1.getAlias(), errorBytes, &errorLength, errorCode);
-    assertEquals("illFormed trail byte errorLength", 1, static_cast<int32_t>(errorLength));
+    assertEquals("illFormed trail byte errorLength", 1, errorLength);
     if (errorLength == 1) {
         assertEquals("illFormed trail byte errorBytes", 0x93, static_cast<int32_t>(static_cast<uint8_t>(errorBytes[0])));
     }

@@ -648,9 +648,7 @@ public class TestCharset extends TestFmwk {
                 logln("finish: " + hex(finishArray));
             }
         } catch (CharacterCodingException ex) {
-            // Android patch: Skip tests that fail with customized data.
-            logln(converter + " roundtrip test failed: " + ex.getMessage());
-            // Android patch end.
+            errln(converter + " roundtrip test failed: " + ex.getMessage());
             ex.printStackTrace(System.err);
         }
 
@@ -682,9 +680,7 @@ public class TestCharset extends TestFmwk {
                 }
             } else {
                 if (result.isError()) {
-                    // Android patch: Skip tests that fail with customized data.
-                    logln("Error should not have occurred while encoding HZ.(" + i + ")");
-                    // Android patch end.
+                    errln("Error should not have occurred while encoding HZ.(" + i + ")");
                 }
             }
         }
@@ -833,13 +829,11 @@ public class TestCharset extends TestFmwk {
             } catch (CharacterCodingException ex) {
                 errln("Unexpected CharacterCodingException: " + ex.getMessage());
                 return;
-            // Android patch: Skip tests that fail with customized data.
-            } catch (RuntimeException | CoderMalfunctionError ex) {
+            } catch (RuntimeException ex) {
                 if (!currentlybad) {currentlybad = true; badcount++; logln(""); }
-                logln(converter + " " + ex.getClass().getName() + ": " + ex.getMessage());
+                errln(converter + " " + ex.getClass().getName() + ": " + ex.getMessage());
                 continue outer;
             }
-            // Android patch end.
 
             encoder.onUnmappableCharacter(CodingErrorAction.REPORT);
             encoder.onMalformedInput(CodingErrorAction.REPORT);
@@ -2386,10 +2380,8 @@ public class TestCharset extends TestFmwk {
             if(!result.isError()){
                 byte[] expected = {(byte)0xA9, (byte)0xA5, (byte)0xAF, (byte)0xFE, (byte)0xA2, (byte)0xAE};
                 if(!equals(expected, out.array())){
-                    // Android patch: Skip tests that fail with customized data.
-                    logln("Did not get the expected result for substitution bytes. Got: "+
+                    errln("Did not get the expected result for substitution bytes. Got: "+
                            hex(out.array()));
-                    // Android patch end.
                 }
                 logln("Output: "+  hex(out.array()));
             }else{
@@ -3239,14 +3231,14 @@ public class TestCharset extends TestFmwk {
 
         byte[] bytes = test.getBytes(cs_utf7);
         if (!Arrays.equals(bytes, expected_utf7)) {
-            errln("Incorrect UTF-7 conversion. Got " + new String(bytes) + " but expect " +
-                  new String(expected_utf7));
+            errln("Incorrect UTF-7 conversion. Got " + hex(bytes) + " but expect " +
+                  hex(expected_utf7));
         }
 
         bytes = test.getBytes(cs_imap);
         if (!Arrays.equals(bytes, expected_imap)) {
-            errln("Incorrect IMAP-mailbox-name conversion. Got " + new String(bytes) +
-                  " but expect " + new String(expected_imap));
+            errln("Incorrect IMAP-mailbox-name conversion. Got " + hex(bytes) +
+                  " but expect " + hex(expected_imap));
         }
     }
 
@@ -5826,7 +5818,8 @@ public class TestCharset extends TestFmwk {
         String testCase = "\u7d42";
 
         try {
-            testCase.getBytes(charsetName);
+            // We don't expect any particular value.
+            var unused = testCase.getBytes(charsetName);
         } catch (Exception ex) {
             errln("Error calling getBytes(): " + ex);
         }

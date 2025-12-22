@@ -162,35 +162,9 @@ public class TestConversion extends TestFmwk {
          * This feature is not in ICU4J.
          * See #9601
          */
-        // Android patch: Skip tests that fail with customized data.
         String [] testsToSkip = {
-                "*test2",
-                "EUC-TW",
-                "gb18030",
-                "ibm-1386",
-                "ibm-1390",
-                "ibm-1390,swaplfnl",
-                "ibm-1399",
-                "ibm-16684",
-                "ibm-25546",
-                "ibm-930",
-                "ibm-943",
-                "ibm-970",
-                "ibm-971",
-                "IBM-eucJP",
-                "iso-2022-cn",
-                "iso-2022-jp",
-                "ISO-2022-JP-2",
-                "iso-2022-kr",
-                "ISO-2022-KR",
-                "JIS",
-                "JIS7",
-                "JIS8",
-                "lmbcs",
-                "windows-936",
-                "x11-compound-text",
+                "*test2"
         };
-        // Android patch end.
         for (int i = 0; i < testsToSkip.length; i++) {
             if (cc.charset.equals(testsToSkip[i])) {
                 logln("");
@@ -205,8 +179,7 @@ public class TestConversion extends TestFmwk {
         logln("TestFromUnicode[" + caseNr + "] " + cc.charset + " ");
         logln("Unicode:   " + cc.unicode);
         logln("Bytes:    " + printbytes(cc.bytes, cc.bytes.limit()));
-        ByteBuffer c = ByteBuffer.wrap(cc.cbopt.getBytes());
-        logln("Callback: " + printbytes(c, c.limit()) + " (" + cc.cbopt + ")");
+        logln("Callback: " + cc.cbopt);
         logln("...............................................");
 
         // process the retrieved test data case
@@ -491,27 +464,12 @@ public class TestConversion extends TestFmwk {
             return;
         }
 
-        // Android patch: Skip tests that fail with customized data.
-        String [] testsToSkip = {
-                "ibm-1390,swaplfnl",
-        };
-        for (int i = 0; i < testsToSkip.length; i++) {
-            if (cc.charset.equals(testsToSkip[i])) {
-                logln("");
-                logln("Skipping: " + cc.charset);
-                logln("...............................................");
-                return;
-            }
-        }
-        // Android patch end.
-
         // ----for debugging only
         logln("");
         logln("TestToUnicode[" + caseNr + "] " + cc.charset + " ");
         logln("Unicode:   " + hex(cc.unicode));
         logln("Bytes:    " + printbytes(cc.bytes, cc.bytes.limit()));
-        ByteBuffer c = ByteBuffer.wrap(cc.cbopt.getBytes());
-        logln("Callback: " + printbytes(c, c.limit()) + " (" + cc.cbopt + ")");
+        logln("Callback: " + cc.cbopt);
         logln("...............................................");
 
         // process the retrieved test data case
@@ -943,29 +901,6 @@ public class TestConversion extends TestFmwk {
 
         cc.which = ((ICUResourceBundle) testcase.getObject("which")).getInt(); // only checking for ROUNDTRIP_SET
 
-        // Android patch: Skip tests that fail with customized data.
-        String [] testsToSkip = {
-                "HZ",
-                "ibm-1390",
-                "ibm-16684",
-                "ibm-25546",
-                "ibm-971",
-                "ISO-2022-CN",
-                "ISO-2022-JP",
-                "ISO-2022-JP-2",
-                "ISO-2022-KR",
-                "JIS7",
-        };
-        for (int i = 0; i < testsToSkip.length; i++) {
-            if (cc.charset.equals(testsToSkip[i])) {
-                logln("");
-                logln("Skipping: " + cc.charset);
-                logln("...............................................");
-                return;
-            }
-        }
-        // Android patch end.
-
         // ----for debugging only
         logln("");
         logln("TestGetUnicodeSet[" + cc.charset + "] ");
@@ -980,11 +915,21 @@ public class TestConversion extends TestFmwk {
 
                     //checking for converter that are not supported at this point
                     try{
-                        if(charset==null ||
-                                charset.name()=="BOCU-1" ||charset.name()== "SCSU"|| charset.name()=="lmbcs1" || charset.name()== "lmbcs2" ||
-                                charset.name()== "lmbcs3" || charset.name()== "lmbcs4" || charset.name()=="lmbcs5" || charset.name()=="lmbcs6" ||
-                                charset.name()== "lmbcs8" || charset.name()=="lmbcs11" || charset.name()=="lmbcs16" || charset.name()=="lmbcs17" ||
-                                charset.name()=="lmbcs18"|| charset.name()=="lmbcs19"){
+                        if(charset==null
+                                || charset.name().equals("BOCU-1")
+                                || charset.name().equals("SCSU")
+                                || charset.name().equals("lmbcs1")
+                                || charset.name().equals("lmbcs2")
+                                || charset.name().equals("lmbcs3")
+                                || charset.name().equals("lmbcs4")
+                                || charset.name().equals("lmbcs5")
+                                || charset.name().equals("lmbcs6")
+                                || charset.name().equals("lmbcs8")
+                                || charset.name().equals("lmbcs11")
+                                || charset.name().equals("lmbcs16")
+                                || charset.name().equals("lmbcs17")
+                                || charset.name().equals("lmbcs18")
+                                || charset.name().equals("lmbcs19")) {
                             logln("Converter not supported at this point :" + cc.charset);
                             return;
                         }
@@ -1010,7 +955,7 @@ public class TestConversion extends TestFmwk {
                     //are there items that must be in unicodeset but are not?
                     (diffset = mapset).removeAll(unicodeset);
                     if(!diffset.isEmpty()){
-                        StringBuffer s = new StringBuffer(diffset.toPattern(true));
+                        StringBuilder s = new StringBuilder(diffset.toPattern(true));
                         if(s.length()>100){
                             s.replace(0, 0x7fffffff, ellipsis);
                         }
@@ -1020,7 +965,7 @@ public class TestConversion extends TestFmwk {
                     //are the items that must not be in unicodeset but are?
                     (diffset=mapnotset).retainAll(unicodeset);
                     if(!diffset.isEmpty()){
-                        StringBuffer s = new StringBuffer(diffset.toPattern(true));
+                        StringBuilder s = new StringBuilder(diffset.toPattern(true));
                         if(s.length()>100){
                             s.replace(0, 0x7fffffff, ellipsis);
                         }

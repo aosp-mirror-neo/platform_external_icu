@@ -3,7 +3,7 @@
 // Generated using tools/cldr/cldr-to-icu/
 fil{
     Countries{
-        001{"Mundo"}
+        001{"mundo"}
         002{"Africa"}
         003{"Hilagang Amerika"}
         005{"Timog Amerika"}
@@ -85,6 +85,7 @@ fil{
         CN{"China"}
         CO{"Colombia"}
         CP{"Clipperton Island"}
+        CQ{"Sark"}
         CR{"Costa Rica"}
         CU{"Cuba"}
         CV{"Cape Verde"}
@@ -111,7 +112,7 @@ fil{
         EZ{"Eurozone"}
         FI{"Finland"}
         FJ{"Fiji"}
-        FK{"Falkland Islands (Islas Malvinas)"}
+        FK{"Falkland Islands"}
         FM{"Micronesia"}
         FO{"Faroe Islands"}
         FR{"France"}
@@ -134,7 +135,7 @@ fil{
         GU{"Guam"}
         GW{"Guinea-Bissau"}
         GY{"Guyana"}
-        HK{"Hong Kong"}
+        HK{"Hong Kong SAR China"}
         HM{"Heard & McDonald Islands"}
         HN{"Honduras"}
         HR{"Croatia"}
@@ -188,7 +189,7 @@ fil{
         ML{"Mali"}
         MM{"Myanmar (Burma)"}
         MN{"Mongolia"}
-        MO{"Macau"}
+        MO{"Macau SAR China"}
         MP{"Northern Mariana Islands"}
         MQ{"Martinique"}
         MR{"Mauritania"}
@@ -223,7 +224,7 @@ fil{
         PM{"St. Pierre & Miquelon"}
         PN{"Pitcairn Islands"}
         PR{"Puerto Rico"}
-        PS{"Palestine"}
+        PS{"Palestinian Territories"}
         PT{"Portugal"}
         PW{"Palau"}
         PY{"Paraguay"}
@@ -302,7 +303,10 @@ fil{
         IO{"Chagos Archipelago"}
     }
     Countries%short{
-        GB{"U.K."}
+        GB{"UK"}
+        HK{"Hong Kong"}
+        MO{"Macau"}
+        PS{"Palestine"}
         UN{"UN"}
         US{"U.S."}
     }
@@ -311,6 +315,7 @@ fil{
         CG{"Congo (Republika)"}
         CI{"Ivory Coast"}
         CZ{"Czech Republic"}
+        FK{"Falkland Islands (Islas Malvinas)"}
         NZ{"Aotearoa New Zealand"}
         TL{"East Timor"}
     }

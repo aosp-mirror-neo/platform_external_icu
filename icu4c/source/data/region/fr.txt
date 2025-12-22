@@ -85,6 +85,7 @@ fr{
         CN{"Chine"}
         CO{"Colombie"}
         CP{"Île Clipperton"}
+        CQ{"Sercq"}
         CR{"Costa Rica"}
         CU{"Cuba"}
         CV{"Cap-Vert"}
@@ -111,7 +112,7 @@ fr{
         EZ{"zone euro"}
         FI{"Finlande"}
         FJ{"Fidji"}
-        FK{"Îles Malouines (Îles Falkland)"}
+        FK{"Îles Malouines"}
         FM{"Micronésie"}
         FO{"Îles Féroé"}
         FR{"France"}
@@ -134,7 +135,7 @@ fr{
         GU{"Guam"}
         GW{"Guinée-Bissau"}
         GY{"Guyana"}
-        HK{"Hong Kong"}
+        HK{"R.A.S. chinoise de Hong Kong"}
         HM{"Îles Heard-et-MacDonald"}
         HN{"Honduras"}
         HR{"Croatie"}
@@ -188,7 +189,7 @@ fr{
         ML{"Mali"}
         MM{"Myanmar (Birmanie)"}
         MN{"Mongolie"}
-        MO{"Macao"}
+        MO{"R.A.S. chinoise de Macao"}
         MP{"Îles Mariannes du Nord"}
         MQ{"Martinique"}
         MR{"Mauritanie"}
@@ -223,7 +224,7 @@ fr{
         PM{"Saint-Pierre-et-Miquelon"}
         PN{"Îles Pitcairn"}
         PR{"Porto Rico"}
-        PS{"Palestine"}
+        PS{"Territoires palestiniens"}
         PT{"Portugal"}
         PW{"Palaos"}
         PY{"Paraguay"}
@@ -296,13 +297,16 @@ fr{
         ZA{"Afrique du Sud"}
         ZM{"Zambie"}
         ZW{"Zimbabwe"}
-        ZZ{"région indéterminée"}
+        ZZ{"région inconnue"}
     }
     Countries%chagos{
         IO{"Archipel des Chagos"}
     }
     Countries%short{
         GB{"R.-U."}
+        HK{"Hong Kong"}
+        MO{"Macao"}
+        PS{"Palestine"}
         UN{"ONU"}
         US{"É.-U."}
     }
@@ -311,6 +315,7 @@ fr{
         CG{"République du Congo"}
         CI{"République de Côte d’Ivoire"}
         CZ{"République tchèque"}
+        FK{"Îles Malouines (Îles Falkland)"}
         NZ{"Aotearoa (Nouvelle-Zélande)"}
         SZ{"Swaziland"}
         TL{"Timor-Oriental"}
