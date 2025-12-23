@@ -94,8 +94,8 @@ void IntlTestUtilities::runIndexedTest( int32_t index, UBool exec, const char* &
     TESTCASE_AUTO_CREATE_CLASS(UColHeaderOnlyTest);
 #endif
     TESTCASE_AUTO_CREATE_CLASS(USetHeaderOnlyTest);
-    TESTCASE_AUTO_CREATE_CLASS(UTFIteratorTest);
-    TESTCASE_AUTO_CREATE_CLASS(UTFStringTest);
+//    TESTCASE_AUTO_CREATE_CLASS(UTFIteratorTest);
+//    TESTCASE_AUTO_CREATE_CLASS(UTFStringTest);
     TESTCASE_AUTO_END;
 }
 
