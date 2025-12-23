@@ -171,23 +171,6 @@ def main():
     'copy-cldr-testdata',
   ])
 
-  #Step 5e from cldr-icu.md: Manually re-add the lstm entries
-  print("Adding LSTM entries to brkitr/root.txt...")
-  brkitr_root_txt_path = os.path.join(icu4c_build_dir, 'source/data/brkitr/root.txt')
-  with open(brkitr_root_txt_path, 'r') as f:
-    content = f.read()
-  last_brace_pos = content.rfind('}')
-  if last_brace_pos != -1:
-    lstm_block = """    lstm{
-       Thai{"Thai_graphclust_model4_heavy.res"}
-       Mymr{"Burmese_graphclust_model5_heavy.res"}
-     }
-    """
-  # Insert before the last brace
-  new_content = content[:last_brace_pos] + lstm_block + '\n' + content[last_brace_pos:]
-  with open(brkitr_root_txt_path, 'w') as f:
-    f.write(new_content)
-
   # Copy the generated data files from the temporary directory into AOSP.
   icu4c_data_source_dir = os.path.join(icu_dir, 'icu4c/source/data')
   rmAndCopyTree(icu4c_data_build_dir, icu4c_data_source_dir)

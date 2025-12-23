@@ -649,7 +649,7 @@ public class CollationMiscTest extends TestFmwk {
         String[] test = new String[4];
 
         for(int i = 0; i<4; i++) {
-            StringBuffer temp = new StringBuffer();
+            StringBuilder temp = new StringBuilder();
             for (int j = 0; j < 2047; j++) {
                 temp.append('a');
             }
@@ -1283,8 +1283,8 @@ public class CollationMiscTest extends TestFmwk {
             char ccMix[]   = {0x316, 0x321, 0x300};
             int          sLen;
             int          i;
-            StringBuffer strA = new StringBuffer();
-            StringBuffer strB = new StringBuffer();
+            StringBuilder strA = new StringBuilder();
+            StringBuilder strB = new StringBuilder();
 
             coll.setDecomposition(Collator.CANONICAL_DECOMPOSITION);
 
@@ -2984,6 +2984,7 @@ public class CollationMiscTest extends TestFmwk {
 
     /* Test the method public int compareTo(RawCollationKey rhs) */
     @Test
+    @SuppressWarnings("SelfComparison")
     public void TestRawCollationKeyCompareTo(){
         RawCollationKey rck = new RawCollationKey();
         byte[] b = {(byte) 10, (byte) 20};
@@ -3506,12 +3507,10 @@ public class CollationMiscTest extends TestFmwk {
         }
     }
 
-    /*
+    /**
      * Utility function to test one collation reordering test case.
-     * @param testcases Array of test cases.
-     * @param n_testcases Size of the array testcases.
-     * @param str_rules Array of rules.  These rules should be specifying the same rule in different formats.
-     * @param n_rules Size of the array str_rules.
+     * @param testCases Array of test cases.
+     * @param reorderTokens Array of reorder tokens.
      */
     private void doTestOneReorderingAPITestCase(OneTestCase testCases[], int reorderTokens[])
     {

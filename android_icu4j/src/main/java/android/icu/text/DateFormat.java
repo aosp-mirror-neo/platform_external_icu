@@ -15,6 +15,8 @@ import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.ParsePosition;
+import java.time.DayOfWeek;
+import java.time.Month;
 import java.time.temporal.Temporal;
 import java.util.Arrays;
 import java.util.Date;
@@ -577,6 +579,9 @@ public abstract class DateFormat extends UFormat {
     {
         if (obj instanceof Calendar) {
             return format( (Calendar)obj, toAppendTo, fieldPosition );
+        } else if (obj instanceof java.util.Calendar) {
+            return format(JavaTimeConverters.convertCalendar((java.util.Calendar)obj),
+                    toAppendTo, fieldPosition );
         } else if (obj instanceof Date) {
             return format( (Date)obj, toAppendTo, fieldPosition );
         } else if (obj instanceof Number) {
@@ -584,6 +589,12 @@ public abstract class DateFormat extends UFormat {
                           toAppendTo, fieldPosition );
         } else if (obj instanceof Temporal) {
             return format( (Temporal)obj, toAppendTo, fieldPosition );
+        } else if (obj instanceof DayOfWeek) {
+            return format(JavaTimeConverters.dayOfWeekToCalendar((DayOfWeek) obj),
+                    toAppendTo, fieldPosition);
+        } else if (obj instanceof Month) {
+            return format(JavaTimeConverters.monthToCalendar((Month) obj),
+                    toAppendTo, fieldPosition);
         } else {
             throw new IllegalArgumentException("Cannot format given Object (" +
                                                obj.getClass().getName() + ") as a Date");
@@ -678,7 +689,7 @@ public abstract class DateFormat extends UFormat {
      *
      * @return the formatted date/time string.
      *
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public StringBuffer format(Temporal date, StringBuffer toAppendTo,
             FieldPosition fieldPosition) {
@@ -691,7 +702,7 @@ public abstract class DateFormat extends UFormat {
      * @param date the time value to be formatted into a time string.
      * @return the formatted time string.
      *
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public final String format(Temporal date)
     {

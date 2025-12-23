@@ -257,8 +257,8 @@ bool IcuRegistration::pathExists(const std::string& path) {
 
 // Identical to TzDataSetVersion#CURRENT_MAJOR_FORMAT_VERSION.
 // LINT.IfChange
-static const std::string CURRENT_MAJOR_FORMAT_VERSION = "9";
-// LINT.ThenChange(external/icu/android_icu4j/libcore_bridge/src/java/com/android/i18n/timezone/TzDataSetVersion.java)
+static const std::string CURRENT_MAJOR_FORMAT_VERSION = "10";
+// LINT.ThenChange(/android_icu4j/libcore_bridge/src/java/com/android/i18n/timezone/TzDataSetVersion.java)
 
 std::string IcuRegistration::getTimeZoneModulePath() {
   const char* tzdataModulePathPrefix = getenv("ANDROID_TZDATA_ROOT");

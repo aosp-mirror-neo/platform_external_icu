@@ -451,6 +451,7 @@ public final class RuleBasedCollator extends Collator {
      * @see #setLowerCaseFirst(boolean)
      * @see #setUpperCaseFirst(boolean)
      */
+    @SuppressWarnings("ReferenceEquality")
     public final void setCaseFirstDefault() {
         checkNotFrozen();
         CollationSettings defaultSettings = getDefaultSettings();
@@ -467,6 +468,7 @@ public final class RuleBasedCollator extends Collator {
      * @see #setAlternateHandlingShifted(boolean)
      * @see #isAlternateHandlingShifted()
      */
+    @SuppressWarnings("ReferenceEquality")
     public void setAlternateHandlingDefault() {
         checkNotFrozen();
         CollationSettings defaultSettings = getDefaultSettings();
@@ -483,6 +485,7 @@ public final class RuleBasedCollator extends Collator {
      * @see #setCaseLevel(boolean)
      * @see #isCaseLevel
      */
+    @SuppressWarnings("ReferenceEquality")
     public void setCaseLevelDefault() {
         checkNotFrozen();
         CollationSettings defaultSettings = getDefaultSettings();
@@ -499,6 +502,7 @@ public final class RuleBasedCollator extends Collator {
      * @see #getDecomposition
      * @see #setDecomposition(int)
      */
+    @SuppressWarnings("ReferenceEquality")
     public void setDecompositionDefault() {
         checkNotFrozen();
         CollationSettings defaultSettings = getDefaultSettings();
@@ -515,6 +519,7 @@ public final class RuleBasedCollator extends Collator {
      * @see #isFrenchCollation
      * @see #setFrenchCollation(boolean)
      */
+    @SuppressWarnings("ReferenceEquality")
     public void setFrenchCollationDefault() {
         checkNotFrozen();
         CollationSettings defaultSettings = getDefaultSettings();
@@ -531,6 +536,7 @@ public final class RuleBasedCollator extends Collator {
      * @see #setStrength(int)
      * @see #getStrength
      */
+    @SuppressWarnings("ReferenceEquality")
     public void setStrengthDefault() {
         checkNotFrozen();
         CollationSettings defaultSettings = getDefaultSettings();
@@ -546,6 +552,7 @@ public final class RuleBasedCollator extends Collator {
      * @see #getNumericCollation
      * @see #setNumericCollation
      */
+    @SuppressWarnings("ReferenceEquality")
     public void setNumericCollationDefault() {
         checkNotFrozen();
         CollationSettings defaultSettings = getDefaultSettings();
@@ -715,6 +722,7 @@ public final class RuleBasedCollator extends Collator {
      * @see #getMaxVariable
      */
     @Override
+    @SuppressWarnings("ReferenceEquality")
     public RuleBasedCollator setMaxVariable(int group) {
         // Convert the reorder code into a MaxVariable number, or UCOL_DEFAULT=-1.
         int value;
@@ -894,6 +902,7 @@ public final class RuleBasedCollator extends Collator {
      * @see UScript
      */
     @Override
+    @SuppressWarnings("ReferenceEquality")
     public void setReorderCodes(int... order) {
         checkNotFrozen();
         int length = (order != null) ? order.length : 0;

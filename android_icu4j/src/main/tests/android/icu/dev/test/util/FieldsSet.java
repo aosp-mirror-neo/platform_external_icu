@@ -14,7 +14,7 @@ import android.icu.testsharding.MainTestShard;
 
 /**
  * @author srl
- * 
+ *
  * analog of FieldsSet in C++
  */
 @MainTestShard
@@ -93,10 +93,10 @@ public class FieldsSet {
             if (isSet(i)) {
                 int myVal = get(i);
                 int theirVal = other.get(i);
-                
+
                 if(fEnum != NO_ENUM) {
                     String fieldName = DebugUtilities.enumString(fEnum, i);
-                    
+
                     String aval = Integer.toString(myVal);
                     String bval = Integer.toString(theirVal);
 
@@ -122,7 +122,7 @@ public class FieldsSet {
 
     public int parseFrom(String str, FieldsSet inheritFrom) {
         int goodFields = 0;
-        
+
         String[] fields = Utility.split(str, ',');
         for(int i=0;i<fields.length;i++) {
             String fieldStr = fields[i];
@@ -135,7 +135,7 @@ public class FieldsSet {
             if(kv.length>1) {
                 value = kv[1];
             }
-            
+
             int field = handleParseName(inheritFrom, key, value);
             if(field != -1) {
                 handleParseValue(inheritFrom, field, value);
@@ -151,10 +151,10 @@ public class FieldsSet {
      * field name, such as "MONTH" in "MONTH=4". Base implementation is to
      * lookup the enum value using udbg_* utilities, or else as an integer if
      * enum is not available.
-     * 
+     *
      * If there is a special directive, the implementer can catch it here and
      * return -1 after special processing completes.
-     * 
+     *
      * @param inheritFrom  the set inheriting from - may be null.
      * @param name  the field name (key side)
      * @param substr  the string in question (value side)
@@ -176,7 +176,7 @@ public class FieldsSet {
     /**
      * Callback interface for subclass. Base implementation is to call
      * parseValueDefault(...)
-     * 
+     *
      * @param inheritFrom  the set inheriting from - may be null.
      * @param field   which field is being parsed
      * @param substr  the string in question (value side)
@@ -193,7 +193,7 @@ public class FieldsSet {
      * to parse a decimal integer value, or inherit from inheritFrom if the
      * string is 0-length. Implementations of this function should call
      * set(field,...) on successful parse.
-     * 
+     *
      * @see handleParseValue
      */
     protected void parseValueDefault(FieldsSet inheritFrom, int field,
@@ -216,7 +216,7 @@ public class FieldsSet {
      * convenience implementation for handleParseValue attempt to load a value
      * from an enum value using udbg_enumByString() if fails, will call
      * parseValueDefault()
-     * 
+     *
      * @see handleParseValue
      */
     protected void parseValueEnum(int type, FieldsSet inheritFrom, int field,
@@ -228,11 +228,12 @@ public class FieldsSet {
         }
         parseValueDefault(inheritFrom, field, substr);
     }
-    
+
     public String fieldName(int field) {
         return (fEnum!=NO_ENUM)?DebugUtilities.enumString(fEnum, field):Integer.toString(field);
     }
-    
+
+    @Override
     public String toString() {
         String str = getClass().getName()+" ["+fFieldsCount+","
         +(fEnum!=NO_ENUM?DebugUtilities.typeString(fEnum):Integer.toString(fEnum))+"]: ";
@@ -241,6 +242,6 @@ public class FieldsSet {
                 str = str + fieldName(i)+"="+get(i)+",";
             }
         }
-        return str; 
+        return str;
     }
 }

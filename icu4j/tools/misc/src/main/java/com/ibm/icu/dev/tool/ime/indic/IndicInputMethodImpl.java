@@ -15,8 +15,8 @@ import java.awt.font.TextAttribute;
 import java.awt.font.TextHitInfo;
 import java.awt.im.spi.InputMethodContext;
 import java.text.AttributedCharacterIterator;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 
@@ -374,7 +374,7 @@ class IndicInputMethodImpl {
 
         public int getRunStart(AttributedCharacterIterator.Attribute attribute) {
             return (index >= committed &&
-                attribute == TextAttribute.INPUT_METHOD_UNDERLINE) ? committed : 0;
+                attribute.equals(TextAttribute.INPUT_METHOD_UNDERLINE)) ? committed : 0;
         }
 
         public int getRunStart(Set attributes) {
@@ -388,7 +388,7 @@ class IndicInputMethodImpl {
 
         public int getRunLimit(AttributedCharacterIterator.Attribute attribute) {
             return (index < committed && 
-                    attribute == TextAttribute.INPUT_METHOD_UNDERLINE) ? committed : text.length;
+                    attribute.equals(TextAttribute.INPUT_METHOD_UNDERLINE)) ? committed : text.length;
         }
 
         public int getRunLimit(Set attributes) {
@@ -397,7 +397,7 @@ class IndicInputMethodImpl {
         }
 
         public Map getAttributes() {
-            Hashtable result = new Hashtable();
+            HashMap result = new HashMap<>();
             if (index >= committed && committed < text.length) {
                 result.put(TextAttribute.INPUT_METHOD_UNDERLINE, 
                            TextAttribute.UNDERLINE_LOW_ONE_PIXEL);
@@ -408,7 +408,7 @@ class IndicInputMethodImpl {
         public Object getAttribute(AttributedCharacterIterator.Attribute attribute) {
             if (index >= committed && 
                 committed < text.length &&
-                attribute == TextAttribute.INPUT_METHOD_UNDERLINE) {
+                attribute.equals(TextAttribute.INPUT_METHOD_UNDERLINE)) {
 
                 return TextAttribute.UNDERLINE_LOW_ONE_PIXEL;
             }

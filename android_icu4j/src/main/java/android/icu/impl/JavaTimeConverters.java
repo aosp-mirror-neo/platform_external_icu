@@ -6,10 +6,12 @@ package android.icu.impl;
 
 import static java.time.temporal.ChronoField.MILLI_OF_SECOND;
 
+import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.ZoneId;
@@ -20,8 +22,10 @@ import java.time.chrono.ChronoLocalDateTime;
 import java.time.temporal.Temporal;
 import java.util.Date;
 
+import android.icu.util.BuddhistCalendar;
 import android.icu.util.Calendar;
 import android.icu.util.GregorianCalendar;
+import android.icu.util.JapaneseCalendar;
 import android.icu.util.SimpleTimeZone;
 import android.icu.util.TimeZone;
 import android.icu.util.ULocale;
@@ -43,11 +47,14 @@ import android.icu.util.ULocale;
  *
  * @deprecated This API is ICU internal only.
  * @hide Only a subset of ICU is exposed in Android
+ * @hide draft / provisional / internal are hidden on Android
  */
 @Deprecated
 public class JavaTimeConverters {
+    // Milliseconds per hour
+    private static final long MILLIS_PER_HOUR = 60 * 60 * 1_000;
     // Milliseconds per day
-    private static final long MILLIS_PER_DAY = 24 * 60 * 60 * 1_000;
+    private static final long MILLIS_PER_DAY = 24 * MILLIS_PER_HOUR;
 
     private JavaTimeConverters() {
         // Prevent instantiation, making this an utility class
@@ -67,6 +74,7 @@ public class JavaTimeConverters {
      *         accordingly.
      *
      * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
     public static Calendar temporalToCalendar(ZonedDateTime dateTime) {
@@ -91,8 +99,10 @@ public class JavaTimeConverters {
      *         date components set to the current date in that time zone.
      *
      * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
+    @SuppressWarnings("JavaTimeDefaultTimeZone")
     public static Calendar temporalToCalendar(OffsetTime time) {
         return temporalToCalendar(time.atDate(LocalDate.now()));
     }
@@ -111,6 +121,7 @@ public class JavaTimeConverters {
      *         accordingly.
      *
      * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
     public static Calendar temporalToCalendar(OffsetDateTime dateTime) {
@@ -153,6 +164,7 @@ public class JavaTimeConverters {
      *         date in the default time zone.
      *
      * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
     public static Calendar temporalToCalendar(LocalTime time) {
@@ -173,6 +185,7 @@ public class JavaTimeConverters {
      *         the specified {@link ChronoLocalDateTime}.
      *
      * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
     public static Calendar temporalToCalendar(LocalDateTime dateTime) {
@@ -189,6 +202,7 @@ public class JavaTimeConverters {
      *         the specified {@link Temporal}.
      *
      * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
     public static Calendar temporalToCalendar(Temporal temp) {
@@ -230,6 +244,7 @@ public class JavaTimeConverters {
      *         the given {@link ZoneId}.
      *
      * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
     public static TimeZone zoneIdToTimeZone(ZoneId zoneId) {
@@ -248,10 +263,76 @@ public class JavaTimeConverters {
      *         the given {@link ZoneOffset}.
      *
      * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated
     public static TimeZone zoneOffsetToTimeZone(ZoneOffset zoneOffset) {
         return new SimpleTimeZone(zoneOffset.getTotalSeconds() * 1_000, zoneOffset.getId());
+    }
+
+    /**
+     * Converts a {@link DayOfWeek} to a {@link Calendar}.
+     *
+     * <p>
+     * This method creates a {@link Calendar} instance that represents
+     * a day that is the same day of week as specified by {@link DayOfWeek}.
+     * It is set somewhere close to epoch time.
+     *
+     * <p>
+     * <b>Note:</b> this should only be used to format if using a pattern or skeleton
+     * with a day of week field only.
+     * That means that {@code c}-{@code cccccc} patterns are recommended, {@code E}-{@code EEEEEE}
+     * and {@code e}-{@code eeeeee} are likely wrong (because they are not stand-alone).
+     * Anything else is clearly wrong.
+     * It does not make sense to format a {@code DayOfWeek} as {@code "MMMM d, y"}.
+     * See {@link https://unicode.org/reports/tr35/tr35-dates.html#dfst-weekday}.
+     *
+     * @param dow The {@link DayOfWeek} to convert.
+     * @return A {@link Calendar} instance representing the same day of week
+     *         as the one specified by the input.
+     *
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Deprecated
+    @SuppressWarnings("JavaTimeDefaultTimeZone")
+    public static Calendar dayOfWeekToCalendar(DayOfWeek dow) {
+        return millisToCalendar(dayOfWeekToMillis(dow));
+    }
+
+    /**
+     * Converts a {@link Month} to a {@link Calendar}.
+     *
+     * <p>
+     * This method creates a {@link Calendar} instance that represents
+     * the same month as specified by {@link Month}.
+     * It is set somewhere close to epoch time.
+     *
+     * <p>
+     * <b>Note:</b> this should only be used to format if using a pattern or skeleton
+     * with a day of month field only.
+     * That means that {@code L}-{@code LLLLL} patterns are recommended, {@code E}-{@code MMMMM}
+     * is likely wrong (because it is not stand-alone). Anything else is clearly wrong.
+     * It does not make sense to format a {@code Month} as {@code "MMMM d, y"}.
+     * See {@link https://unicode.org/reports/tr35/tr35-dates.html#dfst-month}.
+     *
+     * <p>
+     * <b>Note:</b> only use this method for the Gregorian calendar and related calendars,
+     * given that the {@link Month} documentation, states that the {@link Month} enum
+     * "... may be used by any calendar system that has the month-of-year concept defined
+     * equivalent to the ISO-8601 calendar system".</i>
+     *
+     * @param month The {@link Month} to convert.
+     * @return A {@link Calendar} instance representing the same month
+     *         as the one specified by the input.
+     *
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Deprecated
+    @SuppressWarnings("JavaTimeDefaultTimeZone")
+    public static Calendar monthToCalendar(Month month) {
+        return millisToCalendar(monthToMilli(month));
     }
 
     private static Calendar millisToCalendar(long epochMillis) {
@@ -265,4 +346,74 @@ public class JavaTimeConverters {
         calendar.setTimeInMillis(epochMillis);
         return calendar;
     }
+
+    private static long dayOfWeekToMillis(DayOfWeek dow) {
+        // Epoch time was 1970-01-01 00:00:00, and was a Thursday.
+        // Add 12 hours, so we are in the middle of the day and have no surprises.
+        // Then add 3 days to get a Monday (in fact 4, but DayOfWeek value is 1 based).
+        return MILLIS_PER_HOUR * 12 + (3 + dow.getValue()) * MILLIS_PER_DAY;
+    }
+
+    /* Fails for non-Gregoran calendars. */
+    private static long monthToMilli(Month month) {
+        // Epoch time was 1970-01-01 00:00:00, and was a Thursday.
+        // Add 12 hours, so we are in the middle of the day and have no surprises.
+        // Then add 31 for each month. 31 days is safe, even if some months are shorter.
+        // We start from Jan 1, Feb 1, Mar 4, Apr 4, May 5, ..., Dec 8.
+        return MILLIS_PER_HOUR * 12 + (month.getValue() - 1) * MILLIS_PER_DAY * 31;
+    }
+
+    /**
+     * Converts a {@link java.util.Calendar} to a {@link android.icu.util.Calendar}.
+     *
+     * @param inputCalendar The JDK Calendar to convert.
+     * @return An ICU Calendar that has the same properties as the Java one.
+     *
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Deprecated
+    public static android.icu.util.Calendar convertCalendar(java.util.Calendar inputCalendar) {
+
+        java.util.TimeZone tz = inputCalendar.getTimeZone();
+        TimeZone zone = TimeZone.getTimeZone(tz.getID());
+
+        /*
+         * It would be even better to create these calendars with TimeZone and Locale.
+         * But although the java.util.Calendar can be constructed with a Locale
+         * or uses getDefaultLocale(), it stores it into a private field and there is no getter.
+         * The documentation says (and the code seems to confirm) that the locale is used for
+         * 2 things: "Calendar defines a locale-specific seven day week using two parameters:
+         * the first day of the week and the minimal days in first week (from 1 to 7). These
+         * numbers are taken from the locale resource data when a Calendar is constructed".
+         *
+         * So after we create the calendar we will copy this info from the original calendar.
+         */
+        Calendar result;
+        switch (inputCalendar.getCalendarType()) {
+            case "iso8601":
+                result = new GregorianCalendar(zone);
+                // make gcal a proleptic Gregorian
+                ((GregorianCalendar) result).setGregorianChange(new Date(Long.MIN_VALUE));
+                break;
+            case "buddhist":
+                result = new BuddhistCalendar(zone);
+                break;
+            case "japanese":
+                result = new JapaneseCalendar(zone);
+                break;
+            case "gregory": // Fallthrough
+            default:
+                // Fallback to Gregorian
+                result = new GregorianCalendar(zone);
+        }
+
+        result.setLenient(inputCalendar.isLenient());
+        result.setFirstDayOfWeek(inputCalendar.getFirstDayOfWeek());
+        result.setMinimalDaysInFirstWeek(inputCalendar.getMinimalDaysInFirstWeek());
+        result.setTimeInMillis(inputCalendar.getTimeInMillis());
+
+        return result;
+    }
+
 }

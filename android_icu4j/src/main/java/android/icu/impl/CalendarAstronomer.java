@@ -617,8 +617,8 @@ public class CalendarAstronomer {
      * longitude will have the desired value.
      * <p>
      * @param desired   The desired longitude.
-     * @param next      <tt>true</tt> if the next occurrance of the phase
-     *                  is desired, <tt>false</tt> for the previous occurrance.
+     * @param next      {@code true} if the next occurrance of the phase
+     *                  is desired, {@code false} for the previous occurrance.
      * @hide draft / provisional / internal are hidden on Android
      */
     public long getMoonTime(double desired, boolean next)
@@ -637,8 +637,8 @@ public class CalendarAstronomer {
      * desired phase.
      * <p>
      * @param desired   The desired phase of the moon.
-     * @param next      <tt>true</tt> if the next occurrance of the phase
-     *                  is desired, <tt>false</tt> for the previous occurrance.
+     * @param next      {@code true} if the next occurrance of the phase
+     *                  is desired, {@code false} for the previous occurrance.
      * @hide draft / provisional / internal are hidden on Android
      */
     public long getMoonTime(MoonAge desired, boolean next) {
