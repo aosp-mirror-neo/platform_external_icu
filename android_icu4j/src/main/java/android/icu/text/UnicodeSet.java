@@ -205,45 +205,45 @@ import android.icu.util.VersionInfo;
  * <blockquote>
  *   <table>
  *     <tr style="vertical-align: top">
- *       <td style="white-space: nowrap; vertical-align: top;" align="right"><code>pattern :=&nbsp; </code></td>
+ *       <td style="white-space: nowrap; vertical-align: top;text-align:right;"><code>pattern :=&nbsp; </code></td>
  *       <td style="vertical-align: top;"><code>('[' '^'? item* ']') |
  *       property</code></td>
  *     </tr>
  *     <tr style="vertical-align: top">
- *       <td style="white-space: nowrap; vertical-align: top;" align="right"><code>item :=&nbsp; </code></td>
+ *       <td style="white-space: nowrap; vertical-align: top;text-align:right;"><code>item :=&nbsp; </code></td>
  *       <td style="vertical-align: top;"><code>char | (char '-' char) | pattern-expr<br>
  *       </code></td>
  *     </tr>
  *     <tr style="vertical-align: top">
- *       <td style="white-space: nowrap; vertical-align: top;" align="right"><code>pattern-expr :=&nbsp; </code></td>
+ *       <td style="white-space: nowrap; vertical-align: top;text-align:right;"><code>pattern-expr :=&nbsp; </code></td>
  *       <td style="vertical-align: top;"><code>pattern | pattern-expr pattern |
  *       pattern-expr op pattern<br>
  *       </code></td>
  *     </tr>
  *     <tr style="vertical-align: top">
- *       <td style="white-space: nowrap; vertical-align: top;" align="right"><code>op :=&nbsp; </code></td>
+ *       <td style="white-space: nowrap; vertical-align: top;text-align:right;"><code>op :=&nbsp; </code></td>
  *       <td style="vertical-align: top;"><code>'&amp;' | '-'<br>
  *       </code></td>
  *     </tr>
  *     <tr style="vertical-align: top">
- *       <td style="white-space: nowrap; vertical-align: top;" align="right"><code>special :=&nbsp; </code></td>
+ *       <td style="white-space: nowrap; vertical-align: top;text-align:right;"><code>special :=&nbsp; </code></td>
  *       <td style="vertical-align: top;"><code>'[' | ']' | '-'<br>
  *       </code></td>
  *     </tr>
  *     <tr style="vertical-align: top">
- *       <td style="white-space: nowrap; vertical-align: top;" align="right"><code>char :=&nbsp; </code></td>
+ *       <td style="white-space: nowrap; vertical-align: top;text-align:right;"><code>char :=&nbsp; </code></td>
  *       <td style="vertical-align: top;"><em>any character that is not</em><code> special<br>
  *       | ('\\' </code><em>any character</em><code>)<br>
  *       | ('&#92;u' hex hex hex hex)<br>
  *       </code></td>
  *     </tr>
  *     <tr style="vertical-align: top">
- *       <td style="white-space: nowrap; vertical-align: top;" align="right"><code>hex :=&nbsp; </code></td>
+ *       <td style="white-space: nowrap; vertical-align: top;text-align:right;"><code>hex :=&nbsp; </code></td>
  *       <td style="vertical-align: top;"><code>'0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' |<br>
  *       &nbsp;&nbsp;&nbsp;&nbsp;'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'a' | 'b' | 'c' | 'd' | 'e' | 'f'</code></td>
  *     </tr>
  *     <tr>
- *       <td style="white-space: nowrap; vertical-align: top;" align="right"><code>property :=&nbsp; </code></td>
+ *       <td style="white-space: nowrap; vertical-align: top;text-align:right;"><code>property :=&nbsp; </code></td>
  *       <td style="vertical-align: top;"><em>a Unicode property set pattern</em></td>
  *     </tr>
  *   </table>
@@ -319,7 +319,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      */
     public static final UnicodeSet ALL_CODE_POINTS = new UnicodeSet(0, 0x10FFFF).freeze();
 
-    private static XSymbolTable XSYMBOL_TABLE = null; // for overriding the the function processing
+    private static XSymbolTable XSYMBOL_TABLE = null; // for overriding the function processing
 
     private static final int LOW = 0x000000; // LOW <= all valid values. ZERO for codepoints
     private static final int HIGH = 0x110000; // HIGH > all valid values. 10000 for code units.
@@ -885,9 +885,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
     }
 
     /**
-     * Returns <tt>true</tt> if this set contains no elements.
+     * Returns {@code true} if this set contains no elements.
      *
-     * @return <tt>true</tt> if this set contains no elements.
+     * @return {@code true} if this set contains no elements.
      */
     public boolean isEmpty() {
         return len == 1 && !hasStrings();
@@ -901,9 +901,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
     }
 
     /**
-     * Implementation of UnicodeMatcher API.  Returns <tt>true</tt> if
+     * Implementation of UnicodeMatcher API.  Returns {@code true} if
      * this set contains any character whose low byte is the given
-     * value.  This is used by <tt>RuleBasedTransliterator</tt> for
+     * value.  This is used by {@code RuleBasedTransliterator} for
      * indexing.
      */
     @Override
@@ -1927,10 +1927,10 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
     }
 
     /**
-     * Returns <tt>true</tt> if this set contains the given
+     * Returns {@code true} if this set contains the given
      * multicharacter string.
      * @param s string to be checked for containment
-     * @return <tt>true</tt> if this set contains the specified string
+     * @return {@code true} if this set contains the specified string
      */
     public final boolean contains(CharSequence s) {
 
@@ -2385,13 +2385,13 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
 
     /**
      * Compares the specified object with this set for equality.  Returns
-     * <tt>true</tt> if the specified object is also a set, the two sets
+     * {@code true} if the specified object is also a set, the two sets
      * have the same size, and every member of the specified set is
      * contained in this set (or equivalently, every member of this set is
      * contained in the specified set).
      *
      * @param o Object to be compared for equality with this set.
-     * @return <tt>true</tt> if the specified Object is equal to this set.
+     * @return {@code true} if the specified Object is equal to this set.
      */
     @Override
     public boolean equals(Object o) {
@@ -3521,7 +3521,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
             }
         }
 
-        if (valueAlias.length() > 0) {
+        if (valueAlias != null && !valueAlias.isEmpty()) {
             p = UCharacter.getPropertyEnum(propertyAlias);
 
             // Treat gc as gcm
@@ -3755,7 +3755,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
         else {
             // Handle case where no '=' is seen, and \N{}
             propName = pattern.substring(pos, close);
-            valueName = "";
+            valueName = null;
 
             // Handle \N{name}
             if (isName) {
@@ -5035,7 +5035,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      *
      * @return a {@link Stream} of {@link EntryRange}
      *
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public Stream<EntryRange> rangeStream() {
         // Must use false to never make this parallel because the iterator always returns the same EntryRange object.
@@ -5054,7 +5054,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      *
      * @return a {@link Stream} of {@code String}
      *
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public Stream<String> stringStream() {
         return strings().stream();
@@ -5072,7 +5072,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      *
      * @return an {@link IntStream} of Unicode code point values
      *
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public IntStream codePointStream() {
         return StreamSupport.intStream(new CodePointSpliterator(this), false);
@@ -5090,7 +5090,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      *
      * @return a {@link Stream} of {@code String}
      *
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public Stream<String> stream() {
         return StreamSupport.stream(spliterator(), false);
@@ -5111,7 +5111,7 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      *
      * @return an {@link Iterable} over all the code points
      *
-     * @hide draft / provisional / internal are hidden on Android
+     * @hide Hide new API in Android temporarily
      */
     public Iterable<Integer> codePoints() {
         return new CodePointIterable(this);

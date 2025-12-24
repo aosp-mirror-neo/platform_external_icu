@@ -365,31 +365,39 @@ public class IslamicCalendar extends Calendar {
      * Algorithm which implement the rules for CalculationType.ISLAMIC.
      */
     static private class IslamicAlgorithm implements Algorithm {
+        @Override
         public boolean isCivil() {
             return false;
         }
+        @Override
         public CalculationType getType() {
             return CalculationType.ISLAMIC;
         }
+        @Override
         public long epoch() {
             return CIVIL_EPOCH;
         }
+        @Override
         public long yearStart(int year) {
             return monthStart(year, 0);
         }
+        @Override
         public long monthStart(int year, int month) {
             // Normalize year/month in case month is outside the normal bounds, which may occur
             // in the case of an add operation
             return trueMonthStart(12*((year + month / 12)-1) + (month % 12));
         }
+        @Override
         public int monthLength(int year, int month) {
             month += 12*(year-1);
             return (int)(trueMonthStart(month+1) - trueMonthStart(month));
         }
+        @Override
         public int yearLength(int year) {
             int month = 12*(year-1);
             return (int)(trueMonthStart(month + 12) - trueMonthStart(month));
         }
+        @Override
         public void compute(long julianDays, long current,
             IntConsumer yearConsumer, IntConsumer monthConsumer,
             IntConsumer dayOfMonthConsumer, IntConsumer dayOfYearConsumer) {
@@ -420,23 +428,29 @@ public class IslamicCalendar extends Calendar {
      * Algorithm which implement the rules for CalculationType.ISLAMIC_CIVIL.
      */
     static private class CivilAlgorithm implements Algorithm {
+        @Override
         public boolean isCivil() {
             return true;
         }
+        @Override
         public CalculationType getType() {
             return CalculationType.ISLAMIC_CIVIL;
         }
+        @Override
         public long epoch() {
             return CIVIL_EPOCH;
         }
+        @Override
         public long yearStart(int year) {
             return (year-1)*354 + (long)Math.floor((3+11*year)/30.0);
         }
+        @Override
         public long monthStart(int year, int month) {
             // Normalize year/month in case month is outside the normal bounds, which may occur
             // in the case of an add operation
             return (long)Math.ceil(29.5*(month % 12)) + yearStart(year + month / 12);
         }
+        @Override
         public int monthLength(int year, int month) {
             int length = 29;
             if (month % 2 == 0) {
@@ -447,9 +461,11 @@ public class IslamicCalendar extends Calendar {
             }
             return length;
         }
+        @Override
         public int yearLength(int year) {
             return 354 + (civilLeapYear(year) ? 1 : 0);
         }
+        @Override
         public void compute(long julianDays, long current,
             IntConsumer yearConsumer, IntConsumer monthConsumer,
             IntConsumer dayOfMonthConsumer, IntConsumer dayOfYearConsumer) {
@@ -471,12 +487,15 @@ public class IslamicCalendar extends Calendar {
      * epoch value.
      */
     static private class TBLAAlgorithm extends CivilAlgorithm {
+        @Override
         public boolean isCivil() {
             return false;
         }
+        @Override
         public CalculationType getType() {
             return CalculationType.ISLAMIC_TBLA;
         }
+        @Override
         public long epoch() {
             return ASTRONOMICAL_EPOCH;
         }
@@ -486,15 +505,19 @@ public class IslamicCalendar extends Calendar {
      * Algorithm which implement the rules for CalculationType.ISLAMIC_UMALQURA.
      */
     static private class UmalquraAlgorithm implements Algorithm {
+        @Override
         public boolean isCivil() {
             return false;
         }
+        @Override
         public CalculationType getType() {
             return CalculationType.ISLAMIC_UMALQURA;
         }
+        @Override
         public long epoch() {
             return CIVIL_EPOCH;
         }
+        @Override
         public long yearStart(int year) {
             if (year < UMALQURA_YEAR_START || year > UMALQURA_YEAR_END) {
                 return CIVIL_ALGORITHM.yearStart(year);
@@ -505,6 +528,7 @@ public class IslamicCalendar extends Calendar {
             // need a slight correction to some
             return yrStartLinearEstimate + UMALQURA_YEAR_START_ESTIMATE_FIX[index];
         }
+        @Override
         public long monthStart(int year, int month) {
             // Normalize year/month in case month is outside the normal bounds, which may occur
             // in the case of an add operation
@@ -519,6 +543,7 @@ public class IslamicCalendar extends Calendar {
             }
             return ms;
         }
+        @Override
         public int monthLength(int year, int month) {
             if (year < UMALQURA_YEAR_START || year > UMALQURA_YEAR_END) {
                 return CIVIL_ALGORITHM.monthLength(year, month);
@@ -530,6 +555,7 @@ public class IslamicCalendar extends Calendar {
             }
             return 29;
         }
+        @Override
         public int yearLength(int year) {
             if (year < UMALQURA_YEAR_START  || year > UMALQURA_YEAR_END) {
                 return CIVIL_ALGORITHM.yearLength(year);
@@ -540,6 +566,7 @@ public class IslamicCalendar extends Calendar {
             }
             return length;
         }
+        @Override
         public void compute(long julianDays, long current,
             IntConsumer yearConsumer, IntConsumer monthConsumer,
             IntConsumer dayOfMonthConsumer, IntConsumer dayOfYearConsumer) {
@@ -664,7 +691,7 @@ public class IslamicCalendar extends Calendar {
         {        1,        1,  5000000,  5000000}, // EXTENDED_YEAR
         {/*                                   */}, // JULIAN_DAY
         {/*                                   */}, // MILLISECONDS_IN_DAY
-        {/*                                   */}, // IS_LEAP_MONTH 
+        {/*                                   */}, // IS_LEAP_MONTH
         {        0,        0,       11,      11 }, // ORDINAL_MONTH
     };
 
@@ -1090,6 +1117,66 @@ public class IslamicCalendar extends Calendar {
     }
 
     /**
+     * utility function for getRelatedYear
+     */
+    private static final int gregoYearFromIslamicStart(int year) {
+        // ad hoc conversion, improve under #10752
+        // rough est for now, ok for grego 1846-2138,
+        // otherwise occasionally wrong (for 3% of years)
+        int cycle, offset, shift = 0;
+        if (year >= 1397) {
+            cycle = (year - 1397) / 67;
+            offset = (year - 1397) % 67;
+            shift = 2*cycle + ((offset >= 33)? 1: 0);
+        } else {
+            cycle = (year - 1396) / 67 - 1;
+            offset = -(year - 1396) % 67;
+            shift = 2*cycle + ((offset <= 33)? 1: 0);
+        }
+        return year + 579 - shift;
+    }
+
+    /**
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Override
+    @Deprecated
+    public final int getRelatedYear() {
+        return gregoYearFromIslamicStart(get(EXTENDED_YEAR));
+    }
+
+    /**
+     * utility function for setRelatedYear
+     */
+    private static int firstIslamicStartYearFromGrego(int year) {
+        // ad hoc conversion, improve under #10752
+        // rough est for now, ok for grego 1846-2138,
+        // otherwise occasionally wrong (for 3% of years)
+        int cycle, offset, shift = 0;
+        if (year >= 1977) {
+            cycle = (year - 1977) / 65;
+            offset = (year - 1977) % 65;
+            shift = 2*cycle + ((offset >= 32)? 1: 0);
+        } else {
+            cycle = (year - 1976) / 65 - 1;
+            offset = -(year - 1976) % 65;
+            shift = 2*cycle + ((offset <= 32)? 1: 0);
+        }
+        return year - 579 + shift;
+    }
+
+    /**
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Override
+    @Deprecated
+    public final void setRelatedYear(int year) {
+        set(EXTENDED_YEAR, firstIslamicStartYearFromGrego(year));
+    }
+
+    /**
      * gets the calculation type for this calendar.
      */
     public CalculationType getCalculationType() {
@@ -1147,6 +1234,7 @@ public class IslamicCalendar extends Calendar {
      *               defined leap year. False otherwise.
      */
     @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
+    @Override
     public boolean inTemporalLeapYear() {
         return getActualMaximum(DAY_OF_YEAR) == 355;
     }

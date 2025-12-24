@@ -272,14 +272,17 @@ class PersonNamePattern {
             return text;
         }
 
+        @Override
         public boolean isLiteral() {
             return true;
         }
 
+        @Override
         public String format(PersonName name) {
             return text;
         }
 
+        @Override
         public boolean isPopulated(PersonName name) {
             return false;
         }
@@ -332,10 +335,12 @@ class PersonNamePattern {
             return sb.toString();
         }
 
+        @Override
         public boolean isLiteral() {
             return false;
         }
 
+        @Override
         public String format(PersonName name) {
             Set<PersonName.FieldModifier> modifierIDs = new HashSet<>(modifiers.keySet());
             String result = name.getFieldValue(fieldID, modifierIDs);
@@ -347,6 +352,7 @@ class PersonNamePattern {
             return result;
         }
 
+        @Override
         public boolean isPopulated(PersonName name) {
             String result = this.format(name);
             return result != null && ! result.isEmpty();

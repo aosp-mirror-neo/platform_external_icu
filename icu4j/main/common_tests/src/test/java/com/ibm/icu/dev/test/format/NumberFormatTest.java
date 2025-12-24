@@ -3682,6 +3682,32 @@ public class NumberFormatTest extends CoreTestFmwk {
         }
     }
 
+    @Test
+    public void TestDecimalFormatParse7E() {
+        String testdata = "~";
+        DecimalFormat dfmt = new DecimalFormat(testdata);
+        try {
+            dfmt.parse(testdata);
+            errln("parsing ~ should fail with a handled exception");
+        } catch (ParseException e) {
+        }
+
+        // Test basic behavior
+        dfmt = new DecimalFormat("~0");
+        dfmt.setParseStrict(true);
+        try {
+            dfmt.parse("200");
+            errln("parsing 200 should fail");
+        } catch (ParseException e) {
+        }
+        try {
+            Number result = dfmt.parse("≈200");
+            assertEquals("parsing with approximately should succeed", result.longValue(), 200);
+        } catch (ParseException e) {
+            errln(e.toString());
+        }
+    }
+
     /*
      * Testing currency driven max/min fraction digits problem
      * reported by ticket#7282
@@ -4459,12 +4485,12 @@ public class NumberFormatTest extends CoreTestFmwk {
                 {"ja_JP",             "-1000.5",  "-￥1,000",          "-￥1,000",          "(￥1,000)",         "false"},
                 {"ja_JP@cf=account",  "-1000.5",  "(￥1,000)",         "-￥1,000",          "(￥1,000)",         "false"},
                 {"de_DE",             "-23456.7", "-23.456,70\u00A0€", "-23.456,70\u00A0€", "-23.456,70\u00A0€", "true" },
-                {"en_ID",             "1234.5",   "Rp 1.234,50",      "Rp 1.234,50",      "Rp 1.234,50",      "true"},
-                {"en_ID@cf=account",  "1234.5",   "Rp 1.234,50",      "Rp 1.234,50",      "Rp 1.234,50",      "true"},
-                {"en_ID@cf=standard", "1234.5",   "Rp 1.234,50",      "Rp 1.234,50",      "Rp 1.234,50",      "true"},
-                {"en_ID",             "-1234.5",  "-Rp 1.234,50",     "-Rp 1.234,50",     "(Rp 1.234,50)",    "true"},
-                {"en_ID@cf=account",  "-1234.5",  "(Rp 1.234,50)",    "-Rp 1.234,50",     "(Rp 1.234,50)",    "true"},
-                {"en_ID@cf=standard", "-1234.5",  "-Rp 1.234,50",     "-Rp 1.234,50",     "(Rp 1.234,50)",    "true"},
+                {"en_ID",             "1234.5",   "Rp 1.234",      "Rp 1.234",      "Rp 1.234",      "true"},
+                {"en_ID@cf=account",  "1234.5",   "Rp 1.234",      "Rp 1.234",      "Rp 1.234",      "true"},
+                {"en_ID@cf=standard", "1234.5",   "Rp 1.234",      "Rp 1.234",      "Rp 1.234",      "true"},
+                {"en_ID",             "-1234.5",  "-Rp 1.234",     "-Rp 1.234",     "(Rp 1.234)",    "true"},
+                {"en_ID@cf=account",  "-1234.5",  "(Rp 1.234)",    "-Rp 1.234",     "(Rp 1.234)",    "true"},
+                {"en_ID@cf=standard", "-1234.5",  "-Rp 1.234",     "-Rp 1.234",     "(Rp 1.234)",    "true"},
                 {"sh_ME",             "1234.5",   "1.234,50 €",        "1.234,50 €",        "1.234,50 €",        "true"},
                 {"sh_ME@cf=account",  "1234.5",   "1.234,50 €",        "1.234,50 €",        "1.234,50 €",        "true"},
                 {"sh_ME@cf=standard", "1234.5",   "1.234,50 €",        "1.234,50 €",        "1.234,50 €",        "true"},
@@ -5509,6 +5535,22 @@ public class NumberFormatTest extends CoreTestFmwk {
         } catch (ParseException e) {
             // Parse failed (expected)
         }
+    }
+
+    @Test
+    public void Test22303() throws ParseException {
+        ULocale locale = new ULocale("en-US");
+        DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(locale);
+        symbols.setInfinity("infinity");
+        symbols.setNaN("notanumber");
+        DecimalFormat df = new DecimalFormat("0.00", symbols);
+        df.setDecimalPatternMatchRequired(true);
+        Number result = df.parse("infinity");
+        assertEquals("Should parse to +INF even though decimal is required", Double.POSITIVE_INFINITY, result);
+        result = df.parse("notanumber");
+        assertEquals("Should parse to NaN even though decimal is required", Double.NaN, result);
+        result = df.parse("-infinity");
+        assertEquals("Should parse to -INF even though decimal is required", Double.NEGATIVE_INFINITY, result);
     }
 
     @Test
@@ -6901,7 +6943,7 @@ public class NumberFormatTest extends CoreTestFmwk {
                 parsedStrictValue = ca_strict.getNumber().intValue();
             }
             assertEquals("Strict parse of " + inputString + " using " + patternString,
-                    parsedStrictValue, expectedStrictParse);
+                    expectedStrictParse, parsedStrictValue);
 
             ppos.setIndex(0);
             df.setParseStrict(false);
@@ -6910,7 +6952,7 @@ public class NumberFormatTest extends CoreTestFmwk {
                 parsedLenientValue = ca_lenient.getNumber().intValue();
             }
             assertEquals("Strict parse of " + inputString + " using " + patternString,
-                    parsedLenientValue, expectedLenientParse);
+                    expectedLenientParse, parsedLenientValue);
         }
     }
 
@@ -7138,25 +7180,21 @@ public class NumberFormatTest extends CoreTestFmwk {
         }
 
         TestCase[] testCases = {
-                new TestCase("portion-per-1e9", "en-US", 1, "1 part per billion"),
-                new TestCase("portion-per-1e9", "en-US", 2, "2 parts per billion"),
-                new TestCase("portion-per-1e9", "en-US", 1000000, "1,000,000 parts per billion"),
-                new TestCase("portion-per-1e9", "de-DE", 1000000, "1.000.000 Milliardstel"),
-                new TestCase("portion-per-1e1", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
-                new TestCase("portion-per-1e2", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
-                new TestCase("portion-per-1e3", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
-                new TestCase("portion-per-1e4", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
-                new TestCase("portion-per-1e5", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
-                new TestCase("portion-per-1e6", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
-                new TestCase("portion-per-1e7", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
-                new TestCase("portion-per-1e8", "en-US", 1, "UNKNOWN"), // Failing CLDR-18274
+                new TestCase("part-per-1e9", "en-US", 1, "1 part per billion"),
+                new TestCase("part-per-1e9", "en-US", 2, "2 parts per billion"),
+                new TestCase("part-per-1e9", "en-US", 1000000, "1,000,000 parts per billion"),
+                new TestCase("part-per-1e9", "de-DE", 1000000, "1.000.000 Milliardstel"),
+                new TestCase("part-per-1e1", "en-US", 1, "1 part per 10"),
+                new TestCase("part-per-1e2", "en-US", 1, "1 part per 100"),
+                new TestCase("part-per-1e3", "en-US", 1, "1 part per 1000"),
+                new TestCase("part-per-1e4", "en-US", 1, "1 part per 10000"),
+                new TestCase("part-per-1e5", "en-US", 1, "1 part per 100000"),
+                new TestCase("part-per-1e6", "en-US", 1, "1 part per million"),
+                new TestCase("part-per-1e7", "en-US", 1, "1 part per 10000000"),
+                new TestCase("part-per-1e8", "en-US", 1, "1 part per 100000000"),
         };
 
         for (TestCase testCase : testCases) {
-            if (testCase.unitIdentifier.compareTo("portion-per-1e9") != 0) {
-                logKnownIssue("CLDR-18274", "The data for portion-per-XYZ is not determined yet.");
-                continue;
-            }
             MeasureUnit unit = MeasureUnit.forIdentifier(testCase.unitIdentifier);
             LocalizedNumberFormatter formatter = NumberFormatter.withLocale(ULocale.forLanguageTag(testCase.locale))
                     .unit(unit)
@@ -7168,4 +7206,49 @@ public class NumberFormatTest extends CoreTestFmwk {
                     testCase.expectedOutput, formatted);
         }
     }
+
+    @Test // ICU-23139
+    public void testStrictParse() throws java.text.ParseException {
+        // fr-FR: grouping separator '\u202F', decimal separator ','
+        // en-US: grouping separator ',', decimal separator '.'
+        // de: grouping separator '.', decimal separator ','
+        // de-CH: grouping separator '\u2019', decimal separator '.'
+        String[] locales = { "fr-FR", "en-US", "de", "de-CH" };
+        String[] toParse =
+            { "1.234", "1,234", "1\u00a0234", "1 234", "1.234,567" };
+        double[][] expectedLenient = {
+            {   1234,   1.234,         1234,    1234,    1234.567 }, // fr-FR
+            {  1.234,    1234,         1234,    1234,   1.234 }, // en-US
+            {   1234,   1.234,         1234,    1234,    1234.567 }, // de
+            {  1.234,    1234,         1234,    1234,   1.234 } // de-CH
+        };
+        double[][] expectedStrict  = {
+            {      1,   1.234,         1234,    1234,       1 }, // fr-FR
+            {  1.234,    1234,            1,       1,   1.234 }, // en-US
+            {   1234,   1.234,            1,       1,    1234.567 }, // de
+            {  1.234,       1,         1234,    1234,   1.234 } // de-CH
+        };
+
+        Number result;
+
+        for (int idxLocale = 0; idxLocale < locales.length; idxLocale++) {
+            Locale locale = Locale.forLanguageTag(locales[idxLocale]);
+            NumberFormat nf = NumberFormat.getInstance(locale);
+
+            nf.setParseStrict(false);
+            for (int i = 0; i < toParse.length; i++) {
+                String test = toParse[i];
+                result = nf.parse(test);
+                assertEquals("Lenient parsing", expectedLenient[idxLocale][i], result.doubleValue());
+            }
+
+            nf.setParseStrict(true);
+            for (int i = 0; i < toParse.length; i++) {
+                String test = toParse[i];
+                result = nf.parse(test);
+                assertEquals("Strict parsing", expectedStrict[idxLocale][i], result.doubleValue());
+            }
+        }
+    }
+
 }

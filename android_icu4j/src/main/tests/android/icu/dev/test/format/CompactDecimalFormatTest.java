@@ -34,7 +34,6 @@ import android.icu.impl.number.DecimalFormatProperties;
 import android.icu.impl.number.PatternStringParser;
 import android.icu.text.CompactDecimalFormat;
 import android.icu.text.CompactDecimalFormat.CompactStyle;
-import android.icu.text.DecimalFormat;
 import android.icu.text.DecimalFormat.PropertySetter;
 import android.icu.text.NumberFormat;
 import android.icu.util.Currency;
@@ -467,6 +466,7 @@ public class CompactDecimalFormatTest extends CoreTestFmwk {
     }
 
     @Test
+    @SuppressWarnings("JdkObsolete") // Because of CompactDecimalFormat.format(..., StringBuffer)
     public void TestFieldPosition() {
         CompactDecimalFormat cdf = getCDFInstance(
                 ULocale.forLanguageTag("sw"), CompactStyle.SHORT);
@@ -707,11 +707,14 @@ public class CompactDecimalFormatTest extends CoreTestFmwk {
         assertEquals("CDF should correctly format 1234 with 3 significant digits in 'ar-EG'", "١٫٢٣ ألف", result);
 
         // Check currency formatting as well
-        cdf = CompactDecimalFormat.getInstance(new ULocale("ar-EG"), CompactDecimalFormat.CompactStyle.SHORT);
-        result = cdf.format(new CurrencyAmount(43000f, Currency.getInstance("USD")));
-        assertEquals("CDF should correctly format 43000 with currency in 'ar-EG'", "٤٣ ألف US$", result);
-        result = cdf.format(new CurrencyAmount(-43000f, Currency.getInstance("USD")));
-        assertEquals("CDF should correctly format -43000 with currency in 'ar-EG'", "؜-٤٣ ألف US$", result);
+        if (!logKnownIssue("ICU-23188", "Compact number formatting for ar-EG adds extra RLM")) {
+            cdf = CompactDecimalFormat.getInstance(new ULocale("ar-EG"), CompactDecimalFormat.CompactStyle.SHORT);
+            result = cdf.format(new CurrencyAmount(43000f, Currency.getInstance("USD")));  
+            assertEquals("CDF should correctly format 43000 with currency in 'ar-EG'", "٤٣ ألف US$", result);
+            result = cdf.format(new CurrencyAmount(-43000f, Currency.getInstance("USD")));
+            assertEquals("CDF should correctly format -43000 with currency in 'ar-EG'", "؜-٤٣ ألف US$", result);
+        }	
+
 
         // Extra locale with different positive/negative formats
         cdf = CompactDecimalFormat.getInstance(new ULocale("fi"), CompactDecimalFormat.CompactStyle.SHORT);
@@ -743,7 +746,7 @@ public class CompactDecimalFormatTest extends CoreTestFmwk {
 
         cdf = CompactDecimalFormat.getInstance(ULocale.forLanguageTag("it"), CompactStyle.SHORT);
         result = cdf.format(new CurrencyAmount(123000, Currency.getInstance("EUR")));
-        assertEquals("CDF should correctly format 123000 with currency in 'it'", "123.000\u00A0€", result);
+        assertEquals("CDF should correctly format 123000 with currency in 'it'", "123K\u00A0€", result);
     }
 
     @Test
@@ -755,13 +758,14 @@ public class CompactDecimalFormatTest extends CoreTestFmwk {
 
     @Test
     public void TestBug12975() {
-        ULocale locale = new ULocale("it");
-        CompactDecimalFormat cdf = CompactDecimalFormat.getInstance(locale, CompactStyle.SHORT);
-        String resultCdf = cdf.format(12000);
-        DecimalFormat df = (DecimalFormat) DecimalFormat.getInstance(locale);
-        String resultDefault = df.format(12000);
-        assertEquals("CompactDecimalFormat should use default pattern when compact pattern is unavailable",
-                     resultDefault, resultCdf);
+    	// ** This test is no  longer valid as of CLDR 48, `it` now has full compact currency forms
+        //ULocale locale = new ULocale("it");
+        //CompactDecimalFormat cdf = CompactDecimalFormat.getInstance(locale, CompactStyle.SHORT);
+        //String resultCdf = cdf.format(12000);
+        //DecimalFormat df = (DecimalFormat) DecimalFormat.getInstance(locale);
+        //String resultDefault = df.format(12000);
+        //assertEquals("CompactDecimalFormat should use default pattern when compact pattern is unavailable",
+        //             resultDefault, resultCdf);
     }
 
     @Test

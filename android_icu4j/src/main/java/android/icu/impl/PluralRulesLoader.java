@@ -240,7 +240,7 @@ public class PluralRulesLoader extends PluralRules.Factory {
     }
 
     /**
-     * Returns the plural rules for the the locale. If we don't have data,
+     * Returns the plural rules for the locale. If we don't have data,
      * android.icu.text.PluralRules.DEFAULT is returned.
      */
     public PluralRules forLocale(ULocale locale, PluralRules.PluralType type) {

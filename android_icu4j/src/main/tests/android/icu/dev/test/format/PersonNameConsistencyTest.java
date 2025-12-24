@@ -10,7 +10,6 @@ import java.io.LineNumberReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -42,22 +41,19 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
     private static boolean RUN_ALL_TESTS = false;
 
     /**
-     * Change this to true to write log output to stdout (this is a workaround for the fact that
-     * AbstractTestLog.logln() doesn't currently do anything).
+     * Change this to true to write log output to stdout if -v is on
      */
-    private static boolean VERBOSE_OUTPUT = false;
+    private static final boolean VERBOSE_OUTPUT = CoreTestFmwk.isVerbose();
 
     private static final String DATA_PATH = TestUtil.DATA_PATH + "cldr/personNameTest/";
 
     private static Map<String, String> KNOWN_ISSUES = makeKnownIssuesList();
 
     private static Map<String, String> makeKnownIssuesList() {
-        Map<String, String> knownIssues = new HashMap<>();
-
-        // there are no current locales for which we have known issues
-        knownIssues.put("bal_Latn.txt", "CLDR-17874");
-
-        return knownIssues;
+        return Map.of(
+                "bal_Latn.txt", "CLDR-17874",
+                "kk_Arab.txt", "ICU-23187",
+                "shn.txt", "ICU-23187");
     }
     static List<String> readTestCases() throws Exception {
         List<String> tests = new ArrayList<>();
@@ -88,7 +84,7 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
         int errors = 0;
         try {
             while ((line = in.readLine()) != null) {
-                tester.processLine(line, in.getLineNumber());
+                tester.processLine(line, filename, in.getLineNumber());
             }
             errors = tester.getErrorCount();
         } catch (Exception e) {
@@ -109,6 +105,9 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
             } else {
                 errln("Failure in " + filename + ": Found " + errors + " errors.");
             }
+            if (!isVerbose()) {
+                System.out.println("Note: Use verbose ( -DICU.logging=3 ) to get verbose output");
+            }
         }
     }
 
@@ -123,7 +122,7 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
             formatterLocale = Locale.forLanguageTag(testFileName.substring(0, testFileName.length() - ".txt".length()).replace('_', '-'));
         }
 
-        public void processLine(String line, int lineNumber) {
+        public void processLine(String line, String file, int lineNumber) {
             if (line == null || line.isEmpty() || line.startsWith("#")) {
                 return;
             }
@@ -132,14 +131,14 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
             String opcode = lineFields[0].trim();
             String[] parameters = Arrays.copyOfRange(lineFields,1, lineFields.length);
 
-            processCommand(opcode, parameters, lineNumber);
+            processCommand(opcode, parameters, file, lineNumber);
         }
 
         public int getErrorCount() {
             return errorCount;
         }
 
-        private void processCommand(String opcode, String[] parameters, int lineNumber) {
+        private void processCommand(String opcode, String[] parameters, String file, int lineNumber) {
             if (opcode.equals("enum")) {
                 processEnumLine();
             } else if (opcode.equals("name")) {
@@ -147,7 +146,7 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
             } else if (opcode.equals("expectedResult")) {
                 processExpectedResultLine(parameters, lineNumber);
             } else if (opcode.equals("parameters")) {
-                processParametersLine(parameters, lineNumber);
+                processParametersLine(parameters, file, lineNumber);
             } else if (opcode.equals("endName")) {
                 processEndNameLine();
             } else {
@@ -194,7 +193,7 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
             }
         }
 
-        private void processParametersLine(String[] parameters, int lineNumber) {
+        private void processParametersLine(String[] parameters, String file, int lineNumber) {
             if (checkState(name != null && expectedResult != null, "parameters", lineNumber)
                     && checkNumParams(parameters, 4, "parameters", lineNumber)) {
                 String orderStr = parameters[0].trim();
@@ -218,7 +217,7 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
                 PersonNameFormatter formatter = builder.build();
                 String actualResult = formatter.formatToString(name);
 
-                checkResult(actualResult, lineNumber);
+                checkResult(actualResult, file, lineNumber);
             }
         }
 
@@ -243,12 +242,20 @@ public class PersonNameConsistencyTest extends CoreTestFmwk {
             return state;
         }
 
-        private boolean checkResult(String actualResult, int lineNumber) {
+        private boolean checkResult(String actualResult, String file, int lineNumber) {
             boolean result = expectedResult.equals(actualResult);
             if (!result) {
-                reportError("Expected '" + expectedResult + "', got '" + actualResult + "'", lineNumber);
+                reportError("Expected '" + expectedResult + "', got '" + actualResult + "'", file, lineNumber);
             }
             return result;
+        }
+
+        private void reportError(String error, String file, int lineNumber) {
+            logln(file + ":" + lineNumber + ": " + error);
+            if (VERBOSE_OUTPUT) {
+                System.out.println(file + ":" + lineNumber + ": " + error);
+            }
+            ++errorCount;
         }
 
         private void reportError(String error, int lineNumber) {

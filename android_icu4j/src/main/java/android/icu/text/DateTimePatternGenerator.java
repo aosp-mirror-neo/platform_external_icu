@@ -419,7 +419,11 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
 
         if (list != null) {
             defaultHourFormatChar = defaultCharFromLocale != null ? defaultCharFromLocale : list[0].charAt(0);
-            allowedHourFormats = Arrays.copyOfRange(list, 1, list.length - 1);
+            if (list.length > 1) {
+                allowedHourFormats = Arrays.copyOfRange(list, 1, list.length);
+            } else {
+                allowedHourFormats = LAST_RESORT_ALLOWED_HOUR_FORMAT;
+            }
         } else {
             allowedHourFormats = LAST_RESORT_ALLOWED_HOUR_FORMAT;
             defaultHourFormatChar = (defaultCharFromLocale != null) ? defaultCharFromLocale : allowedHourFormats[0].charAt(0);
@@ -1676,7 +1680,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
     @SuppressWarnings("unchecked")
     public Object clone() {
         try {
-            DateTimePatternGenerator result = (DateTimePatternGenerator) (super.clone());
+            DateTimePatternGenerator result = (DateTimePatternGenerator) super.clone();
             result.skeleton2pattern = (TreeMap<DateTimeMatcher, PatternWithSkeletonFlag>) skeleton2pattern.clone();
             result.basePattern_pattern = (TreeMap<String, PatternWithSkeletonFlag>) basePattern_pattern.clone();
             result.dateTimeFormats = dateTimeFormats.clone();
@@ -2402,7 +2406,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
                     //    options bits can be used to override this.
                     // 2. There is a specified skeleton for the found pattern and one of the following is true:
                     //    a) The length of the field in the skeleton (skelFieldLen) is equal to reqFieldLen.
-                    //    b) The pattern field is numeric and the skeleton field is not, or vice versa.
+                    //    b) The pattern field is numeric and the requested field is not, or vice versa.
                     //
                     // Old behavior was:
                     // normally we just replace the field. However HOUR is special; we only change the length
@@ -2425,10 +2429,10 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
                         // https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table for more info)
                         int skelFieldLen = matcherWithSkeleton.original.getFieldLength(type);
                         boolean patFieldIsNumeric = variableField.isNumeric();
-                        boolean skelFieldIsNumeric = matcherWithSkeleton.fieldIsNumeric(type);
+                        boolean reqFieldIsNumeric = inputRequest.fieldIsNumeric(type);
                         if (skelFieldLen == reqFieldLen
-                                || (patFieldIsNumeric && !skelFieldIsNumeric)
-                                || (skelFieldIsNumeric && !patFieldIsNumeric)) {
+                                || (patFieldIsNumeric && !reqFieldIsNumeric)
+                                || (reqFieldIsNumeric && !patFieldIsNumeric)) {
                             // don't adjust the field length in the found pattern
                             adjFieldLen = fieldBuilder.length();
                         }

@@ -9,14 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import android.icu.message2.FormattedPlaceholder;
-import android.icu.message2.Formatter;
-import android.icu.message2.FormatterFactory;
+import android.icu.message2.Function;
+import android.icu.message2.FunctionFactory;
 import android.icu.message2.MFDataModel.CatchallKey;
 import android.icu.message2.PlainStringFormattedValue;
-import android.icu.message2.Selector;
-import android.icu.message2.SelectorFactory;
 import android.icu.text.FormattedValue;
 import android.icu.testsharding.MainTestShard;
 
@@ -26,7 +25,7 @@ import android.icu.testsharding.MainTestShard;
  * Used only for testing (see test/README.md in the MF2 repository).
  */
 @MainTestShard
-public class TestFunctionFactory implements FormatterFactory, SelectorFactory {
+public class TestFunctionFactory implements FunctionFactory {
     private final String kind;
 
     public TestFunctionFactory(String kind) {
@@ -34,27 +33,23 @@ public class TestFunctionFactory implements FormatterFactory, SelectorFactory {
     }
 
     @Override
-    public Formatter createFormatter(Locale locale, Map<String, Object> fixedOptions) {
-        return new TestFormatterImpl(kind, fixedOptions);
+    public Function create(Locale locale, Map<String, Object> fixedOptions) {
+        return new TestFunctionImpl(kind, fixedOptions);
     }
 
-    @Override
-    public Selector createSelector(Locale locale, Map<String, Object> fixedOptions) {
-        return new TestSelectorImpl(kind, fixedOptions);
-    }
-
-    private static class TestFormatterImpl implements Formatter {
+    private static class TestFunctionImpl implements Function {
+        private static final String NO_MATCH = "\uFFFDNO_MATCH\uFFFE"; // Unlikely to show in a key
         private final String kind;
         private final ParsedOptions parsedOptions;
 
-        public TestFormatterImpl(String kind, Map<String, Object> fixedOptions) {
+        public TestFunctionImpl(String kind, Map<String, Object> fixedOptions) {
             this.kind = kind;
             this.parsedOptions = ParsedOptions.of(fixedOptions);
         }
 
         @Override
         public String formatToString(Object toFormat, Map<String, Object> variableOptions) {
-            if (!"select".equals(kind) && parsedOptions.failsFormat) {
+            if (!Objects.equals(kind, "select") && parsedOptions.failsFormat) {
                 throw new InvalidParameterException("ALWAYS FAIL");
             }
             return format(toFormat, variableOptions).toString();
@@ -64,21 +59,15 @@ public class TestFunctionFactory implements FormatterFactory, SelectorFactory {
         public FormattedPlaceholder format(Object toFormat, Map<String, Object> variableOptions) {
             return TestFunctionFactory.formatImpl(toFormat, parsedOptions);
         }
-    }
-
-    private static class TestSelectorImpl implements Selector {
-        private static final String NO_MATCH = "\uFFFDNO_MATCH\uFFFE"; // Unlikely to show in a key
-        private final String kind;
-        private final ParsedOptions parsedOptions;
-
-        public TestSelectorImpl(String kind, Map<String, Object> fixedOptions) {
-            this.kind = kind;
-            this.parsedOptions = ParsedOptions.of(fixedOptions);
-        }
 
         @Override
         public List<String> matches(Object value, List<String> keys, Map<String, Object> variableOptions) {
 //            ParsedOptions parsedOptions = ParsedOptions.of(variableOptions);
+            if (Objects.equals(kind, "format")) {
+                // Can't do selection on the `format` only function
+                return null;
+            }
+            
             if (parsedOptions.failsSelect) {
                 throw new InvalidParameterException("Expected the test to always fail.");
             }
@@ -93,7 +82,7 @@ public class TestFunctionFactory implements FormatterFactory, SelectorFactory {
                 }
             }
 
-            result.sort(TestSelectorImpl::testComparator);
+            result.sort(TestFunctionImpl::testComparator);
             return result;
         }
 
@@ -108,10 +97,10 @@ public class TestFunctionFactory implements FormatterFactory, SelectorFactory {
                 return -1;
             }
             // * sorts last
-            if ("*".equals(o1)) {
+            if (Objects.equals(o1, "*")) {
                 return 1;
             }
-            if ("*".equals(o2)) {
+            if (Objects.equals(o2, "*")) {
                 return -1;
             }
             // At this point they are both strings
@@ -144,12 +133,9 @@ public class TestFunctionFactory implements FormatterFactory, SelectorFactory {
             }
 
             String option = getStringOption(options, "icu:impl:errorPolicy", null);
-            reportErrors= "STRICT".equals(option);
+            reportErrors = Objects.equals(option, "STRICT");
 
             option = getStringOption(options, "fails", "never");
-            if (option == null) {
-                System.out.println("WTF?");
-            }
             switch (option) {
                 case "never":
                     // both options are already set to false, all good

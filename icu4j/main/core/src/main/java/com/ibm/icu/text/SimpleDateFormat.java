@@ -17,6 +17,8 @@ import java.text.AttributedString;
 import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParsePosition;
+import java.time.DayOfWeek;
+import java.time.Month;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -102,8 +104,7 @@ import com.ibm.icu.util.UResourceBundle;
  *         <td>1996</td>
  *         <td>Year. Normally the length specifies the padding, but for two letters it also specifies the maximum
  *         length. Example:<div style="text-align: center">
- *             <center>
- *             <table border="1" cellpadding="2" cellspacing="0">
+ *             <table border="1" style="border-collapse:collapse;padding:2px;margin:0 auto;">
  *                 <tr>
  *                     <th>Year</th>
  *                     <th style="text-align: right">y</th>
@@ -153,7 +154,7 @@ import com.ibm.icu.util.UResourceBundle;
  *                     <td style="text-align: right">12345</td>
  *                 </tr>
  *             </table>
- *             </center></div>
+ *             </div>
  *         </td>
  *     </tr>
  *     <tr>
@@ -1419,10 +1420,12 @@ public class SimpleDateFormat extends DateFormat {
             break;
         case 14: // 'a' - AM_PM
             // formatData.ampmsNarrow may be null when deserializing DateFormatSymbolsfrom old version
-            if (count < 5 || formatData.ampmsNarrow == null) {
-                safeAppend(formatData.ampms, value, buf);
-            } else {
+            if (count == 4 && formatData.ampmsWide != null) {
+                safeAppend(formatData.ampmsWide, value, buf);
+            } else if (count == 5 && formatData.ampmsNarrow != null) {
                 safeAppend(formatData.ampmsNarrow, value, buf);
+            } else {
+                safeAppend(formatData.ampms, value, buf);
             }
             break;
         case 15: // 'h' - HOUR (1..12)
@@ -3915,12 +3918,18 @@ public class SimpleDateFormat extends DateFormat {
         Calendar cal = calendar;
         if (obj instanceof Calendar) {
             cal = (Calendar)obj;
+        } else if (obj instanceof java.util.Calendar) {
+            calendar = JavaTimeConverters.convertCalendar((java.util.Calendar)obj);
         } else if (obj instanceof Date) {
             calendar.setTime((Date)obj);
         } else if (obj instanceof Number) {
             calendar.setTimeInMillis(((Number)obj).longValue());
         } else if (obj instanceof Temporal) {
             cal = JavaTimeConverters.temporalToCalendar((Temporal) obj);
+        } else if (obj instanceof DayOfWeek) {
+            cal = JavaTimeConverters.dayOfWeekToCalendar((DayOfWeek) obj);
+        } else if (obj instanceof Month) {
+            cal = JavaTimeConverters.monthToCalendar((Month) obj);
         } else {
             throw new IllegalArgumentException("Cannot format given Object as a Date");
         }

@@ -30,10 +30,10 @@ import java.util.Locale;
  * <p>
  * This class should not be subclassed.</p>
  * <p>
- * BuddhistCalendar usually should be instantiated using 
+ * BuddhistCalendar usually should be instantiated using
  * {@link android.icu.util.Calendar#getInstance(ULocale)} passing in a <code>ULocale</code>
  * with the tag <code>"@calendar=buddhist"</code>.</p>
- * 
+ *
  * @see android.icu.util.Calendar
  * @see android.icu.util.GregorianCalendar
  *
@@ -55,7 +55,7 @@ public class BuddhistCalendar extends GregorianCalendar {
      * @see android.icu.util.Calendar#ERA
      */
     public static final int BE = 0;
-    
+
     /**
      * Constructs a <code>BuddhistCalendar</code> using the current time
      * in the default time zone with the default locale.
@@ -173,7 +173,7 @@ public class BuddhistCalendar extends GregorianCalendar {
     // are numbered since the birth of the Buddha.  A couple of overrides will
     // take care of that....
     //-------------------------------------------------------------------------
-    
+
     // Starts in -543 AD, ie 544 BC
     private static final int BUDDHIST_ERA_START = -543;
 
@@ -181,7 +181,8 @@ public class BuddhistCalendar extends GregorianCalendar {
     private static final int GREGORIAN_EPOCH = 1970;
 
     /**
-     */    
+     */
+    @Override
     protected int handleGetExtendedYear() {
         // EXTENDED_YEAR in BuddhistCalendar is a Gregorian year
         // The default value of EXTENDED_YEAR is 1970 (Buddhist 2513)
@@ -197,13 +198,15 @@ public class BuddhistCalendar extends GregorianCalendar {
 
     // Return JD of start of given month/year
     /**
-     */    
+     */
+    @Override
     protected int handleComputeMonthStart(int eyear, int month, boolean useMonth) {
         return super.handleComputeMonthStart(eyear, month, useMonth);
     }
 
     /**
-     */    
+     */
+    @Override
     protected void handleComputeFields(int julianDay) {
         super.handleComputeFields(julianDay);
         int y = internalGet(EXTENDED_YEAR) - BUDDHIST_ERA_START;
@@ -216,16 +219,18 @@ public class BuddhistCalendar extends GregorianCalendar {
      * should really handle YEAR, YEAR_WOY, and EXTENDED_YEAR here too to
      * implement the 1..5000000 range, but it's not critical.
      */
+    @Override
     protected int handleGetLimit(int field, int limitType) {
         if (field == ERA) {
             return BE;
         }
         return super.handleGetLimit(field, limitType);
     }
-    
+
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getType() {
         return "buddhist";
     }

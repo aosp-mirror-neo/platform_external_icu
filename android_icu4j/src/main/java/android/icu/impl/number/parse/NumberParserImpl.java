@@ -61,6 +61,7 @@ public class NumberParserImpl {
         parser.addMatcher(DecimalMatcher.getInstance(symbols, grouper, parseFlags));
         parser.addMatcher(MinusSignMatcher.getInstance(symbols, false));
         parser.addMatcher(PlusSignMatcher.getInstance(symbols, false));
+        parser.addMatcher(ApproximatelySignMatcher.getInstance(symbols, false));
         parser.addMatcher(PercentMatcher.getInstance(symbols));
         parser.addMatcher(PermilleMatcher.getInstance(symbols));
         parser.addMatcher(NanMatcher.getInstance(symbols, parseFlags));
@@ -228,6 +229,7 @@ public class NumberParserImpl {
         if (parseMode == ParseMode.LENIENT) {
             parser.addMatcher(PlusSignMatcher.getInstance(symbols, false));
             parser.addMatcher(MinusSignMatcher.getInstance(symbols, false));
+            parser.addMatcher(ApproximatelySignMatcher.getInstance(symbols, false));
         }
         parser.addMatcher(NanMatcher.getInstance(symbols, parseFlags));
         parser.addMatcher(InfinityMatcher.getInstance(symbols));

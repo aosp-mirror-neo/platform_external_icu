@@ -173,6 +173,7 @@ public class LSTMBreakEngine extends DictionaryBreakEngine {
             super(dict);
         }
 
+        @Override
         public void vectorize(CharacterIterator fIter, int rangeStart, int rangeEnd,
                               List<Integer> offsets, List<Integer> indicies) {
             fIter.setIndex(rangeStart);
@@ -203,6 +204,7 @@ public class LSTMBreakEngine extends DictionaryBreakEngine {
             return sb.toString();
         }
 
+        @Override
         public void vectorize(CharacterIterator text, int startPos, int endPos,
                               List<Integer> offsets, List<Integer> indicies) {
             BreakIterator iter = BreakIterator.getCharacterInstance();

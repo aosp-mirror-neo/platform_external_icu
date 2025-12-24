@@ -155,14 +155,19 @@ public final class LSR {
             (encodeScriptToInt() << 24);
     }
 
-    // BEGIN Android patch: Save ~1MB zygote heap. http://b/331291118
-    // ~7k LSR instances and ~21k strings are created from this path.
+    /**
+      * CachedDecoder uses string pools to reduce memory needed for creating
+      * strings representing lang, region and script.
+      */
     private static class CachedDecoder {
         private static final String[] DECODED_ZERO =
                 new String[] {/*lang=*/ "", /*script=*/ "", /*region=*/ ""};
         private static final String[] DECODED_ONE =
                 new String[] {/*lang=*/ "skip", /*script=*/ "script", /*region=*/ ""};
 
+        // Use local string pools instead of String.intern(), because a java runtime may put interned
+        // string into the GC root, and never get released if ICU4J needs to be unloaded.
+        // String.intern() could also be slower than a simple java.util.HashMap.
         private final HashMap<Integer, String> langsCache;
         private final HashMap<Integer, String> scriptsCache;
         private final HashMap<Integer, String> regionsCache;
@@ -232,6 +237,8 @@ public final class LSR {
     public static LSR[] decodeInts(int[] nums, String[] m49) {
         LSR[] lsrs = new LSR[nums.length];
 
+        // The decoder uses string pools to reduce memory impact.
+        // At least 7k LSR instances are created from this path.
         CachedDecoder decoder = new CachedDecoder(m49);
         for (int i = 0; i < nums.length; ++i) {
             int encoded = nums[i];
@@ -240,5 +247,4 @@ public final class LSR {
         }
         return lsrs;
     }
-    // END Android patch: Save ~1MB zygote heap. http://b/331291118
 }

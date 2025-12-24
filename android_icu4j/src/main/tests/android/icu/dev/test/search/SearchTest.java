@@ -1651,9 +1651,7 @@ public class SearchTest extends TestFmwk {
         m_en_us_.setStrength(PATTERN[0].strength);
         StringSearch strsrch = new StringSearch(PATTERN[0].pattern, new StringCharacterIterator(PATTERN[0].text), m_en_us_, null);
 
-        if (strsrch.getPattern() != PATTERN[0].pattern) {
-            errln("Error setting pattern");
-        }
+        assertSame("Error setting pattern", strsrch.getPattern(), PATTERN[0].pattern);
         if (!assertEqualWithStringSearch(strsrch, PATTERN[0])) {
             m_en_us_.setStrength(TERTIARY);
             if (strsrch != null) {
@@ -1663,14 +1661,7 @@ public class SearchTest extends TestFmwk {
         }
 
         strsrch.setPattern(PATTERN[1].pattern);
-        if (PATTERN[1].pattern != strsrch.getPattern()) {
-            errln("Error setting pattern");
-            m_en_us_.setStrength(TERTIARY);
-            if (strsrch != null) {
-                strsrch = null;
-            }
-            return;
-        }
+        assertSame("Error setting pattern", strsrch.getPattern(), PATTERN[1].pattern);
         strsrch.reset();
 
         if (!assertEqualWithStringSearch(strsrch, PATTERN[1])) {
@@ -1682,15 +1673,8 @@ public class SearchTest extends TestFmwk {
         }
 
         strsrch.setPattern(PATTERN[0].pattern);
-        if (PATTERN[0].pattern != strsrch.getPattern()) {
-            errln("Error setting pattern");
-            m_en_us_.setStrength(TERTIARY);
-            if (strsrch != null) {
-                strsrch = null;
-            }
-            return;
-        }
-            strsrch.reset();
+        assertSame("Error setting pattern", strsrch.getPattern(), PATTERN[0].pattern);
+        strsrch.reset();
 
         if (!assertEqualWithStringSearch(strsrch, PATTERN[0])) {
             m_en_us_.setStrength(TERTIARY);
@@ -1723,10 +1707,7 @@ public class SearchTest extends TestFmwk {
         StringSearch strsrch = new StringSearch(PATTERNCANONICAL[0].pattern, new StringCharacterIterator(PATTERNCANONICAL[0].text),
                                                 m_en_us_, null);
         strsrch.setCanonical(true);
-
-        if (PATTERNCANONICAL[0].pattern != strsrch.getPattern()) {
-            errln("Error setting pattern");
-        }
+        assertSame("Error setting pattern", PATTERNCANONICAL[0].pattern, strsrch.getPattern());
         if (!assertEqualWithStringSearch(strsrch, PATTERNCANONICAL[0])) {
             m_en_us_.setStrength(TERTIARY);
             strsrch = null;
@@ -1734,12 +1715,7 @@ public class SearchTest extends TestFmwk {
         }
 
         strsrch.setPattern(PATTERNCANONICAL[1].pattern);
-        if (PATTERNCANONICAL[1].pattern != strsrch.getPattern()) {
-            errln("Error setting pattern");
-            m_en_us_.setStrength(TERTIARY);
-            strsrch = null;
-            return;
-        }
+        assertSame("Error setting pattern", PATTERNCANONICAL[1].pattern, strsrch.getPattern());
         strsrch.reset();
         strsrch.setCanonical(true);
 
@@ -1750,12 +1726,7 @@ public class SearchTest extends TestFmwk {
         }
 
         strsrch.setPattern(PATTERNCANONICAL[0].pattern);
-        if (PATTERNCANONICAL[0].pattern != strsrch.getPattern()) {
-            errln("Error setting pattern");
-            m_en_us_.setStrength(TERTIARY);
-            strsrch = null;
-            return;
-        }
+        assertSame("Error setting pattern", PATTERNCANONICAL[0].pattern, strsrch.getPattern());
 
         strsrch.reset();
         strsrch.setCanonical(true);
@@ -1976,7 +1947,7 @@ public class SearchTest extends TestFmwk {
             {
                 super(target, breaker);
                 this.pattern = pattern;
-                StringBuffer buffer = new StringBuffer();
+                StringBuilder buffer = new StringBuilder();
                 while (targetText.getIndex() != targetText.getEndIndex()) {
                     buffer.append(targetText.current());
                     targetText.next();
@@ -2251,5 +2222,22 @@ public class SearchTest extends TestFmwk {
         } catch (Exception e) {
             errln("Error initializing a new StringSearch object");
         }
+    }
+
+    @Test
+    public void TestBug22775() {
+        // Used to crash due to bad management of the pattern collation element array.
+        String pattern = "Xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa響";
+        RuleBasedCollator collator = (RuleBasedCollator) Collator.getInstance(Locale.US);
+        collator.setStrength(Collator.PRIMARY);
+        StringSearch stringSearch = new StringSearch(
+                pattern,
+                new StringCharacterIterator(" "),
+                collator
+        );
+        stringSearch.next();
     }
 }
