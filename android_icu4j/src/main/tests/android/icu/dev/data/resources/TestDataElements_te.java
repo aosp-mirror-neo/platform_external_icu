@@ -13,13 +13,14 @@ import java.util.ListResourceBundle;
 import android.icu.testsharding.MainTestShard;
 
 @MainTestShard
-public class TestDataElements_te extends ListResourceBundle {    
-    private static Object[][] data = new Object[][] { 
+public class TestDataElements_te extends ListResourceBundle {
+    private static Object[][] data = new Object[][] {
         {
             "from_te",
             "In root should be overridden"
         }
     };
+    @Override
     protected Object[][] getContents() {
         return data;
     }

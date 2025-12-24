@@ -62,7 +62,7 @@ public final class TzDataSetVersion {
      */
     // @VisibleForTesting : Keep this inline-able: it is used from CTS tests.
     // LINT.IfChange
-    public static final int CURRENT_FORMAT_MAJOR_VERSION = 9; // Android B
+    public static final int CURRENT_FORMAT_MAJOR_VERSION = 10; // Android C
     // LINT.ThenChange(/android_icu4j/src/main/java/android/icu/platform/AndroidDataFiles.java)
 
     /**

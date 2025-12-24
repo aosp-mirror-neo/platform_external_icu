@@ -26,7 +26,7 @@ public class CalendarFieldsSet extends FieldsSet {
     public CalendarFieldsSet() {
         super(DebugUtilitiesData.UCalendarDateFields,-1);
     }
-    
+
     public boolean  matches(Calendar cal, CalendarFieldsSet diffSet) {
         boolean match = true;
         for(int i=0;i<fieldCount();i++) {
@@ -42,7 +42,7 @@ public class CalendarFieldsSet extends FieldsSet {
     }
 
     /**
-     * set the specified fields on this calendar. Doesn't clear first. Returns any errors the cale 
+     * set the specified fields on this calendar. Doesn't clear first. Returns any errors the cale
      */
     public void setOnCalendar(Calendar cal) {
         for(int i=0;i<fieldCount();i++) {
@@ -52,6 +52,7 @@ public class CalendarFieldsSet extends FieldsSet {
         }
     }
 
+    @Override
     protected void handleParseValue(FieldsSet inheritFrom, int field, String substr) {
         if(field == Calendar.MONTH) {
             parseValueEnum(DebugUtilitiesData.UCalendarMonths, inheritFrom, field, substr);

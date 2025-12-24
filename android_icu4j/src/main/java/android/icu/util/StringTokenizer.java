@@ -47,12 +47,12 @@ import android.icu.text.UnicodeSet;
  * are delimiters, or a maximal sequence of consecutive code 
  * points that are not delimiters.
  * <p>
- * A <tt>StringTokenizer</tt> object internally maintains a current 
+ * A {@code StringTokenizer} object internally maintains a current 
  * position within the string to be tokenized. Some operations advance this 
  * current position past the code point processed.
  * <p>
  * A token is returned by taking a substring of the string that was used to 
- * create the <tt>StringTokenizer</tt> object.
+ * create the {@code StringTokenizer} object.
  * <p>
  * Example of the use of the default delimiter tokenizer.
  * <blockquote><pre>
@@ -286,8 +286,8 @@ public final class StringTokenizer implements Enumeration<Object>
     /**
      * Tests if there are more tokens available from this tokenizer's 
      * string. 
-     * If this method returns <tt>true</tt>, then a subsequent call to 
-     * <tt>nextToken</tt> with no argument will successfully return a token.
+     * If this method returns {@code true}, then a subsequent call to 
+     * {@code nextToken} with no argument will successfully return a token.
      * @return <code>true</code> if and only if there is at least one token 
      *         in the string after the current position; <code>false</code> 
      *         otherwise.
@@ -377,8 +377,8 @@ public final class StringTokenizer implements Enumeration<Object>
     /**
      * Returns the next token in this string tokenizer's string. First, 
      * the set of characters considered to be delimiters by this 
-     * <tt>StringTokenizer</tt> object is changed to be the characters in 
-     * the string <tt>delim</tt>. Then the next token in the string
+     * {@code StringTokenizer} object is changed to be the characters in 
+     * the string {@code delim}. Then the next token in the string
      * after the current position is returned. The current position is 
      * advanced beyond the recognized token.  The new delimiter set 
      * remains the default after this call. 
@@ -400,8 +400,8 @@ public final class StringTokenizer implements Enumeration<Object>
     /**
      * <strong>[icu]</strong> Returns the next token in this string tokenizer's string. First, 
      * the set of characters considered to be delimiters by this 
-     * <tt>StringTokenizer</tt> object is changed to be the characters in 
-     * the string <tt>delim</tt>. Then the next token in the string
+     * {@code StringTokenizer} object is changed to be the characters in 
+     * the string {@code delim}. Then the next token in the string
      * after the current position is returned. The current position is 
      * advanced beyond the recognized token.  The new delimiter set 
      * remains the default after this call. 

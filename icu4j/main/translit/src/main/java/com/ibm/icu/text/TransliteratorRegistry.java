@@ -222,7 +222,6 @@ class TransliteratorRegistry {
     // Entry classes
     //----------------------------------------------------------------------
 
-    // BEGIN Android patch: Lazily load transliterator rules.
     static class ResourceEntry {
         private final Supplier<String> resourceSupplier;
         public final int direction;
@@ -248,13 +247,11 @@ class TransliteratorRegistry {
                     return resource;
                 }
 
-                String str = resourceSupplier.get();
-                resource = str;
-                return str;
+                resource = resourceSupplier.get();
+                return resource;
             }
         }
     }
-    // END Android patch: Lazily load transliterator rules.
 
     // An entry representing a rule in a locale resource bundle
     static class LocaleEntry {
@@ -335,7 +332,7 @@ class TransliteratorRegistry {
      * make aliasReturn empty before calling.
      */
     public Transliterator get(String ID,
-                              StringBuffer aliasReturn) {
+                              StringBuilder aliasReturn) {
         Object[] entry = find(ID);
         return (entry == null) ? null
             : instantiateEntry(ID, entry, aliasReturn);
@@ -375,14 +372,12 @@ class TransliteratorRegistry {
         registerEntry(ID, new ResourceEntry(resourceName, dir), visible);
     }
 
-    // BEGIN Android patch: Lazily load transliterator rules.
     void put(String ID,
             Supplier<String> resourceSupplier,
             int dir,
             boolean visible) {
         registerEntry(ID, new ResourceEntry(resourceSupplier, dir), visible);
     }
-    // END Android patch: Lazily load transliterator rules.
 
     /**
      * Register an ID and an alias ID.  This adds an entry to the
@@ -428,6 +423,7 @@ class TransliteratorRegistry {
      * An internal class that adapts an enumeration over
      * CaseInsensitiveStrings to an enumeration over Strings.
      */
+    @SuppressWarnings("JdkObsolete") // Because it is used to implement public methods returning `Enumeration`
     private static class IDEnumeration implements Enumeration<String> {
         Enumeration<CaseInsensitiveString> en;
 
@@ -859,7 +855,7 @@ class TransliteratorRegistry {
     @SuppressWarnings("rawtypes")
     private Transliterator instantiateEntry(String ID,
                                             Object[] entryWrapper,
-                                            StringBuffer aliasReturn) {
+                                            StringBuilder aliasReturn) {
         // We actually modify the entry object in some cases.  If it
         // is a string, we may partially parse it and turn it into a
         // more processed precursor.  This makes the next
@@ -911,8 +907,6 @@ class TransliteratorRegistry {
             try {
 
                 ResourceEntry re = (ResourceEntry) entry;
-                // Android patch: Lazily load transliterator rules.
-                // parser.parse(re.resource, re.direction);
                 parser.parse(re.getResource(), re.direction);
 
             } catch (ClassCastException e) {

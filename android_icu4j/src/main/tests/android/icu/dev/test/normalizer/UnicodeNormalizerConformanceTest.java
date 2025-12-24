@@ -65,7 +65,7 @@ public class UnicodeNormalizerConformanceTest extends CoreTestFmwk {
         int c=0;
         BufferedReader input = null;
         try {
-            input = TestUtil.getDataReader("unicode/NormalizationTest.txt");
+            input = TestUtil.getUtf8DataReader("unicode/NormalizationTest.txt");
             for (int count = 0;;++count) {
                 line = input.readLine();
                 if (line == null) {

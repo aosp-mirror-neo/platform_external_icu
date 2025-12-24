@@ -24,7 +24,7 @@ public final class DateInterval implements Serializable {
     private final long fromDate;
     private final long toDate;
 
-    /** 
+    /**
      * Constructor given from date and to date.
      * @param from      The from date in date interval.
      * @param to        The to date in date interval.
@@ -35,7 +35,7 @@ public final class DateInterval implements Serializable {
         toDate = to;
     }
 
-    /** 
+    /**
      * Get the from date.
      * @return  the from date in dateInterval.
      */
@@ -44,7 +44,7 @@ public final class DateInterval implements Serializable {
         return fromDate;
     }
 
-    /** 
+    /**
      * Get the to date.
      * @return  the to date in dateInterval.
      */
@@ -56,6 +56,7 @@ public final class DateInterval implements Serializable {
     /**
      * Override equals
      */
+    @Override
     public boolean equals(Object a) {
         if ( a instanceof DateInterval ) {
             DateInterval di = (DateInterval)a;
@@ -67,6 +68,7 @@ public final class DateInterval implements Serializable {
     /**
      * Override hashcode
      */
+    @Override
     public int hashCode() {
         return (int)(fromDate + toDate);
     }
@@ -74,6 +76,7 @@ public final class DateInterval implements Serializable {
     /**
      * Override toString
      */
+    @Override
     public String toString() {
         return String.valueOf(fromDate) + " " + String.valueOf(toDate);
     }

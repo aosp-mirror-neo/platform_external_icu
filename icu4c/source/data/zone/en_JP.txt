@@ -3,11 +3,6 @@
 // Generated using tools/cldr/cldr-to-icu/
 en_JP{
     zoneStrings{
-        "Pacific:Honolulu"{
-            sd{"∅∅∅"}
-            sg{"∅∅∅"}
-            ss{"∅∅∅"}
-        }
         "meta:Alaska"{
             sd{"∅∅∅"}
             sg{"∅∅∅"}
@@ -38,15 +33,13 @@ en_JP{
             sg{"∅∅∅"}
             ss{"∅∅∅"}
         }
+        "meta:Hawaii"{
+            ss{"∅∅∅"}
+        }
         "meta:Hawaii_Aleutian"{
             sd{"∅∅∅"}
             sg{"∅∅∅"}
             ss{"∅∅∅"}
-        }
-        "meta:Japan"{
-            sd{"JDT"}
-            sg{"∅∅∅"}
-            ss{"JST"}
         }
     }
 }

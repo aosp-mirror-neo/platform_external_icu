@@ -40,6 +40,7 @@ public class FormattedValueStringBuilderImpl {
         public int start;
         public int length;
 
+        @Override
         public Field unwrap() {
             return normalField;
         }

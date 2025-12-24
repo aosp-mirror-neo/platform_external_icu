@@ -275,7 +275,7 @@ public class GlobalizationPreferencesTest extends TestFmwk {
         for (int i = 0; i < INPUT_LOCALEIDS.length; i++) {
             String[] localeStrings = INPUT_LOCALEIDS[i];
             ArrayList<ULocale> locales = new ArrayList<>();
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (int j = 0; j < localeStrings.length; j++) {
                 locales.add(new ULocale(localeStrings[j]));
                 if (j != 0) {
@@ -309,7 +309,7 @@ public class GlobalizationPreferencesTest extends TestFmwk {
         for (int i = 0; i < INPUT_LOCALEIDS.length; i++) {
             String[] localeStrings = INPUT_LOCALEIDS[i];
             ULocale[] localeArray = new ULocale[INPUT_LOCALEIDS[i].length];
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (int j = 0; j < localeStrings.length; j++) {
                 localeArray[j] = new ULocale(localeStrings[j]);
                 if (j != 0) {
@@ -635,19 +635,16 @@ public class GlobalizationPreferencesTest extends TestFmwk {
         }
 
         // Set a list of locales
-        // Android-changed: Android supports en_JP. Use en_AQ instead of en_JP for test.
-        // logln("Set locales - en, en_JP, en_GB");
-        logln("Set locales - en, en_AQ, en_GB");
+        logln("Set locales - en, en_JP, en_GB");
         ULocale[] locales = new ULocale[3];
         locales[0] = new ULocale("en");
-        // locales[1] = new ULocale("en_JP");
-        locales[1] = new ULocale("en_AQ");
+        locales[1] = new ULocale("en_JP");
         locales[2] = new ULocale("en_GB");
         gp.setLocales(locales);
 
         cal = gp.getCalendar();
         ULocale calLocale = cal.getLocale(ULocale.VALID_LOCALE);
-        if (!calLocale.equals(locales[2])) {
+        if (!calLocale.equals(locales[1])) {
             errln("FAIL: Calendar locale is " + calLocale.toString() + " - Expected: en_GB");
         }
 

@@ -54,7 +54,7 @@ public final class StringCharacterIterator implements CharacterIterator
      * Constructs an iterator with the specified initial index.
      *
      * @param  text   The String to be iterated over
-     * @param  pos    Initial iterator position     
+     * @param  pos    Initial iterator position
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
     @Deprecated
@@ -70,7 +70,7 @@ public final class StringCharacterIterator implements CharacterIterator
      * @param  text   The String to be iterated over
      * @param  begin  Index of the first character
      * @param  end    Index of the character following the last character
-     * @param  pos    Initial iterator position 
+     * @param  pos    Initial iterator position
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
     @Deprecated
@@ -99,7 +99,7 @@ public final class StringCharacterIterator implements CharacterIterator
      * new StringCharacterIterator objects every time their setText method
      * is called.
      *
-     * @param  text   The String to be iterated over 
+     * @param  text   The String to be iterated over
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
     @Deprecated
@@ -115,9 +115,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.first() for String.
-     * @see CharacterIterator#first 
+     * @see CharacterIterator#first
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public char first()
     {
@@ -127,9 +128,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.last() for String.
-     * @see CharacterIterator#last 
+     * @see CharacterIterator#last
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public char last()
     {
@@ -143,9 +145,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.setIndex() for String.
-     * @see CharacterIterator#setIndex 
+     * @see CharacterIterator#setIndex
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public char setIndex(int p)
     {
@@ -158,9 +161,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.current() for String.
-     * @see CharacterIterator#current 
+     * @see CharacterIterator#current
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public char current()
     {
@@ -174,9 +178,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.next() for String.
-     * @see CharacterIterator#next 
+     * @see CharacterIterator#next
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public char next()
     {
@@ -192,9 +197,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.previous() for String.
-     * @see CharacterIterator#previous 
+     * @see CharacterIterator#previous
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public char previous()
     {
@@ -209,9 +215,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.getBeginIndex() for String.
-     * @see CharacterIterator#getBeginIndex 
+     * @see CharacterIterator#getBeginIndex
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public int getBeginIndex()
     {
@@ -220,9 +227,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.getEndIndex() for String.
-     * @see CharacterIterator#getEndIndex 
+     * @see CharacterIterator#getEndIndex
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public int getEndIndex()
     {
@@ -231,9 +239,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Implements CharacterIterator.getIndex() for String.
-     * @see CharacterIterator#getIndex 
+     * @see CharacterIterator#getIndex
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public int getIndex()
     {
@@ -244,9 +253,10 @@ public final class StringCharacterIterator implements CharacterIterator
      * Compares the equality of two StringCharacterIterator objects.
      * @param obj the StringCharacterIterator object to be compared with.
      * @return true if the given obj is the same as this
-     * StringCharacterIterator object; false otherwise. 
+     * StringCharacterIterator object; false otherwise.
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public boolean equals(Object obj)
     {
@@ -273,9 +283,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Computes a hashcode for this iterator.
-     * @return A hash code 
+     * @return A hash code
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public int hashCode()
     {
@@ -284,9 +295,10 @@ public final class StringCharacterIterator implements CharacterIterator
 
     /**
      * Creates a copy of this iterator.
-     * @return A copy of this 
+     * @return A copy of this
      * @deprecated ICU 2.4. Use java.text.StringCharacterIterator instead.
      */
+    @Override
     @Deprecated
     public Object clone()
     {

@@ -109,7 +109,7 @@ public class JamoTest extends TestFmwk {
         Transliterator jamoHangul = Transliterator.getInstance("NFC");
         Transliterator hangulJamo = Transliterator.getInstance("NFD");
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i=0; i<HANGUL.length; ++i) {
             String hangul = HANGUL[i];
             String jamo = hangulJamo.transliterate(hangul);
@@ -182,7 +182,7 @@ public class JamoTest extends TestFmwk {
         Transliterator rt = Transliterator.getInstance("NFD;Jamo-Latin;Latin-Jamo;NFC");
 
         int pos = 0;
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         int total = 0;
         int errors = 0;
         while (pos < WHAT_IS_UNICODE.length()) {
@@ -481,7 +481,7 @@ public class JamoTest extends TestFmwk {
      * "x\u11B0y".  See JAMO_NAMES for table of names.
      */
     static String nameToJamo(String input) {
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i=0; i<input.length(); ++i) {
             char c = input.charAt(i);
             if (c == '(') {
@@ -505,7 +505,7 @@ public class JamoTest extends TestFmwk {
      * "x(LG)y".  See JAMO_NAMES for table of names.
      */
     static String jamoToName(String input) {
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i=0; i<input.length(); ++i) {
             char c = input.charAt(i);
             if (c >= 0x1100 && c <= 0x11C2) {

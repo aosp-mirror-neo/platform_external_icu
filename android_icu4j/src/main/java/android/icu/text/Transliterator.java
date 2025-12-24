@@ -356,7 +356,7 @@ import android.icu.util.UResourceBundle;
  * <p>The following example rules illustrate many of the features of
  * the rule language.
  *
- * <table border="0" cellpadding="4">
+ * <table style="border:none;padding:4px;">
  *     <tr>
  *         <td style="vertical-align: top;">Rule 1.</td>
  *         <td style="vertical-align: top; write-space: nowrap;"><code>abc{def}&gt;x|y</code></td>
@@ -374,7 +374,7 @@ import android.icu.util.UResourceBundle;
  * <p>Applying these rules to the string &quot;<code>adefabcdefz</code>&quot;
  * yields the following results:
  *
- * <table border="0" cellpadding="4">
+ * <table style="border:none;padding:4px;">
  *     <tr>
  *         <td style="vertical-align: top; write-space: nowrap;"><code>|adefabcdefz</code></td>
  *         <td style="vertical-align: top;">Initial state, no rules match. Advance
@@ -636,9 +636,9 @@ public abstract class Transliterator implements StringTransform  {
 
     /**
      * This transliterator's filter.  Any character for which
-     * <tt>filter.contains()</tt> returns <tt>false</tt> will not be
-     * altered by this transliterator.  If <tt>filter</tt> is
-     * <tt>null</tt> then no filtering is applied.
+     * {@code filter.contains()} returns {@code false} will not be
+     * altered by this transliterator.  If {@code filter} is
+     * {@code null} then no filtering is applied.
      */
     private UnicodeSet filter;
 
@@ -704,9 +704,9 @@ public abstract class Transliterator implements StringTransform  {
      * Default constructor.
      * @param ID the string identifier for this transliterator
      * @param filter the filter.  Any character for which
-     * <tt>filter.contains()</tt> returns <tt>false</tt> will not be
-     * altered by this transliterator.  If <tt>filter</tt> is
-     * <tt>null</tt> then no filtering is applied.
+     * {@code filter.contains()} returns {@code false} will not be
+     * altered by this transliterator.  If {@code filter} is
+     * {@code null} then no filtering is applied.
      * @hide unsupported on Android
      */
     protected Transliterator(String ID, UnicodeFilter filter) {
@@ -1046,9 +1046,9 @@ public abstract class Transliterator implements StringTransform  {
         // characters (which are ignored) and a subsequent run of
         // unfiltered characters (which are transliterated).
 
-        StringBuffer log = null;
+        StringBuilder log = null;
         if (DEBUG) {
-            log = new StringBuffer();
+            log = new StringBuilder();
         }
 
         for (;;) {
@@ -1477,7 +1477,7 @@ public abstract class Transliterator implements StringTransform  {
     }
 
     /**
-     * Returns the filter used by this transliterator, or <tt>null</tt>
+     * Returns the filter used by this transliterator, or {@code null}
      * if this transliterator uses no filter.
      */
     public final UnicodeFilter getFilter() {
@@ -1486,7 +1486,7 @@ public abstract class Transliterator implements StringTransform  {
 
     /**
      * Changes the filter used by this transliterator.  If the filter
-     * is set to <tt>null</tt> then no filtering will occur.
+     * is set to {@code null} then no filtering will occur.
      *
      * <p>Callers must take care if a transliterator is in use by
      * multiple threads.  The filter should not be changed by one
@@ -1533,7 +1533,7 @@ public abstract class Transliterator implements StringTransform  {
      */
     public static Transliterator getInstance(String ID,
                                              int dir) {
-        StringBuffer canonID = new StringBuffer();
+        StringBuilder canonID = new StringBuilder();
         List<SingleID> list = new ArrayList<>();
         UnicodeSet[] globalFilter = new UnicodeSet[1];
         if (!TransliteratorIDParser.parseCompoundID(ID, dir, canonID, list, globalFilter)) {
@@ -1574,7 +1574,7 @@ public abstract class Transliterator implements StringTransform  {
      * invalid.
      */
     static Transliterator getBasicInstance(String id, String canonID) {
-        StringBuffer s = new StringBuffer();
+        StringBuilder s = new StringBuilder();
         Transliterator t = registry.get(id, s);
         if (s.length() != 0) {
             // assert(t==0);
@@ -1685,12 +1685,12 @@ public abstract class Transliterator implements StringTransform  {
         // the correct format.  That is: foo => ::foo
         // KEEP in sync with rbt_pars
         if (escapeUnprintable) {
-            StringBuffer rulesSource = new StringBuffer();
+            StringBuilder rulesSource = new StringBuilder();
             String id = getID();
             for (int i=0; i<id.length();) {
                 int c = UTF16.charAt(id, i);
                 if (!Utility.escapeUnprintable(rulesSource, c)) {
-                    UTF16.append(rulesSource, c);
+                    rulesSource.appendCodePoint(c);
                 }
                 i += UTF16.getCharCount(c);
             }
@@ -2112,12 +2112,10 @@ public abstract class Transliterator implements StringTransform  {
             if (type.equals("file") || type.equals("internal")) {
                 // Rest of line is <resource>:<encoding>:<direction>
                 //                pos       colon      c2
-                // BEGIN Android patch: Lazily load transliterator rules.
-                // String resString = res.getString("resource");
                 int rowIndex = row;
                 Supplier<String> resSupplier = () -> {
-                    // Avoid capturing UResourceBundle objects, but read the resource string
-                    // with the captured row ID.
+                    // Capture the row Id instead of the UResourceBundle object
+                    // due to the memory cost.
                     UResourceBundle rootBund = UResourceBundle.getBundleInstance(
                             ICUData.ICU_TRANSLIT_BASE_NAME, ROOT);
                     UResourceBundle transIDsBund = rootBund.get(RB_RULE_BASED_IDS);
@@ -2140,7 +2138,6 @@ public abstract class Transliterator implements StringTransform  {
                              resSupplier, // resource
                              dir,
                              !type.equals("internal"));
-                // END Android patch: Lazily load transliterator rules.
             } else if (type.equals("alias")) {
                 //'alias'; row[2]=createInstance argument
                 String resString = res.getString();

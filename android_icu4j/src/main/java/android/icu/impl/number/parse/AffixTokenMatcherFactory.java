@@ -28,6 +28,10 @@ public class AffixTokenMatcherFactory {
         return PlusSignMatcher.getInstance(symbols, true);
     }
 
+    public ApproximatelySignMatcher approximatelySign() {
+        return ApproximatelySignMatcher.getInstance(symbols, true);
+    }
+
     public PercentMatcher percent() {
         return PercentMatcher.getInstance(symbols);
     }

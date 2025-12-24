@@ -22,12 +22,20 @@ public class MFParseException extends ParseException {
      *
      * @param message the message
      * @param errorOffset the position where the error is found while parsing.
+     * @deprecated This API is for technology preview only.
+     * @hide draft / provisional / internal are hidden on Android
      */
+    @Deprecated
     public MFParseException(String message, int errorOffset) {
         super(message, errorOffset);
     }
 
+    /**
+     * @deprecated This API is for technology preview only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
     @Override
+    @Deprecated
     public String getMessage() {
         return super.getMessage();
     }

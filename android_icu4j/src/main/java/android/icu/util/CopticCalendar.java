@@ -254,6 +254,7 @@ public final class CopticCalendar extends CECalendar
         return eyear;
     }
 
+    // Android-added: Add back the method with empty body to not break API compatibility.
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
@@ -263,29 +264,29 @@ public final class CopticCalendar extends CECalendar
     @Override
     @Deprecated
     protected void handleComputeFields(int julianDay) {
-        int era, year;
-        int[] fields = new int[3];
-        jdToCE(julianDay, getJDEpochOffset(), fields);
+        super.handleComputeFields(julianDay);
+    }
 
-        // fields[0] eyear
-        // fields[1] month
-        // fields[2] day
+    /**
+     * {@inheritDoc}
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Deprecated
+    @Override
+    protected int extendedYearToEra(int eyear) {
+        return (eyear <= 0) ? BCE : CE;
+    }
 
-        if (fields[0] <= 0) {
-            era = BCE;
-            year = 1 - fields[0];
-        } else {
-            era = CE;
-            year = fields[0];
-        }
-
-        internalSet(EXTENDED_YEAR, fields[0]);
-        internalSet(ERA, era);
-        internalSet(YEAR, year);
-        internalSet(MONTH, fields[1]);
-        internalSet(ORDINAL_MONTH, fields[1]);
-        internalSet(DAY_OF_MONTH, fields[2]);
-        internalSet(DAY_OF_YEAR, (30 * fields[1]) + fields[2]);
+    /**
+     * {@inheritDoc}
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Deprecated
+    @Override
+    protected int extendedYearToYear(int eyear) {
+        return (eyear <= 0) ? 1-eyear : eyear;
     }
 
     /**
@@ -314,6 +315,17 @@ public final class CopticCalendar extends CECalendar
     // removed in future.  2008-03-21 yoshito
     public static int copticToJD(long year, int month, int date) {
         return ceToJD(year, month, date, JD_EPOCH_OFFSET);
+    }
+
+    private static final int COPTIC_CALENDAR_RELATED_YEAR_DIFFERENCE = 284;
+
+    /**
+     * @deprecated This API is ICU internal only.
+     * @hide draft / provisional / internal are hidden on Android
+     */
+    @Deprecated
+    protected final int getRelatedYearDifference() {
+        return COPTIC_CALENDAR_RELATED_YEAR_DIFFERENCE;
     }
 }
 

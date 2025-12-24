@@ -12,7 +12,7 @@ import java.util.StringJoiner;
 import android.icu.message2.MFDataModel.CatchallKey;
 import android.icu.message2.MFDataModel.Declaration;
 import android.icu.message2.MFDataModel.Expression;
-import android.icu.message2.MFDataModel.Function;
+import android.icu.message2.MFDataModel.FunctionRef;
 import android.icu.message2.MFDataModel.FunctionExpression;
 import android.icu.message2.MFDataModel.InputDeclaration;
 import android.icu.message2.MFDataModel.Literal;
@@ -128,7 +128,7 @@ class MFDataModelValidator {
      *   .local $c = {$foo :datetime}
      *
      * But this is not necesarily an error.
-     * If $foo is a number, then it might be formatter as a number, or as date (epoch time),
+     * If $foo is a number, then it might be formatted as a number, or as date (epoch time),
      * or something else.
      *
      * So it is not safe to complain. Especially with custom functions:
@@ -141,7 +141,7 @@ class MFDataModelValidator {
             throws MFParseException {
         String argName = null;
         boolean wasLiteral = false;
-        Function function = null;
+        FunctionRef function = null;
         if (expression instanceof Literal) {
             // ...{foo}... or ...{|foo|}... or ...{123}...
             // does not declare anything
@@ -163,8 +163,8 @@ class MFDataModelValidator {
             function = fe.function;
         }
 
-        if (function instanceof Function) {
-            Function fa = (Function) function;
+        if (function instanceof FunctionRef) {
+            FunctionRef fa = (FunctionRef) function;
             if (fa.options != null) {
                 for (Option opt : fa.options.values()) {
                     LiteralOrVariableRef val = opt.value;

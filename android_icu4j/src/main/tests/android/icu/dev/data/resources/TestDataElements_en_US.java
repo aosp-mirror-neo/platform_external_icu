@@ -15,13 +15,14 @@ import android.icu.testsharding.MainTestShard;
 @MainTestShard
 public class TestDataElements_en_US extends ListResourceBundle {
 
-    private static Object[][] data = new Object[][] { 
+    private static Object[][] data = new Object[][] {
         {
             "from_en_US",
             "This data comes from en_US"
         }
-        
+
     };
+    @Override
     protected Object[][] getContents() {
         return data;
     }
