@@ -61,7 +61,7 @@ U_CDECL_BEGIN
  * @see u_getUnicodeVersion
  * \xrefitem stable "Stable" "Stable List" ICU 2.0
  */
-#define U_UNICODE_VERSION "16.0"
+#define U_UNICODE_VERSION "17.0"
 
 /**
  * @addtogroup icu4c ICU4C
@@ -554,14 +554,12 @@ typedef enum UProperty {
      * \xrefitem stable "Stable" "Stable List" ICU 74
      */
     UCHAR_ID_COMPAT_MATH_CONTINUE=74,
-#ifndef U_HIDE_DRAFT_API
     /**
      * Binary property Modifier_Combining_Mark.
      * Used by the AMTRA algorithm in UAX #53.
-     * \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 76
+     * \xrefitem stable "Stable" "Stable List" ICU 76
      */
     UCHAR_MODIFIER_COMBINING_MARK=75,
-#endif  // U_HIDE_DRAFT_API
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the last constant for binary Unicode properties.
@@ -684,14 +682,12 @@ typedef enum UProperty {
      * \xrefitem stable "Stable" "Stable List" ICU 75
      */
     UCHAR_IDENTIFIER_STATUS=0x1019,
-#ifndef U_HIDE_DRAFT_API
     /**
      * Enumerated property Indic_Conjunct_Break.
      * Used in the grapheme cluster break algorithm in UAX #29.
-     * \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 76
+     * \xrefitem stable "Stable" "Stable List" ICU 76
      */
     UCHAR_INDIC_CONJUNCT_BREAK=0x101A,
-#endif  // U_HIDE_DRAFT_API
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the last constant for enumerated/integer Unicode properties.
@@ -1987,6 +1983,25 @@ enum UBlockCode {
     /** \xrefitem stable "Stable" "Stable List" ICU 76 */
     UBLOCK_TULU_TIGALARI = 338, /*[11380]*/
 
+    // New blocks in Unicode 17.0.0
+
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    UBLOCK_BERIA_ERFE = 339, /*[16EA0]*/
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    UBLOCK_CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J = 340, /*[323B0]*/
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    UBLOCK_MISCELLANEOUS_SYMBOLS_SUPPLEMENT = 341, /*[1CEC0]*/
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    UBLOCK_SHARADA_SUPPLEMENT = 342, /*[11B60]*/
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    UBLOCK_SIDETIC = 343, /*[10940]*/
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    UBLOCK_TAI_YO = 344, /*[1E6C0]*/
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    UBLOCK_TANGUT_COMPONENTS_SUPPLEMENT = 345, /*[18D80]*/
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    UBLOCK_TOLONG_SIKI = 346, /*[11DB0]*/
+
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UBlockCode value.
@@ -1994,7 +2009,7 @@ enum UBlockCode {
      *
      * \xrefitem deprecated "Deprecated" "Deprecated List" ICU 58 The numeric value may change over time, see ICU ticket #12420.
      */
-    UBLOCK_COUNT = 339,
+    UBLOCK_COUNT = 347,
 #endif  // U_HIDE_DEPRECATED_API
 
     /** \xrefitem stable "Stable" "Stable List" ICU 2.0 */
@@ -2291,6 +2306,8 @@ typedef enum UJoiningGroup {
 
     U_JG_KASHMIRI_YEH,  /**< \xrefitem stable "Stable" "Stable List" ICU 76 */
 
+    U_JG_THIN_NOON,  /**< \xrefitem stable "Stable" "Stable List" ICU 78 */
+
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal UJoiningGroup value.
@@ -2538,6 +2555,8 @@ typedef enum ULineBreak {
     U_LB_VIRAMA_FINAL = 46,      /*[VF]*/
     /** \xrefitem stable "Stable" "Stable List" ICU 74 */
     U_LB_VIRAMA = 47,            /*[VI]*/
+    /** \xrefitem stable "Stable" "Stable List" ICU 78 */
+    U_LB_UNAMBIGUOUS_HYPHEN = 48,/*[HH]*/
 #ifndef U_HIDE_DEPRECATED_API
     /**
      * One more than the highest normal ULineBreak value.
@@ -2545,7 +2564,7 @@ typedef enum ULineBreak {
      *
      * \xrefitem deprecated "Deprecated" "Deprecated List" ICU 58 The numeric value may change over time, see ICU ticket #12420.
      */
-    U_LB_COUNT = 48
+    U_LB_COUNT = 49
 #endif  // U_HIDE_DEPRECATED_API
 } ULineBreak;
 
@@ -2743,12 +2762,11 @@ typedef enum UIndicSyllabicCategory {
     U_INSC_REORDERING_KILLER,
 } UIndicSyllabicCategory;
 
-#ifndef U_HIDE_DRAFT_API
 /**
  * Indic Conjunct Break constants.
  *
  * @see UCHAR_INDIC_CONJUNCT_BREAK
- * \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 76
+ * \xrefitem stable "Stable" "Stable List" ICU 76
  */
 typedef enum UIndicConjunctBreak {
     /*
@@ -2757,16 +2775,15 @@ typedef enum UIndicConjunctBreak {
     *     U_INCB_<Unicode Indic_Conjunct_Break value name>
     */
 
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 76 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 76 */
     U_INCB_NONE,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 76 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 76 */
     U_INCB_CONSONANT,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 76 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 76 */
     U_INCB_EXTEND,
-    /** \xrefitem draft "Draft" "Draft List" This API may be changed in the future versions and was introduced in ICU 76 */
+    /** \xrefitem stable "Stable" "Stable List" ICU 76 */
     U_INCB_LINKER,
 } UIndicConjunctBreak;
-#endif  // U_HIDE_DRAFT_API
 
 /**
  * Vertical Orientation constants.

@@ -99,7 +99,7 @@ import android.icu.impl.PatternProps;
  * inside each phrase. Otherwise translators would have to be trained on how to
  * move bits of the sentence in and out of the select argument of a message.
  * (The examples below do not follow this recommendation!)
- * 
+ *
  * <p>The sentence pattern for French, where the gender of the person affects
  * the form of the participle, uses a select format based on argument 1:
  *
@@ -108,11 +108,11 @@ import android.icu.impl.PatternProps;
  * <p>Patterns can be nested, so that it's possible to handle  interactions of
  * number and gender where necessary. For example, if the above  sentence should
  * allow for the names of several people to be inserted, the  following sentence
- * pattern can be used (with argument 0 the list of people's names,  
- * argument 1 the number of people, argument 2 their combined gender, and  
+ * pattern can be used (with argument 0 the list of people's names,
+ * argument 1 the number of people, argument 2 their combined gender, and
  * argument 3 the city name):
  *
- * <pre>{0} {1, plural, 
+ * <pre>{0} {1, plural,
  * one {est {2, select, female {all&#xE9;e} other  {all&#xE9;}}}
  * other {sont {2, select, female {all&#xE9;es} other {all&#xE9;s}}}
  * }&#xE0; {3}.</pre>
@@ -127,7 +127,7 @@ import android.icu.impl.PatternProps;
  * <p>Each message is a MessageFormat pattern string enclosed in {curly braces}.
  *
  * <p>You always have to define a phrase for the default keyword
- * <code>other</code>; this phrase is returned when the keyword  
+ * <code>other</code>; this phrase is returned when the keyword
  * provided to
  * the <code>format</code> method matches no other keyword.
  * If a pattern does not provide a phrase for <code>other</code>, the  method
@@ -161,7 +161,7 @@ public class SelectFormat extends Format{
      * The MessagePattern which contains the parsed structure of the pattern string.
      */
     transient private MessagePattern msgPattern;
-    
+
     /**
      * Creates a new <code>SelectFormat</code> for a given pattern string.
      * @param  pattern the pattern for this <code>SelectFormat</code>.
@@ -308,6 +308,7 @@ public class SelectFormat extends Format{
      * @return the string buffer passed in as toAppendTo, with formatted text
      *         appended.
      */
+    @Override
     public StringBuffer format(Object keyword, StringBuffer toAppendTo,
             FieldPosition pos) {
         if (keyword instanceof String) {
@@ -327,6 +328,7 @@ public class SelectFormat extends Format{
      * @return nothing because this method is not supported.
      * @throws UnsupportedOperationException thrown always.
      */
+    @Override
     public Object parseObject(String source, ParsePosition pos) {
         throw new UnsupportedOperationException();
     }

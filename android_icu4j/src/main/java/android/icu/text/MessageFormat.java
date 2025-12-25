@@ -25,6 +25,8 @@ import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.ParsePosition;
+import java.time.DayOfWeek;
+import java.time.Month;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -102,7 +104,7 @@ import android.icu.util.ULocale.Category;
  * A numbered pattern argument is matched with a map key that contains that number
  * as an ASCII-decimal-digit string (without leading zero).
  *
- * <h3><a name="patterns">Patterns and Their Interpretation</a></h3>
+ * <h3><a id="patterns">Patterns and Their Interpretation</a></h3>
  *
  * <code>MessageFormat</code> uses patterns of the following form:
  * <blockquote><pre>
@@ -237,7 +239,7 @@ import android.icu.util.ULocale.Category;
  *           <br>&nbsp;&nbsp;&nbsp;&nbsp;.setDefaultRuleset(argStyleText);</code>
  * </table>
  *
- * <h4><a name="diffsjdk">Differences from java.text.MessageFormat</a></h4>
+ * <h4><a id="diffsjdk">Differences from java.text.MessageFormat</a></h4>
  *
  * <p>The ICU MessageFormat supports both named and numbered arguments,
  * while the JDK MessageFormat only supports numbered arguments.
@@ -318,7 +320,7 @@ import android.icu.util.ULocale.Category;
  * </pre>
  * See {@link PluralFormat} and {@link PluralRules} for details.
  *
- * <h4><a name="synchronization">Synchronization</a></h4>
+ * <h4><a id="synchronization">Synchronization</a></h4>
  *
  * <p>MessageFormats are not synchronized.
  * It is recommended to create separate format instances for each thread.
@@ -1673,16 +1675,18 @@ public class MessageFormat extends UFormat {
                 // ArgType.NONE, or
                 // any argument which got reset to null via setFormat() or its siblings.
                 if (arg instanceof Number) {
-                    // format number if can
                     dest.formatAndAppend(getStockNumberFormatter(), arg);
                 } else if (arg instanceof Date) {
-                    // format a Date if can
                     dest.formatAndAppend(getStockDateFormatter(), arg);
                 } else if (arg instanceof Calendar) {
-                    // format a Calendar if can
+                    dest.formatAndAppend(getStockDateFormatter(), arg);
+                } else if (arg instanceof java.util.Calendar) {
                     dest.formatAndAppend(getStockDateFormatter(), arg);
                 } else if (arg instanceof Temporal) {
-                    // format a Temporal if can
+                    dest.formatAndAppend(getStockDateFormatter(), arg);
+                } else if (arg instanceof DayOfWeek) {
+                    dest.formatAndAppend(getStockDateFormatter(), arg);
+                } else if (arg instanceof Month) {
                     dest.formatAndAppend(getStockDateFormatter(), arg);
                 } else {
                     dest.append(arg.toString());

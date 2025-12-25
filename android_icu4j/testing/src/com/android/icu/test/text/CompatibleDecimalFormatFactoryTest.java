@@ -56,7 +56,7 @@ public class CompatibleDecimalFormatFactoryTest {
         ParsePosition parsePosition = new ParsePosition(0);
         // Parsing with a leading space should return error
         decimalFormat.parse(" 1,234.56", parsePosition);
-        assertEquals(2, parsePosition.getIndex());
+        assertEquals(0, parsePosition.getIndex());
 
         parsePosition = new ParsePosition(0);
         // Parsing with a bidi character should not be parsed properly

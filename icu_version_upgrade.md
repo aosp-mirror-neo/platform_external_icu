@@ -126,7 +126,7 @@ The below contains the steps and commands in order to upgrade the ICU version in
     ```shell
     cd ${ANDROID_BUILD_TOP}/external/icu
     export ICU_BRANCH=icu-staging
-    export UPSTREAM_RELEASE_TAG=release-${ICU_VERSION}-${ICU_MINOR_VERSION}
+    export UPSTREAM_RELEASE_TAG=release-${ICU_VERSION}.${ICU_MINOR_VERSION}
     git fetch goog main ${ICU_BRANCH}
     git branch ${ICU_BRANCH} --track goog/${ICU_BRANCH}
     git checkout ${ICU_BRANCH}
@@ -176,10 +176,12 @@ The below contains the steps and commands in order to upgrade the ICU version in
         ```
       * If any cherry-picks causes conflicts, please resolve them carefully.
           * If the patch and a upstream commit resolves the same issue, or the patch has been upstreamed, the patch can be discarded.
+
    4b. Cherry-pick theq patches since the ICU upgrade
       * Find the patches with this query.
          * AOSP gerrit: https://r.android.com/q/%2522Android+patch%2522+project:platform/external/icu+status:merged+-owner:automerger+-owner:android-build-coastguard-worker%2540google.com+branch:main
          * Internal gerrit: https://googleplex-android-review.git.corp.google.com/q/%2522Android+patch%2522+project:platform/external/icu+status:merged+-owner:automerger+-owner:android-build-coastguard-worker%2540google.com+branch:main
+
    4c. Reset `Change-Id` in the cherry-picked CLs
       * ```shell
         THE_COPY_COMMIT=$(git log --pretty=format:'%h' -n 1 --grep "Copy ICU ${UPSTREAM_RELEASE_TAG} into goog/${ICU_BRANCH}")

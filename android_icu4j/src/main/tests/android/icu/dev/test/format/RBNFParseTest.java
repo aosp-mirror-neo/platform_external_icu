@@ -197,4 +197,27 @@ public class RBNFParseTest extends CoreTestFmwk {
             }
         }
     }
+    @Test
+    public void Test23184EmptyRuleSet() {
+        try {
+            RuleBasedNumberFormat rbnf = new RuleBasedNumberFormat("x00:>%>>;%;<0<<", Locale.US);
+            errln("Failed: should throw IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            // success!
+        }
+        try {
+            RuleBasedNumberFormat rbnf = new RuleBasedNumberFormat("x00:>%>>;%:;<0<<", Locale.US);
+            errln("Failed: should throw IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            // success!
+        }
+    }
+    @Test
+    public void TestNullRuleSet() {
+        try {
+            RuleBasedNumberFormat rbnf = new RuleBasedNumberFormat("x00:a>>>b>#>", Locale.US);
+        } catch (IllegalArgumentException e) {
+            // success!
+        }
+    }
 }

@@ -1090,7 +1090,7 @@ public final class UCharacterProperty
     */
 
     /**
-     * Get the the maximum values for some enum/int properties.
+     * Get the maximum values for some enum/int properties.
      * @return maximum values for the integer properties.
      */
     public int getMaxValues(int column)

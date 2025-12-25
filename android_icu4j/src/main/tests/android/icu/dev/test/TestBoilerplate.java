@@ -11,9 +11,9 @@ package android.icu.dev.test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -40,8 +40,9 @@ public abstract class TestBoilerplate<T> extends TestFmwk {
 
     protected static Random random = new Random(12345);
 
+    @SuppressWarnings({"SelfEquals", "EqualsNull"})
     protected final void _test() throws Exception {
-        List<T> list = new LinkedList<T>();
+        List<T> list = new ArrayList<T>();
         while (_addTestObject(list)) {
         }
         T[] testArray = (T[]) list.toArray();

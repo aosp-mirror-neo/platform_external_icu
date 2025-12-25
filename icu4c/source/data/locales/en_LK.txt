@@ -2,7 +2,6 @@
 // License & terms of use: http://www.unicode.org/copyright.html
 // Generated using tools/cldr/cldr-to-icu/
 en_LK{
-    %%Parent{"en_001"}
     calendar{
         gregorian{
             DateTimePatterns{
@@ -10,10 +9,10 @@ en_LK{
                 "HH:mm:ss z",
                 "HH:mm:ss",
                 "HH:mm",
-                "EEEE, d MMMM y",
-                "d MMMM y",
-                "d MMM y",
-                "dd/MM/y",
+                "EEEE, MMMM d, y",
+                "MMMM d, y",
+                "MMM d, y",
+                "M/d/yy",
                 "{1}, {0}",
                 "{1}, {0}",
                 "{1}, {0}",
@@ -28,7 +27,7 @@ en_LK{
                 "yMMMMEEEEd",
                 "yMMMMd",
                 "yMMMd",
-                "yMMdd",
+                "yyMd",
             }
         }
     }

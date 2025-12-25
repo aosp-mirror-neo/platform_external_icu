@@ -149,49 +149,49 @@ public final class RelativeDateTimeFormatter {
 
         /**
          * Quarters
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         QUARTERS,
 
         /**
          * Sundays
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         SUNDAYS,
 
         /**
          * Mondays
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         MONDAYS,
 
         /**
          * Tuesdays
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         TUESDAYS,
 
         /**
          * Wednesdays
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         WEDNESDAYS,
 
         /**
          * Thursdays
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         THURSDAYS,
 
         /**
          * Fridays
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         FRIDAYS,
 
         /**
          * Saturdays
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         SATURDAYS,
     }

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Objects;
 
 import android.icu.impl.ICUBinary.Authenticate;
 import android.icu.text.RuleBasedBreakIterator;
@@ -46,7 +47,7 @@ public final class RBBIDataWrapper {
         public int     fRowLen;
         /**
          * Char category number of the first dictionary char class,
-         * or the the largest category number + 1 if there are no dictionary categories.
+         * or the largest category number + 1 if there are no dictionary categories.
          */
         public int     fDictCategoriesStart;
         /**
@@ -145,6 +146,19 @@ public final class RBBIDataWrapper {
             if (fFlags     != otherST.fFlags)     return false;
             return Arrays.equals(fTable, otherST.fTable);
         }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public int hashCode() {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + Arrays.hashCode(fTable);
+            result = prime * result
+                    + Objects.hash(fDictCategoriesStart, fFlags, fLookAheadResultsSize, fNumStates, fRowLen);
+            return result;
+        }
     }
 
     /**
@@ -173,14 +187,14 @@ public final class RBBIDataWrapper {
 
     public CodePointTrie    fTrie;
     public String  fRuleSource;
-    public int     fStatusTable[];
+    public int []  fStatusTable;
 
     public static final int DATA_FORMAT = 0x42726b20;     // "Brk "
     public static final int FORMAT_VERSION = 0x06000000;  // 6.0.0.0
 
     private static final class IsAcceptable implements Authenticate {
         @Override
-        public boolean isDataVersionAcceptable(byte version[]) {
+        public boolean isDataVersionAcceptable(byte[] version) {
             int intVersion = (version[0] << 24) + (version[1] << 16) + (version[2] << 8) + version[3];
             return intVersion == FORMAT_VERSION;
         }
@@ -401,7 +415,6 @@ public final class RBBIDataWrapper {
             throw new IOException("Break iterator Rule data corrupt");
         }
         ICUBinary.skipBytes(bytes, This.fHeader.fRuleSource - pos);
-        pos = This.fHeader.fRuleSource;
         This.fRuleSource = new String(
             ICUBinary.getBytes(bytes, This.fHeader.fRuleSourceLen, 0), StandardCharsets.UTF_8);
 
@@ -511,13 +524,13 @@ public final class RBBIDataWrapper {
 
     private void dumpCharCategories(java.io.PrintStream out) {
         int n = fHeader.fCatCount;
-        String   catStrings[] = new  String[n+1];
+        String[] catStrings = new  String[n+1];
         int      rangeStart = 0;
         int      rangeEnd = 0;
         int      lastCat = -1;
         int      char32;
         int      category;
-        int      lastNewline[] = new int[n+1];
+        int[]    lastNewline = new int[n+1];
 
         for (category = 0; category <= fHeader.fCatCount; category ++) {
             catStrings[category] = "";
