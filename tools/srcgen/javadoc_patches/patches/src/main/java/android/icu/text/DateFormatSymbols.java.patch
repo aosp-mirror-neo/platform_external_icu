@@ -1,6 +1,6 @@
---- android_icu4j/src/main/java/android/icu/text/DateFormatSymbols.java	2021-01-19 16:26:29.486684905 +0000
-+++ android_icu4j/src/main/java/android/icu/text/DateFormatSymbols.java	2021-01-19 16:26:50.926837099 +0000
-@@ -81,7 +81,6 @@
+--- android_icu4j/src/main/java/android/icu/text/DateFormatSymbols.java	2026-01-13 12:29:00.876340300 +0000
++++ android_icu4j/src/main/java/android/icu/text/DateFormatSymbols.java	2026-01-13 12:29:34.695756932 +0000
+@@ -82,7 +82,6 @@
   *
   * @see          DateFormat
   * @see          SimpleDateFormat

@@ -1,6 +1,6 @@
---- android_icu4j/src/main/java/android/icu/text/MessageFormat.java	2021-01-19 16:26:30.210690045 +0000
-+++ android_icu4j/src/main/java/android/icu/text/MessageFormat.java	2021-01-19 16:26:51.134838576 +0000
-@@ -124,7 +124,7 @@
+--- android_icu4j/src/main/java/android/icu/text/MessageFormat.java	2026-01-13 12:29:01.640946397 +0000
++++ android_icu4j/src/main/java/android/icu/text/MessageFormat.java	2026-01-13 12:29:34.739764245 +0000
+@@ -128,7 +128,7 @@
   * argNumber = '0' | ('1'..'9' ('0'..'9')*)
   *
   * argType = "number" | "date" | "time" | "spellout" | "ordinal" | "duration"
@@ -9,7 +9,7 @@
   * </pre></blockquote>
   *
   * <ul>
-@@ -165,7 +165,7 @@
+@@ -169,7 +169,7 @@
   *       <td colspan=2><i>(none)</i>
   *       <td><code>null</code>
   *    <tr>
@@ -18,7 +18,7 @@
   *       <td><i>(none)</i>
   *       <td><code>NumberFormat.getInstance(getLocale())</code>
   *    <tr>
-@@ -181,10 +181,7 @@
+@@ -185,10 +185,7 @@
   *       <td><i>argStyleText</i>
   *       <td><code>new DecimalFormat(argStyleText, new DecimalFormatSymbols(getLocale()))</code>
   *    <tr>
@@ -30,7 +30,7 @@
   *       <td><i>(none)</i>
   *       <td><code>DateFormat.getDateInstance(DateFormat.DEFAULT, getLocale())</code>
   *    <tr>
-@@ -203,9 +200,6 @@
+@@ -207,9 +204,6 @@
   *       <td><i>argStyleText</i>
   *       <td><code>new SimpleDateFormat(argStyleText, getLocale())</code>
   *    <tr>
@@ -40,7 +40,7 @@
   *       <td rowspan=6><code>time</code>
   *       <td><i>(none)</i>
   *       <td><code>DateFormat.getTimeInstance(DateFormat.DEFAULT, getLocale())</code>
-@@ -260,28 +254,6 @@
+@@ -264,28 +258,6 @@
   * The JDK MessageFormat does create and use a ChoiceFormat object
   * (<code>new ChoiceFormat(argStyleText)</code>).
   * The JDK does not support plural and select arguments at all.
@@ -69,7 +69,7 @@
   *
   * <h4>Usage Information</h4>
   *
-@@ -295,10 +267,10 @@
+@@ -299,10 +271,10 @@
   * };
   *
   * String result = MessageFormat.format(

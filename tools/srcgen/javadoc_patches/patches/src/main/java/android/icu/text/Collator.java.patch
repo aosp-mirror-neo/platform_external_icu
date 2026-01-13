@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/text/Collator.java	2021-01-19 16:26:21.858630757 +0000
-+++ android_icu4j/src/main/java/android/icu/text/Collator.java	2021-01-19 16:26:50.870836702 +0000
+--- android_icu4j/src/main/java/android/icu/text/Collator.java	2026-01-13 12:28:55.078810132 +0000
++++ android_icu4j/src/main/java/android/icu/text/Collator.java	2026-01-13 12:29:34.655750284 +0000
 @@ -1228,7 +1228,6 @@
       *         CollationKey is returned.
       * @see CollationKey
