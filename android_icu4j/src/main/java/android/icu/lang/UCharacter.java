@@ -1162,21 +1162,29 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
 
         // New blocks in Unicode 17.0.0
 
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int BERIA_ERFE_ID = 339; /*[16EA0]*/
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J_ID = 340; /*[323B0]*/
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int MISCELLANEOUS_SYMBOLS_SUPPLEMENT_ID = 341; /*[1CEC0]*/
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int SHARADA_SUPPLEMENT_ID = 342; /*[11B60]*/
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int SIDETIC_ID = 343; /*[10940]*/
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int TAI_YO_ID = 344; /*[1E6C0]*/
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int TANGUT_COMPONENTS_SUPPLEMENT_ID = 345; /*[18D80]*/
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int TOLONG_SIKI_ID = 346; /*[11DB0]*/
 
         /**
@@ -2493,25 +2501,33 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
 
         // New blocks in Unicode 17.0.0
 
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final UnicodeBlock BERIA_ERFE = new UnicodeBlock("BERIA_ERFE", BERIA_ERFE_ID);
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final UnicodeBlock CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J =
                 new UnicodeBlock("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J", CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J_ID);
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final UnicodeBlock MISCELLANEOUS_SYMBOLS_SUPPLEMENT =
                 new UnicodeBlock("MISCELLANEOUS_SYMBOLS_SUPPLEMENT", MISCELLANEOUS_SYMBOLS_SUPPLEMENT_ID);
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final UnicodeBlock SHARADA_SUPPLEMENT =
                 new UnicodeBlock("SHARADA_SUPPLEMENT", SHARADA_SUPPLEMENT_ID);
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final UnicodeBlock SIDETIC = new UnicodeBlock("SIDETIC", SIDETIC_ID);
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final UnicodeBlock TAI_YO = new UnicodeBlock("TAI_YO", TAI_YO_ID);
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final UnicodeBlock TANGUT_COMPONENTS_SUPPLEMENT =
                 new UnicodeBlock("TANGUT_COMPONENTS_SUPPLEMENT", TANGUT_COMPONENTS_SUPPLEMENT_ID);
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final UnicodeBlock TOLONG_SIKI = new UnicodeBlock("TOLONG_SIKI", TOLONG_SIKI_ID);
 
         /**
@@ -3065,7 +3081,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
         public static final int KASHMIRI_YEH = 104;
 
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int THIN_NOON = 105;
 
         /**
@@ -3423,7 +3440,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         public static final int VIRAMA_FINAL = 46;  /*[VF]*/
         /***/
         public static final int VIRAMA = 47;  /*[VI]*/
-        /** @hide Hide new API in Android temporarily*/
+        /***/
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         public static final int UNAMBIGUOUS_HYPHEN = 48;  /*[HH]*/
         /**
          * One more than the highest normal LineBreak value.
@@ -3706,8 +3724,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * See https://www.unicode.org/reports/tr39/#Identifier_Status_and_Type.
      *
      * @see UProperty#IDENTIFIER_TYPE
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public enum IdentifierType {
         /***/
         NOT_CHARACTER,
@@ -4214,8 +4232,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param c code point
      * @param type Identifier_Type to check
      * @return true if type is in Identifier_Type(c)
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final boolean hasIdentifierType(int c, IdentifierType type) {
         return UCharacterProperty.INSTANCE.hasIDType(c, type);
     }
@@ -4238,8 +4256,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param c code point
      * @param types output set
      * @return number of values in c's Identifier_Type
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final int getIdentifierTypes(int c, EnumSet<IdentifierType> types) {
         return UCharacterProperty.INSTANCE.getIDTypes(c, types);
     }

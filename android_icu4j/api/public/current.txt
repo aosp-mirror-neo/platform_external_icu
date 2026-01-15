@@ -32,6 +32,7 @@ package android.icu.lang {
     method public static String getExtendedName(int);
     method public static android.icu.util.ValueIterator getExtendedNameIterator();
     method public static int getHanNumericValue(int);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public static int getIdentifierTypes(int, java.util.EnumSet<android.icu.lang.UCharacter.IdentifierType>);
     method public static int getIntPropertyMaxValue(int);
     method public static int getIntPropertyMinValue(int);
     method public static int getIntPropertyValue(int, int);
@@ -51,6 +52,7 @@ package android.icu.lang {
     method public static android.icu.util.VersionInfo getUnicodeVersion();
     method public static boolean hasBinaryProperty(int, int);
     method public static boolean hasBinaryProperty(CharSequence, int);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public static boolean hasIdentifierType(int, android.icu.lang.UCharacter.IdentifierType);
     method public static boolean isBMP(int);
     method public static boolean isBaseForm(int);
     method public static boolean isDefined(int);
@@ -192,6 +194,21 @@ package android.icu.lang {
     field public static final int NOT_APPLICABLE = 0; // 0x0
     field public static final int TRAILING_JAMO = 3; // 0x3
     field public static final int VOWEL_JAMO = 2; // 0x2
+  }
+
+  @FlaggedApi("com.android.icu.icu_26q2_api") public enum UCharacter.IdentifierType {
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType DEFAULT_IGNORABLE;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType DEPRECATED;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType EXCLUSION;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType INCLUSION;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType LIMITED_USE;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType NOT_CHARACTER;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType NOT_NFKC;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType NOT_XID;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType OBSOLETE;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType RECOMMENDED;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType TECHNICAL;
+    enum_constant public static final android.icu.lang.UCharacter.IdentifierType UNCOMMON_USE;
   }
 
   public static interface UCharacter.IndicPositionalCategory {
@@ -350,6 +367,7 @@ package android.icu.lang {
     field public static final int TEH_MARBUTA = 42; // 0x2a
     field public static final int TEH_MARBUTA_GOAL = 14; // 0xe
     field public static final int TETH = 43; // 0x2b
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int THIN_NOON = 105; // 0x69
     field public static final int THIN_YEH = 102; // 0x66
     field public static final int VERTICAL_TAIL = 103; // 0x67
     field public static final int WAW = 44; // 0x2c
@@ -415,6 +433,7 @@ package android.icu.lang {
     field public static final int REGIONAL_INDICATOR = 39; // 0x27
     field public static final int SPACE = 26; // 0x1a
     field public static final int SURROGATE = 25; // 0x19
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int UNAMBIGUOUS_HYPHEN = 48; // 0x30
     field public static final int UNKNOWN = 0; // 0x0
     field public static final int VIRAMA = 47; // 0x2f
     field public static final int VIRAMA_FINAL = 46; // 0x2e
@@ -507,6 +526,8 @@ package android.icu.lang {
     field public static final int BATAK_ID = 199; // 0xc7
     field public static final android.icu.lang.UCharacter.UnicodeBlock BENGALI;
     field public static final int BENGALI_ID = 16; // 0x10
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock BERIA_ERFE;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int BERIA_ERFE_ID = 339; // 0x153
     field public static final android.icu.lang.UCharacter.UnicodeBlock BHAIKSUKI;
     field public static final int BHAIKSUKI_ID = 264; // 0x108
     field public static final android.icu.lang.UCharacter.UnicodeBlock BLOCK_ELEMENTS;
@@ -576,6 +597,8 @@ package android.icu.lang {
     field public static final int CJK_UNIFIED_IDEOGRAPHS_EXTENSION_H_ID = 322; // 0x142
     field public static final android.icu.lang.UCharacter.UnicodeBlock CJK_UNIFIED_IDEOGRAPHS_EXTENSION_I;
     field public static final int CJK_UNIFIED_IDEOGRAPHS_EXTENSION_I_ID = 328; // 0x148
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int CJK_UNIFIED_IDEOGRAPHS_EXTENSION_J_ID = 340; // 0x154
     field public static final int CJK_UNIFIED_IDEOGRAPHS_ID = 71; // 0x47
     field public static final android.icu.lang.UCharacter.UnicodeBlock COMBINING_DIACRITICAL_MARKS;
     field public static final android.icu.lang.UCharacter.UnicodeBlock COMBINING_DIACRITICAL_MARKS_EXTENDED;
@@ -875,6 +898,8 @@ package android.icu.lang {
     field public static final android.icu.lang.UCharacter.UnicodeBlock MISCELLANEOUS_SYMBOLS_AND_PICTOGRAPHS;
     field public static final int MISCELLANEOUS_SYMBOLS_AND_PICTOGRAPHS_ID = 205; // 0xcd
     field public static final int MISCELLANEOUS_SYMBOLS_ID = 55; // 0x37
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock MISCELLANEOUS_SYMBOLS_SUPPLEMENT;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int MISCELLANEOUS_SYMBOLS_SUPPLEMENT_ID = 341; // 0x155
     field public static final android.icu.lang.UCharacter.UnicodeBlock MISCELLANEOUS_TECHNICAL;
     field public static final int MISCELLANEOUS_TECHNICAL_ID = 48; // 0x30
     field public static final android.icu.lang.UCharacter.UnicodeBlock MODI;
@@ -990,12 +1015,16 @@ package android.icu.lang {
     field public static final int SAURASHTRA_ID = 161; // 0xa1
     field public static final android.icu.lang.UCharacter.UnicodeBlock SHARADA;
     field public static final int SHARADA_ID = 217; // 0xd9
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock SHARADA_SUPPLEMENT;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int SHARADA_SUPPLEMENT_ID = 342; // 0x156
     field public static final android.icu.lang.UCharacter.UnicodeBlock SHAVIAN;
     field public static final int SHAVIAN_ID = 121; // 0x79
     field public static final android.icu.lang.UCharacter.UnicodeBlock SHORTHAND_FORMAT_CONTROLS;
     field public static final int SHORTHAND_FORMAT_CONTROLS_ID = 247; // 0xf7
     field public static final android.icu.lang.UCharacter.UnicodeBlock SIDDHAM;
     field public static final int SIDDHAM_ID = 248; // 0xf8
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock SIDETIC;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int SIDETIC_ID = 343; // 0x157
     field public static final android.icu.lang.UCharacter.UnicodeBlock SINHALA;
     field public static final android.icu.lang.UCharacter.UnicodeBlock SINHALA_ARCHAIC_NUMBERS;
     field public static final int SINHALA_ARCHAIC_NUMBERS_ID = 249; // 0xf9
@@ -1066,6 +1095,8 @@ package android.icu.lang {
     field public static final int TAI_VIET_ID = 183; // 0xb7
     field public static final android.icu.lang.UCharacter.UnicodeBlock TAI_XUAN_JING_SYMBOLS;
     field public static final int TAI_XUAN_JING_SYMBOLS_ID = 124; // 0x7c
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock TAI_YO;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int TAI_YO_ID = 344; // 0x158
     field public static final android.icu.lang.UCharacter.UnicodeBlock TAKRI;
     field public static final int TAKRI_ID = 220; // 0xdc
     field public static final android.icu.lang.UCharacter.UnicodeBlock TAMIL;
@@ -1077,6 +1108,8 @@ package android.icu.lang {
     field public static final android.icu.lang.UCharacter.UnicodeBlock TANGUT;
     field public static final android.icu.lang.UCharacter.UnicodeBlock TANGUT_COMPONENTS;
     field public static final int TANGUT_COMPONENTS_ID = 273; // 0x111
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock TANGUT_COMPONENTS_SUPPLEMENT;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int TANGUT_COMPONENTS_SUPPLEMENT_ID = 345; // 0x159
     field public static final int TANGUT_ID = 272; // 0x110
     field public static final android.icu.lang.UCharacter.UnicodeBlock TANGUT_SUPPLEMENT;
     field public static final int TANGUT_SUPPLEMENT_ID = 307; // 0x133
@@ -1094,6 +1127,8 @@ package android.icu.lang {
     field public static final int TIRHUTA_ID = 251; // 0xfb
     field @FlaggedApi("com.android.icu.icu_25q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock TODHRI;
     field @FlaggedApi("com.android.icu.icu_25q2_api") public static final int TODHRI_ID = 337; // 0x151
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.lang.UCharacter.UnicodeBlock TOLONG_SIKI;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int TOLONG_SIKI_ID = 346; // 0x15a
     field public static final android.icu.lang.UCharacter.UnicodeBlock TOTO;
     field public static final int TOTO_ID = 317; // 0x13d
     field public static final android.icu.lang.UCharacter.UnicodeBlock TRANSPORT_AND_MAP_SYMBOLS;
@@ -1313,6 +1348,8 @@ package android.icu.lang {
     field public static final int HANGUL_SYLLABLE_TYPE = 4107; // 0x100b
     field public static final int HEX_DIGIT = 13; // 0xd
     field public static final int HYPHEN = 14; // 0xe
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int IDENTIFIER_STATUS = 4121; // 0x1019
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int IDENTIFIER_TYPE = 28673; // 0x7001
     field public static final int IDEOGRAPHIC = 17; // 0x11
     field public static final int IDS_BINARY_OPERATOR = 18; // 0x12
     field public static final int IDS_TRINARY_OPERATOR = 19; // 0x13
@@ -1321,6 +1358,7 @@ package android.icu.lang {
     field @FlaggedApi("com.android.icu.icu_25q2_api") public static final int ID_COMPAT_MATH_START = 73; // 0x49
     field public static final int ID_CONTINUE = 15; // 0xf
     field public static final int ID_START = 16; // 0x10
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int INDIC_CONJUNCT_BREAK = 4122; // 0x101a
     field public static final int INDIC_POSITIONAL_CATEGORY = 4118; // 0x1016
     field public static final int INDIC_SYLLABIC_CATEGORY = 4119; // 0x1017
     field public static final int INT_START = 4096; // 0x1000
@@ -1334,6 +1372,7 @@ package android.icu.lang {
     field public static final int LOWERCASE_MAPPING = 16388; // 0x4004
     field public static final int MASK_START = 8192; // 0x2000
     field public static final int MATH = 23; // 0x17
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int MODIFIER_COMBINING_MARK = 75; // 0x4b
     field public static final int NAME = 16389; // 0x4005
     field public static final int NFC_INERT = 39; // 0x27
     field public static final int NFC_QUICK_CHECK = 4110; // 0x100e
@@ -1421,6 +1460,7 @@ package android.icu.lang {
     field public static final int BASSA_VAH = 134; // 0x86
     field public static final int BATAK = 63; // 0x3f
     field public static final int BENGALI = 4; // 0x4
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int BERIA_ERFE = 208; // 0xd0
     field public static final int BHAIKSUKI = 168; // 0xa8
     field public static final int BLISSYMBOLS = 64; // 0x40
     field public static final int BOOK_PAHLAVI = 124; // 0x7c
@@ -1576,6 +1616,7 @@ package android.icu.lang {
     field public static final int SHARADA = 151; // 0x97
     field public static final int SHAVIAN = 51; // 0x33
     field public static final int SIDDHAM = 166; // 0xa6
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int SIDETIC = 209; // 0xd1
     field public static final int SIGN_WRITING = 112; // 0x70
     field public static final int SIMPLIFIED_HAN = 73; // 0x49
     field public static final int SINDHI = 145; // 0x91
@@ -1593,6 +1634,7 @@ package android.icu.lang {
     field public static final int TAGBANWA = 45; // 0x2d
     field public static final int TAI_LE = 52; // 0x34
     field public static final int TAI_VIET = 127; // 0x7f
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int TAI_YO = 210; // 0xd2
     field public static final int TAKRI = 153; // 0x99
     field public static final int TAMIL = 35; // 0x23
     field public static final int TANGSA = 195; // 0xc3
@@ -1605,8 +1647,10 @@ package android.icu.lang {
     field public static final int TIFINAGH = 60; // 0x3c
     field public static final int TIRHUTA = 158; // 0x9e
     field @FlaggedApi("com.android.icu.icu_25q2_api") public static final int TODHRI = 206; // 0xce
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int TOLONG_SIKI = 211; // 0xd3
     field public static final int TOTO = 196; // 0xc4
     field public static final int TRADITIONAL_HAN = 74; // 0x4a
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final int TRADITIONAL_HAN_WITH_LATIN = 212; // 0xd4
     field @FlaggedApi("com.android.icu.icu_25q2_api") public static final int TULU_TIGALARI = 207; // 0xcf
     field public static final int UCAS = 40; // 0x28
     field public static final int UGARITIC = 53; // 0x35
@@ -2353,6 +2397,8 @@ package android.icu.text {
     method public abstract StringBuffer format(android.icu.util.Calendar, StringBuffer, java.text.FieldPosition);
     method public StringBuffer format(java.util.Date, StringBuffer, java.text.FieldPosition);
     method public final String format(java.util.Date);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public StringBuffer format(java.time.temporal.Temporal, StringBuffer, java.text.FieldPosition);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public final String format(java.time.temporal.Temporal);
     method public static java.util.Locale[] getAvailableLocales();
     method public boolean getBooleanAttribute(android.icu.text.DateFormat.BooleanAttribute);
     method public android.icu.util.Calendar getCalendar();
@@ -2605,8 +2651,10 @@ package android.icu.text {
     method public final StringBuffer format(Object, StringBuffer, java.text.FieldPosition);
     method public final StringBuffer format(android.icu.util.DateInterval, StringBuffer, java.text.FieldPosition);
     method public final StringBuffer format(android.icu.util.Calendar, android.icu.util.Calendar, StringBuffer, java.text.FieldPosition);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public final StringBuffer format(java.time.temporal.Temporal, java.time.temporal.Temporal, StringBuffer, java.text.FieldPosition);
     method public android.icu.text.DateIntervalFormat.FormattedDateInterval formatToValue(android.icu.util.DateInterval);
     method public android.icu.text.DateIntervalFormat.FormattedDateInterval formatToValue(android.icu.util.Calendar, android.icu.util.Calendar);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public android.icu.text.DateIntervalFormat.FormattedDateInterval formatToValue(java.time.temporal.Temporal, java.time.temporal.Temporal);
     method public android.icu.text.DisplayContext getContext(android.icu.text.DisplayContext.Type);
     method public android.icu.text.DateFormat getDateFormat();
     method public android.icu.text.DateIntervalInfo getDateIntervalInfo();
@@ -3597,10 +3645,18 @@ package android.icu.text {
 
   public enum RelativeDateTimeFormatter.RelativeUnit {
     enum_constant public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit DAYS;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit FRIDAYS;
     enum_constant public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit HOURS;
     enum_constant public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit MINUTES;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit MONDAYS;
     enum_constant public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit MONTHS;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit QUARTERS;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit SATURDAYS;
     enum_constant public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit SECONDS;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit SUNDAYS;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit THURSDAYS;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit TUESDAYS;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit WEDNESDAYS;
     enum_constant public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit WEEKS;
     enum_constant public static final android.icu.text.RelativeDateTimeFormatter.RelativeUnit YEARS;
   }
@@ -4016,6 +4072,8 @@ package android.icu.text {
     method public Object clone();
     method public android.icu.text.UnicodeSet cloneAsThawed();
     method public android.icu.text.UnicodeSet closeOver(int);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.IntStream codePointStream();
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public Iterable<java.lang.Integer> codePoints();
     method public android.icu.text.UnicodeSet compact();
     method public int compareTo(android.icu.text.UnicodeSet);
     method public int compareTo(android.icu.text.UnicodeSet, android.icu.text.UnicodeSet.ComparisonStyle);
@@ -4052,6 +4110,7 @@ package android.icu.text {
     method public boolean isFrozen();
     method public java.util.Iterator<java.lang.String> iterator();
     method public boolean matchesIndexValue(int);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.Stream<android.icu.text.UnicodeSet.EntryRange> rangeStream();
     method public Iterable<android.icu.text.UnicodeSet.EntryRange> ranges();
     method public android.icu.text.UnicodeSet remove(int, int);
     method public final android.icu.text.UnicodeSet remove(int);
@@ -4073,6 +4132,8 @@ package android.icu.text {
     method public int span(CharSequence, int, android.icu.text.UnicodeSet.SpanCondition);
     method public int spanBack(CharSequence, android.icu.text.UnicodeSet.SpanCondition);
     method public int spanBack(CharSequence, int, android.icu.text.UnicodeSet.SpanCondition);
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.Stream<java.lang.String> stream();
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.Stream<java.lang.String> stringStream();
     method public java.util.Collection<java.lang.String> strings();
     method public String toPattern(boolean);
     field public static final int ADD_CASE_MAPPINGS = 4; // 0x4
@@ -4774,6 +4835,7 @@ package android.icu.util {
     field public static final android.icu.util.MeasureUnit KILOWATT_HOUR;
     field public static final android.icu.util.MeasureUnit KILOWATT_HOUR_PER_100_KILOMETER;
     field public static final android.icu.util.MeasureUnit KNOT;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.MeasureUnit LIGHT_SPEED;
     field public static final android.icu.util.MeasureUnit LIGHT_YEAR;
     field public static final android.icu.util.MeasureUnit LITER;
     field public static final android.icu.util.MeasureUnit LITER_PER_100KILOMETERS;
@@ -4814,6 +4876,7 @@ package android.icu.util {
     field public static final android.icu.util.MeasureUnit NANOMETER;
     field public static final android.icu.util.MeasureUnit NANOSECOND;
     field public static final android.icu.util.MeasureUnit NAUTICAL_MILE;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.MeasureUnit NIGHT;
     field public static final android.icu.util.MeasureUnit OHM;
     field public static final android.icu.util.MeasureUnit OUNCE;
     field public static final android.icu.util.MeasureUnit OUNCE_TROY;
@@ -4887,6 +4950,10 @@ package android.icu.util {
     enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix PEBI;
     enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix PETA;
     enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix PICO;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.MeasureUnit.MeasurePrefix QUECTO;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.MeasureUnit.MeasurePrefix QUETTA;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.MeasureUnit.MeasurePrefix RONNA;
+    enum_constant @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.MeasureUnit.MeasurePrefix RONTO;
     enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix TEBI;
     enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix TERA;
     enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix YOBI;
@@ -5209,6 +5276,7 @@ package android.icu.util {
     field public static final android.icu.util.VersionInfo UNICODE_15_0;
     field public static final android.icu.util.VersionInfo UNICODE_15_1;
     field @FlaggedApi("com.android.icu.icu_25q2_api") public static final android.icu.util.VersionInfo UNICODE_16_0;
+    field @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.VersionInfo UNICODE_17_0;
     field public static final android.icu.util.VersionInfo UNICODE_1_0;
     field public static final android.icu.util.VersionInfo UNICODE_1_0_1;
     field public static final android.icu.util.VersionInfo UNICODE_1_1_0;

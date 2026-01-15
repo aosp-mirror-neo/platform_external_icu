@@ -424,7 +424,7 @@ The below contains the steps and commands in order to upgrade the ICU version in
 11. After submitting all the CLs to goog/main, expose the new stable ICU4J APIs to Android SDK
     ```shell
     rm tools/srcgen/allowlisted-public-api.txt
-    ./tools/generate_android_icu4j.sh
+    ./tools/srcgen/generate_android_icu4j.sh
     # Modify Icu4jTransform.java to allowlist more classes if needed. Check the error message for the details
     m update-api droid
 

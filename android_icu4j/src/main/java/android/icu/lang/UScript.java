@@ -906,15 +906,20 @@ public final class UScript {
     @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public static final int TULU_TIGALARI = 207; /* Tutg */
 
-    /** @hide Hide new API in Android temporarily*/
+    /***/
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final int BERIA_ERFE = 208; /* Berf */
-    /** @hide Hide new API in Android temporarily*/
+    /***/
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final int SIDETIC = 209; /* Sidt */
-    /** @hide Hide new API in Android temporarily*/
+    /***/
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final int TAI_YO = 210; /* Tayo */
-    /** @hide Hide new API in Android temporarily*/
+    /***/
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final int TOLONG_SIKI = 211; /* Tols */
-    /** @hide Hide new API in Android temporarily*/
+    /***/
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final int TRADITIONAL_HAN_WITH_LATIN = 212; /* Hntl */
 
     /**
