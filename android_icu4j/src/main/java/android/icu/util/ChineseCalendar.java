@@ -1152,9 +1152,8 @@ public class ChineseCalendar extends Calendar {
 
     /**
      * {@inheritDoc}
-     *
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     @Override
     public int getActualMaximum(int field) {
         if (field == DAY_OF_MONTH) {
