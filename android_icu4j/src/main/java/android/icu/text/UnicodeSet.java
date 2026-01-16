@@ -5034,9 +5034,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * </ul>
      *
      * @return a {@link Stream} of {@link EntryRange}
-     *
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public Stream<EntryRange> rangeStream() {
         // Must use false to never make this parallel because the iterator always returns the same EntryRange object.
         return StreamSupport.stream(ranges().spliterator(), false);
@@ -5053,9 +5052,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * </ul>
      *
      * @return a {@link Stream} of {@code String}
-     *
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public Stream<String> stringStream() {
         return strings().stream();
     }
@@ -5071,9 +5069,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * </ul>
      *
      * @return an {@link IntStream} of Unicode code point values
-     *
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public IntStream codePointStream() {
         return StreamSupport.intStream(new CodePointSpliterator(this), false);
     }
@@ -5089,9 +5086,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * </ul>
      *
      * @return a {@link Stream} of {@code String}
-     *
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public Stream<String> stream() {
         return StreamSupport.stream(spliterator(), false);
     }
@@ -5110,9 +5106,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * </ul>
      *
      * @return an {@link Iterable} over all the code points
-     *
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public Iterable<Integer> codePoints() {
         return new CodePointIterable(this);
     }

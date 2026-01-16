@@ -149,50 +149,50 @@ public final class RelativeDateTimeFormatter {
 
         /**
          * Quarters
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         QUARTERS,
 
         /**
          * Sundays
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         SUNDAYS,
 
         /**
          * Mondays
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         MONDAYS,
 
         /**
          * Tuesdays
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         TUESDAYS,
 
         /**
          * Wednesdays
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         WEDNESDAYS,
 
         /**
          * Thursdays
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         THURSDAYS,
 
         /**
          * Fridays
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         FRIDAYS,
 
         /**
          * Saturdays
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         SATURDAYS,
     }
 

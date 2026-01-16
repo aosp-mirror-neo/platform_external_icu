@@ -119,16 +119,14 @@ public class MeasureUnit implements Serializable {
 
         /**
          * SI prefix: quetta, 10^30.
-         *
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         QUETTA(30, "quetta", 10),
 
         /**
          * SI prefix: ronna, 10^27.
-         *
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         RONNA(27, "ronna", 10),
 
         /**
@@ -238,16 +236,14 @@ public class MeasureUnit implements Serializable {
 
         /**
          * SI prefix: ronto, 10^-27.
-         *
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         RONTO(-27, "ronto", 10),
 
         /**
          * SI prefix: quecto, 10^-30.
-         *
-         * @hide Hide new API in Android temporarily
          */
+        @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
         QUECTO(-30, "quecto", 10),
 
         /**
@@ -1296,8 +1292,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of duration: night
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final MeasureUnit NIGHT = MeasureUnit.internalGetInstance("duration", "night");
 
     /**
@@ -1949,8 +1945,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of speed: light-speed
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final MeasureUnit LIGHT_SPEED = MeasureUnit.internalGetInstance("speed", "light-speed");
 
     /**
