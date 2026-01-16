@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/text/Transliterator.java	2026-01-13 12:29:08.723440873 +0000
-+++ android_icu4j/src/main/java/android/icu/text/Transliterator.java	2026-01-13 12:29:34.863784855 +0000
+--- android_icu4j/src/main/java/android/icu/text/Transliterator.java	2026-01-13 18:29:29.435614907 +0000
++++ android_icu4j/src/main/java/android/icu/text/Transliterator.java	2026-01-13 18:29:54.591530465 +0000
 @@ -182,19 +182,6 @@
   * returned by {@link #getDisplayName}.
   *
