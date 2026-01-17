@@ -254,7 +254,7 @@ The below contains the steps and commands in order to upgrade the ICU version in
       * If any java patches are not applied perfectly, remove the .orig and
          .rej files with the following command
       ```shell
-      find android_icu4j/ -name *.orig -delete
+      find android_icu4j/ \( -name "*.orig" -o -name "*.rej" \) -delete
       # Please manually update and resolve conflict of the java doc in android_icu4j/
       git commit -amend
       # Regenerate the patch files
@@ -424,7 +424,7 @@ The below contains the steps and commands in order to upgrade the ICU version in
 11. After submitting all the CLs to goog/main, expose the new stable ICU4J APIs to Android SDK
     ```shell
     rm tools/srcgen/allowlisted-public-api.txt
-    ./tools/generate_android_icu4j.sh
+    ./tools/srcgen/generate_android_icu4j.sh
     # Modify Icu4jTransform.java to allowlist more classes if needed. Check the error message for the details
     m update-api droid
 

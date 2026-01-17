@@ -1,6 +1,6 @@
---- android_icu4j/src/main/java/android/icu/text/RuleBasedCollator.java	2021-01-19 16:26:21.610628997 +0000
-+++ android_icu4j/src/main/java/android/icu/text/RuleBasedCollator.java	2021-01-19 16:26:51.238839314 +0000
-@@ -925,6 +925,9 @@
+--- android_icu4j/src/main/java/android/icu/text/RuleBasedCollator.java	2026-01-13 18:29:17.349595315 +0000
++++ android_icu4j/src/main/java/android/icu/text/RuleBasedCollator.java	2026-01-13 18:29:54.552041845 +0000
+@@ -943,6 +943,9 @@
       * Gets the collation tailoring rules for this RuleBasedCollator.
       * Equivalent to String getRules(false).
       *
@@ -10,7 +10,7 @@
       * @return the collation tailoring rules
       * @see #getRules(boolean)
       */
-@@ -1023,7 +1026,6 @@
+@@ -1041,7 +1044,6 @@
       *         String is null, a null CollationKey is returned.
       * @see CollationKey
       * @see #compare(String, String)

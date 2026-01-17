@@ -192,8 +192,8 @@ public final class VersionInfo implements Comparable<VersionInfo>
 
     /**
      * Unicode 17.0 version
-     * @hide Hide new API in Android temporarily
      */
+    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public static final VersionInfo UNICODE_17_0;
 
     /**
