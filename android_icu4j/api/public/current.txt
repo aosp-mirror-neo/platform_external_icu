@@ -4452,7 +4452,6 @@ package android.icu.util {
     ctor public CopticCalendar(int, int, int);
     ctor public CopticCalendar(java.util.Date);
     ctor public CopticCalendar(int, int, int, int, int, int);
-    method @Deprecated protected void handleComputeFields(int);
     method protected int handleComputeMonthStart(int, int, boolean);
     method @Deprecated protected int handleGetExtendedYear();
     method protected int handleGetLimit(int, int);
@@ -4537,7 +4536,6 @@ package android.icu.util {
     ctor public EthiopicCalendar(int, int, int);
     ctor public EthiopicCalendar(java.util.Date);
     ctor public EthiopicCalendar(int, int, int, int, int, int);
-    method @Deprecated protected void handleComputeFields(int);
     method protected int handleComputeMonthStart(int, int, boolean);
     method @Deprecated protected int handleGetExtendedYear();
     method @Deprecated protected int handleGetLimit(int, int);
@@ -4851,7 +4849,7 @@ package android.icu.util {
     field public static final android.icu.util.MeasureUnit METER;
     field public static final android.icu.util.MeasureUnit METER_PER_SECOND;
     field public static final android.icu.util.MeasureUnit METER_PER_SECOND_SQUARED;
-    field public static final android.icu.util.MeasureUnit METRIC_TON;
+    field @Deprecated @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.MeasureUnit METRIC_TON;
     field public static final android.icu.util.MeasureUnit MICROGRAM;
     field public static final android.icu.util.MeasureUnit MICROMETER;
     field public static final android.icu.util.MeasureUnit MICROSECOND;
@@ -4864,7 +4862,7 @@ package android.icu.util {
     field public static final android.icu.util.MeasureUnit MILLIBAR;
     field public static final android.icu.util.MeasureUnit MILLIGRAM;
     field public static final android.icu.util.MeasureUnit MILLIGRAM_OFGLUCOSE_PER_DECILITER;
-    field public static final android.icu.util.MeasureUnit MILLIGRAM_PER_DECILITER;
+    field @Deprecated @FlaggedApi("com.android.icu.icu_26q2_api") public static final android.icu.util.MeasureUnit MILLIGRAM_PER_DECILITER;
     field public static final android.icu.util.MeasureUnit MILLILITER;
     field public static final android.icu.util.MeasureUnit MILLIMETER;
     field public static final android.icu.util.MeasureUnit MILLIMETER_OF_MERCURY;
