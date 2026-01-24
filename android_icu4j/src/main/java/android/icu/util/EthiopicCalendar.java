@@ -294,18 +294,6 @@ public final class EthiopicCalendar extends CECalendar
         return eyear;
     }
 
-    // Android-added: Add back the method with empty body to not break API compatibility.
-    /**
-     * {@inheritDoc}
-     * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
-     */
-    @Override
-    @Deprecated
-    protected void handleComputeFields(int julianDay) {
-        super.handleComputeFields(julianDay);
-    }
-
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.

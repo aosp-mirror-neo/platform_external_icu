@@ -438,5 +438,13 @@
   {
     "@location": "field:android.icu.util.VersionInfo#UNICODE_17_0",
     "value": "com.android.icu.Flags.FLAG_ICU_26Q2_API"
+  },
+  {
+    "@location": "field:android.icu.util.MeasureUnit#MILLIGRAM_PER_DECILITER",
+    "value": "com.android.icu.Flags.FLAG_ICU_26Q2_API"
+  },
+  {
+    "@location": "field:android.icu.util.MeasureUnit#METRIC_TON",
+    "value": "com.android.icu.Flags.FLAG_ICU_26Q2_API"
   }
 ]

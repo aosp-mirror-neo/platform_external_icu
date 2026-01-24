@@ -276,18 +276,6 @@ public final class CopticCalendar extends CECalendar
         return eyear;
     }
 
-    // Android-added: Add back the method with empty body to not break API compatibility.
-    /**
-     * {@inheritDoc}
-     * @internal
-     * @deprecated This API is ICU internal only.
-     */
-    @Override
-    @Deprecated
-    protected void handleComputeFields(int julianDay) {
-        super.handleComputeFields(julianDay);
-    }
-
     /**
      * {@inheritDoc}
      * @internal
