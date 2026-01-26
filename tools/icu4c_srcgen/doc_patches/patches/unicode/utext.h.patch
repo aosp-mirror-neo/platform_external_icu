@@ -1,5 +1,5 @@
---- libicu/ndk_headers/unicode/utext.h	2021-07-29 18:38:27.265302620 +0100
-+++ libicu/ndk_headers/unicode/utext.h	2021-07-29 18:38:27.533304961 +0100
+--- libicu/ndk_headers/unicode/utext.h	2026-01-23 12:20:26.633965313 +0000
++++ libicu/ndk_headers/unicode/utext.h	2026-01-23 12:20:26.992831487 +0000
 @@ -627,787 +627,6 @@
  
  

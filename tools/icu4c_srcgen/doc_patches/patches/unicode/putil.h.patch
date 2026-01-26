@@ -1,5 +1,5 @@
---- libicu/ndk_headers/unicode/putil.h	2023-01-16 18:01:19.507127460 +0000
-+++ libicu/ndk_headers/unicode/putil.h	2023-01-16 17:30:51.983422939 +0000
+--- libicu/ndk_headers/unicode/putil.h	2026-01-23 12:20:26.683919887 +0000
++++ libicu/ndk_headers/unicode/putil.h	2026-01-23 12:20:26.744810354 +0000
 @@ -56,12 +56,6 @@
  #endif  /* U_HIDE_INTERNAL_API */
  
