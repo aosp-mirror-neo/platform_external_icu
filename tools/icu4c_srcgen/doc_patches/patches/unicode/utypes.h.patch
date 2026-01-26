@@ -1,5 +1,5 @@
---- libicu/ndk_headers/unicode/utypes.h	2024-12-10 13:51:23.539396380 +0000
-+++ libicu/ndk_headers/unicode/utypes.h	2024-12-10 13:51:23.791401428 +0000
+--- libicu/ndk_headers/unicode/utypes.h	2026-01-23 12:20:26.610806886 +0000
++++ libicu/ndk_headers/unicode/utypes.h	2026-01-23 12:20:27.032834895 +0000
 @@ -56,23 +56,6 @@
   * integer and other types.
   */
