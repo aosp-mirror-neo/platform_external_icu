@@ -1,5 +1,5 @@
---- libicu/ndk_headers/unicode/ucol.h	2024-03-08 16:39:44.550050707 +0000
-+++ libicu/ndk_headers/unicode/ucol.h	2024-03-08 16:39:51.262182329 +0000
+--- libicu/ndk_headers/unicode/ucol.h	2026-01-23 12:20:26.655299560 +0000
++++ libicu/ndk_headers/unicode/ucol.h	2026-01-23 12:20:26.830049107 +0000
 @@ -73,7 +73,7 @@
   * Possible values for a comparison result 
   * \xrefitem stable "Stable" "Stable List" ICU 2.0
@@ -62,7 +62,7 @@
  
  /**
   * Open a UCollator for comparing strings.
-@@ -888,7 +869,7 @@
+@@ -890,7 +871,7 @@
   * depends on them having these numbers     
   * \xrefitem stable "Stable" "Stable List" ICU 2.0
   */

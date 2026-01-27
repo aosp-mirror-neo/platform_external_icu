@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/util/ULocale.java	2026-01-13 18:29:28.451339922 +0000
-+++ android_icu4j/src/main/java/android/icu/util/ULocale.java	2026-01-13 18:29:54.786700934 +0000
+--- android_icu4j/src/main/java/android/icu/util/ULocale.java	2026-01-23 12:08:06.934557249 +0000
++++ android_icu4j/src/main/java/android/icu/util/ULocale.java	2026-01-23 12:08:34.716124574 +0000
 @@ -2474,15 +2474,11 @@
       * availableLocales matched).  No ULocale array element should be null; behavior is
       * undefined if this is the case.
