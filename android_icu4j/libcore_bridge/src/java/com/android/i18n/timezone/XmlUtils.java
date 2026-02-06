@@ -181,7 +181,7 @@ class XmlUtils {
             int currentDepth = parser.getDepth();
             if (currentDepth < requiredDepth) {
                 throw new XmlPullParserException(
-                        "Unexpected depth while looking for end tag: "
+                        "Unexpected depth while looking for end tag '" + elementName + "': "
                                 + parser.getPositionDescription());
             } else if (currentDepth == requiredDepth) {
                 if (type == XmlPullParser.END_TAG) {
@@ -189,13 +189,49 @@ class XmlUtils {
                         return;
                     }
                     throw new XmlPullParserException(
-                            "Unexpected eng tag: " + parser.getPositionDescription());
+                            "Unexpected end tag: " + parser.getPositionDescription()
+                                + " while looking for " + elementName);
                 }
             }
             // Everything else is either a type we are not interested in or is too deep and so is
             // ignored.
         }
-        throw new XmlPullParserException("Unexpected end of document");
+        throw new XmlPullParserException("Unexpected end of document while looking for "
+                + elementName);
+    }
+
+     /**
+     * Skips the current element and all its children. This is useful when the parser is positioned
+     * at a START_TAG that is not of interest and should be ignored.
+     *
+     * <p>This method will consume nested tags, including nested tags with the same name. When
+     * called, the parser must be pointing at the START_TAG of the element to be consumed.
+     * Note: The parser synthesizes an END_TAG for self-closing tags, so this works for them too.
+     */
+    static void skipCurrentElement(XmlPullParser parser, String elementName)
+            throws IOException, XmlPullParserException {
+        checkOnStartTag(parser, elementName);
+
+        int depth = 1;
+        while (depth > 0) {
+            int type = parser.next();
+            switch (type) {
+                case XmlPullParser.START_TAG:
+                    if (elementName.equals(parser.getName())) {
+                        depth++;
+                    }
+                    break;
+                case XmlPullParser.END_TAG:
+                    if (elementName.equals(parser.getName())) {
+                        depth--;
+                    }
+                    break;
+                case XmlPullParser.END_DOCUMENT:
+                    throw new XmlPullParserException(
+                            "Unexpected end of document while looking for " + elementName);
+
+            }
+        }
     }
 
     /**
@@ -206,7 +242,8 @@ class XmlUtils {
             throws XmlPullParserException {
         if (!isEndTag(parser, elementName)) {
             throw new XmlPullParserException(
-                    "Unexpected tag encountered: " + parser.getPositionDescription());
+                    "Unexpected tag encountered: " + parser.getPositionDescription()
+                           + " while looking for " + elementName);
         }
     }
 
@@ -217,6 +254,27 @@ class XmlUtils {
     private static boolean isEndTag(XmlPullParser parser, String elementName)
             throws XmlPullParserException {
         return parser.getEventType() == XmlPullParser.END_TAG
+                && parser.getName().equals(elementName);
+    }
+
+    /**
+     * Throws an exception if the current element is not a start tag.
+     */
+    private static void checkOnStartTag(XmlPullParser parser, String elementName)
+            throws XmlPullParserException {
+        if (!isStartTag(parser, elementName)) {
+            throw new XmlPullParserException(
+                    "Unexpected tag encountered: " + parser.getPositionDescription()
+                            + " while looking for " + elementName);
+        }
+    }
+
+    /**
+     * Returns true if the current tag is a start tag.
+     */
+    private static boolean isStartTag(XmlPullParser parser, String elementName)
+            throws XmlPullParserException {
+        return parser.getEventType() == XmlPullParser.START_TAG
                 && parser.getName().equals(elementName);
     }
 
