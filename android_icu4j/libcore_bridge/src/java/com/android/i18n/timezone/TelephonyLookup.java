@@ -22,9 +22,11 @@ import static com.android.i18n.timezone.XmlUtils.consumeUntilEndTag;
 import static com.android.i18n.timezone.XmlUtils.findNextStartTagOrEndTagNoRecurse;
 import static com.android.i18n.timezone.XmlUtils.findNextStartTagOrThrowNoRecurse;
 import static com.android.i18n.timezone.XmlUtils.normalizeCountryIso;
+import static com.android.i18n.timezone.XmlUtils.skipCurrentElement;
 
 import com.android.i18n.timezone.XmlUtils.ReaderSupplier;
 import com.android.i18n.util.Log;
+import com.android.icu.Flags;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -47,6 +49,9 @@ import java.util.Set;
  */
 @libcore.api.CorePlatformApi
 public final class TelephonyLookup {
+
+    private static final boolean ENABLE_MULTI_COUNTRY_OVERRIDE_PARSING =
+            Flags.enableMultiCountryOverrideParsing();
 
     // VisibleForTesting
     public static final String TELEPHONYLOOKUP_FILE_NAME = "telephonylookup.xml";
@@ -71,6 +76,11 @@ public final class TelephonyLookup {
     // <mobile_country mcc="123" [default="gu"]>
     private static final String MOBILE_COUNTRY_ELEMENT = "mobile_country";
     private static final String DEFAULT_ATTRIBUTE = "default";
+
+    // <override mnc="345">
+    //   <country>ky</country>
+    // </override>
+    private static final String OVERRIDE_ELEMENT = "override";
 
     private static TelephonyLookup instance;
 
@@ -191,12 +201,22 @@ public final class TelephonyLookup {
              * The expected XML structure is:
              * <telephony_lookup>
              *   <networks>
-             *     <network mcc="123" mnc="456" country="ab"/>
-             *     <network mcc="123" mnc="567" country="cd"/>
+             *     <network mcc="310" mnc="110" country="gu"/>
              *   </networks>
              *   <mobile_countries>
              *     <mobile_country mcc="310"/>
              *       <country>us</country>
+             *       <override mnc="310">
+             *         <country>gu</country>
+             *       </override>
+             *     </mobile_country>
+             *     <mobile_country mcc="338">
+             *       <country>jm</country>
+             *       <override mnc="05">
+             *         <country>jm</country>
+             *         <country>bb</country>
+             *         <country>bm</country>
+             *       </override>
              *     </mobile_country>
              *     <mobile_country mcc="340" default="gp">
              *       <country>gp</country>
@@ -270,6 +290,9 @@ public final class TelephonyLookup {
         }
     }
 
+    record OverrideData(String mnc, Set<String> countryIsoCodes, String defaultCountryIso,
+            String debugInfo) {}
+
     private static void processMobileCountries(XmlPullParser parser,
             TelephonyNetworkProcessor processor) throws IOException, XmlPullParserException {
         // Skip over any unexpected elements and process <mobile_country> elements.
@@ -285,40 +308,92 @@ public final class TelephonyLookup {
                         "Unable to find mcc: " + parser.getPositionDescription());
             }
 
-            while (findNextStartTagOrEndTagNoRecurse(parser, COUNTRY_ISO_CODE_ATTRIBUTE)) {
-                String countryIsoCode = consumeText(parser);
-                if (countryIsoCode == null) {
-                    throw new XmlPullParserException(
-                            "Unable to find country for mcc=" + mcc + ": "
-                                    + parser.getPositionDescription());
+            List<OverrideData> overrides = new ArrayList<>();
+            int event;
+            while ((event = parser.next()) != XmlPullParser.END_DOCUMENT) {
+                if (event == XmlPullParser.END_TAG
+                        && MOBILE_COUNTRY_ELEMENT.equals(parser.getName())) {
+                    break;
                 }
-                if (defaultCountryIsoCode == null) {
-                    defaultCountryIsoCode = countryIsoCode;
+                if (event != XmlPullParser.START_TAG) {
+                    continue;
                 }
-                countryIsoCodes.add(countryIsoCode);
 
-                // Skip anything until </country>.
-                consumeUntilEndTag(parser, COUNTRY_ISO_CODE_ATTRIBUTE);
+                String tagName = parser.getName();
+                if (COUNTRY_ISO_CODE_ATTRIBUTE.equals(tagName)) {
+                    String countryIsoCode = consumeText(parser);
+                    if (countryIsoCode == null) {
+                        throw new XmlPullParserException(
+                                "Unable to find country for mcc=" + mcc + ": "
+                                        + parser.getPositionDescription());
+                    }
+                    if (defaultCountryIsoCode == null) {
+                        defaultCountryIsoCode = countryIsoCode;
+                    }
+                    countryIsoCodes.add(countryIsoCode);
+
+                    consumeUntilEndTag(parser, COUNTRY_ISO_CODE_ATTRIBUTE);
+                } else if (OVERRIDE_ELEMENT.equals(tagName)) {
+                    Set<String> overrideCountryIsoCodes = new HashSet<>();
+                    String mnc = parser.getAttributeValue(
+                            null /* namespace */, MOBILE_NETWORK_CODE_ATTRIBUTE);
+                    String overrideDefaultCountryIsoCode = null;
+                    if (mnc == null) {
+                        throw new XmlPullParserException(
+                                "Unable to find mnc: " + parser.getPositionDescription());
+                    }
+                    while (findNextStartTagOrEndTagNoRecurse(parser, COUNTRY_ISO_CODE_ATTRIBUTE)) {
+                        String countryIsoCode = consumeText(parser);
+                        if (countryIsoCode == null) {
+                            throw new XmlPullParserException(
+                                    "Unable to find country for mcc=" + mcc + ", mnc=" + mnc + ": "
+                                            + parser.getPositionDescription());
+                        }
+                        if (overrideDefaultCountryIsoCode == null) {
+                            overrideDefaultCountryIsoCode = countryIsoCode;
+                        }
+                        overrideCountryIsoCodes.add(countryIsoCode);
+                    }
+                    String debugInfo = parser.getPositionDescription();
+                    overrides.add(new OverrideData(mnc, overrideCountryIsoCodes,
+                            overrideDefaultCountryIsoCode, debugInfo));
+
+                    consumeUntilEndTag(parser, OVERRIDE_ELEMENT);
+                } else {
+                    skipCurrentElement(parser, tagName);
+                }
             }
 
             String debugInfo = parser.getPositionDescription();
             processor.processMobileCountries(mcc, countryIsoCodes, defaultCountryIsoCode,
                     debugInfo);
 
-            // Skip anything until </mobile_country>.
-            consumeUntilEndTag(parser, MOBILE_COUNTRY_ELEMENT);
+            for (OverrideData overrideData : overrides) {
+                processor.processOverride(mcc, overrideData.mnc(), countryIsoCodes,
+                        overrideData.countryIsoCodes(), overrideData.defaultCountryIso(),
+                        overrideData.debugInfo());
+            }
         }
     }
 
     /**
-     * Validates &lt;network&gt; elements. Intended to be used before a proposed installation of new
+     * Validates network elements. Intended to be used before a proposed installation of new
      * data. To be valid the MCC + MNC combination must generate a unique ID, country ISO code must
      * be normalized.
      */
     private static class TelephonyNetworkValidator implements TelephonyNetworkProcessor {
 
+        /** Contains the data from the <network> elements. */
         private final Set<MccMnc> knownMccMncs = new HashSet<>();
+
+        /**
+         * Contains the data from the <mobile_country> elements, excluding the <override>
+         * elements.
+         */
         private final Set<String> knownMccs = new HashSet<>();
+
+        /** Contains the data from the <override> elements in <mobile_country> elements. */
+        private final Set<MccMnc> knownMccMncOverrides = new HashSet<>();
 
         @Override
         public void processNetwork(String mcc, String mnc, String countryIso, String debugInfo)
@@ -344,6 +419,59 @@ public final class TelephonyLookup {
                         + " at " + debugInfo);
             }
             knownMccMncs.add(mccMnc);
+        }
+
+        @Override
+        public void processOverride(String mcc, String mnc, Set<String> mccCountryIsos,
+                Set<String> overrideCountryIsos, String defaultCountryIso, String debugInfo)
+                throws XmlPullParserException {
+            if (overrideCountryIsos.isEmpty()) {
+                throw new XmlPullParserException(
+                        "No countries found for mcc=" + mcc + ", mnc=" + mnc + " at " + debugInfo);
+            }
+            if (mccCountryIsos.equals(overrideCountryIsos)) {
+                throw new XmlPullParserException(
+                        "Override for mcc="
+                                + mcc
+                                + ", mnc="
+                                + mnc
+                                + " has the same countries as the mobile country "
+                                + debugInfo);
+            }
+            if (mcc == null || mcc.length() != 3 || !isAsciiNumeric(mcc)) {
+                throw new XmlPullParserException(
+                        "MCC is not valid: mcc=" + mcc + " at " + debugInfo);
+            }
+
+            if (mnc == null || !(mnc.length() == 2 || mnc.length() == 3) || !isAsciiNumeric(mnc)) {
+                throw new XmlPullParserException(
+                        "MNC is not valid: mnc=" + mnc + " at " + debugInfo);
+            }
+
+            if (!normalizeCountryIso(defaultCountryIso).equals(defaultCountryIso)) {
+                throw new XmlPullParserException("Override default country code: "
+                        + defaultCountryIso + " is not normalized at " + debugInfo);
+            }
+
+            if (!overrideCountryIsos.contains(defaultCountryIso)) {
+                throw new XmlPullParserException(
+                        "Override default country not in override country list for mcc="
+                                + mcc + ", mnc=" + mnc + " at " + debugInfo);
+            }
+
+            for (String countryIso : overrideCountryIsos) {
+                if (!normalizeCountryIso(countryIso).equals(countryIso)) {
+                    throw new XmlPullParserException("Country code: " + countryIso
+                            + " is not normalized at " + debugInfo);
+                }
+            }
+
+            MccMnc mccMnc = new MccMnc(mcc, mnc);
+            if (knownMccMncOverrides.contains(mccMnc)) {
+                throw new XmlPullParserException("Second entry for MCC + MNC: " + mccMnc
+                        + " at " + debugInfo);
+            }
+            knownMccMncOverrides.add(mccMnc);
         }
 
         @Override
@@ -399,8 +527,16 @@ public final class TelephonyLookup {
      * {@link TelephonyNetworkFinder}.
      */
     private static class TelephonyNetworksExtractor implements TelephonyNetworkProcessor {
+        /** Contains the data from the <network> elements. */
         private List<MobileCountries> networkOverrides = new ArrayList<>(10 /* default */);
+
+        /**
+         * Contains the data from the <mobile_country> elements, excluding the <override> elements.
+         */
         private List<MobileCountries> mobileCountries = new ArrayList<>();
+
+        /** Contains the data from the <override> elements in <mobile_country> elements. */
+        private List<MobileCountries> mobileCountriesOverrides = new ArrayList<>(10 /* default */);
 
         @Override
         public void processNetwork(String mcc, String mnc, String countryIso, String debugInfo) {
@@ -410,18 +546,30 @@ public final class TelephonyLookup {
         }
 
         @Override
+        public void processOverride(String mcc, String mnc, Set<String> mccCountryIsos,
+                Set<String> overrideCountryIsos, String defaultCountryIso, String debugInfo) {
+            MobileCountries override = MobileCountries.create(mcc, mnc, overrideCountryIsos,
+                    defaultCountryIso);
+            mobileCountriesOverrides.add(override);
+        }
+
+        @Override
         public void processMobileCountries(String mcc, Set<String> countryIsos,
                 String defaultCountryIso, String debugInfo) {
             mobileCountries.add(MobileCountries.create(mcc, countryIsos, defaultCountryIso));
         }
 
         TelephonyNetworkFinder getTelephonyNetworkFinder() {
-            return TelephonyNetworkFinder.create(networkOverrides, mobileCountries);
+            if (ENABLE_MULTI_COUNTRY_OVERRIDE_PARSING) {
+                return TelephonyNetworkFinder.create(mobileCountriesOverrides, mobileCountries);
+            } else {
+                return TelephonyNetworkFinder.create(networkOverrides, mobileCountries);
+            }
         }
     }
 
     /**
-     * Processes &lt;network&gt; data.
+     * Processes network data.
      */
     private interface TelephonyNetworkProcessor {
 
@@ -432,6 +580,13 @@ public final class TelephonyLookup {
          * Process network data. Problems with the data are reported as an exception.
          */
         void processNetwork(String mcc, String mnc, String countryIso, String debugInfo)
+                throws XmlPullParserException;
+
+        /**
+         * Process network override data. Problems with the data are reported as an exception.
+         */
+        void processOverride(String mcc, String mnc, Set<String> mccCountryIsos,
+                Set<String> overrideCountryIsos, String defaultCountryIso, String debugInfo)
                 throws XmlPullParserException;
 
         void processMobileCountries(String mcc, Set<String> countryIsos, String defaultCountryIso,

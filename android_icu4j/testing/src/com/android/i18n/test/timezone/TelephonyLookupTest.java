@@ -17,16 +17,23 @@
 package com.android.i18n.test.timezone;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeFalse;
 import static org.junit.Assume.assumeTrue;
 
 import android.icu.testsharding.MainTestShard;
+import android.platform.test.annotations.RequiresFlagsDisabled;
+import android.platform.test.annotations.RequiresFlagsEnabled;
+import android.platform.test.flag.junit.CheckFlagsRule;
+import android.platform.test.flag.junit.DeviceFlagsValueProvider;
 
 import com.android.i18n.timezone.MobileCountries;
 import com.android.i18n.timezone.TelephonyLookup;
 import com.android.i18n.timezone.TelephonyNetworkFinder;
+import com.android.icu.Flags;
 import com.android.internal.telephony.MccTable;
 
 import org.junit.After;
@@ -52,6 +59,9 @@ import java.util.Set;
 public class TelephonyLookupTest {
 
     private Path testDir;
+
+    @Rule
+    public final CheckFlagsRule mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule();
 
     @Before
     public void setUp() throws Exception {
@@ -87,8 +97,11 @@ public class TelephonyLookupTest {
                     <network mcc="123" mnc="456" country="gb"/>
                   </networks>
                   <mobile_countries>
-                    <mobile_country mcc="202">
+                    <mobile_country mcc="123">
                       <country>gr</country>
+                      <override mnc="456">
+                        <country>gb</country>
+                      </override>
                     </mobile_country>
                   </mobile_countries>
                 </telephony_lookup>
@@ -96,7 +109,7 @@ public class TelephonyLookupTest {
         MobileCountries expectedTelephonyNetwork1 =
                 MobileCountries.create("123", "456", Set.of("gb"), "gb");
         MobileCountries expectedMobileCountries1 =
-                MobileCountries.create("202", Set.of("gr"), "gr");
+                MobileCountries.create("123", Set.of("gr"), "gr");
 
         String validXml2 =
                 """
@@ -105,9 +118,12 @@ public class TelephonyLookupTest {
                     <network mcc="234" mnc="567" country="fr"/>
                   </networks>
                   <mobile_countries>
-                    <mobile_country mcc="505" default="au">
+                    <mobile_country mcc="234" default="au">
                       <country>au</country>
                       <country>nf</country>
+                      <override mnc="567">
+                        <country>fr</country>
+                      </override>
                     </mobile_country>
                   </mobile_countries>
                 </telephony_lookup>
@@ -115,7 +131,7 @@ public class TelephonyLookupTest {
         MobileCountries expectedTelephonyNetwork2 =
                 MobileCountries.create("234", "567", Set.of("fr"), "fr");
         MobileCountries expectedMobileCountries2 =
-                MobileCountries.create("505", Set.of("au", "nf"), "au");
+                MobileCountries.create("234", Set.of("au", "nf"), "au");
 
         String invalidXml = "<foo></foo>\n";
         checkValidateThrowsParserException(invalidXml);
@@ -276,7 +292,7 @@ public class TelephonyLookupTest {
         MobileCountries expectedTelephonyNetwork =
                 MobileCountries.create("123", "456", Set.of("gb"), "gb");
         MobileCountries expectedMobileCountries =
-                MobileCountries.create("202", Set.of("gr"), "gr");
+                MobileCountries.create("123", Set.of("gr"), "gr");
 
         TelephonyLookup telephonyLookup =
                 validate(
@@ -289,9 +305,14 @@ public class TelephonyLookupTest {
                           <!-- This is a comment -->
                           <mobile_countries>
                             <!-- This is a comment -->
-                            <mobile_country mcc="202">
+                            <mobile_country mcc="123">
                               <!-- This is a comment -->
                               <country>gr</country>
+                              <override mnc="456">
+                                <!-- This is a comment -->
+                                <country>gb</country>
+                                <!-- This is a comment -->
+                              </override>
                             </mobile_country>
                           </mobile_countries>
                           <!-- This is a comment -->
@@ -309,12 +330,32 @@ public class TelephonyLookupTest {
     public void xmlParsing_unexpectedElementsIgnored() throws Exception {
         MobileCountries expectedTelephonyNetwork =
                 MobileCountries.create("123", "456", Set.of("gb"), "gb");
-        List<MobileCountries> expectedNetworks = list(expectedTelephonyNetwork);
+        MobileCountries expectedTelephonyNetwork2 =
+                MobileCountries.create("123", "222", Set.of("gf"), "gf");
+        List<MobileCountries> expectedNetworks =
+               list(expectedTelephonyNetwork, expectedTelephonyNetwork2);
         MobileCountries expectedMobileCountries =
-                MobileCountries.create("202", Set.of("gr"), "gr");
+                MobileCountries.create("123", Set.of("gr"), "gr");
         List<MobileCountries> expectedMobileCountriesList = list(expectedMobileCountries);
 
         String unexpectedElement = "<unexpected-element>\n<a /></unexpected-element>\n";
+        String nestedUnexpectedElementWithSameName =
+                """
+                <unexpected-element>
+                  <unexpected-element>
+                    <a />
+                  </unexpected-element>
+                </unexpected-element>
+                """;
+        String nestedUnexpectedOverride =
+                """
+                <override mnc="222">
+                  <country>gf</country>
+                  <override mnc="333">
+                    <country>us</country>
+                  </override>
+                </override>
+                """;
 
         // These tests are important because they ensure we can extend the format in future with
         // more information but could continue using the same file on older devices.
@@ -323,14 +364,24 @@ public class TelephonyLookupTest {
                 + "  <networks>\n"
                 + "    " + unexpectedElement
                 + "    <network mcc=\"123\" mnc=\"456\" country=\"gb\"/>\n"
+                + "    <network mcc=\"123\" mnc=\"222\" country=\"gf\"/>\n"
                 + "    " + unexpectedElement
                 + "  </networks>\n"
                 + "  " + unexpectedElement
                 + "  <mobile_countries>\n"
                 + "   " + unexpectedElement
-                + "    <mobile_country mcc=\"202\">\n"
+                + "    <mobile_country mcc=\"123\">\n"
                 + "    " + unexpectedElement
+                + "     " + nestedUnexpectedElementWithSameName
                 + "     <country>gr</country>\n"
+                + "     " + unexpectedElement
+                + "     " + nestedUnexpectedOverride
+                + "     <override mnc=\"456\">"
+                + "       " + unexpectedElement
+                + "       " + nestedUnexpectedElementWithSameName
+                + "       <country>gb</country>\n"
+                + "       " + unexpectedElement
+                + "     </override>\n"
                 + "    " + unexpectedElement
                 + "    </mobile_country>\n"
                 + "   " + unexpectedElement
@@ -347,7 +398,7 @@ public class TelephonyLookupTest {
         expectedNetworks = list(expectedTelephonyNetwork,
                 MobileCountries.create("234", "567", Set.of("fr"), "fr"));
         expectedMobileCountriesList = list(expectedMobileCountries,
-                MobileCountries.create("204", Set.of("nl"), "nl"));
+                MobileCountries.create("234", Set.of("nl"), "nl"));
         telephonyLookup = validate("<telephony_lookup>\n"
                 + "  <networks>\n"
                 + "    <network mcc=\"123\" mnc=\"456\" country=\"gb\"/>\n"
@@ -355,12 +406,18 @@ public class TelephonyLookupTest {
                 + "    <network mcc=\"234\" mnc=\"567\" country=\"fr\"/>\n"
                 + "  </networks>\n"
                 + "  <mobile_countries>\n"
-                + "    <mobile_country mcc=\"202\">\n"
+                + "    <mobile_country mcc=\"123\">\n"
                 + "     <country>gr</country>\n"
+                + "     <override mnc=\"456\">\n"
+                + "       <country>gb</country>\n"
+                + "     </override>\n"
                 + "    </mobile_country>\n"
-                + "   " + unexpectedElement
-                + "    <mobile_country mcc=\"204\">\n"
+                + "    " + unexpectedElement
+                + "    <mobile_country mcc=\"234\">\n"
                 + "     <country>nl</country>\n"
+                + "     <override mnc=\"567\">\n"
+                + "       <country>fr</country>\n"
+                + "     </override>\n"
                 + "    </mobile_country>\n"
                 + "  </mobile_countries>\n"
                 + "</telephony_lookup>\n");
@@ -378,7 +435,7 @@ public class TelephonyLookupTest {
                 MobileCountries.create("123", "456", Set.of("gb"), "gb");
         List<MobileCountries> expectedNetworks = list(expectedTelephonyNetwork);
         MobileCountries expectedMobileCountries =
-                MobileCountries.create("202", Set.of("gr"), "gr");
+                MobileCountries.create("123", Set.of("gr"), "gr");
         List<MobileCountries> expectedMobileCountriesList = list(expectedMobileCountries);
 
         String unexpectedText = "unexpected-text";
@@ -392,9 +449,15 @@ public class TelephonyLookupTest {
                 + "  " + unexpectedText
                 + "  <mobile_countries>\n"
                 + "  " + unexpectedText
-                + "    <mobile_country mcc=\"202\">\n"
+                + "    <mobile_country mcc=\"123\">\n"
                 + "   " + unexpectedText
                 + "     <country>gr</country>\n"
+                + "   " + unexpectedText
+                + "     <override mnc=\"456\">"
+                + "   " + unexpectedText
+                + "       <country>gb</country>\n"
+                + "   " + unexpectedText
+                + "     </override>\n"
                 + "   " + unexpectedText
                 + "    </mobile_country>\n"
                 + "  " + unexpectedText
@@ -525,6 +588,12 @@ public class TelephonyLookupTest {
                   <network mcc="123" mnc="456" countryCode="GB"/>
                  </networks>
                  <mobile_countries>
+                  <mobile_country mcc="123">
+                    <country>us</country>
+                    <override mnc="456">
+                      <country>GB</country>
+                    </override>
+                  </mobile_country>
                   <mobile_country mcc="202">
                    <country>gr</country>
                   </mobile_country>
@@ -558,12 +627,18 @@ public class TelephonyLookupTest {
                            <network mcc="234" mnc="567" country="fr"/>
                           </networks>
                           <mobile_countries>
-                           <mobile_country mcc="202">
+                           <mobile_country mcc="123">
                              <country>gr</country>
+                             <override mnc="456">
+                               <country>gb</country>
+                             </override>
                            </mobile_country>
-                           <mobile_country mcc="505" default="au">
+                           <mobile_country mcc="234" default="au">
                              <country>au</country>
                              <country>nf</country>
+                             <override mnc="567">
+                               <country>fr</country>
+                             </override>
                            </mobile_country>
                           </mobile_countries>
                         </telephony_lookup>
@@ -573,9 +648,9 @@ public class TelephonyLookupTest {
         MobileCountries expectedNetwork1 = MobileCountries.create("123", "456", Set.of("gb"), "gb");
         MobileCountries expectedNetwork2 = MobileCountries.create("234", "567", Set.of("fr"), "fr");
         MobileCountries expectedMobileCountries1 =
-                MobileCountries.create("202", Set.of("gr"), "gr");
+                MobileCountries.create("123", Set.of("gr"), "gr");
         MobileCountries expectedMobileCountries2 =
-                MobileCountries.create("505", Set.of("au", "nf"), "au");
+                MobileCountries.create("234", Set.of("au", "nf"), "au");
 
         assertEquals(list(expectedNetwork1, expectedNetwork2),
                 telephonyNetworkFinder.getAllNetworks());
@@ -588,8 +663,8 @@ public class TelephonyLookupTest {
         assertEquals(expectedNetwork2, telephonyNetworkFinder.findCountriesByMccMnc("234", "567"));
         assertNull(telephonyNetworkFinder.findCountriesByMccMnc("999", "999"));
 
-        assertEquals(expectedMobileCountries1, telephonyNetworkFinder.findCountriesByMcc("202"));
-        assertEquals(expectedMobileCountries2, telephonyNetworkFinder.findCountriesByMcc("505"));
+        assertEquals(expectedMobileCountries1, telephonyNetworkFinder.findCountriesByMcc("123"));
+        assertEquals(expectedMobileCountries2, telephonyNetworkFinder.findCountriesByMcc("234"));
         assertNull(telephonyNetworkFinder.findCountriesByMcc("999"));
     }
 
@@ -639,6 +714,9 @@ public class TelephonyLookupTest {
                          <mobile_countries>
                           <mobile_country mcc="202">
                            <country>gr</country>
+                           <override>
+                            <country>gb</country>
+                           </override>
                           </mobile_country>
                          </mobile_countries>
                         </telephony_lookup>
@@ -656,6 +734,12 @@ public class TelephonyLookupTest {
                           <network mcc="123" mnc="456"/>
                          </networks>
                          <mobile_countries>
+                          <mobile_country mcc="123">
+                           <country>us</country>
+                           <override mnc="456">
+                            <country/>
+                           </override>
+                          </mobile_country>
                           <mobile_country mcc="202">
                            <country>gr</country>
                           </mobile_country>
@@ -695,6 +779,201 @@ public class TelephonyLookupTest {
 
             assertEquals(telephonyCountry, countries.getDefaultCountryIsoCode());
         });
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_ENABLE_MULTI_COUNTRY_OVERRIDE_PARSING)
+    public void xmlParsing_overrides_success() throws Exception {
+        String xml =
+                """
+                <telephony_lookup>
+                  <mobile_countries>
+                    <mobile_country mcc="310" default="us">
+                      <country>us</country>
+                      <override mnc="110">
+                        <country>gu</country>
+                      </override>
+                    </mobile_country>
+                    <mobile_country mcc="338">
+                      <country>jm</country>
+                      <override mnc="05">
+                        <country>jm</country>
+                        <country>bb</country>
+                        <country>bm</country>
+                      </override>
+                    </mobile_country>
+                  </mobile_countries>
+                </telephony_lookup>
+                """;
+        TelephonyLookup telephonyLookup = validate(xml);
+        TelephonyNetworkFinder finder = telephonyLookup.getTelephonyNetworkFinder();
+
+        MobileCountries mobileCountry1 = finder.findCountriesByMcc("310");
+        assertEquals("310", mobileCountry1.getMcc());
+        assertNull(mobileCountry1.getMnc());
+        assertEquals(Set.of("us"), mobileCountry1.getCountryIsoCodes());
+        assertEquals("us", mobileCountry1.getDefaultCountryIsoCode());
+
+        MobileCountries override1 = finder.findCountriesByMccMnc("310", "110");
+        assertEquals("310", override1.getMcc());
+        assertEquals("110", override1.getMnc());
+        assertEquals(Set.of("gu"), override1.getCountryIsoCodes());
+        assertEquals("gu", override1.getDefaultCountryIsoCode());
+
+        MobileCountries mobileCountry2 = finder.findCountriesByMcc("338");
+        assertEquals("338", mobileCountry2.getMcc());
+        assertNull(mobileCountry2.getMnc());
+        assertEquals(Set.of("jm"), mobileCountry2.getCountryIsoCodes());
+        assertEquals("jm", mobileCountry2.getDefaultCountryIsoCode());
+
+        MobileCountries override2 = finder.findCountriesByMccMnc("338", "05");
+        assertEquals("338", override2.getMcc());
+        assertEquals("05", override2.getMnc());
+        assertEquals(Set.of("jm", "bb", "bm"), override2.getCountryIsoCodes());
+        // Default is the first country ISO code for multi-country override
+        assertEquals("jm", override2.getDefaultCountryIsoCode());
+
+        assertNull(finder.findCountriesByMccMnc("310", "999"));
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_ENABLE_MULTI_COUNTRY_OVERRIDE_PARSING)
+    public void xmlParsing_overrides_validationFailures() {
+        // No country in override
+        checkValidateThrowsParserException(
+                """
+                <telephony_lookup>
+                  <mobile_countries>
+                    <mobile_country mcc="310">
+                      <country>us</country>
+                      <override mnc="110"></override>
+                    </mobile_country>
+                  </mobile_countries>
+                </telephony_lookup>
+                """);
+
+        // Override countries same as mobile_country countries
+        checkValidateThrowsParserException(
+                """
+                <telephony_lookup>
+                  <mobile_countries>
+                    <mobile_country mcc="310">
+                      <country>us</country>
+                      <override mnc="110">
+                        <country>us</country>
+                      </override>
+                    </mobile_country>
+                  </mobile_countries>
+                </telephony_lookup>
+                """);
+
+        // Invalid MNC
+        checkValidateThrowsParserException(
+                """
+                <telephony_lookup>
+                  <mobile_countries>
+                    <mobile_country mcc="310">
+                      <country>us</country>
+                      <override mnc="1234">
+                        <country>gu</country>
+                      </override>
+                    </mobile_country>
+                  </mobile_countries>
+                </telephony_lookup>
+                """);
+
+        // Non-normalized country code
+        checkValidateThrowsParserException(
+                """
+                <telephony_lookup>
+                  <mobile_countries>
+                    <mobile_country mcc="310">
+                      <country>us</country>
+                      <override mnc="110">
+                        <country>GU</country>
+                      </override>
+                    </mobile_country>
+                  </mobile_countries>
+                </telephony_lookup>
+                """);
+
+        // Duplicate MCC/MNC
+        checkValidateThrowsParserException(
+                """
+                <telephony_lookup>
+                  <mobile_countries>
+                    <mobile_country mcc="310">
+                      <country>us</country>
+                      <override mnc="110">
+                        <country>gu</country>
+                      </override>
+                      <override mnc="110">
+                        <country>gb</country>
+                      </override>
+                    </mobile_country>
+                  </mobile_countries>
+                </telephony_lookup>
+                """);
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_ENABLE_MULTI_COUNTRY_OVERRIDE_PARSING)
+    public void xmlParsing_ignoresNetworks_whenFlagEnabled() throws Exception {
+        String xml =
+                """
+                <telephony_lookup>
+                  <networks>
+                    <network mcc="999" mnc="999" country="gb"/>
+                  </networks>
+                  <mobile_countries>
+                    <mobile_country mcc="310" default="us">
+                      <country>us</country>
+                      <override mnc="110">
+                        <country>gu</country>
+                      </override>
+                    </mobile_country>
+                  </mobile_countries>
+                </telephony_lookup>
+                """;
+        TelephonyLookup telephonyLookup = validate(xml);
+        TelephonyNetworkFinder finder = telephonyLookup.getTelephonyNetworkFinder();
+
+        assertNull(finder.findCountriesByMccMnc("999", "999"));
+        // check that the override is still found
+        assertNotNull(finder.findCountriesByMccMnc("310", "110"));
+    }
+
+    @Test
+    @RequiresFlagsDisabled(Flags.FLAG_ENABLE_MULTI_COUNTRY_OVERRIDE_PARSING)
+    public void xmlParsing_parsesNetworks_and_ignoresOverrides_whenFlagDisabled() throws Exception {
+        String xml =
+                """
+                <telephony_lookup>
+                  <networks>
+                    <network mcc="999" mnc="999" country="gb"/>
+                  </networks>
+                  <mobile_countries>
+                    <mobile_country mcc="310" default="us">
+                      <country>us</country>
+                      <override mnc="110">
+                        <country>gu</country>
+                      </override>
+                    </mobile_country>
+                  </mobile_countries>
+                </telephony_lookup>
+                """;
+        TelephonyLookup telephonyLookup = validate(xml);
+        TelephonyNetworkFinder finder = telephonyLookup.getTelephonyNetworkFinder();
+
+        // The network should be found
+        assertNotNull(finder.findCountriesByMccMnc("999", "999"));
+        // The override should be ignored
+        assertNull(finder.findCountriesByMccMnc("310", "110"));
+        // The mobile country should be found
+        MobileCountries mobileCountry = finder.findCountriesByMcc("310");
+        assertNotNull(mobileCountry);
+        // The override country (gu) should not be in the country list
+        assertEquals(Set.of("us"), mobileCountry.getCountryIsoCodes());
     }
 
     private static void checkValidateThrowsParserException(String xml) {
