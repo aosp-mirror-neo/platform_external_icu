@@ -52,6 +52,7 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -143,28 +144,28 @@ public class TelephonyLookupTest {
 
         TelephonyLookup file1ThenFile2 =
                 TelephonyLookup.createInstanceWithFallback(validFile1, validFile2);
-        assertEquals(list(expectedTelephonyNetwork1),
+        containsExactly(list(expectedTelephonyNetwork1),
                 file1ThenFile2.getTelephonyNetworkFinder().getAllNetworks());
 
-        assertEquals(
+        containsExactly(
                 list(expectedMobileCountries1),
                 file1ThenFile2.getTelephonyNetworkFinder().getAllMobileCountries());
 
         TelephonyLookup missingFileThenFile1 =
                 TelephonyLookup.createInstanceWithFallback(missingFile, validFile1);
-        assertEquals(list(expectedTelephonyNetwork1),
+        containsExactly(list(expectedTelephonyNetwork1),
                 missingFileThenFile1.getTelephonyNetworkFinder().getAllNetworks());
 
-        assertEquals(
+        containsExactly(
                 list(expectedMobileCountries1),
                 missingFileThenFile1.getTelephonyNetworkFinder().getAllMobileCountries());
 
         TelephonyLookup file2ThenFile1 =
                 TelephonyLookup.createInstanceWithFallback(validFile2, validFile1);
-        assertEquals(list(expectedTelephonyNetwork2),
+        containsExactly(list(expectedTelephonyNetwork2),
                 file2ThenFile1.getTelephonyNetworkFinder().getAllNetworks());
 
-        assertEquals(
+        containsExactly(
                 list(expectedMobileCountries2),
                 file2ThenFile1.getTelephonyNetworkFinder().getAllMobileCountries());
 
@@ -235,7 +236,7 @@ public class TelephonyLookupTest {
                             """);
             TelephonyNetworkFinder telephonyNetworkFinder = telephonyLookup
                     .getTelephonyNetworkFinder();
-            assertEquals(list(), telephonyNetworkFinder.getAllNetworks());
+            assertEmpty(telephonyNetworkFinder.getAllNetworks());
         }
         {
             TelephonyLookup telephonyLookup =
@@ -252,7 +253,7 @@ public class TelephonyLookupTest {
                             """);
             TelephonyNetworkFinder telephonyNetworkFinder = telephonyLookup
                     .getTelephonyNetworkFinder();
-            assertEquals(list(), telephonyNetworkFinder.getAllNetworks());
+            assertEmpty(telephonyNetworkFinder.getAllNetworks());
         }
     }
 
@@ -318,10 +319,10 @@ public class TelephonyLookupTest {
                           <!-- This is a comment -->
                         </telephony_lookup>
                         """);
-        assertEquals(list(expectedTelephonyNetwork),
+        containsExactly(list(expectedTelephonyNetwork),
                 telephonyLookup.getTelephonyNetworkFinder().getAllNetworks());
 
-        assertEquals(
+        containsExactly(
                 list(expectedMobileCountries),
                 telephonyLookup.getTelephonyNetworkFinder().getAllMobileCountries());
     }
@@ -388,10 +389,10 @@ public class TelephonyLookupTest {
                 + "  </mobile_countries>\n"
                 + " " + unexpectedElement
                 + "</telephony_lookup>\n");
-        assertEquals(expectedNetworks,
+        containsExactly(expectedNetworks,
                 telephonyLookup.getTelephonyNetworkFinder().getAllNetworks());
 
-        assertEquals(
+        containsExactly(
                 expectedMobileCountriesList,
                 telephonyLookup.getTelephonyNetworkFinder().getAllMobileCountries());
 
@@ -421,10 +422,10 @@ public class TelephonyLookupTest {
                 + "    </mobile_country>\n"
                 + "  </mobile_countries>\n"
                 + "</telephony_lookup>\n");
-        assertEquals(expectedNetworks,
+        containsExactly(expectedNetworks,
                 telephonyLookup.getTelephonyNetworkFinder().getAllNetworks());
 
-        assertEquals(
+        containsExactly(
                 expectedMobileCountriesList,
                 telephonyLookup.getTelephonyNetworkFinder().getAllMobileCountries());
     }
@@ -464,10 +465,10 @@ public class TelephonyLookupTest {
                 + "  </mobile_countries>\n"
                 + " " + unexpectedText
                 + "</telephony_lookup>\n");
-        assertEquals(expectedNetworks,
+        containsExactly(expectedNetworks,
                 telephonyLookup.getTelephonyNetworkFinder().getAllNetworks());
 
-        assertEquals(
+        containsExactly(
                 expectedMobileCountriesList,
                 telephonyLookup.getTelephonyNetworkFinder().getAllMobileCountries());
     }
@@ -652,10 +653,10 @@ public class TelephonyLookupTest {
         MobileCountries expectedMobileCountries2 =
                 MobileCountries.create("234", Set.of("au", "nf"), "au");
 
-        assertEquals(list(expectedNetwork1, expectedNetwork2),
+        containsExactly(list(expectedNetwork1, expectedNetwork2),
                 telephonyNetworkFinder.getAllNetworks());
 
-        assertEquals(
+        containsExactly(
                 list(expectedMobileCountries1, expectedMobileCountries2),
                 telephonyNetworkFinder.getAllMobileCountries());
 
@@ -787,6 +788,9 @@ public class TelephonyLookupTest {
         String xml =
                 """
                 <telephony_lookup>
+                  <networks>
+                    <network mcc="310" mnc="110" country="gu"/>
+                  </networks>
                   <mobile_countries>
                     <mobile_country mcc="310" default="us">
                       <country>us</country>
@@ -988,6 +992,20 @@ public class TelephonyLookupTest {
 
     private static void assertEmpty(Collection<?> collection) {
         assertTrue("Expected empty:" + collection, collection.isEmpty());
+    }
+
+    /**
+     * Asserts that the actual collection contains exactly the same elements as the expected
+     * collection, ignoring order. The collections should not contain duplicate elements.
+     */
+    private static <T> void containsExactly(Collection<T> expected, Collection<T> actual) {
+        Set<T> expectedSet = new HashSet<>(expected);
+        Set<T> actualSet = new HashSet<>(actual);
+
+        assertEquals(expected.size(), expectedSet.size());
+        assertEquals(actual.size(), actualSet.size());
+
+        assertEquals(expectedSet, actualSet);
     }
 
     private static <X> List<X> list(X... values) {
