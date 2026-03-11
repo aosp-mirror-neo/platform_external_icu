@@ -84,7 +84,9 @@ public  class ICUResourceBundle extends UResourceBundle {
     }
 
     WholeBundle wholeBundle;
-    private ICUResourceBundle container;
+    private final ICUResourceBundle container;
+    // Android patch: Cache resDepth to reduce the compiled code size.
+    private final int resDepth;
 
     /** Loader for bundle instances, for caching. */
     private static abstract class Loader {
@@ -1134,8 +1136,9 @@ public  class ICUResourceBundle extends UResourceBundle {
         }
     }
 
+    // Android patch: Cache resDepth to reduce the compiled code size.
     private int getResDepth() {
-        return (container == null) ? 0 : container.getResDepth() + 1;
+        return resDepth;
     }
 
     /**
@@ -1626,12 +1629,17 @@ public  class ICUResourceBundle extends UResourceBundle {
      */
     protected ICUResourceBundle(WholeBundle wholeBundle) {
         this.wholeBundle = wholeBundle;
+        this.container = null;
+        // Android patch: Cache resDepth to reduce the compiled code size.
+        this.resDepth = 0;
     }
     // constructor for inner classes
     protected ICUResourceBundle(ICUResourceBundle container, String key) {
         this.key = key;
         wholeBundle = container.wholeBundle;
         this.container = container;
+        // Android patch: Cache resDepth to reduce the compiled code size.
+        this.resDepth = container.resDepth + 1;
         parent = container.parent;
     }
 
