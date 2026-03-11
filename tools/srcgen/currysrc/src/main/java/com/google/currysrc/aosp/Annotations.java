@@ -90,4 +90,14 @@ public final class Annotations {
       throw new IllegalStateException("Could not read JSON from " + flaggedApiPath, e);
     }
   }
+
+  public static AddAnnotation addNeverInline(Path neverInlinePath) {
+    AnnotationClass annotationClass = new AnnotationClass(
+        "com.android.icu.optimization.NeverInline");
+    try {
+      return AddAnnotation.fromJsonFile(annotationClass, neverInlinePath);
+    } catch (IOException e) {
+      throw new IllegalStateException("Could not read JSON from " + neverInlinePath, e);
+    }
+  }
 }
