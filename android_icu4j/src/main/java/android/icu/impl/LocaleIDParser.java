@@ -58,10 +58,12 @@ public final class LocaleIDParser {
     private static final char DOT                   = '.';
     private static final char UNDERSCORE            = '_';
 
+    @com.android.icu.optimization.NeverInline
     public LocaleIDParser(String localeID) {
         this(localeID, false);
     }
 
+    @com.android.icu.optimization.NeverInline
     public LocaleIDParser(String localeID, boolean canonicalize) {
         id = localeID.toCharArray();
         index = 0;
@@ -689,6 +691,7 @@ public final class LocaleIDParser {
      * Returns the value for the named keyword, or null if the keyword is not
      * present.
      */
+    @com.android.icu.optimization.NeverInline
     public String getKeywordValue(String keywordName) {
         Map<String, String> m = getKeywordMap();
         return m.isEmpty() ? null : m.get(AsciiUtil.toLowerString(keywordName.trim()));

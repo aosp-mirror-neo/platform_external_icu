@@ -1,1 +1,2 @@
 zap android.compat.annotation.**
+rule com.android.icu.optimization.NeverInline dalvik.annotation.optimization.NeverInline

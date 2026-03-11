@@ -2231,6 +2231,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
     // Cache for DateTimePatternGenerator
     private static ICUCache<String, DateTimePatternGenerator> DTPNG_CACHE = new SimpleCache<>();
 
+    @com.android.icu.optimization.NeverInline
     private void checkFrozen() {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify frozen object");

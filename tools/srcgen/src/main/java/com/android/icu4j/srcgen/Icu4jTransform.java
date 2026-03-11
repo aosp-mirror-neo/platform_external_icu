@@ -899,6 +899,7 @@ public class Icu4jTransform {
     private static final String COMMAND_USAGE = "Usage: " + Icu4jTransform.class.getCanonicalName()
             + " [--hide-non-allowlisted-api <allowlisted-api-file>]"
             + " [--flagged-api <flagged-api-file>]"
+            + " [--never-inline <never-inline-file>]"
             + " <source-dir>+ <target-dir> <core-platform-api-file> <intra-core-api-file>"
             + " <unsupported-app-usage-file>";
 
@@ -908,7 +909,7 @@ public class Icu4jTransform {
 
     public Icu4jRules(String[] args) {
       Path allowlistedApiPath = null;
-      if ("--hide-non-allowlisted-api".equals(args[0])) {
+      if (args.length >= 2 && "--hide-non-allowlisted-api".equals(args[0])) {
         allowlistedApiPath = Paths.get(args[1]);
         String[] newArgs = new String[args.length - 2];
         System.arraycopy(args, 2, newArgs, 0, args.length - 2);
@@ -916,8 +917,16 @@ public class Icu4jTransform {
       }
 
       Path flaggedApiListPath = null;
-      if ("--flagged-api".equals(args[0])) {
+      if (args.length >= 2 && "--flagged-api".equals(args[0])) {
         flaggedApiListPath = Paths.get(args[1]);
+        String[] newArgs = new String[args.length - 2];
+        System.arraycopy(args, 2, newArgs, 0, args.length - 2);
+        args = newArgs;
+      }
+
+      Path neverInlinePath = null;
+      if (args.length >= 2 && "--never-inline".equals(args[0])) {
+        neverInlinePath = Paths.get(args[1]);
         String[] newArgs = new String[args.length - 2];
         System.arraycopy(args, 2, newArgs, 0, args.length - 2);
         args = newArgs;
@@ -945,7 +954,7 @@ public class Icu4jTransform {
       }
 
       rules = createTransformRules(corePlatformApiFile, intraCoreApiFile,
-          unsupportedAppUsageFile, allowlistedApiPath, flaggedApiListPath);
+          unsupportedAppUsageFile, allowlistedApiPath, flaggedApiListPath, neverInlinePath);
       outputSourceFileGenerator = Icu4jTransformRules.createOutputFileGenerator(targetDir);
     }
 
@@ -984,7 +993,7 @@ public class Icu4jTransform {
     private static List<Rule> createTransformRules(Path corePlatformApiFile,
             Path intraCoreApiFile,
             Path unsupportedAppUsagePath,
-            Path allowlistedApiPath, Path flaggedApiListPath) {
+            Path allowlistedApiPath, Path flaggedApiListPath, Path neverInlinePath) {
       // The rules needed to repackage source code that declares or references com.ibm.icu code
       // so it references android.icu instead.
       Rule[] repackageRules = getRepackagingRules();
@@ -1063,6 +1072,10 @@ public class Icu4jTransform {
       if (flaggedApiListPath != null) {
           // AST change: Add FlaggedApi to specified classes and members
           rulesList.add(createOptionalRule(Annotations.addFlaggedApi(flaggedApiListPath)));
+      }
+      if (neverInlinePath != null) {
+          // AST change: Add NeverInline to specified classes and members
+          rulesList.add(createOptionalRule(Annotations.addNeverInline(neverInlinePath)));
       }
       return rulesList;
     }
