@@ -1199,6 +1199,7 @@ public final class ULocale implements Serializable, Comparable<ULocale> {
      * @param keywordName name of the keyword whose value is desired. Case insensitive.
      * @return String the value of the keyword as a string
      */
+    @com.android.icu.optimization.NeverInline
     public static String getKeywordValue(String localeID, String keywordName) {
         return new LocaleIDParser(localeID).getKeywordValue(keywordName);
     }

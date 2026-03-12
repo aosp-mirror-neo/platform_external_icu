@@ -1,0 +1,23 @@
+[
+  // Total Footprint Reduction: 39,400 bytes (~38.5 KB, -3.68% on arm64).
+  {
+    // -6,024 bytes
+    "@location": "method:android.icu.impl.LocaleIDParser#LocaleIDParser(String)"
+  },
+  {
+    // (Included in the above)
+    "@location": "method:android.icu.impl.LocaleIDParser#LocaleIDParser(String,boolean)"
+  },
+  {
+    // -29,784 bytes (together with ULocale.getKeywordValue)
+    "@location": "method:android.icu.impl.LocaleIDParser#getKeywordValue(String)"
+  },
+  {
+    // -944 bytes
+    "@location": "method:android.icu.text.DateTimePatternGenerator#checkFrozen()"
+  },
+  {
+    // -29,784 bytes (together with LocaleIDParser.getKeywordValue)
+    "@location": "method:android.icu.util.ULocale#getKeywordValue(String,String)"
+  }
+]

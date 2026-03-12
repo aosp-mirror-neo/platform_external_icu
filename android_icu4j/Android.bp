@@ -100,6 +100,7 @@ java_library_static {
     // The resource files are generated in the downstream branch master-icu-dev.
     java_resource_dirs: ["resources"],
     libs: [
+        "icu-neverinline-stub",
         "unsupportedappusage",
         // Need framework-api-annotations-lib for @FlaggedApi.
         // Put framework-api-annotations into libs to avoid exposing the definition of framework's
@@ -587,4 +588,11 @@ java_test {
         // This test takes too much time and hits the timeout.
         "src/main/tests/android/icu/dev/test/rbbi/RBBIMonkeyTest.java",
     ],
+}
+
+java_library {
+    name: "icu-neverinline-stub",
+    srcs: ["stub/com/android/icu/optimization/NeverInline.java"],
+    sdk_version: "core_current",
+    visibility: ["//visibility:private"],
 }

@@ -46,6 +46,7 @@ fi
 ALLOWLIST_API_FILE=${ICU_SRCGEN_DIR}/allowlisted-public-api.txt
 CORE_PLATFORM_API_FILE=${ICU_SRCGEN_DIR}/core-platform-api.txt
 FLAGGED_API_FILE=${ICU_SRCGEN_DIR}/flagged-api.json
+NEVER_INLINE_FILE=${ICU_SRCGEN_DIR}/never-inline.json
 INTRA_CORE_API_FILE=${ICU_SRCGEN_DIR}/intra-core-api.txt
 UNSUPPORTED_APP_USAGE_FILE=${ICU_SRCGEN_DIR}/unsupported-app-usage.json
 
@@ -68,6 +69,9 @@ if [ -e "${ALLOWLIST_API_FILE}" ]; then
 fi
 if [ -e "${FLAGGED_API_FILE}" ]; then
   ICU4J_BASE_COMMAND+=" --flagged-api ${FLAGGED_API_FILE}"
+fi
+if [ -e "${NEVER_INLINE_FILE}" ]; then
+  ICU4J_BASE_COMMAND+=" --never-inline ${NEVER_INLINE_FILE}"
 fi
 
 ${ICU4J_BASE_COMMAND} ${INPUT_JAVA_DIRS} ${DEST_SRC_DIR} ${CORE_PLATFORM_API_FILE} ${INTRA_CORE_API_FILE} ${UNSUPPORTED_APP_USAGE_FILE}
