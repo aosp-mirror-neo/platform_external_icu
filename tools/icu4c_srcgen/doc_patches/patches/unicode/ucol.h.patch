@@ -1,5 +1,5 @@
---- libicu/ndk_headers/unicode/ucol.h	2026-01-23 12:20:26.655299560 +0000
-+++ libicu/ndk_headers/unicode/ucol.h	2026-01-23 12:20:26.830049107 +0000
+--- libicu/ndk_headers/unicode/ucol.h	2026-03-19 14:50:34.728434409 +0000
++++ libicu/ndk_headers/unicode/ucol.h	2026-03-19 14:50:34.856626593 +0000
 @@ -73,7 +73,7 @@
   * Possible values for a comparison result 
   * \xrefitem stable "Stable" "Stable List" ICU 2.0
