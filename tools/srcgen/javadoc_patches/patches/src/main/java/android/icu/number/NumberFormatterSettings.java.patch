@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/number/NumberFormatterSettings.java	2026-01-23 12:07:59.524734744 +0000
-+++ android_icu4j/src/main/java/android/icu/number/NumberFormatterSettings.java	2026-01-23 12:08:34.228082958 +0000
+--- android_icu4j/src/main/java/android/icu/number/NumberFormatterSettings.java	2026-03-19 14:49:00.822362775 +0000
++++ android_icu4j/src/main/java/android/icu/number/NumberFormatterSettings.java	2026-03-19 14:49:22.521540162 +0000
 @@ -124,19 +124,10 @@
       * NumberFormatter.with().unit(Currency.getInstance("USD"))
       * </pre>
