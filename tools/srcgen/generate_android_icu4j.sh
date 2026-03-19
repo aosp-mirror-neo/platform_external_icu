@@ -156,3 +156,9 @@ for INPUT_DIR in ${ALL_TEST_RESOURCE_INPUT_DIRS}; do
     sed 's|com[./]ibm|android|g' $RESOURCE > ${DEST_DIR}/${DEST_NAME} 
   done
 done
+
+echo Generating API stubs
+STUBS_DEST_DIR=${ANDROID_ICU4J_DIR}/api_stubs
+rm -rf ${STUBS_DEST_DIR}
+mkdir -p ${STUBS_DEST_DIR}
+${SRCGEN_TOOL_BINARY} Icu4jStubsTransform ${DEST_SRC_DIR} ${ICU_SRCGEN_DIR}/covariant-return-types.json ${STUBS_DEST_DIR}

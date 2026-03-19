@@ -793,7 +793,7 @@ public final class MessagePattern implements Cloneable, Freezable<MessagePattern
      * @return a copy of this object (or itself if frozen).
      */
     @Override
-    public Object clone() {
+    public MessagePattern clone() {
         if(isFrozen()) {
             return this;
         } else {

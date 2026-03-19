@@ -360,7 +360,7 @@ public class TestMessageFormat extends CoreTestFmwk {
         MessageFormat x = new MessageFormat("There are {0} files on {1}");
         MessageFormat z = new MessageFormat("There are {0} files on {1} created");
         MessageFormat y = null;
-        y = (MessageFormat)x.clone();
+        y = x.clone();
         if (x.equals(y) &&
             !x.equals(z) &&
             !y.equals(z) )
@@ -414,7 +414,7 @@ public class TestMessageFormat extends CoreTestFmwk {
         MessageFormat x = new MessageFormat("There are {0} files on {1}");
         MessageFormat z = new MessageFormat("There are {0} files on {1}");
         MessageFormat y = null;
-        y = (MessageFormat)x.clone();
+        y = x.clone();
         if (x.hashCode() != y.hashCode())
             errln("FAIL: identical objects have different hashcodes");
         if (x.hashCode() != z.hashCode())

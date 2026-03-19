@@ -1,0 +1,10 @@
+android_test {
+    name: "android-icu4j-sdk36-test",
+    srcs: ["src/**/*.java"],
+    sdk_version: "36",
+    static_libs: [
+        "junit",
+        "androidx.test.runner",
+    ],
+    test_suites: ["general-tests"],
+}

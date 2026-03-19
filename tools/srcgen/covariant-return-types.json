@@ -1,0 +1,102 @@
+[
+  {
+    "@location": "method:android.icu.text.Collator#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.RuleBasedCollator#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.BreakIterator#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.CurrencyPluralInfo#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.DateFormat#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.DateFormatSymbols#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.DateIntervalFormat#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.DateIntervalInfo#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.DateTimePatternGenerator#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.DecimalFormat#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.DecimalFormatSymbols#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.MessageFormat#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.MessagePattern#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.Normalizer#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.NumberFormat#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.RuleBasedNumberFormat#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.SimpleDateFormat#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.StringCharacterIterator#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.TimeZoneFormat#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.UCharacterIterator#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.text.UnicodeSet#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.util.Calendar#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.util.GregorianCalendar#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.util.TimeZone#clone()",
+    "returnType": "java.lang.Object"
+  },
+  {
+    "@location": "method:android.icu.util.ULocale#clone()",
+    "returnType": "java.lang.Object"
+  }
+]

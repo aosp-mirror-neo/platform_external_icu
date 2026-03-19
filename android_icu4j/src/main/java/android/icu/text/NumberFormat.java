@@ -176,7 +176,7 @@ import android.icu.util.UResourceBundle;
  * @author       Helena Shih
  * @author       Alan Liu
  */
-public abstract class NumberFormat extends UFormat {
+public abstract class NumberFormat extends UFormat implements Cloneable {
 
     /**
      * <strong>[icu]</strong> Constant to specify normal number style of format.
@@ -1097,9 +1097,8 @@ public abstract class NumberFormat extends UFormat {
      * Overrides clone.
      */
     @Override
-    public Object clone() {
-        NumberFormat other = (NumberFormat) super.clone();
-        return other;
+    public NumberFormat clone() {
+        return (NumberFormat) super.clone();
     }
 
     /**
