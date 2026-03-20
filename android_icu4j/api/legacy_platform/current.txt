@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - overloaded-method-order=source
 // - strip-java-lang-prefix=legacy
 package android.icu.text {
 
@@ -31,8 +30,8 @@ package com.android.i18n.timezone {
     method public java.util.List<com.android.i18n.timezone.CountryTimeZones.TimeZoneMapping> getTimeZoneMappings();
     method public boolean hasUtcZone(long);
     method public boolean isDefaultTimeZoneBoosted();
-    method public com.android.i18n.timezone.CountryTimeZones.OffsetResult lookupByOffsetWithBias(long, android.icu.util.TimeZone, int, boolean);
     method public com.android.i18n.timezone.CountryTimeZones.OffsetResult lookupByOffsetWithBias(long, android.icu.util.TimeZone, int);
+    method public com.android.i18n.timezone.CountryTimeZones.OffsetResult lookupByOffsetWithBias(long, android.icu.util.TimeZone, int, boolean);
     method public boolean matchesCountryCode(String);
   }
 
@@ -58,8 +57,8 @@ package com.android.i18n.timezone {
 
   public class DebugInfo {
     ctor public DebugInfo();
-    method public com.android.i18n.timezone.DebugInfo addStringEntry(String, String);
     method public com.android.i18n.timezone.DebugInfo addStringEntry(String, int);
+    method public com.android.i18n.timezone.DebugInfo addStringEntry(String, String);
     method public java.util.List<com.android.i18n.timezone.DebugInfo.DebugEntry> getDebugEntries();
   }
 
@@ -74,8 +73,8 @@ package com.android.i18n.timezone {
   }
 
   public final class MobileCountries {
-    method public static com.android.i18n.timezone.MobileCountries create(String, java.util.Set<java.lang.String>, String);
     method public static com.android.i18n.timezone.MobileCountries create(String, @Nullable String, java.util.Set<java.lang.String>, String);
+    method public static com.android.i18n.timezone.MobileCountries create(String, java.util.Set<java.lang.String>, String);
     method @NonNull public java.util.Set<java.lang.String> getCountryIsoCodes();
     method @NonNull public String getDefaultCountryIsoCode();
     method @NonNull public String getMcc();
