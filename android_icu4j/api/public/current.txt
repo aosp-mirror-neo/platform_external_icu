@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - type-argument-spacing=legacy
 package android.icu.lang {
 
   public final class UCharacter implements android.icu.lang.UCharacterEnums.ECharacterCategory android.icu.lang.UCharacterEnums.ECharacterDirection {
@@ -2726,7 +2725,7 @@ package android.icu.text {
     method public static android.icu.text.DateTimePatternGenerator getInstance(android.icu.util.ULocale);
     method public static android.icu.text.DateTimePatternGenerator getInstance(java.util.Locale);
     method public String getSkeleton(String);
-    method public java.util.Map<String,String> getSkeletons(java.util.Map<String,String>);
+    method public java.util.Map<String, String> getSkeletons(java.util.Map<String, String>);
     method public boolean isFrozen();
     method public String replaceFieldTypes(String, String);
     method public String replaceFieldTypes(String, String, int);
@@ -3246,8 +3245,8 @@ package android.icu.text {
     method public final StringBuffer format(Object, StringBuffer, java.text.FieldPosition);
     method public final StringBuffer format(Object[], StringBuffer, java.text.FieldPosition);
     method public static String format(String, Object...);
-    method public static String format(String, java.util.Map<String,Object>);
-    method public final StringBuffer format(java.util.Map<String,Object>, StringBuffer, java.text.FieldPosition);
+    method public static String format(String, java.util.Map<String, Object>);
+    method public final StringBuffer format(java.util.Map<String, Object>, StringBuffer, java.text.FieldPosition);
     method public android.icu.text.MessagePattern.ApostropheMode getApostropheMode();
     method public java.util.Set<String> getArgumentNames();
     method public java.text.Format getFormatByArgumentName(String);
@@ -3258,14 +3257,14 @@ package android.icu.text {
     method public Object[] parse(String) throws java.text.ParseException;
     method public Object[] parse(String, java.text.ParsePosition);
     method public Object parseObject(String, java.text.ParsePosition);
-    method public java.util.Map<String,Object> parseToMap(String) throws java.text.ParseException;
-    method public java.util.Map<String,Object> parseToMap(String, java.text.ParsePosition);
+    method public java.util.Map<String, Object> parseToMap(String) throws java.text.ParseException;
+    method public java.util.Map<String, Object> parseToMap(String, java.text.ParsePosition);
     method public void setFormat(int, java.text.Format);
     method public void setFormatByArgumentIndex(int, java.text.Format);
     method public void setFormatByArgumentName(String, java.text.Format);
     method public void setFormats(java.text.Format[]);
     method public void setFormatsByArgumentIndex(java.text.Format[]);
-    method public void setFormatsByArgumentName(java.util.Map<String,java.text.Format>);
+    method public void setFormatsByArgumentName(java.util.Map<String, java.text.Format>);
     method public void setLocale(android.icu.util.ULocale);
     method public void setLocale(java.util.Locale);
     method public String toPattern();
