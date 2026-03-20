@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - strip-java-lang-prefix=legacy
 // - type-argument-spacing=legacy
 package android.icu.lang {
 
@@ -470,7 +469,7 @@ package android.icu.lang {
     field public static final int UPPER = 10; // 0xa
   }
 
-  public static final class UCharacter.UnicodeBlock extends java.lang.Character.Subset {
+  public static final class UCharacter.UnicodeBlock extends Character.Subset {
     method public static android.icu.lang.UCharacter.UnicodeBlock forName(String);
     method public int getID();
     method public static android.icu.lang.UCharacter.UnicodeBlock getInstance(int);
@@ -1684,7 +1683,7 @@ package android.icu.lang {
 
 package android.icu.math {
 
-  public class BigDecimal extends java.lang.Number implements java.lang.Comparable<android.icu.math.BigDecimal> java.io.Serializable {
+  public class BigDecimal extends Number implements Comparable<android.icu.math.BigDecimal> java.io.Serializable {
     ctor public BigDecimal(char[]);
     ctor public BigDecimal(char[], int, int);
     ctor public BigDecimal(double);
@@ -1794,7 +1793,7 @@ package android.icu.number {
   }
 
   public class FormattedNumber implements android.icu.text.FormattedValue {
-    method public <A extends java.lang.Appendable> A appendTo(A);
+    method public <A extends Appendable> A appendTo(A);
     method public char charAt(int);
     method public android.icu.text.DisplayOptions.NounClass getNounClass();
     method public android.icu.util.MeasureUnit getOutputUnit();
@@ -1807,7 +1806,7 @@ package android.icu.number {
   }
 
   public class FormattedNumberRange implements android.icu.text.FormattedValue {
-    method public <A extends java.lang.Appendable> A appendTo(A);
+    method public <A extends Appendable> A appendTo(A);
     method public char charAt(int);
     method public java.math.BigDecimal getFirstBigDecimal();
     method public android.icu.number.NumberRangeFormatter.RangeIdentityResult getIdentityResult();
@@ -1991,7 +1990,7 @@ package android.icu.number {
   public class SimpleNotation extends android.icu.number.Notation {
   }
 
-  @FlaggedApi("com.android.icu.icu_26q2_api") public class SkeletonSyntaxException extends java.lang.IllegalArgumentException {
+  @FlaggedApi("com.android.icu.icu_26q2_api") public class SkeletonSyntaxException extends IllegalArgumentException {
     ctor public SkeletonSyntaxException(String, CharSequence);
     ctor public SkeletonSyntaxException(String, CharSequence, Throwable);
   }
@@ -2010,7 +2009,7 @@ package android.icu.number {
 
 package android.icu.text {
 
-  public final class AlphabeticIndex<V> implements java.lang.Iterable<android.icu.text.AlphabeticIndex.Bucket<V>> {
+  public final class AlphabeticIndex<V> implements Iterable<android.icu.text.AlphabeticIndex.Bucket<V>> {
     ctor public AlphabeticIndex(android.icu.text.RuleBasedCollator);
     ctor public AlphabeticIndex(android.icu.util.ULocale);
     ctor public AlphabeticIndex(java.util.Locale);
@@ -2022,7 +2021,7 @@ package android.icu.text {
     method public android.icu.text.AlphabeticIndex<V> clearRecords();
     method public int getBucketCount();
     method public int getBucketIndex(CharSequence);
-    method public java.util.List<java.lang.String> getBucketLabels();
+    method public java.util.List<String> getBucketLabels();
     method public android.icu.text.RuleBasedCollator getCollator();
     method public String getInflowLabel();
     method public int getMaxLabelCount();
@@ -2036,7 +2035,7 @@ package android.icu.text {
     method public android.icu.text.AlphabeticIndex<V> setUnderflowLabel(String);
   }
 
-  public static class AlphabeticIndex.Bucket<V> implements java.lang.Iterable<android.icu.text.AlphabeticIndex.Record<V>> {
+  public static class AlphabeticIndex.Bucket<V> implements Iterable<android.icu.text.AlphabeticIndex.Record<V>> {
     method public String getLabel();
     method public android.icu.text.AlphabeticIndex.Bucket.LabelType getLabelType();
     method public java.util.Iterator<android.icu.text.AlphabeticIndex.Record<V>> iterator();
@@ -2050,7 +2049,7 @@ package android.icu.text {
     enum_constant public static final android.icu.text.AlphabeticIndex.Bucket.LabelType UNDERFLOW;
   }
 
-  public static final class AlphabeticIndex.ImmutableIndex<V> implements java.lang.Iterable<android.icu.text.AlphabeticIndex.Bucket<V>> {
+  public static final class AlphabeticIndex.ImmutableIndex<V> implements Iterable<android.icu.text.AlphabeticIndex.Bucket<V>> {
     method public android.icu.text.AlphabeticIndex.Bucket<V> getBucket(int);
     method public int getBucketCount();
     method public int getBucketIndex(CharSequence);
@@ -2170,7 +2169,7 @@ package android.icu.text {
     method public boolean isOddRun();
   }
 
-  public abstract class BreakIterator implements java.lang.Cloneable {
+  public abstract class BreakIterator implements Cloneable {
     ctor protected BreakIterator();
     method public Object clone();
     method public abstract int current();
@@ -2232,21 +2231,21 @@ package android.icu.text {
 
   public static final class CaseMap.Fold extends android.icu.text.CaseMap {
     method public String apply(CharSequence);
-    method public <A extends java.lang.Appendable> A apply(CharSequence, A, android.icu.text.Edits);
+    method public <A extends Appendable> A apply(CharSequence, A, android.icu.text.Edits);
     method public android.icu.text.CaseMap.Fold omitUnchangedText();
     method public android.icu.text.CaseMap.Fold turkic();
   }
 
   public static final class CaseMap.Lower extends android.icu.text.CaseMap {
     method public String apply(java.util.Locale, CharSequence);
-    method public <A extends java.lang.Appendable> A apply(java.util.Locale, CharSequence, A, android.icu.text.Edits);
+    method public <A extends Appendable> A apply(java.util.Locale, CharSequence, A, android.icu.text.Edits);
     method public android.icu.text.CaseMap.Lower omitUnchangedText();
   }
 
   public static final class CaseMap.Title extends android.icu.text.CaseMap {
     method public android.icu.text.CaseMap.Title adjustToCased();
     method public String apply(java.util.Locale, android.icu.text.BreakIterator, CharSequence);
-    method public <A extends java.lang.Appendable> A apply(java.util.Locale, android.icu.text.BreakIterator, CharSequence, A, android.icu.text.Edits);
+    method public <A extends Appendable> A apply(java.util.Locale, android.icu.text.BreakIterator, CharSequence, A, android.icu.text.Edits);
     method public android.icu.text.CaseMap.Title noBreakAdjustment();
     method public android.icu.text.CaseMap.Title noLowercase();
     method public android.icu.text.CaseMap.Title omitUnchangedText();
@@ -2256,7 +2255,7 @@ package android.icu.text {
 
   public static final class CaseMap.Upper extends android.icu.text.CaseMap {
     method public String apply(java.util.Locale, CharSequence);
-    method public <A extends java.lang.Appendable> A apply(java.util.Locale, CharSequence, A, android.icu.text.Edits);
+    method public <A extends Appendable> A apply(java.util.Locale, CharSequence, A, android.icu.text.Edits);
     method public android.icu.text.CaseMap.Upper omitUnchangedText();
   }
 
@@ -2277,7 +2276,7 @@ package android.icu.text {
     field public static final int NULLORDER = -1; // 0xffffffff
   }
 
-  public final class CollationKey implements java.lang.Comparable<android.icu.text.CollationKey> {
+  public final class CollationKey implements Comparable<android.icu.text.CollationKey> {
     ctor public CollationKey(String, byte[]);
     method public int compareTo(android.icu.text.CollationKey);
     method public boolean equals(android.icu.text.CollationKey);
@@ -2293,9 +2292,9 @@ package android.icu.text {
     field public static final int UPPER_LONG = 2; // 0x2
   }
 
-  public abstract class Collator implements java.lang.Cloneable java.util.Comparator<java.lang.Object> android.icu.util.Freezable<android.icu.text.Collator> {
+  public abstract class Collator implements Cloneable java.util.Comparator<Object> android.icu.util.Freezable<android.icu.text.Collator> {
     ctor protected Collator();
-    method public Object clone() throws java.lang.CloneNotSupportedException;
+    method public Object clone() throws CloneNotSupportedException;
     method public android.icu.text.Collator cloneAsThawed();
     method public int compare(Object, Object);
     method public abstract int compare(String, String);
@@ -2378,7 +2377,7 @@ package android.icu.text {
     method public void setState(java.text.Format.Field, Object, int, int);
   }
 
-  public class CurrencyPluralInfo implements java.lang.Cloneable java.io.Serializable {
+  public class CurrencyPluralInfo implements Cloneable java.io.Serializable {
     ctor public CurrencyPluralInfo();
     ctor public CurrencyPluralInfo(android.icu.util.ULocale);
     ctor public CurrencyPluralInfo(java.util.Locale);
@@ -2596,7 +2595,7 @@ package android.icu.text {
     enum_constant public static final android.icu.text.DateFormat.HourCycle HOUR_CYCLE_24;
   }
 
-  public class DateFormatSymbols implements java.lang.Cloneable java.io.Serializable {
+  public class DateFormatSymbols implements Cloneable java.io.Serializable {
     ctor public DateFormatSymbols();
     ctor public DateFormatSymbols(android.icu.util.Calendar, android.icu.util.ULocale);
     ctor public DateFormatSymbols(android.icu.util.Calendar, java.util.Locale);
@@ -2675,7 +2674,7 @@ package android.icu.text {
   }
 
   public static final class DateIntervalFormat.FormattedDateInterval implements android.icu.text.FormattedValue {
-    method public <A extends java.lang.Appendable> A appendTo(A);
+    method public <A extends Appendable> A appendTo(A);
     method public char charAt(int);
     method public int length();
     method public boolean nextPosition(android.icu.text.ConstrainedFieldPosition);
@@ -2684,7 +2683,7 @@ package android.icu.text {
     method public String toString();
   }
 
-  public class DateIntervalInfo implements java.lang.Cloneable android.icu.util.Freezable<android.icu.text.DateIntervalInfo> java.io.Serializable {
+  public class DateIntervalInfo implements Cloneable android.icu.util.Freezable<android.icu.text.DateIntervalInfo> java.io.Serializable {
     ctor public DateIntervalInfo(android.icu.util.ULocale);
     ctor public DateIntervalInfo(java.util.Locale);
     method public Object clone();
@@ -2698,14 +2697,14 @@ package android.icu.text {
     method public void setIntervalPattern(String, int, String);
   }
 
-  public static final class DateIntervalInfo.PatternInfo implements java.lang.Cloneable java.io.Serializable {
+  public static final class DateIntervalInfo.PatternInfo implements Cloneable java.io.Serializable {
     ctor public DateIntervalInfo.PatternInfo(String, String, boolean);
     method public boolean firstDateInPtnIsLaterDate();
     method public String getFirstPart();
     method public String getSecondPart();
   }
 
-  public class DateTimePatternGenerator implements java.lang.Cloneable android.icu.util.Freezable<android.icu.text.DateTimePatternGenerator> {
+  public class DateTimePatternGenerator implements Cloneable android.icu.util.Freezable<android.icu.text.DateTimePatternGenerator> {
     ctor protected DateTimePatternGenerator();
     method public android.icu.text.DateTimePatternGenerator addPattern(String, boolean, android.icu.text.DateTimePatternGenerator.PatternInfo);
     method public Object clone();
@@ -2714,7 +2713,7 @@ package android.icu.text {
     method public String getAppendItemFormat(int);
     method public String getAppendItemName(int);
     method public String getBaseSkeleton(String);
-    method public java.util.Set<java.lang.String> getBaseSkeletons(java.util.Set<java.lang.String>);
+    method public java.util.Set<String> getBaseSkeletons(java.util.Set<String>);
     method public String getBestPattern(String);
     method public String getBestPattern(String, int);
     method public String getDateTimeFormat();
@@ -2727,7 +2726,7 @@ package android.icu.text {
     method public static android.icu.text.DateTimePatternGenerator getInstance(android.icu.util.ULocale);
     method public static android.icu.text.DateTimePatternGenerator getInstance(java.util.Locale);
     method public String getSkeleton(String);
-    method public java.util.Map<java.lang.String,java.lang.String> getSkeletons(java.util.Map<java.lang.String,java.lang.String>);
+    method public java.util.Map<String,String> getSkeletons(java.util.Map<String,String>);
     method public boolean isFrozen();
     method public String replaceFieldTypes(String, String);
     method public String replaceFieldTypes(String, String, int);
@@ -2857,7 +2856,7 @@ package android.icu.text {
     field public static final int PAD_BEFORE_SUFFIX = 2; // 0x2
   }
 
-  public class DecimalFormatSymbols implements java.lang.Cloneable java.io.Serializable {
+  public class DecimalFormatSymbols implements Cloneable java.io.Serializable {
     ctor public DecimalFormatSymbols();
     ctor public DecimalFormatSymbols(android.icu.util.ULocale);
     ctor public DecimalFormatSymbols(java.util.Locale);
@@ -3091,8 +3090,8 @@ package android.icu.text {
     method public int sourceIndexFromDestinationIndex(int);
   }
 
-  public interface FormattedValue extends java.lang.CharSequence {
-    method public <A extends java.lang.Appendable> A appendTo(A);
+  public interface FormattedValue extends CharSequence {
+    method public <A extends Appendable> A appendTo(A);
     method public boolean nextPosition(android.icu.text.ConstrainedFieldPosition);
     method public java.text.AttributedCharacterIterator toCharacterIterator();
   }
@@ -3138,9 +3137,9 @@ package android.icu.text {
   }
 
   public final class ListFormatter {
-    method public String format(java.lang.Object...);
+    method public String format(Object...);
     method public String format(java.util.Collection<?>);
-    method public android.icu.text.ListFormatter.FormattedList formatToValue(java.lang.Object...);
+    method public android.icu.text.ListFormatter.FormattedList formatToValue(Object...);
     method public android.icu.text.ListFormatter.FormattedList formatToValue(java.util.Collection<?>);
     method public static android.icu.text.ListFormatter getInstance();
     method public static android.icu.text.ListFormatter getInstance(android.icu.util.ULocale);
@@ -3151,7 +3150,7 @@ package android.icu.text {
   }
 
   public static final class ListFormatter.FormattedList implements android.icu.text.FormattedValue {
-    method public <A extends java.lang.Appendable> A appendTo(A);
+    method public <A extends Appendable> A appendTo(A);
     method public char charAt(int);
     method public int length();
     method public boolean nextPosition(android.icu.text.ConstrainedFieldPosition);
@@ -3181,7 +3180,7 @@ package android.icu.text {
     method public static android.icu.text.LocaleDisplayNames getInstance(java.util.Locale);
     method public static android.icu.text.LocaleDisplayNames getInstance(java.util.Locale, android.icu.text.DisplayContext...);
     method public abstract android.icu.util.ULocale getLocale();
-    method public java.util.List<android.icu.text.LocaleDisplayNames.UiListItem> getUiList(java.util.Set<android.icu.util.ULocale>, boolean, java.util.Comparator<java.lang.Object>);
+    method public java.util.List<android.icu.text.LocaleDisplayNames.UiListItem> getUiList(java.util.Set<android.icu.util.ULocale>, boolean, java.util.Comparator<Object>);
     method public abstract java.util.List<android.icu.text.LocaleDisplayNames.UiListItem> getUiListCompareWholeItems(java.util.Set<android.icu.util.ULocale>, java.util.Comparator<android.icu.text.LocaleDisplayNames.UiListItem>);
     method public abstract String keyDisplayName(String);
     method public abstract String keyValueDisplayName(String, String);
@@ -3202,7 +3201,7 @@ package android.icu.text {
 
   public static class LocaleDisplayNames.UiListItem {
     ctor public LocaleDisplayNames.UiListItem(android.icu.util.ULocale, android.icu.util.ULocale, String, String);
-    method public static java.util.Comparator<android.icu.text.LocaleDisplayNames.UiListItem> getComparator(java.util.Comparator<java.lang.Object>, boolean);
+    method public static java.util.Comparator<android.icu.text.LocaleDisplayNames.UiListItem> getComparator(java.util.Comparator<Object>, boolean);
     field public final android.icu.util.ULocale minimized;
     field public final android.icu.util.ULocale modified;
     field public final String nameInDisplayLocale;
@@ -3246,11 +3245,11 @@ package android.icu.text {
     method public static String autoQuoteApostrophe(String);
     method public final StringBuffer format(Object, StringBuffer, java.text.FieldPosition);
     method public final StringBuffer format(Object[], StringBuffer, java.text.FieldPosition);
-    method public static String format(String, java.lang.Object...);
-    method public static String format(String, java.util.Map<java.lang.String,java.lang.Object>);
-    method public final StringBuffer format(java.util.Map<java.lang.String,java.lang.Object>, StringBuffer, java.text.FieldPosition);
+    method public static String format(String, Object...);
+    method public static String format(String, java.util.Map<String,Object>);
+    method public final StringBuffer format(java.util.Map<String,Object>, StringBuffer, java.text.FieldPosition);
     method public android.icu.text.MessagePattern.ApostropheMode getApostropheMode();
-    method public java.util.Set<java.lang.String> getArgumentNames();
+    method public java.util.Set<String> getArgumentNames();
     method public java.text.Format getFormatByArgumentName(String);
     method public java.text.Format[] getFormats();
     method public java.text.Format[] getFormatsByArgumentIndex();
@@ -3259,14 +3258,14 @@ package android.icu.text {
     method public Object[] parse(String) throws java.text.ParseException;
     method public Object[] parse(String, java.text.ParsePosition);
     method public Object parseObject(String, java.text.ParsePosition);
-    method public java.util.Map<java.lang.String,java.lang.Object> parseToMap(String) throws java.text.ParseException;
-    method public java.util.Map<java.lang.String,java.lang.Object> parseToMap(String, java.text.ParsePosition);
+    method public java.util.Map<String,Object> parseToMap(String) throws java.text.ParseException;
+    method public java.util.Map<String,Object> parseToMap(String, java.text.ParsePosition);
     method public void setFormat(int, java.text.Format);
     method public void setFormatByArgumentIndex(int, java.text.Format);
     method public void setFormatByArgumentName(String, java.text.Format);
     method public void setFormats(java.text.Format[]);
     method public void setFormatsByArgumentIndex(java.text.Format[]);
-    method public void setFormatsByArgumentName(java.util.Map<java.lang.String,java.text.Format>);
+    method public void setFormatsByArgumentName(java.util.Map<String,java.text.Format>);
     method public void setLocale(android.icu.util.ULocale);
     method public void setLocale(java.util.Locale);
     method public String toPattern();
@@ -3278,7 +3277,7 @@ package android.icu.text {
     field public static final android.icu.text.MessageFormat.Field ARGUMENT;
   }
 
-  public final class MessagePattern implements java.lang.Cloneable android.icu.util.Freezable<android.icu.text.MessagePattern> {
+  public final class MessagePattern implements Cloneable android.icu.util.Freezable<android.icu.text.MessagePattern> {
     ctor public MessagePattern();
     ctor public MessagePattern(android.icu.text.MessagePattern.ApostropheMode);
     ctor public MessagePattern(String);
@@ -3354,7 +3353,7 @@ package android.icu.text {
     enum_constant public static final android.icu.text.MessagePattern.Part.Type SKIP_SYNTAX;
   }
 
-  public final class Normalizer implements java.lang.Cloneable {
+  public final class Normalizer implements Cloneable {
     method @Deprecated public Object clone();
     method public static int compare(char[], char[], int);
     method public static int compare(char[], int, int, char[], int, int, int);
@@ -3547,9 +3546,9 @@ package android.icu.text {
     method public static android.icu.text.PluralRules forLocale(android.icu.util.ULocale, android.icu.text.PluralRules.PluralType);
     method public static android.icu.text.PluralRules forLocale(java.util.Locale);
     method public static android.icu.text.PluralRules forLocale(java.util.Locale, android.icu.text.PluralRules.PluralType);
-    method public java.util.Collection<java.lang.Double> getAllKeywordValues(String);
-    method public java.util.Set<java.lang.String> getKeywords();
-    method public java.util.Collection<java.lang.Double> getSamples(String);
+    method public java.util.Collection<Double> getAllKeywordValues(String);
+    method public java.util.Set<String> getKeywords();
+    method public java.util.Collection<Double> getSamples(String);
     method public double getUniqueKeywordValue(String);
     method public static android.icu.text.PluralRules parseDescription(String) throws java.text.ParseException;
     method public String select(android.icu.number.FormattedNumber);
@@ -3619,7 +3618,7 @@ package android.icu.text {
   }
 
   public static class RelativeDateTimeFormatter.FormattedRelativeDateTime implements android.icu.text.FormattedValue {
-    method public <A extends java.lang.Appendable> A appendTo(A);
+    method public <A extends Appendable> A appendTo(A);
     method public char charAt(int);
     method public int length();
     method public boolean nextPosition(android.icu.text.ConstrainedFieldPosition);
@@ -3682,14 +3681,14 @@ package android.icu.text {
   }
 
   public final class RuleBasedCollator extends android.icu.text.Collator {
-    ctor public RuleBasedCollator(String) throws java.lang.Exception;
+    ctor public RuleBasedCollator(String) throws Exception;
     method public android.icu.text.RuleBasedCollator cloneAsThawed();
     method public int compare(String, String);
     method public android.icu.text.CollationElementIterator getCollationElementIterator(android.icu.text.UCharacterIterator);
     method public android.icu.text.CollationElementIterator getCollationElementIterator(String);
     method public android.icu.text.CollationElementIterator getCollationElementIterator(java.text.CharacterIterator);
     method public android.icu.text.CollationKey getCollationKey(String);
-    method public void getContractionsAndExpansions(android.icu.text.UnicodeSet, android.icu.text.UnicodeSet, boolean) throws java.lang.Exception;
+    method public void getContractionsAndExpansions(android.icu.text.UnicodeSet, android.icu.text.UnicodeSet, boolean) throws Exception;
     method public boolean getNumericCollation();
     method public String getRules();
     method public String getRules(boolean);
@@ -3794,7 +3793,7 @@ package android.icu.text {
     method public void setDateFormatSymbols(android.icu.text.DateFormatSymbols);
     method public void setNumberFormat(String, android.icu.text.NumberFormat);
     method public void setTimeZoneFormat(android.icu.text.TimeZoneFormat);
-    method protected String subFormat(char, int, int, java.text.FieldPosition, android.icu.text.DateFormatSymbols, android.icu.util.Calendar) throws java.lang.IllegalArgumentException;
+    method protected String subFormat(char, int, int, java.text.FieldPosition, android.icu.text.DateFormatSymbols, android.icu.util.Calendar) throws IllegalArgumentException;
     method protected int subParse(String, int, char, int, boolean, boolean, boolean[], android.icu.util.Calendar);
     method public String toLocalizedPattern();
     method public String toPattern();
@@ -3924,8 +3923,8 @@ package android.icu.text {
   }
 
   public abstract class TimeZoneNames implements java.io.Serializable {
-    method public abstract java.util.Set<java.lang.String> getAvailableMetaZoneIDs();
-    method public abstract java.util.Set<java.lang.String> getAvailableMetaZoneIDs(String);
+    method public abstract java.util.Set<String> getAvailableMetaZoneIDs();
+    method public abstract java.util.Set<String> getAvailableMetaZoneIDs(String);
     method public final String getDisplayName(String, android.icu.text.TimeZoneNames.NameType, long);
     method public String getExemplarLocationName(String);
     method public static android.icu.text.TimeZoneNames getInstance(android.icu.util.ULocale);
@@ -3951,10 +3950,10 @@ package android.icu.text {
     method public static final android.icu.text.Transliterator createFromRules(String, String, int);
     method public void filteredTransliterate(android.icu.text.Replaceable, android.icu.text.Transliterator.Position, boolean);
     method public final void finishTransliteration(android.icu.text.Replaceable, android.icu.text.Transliterator.Position);
-    method public static final java.util.Enumeration<java.lang.String> getAvailableIDs();
-    method public static final java.util.Enumeration<java.lang.String> getAvailableSources();
-    method public static final java.util.Enumeration<java.lang.String> getAvailableTargets(String);
-    method public static final java.util.Enumeration<java.lang.String> getAvailableVariants(String, String);
+    method public static final java.util.Enumeration<String> getAvailableIDs();
+    method public static final java.util.Enumeration<String> getAvailableSources();
+    method public static final java.util.Enumeration<String> getAvailableTargets(String);
+    method public static final java.util.Enumeration<String> getAvailableVariants(String, String);
     method public static final String getDisplayName(String);
     method public static String getDisplayName(String, android.icu.util.ULocale);
     method public static String getDisplayName(String, java.util.Locale);
@@ -3992,9 +3991,9 @@ package android.icu.text {
     field public int start;
   }
 
-  public abstract class UCharacterIterator implements java.lang.Cloneable {
+  public abstract class UCharacterIterator implements Cloneable {
     ctor protected UCharacterIterator();
-    method public Object clone() throws java.lang.CloneNotSupportedException;
+    method public Object clone() throws CloneNotSupportedException;
     method public abstract int current();
     method public int currentCodePoint();
     method public java.text.CharacterIterator getCharacterIterator();
@@ -4041,7 +4040,7 @@ package android.icu.text {
     field public static final int U_PARTIAL_MATCH = 1; // 0x1
   }
 
-  public class UnicodeSet extends android.icu.text.UnicodeFilter implements java.lang.Comparable<android.icu.text.UnicodeSet> android.icu.util.Freezable<android.icu.text.UnicodeSet> java.lang.Iterable<java.lang.String> {
+  public class UnicodeSet extends android.icu.text.UnicodeFilter implements Comparable<android.icu.text.UnicodeSet> android.icu.util.Freezable<android.icu.text.UnicodeSet> Iterable<String> {
     ctor public UnicodeSet();
     ctor public UnicodeSet(android.icu.text.UnicodeSet);
     ctor public UnicodeSet(int, int);
@@ -4061,8 +4060,8 @@ package android.icu.text {
     method public android.icu.text.UnicodeSet addAll(int, int);
     method public final android.icu.text.UnicodeSet addAll(CharSequence);
     method public android.icu.text.UnicodeSet addAll(Iterable<?>);
-    method public <T extends java.lang.CharSequence> android.icu.text.UnicodeSet addAll(T...);
-    method public <T extends java.util.Collection<java.lang.String>> T addAllTo(T);
+    method public <T extends CharSequence> android.icu.text.UnicodeSet addAll(T...);
+    method public <T extends java.util.Collection<String>> T addAllTo(T);
     method public void addMatchSetTo(android.icu.text.UnicodeSet);
     method public android.icu.text.UnicodeSet applyIntPropertyValue(int, int);
     method public final android.icu.text.UnicodeSet applyPattern(String);
@@ -4076,11 +4075,11 @@ package android.icu.text {
     method public android.icu.text.UnicodeSet cloneAsThawed();
     method public android.icu.text.UnicodeSet closeOver(int);
     method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.IntStream codePointStream();
-    method @FlaggedApi("com.android.icu.icu_26q2_api") public Iterable<java.lang.Integer> codePoints();
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public Iterable<Integer> codePoints();
     method public android.icu.text.UnicodeSet compact();
     method public int compareTo(android.icu.text.UnicodeSet);
     method public int compareTo(android.icu.text.UnicodeSet, android.icu.text.UnicodeSet.ComparisonStyle);
-    method public int compareTo(Iterable<java.lang.String>);
+    method public int compareTo(Iterable<String>);
     method public android.icu.text.UnicodeSet complement();
     method public final android.icu.text.UnicodeSet complement(int);
     method public android.icu.text.UnicodeSet complement(int, int);
@@ -4091,16 +4090,16 @@ package android.icu.text {
     method public boolean contains(int, int);
     method public final boolean contains(CharSequence);
     method public boolean containsAll(android.icu.text.UnicodeSet);
-    method public <T extends java.lang.CharSequence> boolean containsAll(Iterable<T>);
+    method public <T extends CharSequence> boolean containsAll(Iterable<T>);
     method public boolean containsAll(String);
     method public boolean containsNone(android.icu.text.UnicodeSet);
     method public boolean containsNone(int, int);
     method public boolean containsNone(CharSequence);
-    method public <T extends java.lang.CharSequence> boolean containsNone(Iterable<T>);
+    method public <T extends CharSequence> boolean containsNone(Iterable<T>);
     method public final boolean containsSome(android.icu.text.UnicodeSet);
     method public final boolean containsSome(int, int);
     method public final boolean containsSome(CharSequence);
-    method public final <T extends java.lang.CharSequence> boolean containsSome(Iterable<T>);
+    method public final <T extends CharSequence> boolean containsSome(Iterable<T>);
     method public android.icu.text.UnicodeSet freeze();
     method public static android.icu.text.UnicodeSet from(CharSequence);
     method public static android.icu.text.UnicodeSet fromAll(CharSequence);
@@ -4111,7 +4110,7 @@ package android.icu.text {
     method public int indexOf(int);
     method public boolean isEmpty();
     method public boolean isFrozen();
-    method public java.util.Iterator<java.lang.String> iterator();
+    method public java.util.Iterator<String> iterator();
     method public boolean matchesIndexValue(int);
     method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.Stream<android.icu.text.UnicodeSet.EntryRange> rangeStream();
     method public Iterable<android.icu.text.UnicodeSet.EntryRange> ranges();
@@ -4120,14 +4119,14 @@ package android.icu.text {
     method public final android.icu.text.UnicodeSet remove(CharSequence);
     method public android.icu.text.UnicodeSet removeAll(android.icu.text.UnicodeSet);
     method public final android.icu.text.UnicodeSet removeAll(CharSequence);
-    method public <T extends java.lang.CharSequence> android.icu.text.UnicodeSet removeAll(Iterable<T>);
+    method public <T extends CharSequence> android.icu.text.UnicodeSet removeAll(Iterable<T>);
     method public final android.icu.text.UnicodeSet removeAllStrings();
     method public final android.icu.text.UnicodeSet retain(int);
     method public android.icu.text.UnicodeSet retain(int, int);
     method public final android.icu.text.UnicodeSet retain(CharSequence);
     method public android.icu.text.UnicodeSet retainAll(android.icu.text.UnicodeSet);
     method public final android.icu.text.UnicodeSet retainAll(CharSequence);
-    method public <T extends java.lang.CharSequence> android.icu.text.UnicodeSet retainAll(Iterable<T>);
+    method public <T extends CharSequence> android.icu.text.UnicodeSet retainAll(Iterable<T>);
     method public android.icu.text.UnicodeSet set(android.icu.text.UnicodeSet);
     method public android.icu.text.UnicodeSet set(int, int);
     method public int size();
@@ -4135,9 +4134,9 @@ package android.icu.text {
     method public int span(CharSequence, int, android.icu.text.UnicodeSet.SpanCondition);
     method public int spanBack(CharSequence, android.icu.text.UnicodeSet.SpanCondition);
     method public int spanBack(CharSequence, int, android.icu.text.UnicodeSet.SpanCondition);
-    method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.Stream<java.lang.String> stream();
-    method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.Stream<java.lang.String> stringStream();
-    method public java.util.Collection<java.lang.String> strings();
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.Stream<String> stream();
+    method @FlaggedApi("com.android.icu.icu_26q2_api") public java.util.stream.Stream<String> stringStream();
+    method public java.util.Collection<String> strings();
     method public String toPattern(boolean);
     field public static final int ADD_CASE_MAPPINGS = 4; // 0x4
     field public static final android.icu.text.UnicodeSet ALL_CODE_POINTS;
@@ -4227,7 +4226,7 @@ package android.icu.util {
     field public static final int BE = 0; // 0x0
   }
 
-  public abstract class Calendar implements java.lang.Cloneable java.lang.Comparable<android.icu.util.Calendar> java.io.Serializable {
+  public abstract class Calendar implements Cloneable Comparable<android.icu.util.Calendar> java.io.Serializable {
     ctor protected Calendar();
     ctor protected Calendar(android.icu.util.TimeZone, android.icu.util.ULocale);
     ctor protected Calendar(android.icu.util.TimeZone, java.util.Locale);
@@ -4559,7 +4558,7 @@ package android.icu.util {
     field public static final int YEKATIT = 5; // 0x5
   }
 
-  public interface Freezable<T> extends java.lang.Cloneable {
+  public interface Freezable<T> extends Cloneable {
     method public T cloneAsThawed();
     method public T freeze();
     method public boolean isFrozen();
@@ -4616,14 +4615,14 @@ package android.icu.util {
     field public static final int TISHRI = 0; // 0x0
   }
 
-  public class ICUUncheckedIOException extends java.lang.RuntimeException {
+  public class ICUUncheckedIOException extends RuntimeException {
     ctor public ICUUncheckedIOException();
     ctor public ICUUncheckedIOException(String);
     ctor public ICUUncheckedIOException(String, Throwable);
     ctor public ICUUncheckedIOException(Throwable);
   }
 
-  public class IllformedLocaleException extends java.lang.RuntimeException {
+  public class IllformedLocaleException extends RuntimeException {
     ctor public IllformedLocaleException();
     ctor public IllformedLocaleException(String);
     ctor public IllformedLocaleException(String, int);
@@ -4748,7 +4747,7 @@ package android.icu.util {
     method public static android.icu.util.MeasureUnit forIdentifier(String);
     method public static java.util.Set<android.icu.util.MeasureUnit> getAvailable();
     method public static java.util.Set<android.icu.util.MeasureUnit> getAvailable(String);
-    method public static java.util.Set<java.lang.String> getAvailableTypes();
+    method public static java.util.Set<String> getAvailableTypes();
     method public android.icu.util.MeasureUnit.Complexity getComplexity();
     method public int getDimensionality();
     method public String getIdentifier();
@@ -5001,14 +5000,14 @@ package android.icu.util {
     method public static android.icu.util.TimeUnit[] values();
   }
 
-  public abstract class TimeZone implements java.lang.Cloneable android.icu.util.Freezable<android.icu.util.TimeZone> java.io.Serializable {
+  public abstract class TimeZone implements Cloneable android.icu.util.Freezable<android.icu.util.TimeZone> java.io.Serializable {
     ctor public TimeZone();
     method public Object clone();
     method public android.icu.util.TimeZone cloneAsThawed();
     method public static int countEquivalentIDs(String);
     method public android.icu.util.TimeZone freeze();
     method public static String[] getAvailableIDs();
-    method public static java.util.Set<java.lang.String> getAvailableIDs(android.icu.util.TimeZone.SystemTimeZoneType, String, Integer);
+    method public static java.util.Set<String> getAvailableIDs(android.icu.util.TimeZone.SystemTimeZoneType, String, Integer);
     method public static String[] getAvailableIDs(int);
     method public static String[] getAvailableIDs(String);
     method public static String getCanonicalID(String);
@@ -5063,7 +5062,7 @@ package android.icu.util {
     enum_constant public static final android.icu.util.TimeZone.SystemTimeZoneType CANONICAL_LOCATION;
   }
 
-  public final class ULocale implements java.lang.Comparable<android.icu.util.ULocale> java.io.Serializable {
+  public final class ULocale implements Comparable<android.icu.util.ULocale> java.io.Serializable {
     ctor public ULocale(String);
     ctor public ULocale(String, String);
     ctor public ULocale(String, String, String);
@@ -5124,7 +5123,7 @@ package android.icu.util {
     method public static String getDisplayVariant(String, android.icu.util.ULocale);
     method public static String getDisplayVariant(String, String);
     method public String getExtension(char);
-    method public java.util.Set<java.lang.Character> getExtensionKeys();
+    method public java.util.Set<Character> getExtensionKeys();
     method public android.icu.util.ULocale getFallback();
     method public static String getFallback(String);
     method public String getISO3Country();
@@ -5135,8 +5134,8 @@ package android.icu.util {
     method public static String[] getISOLanguages();
     method public String getKeywordValue(String);
     method public static String getKeywordValue(String, String);
-    method public java.util.Iterator<java.lang.String> getKeywords();
-    method public static java.util.Iterator<java.lang.String> getKeywords(String);
+    method public java.util.Iterator<String> getKeywords();
+    method public static java.util.Iterator<String> getKeywords(String);
     method public String getLanguage();
     method public static String getLanguage(String);
     method public String getLineOrientation();
@@ -5144,8 +5143,8 @@ package android.icu.util {
     method public static String getName(String);
     method public String getScript();
     method public static String getScript(String);
-    method public java.util.Set<java.lang.String> getUnicodeLocaleAttributes();
-    method public java.util.Set<java.lang.String> getUnicodeLocaleKeys();
+    method public java.util.Set<String> getUnicodeLocaleAttributes();
+    method public java.util.Set<String> getUnicodeLocaleKeys();
     method public String getUnicodeLocaleType(String);
     method public String getVariant();
     method public static String getVariant(String);
@@ -5254,7 +5253,7 @@ package android.icu.util {
     field public Object value;
   }
 
-  public final class VersionInfo implements java.lang.Comparable<android.icu.util.VersionInfo> {
+  public final class VersionInfo implements Comparable<android.icu.util.VersionInfo> {
     method public int compareTo(android.icu.util.VersionInfo);
     method public static android.icu.util.VersionInfo getInstance(int);
     method public static android.icu.util.VersionInfo getInstance(int, int);
