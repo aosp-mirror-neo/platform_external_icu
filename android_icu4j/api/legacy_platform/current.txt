@@ -1,11 +1,12 @@
-// Signature format: 2.0
+// Signature format: 6.0
+// - style=java
 package android.icu.text {
 
-  public class DateFormatSymbols implements java.lang.Cloneable java.io.Serializable {
+  public class DateFormatSymbols implements Cloneable java.io.Serializable {
     method public String[] getAmpmNarrowStrings();
   }
 
-  public class DateTimePatternGenerator implements java.lang.Cloneable android.icu.util.Freezable<android.icu.text.DateTimePatternGenerator> {
+  public class DateTimePatternGenerator implements Cloneable android.icu.util.Freezable<android.icu.text.DateTimePatternGenerator> {
     method public String getBestPattern(String, int, boolean);
   }
 
@@ -28,8 +29,8 @@ package com.android.i18n.timezone {
     method public java.util.List<com.android.i18n.timezone.CountryTimeZones.TimeZoneMapping> getTimeZoneMappings();
     method public boolean hasUtcZone(long);
     method public boolean isDefaultTimeZoneBoosted();
-    method public com.android.i18n.timezone.CountryTimeZones.OffsetResult lookupByOffsetWithBias(long, android.icu.util.TimeZone, int, boolean);
     method public com.android.i18n.timezone.CountryTimeZones.OffsetResult lookupByOffsetWithBias(long, android.icu.util.TimeZone, int);
+    method public com.android.i18n.timezone.CountryTimeZones.OffsetResult lookupByOffsetWithBias(long, android.icu.util.TimeZone, int, boolean);
     method public boolean matchesCountryCode(String);
   }
 
@@ -39,8 +40,8 @@ package com.android.i18n.timezone {
   }
 
   public static final class CountryTimeZones.TimeZoneMapping {
-    method public static com.android.i18n.timezone.CountryTimeZones.TimeZoneMapping createForTests(String, boolean, Long, java.util.List<java.lang.String>);
-    method public java.util.List<java.lang.String> getAlternativeIds();
+    method public static com.android.i18n.timezone.CountryTimeZones.TimeZoneMapping createForTests(String, boolean, Long, java.util.List<String>);
+    method public java.util.List<String> getAlternativeIds();
     method public android.icu.util.TimeZone getTimeZone();
     method public String getTimeZoneId();
     method public boolean isShownInPickerAt(java.time.Instant);
@@ -48,15 +49,15 @@ package com.android.i18n.timezone {
 
   public final class CountryZonesFinder {
     method @Nullable public String findCanonicalTimeZoneId(String);
-    method public java.util.List<java.lang.String> lookupAllCountryIsoCodes();
+    method public java.util.List<String> lookupAllCountryIsoCodes();
     method public com.android.i18n.timezone.CountryTimeZones lookupCountryTimeZones(String);
     method public java.util.List<com.android.i18n.timezone.CountryTimeZones> lookupCountryTimeZonesForZoneId(String);
   }
 
   public class DebugInfo {
     ctor public DebugInfo();
-    method public com.android.i18n.timezone.DebugInfo addStringEntry(String, String);
     method public com.android.i18n.timezone.DebugInfo addStringEntry(String, int);
+    method public com.android.i18n.timezone.DebugInfo addStringEntry(String, String);
     method public java.util.List<com.android.i18n.timezone.DebugInfo.DebugEntry> getDebugEntries();
   }
 
@@ -71,9 +72,9 @@ package com.android.i18n.timezone {
   }
 
   public final class MobileCountries {
-    method public static com.android.i18n.timezone.MobileCountries create(String, java.util.Set<java.lang.String>, String);
-    method public static com.android.i18n.timezone.MobileCountries create(String, @Nullable String, java.util.Set<java.lang.String>, String);
-    method @NonNull public java.util.Set<java.lang.String> getCountryIsoCodes();
+    method public static com.android.i18n.timezone.MobileCountries create(String, @Nullable String, java.util.Set<String>, String);
+    method public static com.android.i18n.timezone.MobileCountries create(String, java.util.Set<String>, String);
+    method @NonNull public java.util.Set<String> getCountryIsoCodes();
     method @NonNull public String getDefaultCountryIsoCode();
     method @NonNull public String getMcc();
     method @Nullable public String getMnc();
@@ -119,7 +120,7 @@ package com.android.i18n.timezone {
     field public static final String DEFAULT_FILE_NAME = "tz_version";
   }
 
-  public static class TzDataSetVersion.TzDataSetException extends java.lang.Exception {
+  public static class TzDataSetVersion.TzDataSetException extends Exception {
     ctor public TzDataSetVersion.TzDataSetException(String);
     ctor public TzDataSetVersion.TzDataSetException(String, Throwable);
   }
@@ -167,7 +168,7 @@ package com.android.i18n.timezone {
 package com.android.icu.text {
 
   public class DateSorterBridge {
-    method public static com.android.icu.text.DateSorterBridge createInstance(java.util.Locale) throws java.lang.AssertionError;
+    method public static com.android.icu.text.DateSorterBridge createInstance(java.util.Locale) throws AssertionError;
     method public String getToday();
     method public String getYesterday();
   }
