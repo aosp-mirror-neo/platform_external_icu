@@ -76,7 +76,7 @@ en_XA{
                 H{"[HH 'one']"}
                 Hm{"[HH:mm 'one']"}
                 Hms{"[HH:mm:ss 'one' 'two']"}
-                Hv{"[HH'ĥ' v 'one' 'two']"}
+                Hv{"[HH v 'one']"}
                 M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
@@ -380,7 +380,7 @@ en_XA{
                 H{"[HH 'one']"}
                 Hm{"[HH:mm 'one']"}
                 Hms{"[HH:mm:ss 'one' 'two']"}
-                Hv{"[HH'ĥ' v 'one' 'two']"}
+                Hv{"[HH v 'one']"}
                 M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}
@@ -642,7 +642,7 @@ en_XA{
                 Hms{"[HH:mm:ss 'one' 'two']"}
                 Hmsv{"[HH:mm:ss v 'one' 'two']"}
                 Hmv{"[HH:mm v 'one' 'two']"}
-                Hv{"[HH'ĥ' v 'one' 'two']"}
+                Hv{"[HH v 'one']"}
                 M{"[L 'one']"}
                 MEd{"[E, M/d 'one']"}
                 MMM{"[LLL 'one']"}

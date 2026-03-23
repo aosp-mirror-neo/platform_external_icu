@@ -1,5 +1,5 @@
---- libicu/ndk_headers/unicode/ubidi.h	2026-01-23 12:20:26.673519135 +0000
-+++ libicu/ndk_headers/unicode/ubidi.h	2026-01-23 12:20:26.788406618 +0000
+--- libicu/ndk_headers/unicode/ubidi.h	2026-03-19 14:50:34.737997052 +0000
++++ libicu/ndk_headers/unicode/ubidi.h	2026-03-19 14:50:34.817966587 +0000
 @@ -291,6 +291,7 @@
   */
  

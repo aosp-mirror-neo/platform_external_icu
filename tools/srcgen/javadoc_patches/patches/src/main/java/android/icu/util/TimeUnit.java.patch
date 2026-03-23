@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/util/TimeUnit.java	2026-01-23 12:08:06.353063184 +0000
-+++ android_icu4j/src/main/java/android/icu/util/TimeUnit.java	2026-01-23 12:08:34.628117070 +0000
+--- android_icu4j/src/main/java/android/icu/util/TimeUnit.java	2026-03-19 14:49:05.323311033 +0000
++++ android_icu4j/src/main/java/android/icu/util/TimeUnit.java	2026-03-19 14:49:22.840174671 +0000
 @@ -15,7 +15,6 @@
  
  /**
