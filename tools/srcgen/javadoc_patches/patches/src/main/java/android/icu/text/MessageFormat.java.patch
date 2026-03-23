@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/text/MessageFormat.java	2026-01-23 12:08:01.262683107 +0000
-+++ android_icu4j/src/main/java/android/icu/text/MessageFormat.java	2026-01-23 12:08:34.364094556 +0000
+--- android_icu4j/src/main/java/android/icu/text/MessageFormat.java	2026-03-19 14:49:02.014111838 +0000
++++ android_icu4j/src/main/java/android/icu/text/MessageFormat.java	2026-03-19 14:49:22.625540775 +0000
 @@ -128,7 +128,7 @@
   * argNumber = '0' | ('1'..'9' ('0'..'9')*)
   *

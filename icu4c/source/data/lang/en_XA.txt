@@ -544,7 +544,7 @@ en_XA{
         saq{"[Šåɱƀûŕû one two]"}
         sas{"[Šåšåķ one]"}
         sat{"[Šåñţåļî one two]"}
-        saz{"[Šåûŕåšĥţŕå one two]"}
+        saz{"[Šöûŕåšĥţŕå one two]"}
         sba{"[Ñĝåɱƀåý one two]"}
         sbp{"[Šåñĝû one]"}
         sc{"[Šåŕðîñîåñ one two]"}
@@ -747,6 +747,7 @@ en_XA{
         oka{"[Çöļṽîļļé Šåļîšĥ one two three]"}
         pi{"[Þāļî one]"}
         ps{"[Þûšĥţö one]"}
+        saz{"[Šåûŕåšĥţŕå one two]"}
         ug{"[Ûîĝĥûŕ one]"}
     }
     Scripts{
@@ -904,7 +905,7 @@ en_XA{
         Samr{"[Šåɱåŕîţåñ one two]"}
         Sara{"[Šåŕåţî one]"}
         Sarb{"[Öļð Šöûţĥ Åŕåƀîåñ one two three]"}
-        Saur{"[Šåûŕåšĥţŕå one two]"}
+        Saur{"[Šöûŕåšĥţŕå one two]"}
         Sgnw{"[ŠîĝñŴŕîţîñĝ one two]"}
         Shaw{"[Šĥåṽîåñ one two]"}
         Shrd{"[Šĥåŕåðå one two]"}
@@ -975,6 +976,7 @@ en_XA{
     }
     Scripts%variant{
         Arab{"[Þéŕšö‐Åŕåƀîç one two]"}
+        Saur{"[Šåûŕåšĥţŕå one two]"}
     }
     Types{
         calendar{
@@ -1392,7 +1394,7 @@ en_XA{
             rohg{"[Ĥåñîƒî Ŕöĥîñĝýå ðîĝîţš one two three]"}
             roman{"[Ŕöɱåñ Ñûɱéŕåļš one two]"}
             romanlow{"[Ŕöɱåñ Ļöŵéŕçåšé Ñûɱéŕåļš one two three]"}
-            saur{"[Šåûŕåšĥţŕå Ðîĝîţš one two three]"}
+            saur{"[Šöûŕåšĥţŕå Ðîĝîţš one two three]"}
             segment{"[Šéĝɱéñţéð Ðîĝîţš one two three]"}
             shrd{"[Šĥåŕåðå Ðîĝîţš one two]"}
             sind{"[Ķĥûðåŵåðî Ðîĝîţš one two three]"}
@@ -1492,6 +1494,9 @@ en_XA{
     Types%variant{
         calendar{
             iso8601{"[ÎŠÖ ⑧⑥⓪① Ŵééķš one two]"}
+        }
+        numbers{
+            saur{"[Šåûŕåšĥţŕå Ðîĝîţš one two three]"}
         }
     }
     Variants{

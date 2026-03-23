@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/util/IslamicCalendar.java	2026-01-23 12:08:07.230558227 +0000
-+++ android_icu4j/src/main/java/android/icu/util/IslamicCalendar.java	2026-01-23 12:08:34.585686530 +0000
+--- android_icu4j/src/main/java/android/icu/util/IslamicCalendar.java	2026-03-19 14:49:05.906598408 +0000
++++ android_icu4j/src/main/java/android/icu/util/IslamicCalendar.java	2026-03-19 14:49:22.804319312 +0000
 @@ -68,12 +68,7 @@
   * Like the Islamic religious calendar, <em>Umm al-Qura</em> is also based
   * on the sighting method of the crescent moon but is standardized by Saudi Arabia.
