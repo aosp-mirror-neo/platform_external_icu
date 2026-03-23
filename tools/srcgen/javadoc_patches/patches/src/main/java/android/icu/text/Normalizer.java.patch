@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/text/Normalizer.java	2026-01-23 12:08:02.523901000 +0000
-+++ android_icu4j/src/main/java/android/icu/text/Normalizer.java	2026-01-23 12:08:34.410597722 +0000
+--- android_icu4j/src/main/java/android/icu/text/Normalizer.java	2026-03-19 14:49:02.781423701 +0000
++++ android_icu4j/src/main/java/android/icu/text/Normalizer.java	2026-03-19 14:49:22.664728678 +0000
 @@ -1178,9 +1178,6 @@
       *
       *
