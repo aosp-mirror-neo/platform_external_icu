@@ -1,5 +1,5 @@
---- android_icu4j/src/main/java/android/icu/util/Calendar.java	2026-01-23 12:08:06.202669979 +0000
-+++ android_icu4j/src/main/java/android/icu/util/Calendar.java	2026-01-23 12:08:34.540109565 +0000
+--- android_icu4j/src/main/java/android/icu/util/Calendar.java	2026-03-19 14:49:05.216937144 +0000
++++ android_icu4j/src/main/java/android/icu/util/Calendar.java	2026-03-19 14:49:22.767262194 +0000
 @@ -4652,8 +4652,6 @@
       * @param date the date and time
       * @return true if the given date and time is part of the

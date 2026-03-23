@@ -544,7 +544,7 @@ ar_XB{
         saq{"؜‮Samburu‬؜"}
         sas{"؜‮Sasak‬؜"}
         sat{"؜‮Santali‬؜"}
-        saz{"؜‮Saurashtra‬؜"}
+        saz{"؜‮Sourashtra‬؜"}
         sba{"؜‮Ngambay‬؜"}
         sbp{"؜‮Sangu‬؜"}
         sc{"؜‮Sardinian‬؜"}
@@ -747,6 +747,7 @@ ar_XB{
         oka{"؜‮Colville‬؜ ؜‮Salish‬؜"}
         pi{"؜‮Pāli‬؜"}
         ps{"؜‮Pushto‬؜"}
+        saz{"؜‮Saurashtra‬؜"}
         ug{"؜‮Uighur‬؜"}
     }
     Scripts{
@@ -904,7 +905,7 @@ ar_XB{
         Samr{"؜‮Samaritan‬؜"}
         Sara{"؜‮Sarati‬؜"}
         Sarb{"؜‮Old‬؜ ؜‮South‬؜ ؜‮Arabian‬؜"}
-        Saur{"؜‮Saurashtra‬؜"}
+        Saur{"؜‮Sourashtra‬؜"}
         Sgnw{"؜‮SignWriting‬؜"}
         Shaw{"؜‮Shavian‬؜"}
         Shrd{"؜‮Sharada‬؜"}
@@ -975,6 +976,7 @@ ar_XB{
     }
     Scripts%variant{
         Arab{"؜‮Perso‬؜-؜‮Arabic‬؜"}
+        Saur{"؜‮Saurashtra‬؜"}
     }
     Types{
         calendar{
@@ -1380,7 +1382,7 @@ ar_XB{
             rohg{"؜‮Hanifi‬؜ ؜‮Rohingya‬؜ ؜‮digits‬؜"}
             roman{"؜‮Roman‬؜ ؜‮Numerals‬؜"}
             romanlow{"؜‮Roman‬؜ ؜‮Lowercase‬؜ ؜‮Numerals‬؜"}
-            saur{"؜‮Saurashtra‬؜ ؜‮Digits‬؜"}
+            saur{"؜‮Sourashtra‬؜ ؜‮Digits‬؜"}
             segment{"؜‮Segmented‬؜ ؜‮Digits‬؜"}
             shrd{"؜‮Sharada‬؜ ؜‮Digits‬؜"}
             sind{"؜‮Khudawadi‬؜ ؜‮Digits‬؜"}
@@ -1477,6 +1479,9 @@ ar_XB{
     Types%variant{
         calendar{
             iso8601{"؜‮ISO‬؜ 8601 ؜‮Weeks‬؜"}
+        }
+        numbers{
+            saur{"؜‮Saurashtra‬؜ ؜‮Digits‬؜"}
         }
     }
     Variants{

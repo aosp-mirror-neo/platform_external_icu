@@ -1,6 +1,6 @@
---- android_icu4j/src/main/java/android/icu/util/ULocale.java	2026-01-23 12:08:06.934557249 +0000
-+++ android_icu4j/src/main/java/android/icu/util/ULocale.java	2026-01-23 12:08:34.716124574 +0000
-@@ -2474,15 +2474,11 @@
+--- android_icu4j/src/main/java/android/icu/util/ULocale.java	2026-03-19 14:49:05.713002260 +0000
++++ android_icu4j/src/main/java/android/icu/util/ULocale.java	2026-03-19 14:49:22.917542499 +0000
+@@ -2475,15 +2475,11 @@
       * availableLocales matched).  No ULocale array element should be null; behavior is
       * undefined if this is the case.
       *
@@ -16,7 +16,7 @@
       */
      public static ULocale acceptLanguage(String acceptLanguageList, ULocale[] availableLocales,
              boolean[] fallback) {
-@@ -2519,14 +2515,11 @@
+@@ -2520,14 +2516,11 @@
       * locale was used as a fallback (because nothing else in availableLocales matched).
       * No ULocale array element should be null; behavior is undefined if this is the case.
       *
@@ -31,7 +31,7 @@
       */
  
      public static ULocale acceptLanguage(ULocale[] acceptLanguageList, ULocale[] availableLocales,
-@@ -2565,15 +2558,11 @@
+@@ -2566,15 +2559,11 @@
       * undefined if this is the case.  This function will choose a locale from the
       * ULocale.getAvailableLocales() list as available.
       *
@@ -47,7 +47,7 @@
       */
      public static ULocale acceptLanguage(String acceptLanguageList, boolean[] fallback) {
          return acceptLanguage(acceptLanguageList, ULocale.getAvailableLocales(),
-@@ -2591,13 +2580,10 @@
+@@ -2592,13 +2581,10 @@
       * undefined if this is the case.  This function will choose a locale from the
       * ULocale.getAvailableLocales() list as available.
       *
