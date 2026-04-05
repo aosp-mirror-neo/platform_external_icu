@@ -3192,7 +3192,7 @@ public class NumberFormatTest extends CoreTestFmwk {
 
         ParseThreadJB5358[] threads = new ParseThreadJB5358[numThreads];
         for (int i = 0; i < numThreads; i++) {
-            threads[i] = new ParseThreadJB5358((DecimalFormat)fmt.clone(), numstr, expected, errors);
+            threads[i] = new ParseThreadJB5358(fmt.clone(), numstr, expected, errors);
             threads[i].start();
         }
         for (int i = 0; i < numThreads; i++) {
@@ -3836,7 +3836,7 @@ public class NumberFormatTest extends CoreTestFmwk {
         final int COUNT = 10;
 
         DecimalFormat fmt1 = new DecimalFormat("#0");
-        DecimalFormat fmt2 = (DecimalFormat)fmt1.clone();
+        DecimalFormat fmt2 = fmt1.clone();
 
         int[] res1 = new int[COUNT];
         int[] res2 = new int[COUNT];
@@ -5398,7 +5398,7 @@ public class NumberFormatTest extends CoreTestFmwk {
         DecimalFormat fmtCopy;
 
         final int newMultiplier = 37;
-        fmtCopy = (DecimalFormat) fmt.clone();
+        fmtCopy = fmt.clone();
         assertNotEquals("Value before setter", fmtCopy.getMultiplier(), newMultiplier);
         fmtCopy.setMultiplier(newMultiplier);
         assertEquals("Value after setter", fmtCopy.getMultiplier(), newMultiplier);
@@ -5407,7 +5407,7 @@ public class NumberFormatTest extends CoreTestFmwk {
         assertFalse("multiplier", fmt.equals(fmtCopy));
 
         final int newRoundingMode = RoundingMode.CEILING.ordinal();
-        fmtCopy = (DecimalFormat) fmt.clone();
+        fmtCopy = fmt.clone();
         assertNotEquals("Value before setter", fmtCopy.getRoundingMode(), newRoundingMode);
         fmtCopy.setRoundingMode(newRoundingMode);
         assertEquals("Value after setter", fmtCopy.getRoundingMode(), newRoundingMode);
@@ -5416,7 +5416,7 @@ public class NumberFormatTest extends CoreTestFmwk {
         assertFalse("roundingMode", fmt.equals(fmtCopy));
 
         final Currency newCurrency = Currency.getInstance("EAT");
-        fmtCopy = (DecimalFormat) fmt.clone();
+        fmtCopy = fmt.clone();
         assertNotEquals("Value before setter", fmtCopy.getCurrency(), newCurrency);
         fmtCopy.setCurrency(newCurrency);
         assertEquals("Value after setter", fmtCopy.getCurrency(), newCurrency);
@@ -5425,7 +5425,7 @@ public class NumberFormatTest extends CoreTestFmwk {
         assertFalse("currency", fmt.equals(fmtCopy));
 
         final CurrencyUsage newCurrencyUsage = CurrencyUsage.CASH;
-        fmtCopy = (DecimalFormat) fmt.clone();
+        fmtCopy = fmt.clone();
         assertNotEquals("Value before setter", fmtCopy.getCurrencyUsage(), newCurrencyUsage);
         fmtCopy.setCurrencyUsage(CurrencyUsage.CASH);
         assertEquals("Value after setter", fmtCopy.getCurrencyUsage(), newCurrencyUsage);
@@ -5443,25 +5443,25 @@ public class NumberFormatTest extends CoreTestFmwk {
         // Test equality with affixes. set affix methods can't capture special
         // characters which is why equality should fail.
         {
-          DecimalFormat fmtCopy = (DecimalFormat) fmt.clone();
+          DecimalFormat fmtCopy = fmt.clone();
           assertEquals("", fmt, fmtCopy);
           fmtCopy.setPositivePrefix(fmtCopy.getPositivePrefix());
           assertNotEquals("", fmt, fmtCopy);
         }
         {
-          DecimalFormat fmtCopy = (DecimalFormat) fmt.clone();
+          DecimalFormat fmtCopy = fmt.clone();
           assertEquals("", fmt, fmtCopy);
           fmtCopy.setPositiveSuffix(fmtCopy.getPositiveSuffix());
           assertNotEquals("", fmt, fmtCopy);
         }
         {
-          DecimalFormat fmtCopy = (DecimalFormat) fmt.clone();
+          DecimalFormat fmtCopy = fmt.clone();
           assertEquals("", fmt, fmtCopy);
           fmtCopy.setNegativePrefix(fmtCopy.getNegativePrefix());
           assertNotEquals("", fmt, fmtCopy);
         }
         {
-          DecimalFormat fmtCopy = (DecimalFormat) fmt.clone();
+          DecimalFormat fmtCopy = fmt.clone();
           assertEquals("", fmt, fmtCopy);
           fmtCopy.setNegativeSuffix(fmtCopy.getNegativeSuffix());
           assertNotEquals("", fmt, fmtCopy);

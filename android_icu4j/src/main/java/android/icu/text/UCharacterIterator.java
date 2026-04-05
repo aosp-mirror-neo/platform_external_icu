@@ -374,8 +374,8 @@ public abstract class UCharacterIterator implements Cloneable, UForwardCharacter
      * @return copy of this iterator
      */
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public UCharacterIterator clone() throws CloneNotSupportedException {
+        return (UCharacterIterator) super.clone();
     }
 
 }

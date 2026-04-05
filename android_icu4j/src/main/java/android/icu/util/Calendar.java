@@ -2437,7 +2437,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
         switch (field) {
         case DAY_OF_MONTH:
         {
-            Calendar cal = (Calendar) clone();
+            Calendar cal = clone();
             cal.setLenient(true);
             cal.prepareGetActual(field, false);
             result = handleGetMonthLength(cal.get(EXTENDED_YEAR), cal.get(MONTH));
@@ -2446,7 +2446,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
         case DAY_OF_YEAR:
         {
-            Calendar cal = (Calendar) clone();
+            Calendar cal = clone();
             cal.setLenient(true);
             cal.prepareGetActual(field, false);
             result = handleGetYearLength(cal.get(EXTENDED_YEAR));
@@ -2609,7 +2609,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
         // clone the calendar so we don't mess with the real one, and set it to
         // accept anything for the field values
-        Calendar work = (Calendar) clone();
+        Calendar work = clone();
 
         // need to resolve time here, otherwise, fields set for actual limit
         // may cause conflict with fields previously set (but not yet resolved).
@@ -4698,7 +4698,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * Overrides Cloneable
      */
     @Override
-    public Object clone()
+    public Calendar clone()
     {
         try {
             Calendar other = (Calendar) super.clone();
@@ -4707,8 +4707,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
             other.stamp = new byte[fields.length];
             System.arraycopy(this.fields, 0, other.fields, 0, fields.length);
             System.arraycopy(this.stamp, 0, other.stamp, 0, fields.length);
-
-            other.zone = (TimeZone) zone.clone();
+            other.zone = zone.clone();
             return other;
         }
         catch (CloneNotSupportedException e) {

@@ -639,7 +639,7 @@ public class DateFormatRegressionTest extends CoreTestFmwk {
                 "19980211140000 "};
         GregorianCalendar gc = new GregorianCalendar();
         TimeZone timeZone = TimeZone.getDefault();
-        TimeZone gmt = (TimeZone) timeZone.clone();
+        TimeZone gmt = timeZone.clone();
         gmt.setRawOffset(0);
         for (int i = 0; i < 5; i++) {
             SimpleDateFormat format = sdfs[i];
@@ -1550,7 +1550,7 @@ public class DateFormatRegressionTest extends CoreTestFmwk {
             cal.add(Calendar.SECOND, 1);
             cal.add(Calendar.MILLISECOND, 1);
             Date d = cal.getTime();
-            SimpleDateFormat fmt = (SimpleDateFormat)fmt0.clone();
+            SimpleDateFormat fmt = fmt0.clone();
             threads[i] = new TestThread(fmt, d);
         }
 

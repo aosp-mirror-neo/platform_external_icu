@@ -36,7 +36,7 @@ import android.icu.impl.Grego;
  *
  * @hide Only a subset of ICU is exposed in Android
  */
-public class VTimeZone extends BasicTimeZone {
+public class VTimeZone extends BasicTimeZone implements Cloneable {
 
     private static final long serialVersionUID = -6851467294127795902L;
 
@@ -351,7 +351,7 @@ public class VTimeZone extends BasicTimeZone {
      * {@inheritDoc}
      */
     @Override
-    public Object clone() {
+    public VTimeZone clone() {
         if (isFrozen()) {
             return this;
         }
@@ -2089,7 +2089,7 @@ public class VTimeZone extends BasicTimeZone {
      * {@inheritDoc}
      */
     @Override
-    public TimeZone cloneAsThawed() {
+    public VTimeZone cloneAsThawed() {
         VTimeZone vtz = (VTimeZone)super.cloneAsThawed();
         vtz.tz = (BasicTimeZone)tz.cloneAsThawed();
         vtz.isFrozen = false;
