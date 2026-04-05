@@ -196,7 +196,7 @@ public class IntlTestDateFormatAPI extends CoreTestFmwk
         }
 
         final Calendar cal = def.getCalendar();
-        Calendar newCal = (Calendar) cal.clone();
+        Calendar newCal = cal.clone();
         de.setCalendar(newCal);
         it.setCalendar(newCal);
         if( ! de.getCalendar().equals(it.getCalendar())) {
@@ -204,7 +204,7 @@ public class IntlTestDateFormatAPI extends CoreTestFmwk
         }
 
         final NumberFormat nf = def.getNumberFormat();
-        NumberFormat newNf = (NumberFormat) nf.clone();
+        NumberFormat newNf = nf.clone();
         de.setNumberFormat(newNf);
         it.setNumberFormat(newNf);
         if( ! de.getNumberFormat().equals(it.getNumberFormat())) {
@@ -212,7 +212,7 @@ public class IntlTestDateFormatAPI extends CoreTestFmwk
         }
 
         final TimeZone tz = def.getTimeZone();
-        TimeZone newTz = (TimeZone) tz.clone();
+        TimeZone newTz = tz.clone();
         de.setTimeZone(newTz);
         it.setTimeZone(newTz);
         if( ! de.getTimeZone().equals(it.getTimeZone())) {

@@ -35,6 +35,9 @@ public class Main {
       case "Icu4jBasicTransform":
         Icu4jBasicTransform.main(inputArgs);
         break;
+      case "Icu4jStubsTransform":
+        Icu4jStubsTransform.main(inputArgs);
+        break;
       case "GeneratePublicApiReport":
         GeneratePublicApiReport.main(inputArgs);
         break;

@@ -10,6 +10,11 @@
       "name": "minikin_tests"
     }
   ],
+  "postsubmit": [
+    {
+      "name": "android-icu4j-sdk36-test"
+    }
+  ],
   "ravenwood-postsubmit": [
     {
       "name": "CtsIcuTestCasesRavenwood",

@@ -65,7 +65,7 @@ import android.icu.util.UResourceBundle;
  * @hide Only a subset of ICU is exposed in Android
  */
 @Deprecated
-public class TimeUnitFormat extends MeasureFormat {
+public class TimeUnitFormat extends MeasureFormat implements Cloneable {
 
     /**
      * Constant for full name style format.
@@ -156,7 +156,7 @@ public class TimeUnitFormat extends MeasureFormat {
     private TimeUnitFormat(ULocale locale, int style, NumberFormat numberFormat) {
         this(locale, style);
         if (numberFormat != null) {
-            setNumberFormat((NumberFormat) numberFormat.clone());
+            setNumberFormat(numberFormat.clone());
         }
     }
 
@@ -225,7 +225,7 @@ public class TimeUnitFormat extends MeasureFormat {
     @Override
     @Deprecated
     public NumberFormat getNumberFormat() {
-        return (NumberFormat) format.clone();
+        return format.clone();
     }
 
     @Override
@@ -562,9 +562,9 @@ public class TimeUnitFormat extends MeasureFormat {
      */
     @Deprecated
     @Override
-    public Object clone() {
+    public TimeUnitFormat clone() {
         TimeUnitFormat result = (TimeUnitFormat) super.clone();
-        result.format = (NumberFormat) format.clone();
+        result.format = format.clone();
         return result;
     }
     // End boilerplate.

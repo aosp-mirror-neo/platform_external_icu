@@ -115,7 +115,7 @@ import android.icu.text.LocaleDisplayNames.DialectHandling;
  * @author Ram Viswanadha
  */
 @SuppressWarnings("javadoc")    // android.icu.text.Collator is in another project
-public final class ULocale implements Serializable, Comparable<ULocale> {
+public final class ULocale implements Serializable, Comparable<ULocale>, Cloneable {
     // using serialver from jdk1.4.2_05
     private static final long serialVersionUID = 3715177670352309217L;
 
@@ -688,7 +688,7 @@ public final class ULocale implements Serializable, Comparable<ULocale> {
      * immutable, there is no reason to clone it, so this API returns 'this'.
      */
     @Override
-    public Object clone() {
+    public ULocale clone() {
         return this;
     }
 

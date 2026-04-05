@@ -1716,7 +1716,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      */
     @Override
     public DateTimePatternGenerator cloneAsThawed() {
-        DateTimePatternGenerator result = (DateTimePatternGenerator) (this.clone());
+        DateTimePatternGenerator result = this.clone();
         frozen = false;
         return result;
     }
@@ -1728,7 +1728,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      */
     @Override
     @SuppressWarnings("unchecked")
-    public Object clone() {
+    public DateTimePatternGenerator clone() {
         try {
             DateTimePatternGenerator result = (DateTimePatternGenerator) super.clone();
             result.skeleton2pattern = (TreeMap<DateTimeMatcher, PatternWithSkeletonFlag>) skeleton2pattern.clone();

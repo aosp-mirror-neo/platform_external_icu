@@ -23,7 +23,7 @@ import android.icu.impl.Grego;
  *
  * @hide Only a subset of ICU is exposed in Android
  */
-public class RuleBasedTimeZone extends BasicTimeZone {
+public class RuleBasedTimeZone extends BasicTimeZone implements Cloneable {
 
     private static final long serialVersionUID = 7580833058949327935L;
 
@@ -452,7 +452,7 @@ public class RuleBasedTimeZone extends BasicTimeZone {
      * {@inheritDoc}
      */
     @Override
-    public Object clone() {
+    public RuleBasedTimeZone clone() {
         if (isFrozen()) {
             return this;
         }
@@ -756,7 +756,7 @@ public class RuleBasedTimeZone extends BasicTimeZone {
      * {@inheritDoc}
      */
     @Override
-    public TimeZone cloneAsThawed() {
+    public RuleBasedTimeZone cloneAsThawed() {
         RuleBasedTimeZone tz = (RuleBasedTimeZone)super.cloneAsThawed();
         if (historicRules != null) {
             tz.historicRules = new ArrayList<>(historicRules); // rules are immutable

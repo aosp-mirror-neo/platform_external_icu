@@ -1477,15 +1477,12 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * Overrides clone.
      */
     @Override
-    public Object clone()
+    public DateFormatSymbols clone()
     {
         try {
-            DateFormatSymbols other = (DateFormatSymbols)super.clone();
-            return other;
+            return (DateFormatSymbols)super.clone();
         } catch (CloneNotSupportedException e) {
-            ///CLOVER:OFF
             throw new ICUCloneNotSupportedException(e);
-            ///CLOVER:ON
         }
     }
 

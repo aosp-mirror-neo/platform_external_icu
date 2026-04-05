@@ -337,7 +337,7 @@ import android.icu.util.ULocale.Category;
  * @author       Mark Davis
  * @author       Markus Scherer
  */
-public class MessageFormat extends UFormat {
+public class MessageFormat extends UFormat implements Cloneable {
 
     // Incremented by 1 for ICU 4.8's new format.
     static final long serialVersionUID = 7136212545847378652L;
@@ -1392,7 +1392,7 @@ public class MessageFormat extends UFormat {
      * {@inheritDoc}
      */
     @Override
-    public Object clone() {
+    public MessageFormat clone() {
         MessageFormat other = (MessageFormat) super.clone();
 
         if (customFormatArgStarts != null) {
@@ -1415,11 +1415,11 @@ public class MessageFormat extends UFormat {
             other.cachedFormatters = null;
         }
 
-        other.msgPattern = msgPattern == null ? null : (MessagePattern)msgPattern.clone();
+        other.msgPattern = msgPattern == null ? null : msgPattern.clone();
         other.stockDateFormatter =
-                stockDateFormatter == null ? null : (DateFormat) stockDateFormatter.clone();
+                stockDateFormatter == null ? null : stockDateFormatter.clone();
         other.stockNumberFormatter =
-                stockNumberFormatter == null ? null : (NumberFormat) stockNumberFormatter.clone();
+                stockNumberFormatter == null ? null : stockNumberFormatter.clone();
 
         other.pluralProvider = null;
         other.ordinalProvider = null;
