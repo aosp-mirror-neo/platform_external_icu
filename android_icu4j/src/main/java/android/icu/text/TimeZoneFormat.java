@@ -66,7 +66,7 @@ import android.icu.util.ULocale;
  * @see SimpleDateFormat
  * @see TimeZoneNames
  */
-public class TimeZoneFormat extends UFormat implements Freezable<TimeZoneFormat>, Serializable {
+public class TimeZoneFormat extends UFormat implements Freezable<TimeZoneFormat>, Serializable, Cloneable {
 
     private static final long serialVersionUID = 2281246852693575022L;
 
@@ -3223,6 +3223,14 @@ public class TimeZoneFormat extends UFormat implements Freezable<TimeZoneFormat>
         TimeZoneFormat copy = (TimeZoneFormat)super.clone();
         copy._frozen = false;
         return copy;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public TimeZoneFormat clone() {
+        return (TimeZoneFormat)super.clone();
     }
 }
 

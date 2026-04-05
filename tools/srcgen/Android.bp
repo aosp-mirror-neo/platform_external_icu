@@ -50,3 +50,9 @@ filegroup {
     visibility: ["//external/icu/icu4j"],
     srcs: ["generate_android_icu4j.sh"],
 }
+
+filegroup {
+    name: "icu4j-covariant-return-types",
+    visibility: ["//external/icu/android_icu4j"],
+    srcs: ["covariant-return-types.json"],
+}

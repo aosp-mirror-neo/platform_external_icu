@@ -622,7 +622,7 @@ public final class Normalizer implements Cloneable {
     @Deprecated
     public Normalizer(UCharacterIterator iter, Mode mode, int options) {
         try {
-            this.text     = (UCharacterIterator)iter.clone();
+            this.text     = iter.clone();
             this.mode     = mode;
             this.options  = options;
             norm2 = mode.getNormalizer2(options);
@@ -646,10 +646,10 @@ public final class Normalizer implements Cloneable {
      */
     @Deprecated
     @Override
-    public Object clone() {
+    public Normalizer clone() {
         try {
             Normalizer copy = (Normalizer) super.clone();
-            copy.text = (UCharacterIterator) text.clone();
+            copy.text = text.clone();
             copy.mode = mode;
             copy.options = options;
             copy.norm2 = norm2;
@@ -1929,7 +1929,7 @@ public final class Normalizer implements Cloneable {
     @Deprecated
     public void setText(UCharacterIterator newText) {
         try{
-            UCharacterIterator newIter = (UCharacterIterator)newText.clone();
+            UCharacterIterator newIter = newText.clone();
             if (newIter == null) {
                 throw new IllegalStateException("Could not create a new UCharacterIterator");
             }

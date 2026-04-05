@@ -247,7 +247,7 @@ import android.icu.util.ULocale.Category;
  * @see java.text.Format
  * @see NumberFormat
  */
-public class DecimalFormat extends NumberFormat {
+public class DecimalFormat extends NumberFormat implements Cloneable {
 
   /** New serialization in ICU 59: declare different version from ICU 58. */
   private static final long serialVersionUID = 864413376551465018L;
@@ -375,7 +375,7 @@ public class DecimalFormat extends NumberFormat {
    * @see DecimalFormatSymbols
    */
   public DecimalFormat(String pattern, DecimalFormatSymbols symbols) {
-    this.symbols = (DecimalFormatSymbols) symbols.clone();
+    this.symbols = symbols.clone();
     properties = new DecimalFormatProperties();
     exportedProperties = new DecimalFormatProperties();
     // Regression: ignore pattern rounding information if the pattern has currency symbols.
@@ -411,7 +411,7 @@ public class DecimalFormat extends NumberFormat {
 
   /** Package-private constructor used by NumberFormat. */
   DecimalFormat(String pattern, DecimalFormatSymbols symbols, int choice) {
-    this.symbols = (DecimalFormatSymbols) symbols.clone();
+    this.symbols = symbols.clone();
     properties = new DecimalFormatProperties();
     exportedProperties = new DecimalFormatProperties();
     // If choice is a currency type, ignore the rounding information.
@@ -495,9 +495,9 @@ public class DecimalFormat extends NumberFormat {
 
   /***/
   @Override
-  public Object clone() {
+  public DecimalFormat clone() {
     DecimalFormat other = (DecimalFormat) super.clone();
-    other.symbols = (DecimalFormatSymbols) symbols.clone();
+    other.symbols = symbols.clone();
     other.properties = properties.clone();
     other.exportedProperties = new DecimalFormatProperties();
     other.refreshFormatter();
@@ -784,7 +784,7 @@ public class DecimalFormat extends NumberFormat {
     // We need to make localSymbols in order for monetary symbols to be initialized.
     // Also, bypass the CurrencyAmount override of LocalizedNumberFormatter#format,
     // because its caching mechanism will not provide any benefit here.
-    DecimalFormatSymbols localSymbols = (DecimalFormatSymbols) symbols.clone();
+    DecimalFormatSymbols localSymbols = symbols.clone();
     localSymbols.setCurrency(currAmt.getCurrency());
 
     DecimalQuantity dq = new DecimalQuantity_DualStorageBCD(currAmt.getNumber());
@@ -887,7 +887,7 @@ public class DecimalFormat extends NumberFormat {
    * @see DecimalFormatSymbols
    */
   public synchronized DecimalFormatSymbols getDecimalFormatSymbols() {
-    return (DecimalFormatSymbols) symbols.clone();
+    return symbols.clone();
   }
 
   /**
@@ -898,7 +898,7 @@ public class DecimalFormat extends NumberFormat {
    * @see DecimalFormatSymbols
    */
   public synchronized void setDecimalFormatSymbols(DecimalFormatSymbols newSymbols) {
-    symbols = (DecimalFormatSymbols) newSymbols.clone();
+    symbols = newSymbols.clone();
     refreshFormatter();
   }
 

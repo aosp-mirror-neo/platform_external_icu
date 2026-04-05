@@ -548,7 +548,7 @@ import android.icu.util.UResourceBundleIterator;
  * @see PluralRules
  * @hide Only a subset of ICU is exposed in Android
  */
-public class RuleBasedNumberFormat extends NumberFormat {
+public class RuleBasedNumberFormat extends NumberFormat implements Cloneable {
 
     //-----------------------------------------------------------------------
     // constants
@@ -897,8 +897,8 @@ public class RuleBasedNumberFormat extends NumberFormat {
      * @return A RuleBasedNumberFormat that is equal to this one.
      */
     @Override
-    public Object clone() {
-        return super.clone();
+    public RuleBasedNumberFormat clone() {
+        return (RuleBasedNumberFormat) super.clone();
     }
 
     /**
@@ -1455,7 +1455,7 @@ public class RuleBasedNumberFormat extends NumberFormat {
      */
     public void setDecimalFormatSymbols(DecimalFormatSymbols newSymbols) {
         if (newSymbols != null) {
-            decimalFormatSymbols = (DecimalFormatSymbols) newSymbols.clone();
+            decimalFormatSymbols = newSymbols.clone();
             if (decimalFormat != null) {
                 decimalFormat.setDecimalFormatSymbols(decimalFormatSymbols);
             }

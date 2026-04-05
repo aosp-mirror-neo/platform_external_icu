@@ -968,7 +968,7 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
             defaultZone = tz;
         } else {
             // Creates a defensive copy and freeze it
-            defaultZone = ((TimeZone)tz.clone()).freeze();
+            defaultZone = tz.clone().freeze();
         }
     }
 
@@ -990,7 +990,7 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      * Overrides clone.
      */
     @Override
-    public Object clone() {
+    public TimeZone clone() {
         if (isFrozen()) {
             return this;
         }
@@ -1272,8 +1272,7 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
     @Override
     public TimeZone cloneAsThawed() {
         try {
-            TimeZone other = (TimeZone) super.clone();
-            return other;
+            return (TimeZone) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new ICUCloneNotSupportedException(e);
         }

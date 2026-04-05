@@ -39,9 +39,9 @@ package {
 filegroup {
     name: "android_icu4j_public_api_files",
     srcs: [
-        ":android_icu4j_repackaged_src_files",
+        ":android_icu4j_api_stubs_files",
     ],
-    path: "src/main/java",
+    path: "api_stubs",
 }
 
 filegroup {
@@ -211,8 +211,7 @@ java_sdk_library {
     defaults: ["libcore_icu_bridge_defaults"],
     srcs: [
         // Added to make sure that no private classes leak out in stubs.
-        ":android_icu4j_repackaged_src_files",
-        ":android_icu4j_public_api_files",
+        ":android_icu4j_api_stubs_files",
     ],
     libs: [
         // Needed for FlaggedApi and possibly others.
@@ -273,7 +272,7 @@ java_sdk_library {
     name: "i18n.module.intra.core.api",
     defaults: ["libcore_icu_bridge_defaults"],
     srcs: [
-        ":android_icu4j_repackaged_src_files",
+        ":android_icu4j_api_stubs_files",
     ],
     stub_only_libs: [
         "stub-annotations",
@@ -419,7 +418,7 @@ java_sdk_library {
     name: "legacy.i18n.module.platform.api",
     defaults: ["libcore_icu_bridge_defaults"],
     srcs: [
-        ":android_icu4j_repackaged_src_files",
+        ":android_icu4j_api_stubs_files",
     ],
     visibility: [
         "//build/soong/java/core-libraries",
@@ -464,7 +463,7 @@ java_sdk_library {
     name: "stable.i18n.module.platform.api",
     defaults: ["libcore_icu_bridge_defaults"],
     srcs: [
-        ":android_icu4j_repackaged_src_files",
+        ":android_icu4j_api_stubs_files",
     ],
     visibility: [
         "//build/soong/java/core-libraries",
@@ -595,4 +594,10 @@ java_library {
     srcs: ["stub/com/android/icu/optimization/NeverInline.java"],
     sdk_version: "core_current",
     visibility: ["//visibility:private"],
+}
+
+filegroup {
+    name: "android_icu4j_api_stubs_files",
+    srcs: ["api_stubs/**/*.java"],
+    path: "api_stubs",
 }

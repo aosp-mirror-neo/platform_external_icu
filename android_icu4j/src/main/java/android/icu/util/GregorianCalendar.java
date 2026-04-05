@@ -169,7 +169,7 @@ import android.icu.util.ULocale.Category;
  * @see          TimeZone
  * @author Deborah Goldsmith, Mark Davis, Chen-Lieh Huang, Alan Liu
  */
-public class GregorianCalendar extends Calendar {
+public class GregorianCalendar extends Calendar implements Cloneable {
     // jdk1.4.2 serialver
     private static final long serialVersionUID = 9199388694351062137L;
 
@@ -653,7 +653,7 @@ public class GregorianCalendar extends Calendar {
              * Feb 29 must be allowed to shift to Mar 1 when setting the year.
              */
             {
-                Calendar cal = (Calendar) clone();
+                Calendar cal = clone();
                 cal.setLenient(true);
 
                 int era = cal.get(ERA);
@@ -908,4 +908,12 @@ public class GregorianCalendar extends Calendar {
         return factory;
     }
     */
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public GregorianCalendar clone() {
+        return (GregorianCalendar) super.clone();
+    }
 }
