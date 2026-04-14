@@ -308,6 +308,11 @@ public abstract class UResourceBundle extends ResourceBundle {
         return getULocale().toLocale();
     }
 
+    @Override
+    public String toString() {
+        return "UResourceBundle{name=" + getBaseBundleName() + ", locale=" + getLocale() + '}';
+    }
+
     private enum RootType { MISSING, ICU, JAVA }
 
     private static Map<String, RootType> ROOT_CACHE = new ConcurrentHashMap<String, RootType>();
