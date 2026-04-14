@@ -47,30 +47,27 @@ public final class UCharacterUtility
     {
         return ((msc << 16) | lsc);
     }
-       
+
     /**
-    * Retrieves a null terminated substring from an array of bytes.
-    * Substring is a set of non-zero bytes starting from argument start to the 
-    * next zero byte. If the first byte is a zero, the next byte will be taken as
-    * the first byte.
-    * @param str stringbuffer to store data in, data will be store with each
-    *            byte as a char
-    * @param array byte array
-    * @param index to start substring in byte count
-    * @return the end position of the substring within the character array
-    */
-    static int getNullTermByteSubString(StringBuffer str, byte[] array, 
-                                                  int index)
-    {
+     * Retrieves a null terminated substring from an array of bytes.
+     * Substring is a set of non-zero bytes starting from argument start to the
+     * next zero byte. If the first byte is a zero, the next byte will be taken as
+     * the first byte.
+     * @param sb StringBuilder to store data in, data will be store with each
+     *            byte as a char
+     * @param array byte array
+     * @param index to start substring in byte count
+     * @return the end position of the substring within the character array
+     */
+    static int getNullTermByteSubString(StringBuilder sb, byte[] array, int index) {
         byte b = 1;
-        
-        while (b != 0)
-        {
+
+        while (b != 0) {
             b = array[index];
             if (b != 0) {
-                str.append((char)(b & 0x00FF));
+                sb.append((char)(b & 0x00FF));
             }
-            index ++;
+            index++;
         }
         return index;
     }
