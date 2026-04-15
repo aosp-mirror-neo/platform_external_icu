@@ -37,7 +37,6 @@ import com.ibm.icu.impl.Utility;
 import com.ibm.icu.text.BreakIterator;
 import com.ibm.icu.text.UTF16;
 import com.ibm.icu.util.Calendar;
-import com.ibm.icu.util.Holiday;
 import com.ibm.icu.util.ULocale;
 import com.ibm.icu.util.UResourceBundle;
 import com.ibm.icu.util.UResourceBundleIterator;
@@ -94,15 +93,7 @@ public final class ICUResourceBundleTest extends CoreTestFmwk {
     }
     @Test
     public void TestResourceBundleWrapper(){
-        UResourceBundle bundle = UResourceBundle.getBundleInstance("com.ibm.icu.impl.data.HolidayBundle", "da_DK");
-        Object o = bundle.getObject("holidays");
-        if(o instanceof Holiday[] ){
-            logln("wrapper mechanism works for Weekend data");
-        }else{
-            errln("Did not get the expected output for Weekend data");
-        }
-
-        bundle = UResourceBundle.getBundleInstance(ICUData.ICU_BASE_NAME, "bogus");
+        UResourceBundle bundle = UResourceBundle.getBundleInstance(ICUData.ICU_BASE_NAME, "bogus");
         if(bundle instanceof UResourceBundle && bundle.getULocale().getName().equals("en_US")){
             logln("wrapper mechanism works for bogus locale");
         }else{
