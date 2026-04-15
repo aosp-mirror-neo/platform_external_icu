@@ -225,12 +225,12 @@ public final class UPropertyAliases {
         try {
             INSTANCE = new UPropertyAliases();
         } catch(IOException e) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             MissingResourceException mre = new MissingResourceException(
                     "Could not construct UPropertyAliases. Missing pnames.icu", "", "");
             mre.initCause(e);
             throw mre;
-            ///CLOVER:ON
+            //CLOVER:ON
         }
     }
 

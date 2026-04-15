@@ -458,7 +458,7 @@ public class CurrencyMetaInfo {
         }
     }
 
-///CLOVER:OFF
+//CLOVER:OFF
     /**
      * Returns the list of CurrencyInfos matching the provided filter.  Results
      * are ordered by country code, then by highest to lowest priority (0 is highest).
@@ -493,7 +493,7 @@ public class CurrencyMetaInfo {
     public List<String> regions(CurrencyFilter filter) {
         return Collections.emptyList();
     }
-///CLOVER:ON
+//CLOVER:ON
 
     /**
      * Returns the CurrencyDigits for the currency code.

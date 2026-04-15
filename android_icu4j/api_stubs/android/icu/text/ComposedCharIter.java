@@ -58,7 +58,7 @@ import android.icu.impl.Normalizer2Impl;
  * @hide Only a subset of ICU is exposed in Android
  */
 @Deprecated
-///CLOVER:OFF
+//CLOVER:OFF
 public final class ComposedCharIter {
     /**
      * Constant that indicates the iteration has completed.

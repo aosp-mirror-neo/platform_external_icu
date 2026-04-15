@@ -454,11 +454,11 @@ public abstract class NumberFormat extends UFormat implements Cloneable {
      * @return a CurrencyAmount, or null upon failure
      */
     public CurrencyAmount parseCurrency(CharSequence text, ParsePosition pos) {
-        ///CLOVER:OFF
+        //CLOVER:OFF
         // Default implementation only -- subclasses should override
         Number n = parse(text.toString(), pos);
         return n == null ? null : new CurrencyAmount(n, getEffectiveCurrency());
-        ///CLOVER:ON
+        //CLOVER:ON
     }
 
     /**
@@ -980,7 +980,7 @@ public abstract class NumberFormat extends UFormat implements Cloneable {
                 Class<?> cls = Class.forName("android.icu.text.NumberFormatServiceShim");
                 shim = (NumberFormatShim)cls.newInstance();
             }
-            ///CLOVER:OFF
+            //CLOVER:OFF
             catch (MissingResourceException e){
                 throw e;
             }
@@ -988,7 +988,7 @@ public abstract class NumberFormat extends UFormat implements Cloneable {
                // e.printStackTrace();
                 throw new RuntimeException(e.getMessage());
             }
-            ///CLOVER:ON
+            //CLOVER:ON
         }
         return shim;
     }
@@ -1555,7 +1555,7 @@ public abstract class NumberFormat extends UFormat implements Cloneable {
          throws IOException, ClassNotFoundException
     {
         stream.defaultReadObject();
-        ///CLOVER:OFF
+        //CLOVER:OFF
         // we don't have serialization data for this format
         if (serialVersionOnStream < 1) {
             // Didn't have additional int fields, reassign to use them.
@@ -1568,7 +1568,7 @@ public abstract class NumberFormat extends UFormat implements Cloneable {
             // Didn't have capitalizationSetting, set it to default
             capitalizationSetting = DisplayContext.CAPITALIZATION_NONE;
         }
-        ///CLOVER:ON
+        //CLOVER:ON
         /*Bug 4185761
           Validate the min and max fields [Richard/GCL]
         */

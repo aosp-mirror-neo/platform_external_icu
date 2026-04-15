@@ -31,7 +31,7 @@ import android.icu.util.ICUCloneNotSupportedException;
  * @hide Only a subset of ICU is exposed in Android
  */
 @Deprecated
-///CLOVER:OFF
+//CLOVER:OFF
 public final class StringCharacterIterator implements CharacterIterator, Cloneable
 {
     private String text;
@@ -311,4 +311,4 @@ public final class StringCharacterIterator implements CharacterIterator, Cloneab
     }
 
 }
-///CLOVER:ON
+//CLOVER:ON

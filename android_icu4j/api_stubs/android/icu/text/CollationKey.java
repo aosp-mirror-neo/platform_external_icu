@@ -126,9 +126,9 @@ public final class CollationKey implements Comparable<CollationKey>
         /**
          * Private Constructor
          */
-        ///CLOVER:OFF
+        //CLOVER:OFF
         private BoundMode(){}
-        ///CLOVER:ON
+        //CLOVER:ON
     }
 
     // public constructor ---------------------------------------------------

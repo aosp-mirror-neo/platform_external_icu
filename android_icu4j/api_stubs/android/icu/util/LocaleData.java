@@ -118,9 +118,9 @@ public final class LocaleData {
     public static final int DELIMITER_COUNT = 4;
 
     // private constructor to prevent default construction
-    ///CLOVER:OFF
+    //CLOVER:OFF
     private LocaleData(){}
-    ///CLOVER:ON
+    //CLOVER:ON
 
     /**
      * Returns the set of exemplar characters for a locale. Equivalent to calling {@link #getExemplarSet(ULocale, int, int)} with

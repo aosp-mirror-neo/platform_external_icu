@@ -1733,14 +1733,14 @@ public abstract class DateFormat extends UFormat {
     /**
      * Overrides hashCode.
      */
-    ///CLOVER:OFF
+    //CLOVER:OFF
     // turn off code coverage since all subclasses override this
     @Override
     public int hashCode() {
         return numberFormat.hashCode();
         // just enough fields for a reasonable distribution
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     /**
      * Overrides equals.
@@ -1805,10 +1805,10 @@ public abstract class DateFormat extends UFormat {
                  cal.getLocale(ULocale.ACTUAL_LOCALE));
             return result;
         } catch (MissingResourceException e) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             // coverage requires separate run with no data, so skip
             return new SimpleDateFormat("M/d/yy h:mm a");
-            ///CLOVER:ON
+            //CLOVER:ON
         }
     }
 
@@ -2466,18 +2466,18 @@ public abstract class DateFormat extends UFormat {
          */
         @Override
         protected Object readResolve() throws InvalidObjectException {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             if (this.getClass() != DateFormat.Field.class) {
                 throw new InvalidObjectException(
                     "A subclass of DateFormat.Field must implement readResolve.");
             }
-            ///CLOVER:ON
+            //CLOVER:ON
             Object o = FIELD_NAME_MAP.get(this.getName());
-            ///CLOVER:OFF
+            //CLOVER:OFF
             if (o == null) {
                 throw new InvalidObjectException("Unknown attribute name.");
             }
-            ///CLOVER:ON
+            //CLOVER:ON
             return o;
         }
     }

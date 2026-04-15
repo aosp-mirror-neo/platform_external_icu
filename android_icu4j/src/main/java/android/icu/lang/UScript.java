@@ -1535,10 +1535,10 @@ public final class UScript {
         return (ScriptMetadata.getScriptProps(script) & ScriptMetadata.CASED) != 0;
     }
 
-    ///CLOVER:OFF
+    //CLOVER:OFF
     /**
      *  Private Constructor. Never default construct
      */
     private UScript(){}
-    ///CLOVER:ON
+    //CLOVER:ON
 }

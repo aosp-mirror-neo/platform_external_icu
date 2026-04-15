@@ -232,7 +232,7 @@ abstract class CECalendar extends Calendar {
 
     // (The following method is not called because all existing subclasses
     // override it.
-    ///CLOVER:OFF
+    //CLOVER:OFF
     /**
      * Return the number of days in the given month of the given extended
      * year of this calendar system.  Subclasses should override this
@@ -260,7 +260,7 @@ abstract class CECalendar extends Calendar {
         }
 
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     //-------------------------------------------------------------------------
     // Calendar framework

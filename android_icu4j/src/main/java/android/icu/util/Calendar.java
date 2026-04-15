@@ -1655,13 +1655,13 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
         // Allocate fields through the framework method.  Subclasses
         // may override this to define additional fields.
         fields = handleCreateFields();
-        ///CLOVER:OFF
+        //CLOVER:OFF
         // todo: fix, difficult to test without subclassing
         if (fields == null || fields.length < BASE_FIELD_COUNT ||
                 fields.length > MAX_FIELD_COUNT) {
             throw new IllegalStateException("Invalid fields[]");
         }
-        ///CLOVER:ON
+        //CLOVER:ON
         stamp = new byte[fields.length];
         int mask = (1 << ERA) |
                 (1 << YEAR) |
@@ -5871,7 +5871,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
     // (The following method is not called because all existing subclasses
     // override it.  2003-06-11 ICU 2.6 Alan)
-    ///CLOVER:OFF
+    //CLOVER:OFF
     /**
      * Returns the number of days in the given month of the given extended
      * year of this calendar system.  Subclasses should override this
@@ -5883,7 +5883,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
         return handleComputeMonthStart(extendedYear, month+1, true) -
                 handleComputeMonthStart(extendedYear, month, true);
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     /**
      * Returns the number of days in the given extended year of this
@@ -6106,7 +6106,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
     // (The following method is not called because all existing subclasses
     // override it.  2003-06-11 ICU 2.6 Alan)
-    ///CLOVER:OFF
+    //CLOVER:OFF
     /**
      * Subclasses may override this method to compute several fields
      * specific to each calendar system.  These are:
@@ -6146,7 +6146,7 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
         internalSet(ERA, era);
         internalSet(YEAR, eyear);
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     //----------------------------------------------------------------------
     // Subclass API
@@ -6489,9 +6489,9 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
     final void setLocale(ULocale valid, ULocale actual) {
         // Change the following to an assertion later
         if ((valid == null) != (actual == null)) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             throw new IllegalArgumentException();
-            ///CLOVER:ON
+            //CLOVER:ON
         }
         // Another check we could do is that the actual locale is at
         // the same level or less specific than the valid locale.
