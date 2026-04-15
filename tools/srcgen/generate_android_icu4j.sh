@@ -162,3 +162,25 @@ STUBS_DEST_DIR=${ANDROID_ICU4J_DIR}/api_stubs
 rm -rf ${STUBS_DEST_DIR}
 mkdir -p ${STUBS_DEST_DIR}
 ${SRCGEN_TOOL_BINARY} Icu4jStubsTransform ${DEST_SRC_DIR} ${ICU_SRCGEN_DIR}/covariant-return-types.json ${STUBS_DEST_DIR}
+
+# Remove dead code as part of zygote optimization (b/62512621)
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/impl/UnicodeRegex.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/impl/data/HolidayBundle*.java
+rm -r ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/impl/personname/
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/text/PersonName.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/text/PersonNameFormatter.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/text/SimplePersonName.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/util/EasterHoliday.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/util/GenderInfo.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/util/GlobalizationPreferences.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/util/HebrewHoliday.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/util/Holiday.java
+rm ${ANDROID_ICU4J_DIR}/src/main/java/android/icu/util/SimpleHoliday.java
+
+# Remove tests related to the dead code removed above
+rm ${TEST_DEST_DIR}/android/icu/dev/test/format/PersonNameConsistencyTest.java
+rm ${TEST_DEST_DIR}/android/icu/dev/test/format/PersonNameFormatterTest.java
+rm ${TEST_DEST_DIR}/android/icu/dev/test/calendar/HolidayTest.java
+rm ${TEST_DEST_DIR}/android/icu/dev/test/format/GlobalizationPreferencesTest.java
+rm ${TEST_DEST_DIR}/android/icu/dev/test/util/GenderInfoTest.java
+rm ${TEST_DEST_DIR}/android/icu/dev/test/translit/RegexUtilitiesTest.java
