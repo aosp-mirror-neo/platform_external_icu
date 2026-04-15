@@ -38,7 +38,6 @@ import android.icu.impl.Utility;
 import android.icu.text.BreakIterator;
 import android.icu.text.UTF16;
 import android.icu.util.Calendar;
-import android.icu.util.Holiday;
 import android.icu.util.ULocale;
 import android.icu.util.UResourceBundle;
 import android.icu.util.UResourceBundleIterator;
@@ -97,15 +96,7 @@ public final class ICUResourceBundleTest extends CoreTestFmwk {
     }
     @Test
     public void TestResourceBundleWrapper(){
-        UResourceBundle bundle = UResourceBundle.getBundleInstance("android.icu.impl.data.HolidayBundle", "da_DK");
-        Object o = bundle.getObject("holidays");
-        if(o instanceof Holiday[] ){
-            logln("wrapper mechanism works for Weekend data");
-        }else{
-            errln("Did not get the expected output for Weekend data");
-        }
-
-        bundle = UResourceBundle.getBundleInstance(ICUData.ICU_BASE_NAME, "bogus");
+        UResourceBundle bundle = UResourceBundle.getBundleInstance(ICUData.ICU_BASE_NAME, "bogus");
         if(bundle instanceof UResourceBundle && bundle.getULocale().getName().equals("en_US")){
             logln("wrapper mechanism works for bogus locale");
         }else{
