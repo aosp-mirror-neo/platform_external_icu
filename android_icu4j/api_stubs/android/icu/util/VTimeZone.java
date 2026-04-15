@@ -422,9 +422,9 @@ public class VTimeZone extends BasicTimeZone {
         try {
             ICU_TZVERSION = TimeZone.getTZDataVersion();
         } catch (MissingResourceException e) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             ICU_TZVERSION = null;
-            ///CLOVER:ON
+            //CLOVER:ON
         }
     }
 
@@ -510,9 +510,9 @@ public class VTimeZone extends BasicTimeZone {
                 return false;
             }
         } catch (IOException ioe) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             return false;
-            ///CLOVER:ON
+            //CLOVER:ON
         }
         return parse();
     }
@@ -527,11 +527,11 @@ public class VTimeZone extends BasicTimeZone {
      * Parse VTIMEZONE data and create a RuleBasedTimeZone
      */
     private boolean parse() {
-        ///CLOVER:OFF
+        //CLOVER:OFF
         if (vtzlines == null || vtzlines.size() == 0) {
             return false;
         }
-        ///CLOVER:ON
+        //CLOVER:ON
 
         // timezone ID
         String tzid = null;

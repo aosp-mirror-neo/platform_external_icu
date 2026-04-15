@@ -1477,7 +1477,7 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
         // to handle the actual/valid ulocale fields.
 
         stream.defaultReadObject();
-        ///CLOVER:OFF
+        //CLOVER:OFF
         // we don't have data for these old serialized forms any more
         if (serialVersionOnStream < 1) {
             // Didn't have monetarySeparator or exponential field;
@@ -1494,7 +1494,7 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
             // notation isn't supported by the old classes, even though the
             // symbol is there.
         }
-        ///CLOVER:ON
+        //CLOVER:ON
         if (serialVersionOnStream < 3) {
             // Resurrected objects from old streams will have no
             // locale.  There is no 100% fix for this.  A
@@ -1945,9 +1945,9 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
     final void setLocale(ULocale valid, ULocale actual) {
         // Change the following to an assertion later
         if ((valid == null) != (actual == null)) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             throw new IllegalArgumentException();
-            ///CLOVER:ON
+            //CLOVER:ON
         }
         // Another check we could do is that the actual locale is at
         // the same level or less specific than the valid locale.

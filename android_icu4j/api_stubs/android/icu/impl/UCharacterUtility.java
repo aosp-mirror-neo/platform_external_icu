@@ -182,13 +182,13 @@ public final class UCharacterUtility
     
     // private constructor --------------------------------------------------
       
-    ///CLOVER:OFF
+    //CLOVER:OFF
     /**
     * private constructor to avoid initialization
     */
     private UCharacterUtility()
     {
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 }
 

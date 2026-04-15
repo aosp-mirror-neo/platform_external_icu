@@ -280,7 +280,7 @@ class RBBINode {
     //        print. Print out a single node, for debugging.
     //
     //-------------------------------------------------------------------------
-    ///CLOVER:OFF
+    //CLOVER:OFF
     static void printNode(RBBINode n) {
 
         if (n==null) {
@@ -300,12 +300,12 @@ class RBBINode {
         }
         System.out.println("");
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
 
     // Print a String in a fixed field size.
     // Debugging function.
-    ///CLOVER:OFF
+    //CLOVER:OFF
     static void printString(String s, int minWidth) {
         for (int i = minWidth; i < 0; i++) {
             // negative width means pad leading spaces, not fixed width.
@@ -316,20 +316,20 @@ class RBBINode {
         }
         System.out.print(s);
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     //
     //  Print an int in a fixed size field.
     //  Debugging function.
     //
-    ///CLOVER:OFF
+    //CLOVER:OFF
     static void printInt(int i, int minWidth) {
         String s = Integer.toString(i);
         printString(s, Math.max(minWidth, s.length() + 1));
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
-    ///CLOVER:OFF
+    //CLOVER:OFF
     static void printHex(int i, int minWidth) {
         String s = Integer.toString(i, 16);
         String leadingZeroes = "00000"
@@ -337,7 +337,7 @@ class RBBINode {
         s = leadingZeroes + s;
         printString(s, minWidth);
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
 
     // -------------------------------------------------------------------------
@@ -345,7 +345,7 @@ class RBBINode {
     //        print. Print out the tree of nodes rooted at "this"
     //
     // -------------------------------------------------------------------------
-    ///CLOVER:OFF
+    //CLOVER:OFF
     void printTree(boolean printHeading) {
         if (printHeading) {
             System.out.println( "-------------------------------------------------------------------");
@@ -364,6 +364,6 @@ class RBBINode {
                 }
             }
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
 }

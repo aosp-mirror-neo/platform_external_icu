@@ -580,17 +580,17 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
             }
             catch (MissingResourceException e)
             {
-                ///CLOVER:OFF
+                //CLOVER:OFF
                 throw e;
-                ///CLOVER:ON
+                //CLOVER:ON
             }
             catch (Exception e) {
-                ///CLOVER:OFF
+                //CLOVER:OFF
                 if(DEBUG){
                     e.printStackTrace();
                 }
                 throw new ICUException(e);
-                ///CLOVER:ON
+                //CLOVER:ON
             }
         }
         return shim;

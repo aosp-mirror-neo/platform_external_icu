@@ -107,7 +107,7 @@ final class UCharacterNameReader implements ICUBinary.Authenticate
     * @param dataformatversion
     * @return true if the file format version is correct
     */
-    ///CLOVER:OFF
+    //CLOVER:OFF
     protected boolean authenticate(byte dataformatid[],
                                    byte dataformatversion[])
     {
@@ -116,7 +116,7 @@ final class UCharacterNameReader implements ICUBinary.Authenticate
                 dataformatid) &&
                isDataVersionAcceptable(dataformatversion);
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     // private variables -------------------------------------------------
 

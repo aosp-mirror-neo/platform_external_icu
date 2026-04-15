@@ -81,7 +81,7 @@ public final class Punycode {
         }
     }
 
-    ///CLOVER:OFF
+    //CLOVER:OFF
     private static char asciiCaseMap(char b, boolean uppercase) {
         if(uppercase) {
             if(SMALL_A<=b && b<=SMALL_Z) {
@@ -94,7 +94,7 @@ public final class Punycode {
         }
         return b;
     }
-    ///CLOVER:ON
+    //CLOVER:ON
     /**
      * digitToBasic() returns the basic code point whose value
      * (when used for representing integers) is d, which must be in the
@@ -257,11 +257,11 @@ public final class Punycode {
     private static boolean isBasic(int ch){
         return (ch < INITIAL_N);
     }
-    ///CLOVER:OFF
+    //CLOVER:OFF
     private static boolean isBasicUpperCase(int ch){
         return( CAPITAL_A<=ch && ch >= CAPITAL_Z);
     }
-    ///CLOVER:ON
+    //CLOVER:ON
     private static boolean isSurrogate(int ch){
         return (((ch)&0xfffff800)==0xd800);
     }

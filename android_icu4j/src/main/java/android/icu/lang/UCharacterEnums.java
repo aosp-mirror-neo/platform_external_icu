@@ -16,7 +16,7 @@ package android.icu.lang;
 public class UCharacterEnums {
 
     /** This is just a namespace, it is not instantiable. */
-    ///CLOVER:OFF
+    //CLOVER:OFF
     private UCharacterEnums() {}
 
     /**

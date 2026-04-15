@@ -49,9 +49,9 @@ public final class UCharacterName
         try {
             INSTANCE = new UCharacterName();
         } catch (IOException e) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             throw new MissingResourceException("Could not construct UCharacterName. Missing unames.icu","","");
-            ///CLOVER:ON
+            //CLOVER:ON
         }
     }
 
@@ -439,12 +439,12 @@ public final class UCharacterName
      * @param codepoint The codepoint value.
      * @return minimum codepoint in the group which codepoint belongs to
      */
-    ///CLOVER:OFF
+    //CLOVER:OFF
     public static int getGroupMinFromCodepoint(int codepoint)
     {
         return codepoint & ~GROUP_MASK_;
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     /**
      * Get the Algorithm range length
@@ -534,7 +534,7 @@ public final class UCharacterName
      * Equivalent to uprv_getMaxISOCommentLength.
      * @return the maximum length of any codepoint name
      */
-    ///CLOVER:OFF
+    //CLOVER:OFF
     public int getMaxISOCommentLength()
     {
         if (initNameSetsLengths()) {
@@ -544,7 +544,7 @@ public final class UCharacterName
             return 0;
         }
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     /**
      * Fills set with characters that are used in Unicode character names.
@@ -561,12 +561,12 @@ public final class UCharacterName
      * Equivalent to uprv_getISOCommentCharacters.
      * @param set USet to receive characters. Existing contents are deleted.
      */
-    ///CLOVER:OFF
+    //CLOVER:OFF
     public void getISOCommentCharacters(UnicodeSet set)
     {
         convert(m_ISOCommentSet_, set);
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     // package private inner class --------------------------------------
 

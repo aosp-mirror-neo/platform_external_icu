@@ -112,12 +112,12 @@ public class RbnfScannerProviderImpl implements RbnfLenientScannerProvider {
         catch (Exception e) {
             // If we get here, it means we have a malformed set of
             // collation rules, which hopefully won't happen
-            ///CLOVER:OFF
+            //CLOVER:OFF
             if (DEBUG){ // debug hook
                 e.printStackTrace(); System.out.println("++++");
             }
             collator = null;
-            ///CLOVER:ON
+            //CLOVER:ON
         }
 
         return new RbnfLenientScannerImpl(collator);
@@ -165,7 +165,7 @@ public class RbnfScannerProviderImpl implements RbnfLenientScannerProvider {
             return new int[] { -1, 0 };
         }
 
-        ///CLOVER:OFF
+        //CLOVER:OFF
         // The following method contains the same signature as findText
         //  and has never been used by anything once.
         @SuppressWarnings("unused")
@@ -216,7 +216,7 @@ public class RbnfScannerProviderImpl implements RbnfLenientScannerProvider {
 
             return new int[] { keyStart, strIter.getOffset() - keyStart };
         }
-        ///CLOVER:ON
+        //CLOVER:ON
 
         public int prefixLength(String str, String prefix) {
             // Create two collation element iterators, one over the target string

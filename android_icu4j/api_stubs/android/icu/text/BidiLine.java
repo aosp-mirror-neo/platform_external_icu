@@ -459,10 +459,10 @@ final class BidiLine {
             }
             visualStart += length;
         }
-        ///CLOVER:OFF
+        //CLOVER:OFF
         /* we should never get here */
         throw new IllegalStateException("Internal ICU error in getRunFromLogicalIndex");
-        ///CLOVER:ON
+        //CLOVER:ON
     }
 
     /*
