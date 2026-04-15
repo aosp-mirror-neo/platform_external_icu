@@ -221,11 +221,11 @@ public class BOCSU
     /**
      * Constructor private to prevent initialization
      */
-    ///CLOVER:OFF
+    //CLOVER:OFF
     private BOCSU()
     {
     }            
-    ///CLOVER:ON                                                                                       
+    //CLOVER:ON                                                                                       
     
     // private methods -------------------------------------------------------
     

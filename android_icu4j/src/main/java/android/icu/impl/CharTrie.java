@@ -213,7 +213,7 @@ public class CharTrie extends Trie
      * @return true if the argument Trie has the same data as this Trie, false
      *         otherwise
      */
-    ///CLOVER:OFF
+    //CLOVER:OFF
     @Override
     public boolean equals(Object other)
     {
@@ -230,7 +230,7 @@ public class CharTrie extends Trie
         assert false : "hashCode not designed";
         return 42;
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     // protected methods -----------------------------------------------
 

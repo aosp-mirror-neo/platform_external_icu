@@ -417,14 +417,14 @@ class CompoundTransliterator extends Transliterator {
         int delta = 0; // delta in length
 
         StringBuilder log = null;
-        ///CLOVER:OFF
+        //CLOVER:OFF
         if (DEBUG) {
             log = new StringBuilder("CompoundTransliterator{" + getID() +
                                    (incremental ? "}i: IN=" : "}: IN="));
             UtilityExtensions.formatInput(log, text, index);
             System.out.println(Utility.escape(log.toString()));
         }
-        ///CLOVER:ON
+        //CLOVER:ON
 
         // Give each transliterator a crack at the run of characters.
         // See comments at the top of the method for more detail.
@@ -434,7 +434,7 @@ class CompoundTransliterator extends Transliterator {
 
             if (index.start == index.limit) {
                 // Short circuit for empty range
-                ///CLOVER:OFF
+                //CLOVER:OFF
                 if (DEBUG) {
                     System.out.println("CompoundTransliterator[" + i +
                                        ".." + (trans.length-1) +
@@ -442,11 +442,11 @@ class CompoundTransliterator extends Transliterator {
                                        UtilityExtensions.formatInput(text, index) +
                                        " (NOTHING TO DO)");
                 }
-                ///CLOVER:ON
+                //CLOVER:ON
                 break;
             }
 
-            ///CLOVER:OFF
+            //CLOVER:OFF
             if (DEBUG) {
                 log.setLength(0);
                 log.append("CompoundTransliterator[" + i + "=" +
@@ -454,7 +454,7 @@ class CompoundTransliterator extends Transliterator {
                            (incremental ? "]i: " : "]: "));
                 UtilityExtensions.formatInput(log, text, index);
             }
-            ///CLOVER:ON
+            //CLOVER:ON
 
             trans[i].filteredTransliterate(text, index, incremental);
 
@@ -469,13 +469,13 @@ class CompoundTransliterator extends Transliterator {
                 throw new RuntimeException("ERROR: Incomplete non-incremental transliteration by " + trans[i].getID());
             }
 
-            ///CLOVER:OFF
+            //CLOVER:OFF
             if (DEBUG) {
                 log.append(" => ");
                 UtilityExtensions.formatInput(log, text, index);
                 System.out.println(Utility.escape(log.toString()));
             }
-            ///CLOVER:ON
+            //CLOVER:ON
 
             // Cumulative delta for insertions/deletions
             delta += index.limit - limit;
@@ -497,7 +497,7 @@ class CompoundTransliterator extends Transliterator {
         // adjustments for deletions/insertions.
         index.limit = compoundLimit;
 
-        ///CLOVER:OFF
+        //CLOVER:OFF
         if (DEBUG) {
             log.setLength(0);
             log.append("CompoundTransliterator{" + getID() +
@@ -505,7 +505,7 @@ class CompoundTransliterator extends Transliterator {
             UtilityExtensions.formatInput(log, text, index);
             System.out.println(Utility.escape(log.toString()));
         }
-        ///CLOVER:ON
+        //CLOVER:ON
     }
 
     /**

@@ -1008,6 +1008,9 @@ public class Icu4jTransform {
           createOptionalRule(
               new ReplaceTextCommentScanner(ORIGINAL_ICU_PACKAGE, ANDROID_ICU_PACKAGE)),
 
+          // Doc change: Change CLOVER Markdown style comments into line comments.
+          createOptionalRule(new ReplaceTextCommentScanner("///CLOVER:", "//CLOVER:")),
+
           // AST change: Hide all ICU public classes except those in the PUBLIC_API_CLASSES
           // allowlist.
           createHidePublicClassesRule(),

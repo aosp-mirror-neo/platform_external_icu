@@ -18,7 +18,7 @@ import android.icu.text.UnicodeMatcher;
  * @hide Only a subset of ICU is exposed in Android
  */
 //This class contains utility functions so testing not needed
-///CLOVER:OFF
+//CLOVER:OFF
 public class UtilityExtensions {
     /**
      * Append the given string to the rule.  Calls the single-character

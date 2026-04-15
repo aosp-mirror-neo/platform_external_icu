@@ -147,12 +147,12 @@ public class RuleBasedTimeZone extends BasicTimeZone {
      * {@inheritDoc}
      */
     @Override
-    ///CLOVER:OFF
+    //CLOVER:OFF
     public void setRawOffset(int offsetMillis) {
         // TODO: Do nothing for now..
         throw new UnsupportedOperationException("setRawOffset in RuleBasedTimeZone is not supported.");
     }
-    ///CLOVER:ON
+    //CLOVER:ON
 
     /**
      * {@inheritDoc}

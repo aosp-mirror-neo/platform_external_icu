@@ -1315,7 +1315,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
                     output.add(pattern);
                 }
             }
-            ///CLOVER:OFF
+            //CLOVER:OFF
             //The following would never be called since the parameter is false
             //Eclipse stated the following is "dead code"
             /*if (false) { // ordered
@@ -1335,7 +1335,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
                     }
                 }
             }*/
-            ///CLOVER:ON
+            //CLOVER:ON
             return output;
         }
     }
@@ -1693,9 +1693,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
             result.frozen = false;
             return result;
         } catch (CloneNotSupportedException e) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             throw new ICUCloneNotSupportedException("Internal Error", e);
-            ///CLOVER:ON
+            //CLOVER:ON
         }
     }
 

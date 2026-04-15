@@ -949,9 +949,9 @@ public class DateIntervalInfo implements Cloneable, Freezable<DateIntervalInfo>,
             other.frozen = false;
             return other;
         } catch ( CloneNotSupportedException e ) {
-            ///CLOVER:OFF
+            //CLOVER:OFF
             throw new  ICUCloneNotSupportedException("clone is not supported", e);
-            ///CLOVER:ON
+            //CLOVER:ON
         }
     }
 
