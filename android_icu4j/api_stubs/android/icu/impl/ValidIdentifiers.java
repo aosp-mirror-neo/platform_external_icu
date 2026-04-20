@@ -9,7 +9,6 @@
  */
 package android.icu.impl;
 
-import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -86,16 +85,12 @@ public class ValidIdentifiers {
                 HashMap<String,Set<String>> _subdivisionData2 = new HashMap<String,Set<String>>();
                 // protect the sets
                 for (Entry<String, Set<String>> e : _subdivisionData.entrySet()) {
-                    Set<String> value = e.getValue();
-                    // optimize a bit by using singleton
-                    Set<String> set = value.size() == 1 ? Collections.singleton(value.iterator().next()) 
-                            : Collections.unmodifiableSet(value);
-                    _subdivisionData2.put(e.getKey(), set);
+                    _subdivisionData2.put(e.getKey(), toImmutableSet(e.getValue()));
                 }
 
-                this.subdivisionData = Collections.unmodifiableMap(_subdivisionData2);
+                this.subdivisionData = toImmutableMap(_subdivisionData2);
             } else {
-                this.regularData = Collections.unmodifiableSet(plainData);
+                this.regularData = toImmutableSet(plainData);
                 this.subdivisionData = null;
             }
         }
@@ -157,9 +152,9 @@ public class ValidIdentifiers {
                     }
                     values.put(subkey, new ValiditySet(subvalues, key == Datatype.subdivision));
                 }
-                _data.put(key, Collections.unmodifiableMap(values));
+                _data.put(key, toImmutableMap(values));
             }
-            data = Collections.unmodifiableMap(_data);
+            data = toImmutableMap(_data);
         }
         private static void addRange(String string, Set<String> subvalues) {
             string = AsciiUtil.toLowerString(string);
@@ -209,5 +204,13 @@ public class ValidIdentifiers {
             }
         }
         return null;
+    }
+
+    private static <E> Set<E> toImmutableSet(Set<E> set) {
+        return Set.copyOf(set);
+    }
+
+    private static <K, V> Map<K, V> toImmutableMap(Map<K, V> map) {
+        return Map.copyOf(map);
     }
 }
