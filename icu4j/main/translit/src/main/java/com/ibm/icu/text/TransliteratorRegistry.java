@@ -15,7 +15,6 @@ package com.ibm.icu.text;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -23,6 +22,8 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
 
 import com.ibm.icu.impl.ICUData;
@@ -54,7 +55,7 @@ class TransliteratorRegistry {
      * RuleBasedTransliterator.Data, Transliterator.Factory, or one
      * of the entry classes defined here (AliasEntry or ResourceEntry).
      */
-    private Map<CaseInsensitiveString, Object[]> registry;
+    private final Map<CaseInsensitiveString, Object[]> registry;
 
     /**
      * DAG of visible IDs by spec.  Hashtable: source => (Hashtable:
@@ -67,12 +68,14 @@ class TransliteratorRegistry {
      * Values are Hashtable of (CaseInsensitiveString -> Vector of
      * CaseInsensitiveString)
      */
-    private Map<CaseInsensitiveString, Map<CaseInsensitiveString, List<CaseInsensitiveString>>> specDAG;
+    private final Map<
+                    CaseInsensitiveString, Map<CaseInsensitiveString, List<CaseInsensitiveString>>>
+            specDAG;
 
-    /**
-     * Vector of public full IDs (CaseInsensitiveString objects).
-     */
+    /** Vector of public full IDs (CaseInsensitiveString objects). */
     private final Set<CaseInsensitiveString> availableIDs;
+
+    private final Map<String, CaseInsensitiveString> stvStringPool;
 
     //----------------------------------------------------------------------
     // class Spec
@@ -316,9 +319,10 @@ class TransliteratorRegistry {
     //----------------------------------------------------------------------
 
     public TransliteratorRegistry() {
-        registry = Collections.synchronizedMap(new HashMap<CaseInsensitiveString, Object[]>());
-        specDAG = Collections.synchronizedMap(new HashMap<CaseInsensitiveString, Map<CaseInsensitiveString, List<CaseInsensitiveString>>>());
+        registry = new ConcurrentHashMap<>();
+        specDAG = new ConcurrentHashMap<>();
         availableIDs = new LinkedHashSet<>();
+        stvStringPool = Collections.synchronizedMap(new WeakHashMap<>());
     }
 
     /**
@@ -527,6 +531,9 @@ class TransliteratorRegistry {
         String[] stv = TransliteratorIDParser.IDtoSTV(ID);
         // Only need to do this if ID.indexOf('-') < 0
         String id = TransliteratorIDParser.STVtoID(stv[0], stv[1], stv[2]);
+        if (ID.equals(id)) {
+            id = ID; // Deduplicate the ids if they are equal.
+        }
         registerEntry(id, stv[0], stv[1], stv[2], entry, visible);
     }
 
@@ -571,19 +578,13 @@ class TransliteratorRegistry {
                              String variant) {
         // assert(source.length() > 0);
         // assert(target.length() > 0);
-        CaseInsensitiveString cisrc = new CaseInsensitiveString(source);
-        CaseInsensitiveString citrg = new CaseInsensitiveString(target);
-        CaseInsensitiveString civar = new CaseInsensitiveString(variant);
-        Map<CaseInsensitiveString, List<CaseInsensitiveString>> targets = specDAG.get(cisrc);
-        if (targets == null) {
-            targets = Collections.synchronizedMap(new HashMap<CaseInsensitiveString, List<CaseInsensitiveString>>());
-            specDAG.put(cisrc, targets);
-        }
-        List<CaseInsensitiveString> variants = targets.get(citrg);
-        if (variants == null) {
-            variants = new ArrayList<CaseInsensitiveString>();
-            targets.put(citrg, variants);
-        }
+        CaseInsensitiveString cisrc = toInternedSTVString(source);
+        CaseInsensitiveString citrg = toInternedSTVString(target);
+        CaseInsensitiveString civar = toInternedSTVString(variant);
+        Map<CaseInsensitiveString, List<CaseInsensitiveString>> targets =
+                specDAG.computeIfAbsent(cisrc, key -> new ConcurrentHashMap<>());
+        List<CaseInsensitiveString> variants =
+                targets.computeIfAbsent(citrg, key -> new ArrayList<>(/* initialCapacity= */ 1));
         // assert(NO_VARIANT == "");
         // We add the variant string.  If it is the special "no variant"
         // string, that is, the empty string, we add it at position zero.
@@ -948,6 +949,10 @@ class TransliteratorRegistry {
                         parser.compoundFilter);
             }
         }
+    }
+
+    private CaseInsensitiveString toInternedSTVString(String key) {
+        return stvStringPool.computeIfAbsent(key, CaseInsensitiveString::new);
     }
 }
 

@@ -52,10 +52,8 @@ class AnyTransliterator extends Transliterator {
     static final String NULL_ID = "Null";
     static final String LATIN_PIVOT = "-Latin;Latin-";
 
-    /**
-     * Cache mapping UScriptCode values to Transliterator*.
-     */
-    private ConcurrentHashMap<Integer, Transliterator> cache;
+    /** Cache mapping UScriptCode values to Transliterator*. */
+    private volatile ConcurrentHashMap<Integer, Transliterator> cache;
 
     /**
      * The target or target/variant string.
@@ -142,7 +140,6 @@ class AnyTransliterator extends Transliterator {
                               int theTargetScript) {
         super(id, null);
         targetScript = theTargetScript;
-        cache = new ConcurrentHashMap<Integer, Transliterator>();
 
         target = theTarget;
         if (theVariant.length() > 0) {
@@ -185,7 +182,7 @@ class AnyTransliterator extends Transliterator {
         }
 
         Integer key = source;
-        Transliterator t = cache.get(key);
+        Transliterator t = getCache().get(key);
         if (t == null) {
             String sourceName = UScript.getName(source);
             String id = sourceName + TARGET_SEP + target;
@@ -209,7 +206,7 @@ class AnyTransliterator extends Transliterator {
                     v.add(t);
                     t = new CompoundTransliterator(v);
                 }
-                Transliterator prevCachedT = cache.putIfAbsent(key, t);
+                Transliterator prevCachedT = getCache().putIfAbsent(key, t);
                 if (prevCachedT != null) {
                     t = prevCachedT;
                 }
@@ -412,7 +409,7 @@ class AnyTransliterator extends Transliterator {
         if (filter != null && filter instanceof UnicodeSet) {
             filter = new UnicodeSet((UnicodeSet)filter);
         }
-        return new AnyTransliterator(getID(), filter, target, targetScript, null, cache);
+        return new AnyTransliterator(getID(), filter, target, targetScript, null, getCache());
     }
 
     /* (non-Javadoc)
@@ -426,6 +423,17 @@ class AnyTransliterator extends Transliterator {
         if (myFilter.size() != 0) {
             targetSet.addAll(0, 0x10FFFF);
         }
+    }
+
+    private ConcurrentHashMap<Integer, Transliterator> getCache() {
+        if (cache == null) {
+            synchronized (this) {
+                if (cache == null) {
+                    cache = new ConcurrentHashMap<>();
+                }
+            }
+        }
+        return cache;
     }
 }
 
