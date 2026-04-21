@@ -19,6 +19,7 @@ package com.android.i18n.system;
 import android.compat.Compatibility;
 import android.compat.annotation.ChangeId;
 import android.compat.annotation.EnabledAfter;
+import android.icu.impl.ICUResourceBundleReader;
 import android.icu.impl.ZoneMeta;
 import android.icu.platform.AndroidDataFiles;
 import android.icu.impl.CacheValue;
@@ -95,6 +96,7 @@ public final class ZygoteHooks {
         // Cache the timezone bundles, e.g. metaZones.res, in Zygote due to app compat.
         // http://b/339899412
         UResourceBundleNative.cacheTimeZoneBundles();
+        ICUResourceBundleReader.deduplicateTableArrays();
         ATrace.traceEnd();
     }
 
