@@ -9,12 +9,13 @@
  */
 package android.icu.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.icu.util.ICUException;
 import android.icu.util.ULocale;
 import android.icu.util.UResourceBundle;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @hide Only a subset of ICU is exposed in Android
@@ -307,6 +308,8 @@ public final class DayPeriodRules {
         DayPeriodRulesDataSink sink = new DayPeriodRulesDataSink(data);
         rb.getAllItemsWithFallback("", sink);
 
+        deduplicateDayPeriodRulesData(data);
+
         return data;
     }
 
@@ -377,5 +380,18 @@ public final class DayPeriodRules {
 
         String numStr = setNumStr.substring(3);  // e.g. "set17" -> "17"
         return Integer.parseInt(numStr);  // This throws NumberFormatException if numStr isn't a proper number.
+    }
+
+    private static void deduplicateDayPeriodRulesData(DayPeriodRulesData data) {
+        Map<List<DayPeriod>, DayPeriod[]> internedDayPeriods = new HashMap<>();
+        for (DayPeriodRules rule : data.rules) {
+            if (rule != null && rule.dayPeriodForHour != null) {
+                DayPeriod[] dayPeriods = rule.dayPeriodForHour;
+                // Use List.of(dayPeriods) as a key to identify the deduplicated DayPeriod[]
+                // objects.
+                rule.dayPeriodForHour =
+                        internedDayPeriods.computeIfAbsent(List.of(dayPeriods), (l) -> dayPeriods);
+            }
+        }
     }
 }
