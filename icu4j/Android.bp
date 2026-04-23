@@ -91,12 +91,6 @@ java_library {
     //
     // http://developer.android.com/reference/java/util/Locale.html
     exclude_srcs: ["main/localespi/src/main/java/**/*.java"],
-    exclude_java_resource_dirs: [
-        "main/localespi/src/main/resources",
-        // The actual resource files are included by linking icu4j-icudata and icu4j-icutzdata
-        // statically.
-        "main/*/src/main/resources/com/ibm/icu/impl/data/icudt*",
-    ],
 
     static_libs: [
         "icu4j-icudata",
@@ -114,7 +108,6 @@ java_test {
     java_resource_dirs: ["main/*/src/test/resources"],
 
     exclude_srcs: ["main/localespi/src/test/**/*.java"],
-    exclude_java_resource_dirs: ["main/localespi/src/test"],
 
     static_libs: [
         "gson",
