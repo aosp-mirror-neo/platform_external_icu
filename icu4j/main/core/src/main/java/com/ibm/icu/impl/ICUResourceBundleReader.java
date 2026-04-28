@@ -1139,7 +1139,12 @@ public final class ICUResourceBundleReader {
      * the synchronized bottleneck on every resource lookup.
      */
     private static final class ResourceCache {
-        private final ConcurrentHashMap<Integer, Object> map;
+        // BEGIN Android patch: Optimize ResourceCache for Zygote fork
+        private volatile ConcurrentHashMap<Integer, Object> map;
+        // If it's not null, this immutable map stores strongly-referenced objects only.
+        // This map should be stored in the clean pages in the Zygote heap.
+        private volatile Map<Integer, Object> frozenStrongResources;
+        // END Android patch: Optimize ResourceCache for Zygote fork
 
         private static boolean storeDirectly(int size) {
             return size < LARGE_SIZE || CacheValue.futureInstancesWillBeStrong();
@@ -1147,6 +1152,8 @@ public final class ICUResourceBundleReader {
 
         ResourceCache() {
             map = new ConcurrentHashMap<>();
+            // Android patch: Optimize ResourceCache for Zygote fork
+            frozenStrongResources = Map.of(); // empty map
         }
 
         @SuppressWarnings("unchecked")
@@ -1154,7 +1161,15 @@ public final class ICUResourceBundleReader {
             // Integers and empty resources need not be cached.
             assert RES_GET_OFFSET(res) != 0;
             Integer resKey = res;
-            Object value = map.get(resKey);
+            // BEGIN Android patch: Optimize ResourceCache for Zygote fork
+            Map<Integer, Object> frozen = frozenStrongResources;
+            Object frozenValue = frozen.get(resKey);
+            if (frozenValue != null) {
+                return frozenValue;
+            }
+            // END Android patch: Optimize ResourceCache for Zygote fork
+            Map<Integer, Object> m = map;
+            Object value = m.get(resKey);
             if (value == null) {
                 return null;
             }
@@ -1163,7 +1178,7 @@ public final class ICUResourceBundleReader {
                 if (referent == null) {
                     // SoftReference was cleared by GC. Remove the dead entry to prevent
                     // unbounded accumulation. Two-arg remove avoids ABA race.
-                    map.remove(resKey, value);
+                    m.remove(resKey, value);
                 }
                 return referent;
             }
@@ -1176,6 +1191,13 @@ public final class ICUResourceBundleReader {
             // putIfAbsent() cannot replace a cleared SoftReference (non-null but dead),
             // which would return null to the caller.
             Integer resKey = res;
+            // BEGIN Android patch: Optimize ResourceCache for Zygote fork
+            Map<Integer, Object> frozen = frozenStrongResources;
+            Object value = frozen.get(resKey);
+            if (value != null) {
+                return value;
+            }
+            // END Android patch: Optimize ResourceCache for Zygote fork
             Object[] result = new Object[] {item};
             map.compute(
                     resKey,
@@ -1196,13 +1218,27 @@ public final class ICUResourceBundleReader {
             return result[0];
         }
 
-        synchronized void deduplicateTableArrays() {
+        synchronized void deduplicateTableArraysAndFreezeStrongResources() {
             Map<CharBuffer, char[]> charMap = new HashMap<>();
             Map<IntBuffer, int[]> intMap = new HashMap<>();
             Map<String, String> stringMap = new HashMap<>();
+            // BEGIN Android patch: Optimize ResourceCache for Zygote fork
+            Map<Integer, Object> newStrongCache = new HashMap<>();
+            ConcurrentHashMap<Integer, Object> newMap = new ConcurrentHashMap<>();
             for (Map.Entry<Integer, Object> entry : map.entrySet()) {
                 entry.setValue(deduplicateItem(entry.getValue(), charMap, intMap, stringMap));
+                Object value = entry.getValue();
+                if (value instanceof SoftReference) {
+                    newMap.put(entry.getKey(), value);
+                } else {
+                    newStrongCache.put(entry.getKey(), value);
+                }
             }
+            if (!newStrongCache.isEmpty()) {
+                frozenStrongResources = Map.copyOf(newStrongCache);
+                map = newMap;
+            }
+            // END Android patch: Optimize ResourceCache for Zygote fork
         }
 
         @SuppressWarnings("unchecked")
@@ -1249,7 +1285,10 @@ public final class ICUResourceBundleReader {
 
     private static final String ICU_RESOURCE_SUFFIX = ".res";
 
-    /** Deduplicates the char[] and int[] arrays of Table objects in the cache. */
+    /**
+     * Deduplicates the char[] and int[] arrays of Table objects in the cache,
+     * and freeze the strongly-referenced resources.
+     */
     public static void deduplicateTableArrays() {
         for (Object mapValue : CACHE.getMap().values()) {
             ICUResourceBundleReader reader = null;
@@ -1264,7 +1303,7 @@ public final class ICUResourceBundleReader {
                 reader = (ICUResourceBundleReader) mapValue;
             }
             if (reader != null && reader.resourceCache != null) {
-                reader.resourceCache.deduplicateTableArrays();
+                reader.resourceCache.deduplicateTableArraysAndFreezeStrongResources();
             }
         }
     }
