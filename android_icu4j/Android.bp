@@ -296,7 +296,6 @@ java_sdk_library {
     system_modules: "art-module-intra-core-api-stubs-system-modules",
 
     droiddoc_options: [
-        "--show-single-annotation libcore.api.IntraCoreApi ",
         // Exclude FlaggedApi as Metalava cannot resolve the flags reference
         // because this is not given the flags library on the classpath as
         // doing so creates a cycle.
@@ -441,10 +440,6 @@ java_sdk_library {
         api_surface: "core-platform-legacy",
     },
 
-    droiddoc_options: [
-        "--show-single-annotation libcore.api.CorePlatformApi ",
-    ],
-
     libs: [
         "icu_aconfig_flags_lib",
     ],
@@ -477,10 +472,6 @@ java_sdk_library {
     api_only: true,
     sdk_version: "none",
     system_modules: "art-module-lib-api-stubs-system-modules",
-
-    droiddoc_options: [
-        "--show-single-annotation libcore.api.CorePlatformApi\\(status=libcore.api.CorePlatformApi.Status.STABLE\\)",
-    ],
 
     public: {
         // Select api-surface defined in build/soong/java/metalava/main-config.xml
