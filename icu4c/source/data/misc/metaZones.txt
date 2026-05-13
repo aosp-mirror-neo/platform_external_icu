@@ -92,7 +92,6 @@ metaZones:table(nofallback){
         }
         America_Pacific{
             001{"America/Los_Angeles"}
-            CA{"America/Vancouver"}
             MX{"America/Tijuana"}
         }
         Anadyr{
