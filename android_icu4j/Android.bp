@@ -273,6 +273,7 @@ java_sdk_library {
     defaults: ["libcore_icu_bridge_defaults"],
     srcs: [
         ":android_icu4j_api_stubs_files",
+        ":framework-api-annotations",
     ],
     stub_only_libs: [
         "stub-annotations",
