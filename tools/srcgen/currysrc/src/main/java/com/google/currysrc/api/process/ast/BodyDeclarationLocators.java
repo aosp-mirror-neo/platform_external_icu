@@ -70,7 +70,7 @@ public final class BodyDeclarationLocators {
   public static List<BodyDeclarationLocator> createLocators(BodyDeclaration bodyDeclaration) {
     AbstractTypeDeclaration typeDeclaration = TypeLocator.findTypeDeclarationNode(bodyDeclaration);
     if (typeDeclaration == null) {
-      throw new AssertionError("Unable to find type declaration for " + typeDeclaration);
+      throw new AssertionError("Unable to find type declaration for " + bodyDeclaration);
     }
     TypeLocator typeLocator = new TypeLocator(typeDeclaration);
 
