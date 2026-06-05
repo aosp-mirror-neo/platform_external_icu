@@ -10,8 +10,8 @@ import android.icu.impl.number.AffixUtils;
  * {@link AffixMatcher} combines two of these in order to match both the prefix and suffix.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class AffixPatternMatcher extends SeriesMatcher implements AffixUtils.TokenConsumer {
 
     private final String affixPattern;

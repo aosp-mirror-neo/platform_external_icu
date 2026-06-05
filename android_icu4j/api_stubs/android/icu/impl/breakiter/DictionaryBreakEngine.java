@@ -14,9 +14,7 @@ import java.text.CharacterIterator;
 import android.icu.impl.CharacterIteration;
 import android.icu.text.UnicodeSet;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class DictionaryBreakEngine implements LanguageBreakEngine {
 
     /* Helper class for improving readability of the Thai/Lao/Khmer word break
@@ -91,9 +89,9 @@ public abstract class DictionaryBreakEngine implements LanguageBreakEngine {
      *  A deque-like structure holding raw ints.
      *  Partial, limited implementation, only what is needed by the dictionary implementation.
      *  For internal use only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class DequeI implements Cloneable {
         private int[] data = new int[50];
         private int lastIdx = 4;   // or base of stack. Index of element.

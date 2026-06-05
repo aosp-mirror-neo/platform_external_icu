@@ -13,9 +13,9 @@ import java.util.Map;
 
 /**
  * @author markdavis
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ImmutableEntry<K,V> implements Map.Entry<K,V> {
     final K k;
     final V v;

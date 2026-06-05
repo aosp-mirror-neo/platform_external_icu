@@ -143,9 +143,8 @@ public abstract class NumberRangeFormatter {
 
     /**
      * Class for span fields in FormattedNumberRange.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class SpanField extends UFormat.SpanField {
         private static final long serialVersionUID = 8750397196515368729L;
 

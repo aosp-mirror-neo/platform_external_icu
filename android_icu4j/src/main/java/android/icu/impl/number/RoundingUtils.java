@@ -12,8 +12,8 @@ import android.icu.number.Precision;
 import android.icu.number.Scale;
 import android.icu.text.PluralRules;
 
-/** @author sffc 
- * @hide Only a subset of ICU is exposed in Android*/
+/** @author sffc */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RoundingUtils {
 
     public static final int SECTION_LOWER = 1;

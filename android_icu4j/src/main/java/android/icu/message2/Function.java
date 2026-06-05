@@ -12,9 +12,9 @@ import java.util.Map;
  * that can be used from {@link MessageFormatter}.
  *
  * @deprecated This API is for technology preview only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public interface Function {
     /**

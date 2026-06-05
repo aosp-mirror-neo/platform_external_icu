@@ -28,8 +28,8 @@ import java.util.Locale;
  *
  * Note:  Unlike GregorianCalendar, all computations performed by this
  * class occur in the pure proleptic GregorianCalendar.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Grego {
 
     // Max/min milliseconds 

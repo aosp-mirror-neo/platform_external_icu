@@ -33,8 +33,8 @@ import android.icu.util.UResourceBundle;
 
 /**
  * Takes care of formatting currency and measurement unit names, as well as populating the gender of measure units.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LongNameHandler
     implements MicroPropsGenerator, ModifierStore, LongNameMultiplexer.ParentlessMicroPropsGenerator {
 

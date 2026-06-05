@@ -12,9 +12,9 @@ import android.icu.text.FormattedValue;
  * Very preliminary.
  *
  * @deprecated This API is for ICU internal use only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class FormattedPlaceholder {
     private final FormattedValue formattedValue;

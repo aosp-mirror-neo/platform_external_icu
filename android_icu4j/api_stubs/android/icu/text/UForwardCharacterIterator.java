@@ -55,10 +55,10 @@ package android.icu.text;
  *      }
  *  }
  * </code>
- * @hide Only a subset of ICU is exposed in Android
  *
  */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface UForwardCharacterIterator {
       
     /**

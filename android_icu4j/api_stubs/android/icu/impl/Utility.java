@@ -21,9 +21,7 @@ import android.icu.text.UTF16;
 import android.icu.text.UnicodeMatcher;
 import android.icu.util.ICUUncheckedIOException;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class Utility {
 
     private static final char APOSTROPHE = '\'';

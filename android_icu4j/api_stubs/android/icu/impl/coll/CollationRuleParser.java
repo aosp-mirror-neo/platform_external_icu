@@ -27,9 +27,7 @@ import android.icu.text.UTF16;
 import android.icu.text.UnicodeSet;
 import android.icu.util.ULocale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CollationRuleParser {
     /** Special reset positions. */
     enum Position {

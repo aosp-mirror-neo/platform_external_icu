@@ -11,8 +11,8 @@ import android.icu.util.MeasureUnit;
 
 /**
  * A class representing a single unit (optional SI or binary prefix, and dimensionality).
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SingleUnitImpl {
     /**
      * Simple unit index, unique for every simple unit, -1 for the dimensionless

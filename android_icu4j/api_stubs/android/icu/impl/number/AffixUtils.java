@@ -60,8 +60,8 @@ import android.icu.text.UnicodeSet;
  *     }
  * }
  * </pre>
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class AffixUtils {
 
     private static final int STATE_BASE = 0;
@@ -111,16 +111,12 @@ public class AffixUtils {
     /** Represents a sequence of six or more currency symbols. */
     public static final int TYPE_CURRENCY_OVERFLOW = -15;
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface SymbolProvider {
         public CharSequence getSymbol(int type);
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface TokenConsumer {
         public void consumeToken(int typeOrCp);
     }

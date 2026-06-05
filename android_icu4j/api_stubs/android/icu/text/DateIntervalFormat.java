@@ -346,9 +346,8 @@ public class DateIntervalFormat extends UFormat {
 
     /**
      * Class for span fields in FormattedDateInterval.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class SpanField extends UFormat.SpanField {
         private static final long serialVersionUID = -6330879259553618133L;
 

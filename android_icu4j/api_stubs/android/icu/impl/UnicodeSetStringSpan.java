@@ -23,9 +23,7 @@ import android.icu.util.OutputInt;
  * Avoid recursion because of its exponential complexity.
  * Instead, try multiple paths at once and track them with an IndexList.
  */
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnicodeSetStringSpan {
 
     /*

@@ -15,9 +15,8 @@ import java.util.Date;
  * <code>InitialTimeZoneRule</code> represents a time zone rule
  * representing a time zone effective from the beginning and
  * has no actual start times.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class InitialTimeZoneRule extends TimeZoneRule {
 
     private static final long serialVersionUID = 1876594993064051206L;

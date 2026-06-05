@@ -19,9 +19,8 @@ import java.util.Date;
  *
  * @see android.icu.util.TimeZoneTransition
  * @see android.icu.util.RuleBasedTimeZone
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class TimeZoneRule implements Serializable {
 
     private static final long serialVersionUID = 6374143828553768100L;

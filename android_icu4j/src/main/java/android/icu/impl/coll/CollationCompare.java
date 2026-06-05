@@ -16,9 +16,7 @@ package android.icu.impl.coll;
 
 import android.icu.text.Collator;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CollationCompare /* all static */ {
     public static int compareUpToQuaternary(CollationIterator left, CollationIterator right,
             CollationSettings settings) {

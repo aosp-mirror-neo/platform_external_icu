@@ -15,8 +15,8 @@ import android.icu.util.ULocale;
 
 /**
  * The implementation class of <code>TimeZoneNames.Factory</code>
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class TimeZoneNamesFactoryImpl extends Factory {
 
     /* (non-Javadoc)

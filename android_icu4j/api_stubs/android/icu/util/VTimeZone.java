@@ -33,9 +33,8 @@ import android.icu.impl.Grego;
  * Note: The consumer of this class reading or writing VTIMEZONE data is responsible to
  * decode or encode Non-ASCII text.  Methods reading/writing VTIMEZONE data in this class
  * do nothing with MIME encoding.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class VTimeZone extends BasicTimeZone {
 
     private static final long serialVersionUID = -6851467294127795902L;

@@ -5,15 +5,11 @@ package android.icu.impl.number;
 
 import android.icu.impl.FormattedStringBuilder;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Padder {
     public static final String FALLBACK_PADDING_STRING = "\u0020"; // i.e. a space
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum PadPosition {
         BEFORE_PREFIX, AFTER_PREFIX, BEFORE_SUFFIX, AFTER_SUFFIX;
 

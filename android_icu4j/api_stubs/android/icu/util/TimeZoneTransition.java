@@ -12,9 +12,8 @@ package android.icu.util;
  * <code>TimeZoneTransition</code> is a class representing a time zone transition.
  * An instance has a time of transition and rules for both before and
  * after the transition.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class TimeZoneTransition {
     private final TimeZoneRule from;
     private final TimeZoneRule to;

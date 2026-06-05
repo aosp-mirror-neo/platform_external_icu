@@ -23,8 +23,8 @@ import android.icu.impl.ICUData;
 
 /**
  * Collation root provider.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CollationRoot {  // purely static
     private static final CollationTailoring rootSingleton;
     private static final RuntimeException exception;

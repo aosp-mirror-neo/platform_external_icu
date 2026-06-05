@@ -15,10 +15,10 @@ import android.icu.text.Transliterator;
 import android.icu.text.UnicodeMatcher;
 /**
  * @author Ram
- * @hide Only a subset of ICU is exposed in Android
  */
 //This class contains utility functions so testing not needed
 //CLOVER:OFF
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UtilityExtensions {
     /**
      * Append the given string to the rule.  Calls the single-character

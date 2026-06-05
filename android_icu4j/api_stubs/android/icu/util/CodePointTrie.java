@@ -23,8 +23,8 @@ import android.icu.impl.Normalizer2Impl.UTF16Plus;
  * <p>This class is not intended for public subclassing.
  *
  * @see MutableCodePointTrie
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class CodePointTrie extends CodePointMap {
     /**
      * Selectors for the type of a CodePointTrie.
@@ -36,8 +36,8 @@ public abstract class CodePointTrie extends CodePointMap {
      * @see MutableCodePointTrie#buildImmutable(CodePointTrie.Type, CodePointTrie.ValueWidth)
      * @see #fromBinary
      * @see #getType
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Type {
         /**
          * Fast/simple/larger BMP data structure.
@@ -59,9 +59,8 @@ public abstract class CodePointTrie extends CodePointMap {
      *
      * <p>Use null for {@link #fromBinary} to accept any data value width;
      * {@link #getValueWidth} will return the actual data value width.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum ValueWidth {
         /**
          * The trie stores 16 bits per data value.
@@ -724,9 +723,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * A CodePointTrie with {@link Type#FAST}.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class Fast extends CodePointTrie {
         private Fast(char[] index, Data data, int highStart,
                 int index3NullOffset, int dataNullOffset) {
@@ -857,9 +855,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * A CodePointTrie with {@link Type#SMALL}.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class Small extends CodePointTrie {
         private Small(char[] index, Data data, int highStart,
                 int index3NullOffset, int dataNullOffset) {
@@ -971,9 +968,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * A CodePointTrie with {@link Type#FAST} and {@link ValueWidth#BITS_16}.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Fast16 extends Fast {
         private final char[] dataArray;
 
@@ -1024,9 +1020,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * A CodePointTrie with {@link Type#FAST} and {@link ValueWidth#BITS_32}.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Fast32 extends Fast {
         private final int[] dataArray;
 
@@ -1077,9 +1072,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * A CodePointTrie with {@link Type#FAST} and {@link ValueWidth#BITS_8}.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Fast8 extends Fast {
         private final byte[] dataArray;
 
@@ -1130,9 +1124,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * A CodePointTrie with {@link Type#SMALL} and {@link ValueWidth#BITS_16}.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Small16 extends Small {
         Small16(char[] index, char[] data16, int highStart,
                 int index3NullOffset, int dataNullOffset) {
@@ -1154,9 +1147,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * A CodePointTrie with {@link Type#SMALL} and {@link ValueWidth#BITS_32}.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Small32 extends Small {
         Small32(char[] index, int[] data32, int highStart,
                 int index3NullOffset, int dataNullOffset) {
@@ -1178,9 +1170,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * A CodePointTrie with {@link Type#SMALL} and {@link ValueWidth#BITS_8}.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Small8 extends Small {
         Small8(char[] index, byte[] data8, int highStart,
                 int index3NullOffset, int dataNullOffset) {

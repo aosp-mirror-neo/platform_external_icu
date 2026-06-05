@@ -30,9 +30,9 @@ import java.util.Set;
  * <p><b>NOTE:</b> all function names are normalized to NFC.
  *
  * @deprecated This API is for technology preview only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class MFFunctionRegistry {
     private final Map<String, FunctionFactory> functionMap;
@@ -137,9 +137,9 @@ public class MFFunctionRegistry {
      * A {@code Builder} used to build instances of {@link MFFunctionRegistry}.
      *
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Builder {
         private final Map<String, FunctionFactory> functionMap = new HashMap<>();

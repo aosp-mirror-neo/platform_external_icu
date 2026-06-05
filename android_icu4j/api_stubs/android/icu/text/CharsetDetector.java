@@ -36,8 +36,8 @@ import java.util.List;
  * in the language are needed.  The detection process will attempt to
  * ignore html or xml style markup that could otherwise obscure the content.
  * <p>
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CharsetDetector {
 
 //   Question: Should we have getters corresponding to the setters for input text

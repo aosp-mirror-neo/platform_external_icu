@@ -46,9 +46,9 @@ import android.icu.util.ULocale;
  * {@link ZoneOffset} and {@link TimeZone}.
  *
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class JavaTimeConverters {
     // Milliseconds per hour

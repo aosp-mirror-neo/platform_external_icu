@@ -17,9 +17,9 @@ import java.util.regex.Pattern;
  * <p>It is used by {@link MessageFormatter}, but it might be handy for various tools.</p>
  *
  * @deprecated This API is for technology preview only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class MFParser {
     private static final int EOF = -1;

@@ -14,8 +14,8 @@ import java.text.CharacterIterator;
 /**
  * The LanguageBreakEngine interface is to be used to implement any
  * language-specific logic for break iteration.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface LanguageBreakEngine {
     /**
      * @param c A Unicode codepoint value

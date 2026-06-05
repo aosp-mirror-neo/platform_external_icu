@@ -93,9 +93,8 @@ final public class ListFormatter {
 
     /**
      * Class for span fields in FormattedList.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class SpanField extends UFormat.SpanField {
         private static final long serialVersionUID = 3563544214705634403L;
 
@@ -129,8 +128,8 @@ final public class ListFormatter {
 
     /**
      * Field selectors for format fields defined by ListFormatter.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Field extends Format.Field {
         private static final long serialVersionUID = -8071145668708265437L;
 

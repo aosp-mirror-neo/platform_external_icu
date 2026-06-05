@@ -24,15 +24,15 @@ import android.icu.text.UnicodeSet;
  * collection of static functions to avoid having to use nested objects.
  *
  * @author sffc (Shane Carr)
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class FormattedValueStringBuilderImpl {
 
     /**
      * Placeholder field used for calculating spans.
      * Does not currently support nested fields beyond one level.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class SpanFieldPlaceholder implements FormattedStringBuilder.FieldWrapper {
         public UFormat.SpanField spanField;
         public Field normalField;

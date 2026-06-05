@@ -55,8 +55,8 @@ import android.icu.impl.Normalizer2Impl;
  * <a href="http://www.unicode.org" target="unicode">Unicode Standard</a>.
  * It will be updated as later versions of Unicode are released.
  * @deprecated ICU 2.2
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 //CLOVER:OFF
 public final class ComposedCharIter {

@@ -33,9 +33,7 @@ enum ModelIndex {
     }
 }
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class MlBreakEngine {
     // {UW1, UW2, ... UW6, BW1, ... BW3, TW1, TW2, ... TW4} 6+3+4= 13
     private static final int MAX_FEATURE = 13;

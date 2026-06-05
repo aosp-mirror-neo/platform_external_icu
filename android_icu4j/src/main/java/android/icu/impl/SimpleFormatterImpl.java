@@ -29,8 +29,8 @@ import android.icu.util.ICUUncheckedIOException;
  * <p>An argument is stored as its number, less than ARG_NUM_LIMIT.
  * A literal-text segment is stored as its length (at least 1) offset by ARG_NUM_LIMIT,
  * followed by that many chars.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class SimpleFormatterImpl {
     /**
      * Argument numbers must be smaller than this limit.
@@ -413,9 +413,9 @@ public final class SimpleFormatterImpl {
      *     // Append the string corresponding to argIndex to output
      * }
      * </pre>
-     * @hide Only a subset of ICU is exposed in Android
      *
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class IterInternal {
         public static final long DONE = -1;
 

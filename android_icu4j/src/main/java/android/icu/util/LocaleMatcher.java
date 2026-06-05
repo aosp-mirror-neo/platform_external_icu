@@ -61,8 +61,8 @@ import android.icu.impl.locale.LocaleDistance;
  * <p>This class is not intended for public subclassing.
  *
  * @author markdavis@google.com
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class LocaleMatcher {
     private static final LSR UND_LSR = new LSR("und","","", LSR.EXPLICIT_LSR);
     // In ULocale, "und" and "" make the same object.
@@ -89,8 +89,8 @@ public final class LocaleMatcher {
      * Builder option for whether the language subtag or the script subtag is most important.
      *
      * @see LocaleMatcher.Builder#setFavorSubtag(LocaleMatcher.FavorSubtag)
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum FavorSubtag {
         /**
          * Language differences are most important, then script differences, then region differences.
@@ -108,8 +108,8 @@ public final class LocaleMatcher {
      * earlier ones are preferred.
      *
      * @see LocaleMatcher.Builder#setDemotionPerDesiredLocale(LocaleMatcher.Demotion)
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Demotion {
         /**
          * All desired locales are treated equally.
@@ -157,8 +157,8 @@ public final class LocaleMatcher {
      * but not if it is merely a fallback.
      *
      * @see LocaleMatcher.Builder#setDirection(LocaleMatcher.Direction)
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Direction {
         /**
          * Locale matching includes one-way matches such as Breton→French. (default)
@@ -173,9 +173,8 @@ public final class LocaleMatcher {
 
     /**
      * Data for the best-matching pair of a desired and a supported locale.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Result {
         private final ULocale desiredULocale;
         private final ULocale supportedULocale;
@@ -337,8 +336,8 @@ public final class LocaleMatcher {
      * LocaleMatcher Builder.
      *
      * @see LocaleMatcher#builder()
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Builder {
         private List<ULocale> supportedLocales;
         private int thresholdDistance = -1;

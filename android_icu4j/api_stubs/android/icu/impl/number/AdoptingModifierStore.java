@@ -10,8 +10,8 @@ import android.icu.impl.number.Modifier.Signum;
  * This implementation of ModifierStore adopts references to Modifiers.
  *
  * (This is named "adopting" because in C++, this class takes ownership of the Modifiers.)
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class AdoptingModifierStore implements ModifierStore {
     private final Modifier positive;
     private final Modifier posZero;

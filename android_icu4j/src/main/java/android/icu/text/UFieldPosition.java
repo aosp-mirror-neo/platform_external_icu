@@ -15,9 +15,9 @@ import java.text.Format.Field;
 /**
  * Adds the ability to get the decimal digits
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class UFieldPosition extends FieldPosition {
     private int countVisibleFractionDigits = -1;

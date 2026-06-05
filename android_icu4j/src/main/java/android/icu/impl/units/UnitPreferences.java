@@ -16,9 +16,7 @@ import android.icu.impl.UResource;
 import android.icu.util.ULocale;
 import android.icu.util.UResourceBundle;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnitPreferences {
     private static final Map<String, String> measurementSystem;
 
@@ -161,9 +159,7 @@ public class UnitPreferences {
         return null;
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class UnitPreference {
         private final String unit;
         private final BigDecimal geq;
@@ -189,9 +185,7 @@ public class UnitPreferences {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class UnitPreferencesSink extends UResource.Sink {
 
         private HashMap<String, HashMap<String, UnitPreference[]>> mapToUnitPreferences;

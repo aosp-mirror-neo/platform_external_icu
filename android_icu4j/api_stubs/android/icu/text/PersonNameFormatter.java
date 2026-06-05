@@ -63,17 +63,16 @@ import android.icu.impl.personname.PersonNameFormatterImpl;
  *         <td>J</td>
  *     </tr>
  * </table>
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PersonNameFormatter {
     //==============================================================================
     // Parameters that control formatting behavior
 
     /**
      * Specifies the desired length of the formatted name.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Length {
         /**
          * The longest name length.  Generally uses most of the fields in the name object.
@@ -100,8 +99,8 @@ public class PersonNameFormatter {
 
     /**
      * Specifies the intended usage of the formatted name.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Usage {
         /**
          * Used for when the name is going to be used to address the user directly: "Turn left here, John."
@@ -124,8 +123,8 @@ public class PersonNameFormatter {
 
     /**
      * Specifies the intended formality of the formatted name.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Formality {
         /**
          * The more formal version of the name.
@@ -147,8 +146,8 @@ public class PersonNameFormatter {
 
     /**
      * An enum indicating the desired display order for a formatted name.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum DisplayOrder {
         /**
          * The default display order; used to indicate normal formatting.
@@ -183,8 +182,8 @@ public class PersonNameFormatter {
     /**
      * A utility class that can be used to construct a PersonNameFormatter.
      * Use PersonNameFormatter.builder() to get a new instance.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Builder {
         /**
          * Sets the locale for the formatter to be constructed.

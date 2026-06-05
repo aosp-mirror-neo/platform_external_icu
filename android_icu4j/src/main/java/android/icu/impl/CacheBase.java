@@ -21,8 +21,8 @@ package android.icu.impl;
  * @param <D> Data type for creating a new instance value
  *
  * @author Markus Scherer, Mark Davis
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class CacheBase<K, V, D> {
     /**
      * Retrieves an instance from the cache. Calls createInstance(key, data) if the cache

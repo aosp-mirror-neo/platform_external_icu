@@ -22,8 +22,8 @@ import android.icu.util.Currency.CurrencyStringInfo;
  * The implementation of this class is slightly different between J and C. See #13584 for a follow-up.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CombinedCurrencyMatcher implements NumberParseMatcher {
 
     private final String isoCode;

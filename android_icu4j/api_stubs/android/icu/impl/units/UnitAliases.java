@@ -18,13 +18,13 @@ import android.icu.util.UResourceBundle;
 /**
  * UnitAliases is a class that holds all the aliases and their replacements for
  * units.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnitAliases {
     /**
      * A class to hold the alias and replacement.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Alias {
         public final String alias;
         public final String replacement;

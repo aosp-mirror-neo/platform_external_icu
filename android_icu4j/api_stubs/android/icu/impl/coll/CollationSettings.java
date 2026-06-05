@@ -21,8 +21,8 @@ import android.icu.text.Collator;
 /**
  * Collation settings/options/attributes.
  * These are the values that can be changed via API.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CollationSettings extends SharedObject {
     /**
      * Options bit 0: Perform the FCD check on the input text and deliver normalized text.

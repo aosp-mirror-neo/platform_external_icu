@@ -26,22 +26,18 @@ import android.icu.text.UnicodeSet;
 import android.icu.util.UResourceBundle;
 
 /**
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LSTMBreakEngine extends DictionaryBreakEngine {
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum EmbeddingType {
       UNKNOWN,
       CODE_POINTS,
       GRAPHEME_CLUSTER
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum LSTMClass {
       BEGIN,
       INSIDE,
@@ -79,8 +75,8 @@ public class LSTMBreakEngine extends DictionaryBreakEngine {
         return result;
     }
 
-    /** @hide Only a subset of ICU is exposed in Android
-     * @hide draft / provisional / internal are hidden on Android*/
+    /** @hide draft / provisional / internal are hidden on Android*/
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class LSTMData {
         private LSTMData() {
         }

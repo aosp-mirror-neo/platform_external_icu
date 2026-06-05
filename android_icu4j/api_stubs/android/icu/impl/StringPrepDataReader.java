@@ -24,8 +24,8 @@ import java.nio.ByteBuffer;
  *
  * To change the template for this generated type comment go to
  * Window>Preferences>Java>Code Generation>Code and Comments
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class StringPrepDataReader implements ICUBinary.Authenticate {
     private final static boolean debug = ICUDebug.enabled("NormalizerDataReader");
 

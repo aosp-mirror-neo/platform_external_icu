@@ -75,7 +75,6 @@ import android.icu.text.SimpleDateFormat;
  * locale that will ask the services to use the host platform's values).</li>
  * </ul>
  *
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
 
@@ -86,6 +85,7 @@ import android.icu.text.SimpleDateFormat;
 // - Should this be serializable?
 // - Other utilities?
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class GlobalizationPreferences implements Freezable<GlobalizationPreferences> {
 
     /**

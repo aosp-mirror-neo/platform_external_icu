@@ -34,9 +34,7 @@ import android.icu.text.UnicodeSet;
 import android.icu.util.ICUUncheckedIOException;
 import android.icu.util.ULocale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UCaseProps {
 
     // constructors etc. --------------------------------------------------- ***
@@ -689,8 +687,8 @@ public final class UCaseProps {
      *
      * The code point being case-mapped itself is never returned by
      * this iterator.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public interface ContextIterator {
         /**
          * Reset the iterator for forward or backward iteration.

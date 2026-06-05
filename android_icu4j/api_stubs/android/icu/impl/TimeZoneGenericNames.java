@@ -41,8 +41,8 @@ import android.icu.util.ULocale;
  * to format and parse time zone's generic display names.
  * It is not recommended to use this class directly, instead
  * use android.icu.text.TimeZoneFormat.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class TimeZoneGenericNames implements Serializable, Freezable<TimeZoneGenericNames> {
 
     // Note: This class implements Serializable, but we no longer serialize instance of
@@ -55,8 +55,8 @@ public class TimeZoneGenericNames implements Serializable, Freezable<TimeZoneGen
 
     /**
      * Generic name type enum
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum GenericNameType {
         LOCATION ("LONG", "SHORT"),
         LONG (),
@@ -80,8 +80,8 @@ public class TimeZoneGenericNames implements Serializable, Freezable<TimeZoneGen
 
     /**
      * Format pattern enum used for composing location and partial location names
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Pattern {
         // The format pattern such as "{0} Time", where {0} is the country or city.
         REGION_FORMAT("regionFormat", "({0})"),
@@ -600,8 +600,8 @@ public class TimeZoneGenericNames implements Serializable, Freezable<TimeZoneGen
     /**
      * A class used for returning the name search result used by
      * {@link TimeZoneGenericNames#find(String, int, EnumSet)}.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class GenericMatchInfo {
         final GenericNameType nameType;
         final String tzID;

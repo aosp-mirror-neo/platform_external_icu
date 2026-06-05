@@ -5,9 +5,9 @@ package android.icu.impl.number;
 
 /**
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface MicroPropsMutator<T> {
 
     public void mutateMicros(MicroProps micros, T value);

@@ -40,8 +40,8 @@ import android.icu.util.ByteArrayWrapper;
  * See class documentation for Collator.</p>
  * @see RuleBasedCollator
  * @see CollationKey
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class RawCollationKey extends ByteArrayWrapper
 {
     // public constructors --------------------------------------------------

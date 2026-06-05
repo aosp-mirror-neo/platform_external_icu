@@ -19,15 +19,15 @@ import android.icu.impl.StringSegment;
  * below to signal that it can be applied multiple times in a row.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface NumberParseMatcher {
 
     /**
      * Matchers can implement the Flexible interface to indicate that they are optional and can be run
      * repeatedly. Used by SeriesMatcher, primarily in the context of IgnorablesMatcher.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public interface Flexible {
     }
 

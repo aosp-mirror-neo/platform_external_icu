@@ -35,9 +35,9 @@ import android.icu.message2.MFDataModel.Variant;
  * with the proper MessageFormat 2 syntax.
  *
  * @deprecated This API is for technology preview only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class MFSerializer {
     private boolean shouldDoubleQuotePattern = false;

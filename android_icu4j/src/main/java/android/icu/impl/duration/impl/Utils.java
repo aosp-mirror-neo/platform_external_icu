@@ -12,9 +12,7 @@ package android.icu.impl.duration.impl;
 
 import java.util.Locale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Utils {
   public static final Locale localeFromString(String s) {
     String language = s;
@@ -189,9 +187,7 @@ public class Utils {
 //    }
 //  }
 
-  /**
- * @hide Only a subset of ICU is exposed in Android
- */
+  @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public static class ChineseDigits {
     final char[] digits;
     final char[] units;

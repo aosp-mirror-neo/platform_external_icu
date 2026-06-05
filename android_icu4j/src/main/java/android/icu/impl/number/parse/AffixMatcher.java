@@ -17,9 +17,9 @@ import android.icu.impl.number.PatternStringUtils.PatternSignType;
 
 /**
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class AffixMatcher implements NumberParseMatcher {
     private final AffixPatternMatcher prefix;
     private final AffixPatternMatcher suffix;

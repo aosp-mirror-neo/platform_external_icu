@@ -5,8 +5,8 @@ package android.icu.impl.number;
 
 import android.icu.impl.number.Padder.PadPosition;
 
-/** Implements a recursive descent parser for decimal format patterns. 
- * @hide Only a subset of ICU is exposed in Android*/
+/** Implements a recursive descent parser for decimal format patterns. */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PatternStringParser {
 
     public static final int IGNORE_ROUNDING_NEVER = 0;
@@ -85,8 +85,8 @@ public class PatternStringParser {
 
     /**
      * Contains raw information about the parsed decimal format pattern string.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ParsedPatternInfo implements AffixPatternProvider {
         public String pattern;
         public ParsedSubpatternInfo positive;
@@ -184,9 +184,7 @@ public class PatternStringParser {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ParsedSubpatternInfo {
         public long groupingSizes = 0x0000ffffffff0000L;
         public int integerLeadingHashSigns = 0;

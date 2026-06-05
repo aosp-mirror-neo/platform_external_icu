@@ -18,9 +18,7 @@ import android.icu.util.CodePointMap;
 import android.icu.util.CodePointTrie;
 import android.icu.util.ICUUncheckedIOException;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class EmojiProps {
     private static final class IsAcceptable implements ICUBinary.Authenticate {
         @Override

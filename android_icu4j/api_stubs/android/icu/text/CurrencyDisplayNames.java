@@ -19,9 +19,8 @@ import android.icu.util.ULocale;
  * Returns currency names localized for a locale.
  *
  * This class is not intended for public subclassing.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class CurrencyDisplayNames {
     /**
      * Return an instance of CurrencyDisplayNames that provides information

@@ -25,9 +25,9 @@ import android.icu.util.UResourceBundle;
 /**
  * just a wrapper for Java ListResourceBundles and
  * @author ram
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class ResourceBundleWrapper extends UResourceBundle {
     private ResourceBundle bundle = null;
     private String localeID = null;

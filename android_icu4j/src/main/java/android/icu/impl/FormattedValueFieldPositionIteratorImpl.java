@@ -16,8 +16,8 @@ import android.icu.text.ConstrainedFieldPosition;
  *
  * In C++, this implements FormattedValue. In Java, it is a stateless
  * collection of static functions to avoid having to use nested objects.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class FormattedValueFieldPositionIteratorImpl {
 
     /** Do not construct instances of this class */

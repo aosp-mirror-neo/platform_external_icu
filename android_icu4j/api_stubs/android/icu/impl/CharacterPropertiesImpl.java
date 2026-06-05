@@ -10,8 +10,8 @@ import android.icu.text.UnicodeSet;
 /**
  * Properties functionality above class UCharacterProperty
  * but below class CharacterProperties and class UnicodeSet.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CharacterPropertiesImpl {
     private static final int NUM_INCLUSIONS = UCharacterProperty.SRC_COUNT +
             UProperty.INT_LIMIT - UProperty.INT_START;

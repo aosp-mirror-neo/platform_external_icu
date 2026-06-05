@@ -29,8 +29,8 @@ import java.util.List;
  * identical listener is not already registered with the Notifier.
  * NotifyListener should cast the listener to the appropriate
  * type and call the appropriate method on the listener.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class ICUNotifier {
     private final Object notifyLock = new Object();
     private NotifyThread notifyThread;

@@ -18,9 +18,9 @@ import android.icu.text.FormattedValue;
  * including a {@link String}, {@link AttributedCharacterIterator}, more (TBD).</p>
  *
  * @deprecated This API is for ICU internal use only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class FormattedMessage implements FormattedValue {
 

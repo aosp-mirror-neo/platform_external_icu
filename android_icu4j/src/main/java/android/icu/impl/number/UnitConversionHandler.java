@@ -12,8 +12,8 @@ import android.icu.util.MeasureUnit;
  * A MicroPropsGenerator which converts a measurement from one MeasureUnit to
  * another. In particular, the output MeasureUnit may be a mixed unit. (The
  * input unit may not be a mixed unit.)
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnitConversionHandler implements MicroPropsGenerator {
 
     private final MicroPropsGenerator fParent;

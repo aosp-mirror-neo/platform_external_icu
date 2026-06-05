@@ -16,8 +16,8 @@ import android.icu.util.ULocale;
  * depending on the outputUnit.
  *
  * See processQuantity() for the input requirements.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LongNameMultiplexer implements MicroPropsGenerator {
     /**
      * LongNameMultiplexer calls the parent MicroPropsGenerator itself,
@@ -25,8 +25,8 @@ public class LongNameMultiplexer implements MicroPropsGenerator {
      * Next it multiplexes between name handlers (fHandlers) which are not given
      * access to a parent. Consequently LongNameMultiplexer must give these
      * handlers the MicroProps instance.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface ParentlessMicroPropsGenerator {
         public MicroProps processQuantityWithMicros(DecimalQuantity quantity, MicroProps micros);
     }

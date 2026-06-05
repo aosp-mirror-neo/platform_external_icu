@@ -3676,8 +3676,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * See https://unicode.org/reports/tr44/#Indic_Conjunct_Break
      *
      * @see UProperty#INDIC_CONJUNCT_BREAK
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum IndicConjunctBreak {
         /***/
         NONE,
@@ -3710,8 +3710,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * See https://www.unicode.org/reports/tr39/#Identifier_Status_and_Type.
      *
      * @see UProperty#IDENTIFIER_STATUS
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum IdentifierStatus {
         /***/
         RESTRICTED,

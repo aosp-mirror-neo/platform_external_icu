@@ -35,9 +35,7 @@ import android.icu.util.UResourceBundle;
 import android.icu.util.UResourceBundleIterator;
 import android.icu.util.UResourceTypeMismatchException;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public  class ICUResourceBundle extends UResourceBundle {
     /**
      * CLDR string value "∅∅∅" prevents fallback to the parent bundle.
@@ -1223,9 +1221,7 @@ public  class ICUResourceBundle extends UResourceBundle {
         return 42;
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum OpenType {  // C++ uresbund.cpp: enum UResOpenType
         /**
          * Open a resource bundle for the locale;

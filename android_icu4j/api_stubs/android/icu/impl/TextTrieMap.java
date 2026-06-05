@@ -20,16 +20,14 @@ import android.icu.text.UnicodeSet;
 /**
  * TextTrieMap is a trie implementation for supporting
  * fast prefix match for the key.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class TextTrieMap<V> {
 
     private Node _root = new Node();
     boolean _ignoreCase;
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Output {
         public int matchLength;
         public boolean partialMatch;
@@ -124,9 +122,7 @@ public class TextTrieMap<V> {
         _root.putLeadCodePoints(output);
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class CharIterator implements Iterator<Character> {
         private boolean _ignoreCase;
         private CharSequence _text;
@@ -205,8 +201,8 @@ public class TextTrieMap<V> {
     /**
      * Callback handler for processing prefix matches used by
      * find method.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public interface ResultHandler<V> {
         /**
          * Handles a prefix key match

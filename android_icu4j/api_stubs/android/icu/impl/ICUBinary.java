@@ -29,9 +29,7 @@ import android.icu.platform.AndroidDataFiles;
 import android.icu.util.ICUUncheckedIOException;
 import android.icu.util.VersionInfo;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class ICUBinary {
     /**
      * Reads the ICU .dat package file format.
@@ -417,8 +415,8 @@ public final class ICUBinary {
 
     /**
      * Special interface for data authentication
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface Authenticate
     {
         /**

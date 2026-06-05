@@ -22,9 +22,8 @@ import java.util.Arrays;
  * set of ranges (e.g., another @{link CodePointMap}):
  * Iterate over those source ranges; for each of them iterate over this trie;
  * add the source value into the value of each trie range.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class MutableCodePointTrie extends CodePointMap implements Cloneable {
     /**
      * Constructs a mutable trie that initially maps each Unicode code point to the same value.

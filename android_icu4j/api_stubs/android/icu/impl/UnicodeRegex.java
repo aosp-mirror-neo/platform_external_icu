@@ -39,8 +39,8 @@ import android.icu.util.Freezable;
  * 2015-sep-03: This is used there, and also in CLDR and in UnicodeTools.
  *
  * @author markdavis
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnicodeRegex implements Cloneable, Freezable<UnicodeRegex>, StringTransform {
     private static final Pattern SUPP_ESCAPE = Pattern.compile("\\\\U00([0-9a-fA-F]{6})");
 

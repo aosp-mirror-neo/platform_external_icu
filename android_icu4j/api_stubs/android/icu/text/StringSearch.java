@@ -1817,9 +1817,7 @@ public final class StringSearch extends SearchIterator {
             return ((ce & CONTINUATION_MARKER) == CONTINUATION_MARKER);
         }
 
-        /**
-         * @hide Only a subset of ICU is exposed in Android
-         */
+        @android.annotation.Hide // Only a subset of ICU is exposed in Android
         public static final class Range {
             int ixLow_;
             int ixHigh_;

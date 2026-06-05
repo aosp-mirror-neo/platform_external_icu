@@ -19,16 +19,16 @@ import android.icu.util.UResourceTypeMismatchException;
 
 /**
  * ICU resource bundle key and value types.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UResource {
     /**
      * Represents a resource bundle item's key string.
      * Avoids object creations as much as possible.
      * Mutable, not thread-safe.
      * For permanent storage, use clone() or toString().
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Key implements CharSequence, Cloneable, Comparable<Key> {
         // Stores a reference to the resource bundle key string bytes array,
         // with an offset of the key, to avoid creating a String object
@@ -273,8 +273,8 @@ public final class UResource {
     /**
      * Interface for iterating over a resource bundle array resource.
      * Does not use Java Iterator to reduce object creations.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public interface Array {
         /**
          * @return The number of items in the array resource.
@@ -291,8 +291,8 @@ public final class UResource {
     /**
      * Interface for iterating over a resource bundle table resource.
      * Does not use Java Iterator to reduce object creations.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public interface Table {
         /**
          * @return The number of items in the table resource.
@@ -317,8 +317,8 @@ public final class UResource {
      * Represents a resource bundle item's value.
      * Avoids object creations as much as possible.
      * Mutable, not thread-safe.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class Value {
         protected Value() {}
 
@@ -459,8 +459,8 @@ public final class UResource {
 
     /**
      * Sink for ICU resource bundle contents.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class Sink {
         /**
          * Called once for each bundle (child-parent-...-root).

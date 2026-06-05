@@ -27,9 +27,7 @@ import android.icu.text.UnicodeSetIterator;
 import android.icu.util.UResourceBundle;
 import android.icu.util.UResourceBundleIterator;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CjkBreakEngine extends DictionaryBreakEngine {
     private UnicodeSet fHangulWordSet;
     private UnicodeSet fDigitOrOpenPunctuationOrAlphabetSet;

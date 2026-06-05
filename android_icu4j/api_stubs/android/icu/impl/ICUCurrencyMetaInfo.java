@@ -20,8 +20,8 @@ import android.icu.util.Currency.CurrencyUsage;
 
 /**
  * ICU's currency meta info data.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ICUCurrencyMetaInfo extends CurrencyMetaInfo {
     private ICUResourceBundle regionInfo;
     private ICUResourceBundle digitInfo;

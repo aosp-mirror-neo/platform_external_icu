@@ -13,9 +13,8 @@ package android.icu.util;
  * Unchecked version of {@link CloneNotSupportedException}.
  * Some ICU APIs do not throw the standard exception but instead wrap it
  * into this unchecked version.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ICUCloneNotSupportedException extends ICUException {
     private static final long serialVersionUID = -4824446458488194964L;
 

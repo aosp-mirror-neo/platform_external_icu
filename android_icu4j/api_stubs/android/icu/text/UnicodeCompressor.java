@@ -74,7 +74,6 @@ package android.icu.text;
 * @see UnicodeDecompressor
 *
 * @author Stephen F. Booth
-* @hide Only a subset of ICU is exposed in Android
 */
 
 /*
@@ -186,6 +185,7 @@ package android.icu.text;
 *   window      switch to window            2       3       4       5
 *   defined
 */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UnicodeCompressor implements SCSU
 {
     //==========================

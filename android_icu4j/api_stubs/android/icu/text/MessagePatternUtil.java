@@ -26,8 +26,8 @@ import java.util.List;
  *
  * <p>This class and its nested classes are not intended for public subclassing.
  * @author Markus Scherer
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class MessagePatternUtil {
 
     // Private constructor preventing object instantiation
@@ -67,16 +67,16 @@ public final class MessagePatternUtil {
      * Common base class for all elements in a tree of nodes
      * returned by {@link MessagePatternUtil#buildMessageNode(MessagePattern)}.
      * This class and all subclasses are immutable and thread-safe.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Node {
         private Node() {}
     }
 
     /**
      * A Node representing a parsed MessageFormat pattern string.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class MessageNode extends Node {
         /**
          * @return the list of MessageContentsNode nodes that this message contains
@@ -118,13 +118,13 @@ public final class MessagePatternUtil {
     /**
      * A piece of MessageNode contents.
      * Use getType() to determine the type and the actual Node subclass.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class MessageContentsNode extends Node {
         /**
          * The type of a piece of MessageNode contents.
-         * @hide Only a subset of ICU is exposed in Android
          */
+        @android.annotation.Hide // Only a subset of ICU is exposed in Android
         public enum Type {
             /**
              * This is a TextNode containing literal text (downcast and call getText()).
@@ -172,8 +172,8 @@ public final class MessagePatternUtil {
 
     /**
      * Literal text, a piece of MessageNode contents.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class TextNode extends MessageContentsNode {
         /**
          * @return the literal text at this point in the message
@@ -199,8 +199,8 @@ public final class MessagePatternUtil {
 
     /**
      * A piece of MessageNode contents representing a message argument and its details.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ArgNode extends MessageContentsNode {
         /**
          * @return the argument type
@@ -278,8 +278,8 @@ public final class MessagePatternUtil {
     /**
      * A Node representing details of the argument style of a complex argument.
      * (Which is a choice/plural/select argument which selects among nested messages.)
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ComplexArgStyleNode extends Node {
         /**
          * @return the argument type (same as getArgType() on the parent ArgNode)
@@ -376,8 +376,8 @@ public final class MessagePatternUtil {
     /**
      * A Node representing a nested message (nested inside an argument)
      * with its selection criterion.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class VariantNode extends Node {
         /**
          * Returns the selector string.

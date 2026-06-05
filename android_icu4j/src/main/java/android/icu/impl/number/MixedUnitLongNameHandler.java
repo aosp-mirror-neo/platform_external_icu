@@ -17,8 +17,8 @@ import android.icu.text.SimpleFormatter;
 import android.icu.util.MeasureUnit;
 import android.icu.util.ULocale;
 
-/** Similar to LongNameHandler, but only for MIXED units. 
- * @hide Only a subset of ICU is exposed in Android*/
+/** Similar to LongNameHandler, but only for MIXED units. */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class MixedUnitLongNameHandler
     implements MicroPropsGenerator, ModifierStore, LongNameMultiplexer.ParentlessMicroPropsGenerator {
     private final PluralRules rules;

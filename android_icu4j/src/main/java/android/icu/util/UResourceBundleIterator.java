@@ -34,8 +34,8 @@ import java.util.NoSuchElementException;
  * }
  * </pre>
  * @author ram
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UResourceBundleIterator{
     private UResourceBundle bundle;
     private int index = 0;

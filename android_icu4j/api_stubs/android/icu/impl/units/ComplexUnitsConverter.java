@@ -22,8 +22,8 @@ import android.icu.util.Measure;
  * DESIGN: This class uses <code>UnitsConverter</code> in order to perform the single converter (i.e. converters from
  * a single unit to another single unit). Therefore, <code>ComplexUnitsConverter</code> class contains multiple
  * instances of the <code>UnitsConverter</code> to perform the conversion.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ComplexUnitsConverter {
     public static final BigDecimal EPSILON = BigDecimal.valueOf(Math.ulp(1.0));
     public static final BigDecimal EPSILON_MULTIPLIER = BigDecimal.valueOf(1).add(EPSILON);
@@ -152,9 +152,7 @@ public class ComplexUnitsConverter {
         return unitsConverters_.get(0).convert(quantity).multiply(EPSILON_MULTIPLIER).compareTo(limit) >= 0;
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ComplexConverterResult {
         public final int indexOfQuantity;
         public final List<Measure> measures;

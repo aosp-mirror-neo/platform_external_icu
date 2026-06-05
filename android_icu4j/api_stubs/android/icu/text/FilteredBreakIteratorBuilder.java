@@ -24,9 +24,8 @@ import android.icu.util.ULocale;
  *  would consider the string "Mr. Smith" to be a single segment.
  *
  * <p>This class is not intended for public subclassing.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class FilteredBreakIteratorBuilder {
 
     /**

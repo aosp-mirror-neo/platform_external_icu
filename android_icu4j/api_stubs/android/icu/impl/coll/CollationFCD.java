@@ -47,8 +47,8 @@ import android.icu.text.UTF16;
  *
  * hasTccc(trail)=false:
  * It should only be tested for unpaired trail surrogates which are FCD-inert.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CollationFCD {
     public static boolean hasLccc(int c) {
         assert c <= 0xffff;

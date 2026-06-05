@@ -10,9 +10,9 @@ import java.text.ParseException;
  * Used to report parsing errors in {@link MessageFormatter}.
  *
  * @deprecated This API is for technology preview only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class MFParseException extends ParseException {
     private static final long serialVersionUID = -7634219305388292407L;

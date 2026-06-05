@@ -13,8 +13,8 @@ import android.icu.impl.StringSegment;
  * matchers in the series succeed. Performs greedy matches within the context of the series.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SeriesMatcher implements NumberParseMatcher {
 
     protected List<NumberParseMatcher> matchers = null;

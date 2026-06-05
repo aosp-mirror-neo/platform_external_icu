@@ -45,9 +45,9 @@ import android.icu.util.VersionInfo;
 * <p>Responsibility for molding the binary data into more meaning form lies on
 * <a href=UCharacter.html>UCharacter</a>.</p>
 * @author Syn Wee Quek
-* @hide Only a subset of ICU is exposed in Android
 */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UCharacterProperty
 {
     // public data members -----------------------------------------------

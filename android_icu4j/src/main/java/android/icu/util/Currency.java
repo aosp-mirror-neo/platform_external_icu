@@ -781,9 +781,9 @@ public class Currency extends MeasureUnit {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static final class CurrencyStringInfo {
         private String isoCode;

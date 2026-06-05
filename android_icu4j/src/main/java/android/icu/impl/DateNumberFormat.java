@@ -28,9 +28,7 @@ import android.icu.util.UResourceBundle;
  * used by SimpleDateFormat implementation.
  * This class is not thread-safe.
  */
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class DateNumberFormat extends NumberFormat implements Cloneable {
 
     private static final long serialVersionUID = -6315692826916346953L;

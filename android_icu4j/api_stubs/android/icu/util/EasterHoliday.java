@@ -19,9 +19,9 @@ import java.util.Date;
  * A Holiday subclass which represents holidays that occur
  * a fixed number of days before or after Easter.  Supports both the
  * Western and Orthodox methods for calculating Easter.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class EasterHoliday extends Holiday
 {
     /**

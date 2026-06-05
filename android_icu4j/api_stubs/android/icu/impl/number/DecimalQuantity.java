@@ -26,8 +26,8 @@ import android.icu.text.UFieldPosition;
  * <p>
  * TODO: Should I change this to an abstract class so that logic for min/max digits doesn't need to be
  * copied to every implementation?
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface DecimalQuantity extends PluralRules.IFixedDecimal {
     /**
      * Sets the minimum integer digits that this {@link DecimalQuantity} should generate.

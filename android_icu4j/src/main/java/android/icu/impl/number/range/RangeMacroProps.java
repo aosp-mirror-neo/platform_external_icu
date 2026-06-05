@@ -12,9 +12,9 @@ import android.icu.util.ULocale;
 
 /**
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RangeMacroProps {
     public UnlocalizedNumberFormatter formatter1;
     public UnlocalizedNumberFormatter formatter2;

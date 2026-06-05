@@ -20,8 +20,8 @@ import java.util.TreeSet;
 /**
  * Computationally efficient determination of the relationship between
  * two SortedSets.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SortedSetRelation {
 
     /**

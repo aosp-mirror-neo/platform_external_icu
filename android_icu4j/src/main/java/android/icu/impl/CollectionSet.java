@@ -14,8 +14,8 @@ import java.util.Set;
  * Useful when you need a Set but creating a HashSet is too expensive.
  *
  * IMPORTANT: The elements of the Collection *must* be unique! This class does not check.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CollectionSet<E> implements Set<E> {
 
     private final Collection<E> data;

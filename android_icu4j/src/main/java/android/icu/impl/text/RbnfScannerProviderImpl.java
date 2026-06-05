@@ -25,9 +25,9 @@ import android.icu.util.ULocale;
  * Returns RbnfLenientScanners that use the old RuleBasedNumberFormat
  * implementation behind setLenientParseMode, which is based on Collator.
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class RbnfScannerProviderImpl implements RbnfLenientScannerProvider {
     private static final boolean DEBUG = ICUDebug.enabled("rbnf");

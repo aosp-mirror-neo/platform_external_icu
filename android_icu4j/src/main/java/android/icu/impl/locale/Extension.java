@@ -10,9 +10,7 @@
 package android.icu.impl.locale;
 
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Extension {
     private char _key;
     protected String _value;

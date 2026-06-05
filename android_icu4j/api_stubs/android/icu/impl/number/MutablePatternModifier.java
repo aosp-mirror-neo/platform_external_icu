@@ -32,8 +32,8 @@ import android.icu.util.Currency;
  * attempt to use it from multiple threads! Instead, you can obtain a safe, immutable decimal format
  * pattern modifier by calling {@link MutablePatternModifier#createImmutable}, in effect treating this
  * instance as a builder for the immutable variant.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class MutablePatternModifier implements Modifier, SymbolProvider, MicroPropsGenerator {
 
     // Modifier details
@@ -216,9 +216,7 @@ public class MutablePatternModifier implements Modifier, SymbolProvider, MicroPr
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ImmutablePatternModifier implements MicroPropsGenerator {
         final AdoptingModifierStore pm;
         final PluralRules rules;

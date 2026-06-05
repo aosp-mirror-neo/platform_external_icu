@@ -70,8 +70,8 @@ package android.icu.text;
 * @see UnicodeCompressor
 *
 * @author Stephen F. Booth
-* @hide Only a subset of ICU is exposed in Android
 */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UnicodeDecompressor implements SCSU
 {
     //==========================

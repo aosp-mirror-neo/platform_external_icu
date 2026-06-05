@@ -15,9 +15,9 @@ import android.icu.text.FormattedValue;
  * Very-very rough implementation of FormattedValue, packaging a string.
  * Expect it to change.
  *
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PlainStringFormattedValue implements FormattedValue {
     private final String value;
 

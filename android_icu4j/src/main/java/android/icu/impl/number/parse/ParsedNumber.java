@@ -12,8 +12,8 @@ import android.icu.impl.number.DecimalQuantity_DualStorageBCD;
  * Struct-like class to hold the results of a parsing routine.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ParsedNumber {
 
     /**

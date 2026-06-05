@@ -16,8 +16,8 @@ import android.icu.util.UResourceBundleIterator;
  * in supplementalData/calendarData.
  *
  * @author Yoshito Umaoka
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class EraRules {
     private static final int MAX_ENCODED_START_YEAR = 32767;
     private static final int MIN_ENCODED_START_YEAR = -32768;

@@ -19,9 +19,9 @@ import java.util.List;
  * Despite its age, is still draft API, and clients should treat it as such.
  *
  * Implementation of DateRule that takes a range.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RangeDateRule implements DateRule {
     /**
      * @hide draft / provisional / internal are hidden on Android

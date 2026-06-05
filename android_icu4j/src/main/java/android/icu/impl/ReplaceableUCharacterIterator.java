@@ -23,8 +23,8 @@ import android.icu.text.UTF16;
  * moved up into UCharacterIterator.
  *
  * What are first, last, and getBeginIndex doing here?!?!?!
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ReplaceableUCharacterIterator extends UCharacterIterator implements Cloneable {
 
     // public constructor ------------------------------------------------------

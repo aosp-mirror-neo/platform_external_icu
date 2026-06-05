@@ -17,9 +17,9 @@ import java.util.Date;
  * Despite its age, is still draft API, and clients should treat it as such.
  *
  * Simple implementation of DateRule.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SimpleDateRule implements DateRule
 {
     /**

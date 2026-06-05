@@ -22,8 +22,8 @@ package android.icu.impl.duration;
  * @see Period
  * @see PeriodBuilder
  * @see PeriodFormatterFactory
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface PeriodFormatter {
   /**
    * Format a Period.

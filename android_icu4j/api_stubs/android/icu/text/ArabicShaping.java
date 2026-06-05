@@ -53,8 +53,8 @@ import android.icu.lang.UCharacterDirection;
  * length of the text to be constant. They expect extra spaces to be added
  * or consumed either next to the affected character or at the end of the
  * text.</p>
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class ArabicShaping {
     private final int options;
     private boolean isLogical; // convenience

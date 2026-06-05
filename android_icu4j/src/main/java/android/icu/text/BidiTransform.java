@@ -10,9 +10,8 @@ import android.icu.lang.UCharacter;
  * Bidi Layout Transformation Engine.
  *
  * @author Lina Kemmel
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class BidiTransform
 {
     /**
@@ -52,8 +51,8 @@ public class BidiTransform
      * @see Bidi#REORDER_DEFAULT
      * @see Bidi#REORDER_INVERSE_LIKE_DIRECT
      * @see Bidi#REORDER_RUNS_ONLY
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Order {
         /**
          * Constant indicating a logical order.
@@ -74,8 +73,8 @@ public class BidiTransform
      * @see Bidi#setReorderingOptions
      * @see Bidi#writeReordered
      * @see Bidi#writeReverse
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Mirroring {
         /**
          * Constant indicating that character mirroring should not be

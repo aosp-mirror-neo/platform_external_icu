@@ -16,8 +16,8 @@ import java.util.TimeZone;
 /**
  * Abstract formatter for dates.  Differs from DateFormat in that it
  * provides <code>withLocale</code> and <code>withTimeZone</code> methods.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface DateFormatter {
 
   /**

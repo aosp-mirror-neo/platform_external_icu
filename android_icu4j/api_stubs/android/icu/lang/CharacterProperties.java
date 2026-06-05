@@ -20,9 +20,8 @@ import android.icu.util.MutableCodePointTrie;
  *
  * <p>For details see the method descriptions.
  * For lookup of property values by code point see class {@link UCharacter}.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CharacterProperties {
     private CharacterProperties() {}  // all-static
 

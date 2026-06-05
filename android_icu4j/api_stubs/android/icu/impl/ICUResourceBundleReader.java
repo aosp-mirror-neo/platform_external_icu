@@ -31,8 +31,8 @@ import android.icu.util.VersionInfo;
  * This class reads the *.res resource bundle format.
  *
  * For the file format documentation see ICU4C's source/common/uresdata.h file.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class ICUResourceBundleReader {
     /**
      * File format version that this class understands.

@@ -92,13 +92,13 @@ import android.icu.util.ICUCloneNotSupportedException;
  *
  * TODO: Consider making this more widely available inside ICU,
  * or else adopting a different model.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SharedObject implements Cloneable {
     /**
      * Similar to a smart pointer, basically a port of the static methods of C++ SharedObject.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Reference<T extends SharedObject> implements Cloneable {
         private T ref;
 

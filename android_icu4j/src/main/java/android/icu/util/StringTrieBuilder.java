@@ -21,13 +21,13 @@ import java.util.HashMap;
  * <p>This class is not intended for public subclassing.
  *
  * @author Markus W. Scherer
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class StringTrieBuilder {
     /**
      * Build options for BytesTrieBuilder and CharsTrieBuilder.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Option {
         /**
          * Builds a trie quickly.

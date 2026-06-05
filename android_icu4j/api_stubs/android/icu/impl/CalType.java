@@ -7,8 +7,8 @@ package android.icu.impl;
  * Calendar type enum, moved from android.icu.util.Calendar.
  *
  * @author Yoshito Umaoka
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public enum CalType {
     GREGORIAN("gregorian"),
     ISO8601("iso8601"),

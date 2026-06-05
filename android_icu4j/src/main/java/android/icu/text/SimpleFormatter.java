@@ -33,8 +33,8 @@ import android.icu.impl.SimpleFormatterImpl;
  *
  * @see MessageFormat
  * @see MessagePattern.ApostropheMode
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class SimpleFormatter {
     // For internal use in Java, use SimpleFormatterImpl directly instead:
     // It is most efficient to compile patterns to compiled-pattern strings

@@ -16,9 +16,7 @@ import android.icu.lang.UCharacter;
 import android.icu.lang.UProperty;
 import android.icu.text.UnicodeSet;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UnhandledBreakEngine implements LanguageBreakEngine {
     // TODO: Use two UnicodeSets, one with all frozen sets, one with unfrozen.
     // in handleChar(), update the unfrozen version, clone, freeze, replace the frozen one.

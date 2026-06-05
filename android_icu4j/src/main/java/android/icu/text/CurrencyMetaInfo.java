@@ -28,9 +28,8 @@ import android.icu.util.Currency.CurrencyUsage;
  * you should avoid relying on time of day in queries.
  *
  * This class is not intended for public subclassing.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CurrencyMetaInfo {
     private static final CurrencyMetaInfo impl;
     private static final boolean hasData;
@@ -75,8 +74,8 @@ public class CurrencyMetaInfo {
 
     /**
      * A filter used to select which currency info is returned.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class CurrencyFilter {
         /**
          * The region to filter on.  If null, accepts any region.
@@ -342,8 +341,8 @@ public class CurrencyMetaInfo {
 
     /**
      * Represents the raw information about fraction digits and rounding increment.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class CurrencyDigits {
         /**
          * Number of fraction digits used to display this currency.
@@ -379,8 +378,8 @@ public class CurrencyMetaInfo {
      * and priority.
      * Use {@link CurrencyMetaInfo#currencyInfo(CurrencyFilter)}
      * for a list of info objects matching the filter.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class CurrencyInfo {
         /**
          * Region code where currency is used.

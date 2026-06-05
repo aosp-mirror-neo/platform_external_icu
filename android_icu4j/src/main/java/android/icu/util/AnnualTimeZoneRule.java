@@ -17,9 +17,8 @@ import android.icu.impl.Grego;
  * <code>AnnualTimeZoneRule</code> is a class used for representing a time zone
  * rule which takes effect annually.  Years used in this class are
  * all Gregorian calendar years.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class AnnualTimeZoneRule extends TimeZoneRule {
 
     private static final long serialVersionUID = -8870666707791230688L;

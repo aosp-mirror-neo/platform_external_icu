@@ -38,8 +38,8 @@ import android.icu.util.UResourceBundle;
  * tool tz2icu.
  *
  * @author Alan Liu
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class ZoneMeta {
     private static final boolean ASSERT = false;
 

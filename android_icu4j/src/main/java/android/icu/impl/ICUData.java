@@ -24,8 +24,8 @@ import android.icu.util.VersionInfo;
 
 /**
  * Provides access to ICU data files as InputStreams.  Implements security checking.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class ICUData {
     /**
      * The data path to be used with getBundleInstance API

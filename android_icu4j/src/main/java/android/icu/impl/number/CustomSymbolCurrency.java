@@ -7,9 +7,7 @@ import android.icu.text.DecimalFormatSymbols;
 import android.icu.util.Currency;
 import android.icu.util.ULocale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CustomSymbolCurrency extends Currency {
     private static final long serialVersionUID = 2497493016770137670L;
     // TODO: Serialization methods?

@@ -17,8 +17,8 @@ import java.util.List;
  * DataRecord contains the data used by PeriodFormatterData. Fields are
  * package-private for ease of access. This is a struct, it knows how to read
  * and write itself to/from simple XML, that's all.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class DataRecord {
     byte pl;
     String[][] pluralNames;
@@ -175,9 +175,7 @@ public class DataRecord {
         out.close();
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ScopeData {
         String prefix;
         boolean requiresDigitPrefix;
@@ -205,9 +203,7 @@ public class DataRecord {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface ETimeLimit {
         public static final byte NOLIMIT = 0;
         public static final byte LT = 1;
@@ -215,9 +211,7 @@ public class DataRecord {
         public static final String[] names = { "NOLIMIT", "LT", "MT" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface ETimeDirection {
         public static final byte NODIRECTION = 0;
         public static final byte PAST = 1;
@@ -225,9 +219,7 @@ public class DataRecord {
         public static final String[] names = { "NODIRECTION", "PAST", "FUTURE" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EUnitVariant {
         public static final byte PLURALIZED = 0;
         public static final byte MEDIUM = 1;
@@ -235,9 +227,7 @@ public class DataRecord {
         public static final String[] names = { "PLURALIZED", "MEDIUM", "SHORT" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface ECountVariant {
         public static final byte INTEGER = 0;
         public static final byte INTEGER_CUSTOM = 1;
@@ -249,9 +239,7 @@ public class DataRecord {
             "HALF_FRACTION", "DECIMAL1", "DECIMAL2", "DECIMAL3" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EPluralization {
         public static final byte NONE = 0;
         public static final byte PLURAL = 1;
@@ -263,9 +251,7 @@ public class DataRecord {
             "PAUCAL", "HEBREW", "ARABIC" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EHalfPlacement {
         public static final byte PREFIX = 0;
         public static final byte AFTER_FIRST = 1;
@@ -273,9 +259,7 @@ public class DataRecord {
         public static final String[] names = { "PREFIX", "AFTER_FIRST", "LAST" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface ENumberSystem {
         public static final byte DEFAULT = 0;
         public static final byte CHINESE_TRADITIONAL = 1;
@@ -285,18 +269,14 @@ public class DataRecord {
             "CHINESE_TRADITIONAL", "CHINESE_SIMPLIFIED", "KOREAN" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EZeroHandling {
         public static final byte ZPLURAL = 0;
         public static final byte ZSINGULAR = 1;
         public static final String[] names = { "ZPLURAL", "ZSINGULAR" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EDecimalHandling {
         public static final byte DPLURAL = 0;
         public static final byte DSINGULAR = 1;
@@ -306,9 +286,7 @@ public class DataRecord {
             "DSINGULAR_SUBONE", "DPAUCAL" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EFractionHandling {
         public static final byte FPLURAL = 0;
         public static final byte FSINGULAR_PLURAL = 1;
@@ -318,9 +296,7 @@ public class DataRecord {
             "FSINGULAR_PLURAL_ANDAHALF", "FPAUCAL" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EHalfSupport {
         public static final byte YES = 0;
         public static final byte NO = 1;
@@ -328,9 +304,7 @@ public class DataRecord {
         public static final String[] names = { "YES", "NO", "ONE_PLUS" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EMilliSupport {
         public static final byte YES = 0;
         public static final byte NO = 1;
@@ -338,9 +312,7 @@ public class DataRecord {
         public static final String[] names = { "YES", "NO", "WITH_SECONDS" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface ESeparatorVariant {
         public static final byte NONE = 0;
         public static final byte SHORT = 1;
@@ -348,9 +320,7 @@ public class DataRecord {
         public static final String[] names = { "NONE", "SHORT", "FULL" };
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface EGender {
         public static final byte M = 0;
         public static final byte F = 1;

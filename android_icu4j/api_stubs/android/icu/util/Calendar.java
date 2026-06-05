@@ -3807,10 +3807,10 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * SimpleDateFormat factory method.
      *
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class FormatConfiguration {
         private String pattern;

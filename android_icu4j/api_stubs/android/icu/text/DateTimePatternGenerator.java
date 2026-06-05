@@ -1707,10 +1707,10 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * is "44".
      *
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class VariableField {
         private final String string;
@@ -1829,10 +1829,10 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
     }
      *  </pre>
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     static public class FormatParser {
         private static final UnicodeSet SYNTAX_CHARS = new UnicodeSet("[a-zA-Z]").freeze();

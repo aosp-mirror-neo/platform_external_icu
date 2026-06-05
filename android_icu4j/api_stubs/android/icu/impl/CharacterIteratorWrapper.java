@@ -17,9 +17,9 @@ import android.icu.text.UCharacterIterator;
  * This class is a wrapper around CharacterIterator and implements the
  * UCharacterIterator protocol
  * @author ram
- * @hide Only a subset of ICU is exposed in Android
  */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CharacterIteratorWrapper extends UCharacterIterator implements Cloneable {
 
     private CharacterIterator iterator;

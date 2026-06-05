@@ -20,12 +20,10 @@ import android.icu.util.UResourceBundle;
  * need to be updated in order to return well-formed sets upon calls to getLeadCodePoints().
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class StaticUnicodeSets {
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static enum Key {
         EMPTY,
         // Ignorables

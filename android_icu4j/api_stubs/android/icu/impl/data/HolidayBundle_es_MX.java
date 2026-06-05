@@ -16,9 +16,7 @@ import java.util.ListResourceBundle;
 import android.icu.util.Holiday;
 import android.icu.util.SimpleHoliday;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class HolidayBundle_es_MX extends ListResourceBundle {
     static private final Holiday[] fHolidays = {
         SimpleHoliday.NEW_YEARS_DAY,

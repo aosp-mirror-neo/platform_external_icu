@@ -16,9 +16,7 @@ package android.icu.impl;
 
 import android.icu.impl.PropsVectors.CompactHandler;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PVecToTrieCompactHandler implements CompactHandler {
     public IntTrieBuilder builder;
     public int initialValue;

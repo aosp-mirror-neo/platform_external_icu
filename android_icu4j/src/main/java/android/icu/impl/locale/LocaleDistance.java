@@ -23,8 +23,8 @@ import android.icu.util.ULocale;
 /**
  * Offline-built data for LocaleMatcher.
  * Mostly but not only the data for mapping locales to their maximized forms.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocaleDistance {
     /**
      * Bit flag used on the last character of a subtag in the trie.
@@ -104,9 +104,7 @@ public class LocaleDistance {
     }
 
     // VisibleForTesting
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Data {
         public byte[] trie;
         public byte[] regionToPartitionsIndex;

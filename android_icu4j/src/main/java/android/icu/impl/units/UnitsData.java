@@ -18,8 +18,8 @@ import android.icu.util.UResourceBundle;
 
 /**
  * Responsible for all units data operations (retriever, analysis, extraction certain data ... etc.).
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnitsData {
     // TODO(icu-units#122): this class can use static initialization to load the
     // data once, and provide access to it via static methods. (Partial change
@@ -136,9 +136,7 @@ public class UnitsData {
         return this.unitPreferences.getPreferencesFor(category, usage, locale, this);
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class SimpleUnitIdentifiersSink extends UResource.Sink {
         String[] simpleUnits = null;
         int[] simpleUnitCategories = null;
@@ -188,8 +186,8 @@ public class UnitsData {
 
     /**
      * Contains all the needed constants.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Constants {
         // TODO: consider moving the Trie-offset-related constants into
         // MeasureUnitImpl.java, the only place they're being used?
@@ -225,9 +223,7 @@ public class UnitsData {
     }
 
     // Deals with base units and categories, e.g. "meter-per-second" --> "speed".
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Categories {
         /**
          * Maps from base unit to an index value: an index into the
@@ -262,8 +258,8 @@ public class UnitsData {
      *
      * In Java unitQuantity values are collected in order into an ArrayList,
      * while unitQuantity key-to-index lookups are handled with a HashMap.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class CategoriesSink extends UResource.Sink {
         /**
          * Contains the map between units in their base units into their category.

@@ -22,8 +22,8 @@ import android.icu.impl.Utility;
  * size when necessary.
  *
  * @author syn wee
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ByteArrayWrapper implements Comparable<ByteArrayWrapper>
 {
     // public data member ------------------------------------------------

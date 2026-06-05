@@ -13,8 +13,8 @@ import android.icu.util.ICUException;
 /**
  * The second primary implementation of {@link Modifier}, this one consuming a
  * {@link android.icu.text.SimpleFormatter} pattern.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SimpleModifier implements Modifier {
     private final String compiledPattern;
     private final Field field;

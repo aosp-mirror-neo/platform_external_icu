@@ -19,9 +19,9 @@ import java.util.Date;
  * A holiday whose date can be represented by a month, day, and optionally day of week
  * in the Gregorian calendar.
  *
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SimpleHoliday extends Holiday {
     /**
      * Construct an object representing a holiday
