@@ -307,7 +307,7 @@ public final class Main {
             System.err.println("Error parsing:" + documentId + ":" +
                     problem.getSourceLineNumber() + ": " + problem.toString());
         }
-        throw new RuntimeException("Unable to parse document. Stopping.");
+        throw new RuntimeException("Unable to parse document. Stopping.\n" + document.get());
       }
       return cu;
     }
