@@ -19,13 +19,12 @@ import java.util.List;
  * Despite its age, is still draft API, and clients should treat it as such.
  *
  * Implementation of DateRule that takes a range.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RangeDateRule implements DateRule {
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public RangeDateRule() {
     }
 
@@ -38,15 +37,15 @@ public class RangeDateRule implements DateRule {
 //    }
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public void add(DateRule rule) {
         add(new Date(Long.MIN_VALUE), rule);
     }
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public void add(Date start, DateRule rule) {
         // TODO: Insert in the right place
         // System.out.println("Add: " + start.toString());
@@ -56,8 +55,8 @@ public class RangeDateRule implements DateRule {
     //-----------------------------------------------------------------------
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public Date firstAfter(Date start) {
         // Find the range that I should look at
@@ -82,8 +81,8 @@ public class RangeDateRule implements DateRule {
     }
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public Date firstBetween(Date start, Date end) {
         if (end == null) {
@@ -111,8 +110,8 @@ public class RangeDateRule implements DateRule {
     }
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public boolean isOn(Date date) {
         Range r = rangeAt(startIndex(date));
@@ -122,8 +121,8 @@ public class RangeDateRule implements DateRule {
     /**
      * Check whether this event occurs at least once between the two
      * dates given.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public boolean isBetween(Date start, Date end) {
         return firstBetween(start,end) == null;

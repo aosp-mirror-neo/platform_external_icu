@@ -343,8 +343,8 @@ public abstract class Precision {
      * Sets a MathContext to use on this Precision.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Precision withMode(MathContext mathContext) {
         if (this.mathContext.equals(mathContext)) {
@@ -370,8 +370,8 @@ public abstract class Precision {
 
     /**
      * @deprecated ICU 60 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public abstract void apply(DecimalQuantity value);
 
@@ -381,8 +381,8 @@ public abstract class Precision {
 
     /**
      * @deprecated ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static final BogusRounder BOGUS_PRECISION = new BogusRounder();
 
@@ -572,7 +572,6 @@ public abstract class Precision {
      * An BogusRounder's MathContext into precision.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -580,8 +579,8 @@ public abstract class Precision {
         /**
          * Default constructor.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public BogusRounder() {
         }
@@ -589,8 +588,8 @@ public abstract class Precision {
         /**
          * {@inheritDoc}
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Override
         @Deprecated
         public void apply(DecimalQuantity value) {
@@ -608,8 +607,8 @@ public abstract class Precision {
          * Copies the BogusRounder's MathContext into precision.
          *
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Precision into(Precision precision) {
             Precision copy = precision.createCopy();

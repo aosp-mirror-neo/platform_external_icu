@@ -266,8 +266,8 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
      *
      * @return the array of digit strings
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public String[] getDigitStringsLocal() {
         return digitStrings;
@@ -279,8 +279,8 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
      * digit strings array is <em>not</em> a sequence of increasing code points, returns -1.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public int getCodePointZero() {
         return codePointZero;
@@ -773,8 +773,8 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public String getApproximatelySignString() {
         return approximatelyString;
@@ -782,8 +782,8 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public void setApproximatelySignString(String approximatelySignString) {
         if (approximatelySignString == null) {
@@ -1329,8 +1329,8 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
 
     // BEGIN Android-added: Libcore bridge needs localized pattern separator. http://b/112080617
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static String getLocalizedPatternSeparator(ULocale locale, NumberingSystem ns) {
         CacheData data = getCachedLocaleData(locale, ns);
         return data.numberElements[13];
@@ -1918,9 +1918,9 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
      * @see android.icu.util.ULocale
      * @see android.icu.util.ULocale#VALID_LOCALE
      * @see android.icu.util.ULocale#ACTUAL_LOCALE
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.compat.annotation.UnsupportedAppUsage(maxTargetSdk = 30, trackingBug = 170729553)
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public final ULocale getLocale(ULocale.Type type) {
         return type == ULocale.ACTUAL_LOCALE ?
             this.actualLocale : this.validLocale;

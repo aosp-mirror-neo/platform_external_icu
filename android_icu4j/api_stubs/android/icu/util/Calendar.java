@@ -1867,8 +1867,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
     /**
      * <strong>[icu]</strong> Returns the list of locales for which Calendars are installed.
      * @return the list of locales for which Calendars are installed.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static ULocale[] getAvailableULocales()
     {
         // TODO
@@ -2114,8 +2114,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * to MONTH correctly if ORDINAL_MONTH has higher priority.
      * @return the value for the given time field.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected int internalGetMonth()
     {
@@ -2134,8 +2134,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      *   ORDINAL_MONTH are both unset.
      * @return the value for the MONTH.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected int internalGetMonth(int defaultValue) {
         if (resolveFields(MONTH_PRECEDENCE) == MONTH) {
@@ -2224,15 +2224,14 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected int getRelatedYearDifference() {
         return 0;
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -2242,7 +2241,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -3439,8 +3437,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * subclass
      * @param locale the locale for which the symbols should be drawn
      * @return a <code>DateFormat</code> appropriate to this calendar
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected DateFormat handleGetDateFormat(String pattern, String override, ULocale locale) {
         FormatConfiguration fmtConfig = new FormatConfiguration();
         fmtConfig.pattern = pattern;
@@ -3546,9 +3544,9 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      *     <li>Return format string instead of DateFormat.</li>
      * </ul>
      * This is not meant as public API.
-     * @hide draft / provisional / internal are hidden on Android
      */
     // TODO: Check if calType can be passed via keyword on loc parameter instead.
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static String getDateTimeFormatString(ULocale loc, String calType, int dateStyle,
             int timeStyle) {
         if (timeStyle < DateFormat.NONE || timeStyle > DateFormat.SHORT) {
@@ -3728,7 +3726,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -3739,8 +3736,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static String getDateAtTimePattern(Calendar cal, ULocale uLocale, int dateStyle) {
         PatternData patternData = PatternData.make(cal, uLocale);
@@ -3807,7 +3804,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * SimpleDateFormat factory method.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -3826,7 +3822,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
          * Returns the pattern string
          * @return the format pattern string
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
         @android.annotation.Hide // original deprecated declaration
         @Deprecated
@@ -3836,7 +3831,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
         @android.annotation.Hide // original deprecated declaration
         @Deprecated
@@ -3848,7 +3842,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
          * Returns the calendar
          * @return the calendar
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
         @android.annotation.Hide // original deprecated declaration
         @Deprecated
@@ -3860,7 +3853,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
          * Returns the locale
          * @return the locale
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
         @android.annotation.Hide // original deprecated declaration
         @Deprecated
@@ -3872,7 +3864,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
          * Returns the format symbols
          * @return the format symbols
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
         @android.annotation.Hide // original deprecated declaration
         @Deprecated
@@ -3927,8 +3918,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * The year in this calendar is counting from 1 backward if the era is 0.
      * @return The year in era 0 of this calendar is counting backward from 1.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected boolean isEra0CountingBackward() {
         return false;
@@ -5655,8 +5646,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * value range is from 0 to 23:59:59.999 inclusive. This value
      * reflects local zone wall time.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected long computeMillisInDayLong() {
         // Do the time portion of the conversion.
@@ -5756,8 +5747,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * @param millisInDay milliseconds of the time fields
      * @return total zone offset (raw + DST) for the given moment
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected int computeZoneOffset(long millis, long millisInDay) {
         int[] offsets = new int[2];
@@ -5913,8 +5904,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * @param extendedYear the extendedYear, as returned by handleGetExtendedYear
      * @return the default month
      * @see #MONTH
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected int getDefaultMonthInYear(int extendedYear) {
         return Calendar.JANUARY;
     }
@@ -5927,8 +5918,8 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * @param month the month, as returned by getDefaultMonthInYear
      * @return the default day of the month
      * @see #DAY_OF_MONTH
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected int getDefaultDayInMonth(int extendedYear, int month) {
         return 1;
     }
@@ -6430,7 +6421,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      *
      * @return <code>true</code> if this calendar has a default century.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -6461,9 +6451,9 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * @see android.icu.util.ULocale
      * @see android.icu.util.ULocale#VALID_LOCALE
      * @see android.icu.util.ULocale#ACTUAL_LOCALE
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.compat.annotation.UnsupportedAppUsage
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public final ULocale getLocale(ULocale.Type type) {
         return type == ULocale.ACTUAL_LOCALE ?
                 this.actualLocale : this.validLocale;

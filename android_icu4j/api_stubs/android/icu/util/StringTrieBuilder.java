@@ -47,15 +47,15 @@ public abstract class StringTrieBuilder {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected StringTrieBuilder() {}
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected void addImpl(CharSequence s, int value) {
         if(state!=State.ADDING) {
@@ -75,8 +75,8 @@ public abstract class StringTrieBuilder {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected final void buildImpl(Option buildOption) {
         switch(state) {
@@ -120,8 +120,8 @@ public abstract class StringTrieBuilder {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected void clearImpl() {
         strings.setLength(0);
@@ -817,58 +817,58 @@ public abstract class StringTrieBuilder {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract boolean matchNodesCanHaveValues() /*const*/;
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int getMaxBranchLinearSubNodeLength() /*const*/;
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int getMinLinearMatch() /*const*/;
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int getMaxLinearMatchLength() /*const*/;
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int write(int unit);
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int write(int offset, int length);
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int writeValueAndFinal(int i, boolean isFinal);
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int writeValueAndType(boolean hasValue, int value, int node);
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int writeDeltaTo(int jumpTarget);
 
@@ -880,8 +880,8 @@ public abstract class StringTrieBuilder {
     // Strings and sub-strings for linear-match nodes.
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected StringBuilder strings=new StringBuilder();
     private Node root;

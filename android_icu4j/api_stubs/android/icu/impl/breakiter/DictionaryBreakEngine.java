@@ -89,7 +89,6 @@ public abstract class DictionaryBreakEngine implements LanguageBreakEngine {
      *  A deque-like structure holding raw ints.
      *  Partial, limited implementation, only what is needed by the dictionary implementation.
      *  For internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class DequeI implements Cloneable {

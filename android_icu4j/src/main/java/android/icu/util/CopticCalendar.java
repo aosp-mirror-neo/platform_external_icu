@@ -222,8 +222,8 @@ public final class CopticCalendar extends CECalendar
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected boolean isEra0CountingBackward() {
@@ -233,7 +233,6 @@ public final class CopticCalendar extends CECalendar
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Override
@@ -257,8 +256,8 @@ public final class CopticCalendar extends CECalendar
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     protected int extendedYearToEra(int eyear) {
@@ -268,8 +267,8 @@ public final class CopticCalendar extends CECalendar
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     protected int extendedYearToYear(int eyear) {
@@ -279,7 +278,6 @@ public final class CopticCalendar extends CECalendar
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Override
@@ -294,12 +292,12 @@ public final class CopticCalendar extends CECalendar
      * @param year the year
      * @param month the month
      * @param date the day
-     * @hide draft / provisional / internal are hidden on Android
      */
     // The equivalent operation can be done by public Calendar API.
     // This API was accidentally marked as @draft, but we have no good
     // reason to keep this.  For now, we leave it as is, but may be
     // removed in future.  2008-03-21 yoshito
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static int copticToJD(long year, int month, int date) {
         return ceToJD(year, month, date, JD_EPOCH_OFFSET);
     }
@@ -308,8 +306,8 @@ public final class CopticCalendar extends CECalendar
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected final int getRelatedYearDifference() {
         return COPTIC_CALENDAR_RELATED_YEAR_DIFFERENCE;

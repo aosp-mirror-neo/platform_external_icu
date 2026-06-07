@@ -422,8 +422,8 @@ public final class DecimalQuantity_DualStorageBCD extends DecimalQuantity_Abstra
      *
      * @return An error message if this instance is invalid, or null if this instance is healthy.
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public String checkHealth() {
         if (usingBytes) {
@@ -483,8 +483,8 @@ public final class DecimalQuantity_DualStorageBCD extends DecimalQuantity_Abstra
      *
      * @return true if an internal byte array is being used; false if a long is being used.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public boolean isUsingBytes() {
         return usingBytes;

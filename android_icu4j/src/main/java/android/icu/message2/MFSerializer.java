@@ -35,7 +35,6 @@ import android.icu.message2.MFDataModel.Variant;
  * with the proper MessageFormat 2 syntax.
  *
  * @deprecated This API is for technology preview only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -46,8 +45,8 @@ public class MFSerializer {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public MFSerializer() {}
 
@@ -61,8 +60,8 @@ public class MFSerializer {
      * @return the serialized message, in MessageFormat 2 syntax
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static String dataModelToString(MFDataModel.Message message) {
         return new MFSerializer().messageToString(message);

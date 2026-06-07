@@ -267,9 +267,8 @@ public class Trie2Writable extends Trie2 {
     
     /**
      * No error checking for illegal arguments.
-     * 
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private int getDataBlock(int c, boolean forLSCP) {
         int i2, oldBlock, newBlock;
 
@@ -359,8 +358,8 @@ public class Trie2Writable extends Trie2 {
 
     /**
      * initialValue is ignored if overwrite=true
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private void fillBlock(int block, /*UChar32*/ int start, /*UChar32*/ int limit,
               int value, int initialValue, boolean overwrite) {
         int i;

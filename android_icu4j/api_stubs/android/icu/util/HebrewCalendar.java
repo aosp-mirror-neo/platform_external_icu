@@ -671,7 +671,6 @@ public class HebrewCalendar extends Calendar {
      * The rule here is that if (year % 19) == 0, 3, 6, 8, 11, 14, or 17.
      * The formula below performs the same test, believe it or not.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -745,7 +744,6 @@ public class HebrewCalendar extends Calendar {
      * Overrides {@link Calendar#validateField(int)} to provide
      * special handling for month validation for Hebrew calendar.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Override
@@ -889,8 +887,8 @@ public class HebrewCalendar extends Calendar {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected final int getRelatedYearDifference() {
@@ -962,8 +960,8 @@ public class HebrewCalendar extends Calendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected int internalGetMonth()

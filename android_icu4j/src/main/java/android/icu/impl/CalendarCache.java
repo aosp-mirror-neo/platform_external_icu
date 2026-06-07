@@ -10,14 +10,13 @@
 package android.icu.impl;
 
 /**
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CalendarCache
 {
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public CalendarCache() {
         makeArrays(arraySize);
     }
@@ -35,15 +34,15 @@ public class CalendarCache
     }
     
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public synchronized long get(long key) {
         return values[findIndex(key)];
     }
     
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public synchronized void put(long key, long value)
     {
         if (size >= threshold) {
@@ -124,7 +123,7 @@ public class CalendarCache
     private long[]  values      = new long[arraySize];
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     static public  long EMPTY   = Long.MIN_VALUE;
 }

@@ -1817,7 +1817,6 @@ public abstract class Transliterator implements StringTransform  {
      * @param targetSet TODO
      * @see #getTargetSet
      * @deprecated  This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1840,7 +1839,6 @@ public abstract class Transliterator implements StringTransform  {
      * The externalFilter must be frozen (it is frozen if not).
      * The result may be frozen, so don't attempt to modify.
      * @deprecated  This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -2170,7 +2168,6 @@ public abstract class Transliterator implements StringTransform  {
     /**
      * Register the script-based "Any" transliterators: Any-Latin, Any-Greek
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated

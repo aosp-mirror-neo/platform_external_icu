@@ -50,7 +50,6 @@ import android.icu.text.UTF16;
  * </pre>
  *
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -61,8 +60,8 @@ public final class UScriptRun
      * method will return <code>false</code> the first time it is called.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UScriptRun()
     {
@@ -78,8 +77,8 @@ public final class UScriptRun
      * @param text the string of characters over which to iterate.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UScriptRun(String text)
     {
@@ -95,8 +94,8 @@ public final class UScriptRun
      * @param count the number of characters over which to iterate
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UScriptRun(String text, int start, int count)
     {
@@ -110,8 +109,8 @@ public final class UScriptRun
      * @param chars the array of characters over which to iterate.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UScriptRun(char[] chars)
     {
@@ -127,8 +126,8 @@ public final class UScriptRun
      * @param count the number of characters over which to iterate
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UScriptRun(char[] chars, int start, int count)
     {
@@ -140,8 +139,8 @@ public final class UScriptRun
      * Reset the iterator to the start of the text.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final void reset()
     {
@@ -172,8 +171,8 @@ public final class UScriptRun
      * @exception IllegalArgumentException If invalid arguments are passed.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final void reset(int start, int count)
     throws IllegalArgumentException
@@ -204,8 +203,8 @@ public final class UScriptRun
      * @param count the number of characters over which to iterate.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final void reset(char[] chars, int start, int count)
     {
@@ -225,8 +224,8 @@ public final class UScriptRun
      * @param chars the new array of characters over which to iterate.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final void reset(char[] chars)
     {
@@ -249,8 +248,8 @@ public final class UScriptRun
      * @param count the nuber of characters over which to iterate.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final void reset(String str, int start, int count)
     {
@@ -270,8 +269,8 @@ public final class UScriptRun
      * @param str the new string of characters over which to iterate.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final void reset(String str)
     {
@@ -292,8 +291,8 @@ public final class UScriptRun
      * @return the index of the first character in the current script run.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final int getScriptStart()
     {
@@ -306,8 +305,8 @@ public final class UScriptRun
      * @return the index of the first character after the current script run.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final int getScriptLimit()
     {
@@ -321,8 +320,8 @@ public final class UScriptRun
      * @see android.icu.lang.UScript
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final int getScriptCode()
     {
@@ -336,8 +335,8 @@ public final class UScriptRun
      * @return <code>false</code> if there isn't another run, <code>true</code> if there is.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final boolean next()
     {

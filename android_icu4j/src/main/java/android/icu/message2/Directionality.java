@@ -12,8 +12,6 @@ import android.icu.util.ULocale;
  * Encodes info about the direction of the message.
  *
  * <p>It is used to implement the @code u:dir} functionality.</p>
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public enum Directionality {
@@ -21,34 +19,29 @@ public enum Directionality {
      * Not initialized or unknown.
      *
      * <p>No special processing will be used.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     UNKNOWN,
     /**
      * Left-to-right directionality.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     LTR,
     /**
      * Right-to-left directionality.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     RTL,
     /**
      * Directionality determined from <i>expression</i> contents.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     AUTO,
     /**
      * Directionality inherited from the <i>message</i> or from the <i>resolved value</i>
      * of the <i>operand</i> without requiring isolation of the <i>expression</i> value.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     INHERIT;
 
     /**
@@ -56,9 +49,8 @@ public enum Directionality {
      *
      * @param locale the locale to determine the directionality from.
      * @return the appropriate directionality for the locale given.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static Directionality of(Locale locale) {
         if (locale == null) {
             return Directionality.INHERIT;

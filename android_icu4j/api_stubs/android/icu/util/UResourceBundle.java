@@ -508,8 +508,8 @@ public abstract class UResourceBundle extends ResourceBundle {
      * @return the resource, or null
      * @see #get(String)
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected UResourceBundle findTopLevel(String aKey) {
         // NOTE: this only works for top-level resources.  For resources at lower
@@ -572,8 +572,8 @@ public abstract class UResourceBundle extends ResourceBundle {
      * @return the resource, or null
      * @see #get(int)
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected UResourceBundle findTopLevel(int index) {
         // NOTE: this _barely_ works for top-level resources.  For resources at lower
@@ -606,8 +606,8 @@ public abstract class UResourceBundle extends ResourceBundle {
      * @return a Set of all keys contained in this ResourceBundle and its parent bundles,
      *         which is empty if this is not a bundle or a table resource
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public Set<String> keySet() {
@@ -658,8 +658,8 @@ public abstract class UResourceBundle extends ResourceBundle {
      * @return a Set of the keys contained only in this ResourceBundle,
      *         which is empty if this is not a bundle or a table resource
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected Set<String> handleKeySet() {
@@ -870,8 +870,8 @@ public abstract class UResourceBundle extends ResourceBundle {
      * Is this a top-level resource, that is, a whole bundle?
      * @return true if this is a top-level resource
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected boolean isTopLevelResource() {
         return true;

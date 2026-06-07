@@ -683,7 +683,6 @@ public final class CollationElementIterator
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated

@@ -4957,7 +4957,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param valueAlias    Same as {@link #getPropertyValueEnum(int, CharSequence)}
      * @return returns UProperty.UNDEFINED if the value is not valid, otherwise the value.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -5721,7 +5720,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param nameChoice The choice of the name.
      * @return value as string
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -5887,8 +5885,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @see allScalarValues
      * @see allScalarValuesStream
      * @see isValidCodePoint
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final boolean isScalarValue(int cp) {
         return (0 <= cp && cp < 0xd800) || (0xe000 <= cp && cp <= MAX_CODE_POINT);
     }
@@ -5945,8 +5943,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @return an IterableOfInt over all Unicode code points U+0000..U+10FFFF.
      * @see isValidCodePoint
      * @see allScalarValues
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final IterableOfInt allCodePoints() {
         return CodePoints.ALL_CODE_POINTS;
     }
@@ -5961,8 +5959,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @return an IterableOfInt over all Unicode scalar values.
      * @see isScalarValue
      * @see allCodePoints
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final IterableOfInt allScalarValues() {
         return CodePoints.ALL_SCALAR_VALUES;
     }
@@ -5976,8 +5974,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @return an IntStream over all Unicode code points U+0000..U+10FFFF.
      * @see isValidCodePoint
      * @see allScalarValuesStream
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final IntStream allCodePointsStream() {
         return IntStream.rangeClosed(0, 0x10ffff);
     }
@@ -5992,8 +5990,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @return an IntStream over all Unicode scalar values.
      * @see isScalarValue
      * @see allCodePointsStream
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final IntStream allScalarValuesStream() {
         return IntStream.concat(
                 IntStream.rangeClosed(0, 0xd7ff),
@@ -6091,8 +6089,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      *
      * @param cp the code point to check
      * @return true if cp is a Unicode noncharacter code point
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final boolean isNoncharacter(int cp) {
         return cp >= 0xfdd0 && (cp <= 0xfdef || (cp & 0xfffe) == 0xfffe) && cp <= MAX_CODE_POINT;
     }

@@ -16,7 +16,6 @@ import java.util.Map;
  * latest description</a>.</p>
  *
  * @deprecated This API is for technology preview only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -31,7 +30,6 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -41,28 +39,27 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class PatternMessage implements Message {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<Declaration> declarations;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final Pattern pattern;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public PatternMessage(List<Declaration> declarations, Pattern pattern) {
             this.declarations = declarations;
@@ -72,34 +69,33 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class SelectMessage implements Message {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<Declaration> declarations;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<Expression> selectors;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<Variant> variants;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public SelectMessage(
                 List<Declaration> declarations,
@@ -113,7 +109,6 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -123,28 +118,27 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class InputDeclaration implements Declaration {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String name;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final VariableExpression value;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public InputDeclaration(String name, VariableExpression value) {
             this.name = name;
@@ -154,28 +148,27 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class LocalDeclaration implements Declaration {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String name;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final Expression value;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public LocalDeclaration(String name, Expression value) {
             this.name = name;
@@ -185,7 +178,6 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -195,28 +187,27 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Variant implements LiteralOrCatchallKey {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<LiteralOrCatchallKey> keys;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final Pattern value;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Variant(List<LiteralOrCatchallKey> keys, Pattern value) {
             this.keys = keys;
@@ -226,7 +217,6 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -236,16 +226,16 @@ public class MFDataModel {
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public static boolean isCatchAll(String key) {
             return AS_KEY_STRING.equals(key);
         }
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public CatchallKey() {}
     }
@@ -255,15 +245,14 @@ public class MFDataModel {
     // type Pattern = Array<string | Expression | Markup>;
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Pattern {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<PatternPart> parts;
 
@@ -274,7 +263,6 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -284,15 +272,14 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class StringPart implements PatternPart {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String value;
 
@@ -303,7 +290,6 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -314,34 +300,33 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class LiteralExpression implements Expression {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final Literal arg;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final FunctionRef function;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<Attribute> attributes;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public LiteralExpression(Literal arg, FunctionRef function, List<Attribute> attributes) {
             this.arg = arg;
@@ -352,34 +337,33 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class VariableExpression implements Expression {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final VariableRef arg;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final FunctionRef function;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<Attribute> attributes;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public VariableExpression(
                 VariableRef arg, FunctionRef function, List<Attribute> attributes) {
@@ -391,28 +375,27 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class FunctionRef {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String name;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final Map<String, Option> options;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public FunctionRef(String name, Map<String, Option> options) {
             this.name = name;
@@ -422,28 +405,27 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class FunctionExpression implements Expression {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final FunctionRef function;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<Attribute> attributes;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public FunctionExpression(FunctionRef function, List<Attribute> attributes) {
             this.function = function;
@@ -453,28 +435,27 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Attribute {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String name;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final LiteralOrVariableRef value;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Attribute(String name, LiteralOrVariableRef value) {
             this.name = name;
@@ -486,7 +467,6 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -498,22 +478,21 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Literal implements LiteralOrVariableRef, LiteralOrCatchallKey {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String value;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Literal(String value) {
             this.value = value;
@@ -522,22 +501,21 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class VariableRef implements LiteralOrVariableRef {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String name;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public VariableRef(String name) {
             this.name = name;
@@ -546,28 +524,27 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Option {
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String name;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final LiteralOrVariableRef value;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Option(String name, LiteralOrVariableRef value) {
             this.name = name;
@@ -579,7 +556,6 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -592,33 +568,33 @@ public class MFDataModel {
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final Kind kind;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final String name;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final Map<String, Option> options;
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final List<Attribute> attributes;
 
         /**
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Markup(
                 Kind kind, String name, Map<String, Option> options, List<Attribute> attributes) {

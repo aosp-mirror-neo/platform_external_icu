@@ -2080,9 +2080,9 @@ public class DecimalFormat extends NumberFormat implements Cloneable {
   /**
    * Android libcore uses this internal method to set {@link ParseMode#JAVA_COMPATIBILITY}.
    * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
    */
-  @Deprecated
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+@Deprecated
 public synchronized void setParseStrictMode(ParseMode parseMode) {
     properties.setParseMode(parseMode);
     refreshFormatter();
@@ -2350,9 +2350,9 @@ public LocalizedNumberFormatter toNumberFormatter() {
 
   /**
    * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
    */
-  @Deprecated
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+@Deprecated
   public IFixedDecimal getFixedDecimal(double number) {
     return formatter.format(number).getFixedDecimal();
   }
@@ -2451,9 +2451,9 @@ public LocalizedNumberFormatter toNumberFormatter() {
 
   /**
    * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
    */
-  @Deprecated
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+@Deprecated
   public synchronized void setProperties(PropertySetter func) {
     func.set(properties);
     refreshFormatter();
@@ -2461,15 +2461,14 @@ public LocalizedNumberFormatter toNumberFormatter() {
 
   /**
    * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
    */
   @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
   public static interface PropertySetter {
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public void set(DecimalFormatProperties props);
   }

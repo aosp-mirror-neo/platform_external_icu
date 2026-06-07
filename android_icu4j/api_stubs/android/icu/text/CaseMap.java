@@ -19,7 +19,6 @@ import android.icu.util.ULocale;
 public abstract class CaseMap {
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated

@@ -70,9 +70,9 @@ public abstract class UFormat extends Format {
      * @see android.icu.util.ULocale
      * @see android.icu.util.ULocale#VALID_LOCALE
      * @see android.icu.util.ULocale#ACTUAL_LOCALE
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.compat.annotation.UnsupportedAppUsage(maxTargetSdk = 30, trackingBug = 170729553)
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public final ULocale getLocale(ULocale.Type type) {
         return type == ULocale.ACTUAL_LOCALE ?
             this.actualLocale : this.validLocale;

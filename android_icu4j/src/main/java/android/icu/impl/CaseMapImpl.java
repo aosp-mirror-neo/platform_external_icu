@@ -173,8 +173,8 @@ public final class CaseMapImpl {
      * Currently only 3 out of 8 values are used:
      * 0 (words), TITLECASE_WHOLE_STRING, TITLECASE_SENTENCES.
      * See stringoptions.h.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private static final int TITLECASE_ITERATOR_MASK = 0xe0;
 
     public static final int TITLECASE_ADJUST_TO_CASED = 0x400;
@@ -184,8 +184,8 @@ public final class CaseMapImpl {
      * Currently two bits are defined:
      * TITLECASE_NO_BREAK_ADJUSTMENT, TITLECASE_ADJUST_TO_CASED.
      * See stringoptions.h.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private static final int TITLECASE_ADJUSTMENT_MASK = 0x600;
 
     public static int addTitleAdjustmentOption(int options, int newOption) {

@@ -351,7 +351,6 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
     /**
      * @return this, for chaining
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1202,7 +1201,6 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * The base class just calls compare(left.toString(), right.toString()).
      * Subclasses should instead implement this method and have the String API call this method.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1447,8 +1445,8 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * @see android.icu.util.ULocale
      * @see android.icu.util.ULocale#VALID_LOCALE
      * @see android.icu.util.ULocale#ACTUAL_LOCALE
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public ULocale getLocale(ULocale.Type type) {
         return ULocale.ROOT;
     }

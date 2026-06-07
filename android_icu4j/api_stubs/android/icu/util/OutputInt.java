@@ -14,7 +14,6 @@ package android.icu.util;
  * Like <code>Output&lt;Integer&gt;</code> but without auto-boxing.
  *
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -23,8 +22,8 @@ public class OutputInt {
      * The value field.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public int value;
 
@@ -32,8 +31,8 @@ public class OutputInt {
      * Constructs an <code>OutputInt</code> with value 0.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public OutputInt() {
     }
@@ -43,8 +42,8 @@ public class OutputInt {
      *
      * @param value the initial value
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public OutputInt(int value) {
         this.value = value;
@@ -53,8 +52,8 @@ public class OutputInt {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public String toString() {

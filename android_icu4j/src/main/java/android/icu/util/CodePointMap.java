@@ -177,33 +177,33 @@ public abstract class CodePointMap implements Iterable<CodePointMap.Range> {
     public class StringIterator {
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         protected CharSequence s;
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         protected int sIndex;
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         protected int c;
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         protected int value;
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         protected StringIterator(CharSequence s, int sIndex) {
             this.s = s;

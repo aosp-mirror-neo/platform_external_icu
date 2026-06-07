@@ -25,7 +25,6 @@ import android.icu.text.BreakIterator;
  *
  * @see Segments
  * @see BreakIterator
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface Segmenter {
@@ -38,8 +37,8 @@ public interface Segmenter {
    *     modified while using the resulting {@code Segments} object.
    * @return A {@code Segments} object with APIs to access the results of segmentation, including
    *     APIs that return {@code Stream}s of the segments and boundaries.
-   * @hide draft / provisional / internal are hidden on Android
    */
-  Segments segment(CharSequence s);
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+Segments segment(CharSequence s);
 
 }

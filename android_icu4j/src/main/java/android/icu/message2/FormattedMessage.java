@@ -18,7 +18,6 @@ import android.icu.text.FormattedValue;
  * including a {@link String}, {@link AttributedCharacterIterator}, more (TBD).</p>
  *
  * @deprecated This API is for ICU internal use only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -28,8 +27,8 @@ public class FormattedMessage implements FormattedValue {
      * Not yet implemented.
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public FormattedMessage() {
         throw new RuntimeException("Not yet implemented.");
@@ -41,8 +40,8 @@ public class FormattedMessage implements FormattedValue {
      * {@inheritDoc}
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public int length() {
@@ -55,8 +54,8 @@ public class FormattedMessage implements FormattedValue {
      * {@inheritDoc}
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public char charAt(int index) {
@@ -69,8 +68,8 @@ public class FormattedMessage implements FormattedValue {
      * {@inheritDoc}
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public CharSequence subSequence(int start, int end) {
@@ -83,8 +82,8 @@ public class FormattedMessage implements FormattedValue {
      * {@inheritDoc}
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public <A extends Appendable> A appendTo(A appendable) {
@@ -97,8 +96,8 @@ public class FormattedMessage implements FormattedValue {
      * {@inheritDoc}
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public boolean nextPosition(ConstrainedFieldPosition cfpos) {
@@ -111,8 +110,8 @@ public class FormattedMessage implements FormattedValue {
      * {@inheritDoc}
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public AttributedCharacterIterator toCharacterIterator() {

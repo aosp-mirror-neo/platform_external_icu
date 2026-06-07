@@ -90,8 +90,8 @@ public abstract class CurrencyDisplayNames {
      * Returns true if currency display name data is available.
      * @return true if currency display name data is available
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static boolean hasData() {
         return CurrencyData.provider.hasData();
@@ -200,8 +200,8 @@ public abstract class CurrencyDisplayNames {
      * Sole constructor.  (For invocation by subclass constructors,
      * typically implicit.)
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected CurrencyDisplayNames() {
     }

@@ -51,16 +51,16 @@ public class UnicodeRegex implements Cloneable, Freezable<UnicodeRegex>, StringT
 
     /**
      * Set the symbol table for internal processing
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public SymbolTable getSymbolTable() {
         return symbolTable;
     }
 
     /**
      * Get the symbol table for internal processing
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public UnicodeRegex setSymbolTable(SymbolTable symbolTable) {
         this.symbolTable = symbolTable;
         return this;

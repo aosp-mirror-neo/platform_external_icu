@@ -1004,8 +1004,8 @@ public abstract class NumberFormat extends UFormat {
     /**
      * <strong>[icu]</strong> Returns the list of Locales for which NumberFormats are available.
      * @return the available locales
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static ULocale[] getAvailableULocales() {
         if (shim == null) {
             return ICUResourceBundle.getAvailableULocales();
@@ -1272,7 +1272,6 @@ public abstract class NumberFormat extends UFormat {
      * this method should never return null.
      * @return a non-null Currency
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1468,8 +1467,8 @@ public abstract class NumberFormat extends UFormat {
      * @param choice the pattern format.
      * @return the pattern
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static String getPatternForStyle(ULocale forLocale, int choice) {
         NumberingSystem ns = NumberingSystem.getInstance(forLocale);
@@ -1484,8 +1483,8 @@ public abstract class NumberFormat extends UFormat {
      * @param choice the pattern format.
      * @return the pattern
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static String getPatternForStyleAndNumberingSystem(ULocale forLocale, String nsName, int choice) {
         /* for ISOCURRENCYSTYLE and PLURALCURRENCYSTYLE,

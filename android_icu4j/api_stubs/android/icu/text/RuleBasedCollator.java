@@ -1019,8 +1019,8 @@ public final class RuleBasedCollator extends Collator {
      * Adds the contractions that start with character c to the set.
      * Ignores prefixes. Used by AlphabeticIndex.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     void internalAddContractions(int c, UnicodeSet set) {
         new ContractionsAndExpansions(set, null, null, false).forCodePoint(data, c);
@@ -1190,7 +1190,6 @@ public final class RuleBasedCollator extends Collator {
      * Returns the CEs for the string.
      * @param str the string
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1603,7 +1602,6 @@ public final class RuleBasedCollator extends Collator {
     /**
      * Compares two CharSequences.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Override
@@ -1816,9 +1814,9 @@ public final class RuleBasedCollator extends Collator {
 
     /**
      * {@inheritDoc}
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.compat.annotation.UnsupportedAppUsage(maxTargetSdk = 30, trackingBug = 170729553)
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public ULocale getLocale(ULocale.Type type) {
         if (type == ULocale.ACTUAL_LOCALE) {

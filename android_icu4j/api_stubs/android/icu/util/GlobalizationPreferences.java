@@ -74,8 +74,6 @@ import android.icu.text.SimpleDateFormat;
  * <li>it will support HOST locale when it becomes available (it is a special
  * locale that will ask the services to use the host platform's values).</li>
  * </ul>
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 //TODO:
@@ -90,13 +88,13 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
 
     /**
      * Default constructor
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences(){}
     /**
      * Number Format type
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final int
         NF_NUMBER = 0,      // NumberFormat.NUMBERSTYLE
         NF_CURRENCY = 1,    // NumberFormat.CURRENCYSTYLE
@@ -108,8 +106,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
 
     /**
      * Date Format type
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final int
         DF_FULL = DateFormat.FULL,      // 0
         DF_LONG = DateFormat.LONG,      // 1
@@ -121,8 +119,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
 
     /**
      * For selecting a choice of display names
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final int
         ID_LOCALE = 0,
         ID_LANGUAGE = 1,
@@ -139,8 +137,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
 
     /**
      * Break iterator type
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final int
         BI_CHARACTER = BreakIterator.KIND_CHARACTER,    // 0
         BI_WORD = BreakIterator.KIND_WORD,              // 1
@@ -160,8 +158,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @param inputLocales list of locales in priority order, eg {"be", "fr"}
      *     for Breton first, then French if that fails.
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setLocales(List<ULocale> inputLocales) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -174,8 +172,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * Get a copy of the language/locale priority list
      *
      * @return a copy of the language/locale priority list.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public List<ULocale> getLocales() {
         List<ULocale> result;
         if (locales == null) {
@@ -191,8 +189,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * Convenience function for getting the locales in priority order
      * @param index The index (0..n) of the desired item.
      * @return desired item. null if index is out of range
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public ULocale getLocale(int index) {
         List<ULocale> lcls = locales;
         if (lcls == null) {
@@ -211,8 +209,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @see #setLocales(List locales)
      * @param uLocales list of locales in an array
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setLocales(ULocale[] uLocales) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -227,8 +225,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @see #setLocales(List locales)
      * @param uLocale single locale
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setLocale(ULocale uLocale) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -243,8 +241,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @param acceptLanguageString Accept-Language list, as defined by
      *     Section 14.4 of the RFC 2616 (HTTP 1.1)
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setLocales(String acceptLanguageString) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -264,8 +262,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * class name
      * @return a resource bundle for the given base name and locale based on the
      * language/locale priority list stored in this object
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public ResourceBundle getResourceBundle(String baseName) {
         return getResourceBundle(baseName, null);
     }
@@ -280,8 +278,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @param loader the class object from which to load the resource bundle
      * @return a resource bundle for the given base name and locale based on the
      * language/locale priority list stored in this object
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public ResourceBundle getResourceBundle(String baseName, ClassLoader loader) {
         UResourceBundle urb = null;
         UResourceBundle candidate = null;
@@ -334,8 +332,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      *
      * @param territory code
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setTerritory(String territory) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -349,8 +347,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * computed from the general locale setting.
      *
      * @return territory code, explicit or implicit.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public String getTerritory() {
         if (territory == null) {
             return guessTerritory();
@@ -363,8 +361,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      *
      * @param currency Valid ISO 4217 currency code.
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setCurrency(Currency currency) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -377,8 +375,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * Get a copy of the currency computed according to the settings.
      *
      * @return currency code, explicit or implicit.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Currency getCurrency() {
         if (currency == null) {
             return guessCurrency();
@@ -391,8 +389,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      *
      * @param calendar arbitrary calendar
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setCalendar(Calendar calendar) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -405,8 +403,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * Get a copy of the calendar according to the settings.
      *
      * @return calendar explicit or implicit.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Calendar getCalendar() {
         if (calendar == null) {
             return guessCalendar();
@@ -422,8 +420,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      *
      * @param timezone a valid TZID (see UTS#35).
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setTimeZone(TimeZone timezone) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -437,8 +435,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * heuristically computed from other settings.
      *
      * @return timezone, either implicitly or explicitly set
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public TimeZone getTimeZone() {
         if (timezone == null) {
             return guessTimeZone();
@@ -450,8 +448,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * Get a copy of the collator according to the settings.
      *
      * @return collator explicit or implicit.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Collator getCollator() {
         if (collator == null) {
             return guessCollator();
@@ -467,8 +465,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * Explicitly set the collator for this object.
      * @param collator The collator object to be passed.
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setCollator(Collator collator) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -487,8 +485,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      *
      * @param type break type - BI_CHARACTER or BI_WORD, BI_LINE, BI_SENTENCE, BI_TITLE
      * @return break iterator explicit or implicit
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public BreakIterator getBreakIterator(int type) {
         if (type < BI_CHARACTER || type >= BI_LIMIT) {
             throw new IllegalArgumentException("Illegal break iterator type");
@@ -505,8 +503,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @param type break type - BI_CHARACTER or BI_WORD, BI_LINE, BI_SENTENCE, BI_TITLE
      * @param iterator a break iterator
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setBreakIterator(int type, BreakIterator iterator) {
         if (type < BI_CHARACTER || type >= BI_LIMIT) {
             throw new IllegalArgumentException("Illegal break iterator type");
@@ -527,8 +525,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @param id language code, script code, ...
      * @param type specifies the type of the ID: ID_LANGUAGE, etc.
      * @return the display name
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public String getDisplayName(String id, int type) {
         String result = id;
         for (ULocale locale : getLocales()) {
@@ -630,8 +628,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @param timeStyle DF_FULL, DF_LONG, DF_MEDIUM, DF_SHORT or DF_NONE
      * @param format The date format
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setDateFormat(int dateStyle, int timeStyle, DateFormat format) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -653,8 +651,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @param dateStyle DF_FULL, DF_LONG, DF_MEDIUM, DF_SHORT or DF_NONE
      * @param timeStyle DF_FULL, DF_LONG, DF_MEDIUM, DF_SHORT or DF_NONE
      * @return a DateFormat, according to the above description
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public DateFormat getDateFormat(int dateStyle, int timeStyle) {
         if (dateStyle == DF_NONE && timeStyle == DF_NONE
                 || dateStyle < 0 || dateStyle >= DF_LIMIT
@@ -682,8 +680,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * used.
      *
      * @param style NF_NUMBER, NF_CURRENCY, NF_PERCENT, NF_SCIENTIFIC, NF_INTEGER
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public NumberFormat getNumberFormat(int style) {
         if (style < 0 || style >= NF_LIMIT) {
             throw new IllegalArgumentException("Illegal number format type");
@@ -706,8 +704,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * @param style NF_NUMBER, NF_CURRENCY, NF_PERCENT, NF_SCIENTIFIC, NF_INTEGER
      * @param format The number format
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences setNumberFormat(int style, NumberFormat format) {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -723,8 +721,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * Restore the object to the initial state.
      *
      * @return this, for chaining
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public GlobalizationPreferences reset() {
         if (isFrozen()) {
             throw new UnsupportedOperationException("Attempt to modify immutable object");
@@ -777,8 +775,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * to customize the algorithm used for populating the locale list.
      *
      * @param inputLocales The list of input locales
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected List<ULocale> processLocales(List<ULocale> inputLocales) {
         // Note: Some of the callers, and non-ICU call sites, could be simpler/more efficient
         // if this method took a Collection or even an Iterable.
@@ -907,8 +905,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      *
      * @param dateStyle
      * @param timeStyle
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected DateFormat guessDateFormat(int dateStyle, int timeStyle) {
         DateFormat result;
         ULocale dfLocale = getAvailableLocale(TYPE_DATEFORMAT);
@@ -931,8 +929,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * one whose modification will not affect this object.</b>
      *
      * @param style
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected NumberFormat guessNumberFormat(int style) {
         NumberFormat result;
         ULocale nfLocale = getAvailableLocale(TYPE_NUMBERFORMAT);
@@ -964,9 +962,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
 
     /**
      * This function can be overridden by subclasses to use different heuristics.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected String guessTerritory() {
         String result;
         // pass through locales to see if there is a territory.
@@ -998,9 +995,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
 
     /**
      * This function can be overridden by subclasses to use different heuristics
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected Currency guessCurrency() {
         return Currency.getInstance(new ULocale("und-" + getTerritory()));
     }
@@ -1009,9 +1005,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * This function can be overridden by subclasses to use different heuristics
      * <b>It MUST return a 'safe' value,
      * one whose modification will not affect this object.</b>
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected List<ULocale> guessLocales() {
         if (implicitLocales == null) {
             List<ULocale> result = new ArrayList<>(1);
@@ -1025,9 +1020,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * This function can be overridden by subclasses to use different heuristics.
      * <b>It MUST return a 'safe' value,
      * one whose modification will not affect this object.</b>
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected Collator guessCollator() {
         ULocale collLocale = getAvailableLocale(TYPE_COLLATOR);
         if (collLocale == null) {
@@ -1042,8 +1036,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * one whose modification will not affect this object.</b>
      *
      * @param type
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected BreakIterator guessBreakIterator(int type) {
         BreakIterator bitr = null;
         ULocale brkLocale = getAvailableLocale(TYPE_BREAKITERATOR);
@@ -1076,9 +1070,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * This function can be overridden by subclasses to use different heuristics.
      * <b>It MUST return a 'safe' value,
      * one whose modification will not affect this object.</b>
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected TimeZone guessTimeZone() {
         // TODO fix using real data
         // for single-zone countries, pick that zone
@@ -1109,9 +1102,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
      * This function can be overridden by subclasses to use different heuristics.
      * <b>It MUST return a 'safe' value,
      * one whose modification will not affect this object.</b>
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     protected Calendar guessCalendar() {
         ULocale calLocale = getAvailableLocale(TYPE_CALENDAR);
         if (calLocale == null) {
@@ -1437,16 +1429,16 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
     private volatile boolean frozen;
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public boolean isFrozen() {
         return frozen;
     }
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public GlobalizationPreferences freeze() {
         frozen = true;
@@ -1454,8 +1446,8 @@ public class GlobalizationPreferences implements Freezable<GlobalizationPreferen
     }
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public GlobalizationPreferences cloneAsThawed() {
         try {

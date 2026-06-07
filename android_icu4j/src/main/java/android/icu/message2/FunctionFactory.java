@@ -14,7 +14,6 @@ import java.util.Map;
  * <p>We use it to create and cache various functions with various options.</p>
  *
  * @deprecated This API is for technology preview only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -28,8 +27,8 @@ public interface FunctionFactory {
      * @throws IllegalArgumentException in case there is a problem with the arguments.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     Function create(Locale locale, Map<String, Object> fixedOptions);
 }

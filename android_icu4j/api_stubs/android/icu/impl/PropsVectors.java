@@ -14,7 +14,6 @@
  * This is a port of the C++ class UPropsVectors from ICU4C
  *
  * @author Shaopeng Jia
- * @hide draft / provisional / internal are hidden on Android
  */
 
 package android.icu.impl;

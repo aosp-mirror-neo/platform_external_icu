@@ -20,7 +20,6 @@ import java.util.Map;
  *
  * @author Alan Liu
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -73,8 +72,8 @@ public class RuleBasedTransliterator extends Transliterator {
     /**
      * Implements {@link Transliterator#handleTransliterate}.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected void handleTransliterate(Replaceable text,
@@ -191,8 +190,8 @@ public class RuleBasedTransliterator extends Transliterator {
      * U+000A, U+0020..U+007E.
      * @return rules string
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public String toRules(boolean escapeUnprintable) {
@@ -217,8 +216,8 @@ public class RuleBasedTransliterator extends Transliterator {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public void addSourceTargetSet(UnicodeSet filter, UnicodeSet sourceSet, UnicodeSet targetSet) {
@@ -228,8 +227,8 @@ public class RuleBasedTransliterator extends Transliterator {
     /**
      * Temporary hack for registry problem. Needs to be replaced by better architecture.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Transliterator safeClone() {
         UnicodeFilter filter = getFilter();

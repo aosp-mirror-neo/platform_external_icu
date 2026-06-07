@@ -18,7 +18,6 @@ import android.icu.util.ULocale.Category;
  * that implements a traditional Korean calendar.
  *
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -80,8 +79,8 @@ public class DangiCalendar extends ChineseCalendar {
      * Construct a <code>DangiCalendar</code> with the default time zone and locale.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public DangiCalendar() {
         this(TimeZone.getDefault(), ULocale.getDefault(Category.FORMAT));
@@ -93,8 +92,8 @@ public class DangiCalendar extends ChineseCalendar {
      * @param date The date to which the new calendar is set.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public DangiCalendar(Date date) {
         this(TimeZone.getDefault(), ULocale.getDefault(Category.FORMAT));
@@ -108,8 +107,8 @@ public class DangiCalendar extends ChineseCalendar {
      * @param locale the given locale
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public DangiCalendar(TimeZone zone, ULocale locale) {
         super(zone, locale, KOREA_ZONE);
@@ -119,8 +118,8 @@ public class DangiCalendar extends ChineseCalendar {
      * {@inheritDoc}
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public String getType() {

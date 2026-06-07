@@ -44,7 +44,6 @@ import java.util.Date;
  *
  * @author Laura Werner
  * @author Alan Liu
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CalendarAstronomer {
@@ -56,15 +55,15 @@ public class CalendarAstronomer {
     /**
      * The number of standard hours in one sidereal day.
      * Approximately 24.93.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final double SIDEREAL_DAY = 23.93446960027;
 
     /**
      * The number of sidereal hours in one mean solar day.
      * Approximately 24.07.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final double SOLAR_DAY =  24.065709816;
 
     /**
@@ -75,8 +74,8 @@ public class CalendarAstronomer {
      * Approximately 29.53.
      *
      * @see #SIDEREAL_MONTH
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final double SYNODIC_MONTH = 29.530588853;
 
     /**
@@ -88,8 +87,8 @@ public class CalendarAstronomer {
      * Approximately 27.32.
      *
      * @see #SYNODIC_MONTH
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final double SIDEREAL_MONTH = 27.32166;
 
     /**
@@ -99,8 +98,8 @@ public class CalendarAstronomer {
      * Approximately 365.24
      *
      * @see #SIDEREAL_YEAR
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final double TROPICAL_YEAR = 365.242191;
 
     /**
@@ -113,8 +112,8 @@ public class CalendarAstronomer {
      * Approximately 365.25.
      *
      * @see #TROPICAL_YEAR
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final double SIDEREAL_YEAR = 365.25636;
 
     //-------------------------------------------------------------------------
@@ -123,26 +122,26 @@ public class CalendarAstronomer {
 
     /**
      * The number of milliseconds in one second.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final int  SECOND_MS = 1000;
 
     /**
      * The number of milliseconds in one minute.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final int  MINUTE_MS = 60*SECOND_MS;
 
     /**
      * The number of milliseconds in one hour.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final int  HOUR_MS   = 60*MINUTE_MS;
 
     /**
      * The number of milliseconds in one day.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final long DAY_MS    = 24*HOUR_MS;
 
     /**
@@ -152,8 +151,8 @@ public class CalendarAstronomer {
      * Note that julian day numbers and
      * the Julian calendar are <em>not</em> the same thing.  Also note that
      * julian days start at <em>noon</em>, not midnight.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final long JULIAN_EPOCH_MS = -210866760000000L;
 
 //  static {
@@ -198,8 +197,8 @@ public class CalendarAstronomer {
     /**
      * Construct a new <code>CalendarAstronomer</code> object that is initialized to
      * the current date and time.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public CalendarAstronomer() {
         this(System.currentTimeMillis());
     }
@@ -210,8 +209,8 @@ public class CalendarAstronomer {
      * January 1, 1970 AD (Gregorian).
      *
      * @see java.util.Date#getTime()
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public CalendarAstronomer(long aTime) {
         time = aTime;
     }
@@ -228,8 +227,8 @@ public class CalendarAstronomer {
      *
      * @see #setDate
      * @see #getTime
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public void setTime(long aTime) {
         time = aTime;
         clearCache();
@@ -248,8 +247,8 @@ public class CalendarAstronomer {
      *
      * @see #getJulianDay
      * @see #JULIAN_EPOCH_MS
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public void setJulianDay(double jdn) {
         time = (long)(jdn * DAY_MS) + JULIAN_EPOCH_MS;
         clearCache();
@@ -263,8 +262,8 @@ public class CalendarAstronomer {
      *
      * @see #setTime
      * @see #getDate
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public long getTime() {
         return time;
     }
@@ -275,8 +274,8 @@ public class CalendarAstronomer {
      *
      * @see #setDate
      * @see #getTime
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Date getDate() {
         return new Date(time);
     }
@@ -288,8 +287,8 @@ public class CalendarAstronomer {
      *
      * @see #setJulianDay
      * @see #JULIAN_EPOCH_MS
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public double getJulianDay() {
         if (julianDay == INVALID) {
             julianDay = (double)(time - JULIAN_EPOCH_MS) / (double)DAY_MS;
@@ -308,8 +307,8 @@ public class CalendarAstronomer {
      * @param eclipLat      The ecliptic latitude
      *
      * @return              The corresponding point in equatorial coordinates.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public final Equatorial eclipticToEquatorial(double eclipLong, double eclipLat)
     {
         // See page 42 of "Practical Astronomy with your Calculator",
@@ -400,8 +399,8 @@ public class CalendarAstronomer {
      * Currently, this method uses an approximation of the two-body Kepler's
      * equation for the earth and the sun.  It does not take into account the
      * perturbations caused by the other planets, the moon, etc.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public double getSunLongitude()
     {
         // See page 86 of "Practical Astronomy with your Calculator",
@@ -452,15 +451,15 @@ public class CalendarAstronomer {
      * Constant representing the winter solstice.
      * For use with {@link #getSunTime(SolarLongitude, boolean) getSunTime}.
      * Note: In this case, "winter" refers to the northern hemisphere's seasons.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final SolarLongitude WINTER_SOLSTICE = new SolarLongitude((PI*3)/2);
 
     /**
      * Find the next time at which the sun's ecliptic longitude will have
      * the desired value.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public long getSunTime(double desired, boolean next)
     {
         return timeOfAngle( new AngleFunc() { @Override
@@ -474,8 +473,8 @@ public class CalendarAstronomer {
     /**
      * Find the next time at which the sun's ecliptic longitude will have
      * the desired value.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public long getSunTime(SolarLongitude desired, boolean next) {
         return getSunTime(desired.value, next);
     }
@@ -498,8 +497,8 @@ public class CalendarAstronomer {
     /**
      * The position of the moon at the time set on this
      * object, in equatorial coordinates.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Equatorial getMoonPosition()
     {
         //
@@ -586,8 +585,8 @@ public class CalendarAstronomer {
      * measured in radians.
      *
      * @see #getMoonPhase
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public double getMoonAge() {
         // See page 147 of "Practical Astronomy with your Calculator",
         // by Peter Duffet-Smith, for details on the algorithm.
@@ -608,8 +607,8 @@ public class CalendarAstronomer {
     /**
      * Constant representing a new moon.
      * For use with {@link #getMoonTime(MoonAge, boolean) getMoonTime}
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MoonAge NEW_MOON      = new MoonAge(0);
 
     /**
@@ -619,8 +618,8 @@ public class CalendarAstronomer {
      * @param desired   The desired longitude.
      * @param next      {@code true} if the next occurrance of the phase
      *                  is desired, {@code false} for the previous occurrance.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public long getMoonTime(double desired, boolean next)
     {
         return timeOfAngle( new AngleFunc() {
@@ -639,8 +638,8 @@ public class CalendarAstronomer {
      * @param desired   The desired phase of the moon.
      * @param next      {@code true} if the next occurrance of the phase
      *                  is desired, {@code false} for the previous occurrance.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public long getMoonTime(MoonAge desired, boolean next) {
         return getMoonTime(desired.value, next);
     }
@@ -846,7 +845,6 @@ public class CalendarAstronomer {
      * value without worrying about whether other code will modify them.
      *
      * @see CalendarAstronomer.Equatorial
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Ecliptic {
@@ -855,8 +853,8 @@ public class CalendarAstronomer {
          * <p>
          * @param lat The ecliptic latitude, measured in radians.
          * @param lon The ecliptic longitude, measured in radians.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public Ecliptic(double lat, double lon) {
             latitude = lat;
             longitude = lon;
@@ -864,8 +862,8 @@ public class CalendarAstronomer {
 
         /**
          * Return a string representation of this object
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Override
         public String toString() {
             return Double.toString(longitude*RAD_DEG) + "," + (latitude*RAD_DEG);
@@ -875,8 +873,8 @@ public class CalendarAstronomer {
          * The ecliptic latitude, in radians.  This specifies an object's
          * position north or south of the plane of the ecliptic,
          * with positive angles representing north.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public final double latitude;
 
         /**
@@ -888,8 +886,8 @@ public class CalendarAstronomer {
          * <p>
          * A bit of trivia: the first point of Aries is currently in the
          * constellation Pisces, due to the precession of the earth's axis.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public final double longitude;
     }
 
@@ -906,7 +904,6 @@ public class CalendarAstronomer {
      * value without worrying about whether other code will modify them.
      *
      * @see CalendarAstronomer.Ecliptic
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Equatorial {
@@ -915,8 +912,8 @@ public class CalendarAstronomer {
          * <p>
          * @param asc The right ascension, measured in radians.
          * @param dec The declination, measured in radians.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public Equatorial(double asc, double dec) {
             ascension = asc;
             declination = dec;
@@ -925,8 +922,8 @@ public class CalendarAstronomer {
         /**
          * Return a string representation of this object, with the
          * angles measured in degrees.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Override
         public String toString() {
             return Double.toString(ascension*RAD_DEG) + "," + (declination*RAD_DEG);
@@ -935,8 +932,8 @@ public class CalendarAstronomer {
         /**
          * Return a string representation of this object with the right ascension
          * measured in hours, minutes, and seconds.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public String toHmsString() {
             return radToHms(ascension) + "," + radToDms(declination);
         }
@@ -946,16 +943,16 @@ public class CalendarAstronomer {
          * This is the position east or west along the equator
          * relative to the sun's position at the vernal equinox,
          * with positive angles representing East.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public final double ascension;
 
         /**
          * The declination, in radians.
          * This is the position north or south of the equatorial plane,
          * with positive angles representing north.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public final double declination;
     }
 

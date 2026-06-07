@@ -139,8 +139,8 @@ public final class StringTokenizer implements Enumeration<Object>
      *        This only takes effect if returndelims is true.
      * @exception NullPointerException if str is null
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public StringTokenizer(String str, UnicodeSet delim, boolean returndelims, boolean coalescedelims)
     {
@@ -221,8 +221,8 @@ public final class StringTokenizer implements Enumeration<Object>
      *        This only takes effect if returndelims is true.
      * @exception NullPointerException if str is null
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public StringTokenizer(String str, String delim, boolean returndelims, boolean coalescedelims)
     {

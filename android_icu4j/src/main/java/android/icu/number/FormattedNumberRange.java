@@ -171,8 +171,8 @@ public class FormattedNumberRange implements FormattedValue {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public IFixedDecimal getFirstFixedDecimal() {
         return quantity1;
@@ -180,8 +180,8 @@ public class FormattedNumberRange implements FormattedValue {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public IFixedDecimal getSecondFixedDecimal() {
         return quantity2;

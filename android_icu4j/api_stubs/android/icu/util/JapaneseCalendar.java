@@ -227,8 +227,8 @@ public class JapaneseCalendar extends GregorianCalendar {
     /**
      * Check environment variable that enables use of future eras.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static boolean enableTentativeEra() {
         // Although start date of next Japanese era is planned ahead, a name of
@@ -286,8 +286,8 @@ public class JapaneseCalendar extends GregorianCalendar {
      * @param extendedYear the extendedYear, as returned by handleGetExtendedYear
      * @return the default month
      * @see #MONTH
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     protected int getDefaultMonthInYear(int extendedYear) {
         int era = internalGet(ERA, CURRENT_ERA);
@@ -310,8 +310,8 @@ public class JapaneseCalendar extends GregorianCalendar {
      * @param month the month, as returned by getDefaultMonthInYear
      * @return the default day of the month
      * @see #DAY_OF_MONTH
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     protected int getDefaultDayInMonth(int extendedYear, int month) {
         int era = internalGet(ERA, CURRENT_ERA);
@@ -435,7 +435,6 @@ public class JapaneseCalendar extends GregorianCalendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Override
@@ -474,8 +473,8 @@ public class JapaneseCalendar extends GregorianCalendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected boolean isEra0CountingBackward() {

@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
  * <p>It is used by {@link MessageFormatter}, but it might be handy for various tools.</p>
  *
  * @deprecated This API is for technology preview only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -38,8 +37,8 @@ public class MFParser {
      * @throws MFParseException if errors are detected
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static MFDataModel.Message parse(String input) throws MFParseException {
         return new MFParser(input).parseImpl();

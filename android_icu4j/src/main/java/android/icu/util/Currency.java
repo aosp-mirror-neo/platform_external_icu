@@ -688,7 +688,6 @@ public class Currency extends MeasureUnit {
      * null if there is no match
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -720,8 +719,8 @@ public class Currency extends MeasureUnit {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static TextTrieMap<CurrencyStringInfo> getParsingTrie(ULocale locale, int type) {
         List<TextTrieMap<CurrencyStringInfo>> currencyTrieVec = getCurrencyTrieVec(locale);
@@ -781,7 +780,6 @@ public class Currency extends MeasureUnit {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -791,8 +789,8 @@ public class Currency extends MeasureUnit {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public CurrencyStringInfo(String isoCode, String currencyString) {
             this.isoCode = isoCode;
@@ -801,8 +799,8 @@ public class Currency extends MeasureUnit {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public String getISOCode() {
             return isoCode;
@@ -810,8 +808,8 @@ public class Currency extends MeasureUnit {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         @SuppressWarnings("unused")
         public String getCurrencyString() {

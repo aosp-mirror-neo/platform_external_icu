@@ -56,8 +56,8 @@ public class CurrencyMetaInfo {
      * Returns true if there is data for the currency meta info.
      * @return true if there is actual data
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static boolean hasData() {
         return hasData;
@@ -66,8 +66,8 @@ public class CurrencyMetaInfo {
     /**
      * Subclass constructor.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected CurrencyMetaInfo() {
     }
@@ -100,8 +100,8 @@ public class CurrencyMetaInfo {
         /**
          * true if we are filtering only for currencies used as legal tender.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public final boolean tenderOnly;
 
@@ -427,8 +427,8 @@ public class CurrencyMetaInfo {
          * Constructs a currency info.
          *
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public CurrencyInfo(String region, String code, long from, long to, int priority, boolean tender) {
             this.region = region;
@@ -516,8 +516,8 @@ public class CurrencyMetaInfo {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected static final CurrencyDigits defaultDigits = new CurrencyDigits(2, 0);
 

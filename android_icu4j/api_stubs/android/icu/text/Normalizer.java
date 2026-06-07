@@ -233,7 +233,6 @@ public final class Normalizer implements Cloneable {
         /**
          * Sole constructor
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
         @android.annotation.Hide // original deprecated declaration
         @Deprecated
@@ -242,7 +241,6 @@ public final class Normalizer implements Cloneable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
         @android.annotation.Hide // original deprecated declaration
         @Deprecated

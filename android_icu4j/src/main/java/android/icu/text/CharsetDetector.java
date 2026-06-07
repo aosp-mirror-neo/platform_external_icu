@@ -499,8 +499,8 @@ public class CharsetDetector {
      * instance.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public String[] getDetectableCharsets() {
         List<String> csnames = new ArrayList<String>(ALL_CS_RECOGNIZERS.size());
@@ -527,8 +527,8 @@ public class CharsetDetector {
      * not supported.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public CharsetDetector setDetectableCharset(String encoding, boolean enabled) {
         int modIdx = -1;

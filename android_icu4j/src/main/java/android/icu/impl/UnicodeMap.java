@@ -36,8 +36,6 @@ import android.icu.util.Freezable;
  * that is, a put(x,null) is the same as remove(x).<br>
  * At this point "" is also not allowed as a key, although that may change.
  * @author markdavis
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 
 @android.annotation.Hide // Only a subset of ICU is exposed in Android

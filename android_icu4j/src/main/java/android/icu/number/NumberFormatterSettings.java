@@ -551,8 +551,8 @@ public abstract class NumberFormatterSettings<T extends NumberFormatterSettings<
      *
      * @return The fluent chain
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public T unitDisplayCase(String unitDisplayCase) {
         return create(KEY_UNIT_DISPLAY_CASE, unitDisplayCase);
@@ -562,8 +562,8 @@ public abstract class NumberFormatterSettings<T extends NumberFormatterSettings<
      * Internal method to set a starting macros.
      *
      * @deprecated ICU 60 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public T macros(MacroProps macros) {
         return create(KEY_MACROS, macros);
@@ -573,8 +573,8 @@ public abstract class NumberFormatterSettings<T extends NumberFormatterSettings<
      * Set the padding strategy. May be added to ICU 61; see #13338.
      *
      * @deprecated ICU 60 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public T padding(Padder padder) {
         return create(KEY_PADDER, padder);
@@ -585,8 +585,8 @@ public abstract class NumberFormatterSettings<T extends NumberFormatterSettings<
      * structures to be built right away. A threshold of 0 prevents the data structures from being built.
      *
      * @deprecated ICU 60 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public T threshold(Long threshold) {
         return create(KEY_THRESHOLD, threshold);

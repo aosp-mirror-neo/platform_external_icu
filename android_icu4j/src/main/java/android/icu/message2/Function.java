@@ -12,7 +12,6 @@ import java.util.Map;
  * that can be used from {@link MessageFormatter}.
  *
  * @deprecated This API is for technology preview only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -26,8 +25,8 @@ public interface Function {
      * @return the formatted string.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     String formatToString(Object toFormat, Map<String, Object> variableOptions);
 
@@ -40,8 +39,8 @@ public interface Function {
      * @return the formatted placeholder.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     FormattedPlaceholder format(Object toFormat, Map<String, Object> variableOptions);
 
@@ -57,8 +56,8 @@ public interface Function {
      * @return the formatted string.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     default List<String> matches(Object value, List<String> keys, Map<String, Object> variableOptions) {
         /* Options considered:

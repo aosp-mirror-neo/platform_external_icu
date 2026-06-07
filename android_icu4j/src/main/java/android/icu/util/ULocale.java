@@ -955,8 +955,8 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @return
      *     String with region to use ("" if none found).
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static String getRegionForSupplementalData(
                             ULocale locale, boolean inferRegion) {
@@ -2183,7 +2183,6 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @return the localized script name.
      * @see Category#DISPLAY
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -2205,7 +2204,6 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param displayLocale the locale in which to display the name.
      * @return the localized script name.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -2230,7 +2228,6 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param displayLocaleID the id of the locale in which to display the name.
      * @return the localized script name.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -2253,7 +2250,6 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param displayLocale the locale in which to display the name.
      * @return the localized script name.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -2586,9 +2582,8 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * specific data being requested, then the actual locale will be
      * above the valid locale.  If the object was not constructed from
      * locale data, then the valid locale is <i>null</i>.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static Type ACTUAL_LOCALE = new Type();
 
     /**
@@ -2602,8 +2597,8 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      *
      * <p>Note: The valid locale will be returned correctly in ICU
      * 3.0 or later.  In ICU 2.8, it is not returned correctly.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static Type VALID_LOCALE = new Type();
 
     /**
@@ -2611,7 +2606,6 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @see android.icu.util.ULocale
      * @see android.icu.util.ULocale#ACTUAL_LOCALE
      * @see android.icu.util.ULocale#VALID_LOCALE
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Type {
@@ -2825,7 +2819,6 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
     /**
      * Options for minimizeSubtags.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -2833,15 +2826,15 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
         /**
          * Favor including the script, when either the region <b>or</b> the script could be suppressed, but not both.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         FAVOR_SCRIPT,
         /**
          * Favor including the region, when either the region <b>or</b> the script could be suppressed, but not both.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         FAVOR_REGION
     }
@@ -2874,7 +2867,6 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param fieldToFavor Indicate which should be preferred, when either the region <b>or</b> the script could be suppressed, but not both.
      * @return The minimized ULocale instance.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -4236,23 +4228,22 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class RegionValidateMap {
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public RegionValidateMap() {
             this.map = Arrays.copyOf(gValidRegionMap, gValidRegionMap.length);
         }
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public boolean isSet(String region) {
             int index = value(region);
@@ -4263,16 +4254,16 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
         }
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public boolean equals(RegionValidateMap that) {
             return Arrays.equals(map, that.map);
         }
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         protected int value(String region) {
               if (region.matches("[a-zA-Z][a-zA-Z]")) {
@@ -4284,8 +4275,8 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
         }
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         protected int[] map;
         static private int[] gValidRegionMap = {
@@ -4299,8 +4290,8 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public static RegionValidateMap BUILTIN = new RegionValidateMap();
     }

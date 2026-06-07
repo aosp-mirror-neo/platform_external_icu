@@ -425,8 +425,8 @@ public final class RelativeDateTimeFormatter {
          * Serizalization method resolve instances to the constant Field values
          *
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         @Override
         protected Object readResolve() throws InvalidObjectException {

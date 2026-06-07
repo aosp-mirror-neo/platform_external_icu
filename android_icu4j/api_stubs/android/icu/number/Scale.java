@@ -154,8 +154,8 @@ public class Scale {
 
     /**
      * @deprecated ICU 62 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Scale withMathContext(MathContext mc) {
         // TODO: Make this public?
@@ -167,8 +167,8 @@ public class Scale {
 
     /**
      * @deprecated ICU 62 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public void applyTo(DecimalQuantity quantity) {
         quantity.adjustMagnitude(magnitude);
@@ -179,8 +179,8 @@ public class Scale {
 
     /**
      * @deprecated ICU 62 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public void applyReciprocalTo(DecimalQuantity quantity) {
         quantity.adjustMagnitude(-magnitude);

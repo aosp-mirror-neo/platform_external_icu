@@ -107,7 +107,6 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      * Constructing a TimeZone with the given time zone ID.
      * @param ID the time zone ID.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -842,8 +841,8 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      * @return A <code>TimeZone</code>. Clients are responsible for deleting the
      *   <code>TimeZone</code> object returned.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static TimeZone forULocaleOrDefault(ULocale locale) {
         String tz = locale.getKeywordValue("timezone");
@@ -858,8 +857,8 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      * @return A <code>TimeZone</code>. Clients are responsible for deleting the
      *   <code>TimeZone</code> object returned.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static TimeZone forLocaleOrDefault(Locale locale) {
         return forULocaleOrDefault(ULocale.forLocale(locale));
@@ -957,8 +956,8 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      *
      * @param tz the new default time zone
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static synchronized void setICUDefault(TimeZone tz) {
         if (tz == null) {

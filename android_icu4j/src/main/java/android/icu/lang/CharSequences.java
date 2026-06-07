@@ -24,7 +24,6 @@ package android.icu.lang;
  * </ul>
  * @author markdavis
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -49,8 +48,8 @@ public class CharSequences {
     /**
      * Find the longest n such that a[aIndex,n] = b[bIndex,n], and n is on a character boundary.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static int matchAfter(CharSequence a, CharSequence b, int aIndex, int bIndex) {
         int i = aIndex, j = bIndex;
@@ -74,8 +73,8 @@ public class CharSequences {
     /**
      * Count the code point length. Unpaired surrogates count as 1.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public int codePointLength(CharSequence s) {
         return Character.codePointCount(s, 0, s.length());
@@ -97,8 +96,8 @@ public class CharSequences {
      * string.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static final boolean equals(int codepoint, CharSequence other) {
         if (other == null) {
@@ -113,8 +112,8 @@ public class CharSequences {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static final boolean equals(CharSequence other, int codepoint) {
         return equals(codepoint, other);
@@ -128,8 +127,8 @@ public class CharSequences {
      * Note that this (=String) order is UTF-16 order -- <i>not</i> code point order.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static int compare(CharSequence string, int codePoint) {
         if (codePoint < Character.MIN_CODE_POINT || codePoint > Character.MAX_CODE_POINT) {
@@ -172,8 +171,8 @@ public class CharSequences {
      * Note that this (=String) order is UTF-16 order -- <i>not</i> code point order.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static int compare(int codepoint, CharSequence a) {
         int result = compare(a, codepoint);
@@ -184,8 +183,8 @@ public class CharSequences {
      * Return the value of the first code point, if the string is exactly one code point. Otherwise return Integer.MAX_VALUE.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static int getSingleCodePoint(CharSequence s) {
         int length = s.length();
@@ -201,8 +200,8 @@ public class CharSequences {
      * string.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static final <T extends Object> boolean equals(T a, T b) {
         return a == null ? b == null
@@ -214,8 +213,8 @@ public class CharSequences {
      * Utility for comparing the contents of CharSequences
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static int compare(CharSequence a, CharSequence b) {
         int alength = a.length();
@@ -234,8 +233,8 @@ public class CharSequences {
      * Utility for comparing the contents of CharSequences
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static boolean equalsChars(CharSequence a, CharSequence b) {
         // do length test first for fast path
@@ -246,8 +245,8 @@ public class CharSequences {
      * Are we on a character boundary?
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static boolean onCharacterBoundary(CharSequence s, int i) {
         return i <= 0 
@@ -260,8 +259,8 @@ public class CharSequences {
      * Find code point in string.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static int indexOf(CharSequence s, int codePoint) {
         int cp;
@@ -283,8 +282,8 @@ public class CharSequences {
      * </pre>
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static int[] codePoints(CharSequence s) {
         int[] result = new int[s.length()]; // in the vast majority of cases, the length is the same

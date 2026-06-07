@@ -225,8 +225,8 @@ public class CurrencyPluralInfo implements Cloneable, Serializable {
      * Given a number, returns the keyword of the first rule that applies
      * to the number.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     String select(double number) {
         return pluralRules.select(number);
@@ -236,8 +236,8 @@ public class CurrencyPluralInfo implements Cloneable, Serializable {
      * Given a number, returns the keyword of the first rule that applies
      * to the number.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public String select(PluralRules.FixedDecimal numberInfo) {
         return pluralRules.select(numberInfo);
@@ -248,8 +248,8 @@ public class CurrencyPluralInfo implements Cloneable, Serializable {
      *
      * @return a iterator on the currency plural pattern key set.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Iterator<String> pluralPatternIterator() {
         return pluralCountToCurrencyUnitPattern.keySet().iterator();

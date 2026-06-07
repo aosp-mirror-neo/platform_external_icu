@@ -11,7 +11,6 @@ import java.io.InputStream;
 /**
  * Performs segmentation according to the provided rule string. The rule string must follow the
  * same guidelines as for {@link RuleBasedBreakIterator#RuleBasedBreakIterator(String)}.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RuleBasedSegmenter implements Segmenter {
@@ -26,18 +25,18 @@ public class RuleBasedSegmenter implements Segmenter {
    *     modified while using the resulting {@code Segments} object.
    * @return A {@code Segments} object with APIs to access the results of segmentation, including
    *     APIs that return {@code Stream}s of the segments and boundaries.
-   * @hide draft / provisional / internal are hidden on Android
    */
-  @Override
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+@Override
   public Segments segment(CharSequence s) {
     return new SegmentsImpl(breakIterPrototype, s);
   }
 
   /**
    * @return a builder for constructing {@code RuleBasedSegmenter}
-   * @hide draft / provisional / internal are hidden on Android
    */
-  public static Builder builder() {
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+public static Builder builder() {
     return new Builder();
   }
 
@@ -47,7 +46,6 @@ public class RuleBasedSegmenter implements Segmenter {
 
   /**
    * Builder for {@link RuleBasedSegmenter}
-   * @hide draft / provisional / internal are hidden on Android
    */
   @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public static class Builder {
@@ -60,8 +58,8 @@ public static class Builder {
      * Sets the rule string for segmentation.
      * @param rules rule string.  The rule string must follow the same guidelines as for
      *     {@link RuleBasedBreakIterator#getInstanceFromCompiledRules(InputStream)}.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Builder setRules(String rules) {
       if (rules == null) {
         throw new IllegalArgumentException("rules cannot be set to null.");
@@ -78,8 +76,8 @@ public static class Builder {
     /**
      * Builds the {@code Segmenter}
      * @return the constructed {@code Segmenter} instance
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Segmenter build() {
       if (breakIter == null) {
         throw new IllegalArgumentException("A rule string must be set.");

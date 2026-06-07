@@ -681,8 +681,8 @@ public abstract class BasicTimeZone extends TimeZone {
      * @param locOpt    A LocalOption
      * @return LocalOption's internal flag value.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected static int getLocalOptionValue(LocalOption locOpt) {
         return locOpt.flagVal;
@@ -691,48 +691,48 @@ public abstract class BasicTimeZone extends TimeZone {
     /**
      * The time type option for standard time used by internal implementation.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected static final int LOCAL_STD = 0x01;
 
     /**
      * The time type option for daylight saving time used internally.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected static final int LOCAL_DST = 0x03;
 
     /**
      * The option designate former time used by internal implementation.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected static final int LOCAL_FORMER = 0x04;
 
     /**
      * The option designate latter time used by internal implementation.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected static final int LOCAL_LATTER = 0x0C;
 
     /**
      * The bit mask for the time type option used by internal implementation.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected static final int STD_DST_MASK = 0x03;
 
     /**
      * The bit mask for the former/latter option used by internal implementation.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected static final int FORMER_LATTER_MASK = 0x0C;
 
@@ -754,8 +754,8 @@ public abstract class BasicTimeZone extends TimeZone {
      * Constructing a BasicTimeZone with the given time zone ID.
      * @param ID the time zone ID.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected BasicTimeZone(String ID) {
         super(ID);

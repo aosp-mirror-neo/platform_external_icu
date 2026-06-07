@@ -488,7 +488,8 @@ public abstract class CodePointTrie extends CodePointMap {
         }
     }
 
-    /** @hide draft / provisional / internal are hidden on Android*/
+    /***/
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     static final int FAST_SHIFT = 6;
 
     /** Number of entries in a data block for code points below the fast limit. 64=0x40 @internal */
@@ -497,20 +498,21 @@ public abstract class CodePointTrie extends CodePointMap {
     /** Mask for getting the lower bits for the in-fast-data-block offset. @internal */
     private static final int FAST_DATA_MASK = FAST_DATA_BLOCK_LENGTH - 1;
 
-    /** @hide draft / provisional / internal are hidden on Android*/
+    /***/
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private static final int SMALL_MAX = 0xfff;
 
     /**
      * Offset from dataLength (to be subtracted) for fetching the
      * value returned for out-of-range code points and ill-formed UTF-8/16.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private static final int ERROR_VALUE_NEG_DATA_OFFSET = 1;
     /**
      * Offset from dataLength (to be subtracted) for fetching the
      * value returned for code points highStart..U+10FFFF.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private static final int HIGH_VALUE_NEG_DATA_OFFSET = 2;
 
     // ucptrie_impl.h
@@ -625,51 +627,54 @@ public abstract class CodePointTrie extends CodePointMap {
         }
     }
 
-    /** @hide draft / provisional / internal are hidden on Android*/
+    /***/
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private final int[] ascii;
 
-    /** @hide draft / provisional / internal are hidden on Android*/
+    /***/
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private final char[] index;
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected final Data data;
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected final int dataLength;
     /**
      * Start of the last range which ends at U+10FFFF.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected final int highStart;
 
     /**
      * Internal index-3 null block offset.
      * Set to an impossibly high value (e.g., 0xffff) if there is no dedicated index-3 null block.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private final int index3NullOffset;
     /**
      * Internal data null block offset, not shifted.
      * Set to an impossibly high value (e.g., 0xfffff) if there is no dedicated data null block.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private final int dataNullOffset;
-    /** @hide draft / provisional / internal are hidden on Android*/
+    /***/
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private final int nullValue;
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected final int fastIndex(int c) {
         return index[c >> FAST_SHIFT] + (c & FAST_DATA_MASK);
@@ -677,8 +682,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected final int smallIndex(Type type, int c) {
         // Split into two methods to make this part inline-friendly.
@@ -716,8 +721,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected abstract int cpIndex(int c);
 
@@ -773,8 +778,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         @Override
         protected final int cpIndex(int c) {
@@ -886,8 +891,8 @@ public abstract class CodePointTrie extends CodePointMap {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         @Override
         protected final int cpIndex(int c) {

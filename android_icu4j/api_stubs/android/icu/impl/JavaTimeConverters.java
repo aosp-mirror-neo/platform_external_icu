@@ -46,7 +46,6 @@ import android.icu.util.ULocale;
  * {@link ZoneOffset} and {@link TimeZone}.
  *
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -74,8 +73,8 @@ public class JavaTimeConverters {
      *         accordingly.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static Calendar temporalToCalendar(ZonedDateTime dateTime) {
         long epochMillis = dateTime.toEpochSecond() * 1_000 + dateTime.get(MILLI_OF_SECOND);
@@ -99,8 +98,8 @@ public class JavaTimeConverters {
      *         date components set to the current date in that time zone.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @SuppressWarnings("JavaTimeDefaultTimeZone")
     public static Calendar temporalToCalendar(OffsetTime time) {
@@ -121,8 +120,8 @@ public class JavaTimeConverters {
      *         accordingly.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static Calendar temporalToCalendar(OffsetDateTime dateTime) {
         long epochMillis = dateTime.toEpochSecond() * 1_000 + dateTime.get(MILLI_OF_SECOND);
@@ -164,8 +163,8 @@ public class JavaTimeConverters {
      *         date in the default time zone.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static Calendar temporalToCalendar(LocalTime time) {
         long epochMillis = time.toNanoOfDay() / 1_000_000;
@@ -185,8 +184,8 @@ public class JavaTimeConverters {
      *         the specified {@link ChronoLocalDateTime}.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static Calendar temporalToCalendar(LocalDateTime dateTime) {
         ZoneOffset zoneOffset = ZoneId.systemDefault().getRules().getOffset(dateTime);
@@ -202,8 +201,8 @@ public class JavaTimeConverters {
      *         the specified {@link Temporal}.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static Calendar temporalToCalendar(Temporal temp) {
         if (temp instanceof Instant) {
@@ -244,8 +243,8 @@ public class JavaTimeConverters {
      *         the given {@link ZoneId}.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static TimeZone zoneIdToTimeZone(ZoneId zoneId) {
         return TimeZone.getTimeZone(zoneId.getId());
@@ -263,8 +262,8 @@ public class JavaTimeConverters {
      *         the given {@link ZoneOffset}.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static TimeZone zoneOffsetToTimeZone(ZoneOffset zoneOffset) {
         return new SimpleTimeZone(zoneOffset.getTotalSeconds() * 1_000, zoneOffset.getId());
@@ -292,8 +291,8 @@ public class JavaTimeConverters {
      *         as the one specified by the input.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @SuppressWarnings("JavaTimeDefaultTimeZone")
     public static Calendar dayOfWeekToCalendar(DayOfWeek dow) {
@@ -327,8 +326,8 @@ public class JavaTimeConverters {
      *         as the one specified by the input.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @SuppressWarnings("JavaTimeDefaultTimeZone")
     public static Calendar monthToCalendar(Month month) {
@@ -370,8 +369,8 @@ public class JavaTimeConverters {
      * @return An ICU Calendar that has the same properties as the Java one.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static android.icu.util.Calendar convertCalendar(java.util.Calendar inputCalendar) {
 

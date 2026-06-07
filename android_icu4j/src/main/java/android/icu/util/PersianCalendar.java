@@ -64,7 +64,6 @@ import android.icu.util.ULocale.Category;
  * @author Roozbeh Pournader
  *
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -132,8 +131,8 @@ public class PersianCalendar extends Calendar {
      * @see Category#FORMAT
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar()
     {
@@ -147,8 +146,8 @@ public class PersianCalendar extends Calendar {
      * @see Category#FORMAT
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar(TimeZone zone)
     {
@@ -162,9 +161,9 @@ public class PersianCalendar extends Calendar {
      * @param aLocale the given locale.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.compat.annotation.UnsupportedAppUsage
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar(Locale aLocale)
     {
@@ -178,8 +177,8 @@ public class PersianCalendar extends Calendar {
      * @param locale the given ulocale.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar(ULocale locale)
     {
@@ -194,8 +193,8 @@ public class PersianCalendar extends Calendar {
      * @param aLocale the given locale.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar(TimeZone zone, Locale aLocale)
     {
@@ -211,8 +210,8 @@ public class PersianCalendar extends Calendar {
      * @param locale the given ulocale.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar(TimeZone zone, ULocale locale)
     {
@@ -228,8 +227,8 @@ public class PersianCalendar extends Calendar {
      * @see Category#FORMAT
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar(Date date) {
         super(TimeZone.getDefault(), ULocale.getDefault(Category.FORMAT));
@@ -247,8 +246,8 @@ public class PersianCalendar extends Calendar {
      * @see Category#FORMAT
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar(int year, int month, int date)
     {
@@ -275,8 +274,8 @@ public class PersianCalendar extends Calendar {
      * @see Category#FORMAT
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersianCalendar(int year, int month, int date, int hour,
                            int minute, int second)
@@ -326,8 +325,8 @@ public class PersianCalendar extends Calendar {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected int handleGetLimit(int field, int limitType) {
@@ -365,8 +364,8 @@ public class PersianCalendar extends Calendar {
      * @param month The Persian month, 0-based
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected int handleGetMonthLength(int extendedYear, int month) {
@@ -385,8 +384,8 @@ public class PersianCalendar extends Calendar {
      * Return the number of days in the given Persian year
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected int handleGetYearLength(int extendedYear) {
@@ -401,8 +400,8 @@ public class PersianCalendar extends Calendar {
      * Return JD of start of given month/year
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected int handleComputeMonthStart(int eyear, int month, boolean useMonth) {
@@ -427,8 +426,8 @@ public class PersianCalendar extends Calendar {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected int handleGetExtendedYear() {
@@ -463,8 +462,8 @@ public class PersianCalendar extends Calendar {
      * method is called.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected void handleComputeFields(int julianDay) {
@@ -501,8 +500,8 @@ public class PersianCalendar extends Calendar {
     private static final int PERSIAN_CALENDAR_RELATED_YEAR_DIFFERENCE = 622;
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected final int getRelatedYearDifference() {
@@ -513,8 +512,8 @@ public class PersianCalendar extends Calendar {
      * {@inheritDoc}
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public String getType() {

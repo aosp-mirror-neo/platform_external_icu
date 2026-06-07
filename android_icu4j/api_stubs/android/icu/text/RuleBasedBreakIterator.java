@@ -96,9 +96,9 @@ public class RuleBasedBreakIterator extends BreakIterator {
      * @param phraseBreaking a flag indicating if phrase breaking is required.
      * @throws IOException if there is an error while reading the rules from the buffer.
      * @see    #compileRules(String, OutputStream)
-     * @hide draft / provisional / internal are hidden on Android
      */
-    /* package-potected */ static RuleBasedBreakIterator getInstanceFromCompiledRules(
+    /* package-potected */ @android.annotation.Hide // draft / provisional / internal are hidden on Android
+    static RuleBasedBreakIterator getInstanceFromCompiledRules(
             ByteBuffer bytes, boolean phraseBreaking) throws IOException {
         RuleBasedBreakIterator instance = getInstanceFromCompiledRules(bytes);
         instance.fPhraseBreaking = phraseBreaking;
@@ -119,8 +119,8 @@ public class RuleBasedBreakIterator extends BreakIterator {
      * @throws IOException if there is an error while reading the rules from the buffer.
      * @see    #compileRules(String, OutputStream)
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static RuleBasedBreakIterator getInstanceFromCompiledRules(ByteBuffer bytes) throws IOException {
         RuleBasedBreakIterator  This = new RuleBasedBreakIterator();
@@ -251,8 +251,8 @@ public class RuleBasedBreakIterator extends BreakIterator {
      * The rule data for this BreakIterator instance.
      * Not intended for public use. Declared public for testing purposes only.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public RBBIDataWrapper    fRData;
 
@@ -298,8 +298,8 @@ public class RuleBasedBreakIterator extends BreakIterator {
      *   flag set.  Normal RBBI iterators don't use it, although the code
      *   for updating it is live.  Dictionary Based break iterators (a subclass
      *   of us) access this field directly.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private int fDictionaryCharCount;
 
     private DictionaryCache     fDictionaryCache = new DictionaryCache();
@@ -347,8 +347,8 @@ public class RuleBasedBreakIterator extends BreakIterator {
      * Dump the contents of the state table and character classes for this break iterator.
      * For debugging only.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public void dump(java.io.PrintStream out) {
         if (out == null) {
@@ -683,8 +683,8 @@ public class RuleBasedBreakIterator extends BreakIterator {
      /**
      * Control debug, trace and dump options.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static final String fDebugEnv = ICUDebug.enabled(RBBI_DEBUG_ARG) ?
                                            ICUDebug.value(RBBI_DEBUG_ARG) : null;
@@ -961,8 +961,8 @@ public class RuleBasedBreakIterator extends BreakIterator {
      * because the safe table does not require as many options.
      *
      * @param fromPosition the position in the input text to begin the iteration.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private int handleSafePrevious(int fromPosition) {
         char            state;
         short           category = 0;
@@ -1158,8 +1158,8 @@ public class RuleBasedBreakIterator extends BreakIterator {
          * @param endPos    The end position of a range of text
          * @param firstRuleStatus The rule status index that applies to the break at startPos
          * @param otherRuleStatus The rule status index that applies to boundaries other than startPos
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         void populateDictionary(int startPos, int endPos,
                                 int firstRuleStatus, int otherRuleStatus) {
             if ((endPos - startPos) <= 1) {

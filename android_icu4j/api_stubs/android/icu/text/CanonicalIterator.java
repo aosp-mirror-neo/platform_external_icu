@@ -161,8 +161,8 @@ public final class CanonicalIterator {
      * @param skipZeros set to true to skip characters with canonical combining class zero
      * @param output the set to add the results to
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static void permute(String source, boolean skipZeros, Set<String> output) {
         permute(source, skipZeros, output, 0);
@@ -177,8 +177,8 @@ public final class CanonicalIterator {
      * @param output the set to add the results to
      * @param depth the depth of the recursive call.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     private static void permute(String source, boolean skipZeros, Set<String> output, int depth) {
         // TODO: optimize

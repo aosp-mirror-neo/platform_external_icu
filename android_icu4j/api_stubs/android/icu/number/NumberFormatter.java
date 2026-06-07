@@ -537,8 +537,8 @@ public final class NumberFormatter {
      * accessible to tests.
      *
      * @deprecated ICU 60 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static UnlocalizedNumberFormatter fromDecimalFormat(
             DecimalFormatProperties properties,
