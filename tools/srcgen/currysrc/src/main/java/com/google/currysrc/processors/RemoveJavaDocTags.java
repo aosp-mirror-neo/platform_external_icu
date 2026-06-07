@@ -41,7 +41,7 @@ public final class RemoveJavaDocTags extends BaseJavadocNodeScanner {
   }
 
   @Override
-  protected void visit(Reporter reporter, Javadoc javadoc, ASTRewrite rewrite) {
+  public void visit(Reporter reporter, Javadoc javadoc, ASTRewrite rewrite) {
     for (TagElement tagElement : (List<TagElement>) javadoc.tags()) {
       String tagName = tagElement.getTagName();
       if (tagName == null) {

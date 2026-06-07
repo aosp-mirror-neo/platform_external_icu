@@ -27,7 +27,8 @@ import org.eclipse.jdt.core.dom.rewrite.ASTRewrite;
  */
 public abstract class BaseTagElementNodeScanner extends BaseJavadocNodeScanner {
 
-  @Override protected final void visit(final Reporter reporter, Javadoc javadoc,
+  @Override
+  public final void visit(final Reporter reporter, Javadoc javadoc,
       final ASTRewrite rewrite) {
 
     javadoc.accept(new ASTVisitor(true /* visitDocTags */) {
