@@ -42,7 +42,7 @@ public final class HidePublicClasses extends BaseAddAnnotation {
     this.reason = reason;
   }
 
-  private static final AnnotationInfo HIDE =
+  public static final AnnotationInfo HIDE =
       new AnnotationInfo(
           new AnnotationClass("android.annotation.Hide"),
         Collections.emptyMap());
