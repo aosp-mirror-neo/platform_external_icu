@@ -22,6 +22,7 @@ import com.google.currysrc.processors.AnnotationInfo.Placeholder;
 import java.util.Map;
 import java.util.Map.Entry;
 import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.Annotation;
 import org.eclipse.jdt.core.dom.BodyDeclaration;
 import org.eclipse.jdt.core.dom.NumberLiteral;
 import org.eclipse.jdt.core.dom.StringLiteral;
@@ -70,17 +71,52 @@ public abstract class BaseAddAnnotation implements Processor {
   }
 
   /**
+   * Get the simpler name from the qualifiedName,
+   */
+  private static String getSimpleClassName(String qualifiedName) {
+    int lastDot = qualifiedName.lastIndexOf('.');
+    return lastDot == -1 ? qualifiedName : qualifiedName.substring(lastDot + 1);
+  }
+
+  /**
+   * Check to see if node already has an annotation.
+   */
+  public static boolean hasAnnotation(BodyDeclaration node, AnnotationInfo annotationInfo) {
+    String qualifiedName = annotationInfo.getQualifiedName();
+    String simpleName = getSimpleClassName(qualifiedName);
+    // node.modifiers() returns a list of IExtendedModifier (Modifier or Annotation)
+    for (Object modifier : node.modifiers()) {
+      if (modifier instanceof Annotation) {
+        Annotation annotation = (Annotation) modifier;
+        String name = annotation.getTypeName().getFullyQualifiedName();
+
+        if (name.equals(qualifiedName) || name.equals(simpleName)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  /**
    * Add an annotation to a {@link BodyDeclaration} node.
    */
   private static void insertAnnotationBefore(
       ASTRewrite rewrite, BodyDeclaration node,
       AnnotationInfo annotationInfo, String reason) {
+    String qualifiedName = annotationInfo.getQualifiedName();
+
+    // Do not add an annotation if it already exists.
+    if (hasAnnotation(node, annotationInfo)) {
+      return;
+    }
+
     Map<String, Object> elements = annotationInfo.getProperties();
 
     // Construct a string representation of the annotation.
     StringBuilder builder = new StringBuilder();
     builder.append("@");
-    builder.append(annotationInfo.getQualifiedName());
+    builder.append(qualifiedName);
     if (!elements.isEmpty()) {
       builder.append("(");
       if (elements.size() == 1 && elements.containsKey("value")) {
