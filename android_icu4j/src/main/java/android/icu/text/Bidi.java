@@ -964,8 +964,8 @@ public class Bidi {
      *
      * @see BidiClassifier
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int CLASS_DEFAULT = UCharacterDirection.CHAR_DIRECTION_COUNT;
 

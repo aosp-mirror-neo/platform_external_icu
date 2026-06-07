@@ -178,9 +178,7 @@ public class PluralRules implements Serializable {
 
     // TODO Remove RulesList by moving its API and fields into PluralRules.
 
-    /**
-     * @hide original deprecated declaration
-     */
+    @android.annotation.Hide // original deprecated declaration
     private static final String CATEGORY_SEPARATOR = ";  ";
 
     private static final long serialVersionUID = 1;
@@ -193,7 +191,6 @@ public class PluralRules implements Serializable {
      * Provides a factory for returning plural rules
      *
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
@@ -202,9 +199,9 @@ public class PluralRules implements Serializable {
         /**
          * Sole constructor
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         protected Factory() {
         }
@@ -225,9 +222,9 @@ public class PluralRules implements Serializable {
          *         this locale, the rules for the closest parent in the locale hierarchy that has one will be returned.
          *         The final fallback always returns the default rules.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public abstract PluralRules forLocale(ULocale locale, PluralType type);
 
@@ -236,9 +233,9 @@ public class PluralRules implements Serializable {
          * @param locale the locale
          * @return plural rules.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public final PluralRules forLocale(ULocale locale) {
             return forLocale(locale, PluralType.CARDINAL);
@@ -248,9 +245,9 @@ public class PluralRules implements Serializable {
          * Returns the locales for which there is plurals data.
          *
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public abstract ULocale[] getAvailableULocales();
 
@@ -268,18 +265,18 @@ public class PluralRules implements Serializable {
          *            (without fallback) as having plural rules
          * @return the functionally-equivalent locale
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public abstract ULocale getFunctionalEquivalent(ULocale locale, boolean[] isAvailable);
 
         /**
          * Returns the default factory.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public static PluralRulesLoader getDefaultFactory() {
             return PluralRulesLoader.loader;
@@ -288,9 +285,9 @@ public class PluralRules implements Serializable {
         /**
          * Returns whether or not there are overrides.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public abstract boolean hasOverride(ULocale locale);
     }
@@ -574,7 +571,6 @@ public class PluralRules implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
@@ -582,44 +578,28 @@ public class PluralRules implements Serializable {
     public static class FixedDecimal extends Number implements Comparable<FixedDecimal>, IFixedDecimal {
         private static final long serialVersionUID = -4756200506571685661L;
 
-        /**
-         * @hide original deprecated declaration
-         */
+        @android.annotation.Hide // original deprecated declaration
         final double source;
 
-        /**
-         * @hide original deprecated declaration
-         */
+        @android.annotation.Hide // original deprecated declaration
         final int visibleDecimalDigitCount;
 
-        /**
-         * @hide original deprecated declaration
-         */
+        @android.annotation.Hide // original deprecated declaration
         final int visibleDecimalDigitCountWithoutTrailingZeros;
 
-        /**
-         * @hide original deprecated declaration
-         */
+        @android.annotation.Hide // original deprecated declaration
         final long decimalDigits;
 
-        /**
-         * @hide original deprecated declaration
-         */
+        @android.annotation.Hide // original deprecated declaration
         final long decimalDigitsWithoutTrailingZeros;
 
-        /**
-         * @hide original deprecated declaration
-         */
+        @android.annotation.Hide // original deprecated declaration
         final long integerValue;
 
-        /**
-         * @hide original deprecated declaration
-         */
+        @android.annotation.Hide // original deprecated declaration
         final boolean hasIntegerValue;
 
-        /**
-         * @hide original deprecated declaration
-         */
+        @android.annotation.Hide // original deprecated declaration
         final boolean isNegative;
 
         final int exponent;
@@ -628,9 +608,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public double getSource() {
             return source;
@@ -638,9 +618,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public int getVisibleDecimalDigitCount() {
             return visibleDecimalDigitCount;
@@ -648,9 +628,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public int getVisibleDecimalDigitCountWithoutTrailingZeros() {
             return visibleDecimalDigitCountWithoutTrailingZeros;
@@ -658,9 +638,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public long getDecimalDigits() {
             return decimalDigits;
@@ -668,9 +648,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public long getDecimalDigitsWithoutTrailingZeros() {
             return decimalDigitsWithoutTrailingZeros;
@@ -678,9 +658,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public long getIntegerValue() {
             return integerValue;
@@ -688,9 +668,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public boolean isHasIntegerValue() {
@@ -699,9 +679,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public boolean isNegative() {
             return isNegative;
@@ -709,9 +689,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public int getBaseFactor() {
             return baseFactor;
@@ -782,9 +762,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public FixedDecimal(double n, int v, long f) {
             this(n, v, f, 0);
@@ -801,9 +781,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public FixedDecimal(double n, int v) {
             this(n,v,getFractionalDigits(n, v));
@@ -824,9 +804,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public FixedDecimal(double n) {
             this(n, decimals(n));
@@ -834,9 +814,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public FixedDecimal(long n) {
             this(n,0);
@@ -848,10 +828,10 @@ public class PluralRules implements Serializable {
          * always supply the decimals explicitly if possible. Currently, it is up to 6 decimals (without trailing zeros).
          * Returns 0 for infinities and nans.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          *
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public static int decimals(double n) {
             // Ugly...
@@ -942,9 +922,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public static Operand getOperand(String t) {
             return Operand.valueOf(t);
@@ -953,9 +933,9 @@ public class PluralRules implements Serializable {
         /**
          * We're not going to care about NaN.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Override
         @Deprecated
         public int compareTo(FixedDecimal other) {
@@ -980,9 +960,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public boolean equals(Object arg0) {
@@ -1002,9 +982,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public int hashCode() {
@@ -1014,9 +994,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public String toString() {
@@ -1030,9 +1010,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public boolean hasIntegerValue() {
             return hasIntegerValue;
@@ -1040,9 +1020,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public int intValue() {
@@ -1052,9 +1032,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public long longValue() {
@@ -1067,9 +1047,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public float floatValue() {
@@ -1078,9 +1058,9 @@ public class PluralRules implements Serializable {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public double doubleValue() {
@@ -1126,7 +1106,6 @@ public class PluralRules implements Serializable {
     /**
      * Selection parameter for either integer-only or decimal-only.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
@@ -2222,8 +2201,8 @@ public class PluralRules implements Serializable {
 
     /**
      * {@inheritDoc}
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     public int hashCode() {
         return rules.hashCode();
@@ -2288,9 +2267,9 @@ public class PluralRules implements Serializable {
      * @param number The number for which the rule has to be determined.
      * @return The keyword of the selected rule.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String select(double number, int countVisibleFractionDigits, long fractionaldigits) {
         return rules.select(new FixedDecimal(number, countVisibleFractionDigits, fractionaldigits));
@@ -2316,9 +2295,9 @@ public class PluralRules implements Serializable {
      * @param sample The number information for which the rule has to be determined.
      * @param keyword The keyword to filter on
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public boolean matches(FixedDecimal sample, String keyword) {
         return rules.select(sample, keyword);
@@ -2414,9 +2393,9 @@ public class PluralRules implements Serializable {
      * is immutable. It will be empty if the keyword is not defined.
      *
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Collection<DecimalQuantity> getAllKeywordValues(String keyword, SampleType type) {
         if (!isLimited(keyword, type)) {
@@ -2466,9 +2445,9 @@ public class PluralRules implements Serializable {
      * @param sampleType the type of samples requested, INTEGER or DECIMAL
      * @return a list of values matching the keyword.
      * @deprecated ICU internal only
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Collection<Double> getSamples(String keyword, SampleType sampleType) {
         Collection<DecimalQuantity> samples = getDecimalQuantitySamples(keyword, sampleType);
@@ -2559,9 +2538,9 @@ public class PluralRules implements Serializable {
      * @param sampleType the type of samples requested, INTEGER or DECIMAL
      * @return a list of values matching the keyword.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public DecimalQuantitySamples getDecimalSamples(String keyword, SampleType sampleType) {
         return rules.getDecimalSamples(keyword, sampleType);
@@ -2755,9 +2734,9 @@ public class PluralRules implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getRules(String keyword) {
         return rules.getRules(keyword);
@@ -2780,26 +2759,24 @@ public class PluralRules implements Serializable {
 
     /**
      * @deprecated internal
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int compareTo(PluralRules other) {
         return toString().compareTo(other.toString());
     }
 
-    /**
-     * @hide original deprecated declaration
-     */
+    @android.annotation.Hide // original deprecated declaration
     Boolean isLimited(String keyword) {
         return rules.isLimited(keyword, SampleType.INTEGER);
     }
 
     /**
      * @deprecated internal
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public boolean isLimited(String keyword, SampleType sampleType) {
         return rules.isLimited(keyword, sampleType);
@@ -2807,9 +2784,9 @@ public class PluralRules implements Serializable {
 
     /**
      * @deprecated internal
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public boolean computeLimited(String keyword, SampleType sampleType) {
         return rules.computeLimited(keyword, sampleType);

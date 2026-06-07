@@ -118,8 +118,8 @@ public final class CollationKey implements Comparable<CollationKey>
         /**
          * One more than the highest normal BoundMode value.
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 3;
 
@@ -169,8 +169,8 @@ public final class CollationKey implements Comparable<CollationKey>
      *            argument source.
      * @see Collator
      * @see RawCollationKey
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public CollationKey(String source, RawCollationKey key)
     {
         m_source_ = source;

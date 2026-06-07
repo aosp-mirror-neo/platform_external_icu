@@ -370,8 +370,8 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
      * @see #setHiraganaQuaternaryDefault
      * @see #isHiraganaQuaternary
      * @deprecated ICU 50 Implementation detail, cannot be set via API, was removed from implementation.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setHiraganaQuaternary(boolean flag) {
         checkNotFrozen();
@@ -389,8 +389,8 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
      * @see #setHiraganaQuaternary(boolean)
      * @see #isHiraganaQuaternary
      * @deprecated ICU 50 Implementation detail, cannot be set via API, was removed from implementation.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setHiraganaQuaternaryDefault() {
         checkNotFrozen();
@@ -790,8 +790,8 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
      * @see #getVariableTop
      * @see RuleBasedCollator#setAlternateHandlingShifted
      * @deprecated ICU 53 Call {@link #setMaxVariable(int)} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     public int setVariableTop(String varTop) {
@@ -829,8 +829,8 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
      * @see #getVariableTop
      * @see #setVariableTop(String)
      * @deprecated ICU 53 Call setMaxVariable() instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     public void setVariableTop(int varTop) {
@@ -1076,8 +1076,8 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
      * @see #getCollationKey
      * @see #compare(String, String)
      * @see RawCollationKey
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Override
     public RawCollationKey getRawCollationKey(String source, RawCollationKey key) {
         if (source == null) {
@@ -1190,9 +1190,9 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
      * Returns the CEs for the string.
      * @param str the string
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public long[] internalGetCEs(CharSequence str) {
         CollationBuffer buffer = null;
@@ -1333,8 +1333,8 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
      * @see #setHiraganaQuaternaryDefault
      * @see #setHiraganaQuaternary(boolean)
      * @deprecated ICU 50 Implementation detail, cannot be set via API, was removed from implementation.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public boolean isHiraganaQuaternary() {
         return false;
@@ -1603,9 +1603,9 @@ public final class RuleBasedCollator extends Collator implements Cloneable {
     /**
      * Compares two CharSequences.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     protected int doCompare(CharSequence left, CharSequence right) {

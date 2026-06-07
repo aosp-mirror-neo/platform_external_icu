@@ -109,9 +109,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * @param uLocale The locale to pass.
      * @return A frozen DateTimePatternGenerator.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static DateTimePatternGenerator getFrozenInstance(ULocale uLocale) {
         String localeKey = uLocale.toString();
@@ -487,9 +487,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public char getDefaultHourFormatChar() {
         return defaultHourFormatChar;
@@ -497,9 +497,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setDefaultHourFormatChar(char defaultHourFormatChar) {
         this.defaultHourFormatChar = defaultHourFormatChar;
@@ -592,9 +592,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int getAppendFormatNumber(String string) {
         for (int i = 0; i < CLDR_FIELD_APPEND.length; ++i) {
@@ -948,9 +948,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * 3. When adding the pattern (skeleton2pattern.put, basePattern_pattern.put), we set a field to indicate that the added
      * entry had a specified skeleton.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public DateTimePatternGenerator addPatternWithSkeleton(String pattern, String skeletonToUse, boolean override, PatternInfo returnInfo) {
         checkFrozen();
@@ -1017,9 +1017,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * @param pattern Input pattern, such as "dd/MMM"
      * @return skeleton, such as "MMMdd"
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getSkeletonAllowingDuplicates(String pattern) {
         synchronized (this) { // synchronized since a getter must be thread-safe
@@ -1035,9 +1035,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * @param pattern Input pattern, such as "ccc, d LLL"
      * @return skeleton, such as "MMMEd"
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getCanonicalSkeletonAllowingDuplicates(String pattern) {
         synchronized (this) { // synchronized since a getter must be thread-safe
@@ -1295,9 +1295,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      *            collection is allocated.
      * @return the collection with added elements.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Collection<String> getRedundants(Collection<String> output) {
         synchronized (this) { // synchronized since a getter must be thread-safe
@@ -1409,8 +1409,8 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
     /**
      * One more than the highest normal field number.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public static final int TYPE_LIMIT = 16;
 
@@ -1475,18 +1475,18 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
     /**
      * Option mask for forcing  the width of minute field.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int MATCH_MINUTE_FIELD_LENGTH = 1 << MINUTE;
 
     /**
      * Option mask for forcing  the width of second field.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int MATCH_SECOND_FIELD_LENGTH = 1 << SECOND;
 
@@ -1609,9 +1609,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * @param skeleton The skeleton to determine if it contains a single field.
      * @return true or not
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static boolean isSingleField(String skeleton) {
         char first = skeleton.charAt(0);
@@ -1707,7 +1707,6 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * is "44".
      *
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
@@ -1720,9 +1719,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * Create a variable field: equivalent to VariableField(string,false);
          * @param string The string for the variable field.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public VariableField(String string) {
             this(string, false);
@@ -1733,9 +1732,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * @param strict If true, then only allows exactly those lengths specified by CLDR for variables. For example, "hh:mm aa" would throw an exception.
          * @throws IllegalArgumentException if the variable field is not valid.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public VariableField(String string, boolean strict) {
             canonicalIndex = DateTimePatternGenerator.getCanonicalIndex(string, strict);
@@ -1752,9 +1751,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * (am/pm), HOUR, MINUTE, SECOND,FRACTIONAL_SECOND, ZONE.
          * @return main type.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public int getType() {
             return types[canonicalIndex][1];
@@ -1762,9 +1761,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public static String getCanonicalCode(int type) {
             try {
@@ -1777,9 +1776,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * Check if the type of this variable field is numeric.
          * @return true if the type of this variable field is numeric.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public boolean isNumeric() {
             return types[canonicalIndex][2] > 0;
@@ -1795,9 +1794,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
         /**
          * Get the string represented by this variable.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Override
         @Deprecated
         public String toString() {
@@ -1829,7 +1828,6 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
     }
      *  </pre>
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
@@ -1846,9 +1844,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
         /**
          * Construct an empty date format parser, to which strings and variables can be added with set(...).
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public FormatParser() {
         }
@@ -1858,9 +1856,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * @param string The string to parse.
          * @return this, for chaining
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         final public FormatParser set(String string) {
             return set(string, false);
@@ -1872,9 +1870,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * @param strict If true, then only allows exactly those lengths specified by CLDR for variables. For example, "hh:mm aa" would throw an exception.
          * @return this, for chaining
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public FormatParser set(String string, boolean strict) {
             items.clear();
@@ -1953,9 +1951,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * The list is modifiable, so you can add any strings or variables to it, or remove any items.
          * @return modifiable list of items.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public List<Object> getItems() {
             return items;
@@ -1964,9 +1962,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
         /** Provide display form of formatted input. Each literal string is quoted if necessary.. That is, if the input was "hh':'mm", the result would be "hh:mm", since the ":" doesn't need quoting. See quoteLiteral().
          * @return printable output string
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Override
         @Deprecated
         public String toString() {
@@ -1979,9 +1977,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * @param limit last item +1
          * @return printable output string
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public String toString(int start, int limit) {
             StringBuilder result = new StringBuilder();
@@ -2001,9 +1999,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * Returns true if it has a mixture of date and time variable fields: that is, at least one date variable and at least one time variable.
          * @return true or false
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public boolean hasDateAndTimeFields() {
             int foundMask = 0;
@@ -2114,9 +2112,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
          * @param string The string to check.
          * @return string with quoted literals
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public Object quoteLiteral(String string) {
             return tokenizer.quoteLiteral(string);
@@ -2138,9 +2136,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * char for those fields - M or L to M, E or c to E, y or U to y, etc. -
      * so corresponding fields will sort in the same way for both TreeMaps.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public boolean skeletonsAreSimilar(String id, String skeleton) {
         if (id.equals(skeleton)) {
@@ -2493,9 +2491,9 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * @param pattern The pattern that is passed.
      * @return field value
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getFields(String pattern) {
         fp.set(pattern);

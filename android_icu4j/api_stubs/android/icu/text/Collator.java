@@ -279,8 +279,8 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
         /**
          * One more than the highest normal ReorderCodes value.
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public final static int LIMIT          = 0x1005;
     }
@@ -351,9 +351,9 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
     /**
      * @return this, for chaining
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Collator setStrength2(int newStrength)
     {
@@ -473,8 +473,8 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * new implementations should override createCollator(ULocale).  Note that
      * one of these two methods <b>MUST</b> be overridden or else an infinite
      * loop will occur.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static abstract class CollatorFactory {
         /**
          * Return true if this factory will be visible.  Default is true.
@@ -837,9 +837,8 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * @param collator the collator to register
      * @param locale the locale for which this is the default collator
      * @return an object that can be used to unregister the registered collator.
-     *
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final Object registerInstance(Collator collator, ULocale locale) {
         return getShim().registerInstance(collator, locale);
     }
@@ -853,9 +852,8 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      *
      * @param factory the factory to register
      * @return an object that can be used to unregister the registered factory.
-     *
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final Object registerFactory(CollatorFactory factory) {
         return getShim().registerFactory(factory);
     }
@@ -864,8 +862,8 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * <strong>[icu]</strong> Unregisters a collator previously registered using registerInstance.
      * @param registryKey the object previously returned by registerInstance.
      * @return true if the collator was successfully unregistered.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final boolean unregister(Object registryKey) {
         if (shim == null) {
             return false;
@@ -1204,9 +1202,9 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * The base class just calls compare(left.toString(), right.toString()).
      * Subclasses should instead implement this method and have the String API call this method.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected int doCompare(CharSequence left, CharSequence right) {
         return compare(left.toString(), right.toString());
@@ -1247,9 +1245,9 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * @see #compare(String, String)
      * @see #getCollationKey
      * @see RawCollationKey
-     * @hide unsupported on Android
      */
     @SuppressWarnings("HiddenAbstractMethod")
+    @android.annotation.Hide // unsupported on Android
     public abstract RawCollationKey getRawCollationKey(String source,
                                                        RawCollationKey key);
 
@@ -1305,9 +1303,9 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * @see #getVariableTop
      * @see RuleBasedCollator#setAlternateHandlingShifted
      * @deprecated ICU 53 Call {@link #setMaxVariable(int)} instead.
-     * @hide original deprecated declaration
      */
     @SuppressWarnings("HiddenAbstractMethod")
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public abstract int setVariableTop(String varTop);
 
@@ -1331,9 +1329,9 @@ public abstract class Collator implements Comparator<Object>, Freezable<Collator
      * @see #getVariableTop
      * @see #setVariableTop(String)
      * @deprecated ICU 53 Call setMaxVariable() instead.
-     * @hide original deprecated declaration
      */
     @SuppressWarnings("HiddenAbstractMethod")
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public abstract void setVariableTop(int varTop);
 

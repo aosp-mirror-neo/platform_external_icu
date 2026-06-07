@@ -446,8 +446,8 @@ public abstract class DateFormat extends UFormat {
      * <strong>[icu]</strong> Number of FieldPosition selectors for DateFormat.
      * Valid selectors range from 0 to FIELD_COUNT-1.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public final static int FIELD_COUNT = 38;
     // A previous comment for the above stated that we must have
@@ -1067,9 +1067,9 @@ public abstract class DateFormat extends UFormat {
      * List of all of the date skeleton constants for iteration.
      * Note that this is fragile; be sure to add any values that are added above.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final List<String> DATE_SKELETONS = Arrays.asList(
             YEAR,
@@ -1159,9 +1159,9 @@ public abstract class DateFormat extends UFormat {
      * List of all of the time skeleton constants for iteration.
      * Note that this is fragile; be sure to add any values that are added above.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final List<String> TIME_SKELETONS = Arrays.asList(
             HOUR,
@@ -1230,9 +1230,9 @@ public abstract class DateFormat extends UFormat {
      * List of all of the zone skeleton constants for iteration.
      * Note that this is fragile; be sure to add any values that are added above.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final List<String> ZONE_SKELETONS = Arrays.asList(
             LOCATION_TZ,
@@ -1249,48 +1249,48 @@ public abstract class DateFormat extends UFormat {
     /**
      * <strong>[icu]</strong> Constant for date skeleton with standalone month.
      * @deprecated ICU 50 Use {@link #MONTH} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final String STANDALONE_MONTH = "LLLL";
 
     /**
      * <strong>[icu]</strong> Constant for date skeleton with standalone abbreviated month.
      * @deprecated ICU 50 Use {@link #ABBR_MONTH} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final String ABBR_STANDALONE_MONTH = "LLL";
 
     /**
      * <strong>[icu]</strong> Constant for date skeleton with hour, minute, and generic timezone.
      * @deprecated ICU 50 Use instead {@link #HOUR_MINUTE}+{@link #ABBR_GENERIC_TZ} or some other timezone presentation.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final String HOUR_MINUTE_GENERIC_TZ = "jmv";
 
     /**
      * <strong>[icu]</strong> Constant for date skeleton with hour, minute, and timezone.
      * @deprecated ICU 50 Use instead {@link #HOUR_MINUTE}+{@link #ABBR_SPECIFIC_TZ} or some other timezone presentation.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final String HOUR_MINUTE_TZ = "jmz";
 
     /**
      * <strong>[icu]</strong> Constant for date skeleton with hour and generic timezone.
      * @deprecated ICU 50 Use instead {@link #HOUR}+{@link #ABBR_GENERIC_TZ} or some other timezone presentation.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final String HOUR_GENERIC_TZ = "jv";
 
     /**
      * <strong>[icu]</strong> Constant for date skeleton with hour and timezone.
      * @deprecated ICU 50 Use instead {@link #HOUR}+{@link #ABBR_SPECIFIC_TZ} or some other timezone presentation.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final String HOUR_TZ = "jz";
 

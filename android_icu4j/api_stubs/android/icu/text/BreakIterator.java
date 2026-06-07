@@ -764,8 +764,8 @@ public abstract class BreakIterator implements Cloneable
      * @param locale the Locale for which this instance is to be registered
      * @param kind the type of iterator for which this instance is to be registered
      * @return a registry key that can be used to unregister this instance
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static Object registerInstance(BreakIterator iter, Locale locale, int kind) {
         return registerInstance(iter, ULocale.forLocale(locale), kind);
     }
@@ -783,8 +783,8 @@ public abstract class BreakIterator implements Cloneable
      * @param locale the Locale for which this instance is to be registered
      * @param kind the type of iterator for which this instance is to be registered
      * @return a registry key that can be used to unregister this instance
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static Object registerInstance(BreakIterator iter, ULocale locale, int kind) {
         // If the registered object matches the one in the cache, then
         // flush the cached object.
@@ -805,8 +805,8 @@ public abstract class BreakIterator implements Cloneable
      * again.
      * @param key the registry key returned by a previous call to registerInstance
      * @return true if the iterator for the key was successfully unregistered
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static boolean unregister(Object key) {
         if (key == null) {
             throw new IllegalArgumentException("registry key must not be null");
@@ -840,9 +840,9 @@ public abstract class BreakIterator implements Cloneable
      * Returns a particular kind of BreakIterator for a locale.
      * Avoids writing a switch statement with getXYZInstance(where) calls.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static BreakIterator getBreakInstance(ULocale where, int kind) {
         if (where == null) {

@@ -673,8 +673,8 @@ public final class CollationElementIterator
     /**
      * Mock implementation of hashCode(). This implementation always returns a constant
      * value. When Java assertion is enabled, this method triggers an assertion failure.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     public int hashCode() {
         assert false : "hashCode not designed";
@@ -683,9 +683,9 @@ public final class CollationElementIterator
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public RuleBasedCollator getRuleBasedCollator() {
         return rbc_;

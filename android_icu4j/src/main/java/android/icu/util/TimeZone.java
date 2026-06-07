@@ -107,9 +107,9 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      * Constructing a TimeZone with the given time zone ID.
      * @param ID the time zone ID.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected TimeZone(String ID) {
         if (ID == null) {
@@ -715,8 +715,8 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      * Sets the default time zone type used by <code>getTimeZone</code>.
      * @param type time zone type, either <code>TIMEZONE_ICU</code> or
      * <code>TIMEZONE_JDK</code>.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static synchronized void setDefaultTimeZoneType(int type) {
         if (type != TIMEZONE_ICU && type != TIMEZONE_JDK) {
             throw new IllegalArgumentException("Invalid timezone type");
@@ -728,8 +728,8 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      * <strong>[icu]</strong> Returns the default time zone type currently used.
      * @return The default time zone type, either <code>TIMEZONE_ICU</code> or
      * <code>TIMEZONE_JDK</code>.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static int getDefaultTimeZoneType() {
         return TZ_IMPL;
     }
@@ -904,8 +904,8 @@ abstract public class TimeZone implements Serializable, Cloneable, Freezable<Tim
      * synchronized with the JVM's default at that time.
      *
      * @param tz the new default time zone
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static synchronized void setDefault(TimeZone tz) {
         // Set default ICU time zone, used by #getDefault()
         setICUDefault(tz);

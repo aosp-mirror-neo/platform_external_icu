@@ -212,9 +212,8 @@ public class CurrencyPluralInfo implements Cloneable, Serializable {
 
     /**
      * Override hashCode
-     *
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     public int hashCode() {
       return pluralCountToCurrencyUnitPattern.hashCode()

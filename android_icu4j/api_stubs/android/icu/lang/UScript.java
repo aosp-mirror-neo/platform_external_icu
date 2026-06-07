@@ -645,8 +645,8 @@ public final class UScript {
     /**
      * Typo, use DUPLOYAN
      * @deprecated ICU 54
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int DUPLOYAN_SHORTAND             = DUPLOYAN;
     /**
@@ -927,8 +927,8 @@ public final class UScript {
      * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.SCRIPT).
      *
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public static final int CODE_LIMIT   = 213;
 

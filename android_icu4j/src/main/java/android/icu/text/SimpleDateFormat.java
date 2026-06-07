@@ -709,9 +709,9 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public SimpleDateFormat(String pattern, DateFormatSymbols formatData, ULocale loc)
     {
@@ -749,9 +749,9 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
      * @param formatConfig the format configuration
      * @return A SimpleDateFormat instance
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static SimpleDateFormat getInstance(Calendar.FormatConfiguration formatConfig) {
 
@@ -1896,9 +1896,9 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
      * Internal high-speed method.  Reuses a StringBuffer for results
      * instead of creating a String on the heap for each call.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected void zeroPaddingNumber(NumberFormat nf,StringBuffer buf, int value,
                                      int minDigits, int maxDigits) {
@@ -4010,9 +4010,9 @@ public class SimpleDateFormat extends DateFormat implements Cloneable {
      *                                     pattern letter
      * @return                  Reference to 'appendTo' parameter.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public final StringBuffer intervalFormatByAlgorithm(Calendar fromCalendar,
                                                         Calendar toCalendar,

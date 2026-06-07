@@ -66,8 +66,8 @@ public abstract class IDNA {
      * <p>This option is ignored by the UTS46 implementation.
      * (UTS #46 disallows unassigned code points.)
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int ALLOW_UNASSIGNED = 1;
     /**
@@ -266,45 +266,45 @@ public abstract class IDNA {
     // avoiding the allocation of another worker object.
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static void resetInfo(Info info) {
         info.reset();
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static boolean hasCertainErrors(Info info, EnumSet<Error> errors) {
         return !info.errors.isEmpty() && !Collections.disjoint(info.errors, errors);
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static boolean hasCertainLabelErrors(Info info, EnumSet<Error> errors) {
         return !info.labelErrors.isEmpty() && !Collections.disjoint(info.labelErrors, errors);
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static void addLabelError(Info info, Error error) {
         info.labelErrors.add(error);
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static void promoteAndResetLabelErrors(Info info) {
         if(!info.labelErrors.isEmpty()) {
@@ -314,54 +314,54 @@ public abstract class IDNA {
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static void addError(Info info, Error error) {
         info.errors.add(error);
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static void setTransitionalDifferent(Info info) {
         info.isTransDiff=true;
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static void setBiDi(Info info) {
         info.isBiDi=true;
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static boolean isBiDi(Info info) {
         return info.isBiDi;
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static void setNotOkBiDi(Info info) {
         info.isOkBiDi=false;
     }
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static boolean isOkBiDi(Info info) {
         return info.isOkBiDi;
@@ -451,9 +451,9 @@ public abstract class IDNA {
     /**
      * Sole constructor. (For invocation by subclass constructors, typically implicit.)
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected IDNA() {
     }
@@ -484,8 +484,8 @@ public abstract class IDNA {
      * @return StringBuffer the converted String
      * @throws StringPrepParseException When an error occurs for parsing a string.
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertToASCII(String src, int options)
         throws StringPrepParseException{
@@ -516,8 +516,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertToASCII(StringBuffer src, int options)
         throws StringPrepParseException{
@@ -548,8 +548,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertToASCII(UCharacterIterator src, int options)
                 throws StringPrepParseException{
@@ -584,8 +584,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertIDNToASCII(UCharacterIterator src, int options)
             throws StringPrepParseException{
@@ -620,8 +620,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertIDNToASCII(StringBuffer src, int options)
             throws StringPrepParseException{
@@ -656,8 +656,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertIDNToASCII(String src,int options)
             throws StringPrepParseException{
@@ -688,8 +688,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertToUnicode(String src, int options)
            throws StringPrepParseException{
@@ -720,8 +720,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertToUnicode(StringBuffer src, int options)
            throws StringPrepParseException{
@@ -752,8 +752,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertToUnicode(UCharacterIterator src, int options)
            throws StringPrepParseException{
@@ -785,8 +785,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertIDNToUnicode(UCharacterIterator src, int options)
         throws StringPrepParseException{
@@ -818,8 +818,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertIDNToUnicode(StringBuffer src, int options)
         throws StringPrepParseException{
@@ -851,8 +851,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return StringBuffer the converted String
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static StringBuffer convertIDNToUnicode(String src, int options)
             throws StringPrepParseException{
@@ -885,8 +885,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return 0 if the strings are equal, &gt; 0 if s1 &gt; s2 and &lt; 0 if s1 &lt; s2
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int compare(StringBuffer s1, StringBuffer s2, int options)
         throws StringPrepParseException{
@@ -922,8 +922,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return 0 if the strings are equal, &gt; 0 if s1 &gt; s2 and &lt; 0 if s1 &lt; s2
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int compare(String s1, String s2, int options) throws StringPrepParseException{
         if(s1==null || s2 == null){
@@ -957,8 +957,8 @@ public abstract class IDNA {
      *                              the operation will fail with ParseException
      * @return 0 if the strings are equal, &gt; 0 if i1 &gt; i2 and &lt; 0 if i1 &lt; i2
      * @deprecated ICU 55 Use UTS 46 instead via {@link #getUTS46Instance(int)}.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int compare(UCharacterIterator s1, UCharacterIterator s2, int options)
         throws StringPrepParseException{

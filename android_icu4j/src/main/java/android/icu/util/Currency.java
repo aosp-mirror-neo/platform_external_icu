@@ -338,8 +338,8 @@ public class Currency extends MeasureUnit {
      * @param locale the ulocale under which to register the currency
      * @return a registry key that can be used to unregister this currency
      * @see #unregister
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static Object registerInstance(Currency currency, ULocale locale) {
         return getShim().registerInstance(currency, locale);
     }
@@ -349,8 +349,8 @@ public class Currency extends MeasureUnit {
      * registerInstance).
      * @param registryKey the registry key returned from registerInstance
      * @see #registerInstance
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static boolean unregister(Object registryKey) {
         if (registryKey == null) {
             throw new IllegalArgumentException("registryKey must not be null");
@@ -688,9 +688,9 @@ public class Currency extends MeasureUnit {
      * null if there is no match
      *
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String parse(ULocale locale, String text, int type, ParsePosition pos) {
         List<TextTrieMap<CurrencyStringInfo>> currencyTrieVec = getCurrencyTrieVec(locale);
