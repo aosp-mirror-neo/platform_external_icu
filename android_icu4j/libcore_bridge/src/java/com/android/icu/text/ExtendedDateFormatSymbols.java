@@ -16,6 +16,7 @@
 
 package com.android.icu.text;
 
+import android.annotation.Hide;
 import android.icu.text.DateFormatSymbols;
 import android.icu.text.DateFormatSymbols.AospExtendedDateFormatSymbols;
 import android.icu.util.ULocale;
@@ -24,9 +25,8 @@ import libcore.api.IntraCoreApi;
 
 /**
  * Provides extra data not in {@link DateFormatSymbols}.
- *
- * @hide used by {@link java.time.format.DateTimeTextProvider}.
  */
+@Hide
 @IntraCoreApi
 public class ExtendedDateFormatSymbols {
 
@@ -38,8 +38,8 @@ public class ExtendedDateFormatSymbols {
 
     /**
      * Get an instance.
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static ExtendedDateFormatSymbols getInstance(ULocale locale) {
         return new ExtendedDateFormatSymbols(DateFormatSymbols.getExtendedInstance(locale));
@@ -47,8 +47,8 @@ public class ExtendedDateFormatSymbols {
 
     /**
      * Get the {@link DateFormatSymbols}.
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public DateFormatSymbols getDateFormatSymbols() {
         return aospExtendedDfs.getDateFormatSymbols();
@@ -59,8 +59,8 @@ public class ExtendedDateFormatSymbols {
      *
      * @param context {@link DateFormatSymbols#FORMAT} or {@link DateFormatSymbols#STANDALONE}.
      * @throws IllegalArgumentException for bad context or no data.
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public String[] getNarrowQuarters(int context) {
         return aospExtendedDfs.getNarrowQuarters(context);

@@ -16,14 +16,16 @@
 
 package com.android.i18n.timezone.internal;
 
+import android.annotation.Hide;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
  * A minimal least-recently-used cache for libcore. Prefer {@code
  * android.util.LruCache} where that is available.
- * @hide
  */
+@Hide
 public class BasicLruCache<K, V> {
     private static class CacheMap<K, V> extends LinkedHashMap<K, V> {
 

@@ -16,6 +16,7 @@
 
 package com.android.i18n.system;
 
+import android.annotation.Hide;
 import android.compat.Compatibility;
 import android.compat.annotation.ChangeId;
 import android.compat.annotation.EnabledAfter;
@@ -36,9 +37,8 @@ import dalvik.annotation.compat.VersionCodes;
 /**
  * Provides hooks for {@link dalvik.system.ZygoteHooks} to call into this class to initialize
  * in the Zygote.
- *
- * @hide
  */
+@Hide
 @libcore.api.IntraCoreApi
 public final class ZygoteHooks {
 

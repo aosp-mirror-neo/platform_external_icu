@@ -16,6 +16,7 @@
 
 package com.android.icu.util;
 
+import android.annotation.Hide;
 import android.icu.util.ULocale;
 
 import java.util.Locale;
@@ -24,9 +25,8 @@ import libcore.api.IntraCoreApi;
 /**
  * Provide functionalities implemented by ICU4C for {@link java.util.Locale}, which avoids using
  * {@link android.icu.util.ULocale} to prevent circular runtime dependency.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public final class LocaleNative {
 
@@ -40,9 +40,8 @@ public final class LocaleNative {
      * Instead, expose this uloc_setDefault as @IntraCoreApi called by libcore.
      *
      * @param languageTag BCP-47 language tag to be set the default locale.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static void setDefault(String languageTag) {
         setDefaultNative(languageTag);
@@ -58,9 +57,8 @@ public final class LocaleNative {
      *
      * @param targetLocale the locale in which to display the name.
      * @param locale  the locale whose country will be displayed
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static String getDisplayCountry(Locale targetLocale, Locale locale) {
         return getDisplayCountryNative(targetLocale.toLanguageTag(), locale.toLanguageTag());
@@ -77,9 +75,8 @@ public final class LocaleNative {
      *
      * @param targetLocale the locale in which to display the name.
      * @param locale the locale whose language will be displayed
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static String getDisplayLanguage(Locale targetLocale, Locale locale) {
         return getDisplayLanguageNative(targetLocale.toLanguageTag(), locale.toLanguageTag());
@@ -96,9 +93,8 @@ public final class LocaleNative {
      *
      * @param targetLocale the locale in which to display the name.
      * @param locale the locale whose variant will be displayed
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static String getDisplayVariant(Locale targetLocale, Locale locale) {
         return getDisplayVariantNative(targetLocale.toLanguageTag(), locale.toLanguageTag());
@@ -115,9 +111,8 @@ public final class LocaleNative {
      *
      * @param targetLocale the locale in which to display the name.
      * @param locale  the locale whose script will be displayed
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static String getDisplayScript(Locale targetLocale, Locale locale) {
         return getDisplayScriptNative(targetLocale.toLanguageTag(), locale.toLanguageTag());

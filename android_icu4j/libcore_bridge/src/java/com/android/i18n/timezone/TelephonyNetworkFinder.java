@@ -18,6 +18,7 @@ package com.android.i18n.timezone;
 
 import static com.android.i18n.timezone.XmlUtils.normalizeCountryIso;
 
+import android.annotation.Hide;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 
@@ -34,9 +35,8 @@ import java.util.Set;
 
 /**
  * A class that can find telephony network information loaded via {@link TelephonyLookup}.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public final class TelephonyNetworkFinder {
 

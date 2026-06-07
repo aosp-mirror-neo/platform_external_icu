@@ -9,6 +9,8 @@
 
 package com.android.icu.charset;
 
+import android.annotation.Hide;
+
 import libcore.util.NativeAllocationRegistry;
 
 import java.nio.charset.Charset;
@@ -16,9 +18,7 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 import java.nio.charset.CodingErrorAction;
 
-/**
- * @hide
- */
+@Hide
 public final class NativeConverter {
 
     private static final NativeAllocationRegistry registry = NativeAllocationRegistry

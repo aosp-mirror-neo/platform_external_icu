@@ -16,6 +16,7 @@
 
 package com.android.icu.util;
 
+import android.annotation.Hide;
 import android.icu.impl.Grego;
 import android.icu.util.AnnualTimeZoneRule;
 import android.icu.util.BasicTimeZone;
@@ -48,9 +49,8 @@ import java.util.TreeMap;
 
 /**
  * Provide extra functionalities on top of {@link TimeZone} public APIs.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class ExtendedTimeZone {
 
@@ -62,12 +62,13 @@ public class ExtendedTimeZone {
 
     // The API which calls an implementation in android.icu does not use nullability annotation
     // because the upstream can't guarantee the stability. See http://b/140196694.
+
     /**
      * Returns an instance from the time zone ID. Note that the returned instance could be shared.
      *
      * @see TimeZone#getTimeZone(String) for the more information.
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static ExtendedTimeZone getInstance(String id) {
         return new ExtendedTimeZone(id);
@@ -80,9 +81,8 @@ public class ExtendedTimeZone {
      *
      * This API is useful for libcore's {@link java.util.TimeZone#setDefault(java.util.TimeZone)} to
      * break the cycle of synchronizing the default time zone between libcore and ICU4J.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static void clearDefaultTimeZone() {
         TimeZone.setICUDefault(null);
@@ -90,9 +90,8 @@ public class ExtendedTimeZone {
 
     /**
      * Returns the underlying {@link TimeZone} instance.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public TimeZone getTimeZone() {
         return timezone;
@@ -108,8 +107,8 @@ public class ExtendedTimeZone {
      * following way:
      * Returned array starts with {@code InitialTimeZoneRule}, followed by {@code
      * TimeArrayTimeZoneRule}, and, if available, ends with {@code AnnualTimeZoneRule}.
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public ZoneRules createZoneRules() {
         if (!(timezone instanceof BasicTimeZone)) {

@@ -16,15 +16,16 @@
 
 package com.android.icu.charset;
 
+import android.annotation.Hide;
+
 import libcore.api.IntraCoreApi;
 
 import java.nio.charset.Charset;
 
 /**
  * Provides an implementation of {@link Charset} using ICU.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class CharsetFactory {
 
@@ -32,9 +33,8 @@ public class CharsetFactory {
 
     /**
      * Returns the names of available charsets.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static String[] getAvailableCharsetNames() {
         return NativeConverter.getAvailableCharsetNames();
@@ -42,9 +42,8 @@ public class CharsetFactory {
 
     /**
      * Create an {@link Charset} instance from its name.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static Charset create(String charsetName) {
         return NativeConverter.charsetForName(charsetName);

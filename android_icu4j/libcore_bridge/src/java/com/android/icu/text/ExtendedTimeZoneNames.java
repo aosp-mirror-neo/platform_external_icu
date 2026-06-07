@@ -16,6 +16,7 @@
 
 package com.android.icu.text;
 
+import android.annotation.Hide;
 import android.icu.text.TimeZoneNames;
 import android.icu.util.TimeZone;
 import android.icu.util.ULocale;
@@ -33,9 +34,8 @@ import java.util.Set;
 
 /**
  * Provide extra functionalities on top of {@link TimeZoneNames} public APIs.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class ExtendedTimeZoneNames {
 
@@ -54,11 +54,11 @@ public class ExtendedTimeZoneNames {
 
     private final ULocale locale;
     private final TimeZoneNames timeZoneNames;
+
 /**
      * A class representing the return result of {@link #matchName(CharSequence, int, String)}
-     *
-     * @hide
      */
+@Hide
     @IntraCoreApi
     public static final class Match {
 
@@ -74,9 +74,8 @@ public class ExtendedTimeZoneNames {
 
         /**
          * Returns the number of chars in the matched name.
-         *
-         * @hide
          */
+        @Hide
         @IntraCoreApi
         public int getMatchLength() {
             return matchLength;
@@ -84,9 +83,8 @@ public class ExtendedTimeZoneNames {
 
         /**
          * Returns the time zone id associated with the matched name.
-         *
-         * @hide
          */
+        @Hide
         @IntraCoreApi
         public @NonNull String getTzId() {
             return tzId;
@@ -95,9 +93,8 @@ public class ExtendedTimeZoneNames {
         /**
          * Returns true if the matched name is a display name for daylight saving time. For example,
          * returns true for "Pacific Daylight Time", but false for "Pacific Standard Time".
-         *
-         * @hide
          */
+        @Hide
         @IntraCoreApi
         public boolean isDst() {
             return isDst;
@@ -111,9 +108,8 @@ public class ExtendedTimeZoneNames {
 
     /**
      * Returns an instance of {@link ExtendedTimeZoneNames}.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static @NonNull ExtendedTimeZoneNames getInstance(@NonNull ULocale locale) {
         return new ExtendedTimeZoneNames(locale);
@@ -121,9 +117,8 @@ public class ExtendedTimeZoneNames {
 
     /**
      * Returns the underlying {@link TimeZoneNames} instance.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public @NonNull TimeZoneNames getTimeZoneNames() {
         return timeZoneNames;
@@ -148,9 +143,8 @@ public class ExtendedTimeZoneNames {
      * @param currentTzId the time zone ID prioritized to be matched if multiple time zone IDs can
      *                    be matched and this is one of the matched IDs.
      * @return null if no match is found
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public @Nullable Match matchName(@NonNull CharSequence text, int start,
             @NonNull String currentTzId) {

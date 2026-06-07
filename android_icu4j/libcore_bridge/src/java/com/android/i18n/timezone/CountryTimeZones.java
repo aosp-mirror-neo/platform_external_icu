@@ -16,6 +16,7 @@
 
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
 import android.icu.util.TimeZone;
 
 import com.android.i18n.util.Log;
@@ -31,17 +32,15 @@ import java.util.Objects;
 
 /**
  * Information about a country's time zones.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public final class CountryTimeZones {
 
     /**
      * A mapping to a time zone ID with some associated metadata.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.CorePlatformApi
     public static final class TimeZoneMapping {
         private final String timeZoneId;
@@ -165,9 +164,8 @@ public final class CountryTimeZones {
 
     /**
      * The result of lookup up a time zone using offset information (and possibly more).
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.CorePlatformApi
     public static final class OffsetResult {
 

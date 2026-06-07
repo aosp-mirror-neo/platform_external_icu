@@ -16,15 +16,16 @@
 
 package com.android.i18n.util;
 
+import android.annotation.Hide;
+
 import java.util.Objects;
 
 /**
  * Writes event into the system trace buffer, and exactly like {@link android.os.Trace}.
  * However, ICU4J can't be compiled with the framework class due to the circular dependency.
  * ICU has its our own java class to write the trace event via libcutils.
- *
- * @hide
  */
+@Hide
 public class ATrace {
 
     public static void traceBegin(String event) {

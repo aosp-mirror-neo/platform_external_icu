@@ -16,12 +16,13 @@
 
 package com.android.i18n.timezone.internal;
 
+import android.annotation.Hide;
+
 /**
  * Iterates over big- or little-endian bytes. See {@link MemoryMappedFile#bigEndianIterator} and
  * {@link MemoryMappedFile#littleEndianIterator}.
- *
- * @hide
  */
+@Hide
 public abstract class BufferIterator {
     /**
      * Seeks to the absolute position {@code offset}, measured in bytes from the start of the

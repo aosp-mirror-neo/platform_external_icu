@@ -26,6 +26,8 @@ import static com.android.i18n.timezone.XmlUtils.parseBooleanAttribute;
 import static com.android.i18n.timezone.XmlUtils.parseLongAttribute;
 import static com.android.i18n.timezone.XmlUtils.parseStringListAttribute;
 
+import android.annotation.Hide;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -46,8 +48,8 @@ import com.android.i18n.util.Log;
 
 /**
  * A class that can find matching time zones by loading data from the tzlookup.xml file.
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public final class TimeZoneFinder {
 

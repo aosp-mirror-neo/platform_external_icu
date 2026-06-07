@@ -16,6 +16,7 @@
 
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 
@@ -23,9 +24,8 @@ import java.util.Objects;
 
 /**
  * A combination of MCC and MNC. The MNC is optional and may be null.
- *
- * @hide
  */
+@Hide
 public record MccMnc(@NonNull String mcc, @Nullable String mnc) {
 
     public MccMnc {

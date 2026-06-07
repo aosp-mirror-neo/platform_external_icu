@@ -16,6 +16,7 @@
 
 package com.android.i18n.timezone.internal;
 
+import android.annotation.Hide;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.system.OsConstants;
@@ -27,9 +28,8 @@ import java.nio.ByteOrder;
  * A memory-mapped file. Use {@link #mmapRO} to map a file, {@link #close} to unmap a file,
  * and either {@link #bigEndianIterator} or {@link #littleEndianIterator} to get a seekable
  * {@link BufferIterator} over the mapped data. This class is not thread safe.
- *
- * @hide
  */
+@Hide
 public final class MemoryMappedFile implements AutoCloseable {
     private boolean closed;
     private final long address;

@@ -16,12 +16,13 @@
 
 package com.android.i18n.timezone.internal;
 
+import android.annotation.Hide;
+
 /**
  * Iterates over big- or little-endian bytes on the native heap.
  * See {@link MemoryMappedFile#bigEndianIterator} and {@link MemoryMappedFile#littleEndianIterator}.
- *
- * @hide
  */
+@Hide
 public final class NioBufferIterator extends BufferIterator {
 
     private final MemoryMappedFile file;

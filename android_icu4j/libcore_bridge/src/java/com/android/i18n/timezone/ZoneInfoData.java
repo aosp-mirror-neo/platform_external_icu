@@ -15,6 +15,8 @@
  */
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
+
 import com.android.i18n.timezone.internal.BufferIterator;
 import com.android.i18n.timezone.internal.ByteBufferIterator;
 
@@ -48,17 +50,16 @@ import java.util.Arrays;
  * <p>This class does not use all the information from the {@code tzfile}; it uses:
  * {@code tzh_timecnt} and the associated transition times and type information. For each type
  * (described by {@code struct ttinfo}) it uses {@code tt_gmtoff} and {@code tt_isdst}.
- *
- * @hide
  */
+@Hide
 @libcore.api.IntraCoreApi
 @libcore.api.CorePlatformApi
 public final class ZoneInfoData {
+
     /**
      * The serialized fields in {@link libcore.util.ZoneInfo} kept for backward app compatibility.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public static final @NonNull ObjectStreamField @NonNull [] ZONEINFO_SERIALIZED_FIELDS =
             new ObjectStreamField[] {
@@ -417,9 +418,8 @@ public final class ZoneInfoData {
     /**
      * Create an instance from the serialized fields from {@link libcore.util.ZoneInfo}
      * for backward app compatibility.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public static @NonNull ZoneInfoData createFromSerializationFields(@NonNull String id,
             @NonNull GetField getField)
@@ -437,9 +437,8 @@ public final class ZoneInfoData {
 
     /**
      * Serialize {@link libcore.util.ZoneInfo} into backward app compatible form.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public void writeToSerializationFields(@NonNull PutField putField) {
         putField.put("mRawOffset", mRawOffset);
@@ -573,9 +572,8 @@ public final class ZoneInfoData {
      * @param unixEpochTimeInMillis the Unix epoch time in milliseconds.
      * @param offsets the array whose length must be greater than or equal to 2.
      * @return the total offset which is the sum of the raw and DST offsets.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public int getOffsetsByUtcTime(long unixEpochTimeInMillis, @NonNull int[] offsets) {
         int transitionIndex = findTransitionIndex(roundDownMillisToSeconds(unixEpochTimeInMillis));
@@ -628,9 +626,8 @@ public final class ZoneInfoData {
      * Returns the offset from UTC in milliseconds at the specified time {@code whenMillis}.
      *
      * @param whenMillis the Unix epoch time in milliseconds since 1st Jan 1970, 00:00:00 UTC
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public int getOffset(long whenMillis) {
         int offsetIndex = findOffsetIndexForTimeInMilliseconds(whenMillis);
@@ -647,9 +644,8 @@ public final class ZoneInfoData {
      * Returns whether the given {@code whenMillis} is in daylight saving time in this time zone.
      *
      * @param whenMillis the Unix epoch time in milliseconds since 1st Jan 1970, 00:00:00 UTC
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public boolean isInDaylightTime(long whenMillis) {
         int offsetIndex = findOffsetIndexForTimeInMilliseconds(whenMillis);
@@ -665,9 +661,8 @@ public final class ZoneInfoData {
 
     /**
      * Returns the raw offset in milliseconds. The value is not affected by daylight saving.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public int getRawOffset() {
         return mRawOffset;
@@ -679,9 +674,8 @@ public final class ZoneInfoData {
      * returns {@code null}.
      *
      * @param whenMillis the Unix epoch time in milliseconds since 1st Jan 1970, 00:00:00 UTC
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public @Nullable Integer getLatestDstSavingsMillis(long whenMillis) {
         // Find the latest daylight and standard offsets (if any).
@@ -746,9 +740,8 @@ public final class ZoneInfoData {
 
     /**
      * Returns {@code true} if 2 time zones have the same time zone rule.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public boolean hasSameRules(@NonNull ZoneInfoData other) {
         return mRawOffset == other.mRawOffset
@@ -795,9 +788,8 @@ public final class ZoneInfoData {
 
     /**
      * Returns the time zone id.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.CorePlatformApi
     @libcore.api.IntraCoreApi
     public @NonNull String getID() {
@@ -806,9 +798,8 @@ public final class ZoneInfoData {
 
     /**
      * Create a deep copy of this object with a new raw offset.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public @NonNull ZoneInfoData createCopyWithRawOffset(int newRawOffset) {
         return new ZoneInfoData(this, newRawOffset);
@@ -820,9 +811,8 @@ public final class ZoneInfoData {
      * in the DST.
      *
      * WARNING: This API is exposed only for app compat usage in @link libcore.util.ZoneInfo}.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public @Nullable long[] getTransitions() {
         return mTransitions == null ? null : mTransitions.clone();
@@ -839,8 +829,8 @@ public final class ZoneInfoData {
      * @param offsets the total offsets of each type. The max allowed size of this array is 256.
      * @param isDsts an entry is {@code true} if the type is daylight saving time. The max allowed
      *               size of this array is 256.
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public static @NonNull ZoneInfoData createInstance(@NonNull String id,
             @NonNull long[] transitions, @NonNull byte[] types, @NonNull int[] offsets,

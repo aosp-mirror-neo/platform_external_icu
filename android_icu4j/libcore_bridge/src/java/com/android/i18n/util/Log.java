@@ -16,11 +16,12 @@
 
 package com.android.i18n.util;
 
+import android.annotation.Hide;
+
 /**
  * Log utility class only used by i18n module.
- *
- * @hide
  */
+@Hide
 public class Log {
     /** All methods are static, no need to instantiate. */
     private Log() {}

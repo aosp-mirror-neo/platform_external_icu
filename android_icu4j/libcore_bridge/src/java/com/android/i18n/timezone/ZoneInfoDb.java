@@ -16,6 +16,7 @@
 
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
 import android.system.ErrnoException;
 import com.android.i18n.timezone.internal.BasicLruCache;
 import com.android.i18n.timezone.internal.BufferIterator;
@@ -37,9 +38,8 @@ import java.util.List;
  * Olson tzdata as the source of time zone information. However, to conserve
  * disk space (inodes) and reduce I/O, all the data is concatenated into a single file,
  * with an index to indicate the starting position of each time zone record.
- *
- * @hide - used to implement TimeZone
  */
+@Hide
 @libcore.api.CorePlatformApi
 @libcore.api.IntraCoreApi
 public final class ZoneInfoDb {
@@ -108,9 +108,8 @@ public final class ZoneInfoDb {
 
   /**
    * Obtains the singleton instance.
-   *
-   * @hide
    */
+  @Hide
   @libcore.api.CorePlatformApi
   @libcore.api.IntraCoreApi
   public static @NonNull ZoneInfoDb getInstance() {
@@ -331,9 +330,8 @@ public final class ZoneInfoDb {
   /**
    * Returns an array containing all time zone ids sorted in lexicographical order for
    * binary searching.
-   *
-   * @hide
    */
+  @Hide
   @libcore.api.IntraCoreApi
   public @NonNull String @NonNull[] getAvailableIDs() {
     checkNotClosed();
@@ -342,9 +340,8 @@ public final class ZoneInfoDb {
 
   /**
    * Returns ids of all time zones with the given raw UTC offset.
-   *
-   * @hide
    */
+  @Hide
   @libcore.api.IntraCoreApi
   public @NonNull String @NonNull[] getAvailableIDs(int rawUtcOffset) {
     checkNotClosed();
@@ -386,9 +383,8 @@ public final class ZoneInfoDb {
   /**
    * Creates {@link ZoneInfoData} object from the time zone {@code id}. Returns null if the id
    * is not found.
-   *
-   * @hide
    */
+  @Hide
   @libcore.api.CorePlatformApi
   @libcore.api.IntraCoreApi
   public @Nullable ZoneInfoData makeZoneInfoData(@NonNull String id) {

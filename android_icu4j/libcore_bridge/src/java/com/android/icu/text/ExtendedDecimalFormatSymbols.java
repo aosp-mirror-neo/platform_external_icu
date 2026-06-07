@@ -16,6 +16,7 @@
 
 package com.android.icu.text;
 
+import android.annotation.Hide;
 import android.icu.text.DecimalFormatSymbols;
 import android.icu.text.NumberingSystem;
 import android.icu.util.ULocale;
@@ -24,9 +25,8 @@ import libcore.api.IntraCoreApi;
 
 /**
  * Provide extra functionalities on top of {@link DecimalFormatSymbols} public APIs.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class ExtendedDecimalFormatSymbols {
 
@@ -40,9 +40,8 @@ public class ExtendedDecimalFormatSymbols {
 
     /**
      * Returns an instance of {@link ExtendedDecimalFormatSymbols}.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static ExtendedDecimalFormatSymbols getInstance(ULocale uLocale, NumberingSystem ns) {
         return new ExtendedDecimalFormatSymbols(uLocale, ns);
@@ -55,9 +54,8 @@ public class ExtendedDecimalFormatSymbols {
     /**
      * Returns the localized pattern separator. Note that the public API
      * {@link DecimalFormatSymbols#getPatternSeparator()} does not localize pattern separator.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public String getLocalizedPatternSeparator() {
         return DecimalFormatSymbols.getLocalizedPatternSeparator(uLocale, numberingSystem);
