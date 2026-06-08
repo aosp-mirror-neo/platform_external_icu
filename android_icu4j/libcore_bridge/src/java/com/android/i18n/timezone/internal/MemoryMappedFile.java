@@ -18,8 +18,6 @@ package com.android.i18n.timezone.internal;
 
 import android.system.ErrnoException;
 import android.system.Os;
-import android.system.OsConstants;
-
 import java.io.FileDescriptor;
 import java.nio.ByteOrder;
 
@@ -49,12 +47,10 @@ public final class MemoryMappedFile implements AutoCloseable {
      * Use this to mmap the whole file read-only.
      */
     public static MemoryMappedFile mmapRO(String path) throws ErrnoException {
-        FileDescriptor fd = Os.open(path, OsConstants.O_RDONLY, 0);
+        FileDescriptor fd = Os.open(path, 0 /* O_RDONLY */, 0);
         try {
             long size = Os.fstat(fd).st_size;
-            long address = Os.mmap(0L, size, OsConstants.PROT_READ, OsConstants.MAP_SHARED, fd, 0);
-            // ZoneInfoDb reads the tzdata file in the random order, not sequentially.
-            Os.madvise(address, size, OsConstants.MADV_RANDOM);
+            long address = Os.mmap(0L, size, 0x1 /* PROT_READ */, 0x01 /* MAP_SHARED */, fd, 0);
             return new MemoryMappedFile(address, size);
         } finally {
             Os.close(fd);
