@@ -19,22 +19,14 @@ import com.google.currysrc.api.process.Processor;
 import com.google.currysrc.api.process.ast.BodyDeclarationLocator;
 import com.google.currysrc.api.process.ast.BodyDeclarationLocators;
 import com.google.currysrc.processors.AnnotationInfo.Placeholder;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
-import org.eclipse.jdt.core.dom.Annotation;
 import org.eclipse.jdt.core.dom.BodyDeclaration;
-import org.eclipse.jdt.core.dom.Expression;
-import org.eclipse.jdt.core.dom.MemberValuePair;
-import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jdt.core.dom.NumberLiteral;
-import org.eclipse.jdt.core.dom.SingleMemberAnnotation;
 import org.eclipse.jdt.core.dom.StringLiteral;
 import org.eclipse.jdt.core.dom.rewrite.ASTRewrite;
 import org.eclipse.jdt.core.dom.rewrite.ListRewrite;
-import org.eclipse.text.edits.TextEditGroup;
 
 /**
  * Provides support for adding annotations to {@link BodyDeclaration}s.
@@ -78,50 +70,49 @@ public abstract class BaseAddAnnotation implements Processor {
   private static void insertAnnotationBefore(
       ASTRewrite rewrite, BodyDeclaration node,
       AnnotationInfo annotationInfo) {
-    final TextEditGroup editGroup = null;
-    AST ast = node.getAST();
     Map<String, Object> elements = annotationInfo.getProperties();
-    Annotation annotation;
-    if (elements.isEmpty()) {
-      annotation = ast.newMarkerAnnotation();
-    } else if (elements.size() == 1 && elements.containsKey("value")) {
-      SingleMemberAnnotation singleMemberAnnotation = ast.newSingleMemberAnnotation();
-      singleMemberAnnotation.setValue(createAnnotationValue(rewrite, elements.get("value")));
-      annotation = singleMemberAnnotation;
-    } else {
-      NormalAnnotation normalAnnotation = ast.newNormalAnnotation();
-      @SuppressWarnings("unchecked")
-      List<MemberValuePair> values = normalAnnotation.values();
-      for (Entry<String, Object> entry : elements.entrySet()) {
-        MemberValuePair pair = ast.newMemberValuePair();
-        pair.setName(ast.newSimpleName(entry.getKey()));
-        pair.setValue(createAnnotationValue(rewrite, entry.getValue()));
-        values.add(pair);
+
+    // Construct a string representation of the annotation.
+    StringBuilder builder = new StringBuilder();
+    builder.append("@");
+    builder.append(annotationInfo.getQualifiedName());
+    if (!elements.isEmpty()) {
+      builder.append("(");
+      if (elements.size() == 1 && elements.containsKey("value")) {
+        builder.append(createAnnotationValue(rewrite, elements.get("value")));
+      } else {
+        String separator = "";
+        for (Entry<String, Object> entry : elements.entrySet()) {
+          builder.append(separator);
+          separator = ", ";
+
+          builder.append(entry.getKey());
+          builder.append(" = ");
+          builder.append(createAnnotationValue(rewrite, entry.getValue()));
+        }
       }
-      annotation = normalAnnotation;
+      builder.append(")");
     }
 
-    annotation.setTypeName(ast.newName(annotationInfo.getQualifiedName()));
+    // Create a placeholder containing the annotation.
+    ASTNode placeholderNode = rewrite.createStringPlaceholder(builder.toString(), ASTNode.NORMAL_ANNOTATION);
     ListRewrite listRewrite = rewrite.getListRewrite(node, node.getModifiersProperty());
-    listRewrite.insertFirst(annotation, editGroup);
+    listRewrite.insertFirst(placeholderNode, null);
   }
 
-  private static Expression createAnnotationValue(ASTRewrite rewrite, Object value) {
+  private static String createAnnotationValue(ASTRewrite rewrite, Object value) {
     if (value instanceof String) {
       StringLiteral stringLiteral = rewrite.getAST().newStringLiteral();
       stringLiteral.setLiteralValue((String) value);
-      return stringLiteral;
+      return stringLiteral.getEscapedValue();
     }
     if ((value instanceof Integer) || (value instanceof Long)) {
       NumberLiteral numberLiteral = rewrite.getAST().newNumberLiteral();
       numberLiteral.setToken(value.toString());
-      return numberLiteral;
+      return numberLiteral.getToken();
     }
     if (value instanceof Placeholder placeholder) {
-      // The cast is safe because createStringPlaceholder returns an instance of type NumberLiteral
-      // which is an Expression.
-      return (Expression)
-          rewrite.createStringPlaceholder(placeholder.getText(), ASTNode.NUMBER_LITERAL);
+      return placeholder.getText();
     }
     throw new IllegalStateException("Unknown value '" + value + "' of class " +
         (value == null ? "NULL" : value.getClass()));
