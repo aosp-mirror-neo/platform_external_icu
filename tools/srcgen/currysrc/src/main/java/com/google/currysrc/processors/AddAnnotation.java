@@ -57,6 +57,8 @@ public class AddAnnotation extends BaseAddAnnotation {
 
   private final BodyDeclarationLocatorStore<AnnotationInfo> locator2AnnotationInfo;
 
+  private final String reason;
+
   /**
    * Create a {@link Processor} that will add annotations of the supplied class to classes and class
    * members specified in the supplied file.
@@ -175,7 +177,7 @@ public class AddAnnotation extends BaseAddAnnotation {
       }
     }
 
-    return new AddAnnotation(annotationStore);
+    return new AddAnnotation(annotationStore, null);
   }
 
   /**
@@ -204,28 +206,43 @@ public class AddAnnotation extends BaseAddAnnotation {
    */
   public static AddAnnotation markerAnnotationFromLocators(String annotationClassName,
       List<BodyDeclarationLocator> locators) {
+    return markerAnnotationFromLocators(annotationClassName, locators, null);
+  }
+
+  /**
+   * Create a {@link Processor} that will add annotations of the supplied class to classes and class
+   * members specified in the locators.
+   *
+   * @param annotationClassName the fully qualified class name of the annotation to add.
+   * @param locators list of BodyDeclarationLocator
+   * @param reason the reason to use.
+   */
+  public static AddAnnotation markerAnnotationFromLocators(
+      String annotationClassName,
+      List<BodyDeclarationLocator> locators,
+      String reason) {
     AnnotationClass annotationClass = new AnnotationClass(annotationClassName);
     AnnotationInfo markerAnnotation = new AnnotationInfo(annotationClass, Collections.emptyMap());
     BodyDeclarationLocatorStore<AnnotationInfo> locator2AnnotationInfo =
         new BodyDeclarationLocatorStore<>();
     locators.forEach(l -> locator2AnnotationInfo.add(l, markerAnnotation));
-    return new AddAnnotation(locator2AnnotationInfo);
+    return new AddAnnotation(locator2AnnotationInfo, reason);
   }
 
-  /**
-   * Create a {@link Processor} that will add annotations of the supplied class to classes and class
-   * members specified in the supplied file. The annotations will have a single property.
-   *
-   * <p>Each line in the supplied file can be empty, start with a {@code #} or be in the format
-   * expected by {@link BodyDeclarationLocators#fromStringForm(String)}. Lines that are empty or
-   * start with a {@code #} are ignored.
-   *
-   * @param annotationClassName the fully qualified class name of the annotation to add.
-   * @param propertyName the name of the property to add
-   * @param propertyClass the class of the property to add (use {@link Enum} for enums)
-   * @param propertyValue the value of the property to add
-   * @param file the flat file.
-   */
+    /**
+     * Create a {@link Processor} that will add annotations of the supplied class to classes and class
+     * members specified in the supplied file. The annotations will have a single property.
+     *
+     * <p>Each line in the supplied file can be empty, start with a {@code #} or be in the format
+     * expected by {@link BodyDeclarationLocators#fromStringForm(String)}. Lines that are empty or
+     * start with a {@code #} are ignored.
+     *
+     * @param annotationClassName the fully qualified class name of the annotation to add.
+     * @param propertyName the name of the property to add
+     * @param propertyClass the class of the property to add (use {@link Enum} for enums)
+     * @param propertyValue the value of the property to add
+     * @param file the flat file.
+     */
   public static AddAnnotation markerAnnotationWithPropertyFromFlatFile(
       String annotationClassName,
       String propertyName,
@@ -261,11 +278,14 @@ public class AddAnnotation extends BaseAddAnnotation {
     BodyDeclarationLocatorStore<AnnotationInfo> locator2AnnotationInfo =
         new BodyDeclarationLocatorStore<>();
     locators.forEach(l -> locator2AnnotationInfo.add(l, markerAnnotation));
-    return new AddAnnotation(locator2AnnotationInfo);
+    return new AddAnnotation(locator2AnnotationInfo, null);
   }
 
-  private AddAnnotation(BodyDeclarationLocatorStore<AnnotationInfo> locator2AnnotationInfo) {
+  private AddAnnotation(
+      BodyDeclarationLocatorStore<AnnotationInfo> locator2AnnotationInfo,
+      String reason) {
     this.locator2AnnotationInfo = locator2AnnotationInfo;
+    this.reason = reason;
   }
 
   @Override
@@ -314,7 +334,7 @@ public class AddAnnotation extends BaseAddAnnotation {
     Mapping<AnnotationInfo> mapping = locator2AnnotationInfo.findMapping(node);
     if (mapping != null) {
       AnnotationInfo annotationInfo = mapping.getValue();
-      addAnnotationToBodyDeclaration(rewrite, node, annotationInfo, null);
+      addAnnotationToBodyDeclaration(rewrite, node, annotationInfo, reason);
     }
     return true;
   }
