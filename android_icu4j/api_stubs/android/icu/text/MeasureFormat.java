@@ -1023,9 +1023,9 @@ public class MeasureFormat extends UFormat {
      *            the format width
      * @return range formatter, such as "{0}–{1}"
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String getRangeFormat(ULocale forLocale, FormatWidth width) {
         // TODO fix Hack for French

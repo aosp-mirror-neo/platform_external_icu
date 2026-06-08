@@ -46,8 +46,8 @@ public /*abstract*/ class BidiClassifier {
      * For instance, this object can be used to save a reference to
      * a previous custom BidiClassifier while setting a new one, so as to
      * allow chaining between them.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     protected Object context;
 
     /**

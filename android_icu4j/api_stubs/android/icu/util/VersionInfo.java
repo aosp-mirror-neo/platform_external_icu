@@ -206,18 +206,18 @@ public final class VersionInfo implements Comparable<VersionInfo>
      * Not used when loading from resources packaged in the .jar.
      * Used for appending to data path (e.g. icudt43b)
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final String ICU_DATA_VERSION_PATH = "78b";
 
     /**
      * Data version in ICU4J.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final VersionInfo ICU_DATA_VERSION;
 
@@ -241,8 +241,8 @@ public final class VersionInfo implements Comparable<VersionInfo>
      * This was intended to be the version of collation tailorings,
      * but instead the tailoring data carries a version number.
      * @deprecated ICU 54
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final VersionInfo UCOL_TAILORINGS_VERSION;
 
@@ -578,8 +578,8 @@ public final class VersionInfo implements Comparable<VersionInfo>
     /**
      * Main method prints out ICU version information
      * @param args arguments (currently not used)
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static void main(String[] args) {
         String icuApiVer;
 
@@ -623,9 +623,9 @@ public final class VersionInfo implements Comparable<VersionInfo>
      * @param maxDigits Maximum number of version digits
      * @return A tailored version string
      * @deprecated This API is ICU internal only. (For use in CLDR, etc.)
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getVersionString(int minDigits, int maxDigits) {
         if (minDigits < 1 || maxDigits < 1

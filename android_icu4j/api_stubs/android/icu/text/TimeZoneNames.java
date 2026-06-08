@@ -408,17 +408,17 @@ public abstract class TimeZoneNames implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void loadAllDisplayNames() {}
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void getDisplayNames(String tzID, NameType[] types, long date,
             String[] dest, int destOffset) {
@@ -451,7 +451,6 @@ public abstract class TimeZoneNames implements Serializable {
      * The super class of <code>TimeZoneNames</code> service factory classes.
      *
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
@@ -464,18 +463,18 @@ public abstract class TimeZoneNames implements Serializable {
          *            The display locale
          * @return An instance of <code>TimeZoneNames</code>.
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         public abstract TimeZoneNames getTimeZoneNames(ULocale locale);
 
         /**
          * Sole constructor
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         protected Factory() {
         }

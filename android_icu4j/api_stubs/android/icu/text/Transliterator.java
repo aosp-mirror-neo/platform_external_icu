@@ -707,8 +707,8 @@ public abstract class Transliterator implements StringTransform  {
      * {@code filter.contains()} returns {@code false} will not be
      * altered by this transliterator.  If {@code filter} is
      * {@code null} then no filtering is applied.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     protected Transliterator(String ID, UnicodeFilter filter) {
         if (ID == null) {
             throw new NullPointerException();
@@ -967,8 +967,8 @@ public abstract class Transliterator implements StringTransform  {
      * <code>pos.limit</code>.
      *
      * @see #transliterate
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     protected abstract void handleTransliterate(Replaceable text,
                                                 Position pos, boolean incremental);
 
@@ -1336,8 +1336,8 @@ public abstract class Transliterator implements StringTransform  {
     /**
      * Method for subclasses to use to set the maximum context length.
      * @see #getMaximumContextLength
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     protected void setMaximumContextLength(int a) {
         if (a < 0) {
             throw new IllegalArgumentException("Invalid context length " + a);
@@ -1358,8 +1358,8 @@ public abstract class Transliterator implements StringTransform  {
     /**
      * Set the programmatic identifier for this transliterator.  Only
      * for use by subclasses.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     protected final void setID(String id) {
         ID = id;
     }
@@ -1678,8 +1678,8 @@ public abstract class Transliterator implements StringTransform  {
      * @param escapeUnprintable if true, then unprintable characters
      * will be converted to escape form backslash-'u' or
      * backslash-'U'.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     protected final String baseToRules(boolean escapeUnprintable) {
         // The base class implementation of toRules munges the ID into
         // the correct format.  That is: foo => ::foo
@@ -1754,8 +1754,8 @@ public abstract class Transliterator implements StringTransform  {
      * newly-created object.
      * @see #getSourceSet
      * @see #getTargetSet
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     protected UnicodeSet handleGetSourceSet() {
         return new UnicodeSet();
     }
@@ -1817,9 +1817,9 @@ public abstract class Transliterator implements StringTransform  {
      * @param targetSet TODO
      * @see #getTargetSet
      * @deprecated  This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void addSourceTargetSet(UnicodeSet inputFilter, UnicodeSet sourceSet, UnicodeSet targetSet) {
         UnicodeSet myFilter = getFilterAsUnicodeSet(inputFilter);
@@ -1840,9 +1840,9 @@ public abstract class Transliterator implements StringTransform  {
      * The externalFilter must be frozen (it is frozen if not).
      * The result may be frozen, so don't attempt to modify.
      * @deprecated  This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
    // TODO change to getMergedFilter
     public UnicodeSet getFilterAsUnicodeSet(UnicodeSet externalFilter) {
@@ -1892,8 +1892,8 @@ public abstract class Transliterator implements StringTransform  {
      * transliterator
      * @param transClass a subclass of <code>Transliterator</code>
      * @see #unregister
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static void registerClass(String ID, Class<? extends Transliterator> transClass, String displayName) {
         registry.put(ID, transClass, true);
         if (displayName != null) {
@@ -1911,8 +1911,8 @@ public abstract class Transliterator implements StringTransform  {
      *
      * @param ID the ID of this transliterator
      * @param factory the factory object
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static void registerFactory(String ID, Factory factory) {
         registry.put(ID, factory, true);
     }
@@ -1925,8 +1925,8 @@ public abstract class Transliterator implements StringTransform  {
      * Transliterator.getInstance to avoid undefined behavior.
      *
      * @param trans the Transliterator object
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static void registerInstance(Transliterator trans) {
         registry.put(trans.getID(), trans, true);
     }
@@ -1955,8 +1955,8 @@ public abstract class Transliterator implements StringTransform  {
      *
      * @param aliasID The new ID being registered.
      * @param realID The existing ID that the new ID should be an alias of.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static void registerAlias(String aliasID, String realID) {
         registry.put(aliasID, realID, true);
     }
@@ -2005,8 +2005,8 @@ public abstract class Transliterator implements StringTransform  {
      *
      * @param ID the ID of the transliterator or class
      * @see #registerClass
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static void unregister(String ID) {
         displayNameCache.remove(new CaseInsensitiveString(ID));
         registry.remove(ID);
@@ -2170,9 +2170,9 @@ public abstract class Transliterator implements StringTransform  {
     /**
      * Register the script-based "Any" transliterators: Any-Latin, Any-Greek
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static void registerAny() {
         AnyTransliterator.register();
@@ -2199,8 +2199,8 @@ public abstract class Transliterator implements StringTransform  {
      * Implements StringTransform via this method.
      * @param source text to be transformed (eg lowercased)
      * @return result
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Override
     public String transform(String source) {
         return transliterate(source);

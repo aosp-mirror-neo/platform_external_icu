@@ -435,9 +435,9 @@ public class JapaneseCalendar extends GregorianCalendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     public boolean haveDefaultCentury() {

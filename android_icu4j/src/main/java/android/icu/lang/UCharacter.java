@@ -1192,8 +1192,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.BLOCK).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 347;
 
@@ -2688,8 +2688,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.EAST_ASIAN_WIDTH).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 6;
     }
@@ -2759,8 +2759,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.DECOMPOSITION_TYPE).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 18;
     }
@@ -2794,8 +2794,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.JOINING_TYPE).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 6;
     }
@@ -3090,8 +3090,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.JoiningGroup).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 106;
     }
@@ -3155,8 +3155,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.GRAPHEME_CLUSTER_BREAK).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 18;
     }
@@ -3230,8 +3230,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.WORD_BREAK).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 23;
     }
@@ -3291,8 +3291,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.SENTENCE_BREAK).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 15;
     }
@@ -3448,8 +3448,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.LINE_BREAK).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 49;
     }
@@ -3477,8 +3477,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.NUMERIC_TYPE).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 4;
     }
@@ -3513,8 +3513,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.HANGUL_SYLLABLE_TYPE).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT               = 6;
     }
@@ -3542,8 +3542,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.BIDI_PAIRED_BRACKET_TYPE).
          *
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         public static final int COUNT = 3;
     }
@@ -3934,8 +3934,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @return true if the code point is a space character as
      * defined by java.lang.Character.isSpace.
      * @deprecated ICU 3.4 (Java)
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static boolean isSpace(int ch) {
         return ch <= 0x20 &&
@@ -4049,8 +4049,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param cp the code point
      * @return true if the code point can start a java identifier.
      * @deprecated ICU 3.4 (Java)
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static boolean isJavaLetter(int cp) {
         return isJavaIdentifierStart(cp);
@@ -4063,8 +4063,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param cp the code point
      * @return true if the code point can continue a java identifier.
      * @deprecated ICU 3.4 (Java)
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static boolean isJavaLetterOrDigit(int cp) {
         return isJavaIdentifierPart(cp);
@@ -4649,8 +4649,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param ch the code point for which to get the name
      * @return null
      * @deprecated ICU 49
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String getName1_0(int ch)
     {
@@ -4702,8 +4702,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      *           It must be the case that {@code 0 <= ch <= 0x10ffff}.
      * @return null
      * @deprecated ICU 49
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String getISOComment(int ch)
     {
@@ -4733,8 +4733,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @return -1
      * @deprecated ICU 49
      * @see #getName1_0(int)
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int getCharFromName1_0(String name){
         return -1;
@@ -4957,9 +4957,9 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param valueAlias    Same as {@link #getPropertyValueEnum(int, CharSequence)}
      * @return returns UProperty.UNDEFINED if the value is not valid, otherwise the value.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int getPropertyValueEnumNoThrow(int property, CharSequence valueAlias) {
         return UPropertyAliases.INSTANCE.getPropertyValueEnumNoThrow(property, valueAlias);
@@ -5504,8 +5504,8 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @return an empty iterator
      * @deprecated ICU 49
      * @see #getName1_0(int)
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static ValueIterator getName1_0Iterator(){
         return new DummyValueIterator();
@@ -5721,9 +5721,9 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      * @param nameChoice The choice of the name.
      * @return value as string
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     //CLOVER:OFF
     public static String getStringPropertyValue(int propertyEnum, int codepoint, int nameChoice) {

@@ -128,8 +128,8 @@ public class StringPrepParseException extends ParseException {
      * Mock implementation of hashCode(). This implementation always returns a constant
      * value. When Java assertion is enabled, this method triggers an assertion failure.
      * @return a hash code value for this object.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     public int hashCode() {
         assert false : "hashCode not designed";

@@ -54,9 +54,9 @@ public class MeasureUnit implements Serializable {
      * If type set to null, measureUnitImpl is in use instead of type and subType.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected final String type;
 
@@ -65,9 +65,9 @@ public class MeasureUnit implements Serializable {
      * subType.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected final String subType;
 
@@ -328,9 +328,9 @@ public class MeasureUnit implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected MeasureUnit(String type, String subType) {
         this.type = type;
@@ -762,9 +762,9 @@ public class MeasureUnit implements Serializable {
      * However, for special purposes (such as CLDR tooling), it is available.
      *
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static MeasureUnit internalGetInstance(String type, String subType) {
         if (type == null || subType == null) {
@@ -807,16 +807,16 @@ public class MeasureUnit implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected interface Factory {
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         MeasureUnit create(String type, String subType);
     }
@@ -924,9 +924,9 @@ public class MeasureUnit implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected synchronized static MeasureUnit addUnit(String type, String unitName, Factory factory) {
         Map<String, MeasureUnit> tmp = cache.get(type);
@@ -1016,8 +1016,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of area: dunam
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit DUNAM = MeasureUnit.internalGetInstance("area", "dunam");
 
     /**
@@ -1103,8 +1103,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of concentr: mole
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit MOLE = MeasureUnit.internalGetInstance("concentr", "mole");
 
     /**
@@ -1149,8 +1149,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of concentr: permyriad
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit PERMYRIAD = MeasureUnit.internalGetInstance("concentr", "permyriad");
 
     /**
@@ -1240,8 +1240,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of duration: day-person
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit DAY_PERSON = MeasureUnit.internalGetInstance("duration", "day-person");
 
     /**
@@ -1282,8 +1282,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of duration: month-person
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit MONTH_PERSON = MeasureUnit.internalGetInstance("duration", "month-person");
 
     /**
@@ -1314,8 +1314,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of duration: week-person
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit WEEK_PERSON = MeasureUnit.internalGetInstance("duration", "week-person");
 
     /**
@@ -1325,8 +1325,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of duration: year-person
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit YEAR_PERSON = MeasureUnit.internalGetInstance("duration", "year-person");
 
     /**
@@ -1381,8 +1381,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of energy: british-thermal-unit
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit BRITISH_THERMAL_UNIT = MeasureUnit.internalGetInstance("energy", "british-thermal-unit");
 
     /**
@@ -1404,8 +1404,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of energy: electronvolt
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit ELECTRONVOLT = MeasureUnit.internalGetInstance("energy", "electronvolt");
 
     /**
@@ -1447,8 +1447,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of energy: therm-us
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit THERM_US = MeasureUnit.internalGetInstance("energy", "therm-us");
 
     /**
@@ -1464,14 +1464,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of force: newton
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit NEWTON = MeasureUnit.internalGetInstance("force", "newton");
 
     /**
      * Constant for unit of force: pound-force
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit POUND_FORCE = MeasureUnit.internalGetInstance("force", "pound-force");
 
     /**
@@ -1557,8 +1557,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of length: earth-radius
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit EARTH_RADIUS = MeasureUnit.internalGetInstance("length", "earth-radius");
 
     /**
@@ -1685,8 +1685,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of length: solar-radius
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit SOLAR_RADIUS = MeasureUnit.internalGetInstance("length", "solar-radius");
 
     /**
@@ -1717,8 +1717,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of light: solar-luminosity
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit SOLAR_LUMINOSITY = MeasureUnit.internalGetInstance("light", "solar-luminosity");
 
     /**
@@ -1740,14 +1740,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of mass: dalton
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit DALTON = MeasureUnit.internalGetInstance("mass", "dalton");
 
     /**
      * Constant for unit of mass: earth-mass
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit EARTH_MASS = MeasureUnit.internalGetInstance("mass", "earth-mass");
 
     /**
@@ -1758,8 +1758,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of mass: grain
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit GRAIN = MeasureUnit.internalGetInstance("mass", "grain");
 
     /**
@@ -1805,8 +1805,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of mass: solar-mass
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit SOLAR_MASS = MeasureUnit.internalGetInstance("mass", "solar-mass");
 
     /**
@@ -1870,8 +1870,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of pressure: bar
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit BAR = MeasureUnit.internalGetInstance("pressure", "bar");
 
     /**
@@ -1892,14 +1892,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of pressure: kilopascal
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit KILOPASCAL = MeasureUnit.internalGetInstance("pressure", "kilopascal");
 
     /**
      * Constant for unit of pressure: megapascal
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit MEGAPASCAL = MeasureUnit.internalGetInstance("pressure", "megapascal");
 
     /**
@@ -1920,8 +1920,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of pressure: pascal
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit PASCAL = MeasureUnit.internalGetInstance("pressure", "pascal");
 
     /**
@@ -1989,14 +1989,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of torque: newton-meter
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit NEWTON_METER = MeasureUnit.internalGetInstance("torque", "newton-meter");
 
     /**
      * Constant for unit of torque: pound-force-foot
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit POUND_FOOT = MeasureUnit.internalGetInstance("torque", "pound-force-foot");
 
     /**
@@ -2006,8 +2006,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: barrel
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit BARREL = MeasureUnit.internalGetInstance("volume", "barrel");
 
     /**
@@ -2084,26 +2084,26 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: dessert-spoon
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit DESSERT_SPOON = MeasureUnit.internalGetInstance("volume", "dessert-spoon");
 
     /**
      * Constant for unit of volume: dessert-spoon-imperial
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit DESSERT_SPOON_IMPERIAL = MeasureUnit.internalGetInstance("volume", "dessert-spoon-imperial");
 
     /**
      * Constant for unit of volume: dram
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit DRAM = MeasureUnit.internalGetInstance("volume", "dram");
 
     /**
      * Constant for unit of volume: drop
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit DROP = MeasureUnit.internalGetInstance("volume", "drop");
 
     /**
@@ -2113,8 +2113,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: fluid-ounce-imperial
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit FLUID_OUNCE_IMPERIAL = MeasureUnit.internalGetInstance("volume", "fluid-ounce-imperial");
 
     /**
@@ -2140,8 +2140,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: jigger
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit JIGGER = MeasureUnit.internalGetInstance("volume", "jigger");
 
     /**
@@ -2179,8 +2179,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: pinch
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit PINCH = MeasureUnit.internalGetInstance("volume", "pinch");
 
     /**
@@ -2206,8 +2206,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: quart-imperial
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static final MeasureUnit QUART_IMPERIAL = MeasureUnit.internalGetInstance("volume", "quart-imperial");
 
     /**
