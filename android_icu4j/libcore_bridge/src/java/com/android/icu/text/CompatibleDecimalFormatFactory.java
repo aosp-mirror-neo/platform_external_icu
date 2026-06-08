@@ -16,6 +16,7 @@
 
 package com.android.icu.text;
 
+import android.annotation.Hide;
 import android.icu.impl.number.DecimalFormatProperties;
 import android.icu.text.DecimalFormat;
 import android.icu.text.DecimalFormatSymbols;
@@ -25,9 +26,8 @@ import libcore.api.IntraCoreApi;
 /**
  * Factory class to create {@link DecimalFormat} instances compatible with
  * {@link java.text.DecimalFormat}.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class CompatibleDecimalFormatFactory {
 
@@ -40,9 +40,8 @@ public class CompatibleDecimalFormatFactory {
      * WARNING: Do not call the following methods, and otherwise the internal states for the
      * compatibility could be disrupted.
      *   - {@link DecimalFormat#setParseStrict(boolean)}
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static DecimalFormat create(String pattern, DecimalFormatSymbols dfs) {
         DecimalFormat df = new DecimalFormat(pattern, dfs);

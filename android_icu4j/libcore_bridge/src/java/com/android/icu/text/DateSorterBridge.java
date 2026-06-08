@@ -16,6 +16,7 @@
 
 package com.android.icu.text;
 
+import android.annotation.Hide;
 import android.icu.impl.ICUData;
 import android.icu.impl.ICUResourceBundle;
 import android.icu.text.BreakIterator;
@@ -26,9 +27,8 @@ import java.util.MissingResourceException;
 
 /**
  * This class is used by android.webkit.DateSorter.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public class DateSorterBridge {
     private final String yesterday; // "Yesterday".
@@ -36,9 +36,8 @@ public class DateSorterBridge {
 
     /**
      * @throws AssertionError for the legacy behavior when the ICU data is missing
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.CorePlatformApi
     public static DateSorterBridge createInstance(Locale locale) throws AssertionError {
         return new DateSorterBridge(locale);
@@ -66,17 +65,13 @@ public class DateSorterBridge {
         today = caseMap.apply(locale, breakIterator, todayStr);
     }
 
-    /**
-     * @hide
-     */
+    @Hide
     @libcore.api.CorePlatformApi
     public String getYesterday() {
         return yesterday;
     }
 
-    /**
-     * @hide
-     */
+    @Hide
     @libcore.api.CorePlatformApi
     public String getToday() {
         return today;

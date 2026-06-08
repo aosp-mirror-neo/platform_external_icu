@@ -16,6 +16,8 @@
 
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
+
 import com.android.i18n.timezone.TzDataSetVersion.TzDataSetException;
 import com.android.i18n.util.Log;
 import com.android.icu.util.Icu4cMetadata;
@@ -26,9 +28,8 @@ import java.io.IOException;
 /**
  * Provides APIs for obtaining metadata for the i18n library and lower-level
  * components like timezone.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public class I18nModuleDebug {
 

@@ -17,14 +17,15 @@
 
 package com.android.i18n.timezone.internal;
 
+import android.annotation.Hide;
+
 import dalvik.annotation.optimization.FastNative;
 import java.nio.ByteOrder;
 
 /**
  * Unsafe access to memory.
- *
- * @hide
  */
+@Hide
 public final class Memory {
     private Memory() { }
 

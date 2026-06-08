@@ -15,9 +15,9 @@
  */
 package com.android.icu.util;
 
-/**
- * @hide
- */
+import android.annotation.Hide;
+
+@Hide
 public class UResourceBundleNative {
     public static native void cacheTimeZoneBundles();
 }

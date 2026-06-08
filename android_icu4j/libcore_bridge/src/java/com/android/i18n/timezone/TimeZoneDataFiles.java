@@ -16,6 +16,7 @@
 
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
 import android.icu.platform.AndroidDataFiles;
 
 import java.io.File;
@@ -25,9 +26,8 @@ import java.io.IOException;
  * Utility methods associated with finding updateable time zone data files. ICU4C and ICU4J also
  * read files affected by time zone updates. That logic is kept in {@link AndroidDataFiles}
  * and should be updated if file locations or lookup order changes.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public final class TimeZoneDataFiles {
     private static final String ANDROID_ROOT_ENV = AndroidDataFiles.ANDROID_ROOT_ENV;

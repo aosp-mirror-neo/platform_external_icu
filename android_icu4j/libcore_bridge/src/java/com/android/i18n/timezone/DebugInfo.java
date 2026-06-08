@@ -16,14 +16,15 @@
 
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A container class for debug information.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public class DebugInfo {
     private final List<DebugEntry> entries;
@@ -73,9 +74,8 @@ public class DebugInfo {
 
     /**
      * A generic key/value for a single piece of debug information.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.CorePlatformApi
     public static class DebugEntry {
         private final String key;

@@ -16,6 +16,7 @@
 
 package com.android.icu.util;
 
+import android.annotation.Hide;
 import android.icu.util.Calendar;
 import android.icu.util.ULocale;
 
@@ -25,9 +26,8 @@ import java.util.Objects;
 
 /**
  * Provide extra functionalities on top of {@link Calendar} public APIs.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class ExtendedCalendar {
 
@@ -43,8 +43,8 @@ public class ExtendedCalendar {
      * Get an instance
      *
      * @param uLocale non-null ULocale
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static ExtendedCalendar getInstance(ULocale uLocale) {
         Objects.requireNonNull(uLocale);
@@ -57,9 +57,8 @@ public class ExtendedCalendar {
      * string instead of an instance of {@link android.icu.text.DateFormat}.
      *
      * @see {@link Calendar#getDateTimeFormat(int, int, ULocale)} for the style parameters.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public String getDateTimePattern(int dateStyle, int timeStyle) {
         return Calendar.getDateTimeFormatString(uLocale, calendar.getType(), dateStyle, timeStyle);

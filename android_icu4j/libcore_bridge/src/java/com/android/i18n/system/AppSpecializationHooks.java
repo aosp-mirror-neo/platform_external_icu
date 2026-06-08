@@ -16,14 +16,15 @@
 
 package com.android.i18n.system;
 
+import android.annotation.Hide;
+
 import libcore.api.IntraCoreApi;
 
 /**
  * Provides hooks for {@link dalvik.system.AppSpecializationHooks} to call into this class to
  * specialize ICU in an app process.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class AppSpecializationHooks {
 
@@ -34,9 +35,8 @@ public class AppSpecializationHooks {
      * This is a good place to change system properties / clear cache due to an app compat change
      * before an app starts. It's called by
      * {@link dalvik.system.AppSpecializationHooks#handleCompatChangesBeforeBindingApplication()}.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static void handleCompatChangesBeforeBindingApplication() {
         ZygoteHooks.handleCompatChangesBeforeBindingApplication();

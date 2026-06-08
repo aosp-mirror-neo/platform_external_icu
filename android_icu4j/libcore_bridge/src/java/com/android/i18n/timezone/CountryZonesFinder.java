@@ -18,6 +18,8 @@ package com.android.i18n.timezone;
 
 import static com.android.i18n.timezone.XmlUtils.normalizeCountryIso;
 
+import android.annotation.Hide;
+
 import com.android.i18n.timezone.CountryTimeZones.TimeZoneMapping;
 import libcore.util.Nullable;
 
@@ -27,8 +29,8 @@ import java.util.List;
 
 /**
  * An in-memory representation of country &lt;-&gt; time zone mapping data.
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public final class CountryZonesFinder {
 

@@ -22,6 +22,8 @@
  */
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
@@ -47,9 +49,8 @@ import java.util.TimeZone;
  *
  * <p>All offsets are considered to be safe for addition / subtraction / multiplication without
  * worrying about overflow. All absolute time arithmetic is checked for overflow / underflow.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public class WallTime {
 

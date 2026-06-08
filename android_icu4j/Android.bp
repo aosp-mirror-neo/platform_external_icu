@@ -85,6 +85,7 @@ java_library_host {
     ],
     libs: [
         "art.module.api.annotations",
+        "framework-annotations-lib",
     ],
 }
 
@@ -443,6 +444,7 @@ java_sdk_library {
 
     libs: [
         "icu_aconfig_flags_lib",
+        "framework-annotations-lib",
     ],
 
     // Don't copy any output files to the dist.
@@ -478,6 +480,10 @@ java_sdk_library {
         // Select api-surface defined in build/soong/java/metalava/main-config.xml
         api_surface: "core-platform",
     },
+
+    libs: [
+        "framework-annotations-lib",
+    ],
 
     // Don't copy any output files to the dist.
     no_dist: true,

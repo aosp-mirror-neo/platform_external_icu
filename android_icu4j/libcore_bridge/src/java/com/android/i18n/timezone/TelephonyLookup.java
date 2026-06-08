@@ -24,6 +24,8 @@ import static com.android.i18n.timezone.XmlUtils.findNextStartTagOrThrowNoRecurs
 import static com.android.i18n.timezone.XmlUtils.normalizeCountryIso;
 import static com.android.i18n.timezone.XmlUtils.skipCurrentElement;
 
+import android.annotation.Hide;
+
 import com.android.i18n.timezone.XmlUtils.ReaderSupplier;
 import com.android.i18n.util.Log;
 import com.android.icu.Flags;
@@ -44,9 +46,8 @@ import java.util.Set;
 /**
  * A class that can find time zone-related information about telephony networks by loading data from
  * the telephonylookup.xml file.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public final class TelephonyLookup {
 

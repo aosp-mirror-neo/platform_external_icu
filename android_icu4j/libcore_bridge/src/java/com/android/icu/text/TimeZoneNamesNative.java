@@ -16,6 +16,8 @@
 
 package com.android.icu.text;
 
+import android.annotation.Hide;
+
 import java.util.Locale;
 import libcore.api.IntraCoreApi;
 import libcore.util.NonNull;
@@ -24,9 +26,8 @@ import libcore.util.NonNull;
  * Provide functionalities implemented by ICU4C for {@link libcore.icu.TimeZoneNames} and
  * the implementation should be faster than the public APIs provided by
  * {@link android.icu.text.TimeZoneNames}.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public final class TimeZoneNamesNative {
 
@@ -41,9 +42,8 @@ public final class TimeZoneNamesNative {
      * @see libcore.icu.TimeZoneNames.ZoneStringsCache#create(java.util.Locale)
      * @return List of [Time zone id, long, short, long DST, short DST] for each id from
      * {@code tzIds}. Any of these value except Olson name can be null.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static String[][] getFilledZoneStrings(@NonNull Locale locale, @NonNull String[] tzIds) {
         String[][] result = new String[tzIds.length][5];

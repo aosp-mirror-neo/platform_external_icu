@@ -18,6 +18,7 @@ package com.android.i18n.timezone;
 
 import static java.util.stream.Collectors.toUnmodifiableSet;
 
+import android.annotation.Hide;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 
@@ -26,9 +27,8 @@ import java.util.Set;
 
 /**
  * Information about the countries where an MCC operates.
- *
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public final class MobileCountries {
 

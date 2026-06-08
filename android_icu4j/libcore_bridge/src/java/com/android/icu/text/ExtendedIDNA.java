@@ -16,6 +16,7 @@
 
 package com.android.icu.text;
 
+import android.annotation.Hide;
 import android.icu.text.IDNA;
 import android.icu.text.StringPrepParseException;
 
@@ -25,9 +26,8 @@ import java.net.IDN;
 
 /**
  * Provide extra functionalities on top of {@link IDNA} public APIs.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class ExtendedIDNA {
 
@@ -41,9 +41,8 @@ public class ExtendedIDNA {
      *                and {@link IDN#USE_STD3_ASCII_RULES}. Undefined behavior if other flag is
      *                passed.
      * @return the converted string
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static StringBuffer convertIDNToASCII(String src, int options)
             throws StringPrepParseException {
@@ -58,9 +57,8 @@ public class ExtendedIDNA {
      *                and {@link IDN#USE_STD3_ASCII_RULES}. Undefined behavior if other flag is
      *                passed.
      * @return the converted string
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static StringBuffer convertIDNToUnicode(String src, int options)
             throws StringPrepParseException {

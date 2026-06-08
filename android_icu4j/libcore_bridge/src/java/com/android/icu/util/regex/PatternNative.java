@@ -16,13 +16,14 @@
 
 package com.android.icu.util.regex;
 
+import android.annotation.Hide;
+
 import libcore.util.NativeAllocationRegistry;
 
 /**
  * Provide an entry point to use ICU4C icu::RegexPattern.
- *
- * @hide
  */
+@Hide
 @libcore.api.IntraCoreApi
 public class PatternNative {
 
@@ -41,9 +42,8 @@ public class PatternNative {
      *              {@link java.util.regex.Pattern#COMMENTS},
      *              {@link java.util.regex.Pattern#MULTILINE} and
      *              {@link java.util.regex.Pattern#DOTALL}.
-     *
-     * @hide
      */
+    @Hide
     @libcore.api.IntraCoreApi
     public static PatternNative create(String pattern, int flags) {
         return new PatternNative(pattern, flags);

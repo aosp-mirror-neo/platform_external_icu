@@ -16,6 +16,8 @@
 
 package com.android.i18n.timezone;
 
+import android.annotation.Hide;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -42,8 +44,8 @@ import java.util.regex.Pattern;
  * ({@link #getRevision()}).
  *
  * <p>See platform/system/timezone/README.android for more information.
- * @hide
  */
+@Hide
 @libcore.api.CorePlatformApi
 public final class TzDataSetVersion {
 

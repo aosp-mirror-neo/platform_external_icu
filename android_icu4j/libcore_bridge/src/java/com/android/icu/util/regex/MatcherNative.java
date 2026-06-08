@@ -16,15 +16,16 @@
 
 package com.android.icu.util.regex;
 
+import android.annotation.Hide;
+
 import libcore.api.IntraCoreApi;
 import libcore.util.NativeAllocationRegistry;
 
 /**
  * Stores the states when matching an input text with a regular expression pattern
  * {@link PatternNative}.
- *
- * @hide
  */
+@Hide
 @IntraCoreApi
 public class MatcherNative {
 
@@ -37,9 +38,8 @@ public class MatcherNative {
 
     /**
      * Create a {@link MatcherNative} instance from {@link PatternNative}.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public static MatcherNative create(PatternNative pattern) {
         return new MatcherNative(pattern);
@@ -55,9 +55,8 @@ public class MatcherNative {
      * Returns the index of the named group.
      *
      * @param groupName the group name
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public int getMatchedGroupIndex(String groupName) {
         return nativePattern.getMatchedGroupIndex(groupName);
@@ -72,10 +71,8 @@ public class MatcherNative {
      *                starting and ending indices of the 0th group and 0th group is the entire
      *                match. The index can be -1 when a match is found, but the group is not found.
      * @return true if a match is found.
-     *
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public boolean find(int startIndex, int[] offsets) {
         return findImpl(address, startIndex, offsets);
@@ -90,10 +87,8 @@ public class MatcherNative {
      *                starting and ending indices of the 0th group and 0th group is the entire
      *                match. The index can be -1 when a match is found, but the group is not found.
      * @return true if a match is found.
-     *
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public boolean findNext(int[] offsets) {
         return findNextImpl(address, offsets);
@@ -101,9 +96,8 @@ public class MatcherNative {
 
     /**
      * Returns the number of named-capturing groups provided in the pattern.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public int groupCount() {
         return groupCountImpl(address);
@@ -111,9 +105,8 @@ public class MatcherNative {
 
     /**
      * Returns true if the matcher has hit the end of the input string in the last match.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public boolean hitEnd() {
         return hitEndImpl(address);
@@ -128,9 +121,8 @@ public class MatcherNative {
      *                starting and ending indices of the 0th group and 0th group is the entire
      *                match. The index can be -1 when a match is found, but the group is not found.
      * @return true if it matches the prefix of the input string.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public boolean lookingAt(int[] offsets) {
         return lookingAtImpl(address, offsets);
@@ -146,9 +138,8 @@ public class MatcherNative {
      *                starting and ending indices of the 0th group and 0th group is the entire
      *                match. The index can be -1 when a match is found, but the group is not found.
      * @return true if it matches the entire input string.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public boolean matches(int[] offsets) {
         return matchesImpl(address, offsets);
@@ -156,9 +147,8 @@ public class MatcherNative {
 
     /**
      * Returns true if the most recent match succeeded and additional input could cause it to fail.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public boolean requireEnd() {
         return requireEndImpl(address);
@@ -169,9 +159,8 @@ public class MatcherNative {
      *
      * @param start the starting index at which to begin matching
      * @param end the ending index at which to end matching
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public void setInput(String input, int start, int end) {
         setInputImpl(address, input, start, end);
@@ -181,9 +170,8 @@ public class MatcherNative {
      * Set whether using the anchoring bounds.
      *
      * Anchoring bounds allow the input string boundary to be matched by constructs ^ and $.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public void useAnchoringBounds(boolean value) {
         useAnchoringBoundsImpl(address, value);
@@ -194,9 +182,8 @@ public class MatcherNative {
      *
      * Transparent bounds makes the boundary of the input string transparent to the lookahead,
      * lookbehind, and boundary constructs.
-     *
-     * @hide
      */
+    @Hide
     @IntraCoreApi
     public void useTransparentBounds(boolean value) {
         useTransparentBoundsImpl(address, value);
