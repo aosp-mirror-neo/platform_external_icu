@@ -91,8 +91,8 @@ import android.icu.impl.ResourceBundleWrapper;
  * to load the resources
 
  * @author ram
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class UResourceBundle extends ResourceBundle {
 
 

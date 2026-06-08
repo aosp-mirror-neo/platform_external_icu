@@ -30,9 +30,9 @@ import android.icu.util.ULocale;
  * Primary number parsing implementation class.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class NumberParserImpl {
 
     /**

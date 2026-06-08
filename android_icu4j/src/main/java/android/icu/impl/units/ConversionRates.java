@@ -17,9 +17,7 @@ import android.icu.impl.UResource;
 import android.icu.util.MeasureUnit;
 import android.icu.util.UResourceBundle;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ConversionRates {
 
     /**
@@ -160,9 +158,7 @@ public class ConversionRates {
         return true;
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ConversionRatesSink extends UResource.Sink {
         /**
          * Map from any simple unit (i.e. "meter", "foot", "inch") to its basic/root conversion rate info.
@@ -221,9 +217,7 @@ public class ConversionRates {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ConversionRateInfo {
 
         @SuppressWarnings("unused")

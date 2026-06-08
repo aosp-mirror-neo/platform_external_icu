@@ -37,8 +37,8 @@ import android.icu.util.UResourceBundle;
  * The data file (tzdbNames.txt) contains regional mapping, and
  * the locale in the constructor is used as a hint for resolving
  * these ambiguous names.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class TZDBTimeZoneNames extends TimeZoneNames {
     private static final long serialVersionUID = 1L;
 

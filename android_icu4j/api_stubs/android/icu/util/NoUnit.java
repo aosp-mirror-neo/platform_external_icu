@@ -8,8 +8,8 @@ import android.icu.number.NumberFormatter;
 /**
  * Dimensionless unit for percent and permille.
  * @see NumberFormatter
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class NoUnit {
     /**
      * Constant for the base unit (dimensionless and no scaling).

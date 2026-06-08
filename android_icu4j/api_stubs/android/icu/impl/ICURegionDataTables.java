@@ -9,9 +9,7 @@
  */
 package android.icu.impl;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ICURegionDataTables extends LocaleDisplayNamesImpl.ICUDataTables {
     public ICURegionDataTables() {
         super(ICUData.ICU_REGION_BASE_NAME);

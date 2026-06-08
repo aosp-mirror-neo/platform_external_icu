@@ -22,8 +22,8 @@ import android.icu.util.UResourceBundle;
 
 /**
  * Actual implementation class for PersonNameFormatter.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PersonNameFormatterImpl {
     private final Locale locale;
     private final PersonNamePattern[] gnFirstPatterns;

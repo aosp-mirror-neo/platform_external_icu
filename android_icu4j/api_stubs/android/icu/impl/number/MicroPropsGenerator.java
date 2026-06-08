@@ -45,9 +45,9 @@ package android.icu.impl.number;
  * </pre>
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface MicroPropsGenerator {
     /**
      * Considers the given {@link DecimalQuantity}, optionally mutates it, and returns a

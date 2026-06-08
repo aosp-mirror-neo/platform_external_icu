@@ -34,9 +34,7 @@ import android.icu.text.LocaleDisplayNames;
 import android.icu.util.ULocale;
 import android.icu.util.UResourceBundle;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocaleDisplayNamesImpl extends LocaleDisplayNames {
     private final ULocale locale;
     private final DialectHandling dialectHandling;
@@ -650,9 +648,7 @@ public class LocaleDisplayNamesImpl extends LocaleDisplayNames {
         return new UiListItem(minimized, modified, nameInDisplayLocale, nameInSelf);
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class DataTable {
         final boolean nullIfNotFound;
 
@@ -731,9 +727,7 @@ public class LocaleDisplayNamesImpl extends LocaleDisplayNames {
         static final DataTables impl = DataTables.load("android.icu.impl.ICURegionDataTables");
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static enum DataTableType {
         LANG, REGION;
     }

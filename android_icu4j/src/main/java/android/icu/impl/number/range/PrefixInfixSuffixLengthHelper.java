@@ -5,8 +5,8 @@ package android.icu.impl.number.range;
 
 /**
  * A small, mutable internal helper class for keeping track of offsets on range patterns.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PrefixInfixSuffixLengthHelper {
     public int lengthPrefix = 0;
     public int length1 = 0;

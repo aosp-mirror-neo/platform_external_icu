@@ -2461,10 +2461,10 @@ public synchronized void setParseStrictMode(ParseMode parseMode) {
 
   /**
    * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
    */
-  @Deprecated
+  @android.annotation.Hide // Only a subset of ICU is exposed in Android
+@Deprecated
   public static interface PropertySetter {
     /**
      * @deprecated This API is ICU internal only.

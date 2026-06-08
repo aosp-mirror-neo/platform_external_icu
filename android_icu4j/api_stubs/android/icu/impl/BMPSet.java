@@ -23,8 +23,8 @@ import android.icu.util.OutputInt;
  * 3-byte characters: Use zero/one/mixed data per 64-block in U+0000..U+FFFF, with mixed for illegal ranges.
  * Supplementary characters: Binary search over
  * the supplementary part of the parent set's inversion list.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class BMPSet {
     public static int U16_SURROGATE_OFFSET = ((0xd800 << 10) + 0xdc00 - 0x10000);
 

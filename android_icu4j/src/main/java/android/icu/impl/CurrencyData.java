@@ -16,35 +16,27 @@ import android.icu.text.CurrencyDisplayNames;
 import android.icu.text.DecimalFormatSymbols;
 import android.icu.util.ULocale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CurrencyData {
     public static final CurrencyDisplayInfoProvider provider;
 
     @android.compat.annotation.UnsupportedAppUsage(maxTargetSdk = 30, trackingBug = 170729553)
     private CurrencyData() {}
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface CurrencyDisplayInfoProvider {
         CurrencyDisplayInfo getInstance(ULocale locale, boolean withFallback);
         boolean hasData();
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class CurrencyDisplayInfo extends CurrencyDisplayNames {
         public abstract Map<String, String> getUnitPatterns();
         public abstract CurrencyFormatInfo getFormatInfo(String isoCode);
         public abstract CurrencySpacingInfo getSpacingInfo();
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class CurrencyFormatInfo {
         public final String isoCode;
         public final String currencyPattern;
@@ -60,22 +52,16 @@ public class CurrencyData {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class CurrencySpacingInfo {
         private final String[][] symbols = new String[SpacingType.COUNT.ordinal()][SpacingPattern.COUNT.ordinal()];
 
         public boolean hasBeforeCurrency = false;
         public boolean hasAfterCurrency = false;
 
-        /**
-         * @hide Only a subset of ICU is exposed in Android
-         */
+        @android.annotation.Hide // Only a subset of ICU is exposed in Android
         public static enum SpacingType { BEFORE, AFTER, COUNT };
-        /**
-         * @hide Only a subset of ICU is exposed in Android
-         */
+        @android.annotation.Hide // Only a subset of ICU is exposed in Android
         public static enum SpacingPattern {
             CURRENCY_MATCH(DecimalFormatSymbols.CURRENCY_SPC_CURRENCY_MATCH),
             SURROUNDING_MATCH(DecimalFormatSymbols.CURRENCY_SPC_SURROUNDING_MATCH),
@@ -146,9 +132,7 @@ public class CurrencyData {
         provider = temp;
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class DefaultInfo extends CurrencyDisplayInfo {
         private final boolean fallback;
 

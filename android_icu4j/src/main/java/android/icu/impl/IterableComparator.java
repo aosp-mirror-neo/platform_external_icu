@@ -15,8 +15,8 @@ import java.util.Iterator;
 /**
  * TODO: Move to android.icu.dev.somewhere.
  * 2015-sep-03: Not used in ICU but used in CLDR and in UnicodeTools.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class IterableComparator<T> implements Comparator<Iterable<T>> {
     private final Comparator<T> comparator;
     private final int shorterFirst; // = 1 for shorter first, -1 otherwise

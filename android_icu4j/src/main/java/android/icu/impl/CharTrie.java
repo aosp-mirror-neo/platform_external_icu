@@ -18,11 +18,11 @@ import android.icu.text.UTF16;
  * Trie implementation which stores data in char, 16 bits.
  * @author synwee
  * @see android.icu.impl.Trie
- * @hide Only a subset of ICU is exposed in Android
  */
 
  // note that i need to handle the block calculations later, since chartrie
  // in icu4c uses the same index array.
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CharTrie extends Trie
 {
     // public constructors ---------------------------------------------

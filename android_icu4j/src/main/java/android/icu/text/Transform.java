@@ -14,10 +14,10 @@ package android.icu.text;
  * APIs that take Transliterator or StringTransform, but only depend on the transformation should use this interface in the API instead.
  *
  * @author markdavis
- * @hide Only a subset of ICU is exposed in Android
 
  */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface Transform<S,D> {
     /**
      * Transform the input in some way, to be determined by the subclass.

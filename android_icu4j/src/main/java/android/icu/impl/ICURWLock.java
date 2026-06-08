@@ -36,8 +36,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  *
  * <p>The lock provides utility methods getStats and clearStats
  * to return statistics on the use of the lock.</p>
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ICURWLock {
     private ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
 
@@ -45,8 +45,8 @@ public class ICURWLock {
 
     /**
      * Internal class used to gather statistics on the RWLock.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public final static class Stats {
         /**
          * Number of times read access granted (read count).

@@ -30,8 +30,8 @@ import android.icu.impl.Grego;
  * @see      GregorianCalendar
  * @see      TimeZone
  * @author   Deborah Goldsmith, Mark Davis, Chen-Lieh Huang, Alan Liu
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SimpleTimeZone extends BasicTimeZone implements Cloneable {
     private static final long serialVersionUID = -7034676239311322769L;
 

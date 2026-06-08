@@ -20,9 +20,9 @@ import java.util.Map;
  *
  * @author Alan Liu
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class RuleBasedTransliterator extends Transliterator {
 

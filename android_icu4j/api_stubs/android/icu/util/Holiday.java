@@ -22,9 +22,9 @@ import android.icu.util.ULocale.Category;
  * Despite its age, is still draft API, and clients should treat it as such.
  *
  * An abstract class representing a holiday.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class Holiday implements DateRule
 {
     /**

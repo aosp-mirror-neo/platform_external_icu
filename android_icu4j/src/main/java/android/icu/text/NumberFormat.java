@@ -819,9 +819,9 @@ public abstract class NumberFormat extends UFormat implements Cloneable {
      * one of these two methods <b>MUST</b> be overridden or else an infinite
      * loop will occur.
      *
-     * @hide Only a subset of ICU is exposed in Android
      * @hide unsupported on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class NumberFormatFactory {
         /**
          * Value passed to format requesting a default number format.
@@ -904,9 +904,9 @@ public abstract class NumberFormat extends UFormat implements Cloneable {
 
     /**
      * A NumberFormatFactory that supports a single locale.  It can be visible or invisible.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide unsupported on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class SimpleNumberFormatFactory extends NumberFormatFactory {
         final Set<String> localeNames;
         final boolean visible;

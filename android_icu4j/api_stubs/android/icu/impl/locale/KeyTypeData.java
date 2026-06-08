@@ -27,13 +27,11 @@ import android.icu.util.UResourceBundle;
 import android.icu.util.UResourceBundleIterator;
 
 /**
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class KeyTypeData {
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum ValueType {
         single, multiple, incremental, any
     }

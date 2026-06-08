@@ -11,8 +11,8 @@ import android.icu.util.ULocale;
  * Small helper class that generates matchers for individual tokens for AffixPatternMatcher.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class AffixTokenMatcherFactory {
     public Currency currency;
     public DecimalFormatSymbols symbols;

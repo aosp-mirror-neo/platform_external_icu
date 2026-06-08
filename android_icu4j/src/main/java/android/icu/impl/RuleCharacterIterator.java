@@ -23,8 +23,8 @@ import android.icu.text.UTF16;
  * <em>not</em> related to any of the JDK or ICU4J character iterator classes
  * in order to minimize complexity.
  * @author Alan Liu
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RuleCharacterIterator {
 
     // TODO: Ideas for later.  (Do not implement if not needed, lest the
@@ -91,8 +91,8 @@ public class RuleCharacterIterator {
      */
     public static final int SKIP_WHITESPACE = 4;
 
-    /** For use with {@link #getPos(Position)} & {@link #setPos(Position)}. 
-     * @hide Only a subset of ICU is exposed in Android*/
+    /** For use with {@link #getPos(Position)} & {@link #setPos(Position)}. */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Position {
         private String buf;
         private int bufPos;

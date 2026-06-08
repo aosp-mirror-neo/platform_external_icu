@@ -15,8 +15,8 @@ import java.util.MissingResourceException;
 /**
  * Utilities for mapping between old and new language, country, and other
  * locale ID related names.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocaleIDs {
 
     /**

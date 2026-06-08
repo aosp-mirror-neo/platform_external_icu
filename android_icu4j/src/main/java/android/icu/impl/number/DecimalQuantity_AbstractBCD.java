@@ -20,8 +20,8 @@ import android.icu.text.UFieldPosition;
  * Represents numbers and digit display properties using Binary Coded Decimal (BCD).
  *
  * @implements {@link DecimalQuantity}
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class DecimalQuantity_AbstractBCD implements DecimalQuantity {
 
     /**

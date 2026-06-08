@@ -16,9 +16,9 @@ import java.util.Map;
  * latest description</a>.</p>
  *
  * @deprecated This API is for technology preview only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 @SuppressWarnings("javadoc")
 public class MFDataModel {
@@ -31,9 +31,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public interface Message {
         // Provides a common type for PatternMessage and SelectMessage.
@@ -41,9 +41,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class PatternMessage implements Message {
         /**
@@ -72,9 +72,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class SelectMessage implements Message {
         /**
@@ -113,9 +113,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public interface Declaration {
         // Provides a common type for InputDeclaration, and LocalDeclaration
@@ -123,9 +123,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class InputDeclaration implements Declaration {
         /**
@@ -154,9 +154,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class LocalDeclaration implements Declaration {
         /**
@@ -185,9 +185,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public interface LiteralOrCatchallKey {
         // Provides a common type for the selection keys: Variant, Literal, or CatchallKey.
@@ -195,9 +195,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Variant implements LiteralOrCatchallKey {
         /**
@@ -226,9 +226,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class CatchallKey implements LiteralOrCatchallKey {
         final static String AS_KEY_STRING = "<<::CatchallKey::>>";
@@ -255,9 +255,9 @@ public class MFDataModel {
     // type Pattern = Array<string | Expression | Markup>;
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Pattern {
         /**
@@ -274,9 +274,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public interface PatternPart {
         // Provides a common type for StringPart and Expression.
@@ -284,9 +284,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class StringPart implements PatternPart {
         /**
@@ -303,9 +303,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public interface Expression extends PatternPart {
         // Provides a common type for all kind of expressions:
@@ -314,9 +314,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class LiteralExpression implements Expression {
         /**
@@ -352,9 +352,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class VariableExpression implements Expression {
         /**
@@ -391,9 +391,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class FunctionRef {
         /**
@@ -422,9 +422,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class FunctionExpression implements Expression {
         /**
@@ -453,9 +453,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Attribute {
         /**
@@ -486,9 +486,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public interface LiteralOrVariableRef {
         // Provides a common type for Literal and VariableRef,
@@ -498,9 +498,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Literal implements LiteralOrVariableRef, LiteralOrCatchallKey {
         /**
@@ -522,9 +522,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class VariableRef implements LiteralOrVariableRef {
         /**
@@ -546,9 +546,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Option {
         /**
@@ -579,9 +579,9 @@ public class MFDataModel {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class Markup implements Expression {
         enum Kind {

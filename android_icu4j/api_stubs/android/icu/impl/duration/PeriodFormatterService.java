@@ -15,8 +15,8 @@ import java.util.Collection;
 /**
  * Provider of Factory instances for building PeriodBuilders, PeriodFormatters,
  * and DurationFormatters.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface PeriodFormatterService {
 
     /**

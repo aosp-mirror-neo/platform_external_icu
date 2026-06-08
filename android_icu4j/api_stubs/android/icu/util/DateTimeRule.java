@@ -15,9 +15,8 @@ import java.io.Serializable;
  * <code>DateTimeRule</code> is a class representing a time in a year by
  * a rule specified by month, day of month, day of week and
  * time in the day.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class DateTimeRule implements Serializable {
 
     private static final long serialVersionUID = 2183055795738051443L;

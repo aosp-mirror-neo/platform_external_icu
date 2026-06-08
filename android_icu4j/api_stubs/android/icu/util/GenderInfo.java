@@ -25,9 +25,9 @@ import android.icu.impl.SimpleCache;
  * Provide information about gender in locales based on data in CLDR. Currently supplies gender of lists.
  * @author markdavis
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class GenderInfo {
 
@@ -36,9 +36,9 @@ public class GenderInfo {
     /**
      * Gender: OTHER means either the information is unavailable, or the person has declined to state MALE or FEMALE.
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public enum Gender {
         /**
@@ -88,9 +88,9 @@ public class GenderInfo {
      * This only affects gender for lists more than one. For lists of 1 item, the gender
      * of the list always equals the gender of that sole item.
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public enum ListGenderStyle {
         /**

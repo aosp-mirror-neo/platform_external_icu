@@ -25,9 +25,8 @@ import android.icu.impl.Grego;
  *
  * @see android.icu.util.TimeZoneRule
  * @see android.icu.util.TimeZoneTransition
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class BasicTimeZone extends TimeZone {
 
     private static final long serialVersionUID = -3204278532246180932L;
@@ -623,9 +622,8 @@ public abstract class BasicTimeZone extends TimeZone {
      * <strong>[icu]</strong> Options used by {@link #getOffsetFromLocal(long, LocalOption, LocalOption, int[])}
      * to specify how to interpret an input time when it does not exist, or when it is ambiguous,
      * around a time zone transition.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static enum LocalOption {
         /**
          * An input time is always interpreted as local time before

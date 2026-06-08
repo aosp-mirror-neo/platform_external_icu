@@ -21,9 +21,7 @@ import android.icu.text.UnicodeSet;
 import android.icu.util.CharsTrie;
 import android.icu.util.CharsTrie.Entry;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class ContractionsAndExpansions {
     // C++: The following fields are @internal, only public for access by callback.
     private CollationData data;
@@ -38,9 +36,7 @@ public final class ContractionsAndExpansions {
     private String suffix;
     private long[] ces = new long[Collation.MAX_EXPANSION_LENGTH];
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface CESink {
         void handleCE(long ce);
         void handleExpansion(long ces[], int start, int length);

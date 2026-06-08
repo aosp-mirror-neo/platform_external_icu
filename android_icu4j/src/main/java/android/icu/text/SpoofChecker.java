@@ -272,16 +272,14 @@ import android.icu.util.ULocale;
  * <b>Thread Safety:</b> The methods on <code>SpoofChecker</code> objects are thread safe. The test functions for
  * checking a single identifier, or for testing whether two identifiers are potentially confusable, may called
  * concurrently from multiple threads using the same <code>SpoofChecker</code> instance.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SpoofChecker {
 
     /**
      * Constants from UTS 39 for use in setRestrictionLevel.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum RestrictionLevel {
         /**
          * All characters in the string are in the identifier profile and all characters in the string are in the ASCII
@@ -453,9 +451,8 @@ public class SpoofChecker {
     /**
      * SpoofChecker Builder. To create a SpoofChecker, first instantiate a SpoofChecker.Builder, set the desired
      * checking options on the builder, then call the build() function to create a SpoofChecker instance.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Builder {
         int fChecks; // Bit vector of checks to perform.
         SpoofData fSpoofData;
@@ -1143,9 +1140,8 @@ public class SpoofChecker {
 
     /**
      * A struct-like class to hold the results of a Spoof Check operation. Tells which check(s) have failed.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class CheckResult {
         /**
          * Indicates which of the spoof check(s) have failed. The value is a bitwise OR of the constants for the tests

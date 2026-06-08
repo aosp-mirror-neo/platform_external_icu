@@ -15,8 +15,8 @@ import java.util.TimeZone;
 
 /**
  * Formatter for durations in milliseconds.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface DurationFormatter {
 
   /**

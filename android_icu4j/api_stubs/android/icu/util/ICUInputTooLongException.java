@@ -7,9 +7,8 @@ package android.icu.util;
  * The input is impractically long for an operation.
  * It is rejected because it may lead to problems such as excessive
  * processing time, stack depth, or heap memory requirements.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ICUInputTooLongException extends ICUException {
     private static final long serialVersionUID = -2602876786689338226L;
 

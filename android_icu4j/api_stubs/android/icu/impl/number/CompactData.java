@@ -19,13 +19,11 @@ import android.icu.util.UResourceBundle;
 
 /**
  * Datatype for compact notation data. Includes logic for data loading.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CompactData implements MultiplierProducer {
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum CompactType {
         DECIMAL, CURRENCY
     }

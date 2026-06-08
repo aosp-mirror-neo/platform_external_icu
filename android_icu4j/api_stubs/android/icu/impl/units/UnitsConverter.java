@@ -15,9 +15,7 @@ import android.icu.impl.IllegalIcuArgumentException;
 import android.icu.util.MeasureUnit;
 
 // TODO ICU-22683: Consider splitting handling of special mappings into separate (possibly internal) class
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnitsConverter {
     private BigDecimal conversionRate;
     private boolean reciprocal;
@@ -274,9 +272,7 @@ public class UnitsConverter {
         return BigDecimal.valueOf(scaleIndex);
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Convertibility {
         CONVERTIBLE,
         RECIPROCAL,
@@ -292,9 +288,7 @@ public class UnitsConverter {
         return result;
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ConversionInfo {
         public BigDecimal conversionRate;
         public BigDecimal offset;

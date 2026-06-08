@@ -14,9 +14,9 @@ package android.icu.util;
  * Like <code>Output&lt;Integer&gt;</code> but without auto-boxing.
  *
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class OutputInt {
     /**

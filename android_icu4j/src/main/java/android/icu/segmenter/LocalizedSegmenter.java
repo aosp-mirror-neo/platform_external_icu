@@ -11,9 +11,9 @@ import java.util.Locale;
 /**
  * Performs segmentation according to the rules defined for the locale.
  *
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocalizedSegmenter implements Segmenter {
 
   private BreakIterator breakIterPrototype;
@@ -63,10 +63,10 @@ public class LocalizedSegmenter implements Segmenter {
    * <a
    * href="https://unicode-org.github.io/icu/userguide/boundaryanalysis/#four-types-of-breakiterator">Boundary Analysis</a>
    * for further details.
-   * @hide Only a subset of ICU is exposed in Android
- * @hide draft / provisional / internal are hidden on Android
+   * @hide draft / provisional / internal are hidden on Android
    */
-  public enum SegmentationType {
+  @android.annotation.Hide // Only a subset of ICU is exposed in Android
+public enum SegmentationType {
 
     /**
      * @hide draft / provisional / internal are hidden on Android
@@ -91,10 +91,10 @@ public class LocalizedSegmenter implements Segmenter {
 
   /**
    * Builder for {@link LocalizedSegmenter}
-   * @hide Only a subset of ICU is exposed in Android
- * @hide draft / provisional / internal are hidden on Android
+   * @hide draft / provisional / internal are hidden on Android
    */
-  public static class Builder {
+  @android.annotation.Hide // Only a subset of ICU is exposed in Android
+public static class Builder {
 
     private ULocale locale = ULocale.ROOT;
 

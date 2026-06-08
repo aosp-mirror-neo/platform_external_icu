@@ -19,14 +19,14 @@ import java.util.TreeSet;
  * A caller can store both raw field values (such as "given") and modified field values (such as "given-informal")
  * in a SimplePersonName.  But beyond storing and returning modified field values provided to it by the caller,
  * SimplePersonName relies on the PersonNameFormatter's default handling of field modifiers.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SimplePersonName implements PersonName {
     /**
      * A utility class for constructing a SimplePersonName.  Use SimplePersonName.builder()
      * to get a new Builder instance.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Builder {
         /**
          * Set the locale for the new name object.

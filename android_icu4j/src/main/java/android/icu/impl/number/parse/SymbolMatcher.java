@@ -11,8 +11,8 @@ import android.icu.text.UnicodeSet;
  * A base class for many matchers that performs a simple match against a UnicodeString and/or UnicodeSet.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class SymbolMatcher implements NumberParseMatcher {
     protected final String string;
     protected final UnicodeSet uniSet;

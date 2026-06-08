@@ -37,8 +37,8 @@ import android.icu.util.UResourceBundle;
 
 /**
  * The standard ICU implementation of TimeZoneNames
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class TimeZoneNamesImpl extends TimeZoneNames {
 
     private static final long serialVersionUID = -2179814848495897472L;

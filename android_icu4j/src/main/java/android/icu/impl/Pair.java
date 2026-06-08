@@ -14,8 +14,8 @@ package android.icu.impl;
  *
  * @param <F> first object type
  * @param <S> second object type
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Pair<F, S> {
     public final F first;
     public final S second;

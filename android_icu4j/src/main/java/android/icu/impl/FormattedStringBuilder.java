@@ -23,13 +23,11 @@ import android.icu.text.NumberFormat;
  * See also FormattedValueStringBuilderImpl.
  *
  * @author sffc (Shane Carr)
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class FormattedStringBuilder implements CharSequence, Appendable {
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface FieldWrapper {
         java.text.Format.Field unwrap();
     }

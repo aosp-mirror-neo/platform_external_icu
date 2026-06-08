@@ -7,8 +7,8 @@ import android.icu.impl.StringSegment;
 
 /**
  * A Matcher used only for post-process validation, not for consuming characters at runtime.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class ValidationMatcher implements NumberParseMatcher {
 
     @Override

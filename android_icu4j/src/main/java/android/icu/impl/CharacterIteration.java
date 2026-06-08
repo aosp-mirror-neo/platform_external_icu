@@ -13,9 +13,7 @@ import java.text.CharacterIterator;
 
 import android.icu.text.UTF16;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CharacterIteration {
     // disallow instantiation
     private CharacterIteration() { }

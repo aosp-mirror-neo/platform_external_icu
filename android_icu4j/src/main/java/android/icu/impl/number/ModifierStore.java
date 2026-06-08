@@ -11,8 +11,8 @@ import android.icu.impl.number.Modifier.Signum;
  * based on given parameters.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface ModifierStore {
     /**
      * Returns a Modifier with the given parameters (best-effort).

@@ -402,8 +402,8 @@ public final class RelativeDateTimeFormatter {
      * There is no public constructor to this class; the only instances are the
      * constants defined here.
      * <p>
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Field extends Format.Field {
         private static final long serialVersionUID = -5327685528663492325L;
 

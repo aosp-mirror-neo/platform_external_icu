@@ -14,9 +14,9 @@ import java.util.Map;
  * <p>We use it to create and cache various functions with various options.</p>
  *
  * @deprecated This API is for technology preview only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public interface FunctionFactory {
     /**

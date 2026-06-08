@@ -15,10 +15,10 @@ import android.icu.text.UCharacterIterator;
 
 /**
  * @author Doug Felt
- * @hide Only a subset of ICU is exposed in Android
  *
  */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UCharArrayIterator extends UCharacterIterator implements Cloneable {
     private final char[] text;
     private final int start;

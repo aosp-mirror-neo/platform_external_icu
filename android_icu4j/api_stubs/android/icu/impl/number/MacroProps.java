@@ -17,9 +17,7 @@ import android.icu.text.PluralRules;
 import android.icu.util.MeasureUnit;
 import android.icu.util.ULocale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class MacroProps implements Cloneable {
     public Notation notation;
     public MeasureUnit unit;

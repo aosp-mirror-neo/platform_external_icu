@@ -29,9 +29,8 @@ public abstract class UFormat extends Format {
     /**
      * A field that represents a span of text that may be composed with other fields.
      * SpanField classes usually have an associated value.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class SpanField extends Format.Field {
         private static final long serialVersionUID = -4732719509273350606L;
 

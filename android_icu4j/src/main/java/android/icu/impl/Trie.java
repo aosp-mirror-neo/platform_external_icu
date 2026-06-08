@@ -43,8 +43,8 @@ import android.icu.text.UTF16;
  * @author synwee
  * @see android.icu.impl.CharTrie
  * @see android.icu.impl.IntTrie
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class Trie
 {
     // public class declaration ----------------------------------------
@@ -55,8 +55,8 @@ public abstract class Trie
     * This interface specifies methods to be implemented in order for
     * com.ibm.impl.Trie, to surrogate offset information encapsulated within
     * the data.
-     * @hide Only a subset of ICU is exposed in Android
     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface DataManipulate
     {
         /**

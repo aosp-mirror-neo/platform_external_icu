@@ -69,8 +69,8 @@ import java.util.regex.Pattern;
  * fr;q=1.0
  * ja;q=1.0</pre>
  * @author markdavis@google.com
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocalePriorityList implements Iterable<ULocale> {
     private static final Double D1 = 1.0d;
 
@@ -207,8 +207,8 @@ public class LocalePriorityList implements Iterable<ULocale> {
 
     /**
      * Class used for building LocalePriorityLists.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Builder {
         /**
          * These store the input languages and weights, in chronological order,

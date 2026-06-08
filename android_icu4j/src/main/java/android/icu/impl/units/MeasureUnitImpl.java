@@ -17,9 +17,7 @@ import android.icu.util.MeasureUnit;
 import android.icu.util.StringTrieBuilder;
 
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class MeasureUnitImpl {
 
     /**
@@ -369,9 +367,7 @@ public class MeasureUnitImpl {
         return "MeasureUnitImpl [" + build().getIdentifier() + "]";
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum CompoundPart {
         // Represents "-per-"
         PER(0),
@@ -409,9 +405,7 @@ public class MeasureUnitImpl {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum PowerPart {
         P2(2),
         P3(3),
@@ -447,9 +441,7 @@ public class MeasureUnitImpl {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum InitialCompoundPart {
 
         // Represents "per-", the only compound part that can appear at the start of
@@ -481,9 +473,7 @@ public class MeasureUnitImpl {
 
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class MeasureUnitImplWithIndex {
         int index;
         MeasureUnitImpl unitImpl;
@@ -494,9 +484,7 @@ public class MeasureUnitImpl {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class UnitsParser {
 
         /**

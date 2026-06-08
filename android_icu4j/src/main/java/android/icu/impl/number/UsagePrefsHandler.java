@@ -12,9 +12,7 @@ import android.icu.impl.units.UnitsRouter;
 import android.icu.util.MeasureUnit;
 import android.icu.util.ULocale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UsagePrefsHandler implements MicroPropsGenerator {
 
     private final MicroPropsGenerator fParent;

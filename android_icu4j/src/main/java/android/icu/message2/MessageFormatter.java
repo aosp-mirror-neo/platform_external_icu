@@ -137,9 +137,9 @@ import java.util.Map;
  * <p>The complete list of valid options for each function, and how they infulence the results, can be found at
  * <a target="github" href="https://github.com/unicode-org/message-format-wg/blob/main/spec/registry.md">here</a>.<p>
  *
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class MessageFormatter {
     private final Locale locale;
     private final String pattern;
@@ -301,9 +301,9 @@ public class MessageFormatter {
      * <p>Used in conjunction with the
      * {@link MessageFormatter.Builder#setErrorHandlingBehavior(MessageFormatter.ErrorHandlingBehavior)} method.</p>
      *
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static enum ErrorHandlingBehavior {
         /**
          * Suppress errors and return best-effort output.
@@ -328,9 +328,9 @@ public class MessageFormatter {
      * <p>Used in conjunction with the
      * {@link MessageFormatter.Builder#setBidiIsolation(MessageFormatter.BidiIsolation)} method.</p>
      *
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static enum BidiIsolation {
         /**
          * Ignore any text direction mixture, don't introduce bidi control characters in the formatted result.
@@ -349,9 +349,9 @@ public class MessageFormatter {
     /**
      * A {@code Builder} used to build instances of {@link MessageFormatter}.
      *
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Builder {
         private Locale locale = Locale.getDefault(Locale.Category.FORMAT);
         private String pattern = null;

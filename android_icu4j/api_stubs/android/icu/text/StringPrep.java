@@ -55,9 +55,9 @@ import android.icu.util.VersionInfo;
  *           error.  </li>
  * </ol>
  * @author Ram Viswanadha
- * @hide Only a subset of ICU is exposed in Android
  */
 @libcore.api.CorePlatformApi
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class StringPrep {
     /** 
      * Option to prohibit processing of unassigned code points in the input

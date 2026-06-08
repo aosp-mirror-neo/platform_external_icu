@@ -10,8 +10,8 @@ import java.util.Arrays;
 /**
  * A DecimalQuantity with internal storage as a 64-bit BCD, with fallback to a byte array for numbers
  * that don't fit into the standard BCD.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class DecimalQuantity_DualStorageBCD extends DecimalQuantity_AbstractBCD {
 
     /**

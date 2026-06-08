@@ -57,18 +57,17 @@ import android.icu.impl.ICUResourceBundle;
  *  ( WORLD, CONTINENT, or SUBCONTINENT ) will always be the containing region instead.
  *  
  * @author       John Emmons
- * @hide Only a subset of ICU is exposed in Android
  */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Region implements Comparable<Region> {
 
     /**
      * RegionType is an enumeration defining the different types of regions.  Current possible
      * values are WORLD, CONTINENT, SUBCONTINENT, TERRITORY, GROUPING, DEPRECATED, and UNKNOWN.
-     * 
-     * @hide Only a subset of ICU is exposed in Android
      */
 
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum RegionType {
         /**
          * Type representing the unknown region.

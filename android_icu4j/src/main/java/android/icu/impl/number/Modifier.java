@@ -15,8 +15,8 @@ import android.icu.impl.StandardPlural;
  *
  * A Modifier is usually immutable, except in cases such as {@link MutablePatternModifier}, which are
  * mutable for performance reasons.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface Modifier {
 
     static enum Signum {
@@ -74,8 +74,8 @@ public interface Modifier {
     /**
      * A fill-in for getParameters(). obj will always be set; if non-null, the other
      * two fields are also safe to read.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Parameters {
         public ModifierStore obj;
         public Signum signum;

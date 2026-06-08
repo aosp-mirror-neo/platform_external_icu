@@ -193,10 +193,10 @@ public class PluralRules implements Serializable {
      * Provides a factory for returning plural rules
      *
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static abstract class Factory {
         /**
@@ -432,9 +432,9 @@ public class PluralRules implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static enum Operand {
         /**
@@ -534,9 +534,9 @@ public class PluralRules implements Serializable {
      * An interface to FixedDecimal, allowing for other implementations.
      *
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static interface IFixedDecimal {
         /**
@@ -574,10 +574,10 @@ public class PluralRules implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class FixedDecimal extends Number implements Comparable<FixedDecimal>, IFixedDecimal {
         private static final long serialVersionUID = -4756200506571685661L;
@@ -1126,10 +1126,10 @@ public class PluralRules implements Serializable {
     /**
      * Selection parameter for either integer-only or decimal-only.
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public enum SampleType {
         /**
@@ -1150,9 +1150,9 @@ public class PluralRules implements Serializable {
      * A range of DecimalQuantity representing PluralRules samples that includes
      * all values with the same visibleFractionDigitCount.
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class DecimalQuantitySamplesRange {
         /**
@@ -1194,9 +1194,9 @@ public class PluralRules implements Serializable {
      * A list of DecimalQuantity representing PluralRules that includes all
      * values with the same visibleFractionDigitCount.
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class DecimalQuantitySamples {
         /**
@@ -2625,9 +2625,9 @@ public class PluralRules implements Serializable {
     /**
      * Status of the keyword for the rules, given a set of explicit values.
      *
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum KeywordStatus {
         /**
          * The keyword is not valid for the rules.

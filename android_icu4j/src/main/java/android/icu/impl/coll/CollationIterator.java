@@ -25,8 +25,8 @@ import android.icu.util.ICUException;
  *
  * When a method returns a code point value, it must be in 0..10FFFF,
  * except it can be negative as a sentinel value.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class CollationIterator {
     private static final class CEBuffer {
         /** Large enough for CEs of most short strings. */

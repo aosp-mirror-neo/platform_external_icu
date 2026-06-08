@@ -17,9 +17,9 @@ package android.icu.impl;
 * merged with ISO-10646.
 * Arguments for <a href=UCharacterName.html>UCharacterName</a>
 * @author Syn Wee Quek
-* @hide Only a subset of ICU is exposed in Android
 */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface UCharacterNameChoice
 {
   // public variables =============================================

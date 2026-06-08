@@ -16,8 +16,8 @@ import java.util.List;
 /**
  * Standard CLDR plural form/category constants.
  * See http://www.unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public enum StandardPlural {
     ZERO("zero"),
     ONE("one"),

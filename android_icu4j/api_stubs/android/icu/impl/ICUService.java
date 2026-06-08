@@ -91,8 +91,8 @@ import android.icu.util.ULocale.Category;
  * fallback strategy.  ICULocaleService is a customized service that
  * uses Locale names as ids and uses Keys that implement the standard
  * resource bundle fallback strategy.<p>
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ICUService extends ICUNotifier {
     /**
      * Name used for debugging.
@@ -150,8 +150,8 @@ public class ICUService extends ICUNotifier {
      *
      * <p> The default implementation of Key has no fallbacks and
      * has no custom descriptors.</p>
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Key {
         private final String id;
 
@@ -223,8 +223,8 @@ public class ICUService extends ICUNotifier {
      * service.  A factory generates a service object from a key,
      * updates id->factory mappings, and returns the display name for
      * a supported id.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface Factory {
 
         /**
@@ -269,8 +269,8 @@ public class ICUService extends ICUNotifier {
      * updateVisibleIDs to add a mapping from its ID to itself
      * if visible is true, or to remove any existing mapping
      * for its ID if visible is false.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class SimpleFactory implements Factory {
         protected Object instance;
         protected String id;
@@ -926,8 +926,8 @@ public class ICUService extends ICUNotifier {
      * or removed from the service.  Subclasses can provide
      * different listener interfaces that extend EventListener, and modify
      * acceptsListener and notifyListener as appropriate.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface ServiceListener extends EventListener {
         public void serviceChanged(ICUService service);
     }

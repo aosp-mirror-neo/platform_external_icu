@@ -94,8 +94,8 @@ import android.icu.text.UnicodeSet;
  * </pre></blockquote>
  *
  * @author syn wee
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class StringTokenizer implements Enumeration<Object>
 {
     // public constructors ---------------------------------------------

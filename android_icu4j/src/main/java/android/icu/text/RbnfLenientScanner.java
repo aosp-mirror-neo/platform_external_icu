@@ -14,8 +14,8 @@ package android.icu.text;
  * Used by RBNF to leniently parse a string.
  *
  * @deprecated ICU 54
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public interface RbnfLenientScanner {
     /**

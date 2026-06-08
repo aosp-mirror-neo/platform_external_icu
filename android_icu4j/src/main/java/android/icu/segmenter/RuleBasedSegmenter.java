@@ -11,9 +11,9 @@ import java.io.InputStream;
 /**
  * Performs segmentation according to the provided rule string. The rule string must follow the
  * same guidelines as for {@link RuleBasedBreakIterator#RuleBasedBreakIterator(String)}.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RuleBasedSegmenter implements Segmenter {
 
   private final BreakIterator breakIterPrototype;
@@ -47,10 +47,10 @@ public class RuleBasedSegmenter implements Segmenter {
 
   /**
    * Builder for {@link RuleBasedSegmenter}
-   * @hide Only a subset of ICU is exposed in Android
- * @hide draft / provisional / internal are hidden on Android
+   * @hide draft / provisional / internal are hidden on Android
    */
-  public static class Builder {
+  @android.annotation.Hide // Only a subset of ICU is exposed in Android
+public static class Builder {
 
     private BreakIterator breakIter = null;
 

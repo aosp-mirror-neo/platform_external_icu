@@ -44,9 +44,9 @@ import java.util.Date;
  *
  * @author Laura Werner
  * @author Alan Liu
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CalendarAstronomer {
 
     //-------------------------------------------------------------------------
@@ -846,9 +846,9 @@ public class CalendarAstronomer {
      * value without worrying about whether other code will modify them.
      *
      * @see CalendarAstronomer.Equatorial
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Ecliptic {
         /**
          * Constructs an Ecliptic coordinate object.
@@ -906,9 +906,9 @@ public class CalendarAstronomer {
      * value without worrying about whether other code will modify them.
      *
      * @see CalendarAstronomer.Ecliptic
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Equatorial {
         /**
          * Constructs an Equatorial coordinate object.

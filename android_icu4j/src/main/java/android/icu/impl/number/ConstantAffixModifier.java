@@ -9,8 +9,8 @@ import android.icu.impl.FormattedStringBuilder;
 
 /**
  * The canonical implementation of {@link Modifier}, containing a prefix and suffix string.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ConstantAffixModifier implements Modifier {
 
     // TODO: Avoid making a new instance by default if prefix and suffix are empty

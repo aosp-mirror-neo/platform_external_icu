@@ -27,8 +27,8 @@ import android.icu.util.ICUException;
  * or deserialized from API-provided binary data.
  *
  * Includes data for the collation base (root/default), aliased if this is not the base.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CollationData {
     // Note: The ucadata.icu loader could discover the reserved ranges by setting an array
     // parallel with the ranges, and resetting ranges that are indexed.

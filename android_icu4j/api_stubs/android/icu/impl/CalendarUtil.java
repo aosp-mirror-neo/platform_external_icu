@@ -26,8 +26,8 @@ import android.icu.util.UResourceBundle;
  * cannot be used.  This class is added in android.icu.impl
  * package for sharing some calendar internal code for calendar
  * and date format.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CalendarUtil {
     private static final String CALKEY = "calendar";
     private static final String DEFCAL = "gregorian";

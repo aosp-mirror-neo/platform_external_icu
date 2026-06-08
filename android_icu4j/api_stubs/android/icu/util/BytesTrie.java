@@ -25,8 +25,8 @@ import java.util.NoSuchElementException;
  * <p>This class is not intended for public subclassing.
  *
  * @author Markus W. Scherer
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class BytesTrie implements Cloneable, Iterable<BytesTrie.Entry> {
     /**
      * Constructs a BytesTrie reader instance.
@@ -114,8 +114,8 @@ public final class BytesTrie implements Cloneable, Iterable<BytesTrie.Entry> {
     /**
      * BytesTrie state object, for saving a trie's current state
      * and resetting the trie back to this state later.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class State {
         /**
          * Constructs an empty State.
@@ -164,8 +164,8 @@ public final class BytesTrie implements Cloneable, Iterable<BytesTrie.Entry> {
 
     /**
      * Return values for BytesTrie.next(), CharsTrie.next() and similar methods.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Result {
         /**
          * The input unit(s) did not continue a matching string.
@@ -477,8 +477,8 @@ public final class BytesTrie implements Cloneable, Iterable<BytesTrie.Entry> {
 
     /**
      * Return value type for the Iterator.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Entry {
         private Entry(int capacity) {
             bytes=new byte[capacity];
@@ -538,8 +538,8 @@ public final class BytesTrie implements Cloneable, Iterable<BytesTrie.Entry> {
 
     /**
      * Iterator for all of the (byte sequence, value) pairs in a BytesTrie.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Iterator implements java.util.Iterator<Entry> {
         private Iterator(byte[] trieBytes, int offset, int remainingMatchLength, int maxStringLength) {
             bytes_=trieBytes;

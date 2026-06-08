@@ -26,8 +26,8 @@ import android.icu.util.ULocale;
 
 /**
  * @author tomzhang
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SimpleFilteredSentenceBreakIterator extends BreakIterator implements Cloneable {
 
     private BreakIterator delegate;
@@ -289,9 +289,7 @@ public class SimpleFilteredSentenceBreakIterator extends BreakIterator implement
         delegate.setText(newText);
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Builder extends FilteredBreakIteratorBuilder {
         /**
          * filter set to store all exceptions

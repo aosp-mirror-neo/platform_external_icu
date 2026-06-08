@@ -15,8 +15,8 @@ import java.util.Collection;
 /**
  * Abstract service for PeriodFormatterData, which defines the localization data
  * used by period formatters.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class PeriodFormatterDataService {
     /**
      * Returns a PeriodFormatterData for the given locale name.

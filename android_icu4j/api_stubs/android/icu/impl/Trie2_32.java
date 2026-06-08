@@ -28,9 +28,9 @@ import java.nio.ByteBuffer;
  * The fundamental data access methods are declared final in this class, with
  * the intent that applications might gain a little extra performance, when compared
  * with calling the same methods via the abstract UTrie2 base class.
- * @hide Only a subset of ICU is exposed in Android
  */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Trie2_32 extends Trie2 {
     
     /**

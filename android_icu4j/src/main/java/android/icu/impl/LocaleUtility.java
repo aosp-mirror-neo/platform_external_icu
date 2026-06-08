@@ -16,8 +16,8 @@ import java.util.Locale;
 
 /**
  * A class to hold utility functions missing from java.util.Locale.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocaleUtility {
 
     /**

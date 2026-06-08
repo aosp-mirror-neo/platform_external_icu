@@ -20,9 +20,8 @@ import android.icu.impl.Grego;
  * custom historic time transition rules.
  *
  * @see android.icu.util.TimeZoneRule
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RuleBasedTimeZone extends BasicTimeZone implements Cloneable {
 
     private static final long serialVersionUID = 7580833058949327935L;

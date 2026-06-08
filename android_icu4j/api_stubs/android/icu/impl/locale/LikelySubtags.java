@@ -19,9 +19,7 @@ import android.icu.util.BytesTrie;
 import android.icu.util.Region;
 import android.icu.util.ULocale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class LikelySubtags {
     private static final String PSEUDO_ACCENTS_PREFIX = "'";  // -XA, -PSACCENT
     private static final String PSEUDO_BIDI_PREFIX = "+";  // -XB, -PSBIDI
@@ -32,9 +30,7 @@ public final class LikelySubtags {
     private static final boolean DEBUG_OUTPUT = LSR.DEBUG_OUTPUT;
 
     // VisibleForTesting
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Data {
         public final Map<String, String> languageAliases;
         public final Map<String, String> regionAliases;

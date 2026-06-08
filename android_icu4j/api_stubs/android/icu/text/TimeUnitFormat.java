@@ -62,8 +62,8 @@ import android.icu.util.UResourceBundle;
  * @see MeasureFormat
  * @author markdavis
  * @deprecated ICU 53 use {@link MeasureFormat} instead.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class TimeUnitFormat extends MeasureFormat {
 

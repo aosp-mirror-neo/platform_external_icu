@@ -25,15 +25,13 @@ import android.icu.util.ULocale;
 
 /**
  * @author markdavis
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocaleValidityChecker {
     private final Set<Datasubtype> datasubtypes;
     private final boolean allowsDeprecated;
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Where {
         public Datatype fieldFailure;
         public String codeFailure;

@@ -9,9 +9,9 @@ import android.icu.text.DecimalFormatSymbols;
 
 /**
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PercentMatcher extends SymbolMatcher {
 
     private static final PercentMatcher DEFAULT = new PercentMatcher();

@@ -22,9 +22,9 @@ import java.util.Date;
  * Daylight Savings Time rules, and other events such as meetings.
  *
  * @see SimpleDateRule
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface DateRule
 {
     /**

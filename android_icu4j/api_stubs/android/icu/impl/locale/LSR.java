@@ -11,9 +11,7 @@ import android.icu.lang.UCharacter;
 import android.icu.lang.UProperty;
 import android.icu.lang.UScript;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class LSR {
     public static final int REGION_INDEX_LIMIT = 1001 + 26 * 26;
 

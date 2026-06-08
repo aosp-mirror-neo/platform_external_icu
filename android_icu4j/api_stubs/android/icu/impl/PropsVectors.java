@@ -35,8 +35,8 @@ import java.util.Comparator;
  *
  * It would be possible to store only one range boundary per row, but
  * self-contained rows allow to later sort them by contents.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PropsVectors {
     private int v[];
     private int columns; // number of columns, plus two for start
@@ -557,9 +557,7 @@ public class PropsVectors {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface CompactHandler {
         public void setRowIndexForRange(int start, int end, int rowIndex);
         public void setRowIndexForInitialValue(int rowIndex);

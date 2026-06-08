@@ -31,9 +31,9 @@ import android.icu.impl.Utility;
  * @see                CompactByteArray
  * @author             Helena Shih
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public final class CompactCharArray implements Cloneable {
 

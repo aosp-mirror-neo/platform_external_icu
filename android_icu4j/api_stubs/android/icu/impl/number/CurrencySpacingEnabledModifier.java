@@ -8,8 +8,8 @@ import android.icu.text.DecimalFormatSymbols;
 import android.icu.text.NumberFormat;
 import android.icu.text.UnicodeSet;
 
-/** Identical to {@link ConstantMultiFieldModifier}, but supports currency spacing. 
- * @hide Only a subset of ICU is exposed in Android*/
+/** Identical to {@link ConstantMultiFieldModifier}, but supports currency spacing. */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CurrencySpacingEnabledModifier extends ConstantMultiFieldModifier {
 
     // These are the default currency spacing UnicodeSets in CLDR.

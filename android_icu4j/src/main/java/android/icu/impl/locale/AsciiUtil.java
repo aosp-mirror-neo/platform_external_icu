@@ -11,9 +11,7 @@ package android.icu.impl.locale;
 
 import android.icu.impl.Utility;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class AsciiUtil {
     public static boolean caseIgnoreMatch(String s1, String s2) {
         if (Utility.sameObjects(s1, s2)) {
@@ -165,9 +163,7 @@ public final class AsciiUtil {
         return b;
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class CaseInsensitiveKey {
         private String _key;
         private int _hash;

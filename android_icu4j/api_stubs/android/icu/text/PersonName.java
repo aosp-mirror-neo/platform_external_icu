@@ -15,8 +15,8 @@ import java.util.Set;
  * is provided.
  *
  * @see SimplePersonName
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface PersonName {
     //==============================================================================
     // Identifiers used to request field values from the PersonName object

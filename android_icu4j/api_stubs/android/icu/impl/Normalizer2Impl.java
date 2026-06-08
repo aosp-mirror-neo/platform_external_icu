@@ -27,12 +27,10 @@ import android.icu.util.VersionInfo;
  * For the data structure and details see the documentation at the end of
  * C++ normalizer2impl.h and in the design doc at
  * https://unicode-org.github.io/icu/design/normalization/custom.html
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class Normalizer2Impl {
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Hangul {
         /* Korean Hangul and Jamo constants */
         public static final int JAMO_L_BASE=0x1100;     /* "lead" jamo */
@@ -136,8 +134,8 @@ public final class Normalizer2Impl {
      * until no further changes are necessary and whole segments are appended.
      * append() methods that take combining-class values always write to the StringBuilder.
      * Other append() methods flush and append to the Appendable.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class ReorderingBuffer implements Appendable {
         public ReorderingBuffer(Normalizer2Impl ni, Appendable dest, int destCapacity) {
             impl=ni;
@@ -368,9 +366,7 @@ public final class Normalizer2Impl {
     // TODO: Propose as public API on the UTF16 class.
     // TODO: Propose widening UTF16 methods that take char to take int.
     // TODO: Propose widening UTF16 methods that take String to take CharSequence.
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class UTF16Plus {
         /**
          * Is this code point a lead surrogate (U+d800..U+dbff)?

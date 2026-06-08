@@ -64,9 +64,9 @@ import android.icu.util.ULocale.Category;
  * @author Roozbeh Pournader
  *
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class PersianCalendar extends Calendar {
     private static final long serialVersionUID = -6727306982975111643L;

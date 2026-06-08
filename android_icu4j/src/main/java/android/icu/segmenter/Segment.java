@@ -9,9 +9,9 @@ package android.icu.segmenter;
  * {@code limit} indices correspond to {@code source}, the input {@code CharSequence} that was
  * originally passed to the {@code Segmenter}. {@code start} and {@code limit} are inclusive and
  * exclusive boundaries, respectively.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Segment {
 
   /**

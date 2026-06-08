@@ -32,9 +32,9 @@ import java.util.stream.Stream;
  *
  * @see Segmenter
  * @see Segment
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface Segments {
 
   /**

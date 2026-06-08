@@ -30,8 +30,8 @@ import android.icu.lang.UCharacter;
  * </UL>
  * This is a direct port from the ICU4C version
  * @author             Syn Wee Quek
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class TrieBuilder
 {
     // public data member ----------------------------------------------
@@ -50,8 +50,8 @@ public class TrieBuilder
      * This interface specifies methods to be implemented in order for
      * com.ibm.impl.Trie, to surrogate offset information encapsulated within 
      * the data.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface DataManipulate
     {
         /**

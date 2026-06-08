@@ -10,9 +10,7 @@
 
 package android.icu.impl;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface ICUCache<K, V> {
     // Type of reference holding the Map instance
     public static final int SOFT = 0;

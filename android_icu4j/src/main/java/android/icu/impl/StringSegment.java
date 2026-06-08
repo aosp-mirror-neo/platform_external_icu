@@ -17,8 +17,8 @@ import android.icu.text.UnicodeSet;
  * immutable object is required, like in a cache or as the key of a hash map.
  *
  * @author sffc (Shane Carr)
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class StringSegment implements CharSequence {
     private final String str;
     private int start;

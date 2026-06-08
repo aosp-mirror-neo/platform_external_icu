@@ -19,8 +19,8 @@ package android.icu.impl.coll;
  *
  * Data structures except for expansion tables store 32-bit CEs which are
  * either specials (see tags below) or are compact forms of 64-bit CEs.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class Collation {
     /** UChar32 U_SENTINEL.
      * TODO: Create a common, public constant?

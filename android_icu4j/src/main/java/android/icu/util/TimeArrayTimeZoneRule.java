@@ -14,9 +14,8 @@ import java.util.Date;
 /**
  * <code>TimeArrayTimeZoneRule</code> represents a time zone rule whose start times are
  * defined by an array of milliseconds since the standard base time.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class TimeArrayTimeZoneRule extends TimeZoneRule {
 
     private static final long serialVersionUID = -1117109130077415245L;

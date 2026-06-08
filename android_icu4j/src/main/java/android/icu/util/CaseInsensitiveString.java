@@ -15,8 +15,8 @@ import android.icu.lang.UCharacter;
  * A string used as a key in java.util.Hashtable and other
  * collections.  It retains case information, but its equals() and
  * hashCode() methods ignore case.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CaseInsensitiveString {
 
     private String string;

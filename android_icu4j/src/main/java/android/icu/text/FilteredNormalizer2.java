@@ -22,8 +22,8 @@ import android.icu.util.ICUUncheckedIOException;
  * This class implements all of (and only) the Normalizer2 API.
  * An instance of this class is unmodifiable/immutable.
  * @author Markus W. Scherer
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class FilteredNormalizer2 extends Normalizer2 {
     /**
      * Constructs a filtered normalizer wrapping any Normalizer2 instance

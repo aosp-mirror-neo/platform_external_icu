@@ -8,8 +8,8 @@ import java.text.CharacterIterator;
 /**
  * Implement the Java CharacterIterator interface on a CharSequence.
  * Intended for internal use by ICU only.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CSCharacterIterator implements CharacterIterator, Cloneable {
 
     private int index;

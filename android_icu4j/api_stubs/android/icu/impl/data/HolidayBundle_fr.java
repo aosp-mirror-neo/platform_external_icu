@@ -12,9 +12,7 @@ package android.icu.impl.data;
 
 import java.util.ListResourceBundle;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class HolidayBundle_fr extends ListResourceBundle {
     static private final Object[][] fContents = {
         {   "All Saints' Day",      "Toussaint" },

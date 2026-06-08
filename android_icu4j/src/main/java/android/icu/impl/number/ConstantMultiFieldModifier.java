@@ -12,8 +12,8 @@ import android.icu.impl.FormattedStringBuilder;
  * An implementation of {@link Modifier} that allows for multiple types of fields in the same modifier.
  * Constructed based on the contents of two {@link FormattedStringBuilder} instances (one for the prefix,
  * one for the suffix).
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ConstantMultiFieldModifier implements Modifier {
 
     // NOTE: In Java, these are stored as array pointers. In C++, the FormattedStringBuilder is stored by

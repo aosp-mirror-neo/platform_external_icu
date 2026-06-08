@@ -18,8 +18,8 @@ import android.icu.text.UCharacterIterator;
  * IDNA2003 implementation code, moved out of android.icu.text.IDNA.java
  * while extending that class to support IDNA2008/UTS #46 as well.
  * @author Ram Viswanadha
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class IDNA2003 {
     /* IDNA ACE Prefix is "xn--" */
     private static char[] ACE_PREFIX                = new char[]{ 0x0078,0x006E,0x002d,0x002d } ;

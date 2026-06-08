@@ -27,8 +27,8 @@ import android.icu.util.UResourceBundle;
 
 /**
  * Loader for plural rules data.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PluralRulesLoader extends PluralRules.Factory {
     // Key is rules set + ranges set
     private final Map<String, PluralRules> pluralRulesCache;

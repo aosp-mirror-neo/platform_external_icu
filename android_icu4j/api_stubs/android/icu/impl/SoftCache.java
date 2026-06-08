@@ -32,8 +32,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * @param <D> Data type for creating a new instance value
  *
  * @author Markus Scherer, Mark Davis
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class SoftCache<K, V, D> extends CacheBase<K, V, D> {
     private ConcurrentHashMap<K, Object> map = new ConcurrentHashMap<K, Object>();
 

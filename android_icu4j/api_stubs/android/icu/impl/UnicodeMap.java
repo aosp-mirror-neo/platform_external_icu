@@ -37,10 +37,10 @@ import android.icu.util.Freezable;
  * At this point "" is also not allowed as a key, although that may change.
  * @author markdavis
  *
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UnicodeMap<T> implements Cloneable, Freezable<UnicodeMap<T>>, StringTransform, Iterable<String> {
     /**
      * For serialization
@@ -665,8 +665,8 @@ public final class UnicodeMap<T> implements Cloneable, Freezable<UnicodeMap<T>>,
     /**
      * Used to add complex values, where the value isn't replaced but in some sense composed
      * @author markdavis
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public abstract static class Composer<T> {
         /**
          * This will be called with either a string or a code point. The result is the new value for that item.
@@ -990,8 +990,8 @@ public final class UnicodeMap<T> implements Cloneable, Freezable<UnicodeMap<T>>,
      * Struct-like class used to iterate over a UnicodeMap in a for loop.
      * If the value is a string, then codepoint == codepointEnd == -1. Otherwise the string is null;
      * Caution: The contents may change during the iteration!
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class EntryRange<T> {
         public int codepoint;
         public int codepointEnd;

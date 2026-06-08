@@ -44,9 +44,8 @@ import android.icu.util.CodePointTrie;
 /**
  * Rule Based Break Iterator
  * This is a port of the C++ class RuleBasedBreakIterator from ICU4C.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RuleBasedBreakIterator extends BreakIterator {
     //=======================================================================
     // Constructors & Factories

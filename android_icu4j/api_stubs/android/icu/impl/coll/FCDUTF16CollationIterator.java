@@ -18,8 +18,8 @@ import android.icu.impl.Normalizer2Impl;
 
 /**
  * Incrementally checks the input text for FCD and normalizes where necessary.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class FCDUTF16CollationIterator extends UTF16CollationIterator {
     /**
      * Partial constructor, see {@link CollationIterator#CollationIterator(CollationData)}.

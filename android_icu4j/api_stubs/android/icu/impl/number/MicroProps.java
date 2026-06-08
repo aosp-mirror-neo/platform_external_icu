@@ -17,8 +17,8 @@ import android.icu.util.MeasureUnit;
  * MicroProps is the first MicroPropsGenerator that should be should be called,
  * producing an initialized MicroProps instance that will be passed on and
  * modified throughout the rest of the chain of MicroPropsGenerator instances.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class MicroProps implements Cloneable, MicroPropsGenerator {
     // Populated globally:
     public SignDisplay sign;

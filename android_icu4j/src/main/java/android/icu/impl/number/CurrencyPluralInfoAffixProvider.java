@@ -6,9 +6,7 @@ package android.icu.impl.number;
 import android.icu.impl.StandardPlural;
 import android.icu.text.CurrencyPluralInfo;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CurrencyPluralInfoAffixProvider implements AffixPatternProvider {
     private final PropertiesAffixPatternProvider[] affixesByPlural;
 

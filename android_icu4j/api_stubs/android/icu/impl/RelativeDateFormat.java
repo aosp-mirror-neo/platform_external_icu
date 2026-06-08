@@ -29,15 +29,15 @@ import android.icu.util.UResourceBundle;
 
 /**
  * @author srl
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class RelativeDateFormat extends DateFormat {
 
     /**
      * @author srl
-     * @hide Only a subset of ICU is exposed in Android
      *
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class URelativeString {
         URelativeString(int offset, String string) {
             this.offset = offset;

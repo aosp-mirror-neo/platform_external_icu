@@ -24,9 +24,9 @@ package android.icu.lang;
  * </ul>
  * @author markdavis
  * @deprecated This API is ICU internal only.
- * @hide Only a subset of ICU is exposed in Android
  * @hide draft / provisional / internal are hidden on Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
 public class CharSequences {
     // TODO

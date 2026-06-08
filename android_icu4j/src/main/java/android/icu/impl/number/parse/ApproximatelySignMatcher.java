@@ -9,9 +9,9 @@ import android.icu.text.DecimalFormatSymbols;
 
 /**
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ApproximatelySignMatcher extends SymbolMatcher {
 
     private static final ApproximatelySignMatcher DEFAULT = new ApproximatelySignMatcher(false);

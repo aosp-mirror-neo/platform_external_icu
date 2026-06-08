@@ -2186,8 +2186,8 @@ public abstract class Transliterator implements StringTransform  {
      * makes it possible to register one factory method to more than
      * one ID, or for a factory method to parameterize its result
      * based on the variant.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static interface Factory {
         /**
          * Return a transliterator for the given ID.

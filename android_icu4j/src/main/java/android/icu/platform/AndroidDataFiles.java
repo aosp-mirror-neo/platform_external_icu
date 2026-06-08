@@ -28,8 +28,8 @@ import java.util.List;
  *
  * {@link com.android.i18n.timezone.TimeZoneDataFiles} holds the information related to other
  * timezone data files.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class AndroidDataFiles {
     /**
      * The below are public to be used by {@link com.android.i18n.timezone.TimeZoneDataFiles}.

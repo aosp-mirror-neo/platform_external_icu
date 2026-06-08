@@ -13,8 +13,8 @@ package android.icu.impl.duration;
 /**
  * 'Enum' for individual time units.  Not an actual enum so that it can be
  * used by Java 1.4.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class TimeUnit {
   /** The name of this unit, a key, not for localization. */
   final String name;

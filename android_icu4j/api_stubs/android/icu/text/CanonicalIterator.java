@@ -41,9 +41,9 @@ import android.icu.lang.UCharacter;
  *<br>Note: the code is intended for use with small strings, and is not suitable for larger ones,
  * since it has not been optimized for that situation.
  * @author M. Davis
- * @hide Only a subset of ICU is exposed in Android
  */
 
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CanonicalIterator {
     /**
      * Construct a CanonicalIterator object

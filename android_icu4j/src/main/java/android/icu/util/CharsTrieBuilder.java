@@ -21,8 +21,8 @@ import java.nio.CharBuffer;
  * <p>This class is not intended for public subclassing.
  *
  * @author Markus W. Scherer
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CharsTrieBuilder extends StringTrieBuilder {
     /**
      * Constructs an empty builder.

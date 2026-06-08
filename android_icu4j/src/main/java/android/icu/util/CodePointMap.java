@@ -12,17 +12,16 @@ import java.util.NoSuchElementException;
 /**
  * Abstract map from Unicode code points (U+0000..U+10FFFF) to integer values.
  * This does not implement java.util.Map.
- *
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class CodePointMap implements Iterable<CodePointMap.Range> {
     /**
      * Selectors for how getRange() should report value ranges overlapping with surrogates.
      * Most users should use NORMAL.
      *
      * @see #getRange
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum RangeOption {
         /**
          * getRange() enumerates all same-value ranges as stored in the map.
@@ -72,8 +71,8 @@ public abstract class CodePointMap implements Iterable<CodePointMap.Range> {
      *
      * @see #getRange
      * @see #iterator
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public interface ValueFilter {
         /**
          * Modifies the map value.
@@ -92,8 +91,8 @@ public abstract class CodePointMap implements Iterable<CodePointMap.Range> {
      *
      * @see #getRange
      * @see #iterator
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Range {
         private int start;
         private int end;
@@ -173,9 +172,8 @@ public abstract class CodePointMap implements Iterable<CodePointMap.Range> {
      * </pre>
      *
      * <p>This class is not intended for public subclassing.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public class StringIterator {
         /**
          * @deprecated This API is ICU internal only.

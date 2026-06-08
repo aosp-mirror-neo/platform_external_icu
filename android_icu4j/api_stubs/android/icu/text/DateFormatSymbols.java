@@ -1628,9 +1628,9 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * 3. Provide narrow quarters from the existing API {@link #getQuarters(int, int)}. However,
      *    the method documentation explicitly states that {@link #NARROW} is not allowed.
      *
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class AospExtendedDateFormatSymbols {
 
         private final DateFormatSymbols dfs;

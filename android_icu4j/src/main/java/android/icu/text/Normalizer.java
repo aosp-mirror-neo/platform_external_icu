@@ -226,9 +226,9 @@ public final class Normalizer implements Cloneable {
      * and any fields or methods should not be called or overridden by users.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide original deprecated declaration
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static abstract class Mode {
         /**

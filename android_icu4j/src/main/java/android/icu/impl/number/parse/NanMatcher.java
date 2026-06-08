@@ -9,9 +9,9 @@ import android.icu.text.UnicodeSet;
 
 /**
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class NanMatcher extends SymbolMatcher {
 
     private static final NanMatcher DEFAULT = new NanMatcher("NaN");

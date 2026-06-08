@@ -16,9 +16,7 @@ import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SimpleCache<K, V> implements ICUCache<K, V> {
     private static final int DEFAULT_CAPACITY = 16;
 

@@ -10,9 +10,7 @@
 package android.icu.impl;
 
 // 1.3 compatibility layer
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Assert {
     public static void fail(Exception e) {
         fail(e.toString()); // can't wrap exceptions in jdk 1.3

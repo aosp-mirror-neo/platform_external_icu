@@ -26,9 +26,7 @@ import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class URLHandler {
     public static final String PROPNAME = "urlhandler.props";
 
@@ -264,9 +262,7 @@ public abstract class URLHandler {
 
     public abstract void guide(URLVisitor visitor, boolean recurse, boolean strip);
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public interface URLVisitor {
         void visit(String str);
     }

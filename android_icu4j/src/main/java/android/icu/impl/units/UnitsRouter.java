@@ -40,8 +40,8 @@ import android.icu.util.ULocale;
  * DESIGN:
  * {@code UnitRouter} uses internally {@code ComplexUnitConverter} in order to convert the input
  * units to the desired complex units and to check the limit too.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnitsRouter {
     // List of possible output units. TODO: converterPreferences_ now also has
     // this data available. Maybe drop outputUnits_ and have getOutputUnits
@@ -154,8 +154,8 @@ public class UnitsRouter {
      * NOTE:
      * if the limit doest not has a value (i.e. {@code std::numeric_limits<double>::lowest()}),
      * this mean there is no limit for the converter.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class ConverterPreference {
         // The output unit for this ConverterPreference. This may be a MIXED unit -
         // for example: "yard-and-foot-and-inch".
@@ -181,9 +181,7 @@ public class UnitsRouter {
         }
     }
 
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public class RouteResult {
         public final ComplexUnitsConverter.ComplexConverterResult complexConverterResult;
 

@@ -31,14 +31,14 @@ import android.icu.util.ICUException;
  * via {@code isNull()}.
  *
  * @param <V> Cache instance value type
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public abstract class CacheValue<V> {
     /**
      * "Strength" of holding a value in CacheValue instances.
      * The default strength is {@code SOFT}.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public enum Strength {
         /**
          * Subsequent {@code getInstance()}-created objects

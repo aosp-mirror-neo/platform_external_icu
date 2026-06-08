@@ -15,9 +15,7 @@ import java.util.ListResourceBundle;
 import android.icu.util.HebrewHoliday;
 import android.icu.util.Holiday;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class HolidayBundle_iw_IL extends ListResourceBundle {
     static private final Holiday[] fHolidays = {
         HebrewHoliday.ROSH_HASHANAH,

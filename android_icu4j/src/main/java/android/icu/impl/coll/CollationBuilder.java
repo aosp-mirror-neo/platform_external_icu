@@ -28,9 +28,7 @@ import android.icu.text.UnicodeSetIterator;
 import android.icu.util.ICUInputTooLongException;
 import android.icu.util.ULocale;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CollationBuilder extends CollationRuleParser.Sink {
     private static final boolean DEBUG = false;
     private static final class BundleImporter implements CollationRuleParser.Importer {

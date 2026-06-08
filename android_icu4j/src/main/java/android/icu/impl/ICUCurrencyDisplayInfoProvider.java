@@ -24,9 +24,7 @@ import android.icu.util.ICUException;
 import android.icu.util.ULocale;
 import android.icu.util.UResourceBundle;
 
-/**
- * @hide Only a subset of ICU is exposed in Android
- */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ICUCurrencyDisplayInfoProvider implements CurrencyDisplayInfoProvider {
     public ICUCurrencyDisplayInfoProvider() {
     }

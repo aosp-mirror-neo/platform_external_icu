@@ -13,14 +13,12 @@ import android.icu.text.DecimalFormatSymbols;
 
 /**
  * Assorted utilities relating to decimal formatting pattern strings.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PatternStringUtils {
 
     // Note: the order of fields in this enum matters for parsing.
-    /**
-     * @hide Only a subset of ICU is exposed in Android
-     */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static enum PatternSignType {
         // Render using normal positive subpattern rules
         POS,

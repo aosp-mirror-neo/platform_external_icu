@@ -15,8 +15,8 @@ import android.icu.util.UResourceBundle;
 /**
  * Static utility functions for probing resource tables, used by ULocale and
  * LocaleDisplayNames.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ICUResourceTableAccess {
     /**
      * Utility to fetch locale display data from resource bundle tables.  Convenience

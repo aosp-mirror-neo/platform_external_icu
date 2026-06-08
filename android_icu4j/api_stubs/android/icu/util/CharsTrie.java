@@ -28,8 +28,8 @@ import android.icu.util.BytesTrie.Result;
  * <p>This class is not intended for public subclassing.
  *
  * @author Markus W. Scherer
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class CharsTrie implements Cloneable, Iterable<CharsTrie.Entry> {
     /**
      * Constructs a CharsTrie reader instance.
@@ -117,8 +117,8 @@ public final class CharsTrie implements Cloneable, Iterable<CharsTrie.Entry> {
     /**
      * CharsTrie state object, for saving a trie's current state
      * and resetting the trie back to this state later.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class State {
         /**
          * Constructs an empty State.
@@ -444,8 +444,8 @@ public final class CharsTrie implements Cloneable, Iterable<CharsTrie.Entry> {
 
     /**
      * Return value type for the Iterator.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Entry {
         /**
          * The string.
@@ -462,8 +462,8 @@ public final class CharsTrie implements Cloneable, Iterable<CharsTrie.Entry> {
 
     /**
      * Iterator for all of the (string, value) pairs in a CharsTrie.
-     * @hide Only a subset of ICU is exposed in Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static final class Iterator implements java.util.Iterator<Entry> {
         private Iterator(CharSequence trieChars, int offset, int remainingMatchLength, int maxStringLength) {
             chars_=trieChars;

@@ -44,8 +44,8 @@ import android.icu.util.BytesTrie;
  * singleton instance and cache it.
  *
  * @author Alan Liu
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class UPropertyAliases {
     // Byte offsets from the start of the data, after the generic header.
     private static final int IX_VALUE_MAPS_OFFSET=0;

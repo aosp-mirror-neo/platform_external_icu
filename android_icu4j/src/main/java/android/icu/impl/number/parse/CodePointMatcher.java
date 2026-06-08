@@ -9,8 +9,8 @@ import android.icu.impl.StringSegment;
  * Matches a single code point, performing no other logic.
  *
  * @author sffc
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class CodePointMatcher implements NumberParseMatcher {
 
     private final int cp;

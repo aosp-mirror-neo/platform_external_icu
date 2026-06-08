@@ -572,9 +572,9 @@ public abstract class Precision {
      * An BogusRounder's MathContext into precision.
      *
      * @deprecated This API is ICU internal only.
-     * @hide Only a subset of ICU is exposed in Android
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public static class BogusRounder extends Precision {
         /**

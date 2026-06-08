@@ -11,9 +11,9 @@ package android.icu.impl;
 
 /**
  * @author markdavis
- * @hide Only a subset of ICU is exposed in Android
  *
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class IllegalIcuArgumentException extends IllegalArgumentException {
     private static final long serialVersionUID = 3789261542830211225L;
 

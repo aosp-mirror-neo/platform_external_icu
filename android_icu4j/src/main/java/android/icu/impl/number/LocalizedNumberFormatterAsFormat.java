@@ -23,8 +23,8 @@ import android.icu.util.ULocale;
 /**
  * A wrapper around LocalizedNumberFormatter implementing the Format interface, enabling improved
  * compatibility with other APIs. This class is serializable.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocalizedNumberFormatterAsFormat extends Format {
 
     private static final long serialVersionUID = 1L;

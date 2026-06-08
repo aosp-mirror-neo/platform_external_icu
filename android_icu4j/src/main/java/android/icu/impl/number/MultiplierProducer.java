@@ -5,8 +5,8 @@ package android.icu.impl.number;
 
 /**
  * An interface used by compact notation and scientific notation to choose a multiplier while rounding.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface MultiplierProducer {
     /**
      * Maps a magnitude to a multiplier in powers of ten. For example, in compact notation in English, a

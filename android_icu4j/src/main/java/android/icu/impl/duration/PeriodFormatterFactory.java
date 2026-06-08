@@ -16,8 +16,8 @@ package android.icu.impl.duration;
  * <p>
  * Setters on the factory mutate the factory and return it,
  * for chaining.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface PeriodFormatterFactory {
 
   /**

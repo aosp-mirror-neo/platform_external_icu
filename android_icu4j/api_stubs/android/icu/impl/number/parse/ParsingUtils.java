@@ -8,8 +8,8 @@ import android.icu.text.UnicodeSet.EntryRange;
 
 /**
  * A collection of utility functions used by the number parsing package.
- * @hide Only a subset of ICU is exposed in Android
  */
+@android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class ParsingUtils {
 
     public static final int PARSE_FLAG_IGNORE_CASE = 0x0001;
