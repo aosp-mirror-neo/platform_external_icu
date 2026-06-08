@@ -89,6 +89,7 @@ public final class BodyDeclarationLocators {
         return ImmutableList.<BodyDeclarationLocator>of(
             new MethodLocator(typeLocator, methodDeclaration.getName().getIdentifier(),
             parameterTypeNames));
+      case ASTNode.ANNOTATION_TYPE_DECLARATION:
       case ASTNode.TYPE_DECLARATION:
       case ASTNode.ENUM_DECLARATION:
         return ImmutableList.<BodyDeclarationLocator>of(typeLocator);
