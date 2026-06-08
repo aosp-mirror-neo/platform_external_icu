@@ -16,14 +16,12 @@
 package com.android.icu4j.srcgen;
 
 import com.android.icu4j.srcgen.checker.RecordPublicApiRules;
-import com.google.common.collect.Lists;
 import com.google.currysrc.api.process.Context;
-import com.google.currysrc.api.process.JavadocUtils;
-import com.google.currysrc.api.process.Processor;
 import com.google.currysrc.api.process.ast.BodyDeclarationLocator;
 import com.google.currysrc.api.process.ast.BodyDeclarationLocators;
-import com.google.currysrc.api.process.ast.StartPositionComparator;
-
+import com.google.currysrc.processors.BaseAddAnnotation;
+import com.google.currysrc.processors.HidePublicClasses;
+import java.util.List;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.AbstractTypeDeclaration;
 import org.eclipse.jdt.core.dom.BodyDeclaration;
@@ -35,13 +33,10 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.rewrite.ASTRewrite;
 
-import java.util.Collections;
-import java.util.List;
-
 /**
- * Adds a @hide javadoc tag to {@link BodyDeclaration}s that are not allowlisted.
+ * Adds an @android.annotation.Hide tag to {@link BodyDeclaration}s that are not allowlisted.
  */
-public class HideNonAllowlistedDeclarations implements Processor {
+public class HideNonAllowlistedDeclarations extends BaseAddAnnotation {
   private final List<BodyDeclarationLocator> allowlist;
   private final String tagComment;
 
@@ -56,7 +51,7 @@ public class HideNonAllowlistedDeclarations implements Processor {
     if (allowlist == null) {
       return;
     }
-    List<BodyDeclaration> matchingNodes = Lists.newArrayList();
+    ASTRewrite rewrite = context.rewrite();
     cu.accept(new ASTVisitor() {
       @Override public boolean visit(EnumConstantDeclaration node) {
         return handleMemberDeclarationNode(node);
@@ -102,16 +97,10 @@ public class HideNonAllowlistedDeclarations implements Processor {
         if (BodyDeclarationLocators.matchesAny(allowlist, node)) {
           return;
         }
-        matchingNodes.add(node);
+
+        addAnnotationToBodyDeclaration(rewrite, node, HidePublicClasses.HIDE, tagComment);
       }
     });
-
-    // Tackle nodes in reverse order to avoid messing up the ASTNode offsets.
-    Collections.sort(matchingNodes, new StartPositionComparator());
-    ASTRewrite rewrite = context.rewrite();
-    for (BodyDeclaration bodyDeclaration : Lists.reverse(matchingNodes)) {
-      JavadocUtils.addJavadocTag(rewrite, bodyDeclaration, tagComment);
-    }
   }
 
   @Override public String toString() {
