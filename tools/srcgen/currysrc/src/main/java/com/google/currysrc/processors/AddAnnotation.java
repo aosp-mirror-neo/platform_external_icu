@@ -314,7 +314,7 @@ public class AddAnnotation extends BaseAddAnnotation {
     Mapping<AnnotationInfo> mapping = locator2AnnotationInfo.findMapping(node);
     if (mapping != null) {
       AnnotationInfo annotationInfo = mapping.getValue();
-      addAnnotationToBodyDeclaration(rewrite, node, annotationInfo);
+      addAnnotationToBodyDeclaration(rewrite, node, annotationInfo, null);
     }
     return true;
   }

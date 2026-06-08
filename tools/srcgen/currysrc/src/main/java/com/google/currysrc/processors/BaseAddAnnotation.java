@@ -56,8 +56,13 @@ public abstract class BaseAddAnnotation implements Processor {
     this.listener = listener;
   }
 
-  protected void addAnnotationToBodyDeclaration(ASTRewrite rewrite, BodyDeclaration node, AnnotationInfo annotationInfo) {
-    insertAnnotationBefore(rewrite, node, annotationInfo);
+  protected void addAnnotationToBodyDeclaration(
+      ASTRewrite rewrite,
+      BodyDeclaration node,
+      AnnotationInfo annotationInfo,
+      String reason) {
+
+    insertAnnotationBefore(rewrite, node, annotationInfo, reason);
 
     // Notify any listeners that an annotation has been added.
     BodyDeclarationLocator locator = BodyDeclarationLocators.createLocators(node).getFirst();
@@ -69,7 +74,7 @@ public abstract class BaseAddAnnotation implements Processor {
    */
   private static void insertAnnotationBefore(
       ASTRewrite rewrite, BodyDeclaration node,
-      AnnotationInfo annotationInfo) {
+      AnnotationInfo annotationInfo, String reason) {
     Map<String, Object> elements = annotationInfo.getProperties();
 
     // Construct a string representation of the annotation.
@@ -92,6 +97,12 @@ public abstract class BaseAddAnnotation implements Processor {
         }
       }
       builder.append(")");
+    }
+
+    // Append a line comment after the annotation with the reason for it, if provided.
+    if (reason != null) {
+      builder.append(" // ");
+      builder.append(reason);
     }
 
     // Create a placeholder containing the annotation.
