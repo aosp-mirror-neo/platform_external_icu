@@ -29,14 +29,6 @@
   * In addition to Java compatibility functions, which calculate derived properties,
   * this API provides low-level access to the Unicode Character Database.
   * <p>
-@@ -3739,7 +3724,6 @@
-      * See https://www.unicode.org/reports/tr39/#Identifier_Status_and_Type.
-      *
-      * @see UProperty#IDENTIFIER_TYPE
--     * @hide Only a subset of ICU is exposed in Android
-      */
-     @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
-     public enum IdentifierType {
 @@ -5601,7 +5585,6 @@
       *         Unicode version does not have data for the property at all, or
       *         not for this code point.

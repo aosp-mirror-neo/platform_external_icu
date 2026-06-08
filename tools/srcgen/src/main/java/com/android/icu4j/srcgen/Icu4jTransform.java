@@ -67,6 +67,7 @@ public class Icu4jTransform {
       "android.icu.lang.UCharacter$EastAsianWidth",
       "android.icu.lang.UCharacter$GraphemeClusterBreak",
       "android.icu.lang.UCharacter$HangulSyllableType",
+      "android.icu.lang.UCharacter$IdentifierType",
       "android.icu.lang.UCharacter$IndicPositionalCategory",
       "android.icu.lang.UCharacter$IndicSyllabicCategory",
       "android.icu.lang.UCharacter$JoiningGroup",
