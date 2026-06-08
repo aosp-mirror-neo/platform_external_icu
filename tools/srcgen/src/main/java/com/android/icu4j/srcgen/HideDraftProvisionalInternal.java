@@ -16,29 +16,31 @@
 package com.android.icu4j.srcgen;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.currysrc.processors.BaseJavadocTagJavadoc;
-
-import org.eclipse.jdt.core.dom.Javadoc;
-import org.eclipse.jdt.core.dom.TagElement;
-
+import com.google.currysrc.api.process.Context;
+import com.google.currysrc.api.process.Reporter;
+import com.google.currysrc.processors.BaseAddAnnotation;
+import com.google.currysrc.processors.BaseJavadocNodeScanner;
+import com.google.currysrc.processors.HidePublicClasses;
+import com.google.currysrc.processors.JavadocVisitor;
 import java.util.List;
 import java.util.Set;
+import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.BodyDeclaration;
+import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.Javadoc;
+import org.eclipse.jdt.core.dom.TagElement;
+import org.eclipse.jdt.core.dom.rewrite.ASTRewrite;
 
 /**
  * Adds {@literal @}hide to all JavaDoc comments that contain any of {@literal @}draft,
  * {@literal @}provisional, {@literal @}internal}.
  */
-public class HideDraftProvisionalInternal extends BaseJavadocTagJavadoc {
+public class HideDraftProvisionalInternal extends BaseAddAnnotation implements JavadocVisitor {
   private static final Set<String> toMatch = ImmutableSet.of("@draft", "@provisional", "@internal");
   private static final String HIDE_HIDDEN_ON_ANDROID =
-      "@hide draft / provisional / internal are hidden on Android";
+      "draft / provisional / internal are hidden on Android";
 
-  public HideDraftProvisionalInternal() {
-    super(HIDE_HIDDEN_ON_ANDROID);
-  }
-
-  @Override
-  protected boolean mustTag(Javadoc javadoc) {
+  private boolean mustHide(Javadoc javadoc) {
     for (TagElement tagElement : (List<TagElement>) javadoc.tags()) {
       if (tagElement.getTagName() != null
           && HideDraftProvisionalInternal.toMatch.contains(tagElement.getTagName().toLowerCase())) {
@@ -46,6 +48,23 @@ public class HideDraftProvisionalInternal extends BaseJavadocTagJavadoc {
       }
     }
     return false;
+  }
+
+  @Override
+  public void process(Context context, CompilationUnit cu) {
+    BaseJavadocNodeScanner.scanJavadoc(context, cu, this);
+  }
+
+  @Override
+  public void visit(Reporter reporter, Javadoc javadoc, ASTRewrite rewrite) {
+    if (mustHide(javadoc)) {
+      ASTNode parent = javadoc.getParent();
+      if (parent instanceof BodyDeclaration) {
+        BodyDeclaration body = (BodyDeclaration) parent;
+        BaseAddAnnotation.insertAnnotationBefore(rewrite, body, HidePublicClasses.HIDE,
+            HIDE_HIDDEN_ON_ANDROID);
+      }
+    }
   }
 
   @Override public String toString() {

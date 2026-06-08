@@ -101,7 +101,7 @@ public abstract class BaseAddAnnotation implements Processor {
   /**
    * Add an annotation to a {@link BodyDeclaration} node.
    */
-  private static void insertAnnotationBefore(
+  protected static void insertAnnotationBefore(
       ASTRewrite rewrite, BodyDeclaration node,
       AnnotationInfo annotationInfo, String reason) {
     String qualifiedName = annotationInfo.getQualifiedName();
