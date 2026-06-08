@@ -31,9 +31,16 @@ import java.util.List;
  * A base class for processors that process Javadoc nodes and may rewrite the AST. All Javadoc nodes
  * in a {@code CompilationUnit} are considered.
  */
-public abstract class BaseJavadocNodeScanner implements Processor {
+public abstract class BaseJavadocNodeScanner implements Processor, JavadocVisitor {
 
   @Override public final void process(Context context, CompilationUnit cu) {
+    scanJavadoc(context, cu, this);
+  }
+
+  /**
+   * Scan {@link Javadoc} instances in the {@link CompilationUnit} and invoke the visitor.
+   */
+  public static void scanJavadoc(Context context, CompilationUnit cu, JavadocVisitor visitor) {
     // This could just call cu.visit() but iterating over the comments should be more efficient.
     List<Comment> comments = cu.getCommentList();
     ASTRewrite rewrite = context.rewrite();
@@ -41,10 +48,10 @@ public abstract class BaseJavadocNodeScanner implements Processor {
     for (Comment comment : Lists.reverse(comments)) {
       if (comment instanceof Javadoc) {
         Javadoc javadoc = (Javadoc) comment;
-        visit(reporter, javadoc, rewrite);
+        visitor.visit(reporter, javadoc, rewrite);
       }
     }
   }
 
-  protected abstract void visit(Reporter reporter, Javadoc javadoc, ASTRewrite rewrite);
+  public abstract void visit(Reporter reporter, Javadoc javadoc, ASTRewrite rewrite);
 }
