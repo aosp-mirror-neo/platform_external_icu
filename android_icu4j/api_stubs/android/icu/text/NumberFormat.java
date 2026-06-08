@@ -818,8 +818,6 @@ public abstract class NumberFormat extends UFormat {
      * new implementations should override createFactory(ULocale, int).  Note that
      * one of these two methods <b>MUST</b> be overridden or else an infinite
      * loop will occur.
-     *
-     * @hide unsupported on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class NumberFormatFactory {
@@ -904,7 +902,6 @@ public abstract class NumberFormat extends UFormat {
 
     /**
      * A NumberFormatFactory that supports a single locale.  It can be visible or invisible.
-     * @hide unsupported on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static abstract class SimpleNumberFormatFactory extends NumberFormatFactory {
@@ -1027,8 +1024,8 @@ public abstract class NumberFormat extends UFormat {
      *
      * @param factory the factory to register
      * @return a key with which to unregister the factory
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static Object registerFactory(NumberFormatFactory factory) {
         if (factory == null) {
             throw new IllegalArgumentException("factory must not be null");
@@ -1041,8 +1038,8 @@ public abstract class NumberFormat extends UFormat {
      * registerInstance or registerFactory).
      * @param registryKey a key obtained from registerFactory
      * @return true if the object was successfully unregistered
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static boolean unregister(Object registryKey) {
         if (registryKey == null) {
             throw new IllegalArgumentException("registryKey must not be null");
@@ -1275,9 +1272,9 @@ public abstract class NumberFormat extends UFormat {
      * this method should never return null.
      * @return a non-null Currency
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected Currency getEffectiveCurrency() {
         Currency c = getCurrency();
@@ -1448,8 +1445,8 @@ public abstract class NumberFormat extends UFormat {
      * @param choice the pattern format.
      * @return the pattern
      * @deprecated ICU 3.4 subclassers should override getPattern(ULocale, int) instead of this method.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected static String getPattern(Locale forLocale, int choice) {
         return getPattern(ULocale.forLocale(forLocale), choice);

@@ -106,18 +106,18 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * <strong>[icu]</strong> Constant for context. NUMERIC context
      * is only supported for leapMonthPatterns.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int NUMERIC = 2;
 
     /**
      * <strong>[icu]</strong> Constant for context.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int DT_CONTEXT_COUNT = 3;
 
@@ -146,9 +146,9 @@ public class DateFormatSymbols implements Serializable, Cloneable {
     /**
      * <strong>[icu]</strong> Constant for width.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int DT_WIDTH_COUNT = 4;
 
@@ -1185,9 +1185,9 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * @return          The leapMonthPattern, or null if not available for
      *                  this calendar.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getLeapMonthPattern(int context, int width) {
         if (leapMonthPatterns != null) {
@@ -1239,9 +1239,9 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * @param context   The usage context: FORMAT, STANDALONE, NUMERIC.
      * @param width     The name width: WIDE, ABBREVIATED, NARROW.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setLeapMonthPattern(String leapMonthPattern, int context, int width) {
         if (leapMonthPatterns != null) {
@@ -2466,8 +2466,8 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * <b>Note:</b>Because of the structural changes in the ICU locale bundle,
      * this API no longer works as described.  This method always returns null.
      * @deprecated ICU 4.0
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     // This API was formerly @stable ICU 2.0
     static public ResourceBundle getDateFormatBundle(Class<? extends Calendar> calendarClass,
@@ -2489,8 +2489,8 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * <b>Note:</b>Because of the structural changes in the ICU locale bundle,
      * this API no longer works as described.  This method always returns null.
      * @deprecated ICU 4.0
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     // This API was formerly @stable ICU 3.2
     static public ResourceBundle getDateFormatBundle(Class<? extends Calendar> calendarClass,
@@ -2507,8 +2507,8 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * this API no longer works as described.  This method always returns null.
      * @see #getDateFormatBundle(java.lang.Class, java.util.Locale)
      * @deprecated ICU 4.0
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     // This API was formerly @stable ICU 2.2
     public static ResourceBundle getDateFormatBundle(Calendar cal, Locale locale)
@@ -2524,8 +2524,8 @@ public class DateFormatSymbols implements Serializable, Cloneable {
      * this API no longer works as described.  This method always returns null.
      * @see #getDateFormatBundle(java.lang.Class, java.util.Locale)
      * @deprecated ICU 4.0
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     // This API was formerly @stable ICU 3.2
     public static ResourceBundle getDateFormatBundle(Calendar cal, ULocale locale)

@@ -34,9 +34,9 @@ public interface UProperty
     /**
      * Special value indicating undefined property.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int UNDEFINED = -1;
 
@@ -559,8 +559,8 @@ public interface UProperty
     /**
      * One more than the last constant for binary Unicode properties.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public static final int BINARY_LIMIT = 76;
 
@@ -759,8 +759,8 @@ public interface UProperty
     /**
      * One more than the last constant for enumerated/integer Unicode properties.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public static final int INT_LIMIT = 0x101B;
 
@@ -782,8 +782,8 @@ public interface UProperty
     /**
      * One more than the last constant for bit-mask Unicode properties.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public static final int MASK_LIMIT = 0x2001;
 
@@ -801,8 +801,8 @@ public interface UProperty
     /**
      * One more than the last constant for double Unicode properties.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public static final int DOUBLE_LIMIT = 0x3001;
 
@@ -833,8 +833,8 @@ public interface UProperty
      * Deprecated string property ISO_Comment.
      * Corresponds to UCharacter.getISOComment(int).
      * @deprecated ICU 49
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int ISO_COMMENT = 0x4003;
 
@@ -886,8 +886,8 @@ public interface UProperty
      * Beginning with ICU 49, ICU APIs return null or an empty string for this property.
      * Corresponds to UCharacter.getName1_0(int).
      * @deprecated ICU 49
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int UNICODE_1_NAME = 0x400B;
 
@@ -906,8 +906,8 @@ public interface UProperty
     /**
      * One more than the last constant for string Unicode properties.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public static final int STRING_LIMIT = 0x400E;
 
@@ -940,8 +940,8 @@ public interface UProperty
     /**
      * One more than the last constant for Unicode properties with unusual value types.
      * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public static final int OTHER_PROPERTY_LIMIT = 0x7002;
 
@@ -975,8 +975,8 @@ public interface UProperty
          * The number of predefined property name choices.  Individual
          * properties or values may have more than COUNT aliases.
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
-         * @hide unsupported on Android
          */
+        @android.annotation.Hide // unsupported on Android
         @Deprecated
         static final int COUNT = 2;
     }

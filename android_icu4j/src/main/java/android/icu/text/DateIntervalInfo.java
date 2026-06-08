@@ -331,9 +331,9 @@ public class DateIntervalInfo implements Cloneable, Freezable<DateIntervalInfo>,
      * wants to create their own interval patterns and use them to create
      * date interval formatter.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public DateIntervalInfo()
     {
@@ -816,9 +816,9 @@ public class DateIntervalInfo implements Cloneable, Freezable<DateIntervalInfo>,
      *                         is earlier date or later date
      * @return                 pattern info object
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static PatternInfo genPatternInfo(String intervalPattern,
                                       boolean laterDateFirst) {
@@ -1152,9 +1152,9 @@ public class DateIntervalInfo implements Cloneable, Freezable<DateIntervalInfo>,
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Map<String,Set<String>> getPatterns() {
         LinkedHashMap<String,Set<String>> result = new LinkedHashMap<>();
@@ -1167,9 +1167,9 @@ public class DateIntervalInfo implements Cloneable, Freezable<DateIntervalInfo>,
     /**
      * Get the internal patterns, with a deep clone for safety.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Map<String, Map<String, PatternInfo>> getRawPatterns() {
         LinkedHashMap<String, Map<String, PatternInfo>> result = new LinkedHashMap<>();

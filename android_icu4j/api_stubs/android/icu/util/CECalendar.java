@@ -172,8 +172,8 @@ abstract class CECalendar extends Calendar {
      * The Coptic and Ethiopic calendars differ only in their epochs.
      * This method must be implemented by CECalendar subclasses to
      * return the date offset from Julian.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     abstract protected int getJDEpochOffset();
 
     /**
@@ -272,8 +272,8 @@ abstract class CECalendar extends Calendar {
      * @param month the month
      * @param day the day
      * @return Julian day
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static int ceToJD(long year, int month, int day, int jdEpochOffset) {
 
         // Julian<->Ethiopic algorithms from:
@@ -300,8 +300,8 @@ abstract class CECalendar extends Calendar {
 
     /**
      * Convert a Julian day to an Coptic/Ethiopic year, month and day
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static void jdToCE(int julianDay, int jdEpochOffset, int[] fields) {
         int c4; // number of 4 year cycle (1461 days)
         int[] r4 = new int[1]; // remainder of 4 year cycle, always positive

@@ -1096,7 +1096,12 @@ public class Icu4jTransform {
       List<BodyDeclarationLocator> blocklist =
           BodyDeclarationLocators.createLocatorsFromStrings(INITIAL_DEPRECATED_SET);
       return createOptionalRule(
-          new TagMatchingDeclarations(blocklist, "@hide original deprecated declaration"));
+          AddAnnotation.markerAnnotationFromLocators(
+              "android.annotation.Hide",
+              blocklist,
+              "original deprecated declaration"
+          )
+      );
     }
 
     private static Rule createMarkElementsWithDeprecatedAnnotationRule() {
@@ -1127,7 +1132,12 @@ public class Icu4jTransform {
       List<BodyDeclarationLocator> blocklist =
           BodyDeclarationLocators.createLocatorsFromStrings(DECLARATIONS_TO_HIDE);
       return createOptionalRule(
-          new TagMatchingDeclarations(blocklist, "@hide unsupported on Android"));
+          AddAnnotation.markerAnnotationFromLocators(
+              "android.annotation.Hide",
+              blocklist,
+              "unsupported on Android"
+          )
+      );
     }
 
     private static Rule createHidePublicClassesRule() {

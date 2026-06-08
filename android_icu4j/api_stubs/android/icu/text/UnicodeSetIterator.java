@@ -249,13 +249,9 @@ public class UnicodeSetIterator {
     private int endRange = 0;
     private int range = 0;
 
-    /**
-     * @hide original deprecated declaration
-     */
+    @android.annotation.Hide // original deprecated declaration
     private int endElement;
-    /**
-     * @hide original deprecated declaration
-     */
+    @android.annotation.Hide // original deprecated declaration
     private int nextElement;
 
     /**
@@ -263,9 +259,7 @@ public class UnicodeSetIterator {
      */
     private Iterator<String> stringIterator = null;
 
-    /**
-     * @hide original deprecated declaration
-     */
+    @android.annotation.Hide // original deprecated declaration
     private void loadRange(int aRange) {
         nextElement = set.getRangeStart(aRange);
         endElement = set.getRangeEnd(aRange);

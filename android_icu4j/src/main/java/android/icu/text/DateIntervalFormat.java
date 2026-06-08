@@ -502,9 +502,9 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      * @param simpleDateFormat will be used for formatting
      *
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public DateIntervalFormat(String skeleton, DateIntervalInfo dtItvInfo,
                                SimpleDateFormat simpleDateFormat)
@@ -892,9 +892,9 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getPatterns(Calendar fromCalendar,
             Calendar toCalendar,
@@ -1297,9 +1297,9 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      * @return          A newly created {@code Formattable} object, or NULL
      *                  on failure.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     public Object parseObject(String source, ParsePosition parse_pos)
@@ -2447,9 +2447,9 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
     /**
      * Get the internal patterns for the skeleton
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Map<String, PatternInfo> getRawPatterns() {
         // this is unmodifiable, so ok to return directly

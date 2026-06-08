@@ -601,8 +601,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
     /**
      * Return true if the given position, in the given pattern, appears
      * to be the start of a UnicodeSet pattern.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static boolean resemblesPattern(String pattern, int pos) {
         return ((pos+1) < pattern.length() &&
                 pattern.charAt(pos) == '[') ||
@@ -1069,9 +1069,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
     /**
      * Tests whether the text matches at the offset. If so, returns the end of the longest substring that it matches. If not, returns -1.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int matchesAt(CharSequence text, int offset) {
         int lastLen = -1;
@@ -2073,9 +2073,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * Get the Regex equivalent for this UnicodeSet
      * @return regex pattern equivalent to this UnicodeSet
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getRegexEquivalent() {
         if (!hasStrings()) {
@@ -2464,9 +2464,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * of <code>pattern</code>
      * @exception java.lang.IllegalArgumentException if the parse fails.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public UnicodeSet applyPattern(String pattern,
             ParsePosition pos,
@@ -2949,16 +2949,16 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
     /**
      * Add the contents of the UnicodeSet (as strings) into a collection.
      * @param target collection to add into
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public String[] addAllTo(String[] target) {
         return addAllTo(this, target);
     }
 
     /**
      * Add the contents of the UnicodeSet (as strings) into an array.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static String[] toArray(UnicodeSet set) {
         return addAllTo(set, new String[set.size()]);
     }
@@ -4242,9 +4242,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * @param outCount An output-only object (must not be null) for returning the count.
      * @return the limit (exclusive end) of the span
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int spanAndCount(CharSequence s, int start, SpanCondition spanCondition, OutputInt outCount) {
         if (outCount == null) {
@@ -4691,9 +4691,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * and comparing, but much faster (no object creation).
      * Actually, there is one difference; a null compares as less.
      * Note that this (=String) order is UTF-16 order -- <i>not</i> code point order.
-     * @hide unsupported on Android
      */
 
+    @android.annotation.Hide // unsupported on Android
     public static int compare(CharSequence string, int codePoint) {
         return CharSequences.compare(string, codePoint);
     }
@@ -4703,8 +4703,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * Same results as turning the code point into a string and comparing, but much faster (no object creation).
      * Actually, there is one difference; a null compares as less.
      * Note that this (=String) order is UTF-16 order -- <i>not</i> code point order.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static int compare(int codePoint, CharSequence string) {
         return -CharSequences.compare(string, codePoint);
     }
@@ -4716,8 +4716,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * That means that sets can't be compared directly with this method, unless they are TreeSets without
      * (or with the same) comparator. Unfortunately, it is impossible to reliably detect in Java whether subclass of
      * Collection satisfies the right criteria, so it is left to the user to avoid those circumstances.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static <T extends Comparable<T>> int compare(Iterable<T> collection1, Iterable<T> collection2) {
         return compare(collection1.iterator(), collection2.iterator());
     }
@@ -4729,9 +4729,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * (or with the same) comparator. Unfortunately, it is impossible to reliably detect in Java whether subclass of
      * Collection satisfies the right criteria, so it is left to the user to avoid those circumstances.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static <T extends Comparable<T>> int compare(Iterator<T> first, Iterator<T> other) {
         while (true) {
@@ -4752,8 +4752,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
 
     /**
      * Utility to compare two collections, optionally by size, and then lexicographically.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static <T extends Comparable<T>> int compare(Collection<T> collection1, Collection<T> collection2, ComparisonStyle style) {
         if (style != ComparisonStyle.LEXICOGRAPHIC) {
             int diff = collection1.size() - collection2.size();
@@ -4766,8 +4766,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
 
     /**
      * Utility for adding the contents of an iterable to a collection.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static <T, U extends Collection<T>> U addAllTo(Iterable<T> source, U target) {
         for (T item : source) {
             target.add(item);
@@ -4777,8 +4777,8 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
 
     /**
      * Utility for adding the contents of an iterable to a collection.
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static <T> T[] addAllTo(Iterable<T> source, T[] target) {
         int i = 0;
         for (T item : source) {
@@ -4806,9 +4806,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
     /**
      * Return the value of the first code point, if the string is exactly one code point. Otherwise return Integer.MAX_VALUE.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int getSingleCodePoint(CharSequence s) {
         return CharSequences.getSingleCodePoint(s);
@@ -4821,9 +4821,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * @param dontCare Set with the don't-care characters for spanning
      * @return the input set, modified
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public UnicodeSet addBridges(UnicodeSet dontCare) {
         UnicodeSet notInInput = new UnicodeSet(this).complement().removeAllStrings();
@@ -4841,9 +4841,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * If findNot is true, then reverse the sense of the match: find the first place where the UnicodeSet doesn't match.
      * If there is no match, length is returned.
      * @deprecated This API is ICU internal only. Use span instead.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int findIn(CharSequence value, int fromIndex, boolean findNot) {
         //TODO add strings, optimize, using ICU4C algorithms
@@ -4863,9 +4863,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * If there is no match, -1 is returned.
      * BEFORE index is not in the UnicodeSet.
      * @deprecated This API is ICU internal only. Use spanBack instead.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int findLastIn(CharSequence value, int fromIndex, boolean findNot) {
         //TODO add strings, optimize, using ICU4C algorithms
@@ -4886,9 +4886,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * @param matches A boolean to either strip all that matches or don't match with the current UnicodeSet object.
      * @return The string after it has been stripped.
      * @deprecated This API is ICU internal only. Use replaceFrom.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String stripFrom(CharSequence source, boolean matches) {
         StringBuilder result = new StringBuilder();
@@ -4992,9 +4992,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * Get the default symbol table. Null means ordinary processing. For internal use only.
      * @return the symbol table
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static XSymbolTable getDefaultXSymbolTable() {
         return XSYMBOL_TABLE;
@@ -5011,9 +5011,9 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      *
      * @param xSymbolTable the new default symbol table.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static void setDefaultXSymbolTable(XSymbolTable xSymbolTable) {
         // If the properties override inclusions, these have to be regenerated.

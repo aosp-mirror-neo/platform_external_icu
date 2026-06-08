@@ -203,8 +203,8 @@ public final class Normalizer implements Cloneable {
      * At most one Unicode version can be selected at a time.
      *
      * @deprecated ICU 56 Use {@link FilteredNormalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int UNICODE_3_2=0x20;
 
@@ -213,8 +213,8 @@ public final class Normalizer implements Cloneable {
      * This is guaranteed to have the same value as {@link UCharacterIterator#DONE}.
      *
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int DONE = UCharacterIterator.DONE;
 
@@ -226,7 +226,6 @@ public final class Normalizer implements Cloneable {
      * and any fields or methods should not be called or overridden by users.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -234,18 +233,18 @@ public final class Normalizer implements Cloneable {
         /**
          * Sole constructor
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         protected Mode() {
         }
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide original deprecated declaration
          * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         protected abstract Normalizer2 getNormalizer2(int options);
     }
@@ -294,8 +293,8 @@ public final class Normalizer implements Cloneable {
      * No decomposition/composition.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode NONE = new NONEMode();
 
@@ -303,8 +302,8 @@ public final class Normalizer implements Cloneable {
      * Canonical decomposition.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode NFD = new NFDMode();
 
@@ -312,8 +311,8 @@ public final class Normalizer implements Cloneable {
      * Compatibility decomposition.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode NFKD = new NFKDMode();
 
@@ -321,8 +320,8 @@ public final class Normalizer implements Cloneable {
      * Canonical decomposition followed by canonical composition.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode NFC = new NFCMode();
 
@@ -330,8 +329,8 @@ public final class Normalizer implements Cloneable {
      * Default normalization.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode DEFAULT = NFC;
 
@@ -339,8 +338,8 @@ public final class Normalizer implements Cloneable {
      * Compatibility decomposition followed by canonical composition.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode NFKC =new NFKCMode();
 
@@ -348,8 +347,8 @@ public final class Normalizer implements Cloneable {
      * "Fast C or D" form.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode FCD = new FCDMode();
 
@@ -366,8 +365,8 @@ public final class Normalizer implements Cloneable {
      * @see #setMode
      * @deprecated ICU 2.8. Use Nomalizer.NONE
      * @see #NONE
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode NO_OP = NONE;
 
@@ -386,8 +385,8 @@ public final class Normalizer implements Cloneable {
      * @see #setMode
      * @deprecated ICU 2.8. Use Normalier.NFC
      * @see #NFC
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode COMPOSE = NFC;
 
@@ -406,8 +405,8 @@ public final class Normalizer implements Cloneable {
      * @see #setMode
      * @deprecated ICU 2.8. Use Normalizer.NFKC
      * @see #NFKC
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode COMPOSE_COMPAT = NFKC;
 
@@ -426,8 +425,8 @@ public final class Normalizer implements Cloneable {
      * @see #setMode
      * @deprecated ICU 2.8. Use Normalizer.NFD
      * @see #NFD
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode DECOMP = NFD;
 
@@ -446,8 +445,8 @@ public final class Normalizer implements Cloneable {
      * @see #setMode
      * @deprecated ICU 2.8. Use Normalizer.NFKD
      * @see #NFKD
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final Mode DECOMP_COMPAT = NFKD;
 
@@ -468,8 +467,8 @@ public final class Normalizer implements Cloneable {
      * <p>
      * @see #setOption
      * @deprecated ICU 2.8. This option is no longer supported.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int IGNORE_HANGUL = 0x0001;
 
@@ -545,8 +544,8 @@ public final class Normalizer implements Cloneable {
      *
      * @see #compare
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static final int COMPARE_NORM_OPTIONS_SHIFT  = 20;
 
@@ -571,8 +570,8 @@ public final class Normalizer implements Cloneable {
      *            If you want the default behavior corresponding to one of the
      *            standard Unicode Normalization Forms, use 0 for this argument.
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Normalizer(String str, Mode mode, int opt) {
         this.text = UCharacterIterator.getInstance(str);
@@ -596,8 +595,8 @@ public final class Normalizer implements Cloneable {
      *            If you want the default behavior corresponding to one of the
      *            standard Unicode Normalization Forms, use 0 for this argument.
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Normalizer(CharacterIterator iter, Mode mode, int opt) {
         this.text = UCharacterIterator.getInstance((CharacterIterator)iter.clone());
@@ -617,8 +616,8 @@ public final class Normalizer implements Cloneable {
      * @param mode  The normalization mode.
      * @param options The normalization options, ORed together (0 for no options).
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Normalizer(UCharacterIterator iter, Mode mode, int options) {
         try {
@@ -642,8 +641,8 @@ public final class Normalizer implements Cloneable {
      * iterator's {@code clone} method does so.
      *
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     @Override
     public Normalizer clone() {
@@ -684,8 +683,8 @@ public final class Normalizer implements Cloneable {
      *                    NFC rules.
      * @return String    The composed string
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String compose(String str, boolean compat) {
         return compose(str,compat,0);
@@ -701,8 +700,8 @@ public final class Normalizer implements Cloneable {
      * @param options    The only recognized option is UNICODE_3_2
      * @return String    The composed string
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String compose(String str, boolean compat, int options) {
         return getComposeNormalizer2(compat, options).normalize(str);
@@ -722,8 +721,8 @@ public final class Normalizer implements Cloneable {
      * @exception IndexOutOfBoundsException if target.length is less than the
      *             required length
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int compose(char[] source,char[] target, boolean compat, int options) {
         return compose(source, 0, source.length, target, 0, target.length, compat, options);
@@ -747,8 +746,8 @@ public final class Normalizer implements Cloneable {
      * @exception IndexOutOfBoundsException if target.length is less than the
      *             required length
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int compose(char[] src,int srcStart, int srcLimit,
                               char[] dest,int destStart, int destLimit,
@@ -768,8 +767,8 @@ public final class Normalizer implements Cloneable {
      *                   rules.
      * @return String   The decomposed string
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String decompose(String str, boolean compat) {
         return decompose(str,compat,0);
@@ -785,8 +784,8 @@ public final class Normalizer implements Cloneable {
      * @param options The normalization options, ORed together (0 for no options).
      * @return String The decomposed string
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String decompose(String str, boolean compat, int options) {
         return getDecomposeNormalizer2(compat, options).normalize(str);
@@ -806,8 +805,8 @@ public final class Normalizer implements Cloneable {
      * @exception IndexOutOfBoundsException if the target capacity is less than
      *             the required length
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int decompose(char[] source,char[] target, boolean compat, int options) {
         return decompose(source, 0, source.length, target, 0, target.length, compat, options);
@@ -831,8 +830,8 @@ public final class Normalizer implements Cloneable {
      * @exception IndexOutOfBoundsException if the target capacity is less than
      *             the required length
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int decompose(char[] src,int srcStart, int srcLimit,
                                 char[] dest,int destStart, int destLimit,
@@ -857,8 +856,8 @@ public final class Normalizer implements Cloneable {
      * @param options   the optional features to be enabled.
      * @return String   the normalized string
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String normalize(String str, Mode mode, int options) {
         return mode.getNormalizer2(options).normalize(str);
@@ -874,8 +873,8 @@ public final class Normalizer implements Cloneable {
      *                    Normalizer.NFKD, Normalizer.DEFAULT
      * @return the normalized string
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String normalize(String src,Mode mode) {
         return normalize(src, mode, 0);
@@ -895,8 +894,8 @@ public final class Normalizer implements Cloneable {
      * @exception    IndexOutOfBoundsException if the target capacity is less
      *                than the required length
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int normalize(char[] source,char[] target, Mode  mode, int options) {
         return normalize(source,0,source.length,target,0,target.length,mode, options);
@@ -921,8 +920,8 @@ public final class Normalizer implements Cloneable {
      * @exception       IndexOutOfBoundsException if the target capacity is
      *                   less than the required length
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int normalize(char[] src,int srcStart, int srcLimit,
                                 char[] dest,int destStart, int destLimit,
@@ -942,8 +941,8 @@ public final class Normalizer implements Cloneable {
      * @return String   The normalized string
      * @see #UNICODE_3_2
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String normalize(int char32, Mode mode, int options) {
         if(mode == NFD && options == 0) {
@@ -962,8 +961,8 @@ public final class Normalizer implements Cloneable {
      * @param mode      The normalization mode
      * @return String   The normalized string
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String normalize(int char32, Mode mode) {
         return normalize(char32, mode, 0);
@@ -978,8 +977,8 @@ public final class Normalizer implements Cloneable {
      * @return         Return code to specify if the text is normalized or not
      *                     (Normalizer.YES, Normalizer.NO or Normalizer.MAYBE)
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static QuickCheckResult quickCheck(String source, Mode mode) {
         return quickCheck(source, mode, 0);
@@ -1004,8 +1003,8 @@ public final class Normalizer implements Cloneable {
      * @return         Return code to specify if the text is normalized or not
      *                     (Normalizer.YES, Normalizer.NO or Normalizer.MAYBE)
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static QuickCheckResult quickCheck(String source, Mode mode, int options) {
         return mode.getNormalizer2(options).quickCheck(source);
@@ -1023,8 +1022,8 @@ public final class Normalizer implements Cloneable {
      * @return       Return code to specify if the text is normalized or not
      *                (Normalizer.YES, Normalizer.NO or Normalizer.MAYBE)
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static QuickCheckResult quickCheck(char[] source, Mode mode, int options) {
         return quickCheck(source, 0, source.length, mode, options);
@@ -1052,8 +1051,8 @@ public final class Normalizer implements Cloneable {
      *                   (Normalizer.YES, Normalizer.NO or
      *                   Normalizer.MAYBE)
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static QuickCheckResult quickCheck(char[] source,int start,
                                               int limit, Mode mode,int options) {
@@ -1080,8 +1079,8 @@ public final class Normalizer implements Cloneable {
      * @return Boolean value indicating whether the source string is in the
      *         "mode" normalization form
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static boolean isNormalized(char[] src,int start,
                                        int limit, Mode mode,
@@ -1106,8 +1105,8 @@ public final class Normalizer implements Cloneable {
      *                  The only option that is currently recognized is UNICODE_3_2
      * @see #isNormalized
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static boolean isNormalized(String str, Mode mode, int options) {
         return mode.getNormalizer2(options).isNormalized(str);
@@ -1123,8 +1122,8 @@ public final class Normalizer implements Cloneable {
      *
      * @see #isNormalized
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static boolean isNormalized(int char32, Mode mode,int options) {
         return isNormalized(UTF16.valueOf(char32), mode, options);
@@ -1338,8 +1337,8 @@ public final class Normalizer implements Cloneable {
      * @exception IndexOutOfBoundsException if target capacity is less than the
      *             required length
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int concatenate(char[] left,  int leftStart,  int leftLimit,
                                   char[] right, int rightStart, int rightLimit,
@@ -1394,8 +1393,8 @@ public final class Normalizer implements Cloneable {
      * @see #previous
      * @see #concatenate
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String concatenate(char[] left, char[] right,Mode mode, int options) {
         StringBuilder dest=new StringBuilder(left.length+right.length+16).append(left);
@@ -1432,8 +1431,8 @@ public final class Normalizer implements Cloneable {
      * @see #previous
      * @see #concatenate
      * @deprecated ICU 56 Use {@link Normalizer2} instead.
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String concatenate(String left, String right, Mode mode, int options) {
         StringBuilder dest=new StringBuilder(left.length()+right.length()+16).append(left);
@@ -1446,8 +1445,8 @@ public final class Normalizer implements Cloneable {
      * @param dest The char array to receive the closure value
      * @return the length of the closure value; 0 if there is none
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static int getFC_NFKC_Closure(int c,char[] dest) {
         String closure=getFC_NFKC_Closure(c);
@@ -1462,8 +1461,8 @@ public final class Normalizer implements Cloneable {
      * @param c The code point whose closure value is to be retrieved
      * @return String representation of the closure value; "" if there is none
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String getFC_NFKC_Closure(int c) {
         // Compute the FC_NFKC_Closure on the fly:
@@ -1507,8 +1506,8 @@ public final class Normalizer implements Cloneable {
      * Return the current character in the normalized text.
      * @return The codepoint as an int
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int current() {
         if(bufferPos<buffer.length() || nextNormalize()) {
@@ -1524,8 +1523,8 @@ public final class Normalizer implements Cloneable {
      * of the text has already been reached, {@link #DONE} is returned.
      * @return The codepoint as an int
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int next() {
         if(bufferPos<buffer.length() ||  nextNormalize()) {
@@ -1544,8 +1543,8 @@ public final class Normalizer implements Cloneable {
      * of the text has already been reached, {@link #DONE} is returned.
      * @return The codepoint as an int
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int previous() {
         if(bufferPos>0 || previousNormalize()) {
@@ -1561,8 +1560,8 @@ public final class Normalizer implements Cloneable {
      * Reset the index to the beginning of the text.
      * This is equivalent to setIndexOnly(startIndex)).
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void reset() {
         text.setToStart();
@@ -1578,8 +1577,8 @@ public final class Normalizer implements Cloneable {
      *
      * @param index the desired index in the input text.
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setIndexOnly(int index) {
         text.setIndex(index);  // validates index
@@ -1607,8 +1606,8 @@ public final class Normalizer implements Cloneable {
      *          {@link #getBeginIndex} or greater than {@link #getEndIndex}.
      * @deprecated ICU 3.2
      * @obsolete ICU 3.2
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
      //CLOVER:OFF
      public int setIndex(int index) {
@@ -1623,8 +1622,8 @@ public final class Normalizer implements Cloneable {
      * @deprecated ICU 2.2. Use startIndex() instead.
      * @return The codepoint as an int
      * @see #startIndex
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int getBeginIndex() {
         return 0;
@@ -1637,8 +1636,8 @@ public final class Normalizer implements Cloneable {
      * @deprecated ICU 2.2. Use endIndex() instead.
      * @return The codepoint as an int
      * @see #endIndex
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int getEndIndex() {
         return endIndex();
@@ -1648,8 +1647,8 @@ public final class Normalizer implements Cloneable {
      * the {@code Normalizer's} position to the beginning of the text.
      * @return The codepoint as an int
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int first() {
         reset();
@@ -1662,8 +1661,8 @@ public final class Normalizer implements Cloneable {
      * the input text corresponding to that normalized character.
      * @return The codepoint as an int
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int last() {
         text.setToLimit();
@@ -1686,8 +1685,8 @@ public final class Normalizer implements Cloneable {
      * {@code setIndex} and {@link #getIndex}.
      * @return The current iteration position
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int getIndex() {
         if(bufferPos<buffer.length()) {
@@ -1703,8 +1702,8 @@ public final class Normalizer implements Cloneable {
      * {@code String} over which this {@code Normalizer} is iterating
      * @return The current iteration position
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int startIndex() {
         return 0;
@@ -1716,8 +1715,8 @@ public final class Normalizer implements Cloneable {
      * over which this {@code Normalizer} is iterating
      * @return The current iteration position
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int endIndex() {
         return text.getLength();
@@ -1751,8 +1750,8 @@ public final class Normalizer implements Cloneable {
      *
      * @see #getMode
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setMode(Mode newMode) {
         mode = newMode;
@@ -1763,8 +1762,8 @@ public final class Normalizer implements Cloneable {
      *
      * @see #setMode
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public Mode getMode() {
         return mode;
@@ -1786,8 +1785,8 @@ public final class Normalizer implements Cloneable {
      *
      * @see #getOption
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setOption(int option,boolean value) {
         if (value) {
@@ -1803,8 +1802,8 @@ public final class Normalizer implements Cloneable {
      * <p>
      * @see #setOption
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int getOption(int option) {
         if((options & option)!=0) {
@@ -1822,8 +1821,8 @@ public final class Normalizer implements Cloneable {
      * @throws IndexOutOfBoundsException If the index passed for the array is invalid.
      * @see   #getLength
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int getText(char[] fillIn) {
         return text.getText(fillIn);
@@ -1833,8 +1832,8 @@ public final class Normalizer implements Cloneable {
      * Gets the length of underlying text storage
      * @return the length
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public int getLength() {
         return text.getLength();
@@ -1844,8 +1843,8 @@ public final class Normalizer implements Cloneable {
      * Returns the text under iteration as a string
      * @return a copy of the text under iteration.
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getText() {
         return text.getText();
@@ -1856,8 +1855,8 @@ public final class Normalizer implements Cloneable {
      * The iteration position is set to the beginning of the input text.
      * @param newText   The new string to be normalized.
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setText(StringBuffer newText) {
         UCharacterIterator newIter = UCharacterIterator.getInstance(newText);
@@ -1873,8 +1872,8 @@ public final class Normalizer implements Cloneable {
      * The iteration position is set to the beginning of the input text.
      * @param newText   The new string to be normalized.
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setText(char[] newText) {
         UCharacterIterator newIter = UCharacterIterator.getInstance(newText);
@@ -1890,8 +1889,8 @@ public final class Normalizer implements Cloneable {
      * The iteration position is set to the beginning of the input text.
      * @param newText   The new string to be normalized.
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setText(String newText) {
         UCharacterIterator newIter = UCharacterIterator.getInstance(newText);
@@ -1907,8 +1906,8 @@ public final class Normalizer implements Cloneable {
      * The iteration position is set to the beginning of the input text.
      * @param newText   The new string to be normalized.
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setText(CharacterIterator newText) {
         UCharacterIterator newIter = UCharacterIterator.getInstance(newText);
@@ -1924,8 +1923,8 @@ public final class Normalizer implements Cloneable {
      * The iteration position is set to the beginning of the string.
      * @param newText   The new string to be normalized.
      * @deprecated ICU 56
-     * @hide original deprecated declaration
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public void setText(UCharacterIterator newText) {
         try{

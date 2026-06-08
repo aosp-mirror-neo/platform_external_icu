@@ -233,9 +233,9 @@ public final class CopticCalendar extends CECalendar
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     protected int handleGetExtendedYear() {
@@ -279,9 +279,9 @@ public final class CopticCalendar extends CECalendar
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     protected int getJDEpochOffset() {

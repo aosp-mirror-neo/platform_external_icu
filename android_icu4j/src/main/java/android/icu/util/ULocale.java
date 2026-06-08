@@ -598,8 +598,8 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @see SecurityManager#checkPermission(java.security.Permission)
      * @see java.util.PropertyPermission
      * @see ULocale#setDefault(Category, ULocale)
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static synchronized void setDefault(ULocale newLocale){
         Locale.setDefault(newLocale.toLocale());
         defaultULocale = newLocale;
@@ -672,8 +672,8 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param newLocale the new default locale
      * @see SecurityManager#checkPermission(java.security.Permission)
      * @see java.util.PropertyPermission
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     public static synchronized void setDefault(Category category, ULocale newLocale) {
         Locale newJavaDefault = newLocale.toLocale();
         int idx = category.ordinal();
@@ -2183,9 +2183,9 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @return the localized script name.
      * @see Category#DISPLAY
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getDisplayScriptInContext() {
         return getDisplayScriptInContextInternal(this, getDefault(Category.DISPLAY));
@@ -2205,9 +2205,9 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param displayLocale the locale in which to display the name.
      * @return the localized script name.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public String getDisplayScriptInContext(ULocale displayLocale) {
         return getDisplayScriptInContextInternal(this, displayLocale);
@@ -2230,9 +2230,9 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param displayLocaleID the id of the locale in which to display the name.
      * @return the localized script name.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String getDisplayScriptInContext(String localeID, String displayLocaleID) {
         return getDisplayScriptInContextInternal(new ULocale(localeID), new ULocale(displayLocaleID));
@@ -2253,9 +2253,9 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param displayLocale the locale in which to display the name.
      * @return the localized script name.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static String getDisplayScriptInContext(String localeID, ULocale displayLocale) {
         return getDisplayScriptInContextInternal(new ULocale(localeID), displayLocale);
@@ -2825,7 +2825,6 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
     /**
      * Options for minimizeSubtags.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
@@ -2875,9 +2874,9 @@ public final class ULocale implements Serializable, Comparable<ULocale>, Cloneab
      * @param fieldToFavor Indicate which should be preferred, when either the region <b>or</b> the script could be suppressed, but not both.
      * @return The minimized ULocale instance.
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     public static ULocale minimizeSubtags(ULocale loc, Minimize fieldToFavor) {
         String[] tags = new String[3];

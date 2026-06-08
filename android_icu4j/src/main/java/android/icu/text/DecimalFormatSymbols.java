@@ -986,8 +986,8 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
      * Internal API for NumberFormat
      * @return String currency pattern string
      * @deprecated This API is for ICU internal use only
-     * @hide unsupported on Android
      */
+    @android.annotation.Hide // unsupported on Android
     @Deprecated
     public String getCurrencyPattern() {
         return currencyPattern;

@@ -685,9 +685,9 @@ public abstract class SearchIterator
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     //TODO: This protected method is @stable 2.0 in ICU4C
     protected void setMatchNotFound() {

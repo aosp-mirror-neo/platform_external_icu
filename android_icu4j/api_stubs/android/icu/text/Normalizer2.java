@@ -434,9 +434,9 @@ public abstract class Normalizer2 {
      * Sole constructor.  (For invocation by subclass constructors,
      * typically implicit.)
      * @deprecated This API is ICU internal only.
-     * @hide original deprecated declaration
      * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected Normalizer2() {
     }
