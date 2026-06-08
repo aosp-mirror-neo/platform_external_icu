@@ -368,8 +368,8 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
          * serialization method resolve instances to the constant
          * DateIntervalFormat.SpanField values
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         @Override
         protected Object readResolve() throws InvalidObjectException {
@@ -502,7 +502,6 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      * @param simpleDateFormat will be used for formatting
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -892,7 +891,6 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1297,7 +1295,6 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      * @return          A newly created {@code Formattable} object, or NULL
      *                  on failure.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Override
@@ -2447,7 +2444,6 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
     /**
      * Get the internal patterns for the skeleton
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated

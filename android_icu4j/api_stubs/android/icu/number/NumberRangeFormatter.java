@@ -164,8 +164,8 @@ public abstract class NumberRangeFormatter {
          * Serialization method resolve instances to the constant
          * NumberRangeFormatter.SpanField values
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         @Override
         protected Object readResolve() throws InvalidObjectException {

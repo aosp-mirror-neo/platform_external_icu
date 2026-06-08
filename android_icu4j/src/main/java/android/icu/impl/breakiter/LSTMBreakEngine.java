@@ -26,7 +26,6 @@ import android.icu.text.UnicodeSet;
 import android.icu.util.UResourceBundle;
 
 /**
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LSTMBreakEngine extends DictionaryBreakEngine {
@@ -75,7 +74,7 @@ public class LSTMBreakEngine extends DictionaryBreakEngine {
         return result;
     }
 
-    /** @hide draft / provisional / internal are hidden on Android*/
+    /***/
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class LSTMData {
         private LSTMData() {

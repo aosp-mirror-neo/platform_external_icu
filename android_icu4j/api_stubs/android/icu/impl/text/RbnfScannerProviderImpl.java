@@ -25,7 +25,6 @@ import android.icu.util.ULocale;
  * Returns RbnfLenientScanners that use the old RuleBasedNumberFormat
  * implementation behind setLenientParseMode, which is based on Collator.
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -35,8 +34,8 @@ public class RbnfScannerProviderImpl implements RbnfLenientScannerProvider {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public RbnfScannerProviderImpl() {
         cache = new HashMap<String, RbnfLenientScanner>();
@@ -71,8 +70,8 @@ public class RbnfScannerProviderImpl implements RbnfLenientScannerProvider {
      * it will correctly parse "two hundred zero" and "fifteen hundred".
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public RbnfLenientScanner get(ULocale locale, String extras) {
         RbnfLenientScanner result = null;
@@ -92,8 +91,8 @@ public class RbnfScannerProviderImpl implements RbnfLenientScannerProvider {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected RbnfLenientScanner createScanner(ULocale locale, String extras) {
         RuleBasedCollator collator = null;

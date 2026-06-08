@@ -879,9 +879,9 @@ class RBBITableBuilder {
         *  @param categories in/out parameter, specifies where to start looking for duplicates,
         *                and returns the first pair of duplicates found, if any.
         *  @return true if duplicate char classes were found, false otherwise.
-        *  @hide draft / provisional / internal are hidden on Android
         */
-       boolean findDuplCharClassFrom(RBBIRuleBuilder.IntPair categories) {
+       @android.annotation.Hide // draft / provisional / internal are hidden on Android
+    boolean findDuplCharClassFrom(RBBIRuleBuilder.IntPair categories) {
            int numStates = fDStates.size();
            int numCols = fRB.fSetBuilder.getNumCharCategories();
 
@@ -934,9 +934,9 @@ class RBBITableBuilder {
         *  @param states in/out parameter, specifies where to start looking for duplicates,
         *                and returns the first pair of duplicates found, if any.
         *  @return true if duplicate states were found, false otherwise.
-        *  @hide draft / provisional / internal are hidden on Android
         */
-       boolean findDuplicateState(RBBIRuleBuilder.IntPair states) {
+       @android.annotation.Hide // draft / provisional / internal are hidden on Android
+    boolean findDuplicateState(RBBIRuleBuilder.IntPair states) {
            int numStates = fDStates.size();
            int numCols = fRB.fSetBuilder.getNumCharCategories();
 
@@ -973,9 +973,9 @@ class RBBITableBuilder {
         *  @param states in/out parameter, specifies where to start looking for duplicates,
         *                and returns the first pair of duplicates found, if any.
         *  @return true if duplicate states were found, false otherwise.
-        *  @hide draft / provisional / internal are hidden on Android
         */
-       boolean findDuplicateSafeState(RBBIRuleBuilder.IntPair states) {
+       @android.annotation.Hide // draft / provisional / internal are hidden on Android
+    boolean findDuplicateSafeState(RBBIRuleBuilder.IntPair states) {
            int numStates = fSafeTable.size();
 
            for (; states.first<numStates-1; ++states.first) {
@@ -1006,9 +1006,9 @@ class RBBITableBuilder {
         * Remove a duplicate state (row) from the state table. All references to the deleted (second) state
         * are redirected to first state.
         * @param duplStates The duplicate pair of states.
-        * @hide draft / provisional / internal are hidden on Android
         */
-       void removeState(IntPair duplStates) {
+       @android.annotation.Hide // draft / provisional / internal are hidden on Android
+    void removeState(IntPair duplStates) {
            final int keepState = duplStates.first;
            final int duplState = duplStates.second;
            assert(keepState < duplState);
@@ -1038,9 +1038,9 @@ class RBBITableBuilder {
         * @param duplStates The duplicate pair of states.  The first is kept, the second is removed.
         *                   All references to the second in the state table are retargeted
         *                   to the first.
-        * @hide draft / provisional / internal are hidden on Android
         */
-       void removeSafeState(IntPair duplStates) {
+       @android.annotation.Hide // draft / provisional / internal are hidden on Android
+    void removeSafeState(IntPair duplStates) {
            final int keepState = duplStates.first;
            final int duplState = duplStates.second;
            assert(keepState < duplState);
@@ -1067,9 +1067,9 @@ class RBBITableBuilder {
        /**
         *  Check for, and remove duplicate states (table rows).
         *  @return the number of states removed.
-        *  @hide draft / provisional / internal are hidden on Android
         */
-       int removeDuplicateStates() {
+       @android.annotation.Hide // draft / provisional / internal are hidden on Android
+    int removeDuplicateStates() {
            IntPair dupls = new IntPair(3, 0);
            int numStatesRemoved = 0;
 

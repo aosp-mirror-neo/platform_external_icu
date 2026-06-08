@@ -709,7 +709,6 @@ public class SimpleDateFormat extends DateFormat {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -749,7 +748,6 @@ public class SimpleDateFormat extends DateFormat {
      * @param formatConfig the format configuration
      * @return A SimpleDateFormat instance
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1206,8 +1204,8 @@ public class SimpleDateFormat extends DateFormat {
      * adds fieldNum and capitalizationContext parameters.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected String subFormat(char ch, int count, int beginOffset,
                                int fieldNum, DisplayContext capitalizationContext,
@@ -1230,8 +1228,8 @@ public class SimpleDateFormat extends DateFormat {
      * has to pass it in to us.
      *
      * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @SuppressWarnings("fallthrough")
     protected void subFormat(StringBuffer buf,
@@ -1896,7 +1894,6 @@ public class SimpleDateFormat extends DateFormat {
      * Internal high-speed method.  Reuses a StringBuffer for results
      * instead of creating a String on the heap for each call.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -2577,8 +2574,8 @@ public class SimpleDateFormat extends DateFormat {
      * @deprecated This API is ICU internal only.
      * Does not handle monthPattern.
      * field is always Calendar.MONTH
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     private int matchAlphaMonthStrings(String text, int start, String[] wideData, String[] shortData, Calendar cal)
     {
@@ -2660,8 +2657,8 @@ public class SimpleDateFormat extends DateFormat {
      * sets the <code>cal</code> field <code>field</code> to the index
      * of the best match, if matching succeeded.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     private int matchString(String text, int start, int field, String[] data, String monthPattern, Calendar cal)
     {
@@ -2865,8 +2862,8 @@ public class SimpleDateFormat extends DateFormat {
      * set the appropriate field of <code>cal</code> with the parsed
      * value.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @SuppressWarnings("fallthrough")
     private int subParse(String text, int start, char ch, int count,
@@ -4010,7 +4007,6 @@ public class SimpleDateFormat extends DateFormat {
      *                                     pattern letter
      * @return                  Reference to 'appendTo' parameter.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated

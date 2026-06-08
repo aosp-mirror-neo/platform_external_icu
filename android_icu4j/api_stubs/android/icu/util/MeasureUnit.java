@@ -54,7 +54,6 @@ public class MeasureUnit implements Serializable {
      * If type set to null, measureUnitImpl is in use instead of type and subType.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -65,7 +64,6 @@ public class MeasureUnit implements Serializable {
      * subType.
      * 
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -73,9 +71,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Used by new draft APIs in ICU 68.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private MeasureUnitImpl measureUnitImpl;
 
     /**
@@ -300,8 +297,8 @@ public class MeasureUnit implements Serializable {
          * Returns the identifier of the prefix.
          *
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public String getIdentifier() {
             return identifier;
@@ -328,7 +325,6 @@ public class MeasureUnit implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -366,8 +362,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * @deprecated Internal API for ICU use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static MeasureUnit fromMeasureUnitImpl(MeasureUnitImpl measureUnitImpl) {
         measureUnitImpl.serialize();
@@ -475,8 +471,8 @@ public class MeasureUnit implements Serializable {
      * @param denominator The constant denominator to set.
      * @return A new MeasureUnit with the specified constant denominator.
      * @throws UnsupportedOperationException if the unit is not a COMPOUND unit.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public MeasureUnit withConstantDenominator(long denominator) {
         if (denominator < 0) {
             throw new IllegalArgumentException("Denominator cannot be negative");
@@ -517,8 +513,8 @@ public class MeasureUnit implements Serializable {
      *
      * @return The value of the constant denominator.
      * @throws UnsupportedOperationException if the unit is not a COMPOUND unit.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public long getConstantDenominator() {
         // TODO(ICU-23219)
         MeasureUnitImpl measureUnitImpl = getCopyOfMeasureUnitImpl();
@@ -762,7 +758,6 @@ public class MeasureUnit implements Serializable {
      * However, for special purposes (such as CLDR tooling), it is available.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -789,8 +784,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static MeasureUnit findBySubType(String subType) {
         populateCache();
@@ -807,14 +802,12 @@ public class MeasureUnit implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
     protected interface Factory {
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
         @android.annotation.Hide // original deprecated declaration
         @Deprecated
@@ -889,9 +882,8 @@ public class MeasureUnit implements Serializable {
      * with public static instances (G_FORCE, METER_PER_SECOND_SQUARED, etc.) only.
      * Adding of others is deferred until later to avoid circular static init
      * dependencies with classes Currency and TimeUnit.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     static synchronized private void populateCache() {
         if (cacheIsPopulated) {
             return;
@@ -924,7 +916,6 @@ public class MeasureUnit implements Serializable {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -993,8 +984,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of angle: steradian
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit STERADIAN = MeasureUnit.internalGetInstance("angle", "steradian");
 
     /**
@@ -1004,14 +995,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of area: bu-jp
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit BU_JP = MeasureUnit.internalGetInstance("area", "bu-jp");
 
     /**
      * Constant for unit of area: cho
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit CHO = MeasureUnit.internalGetInstance("area", "cho");
 
     /**
@@ -1027,8 +1018,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of area: se-jp
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SE_JP = MeasureUnit.internalGetInstance("area", "se-jp");
 
     /**
@@ -1078,8 +1069,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of concentr: katal
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit KATAL = MeasureUnit.internalGetInstance("concentr", "katal");
 
     /**
@@ -1109,20 +1100,20 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of concentr: ofglucose
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit OFGLUCOSE = MeasureUnit.internalGetInstance("concentr", "ofglucose");
 
     /**
      * Constant for unit of concentr: part
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit PART = MeasureUnit.internalGetInstance("concentr", "part");
 
     /**
      * Constant for unit of concentr: part-per-1e6
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit PART_PER_1E6 = MeasureUnit.internalGetInstance("concentr", "part-per-1e6");
 
     /**
@@ -1133,8 +1124,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of concentr: part-per-1e9
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit PART_PER_1E9 = MeasureUnit.internalGetInstance("concentr", "part-per-1e9");
 
     /**
@@ -1251,8 +1242,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of duration: fortnight
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit FORTNIGHT = MeasureUnit.internalGetInstance("duration", "fortnight");
 
     /**
@@ -1336,20 +1327,20 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of electric: coulomb
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit COULOMB = MeasureUnit.internalGetInstance("electric", "coulomb");
 
     /**
      * Constant for unit of electric: farad
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit FARAD = MeasureUnit.internalGetInstance("electric", "farad");
 
     /**
      * Constant for unit of electric: henry
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit HENRY = MeasureUnit.internalGetInstance("electric", "henry");
 
     /**
@@ -1364,8 +1355,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of electric: siemens
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SIEMENS = MeasureUnit.internalGetInstance("electric", "siemens");
 
     /**
@@ -1375,8 +1366,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of energy: becquerel
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit BECQUEREL = MeasureUnit.internalGetInstance("energy", "becquerel");
 
     /**
@@ -1387,8 +1378,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of energy: british-thermal-unit-it
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit BRITISH_THERMAL_UNIT_IT = MeasureUnit.internalGetInstance("energy", "british-thermal-unit-it");
 
     /**
@@ -1398,8 +1389,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of energy: calorie-it
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit CALORIE_IT = MeasureUnit.internalGetInstance("energy", "calorie-it");
 
     /**
@@ -1415,8 +1406,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of energy: gray
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit GRAY = MeasureUnit.internalGetInstance("energy", "gray");
 
     /**
@@ -1441,8 +1432,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of energy: sievert
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SIEVERT = MeasureUnit.internalGetInstance("energy", "sievert");
 
     /**
@@ -1453,8 +1444,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of force: kilogram-force
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit KILOGRAM_FORCE = MeasureUnit.internalGetInstance("force", "kilogram-force");
 
     /**
@@ -1546,8 +1537,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of length: chain
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit CHAIN = MeasureUnit.internalGetInstance("length", "chain");
 
     /**
@@ -1583,14 +1574,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of length: jo-jp
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit JO_JP = MeasureUnit.internalGetInstance("length", "jo-jp");
 
     /**
      * Constant for unit of length: ken
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit KEN = MeasureUnit.internalGetInstance("length", "ken");
 
     /**
@@ -1655,32 +1646,32 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of length: ri-jp
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit RI_JP = MeasureUnit.internalGetInstance("length", "ri-jp");
 
     /**
      * Constant for unit of length: rin
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit RIN = MeasureUnit.internalGetInstance("length", "rin");
 
     /**
      * Constant for unit of length: rod
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit ROD = MeasureUnit.internalGetInstance("length", "rod");
 
     /**
      * Constant for unit of length: shaku-cloth
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SHAKU_CLOTH = MeasureUnit.internalGetInstance("length", "shaku-cloth");
 
     /**
      * Constant for unit of length: shaku-length
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SHAKU_LENGTH = MeasureUnit.internalGetInstance("length", "shaku-length");
 
     /**
@@ -1691,8 +1682,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of length: sun
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SUN = MeasureUnit.internalGetInstance("length", "sun");
 
     /**
@@ -1723,14 +1714,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of magnetic: tesla
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit TESLA = MeasureUnit.internalGetInstance("magnetic", "tesla");
 
     /**
      * Constant for unit of magnetic: weber
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit WEBER = MeasureUnit.internalGetInstance("magnetic", "weber");
 
     /**
@@ -1752,8 +1743,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of mass: fun
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit FUN = MeasureUnit.internalGetInstance("mass", "fun");
 
     /**
@@ -1799,8 +1790,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of mass: slug
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SLUG = MeasureUnit.internalGetInstance("mass", "slug");
 
     /**
@@ -1914,8 +1905,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of pressure: ofhg
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit OFHG = MeasureUnit.internalGetInstance("pressure", "ofhg");
 
     /**
@@ -1983,8 +1974,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of temperature: rankine
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit RANKINE = MeasureUnit.internalGetInstance("temperature", "rankine");
 
     /**
@@ -2062,14 +2053,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: cup-imperial
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit CUP_IMPERIAL = MeasureUnit.internalGetInstance("volume", "cup-imperial");
 
     /**
      * Constant for unit of volume: cup-jp
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit CUP_JP = MeasureUnit.internalGetInstance("volume", "cup-jp");
 
     /**
@@ -2119,8 +2110,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: fluid-ounce-metric
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit FLUID_OUNCE_METRIC = MeasureUnit.internalGetInstance("volume", "fluid-ounce-metric");
 
     /**
@@ -2146,14 +2137,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: koku
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit KOKU = MeasureUnit.internalGetInstance("volume", "koku");
 
     /**
      * Constant for unit of volume: kosaji
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit KOSAJI = MeasureUnit.internalGetInstance("volume", "kosaji");
 
     /**
@@ -2173,8 +2164,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: osaji
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit OSAJI = MeasureUnit.internalGetInstance("volume", "osaji");
 
     /**
@@ -2190,8 +2181,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: pint-imperial
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit PINT_IMPERIAL = MeasureUnit.internalGetInstance("volume", "pint-imperial");
 
     /**
@@ -2212,14 +2203,14 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: sai
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SAI = MeasureUnit.internalGetInstance("volume", "sai");
 
     /**
      * Constant for unit of volume: shaku
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit SHAKU = MeasureUnit.internalGetInstance("volume", "shaku");
 
     /**
@@ -2234,8 +2225,8 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of volume: to-jp
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final MeasureUnit TO_JP = MeasureUnit.internalGetInstance("volume", "to-jp");
 
     // End generated MeasureUnit constants
@@ -2264,8 +2255,8 @@ public class MeasureUnit implements Serializable {
      *
      * @return this object in a MeasureUnitImpl form.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public MeasureUnitImpl getCopyOfMeasureUnitImpl() {
         return this.measureUnitImpl == null ?

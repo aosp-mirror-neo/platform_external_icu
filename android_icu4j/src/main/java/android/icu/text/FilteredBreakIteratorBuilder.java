@@ -99,8 +99,8 @@ public abstract class FilteredBreakIteratorBuilder {
     /**
      * For subclass use
      * @deprecated internal to ICU
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected FilteredBreakIteratorBuilder() {
     }

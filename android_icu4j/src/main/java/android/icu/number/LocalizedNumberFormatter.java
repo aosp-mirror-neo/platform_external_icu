@@ -149,8 +149,8 @@ public class LocalizedNumberFormatter extends NumberFormatterSettings<LocalizedN
      *            The string builder into which to insert the result.
      *
      * @deprecated ICU 60 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public MicroProps formatImpl(DecimalQuantity fq, FormattedStringBuilder string) {
         if (computeCompiled()) {
@@ -163,8 +163,8 @@ public class LocalizedNumberFormatter extends NumberFormatterSettings<LocalizedN
      * Version of above for unit override.
      *
      * @deprecated ICU 67 This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public MicroProps formatImpl(DecimalQuantity fq, MeasureUnit unit, FormattedStringBuilder string) {
         // Use this formatter if possible
@@ -185,8 +185,8 @@ public class LocalizedNumberFormatter extends NumberFormatterSettings<LocalizedN
     /**
      * @deprecated This API is ICU internal only. Use {@link FormattedNumber#nextPosition}
      *             for related functionality.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public String getAffixImpl(boolean isPrefix, boolean isNegative) {
         FormattedStringBuilder string = new FormattedStringBuilder();

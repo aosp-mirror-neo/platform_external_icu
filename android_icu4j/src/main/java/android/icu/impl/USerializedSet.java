@@ -18,8 +18,6 @@ package android.icu.impl;
 /**
  * Simple class for handling serialized USet/UnicodeSet structures
  * without object creation. See ICU4C icu/source/common/uset.c.
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public final class USerializedSet {

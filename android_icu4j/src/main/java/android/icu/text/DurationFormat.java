@@ -46,8 +46,8 @@ public abstract class DurationFormat extends UFormat {
     /**
      * Subclass interface
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected DurationFormat() {
     }
@@ -55,8 +55,8 @@ public abstract class DurationFormat extends UFormat {
     /**
      * Subclass interface
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected DurationFormat(ULocale locale) {
         setLocale(locale,locale);

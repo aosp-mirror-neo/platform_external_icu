@@ -14,8 +14,6 @@ import android.icu.text.FormattedValue;
 /**
  * Very-very rough implementation of FormattedValue, packaging a string.
  * Expect it to change.
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class PlainStringFormattedValue implements FormattedValue {
@@ -25,9 +23,8 @@ public class PlainStringFormattedValue implements FormattedValue {
      * Constructor, taking the string to store.
      *
      * @param value the string value to store
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public PlainStringFormattedValue(String value) {
         if (value == null) {
             throw new IllegalAccessError("Should not try to wrap a null in a formatted value");
@@ -37,9 +34,8 @@ public class PlainStringFormattedValue implements FormattedValue {
 
     /**
      * {@inheritDoc}
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public int length() {
         return value == null ? 0 : value.length();
@@ -47,9 +43,8 @@ public class PlainStringFormattedValue implements FormattedValue {
 
     /**
      * {@inheritDoc}
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public char charAt(int index) {
         return value.charAt(index);
@@ -57,9 +52,8 @@ public class PlainStringFormattedValue implements FormattedValue {
 
     /**
      * {@inheritDoc}
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public CharSequence subSequence(int start, int end) {
         return value.subSequence(start, end);
@@ -67,9 +61,8 @@ public class PlainStringFormattedValue implements FormattedValue {
 
     /**
      * {@inheritDoc}
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public <A extends Appendable> A appendTo(A appendable) {
         try {
@@ -84,9 +77,8 @@ public class PlainStringFormattedValue implements FormattedValue {
      * Not yet implemented.
      *
      * {@inheritDoc}
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public boolean nextPosition(ConstrainedFieldPosition cfpos) {
         throw new RuntimeException("nextPosition not yet implemented");
@@ -96,9 +88,8 @@ public class PlainStringFormattedValue implements FormattedValue {
      * Not yet implemented.
      *
      * {@inheritDoc}
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public AttributedCharacterIterator toCharacterIterator() {
         throw new RuntimeException("toCharacterIterator not yet implemented");
@@ -106,9 +97,8 @@ public class PlainStringFormattedValue implements FormattedValue {
 
     /**
      * {@inheritDoc}
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public String toString() {
         return value;

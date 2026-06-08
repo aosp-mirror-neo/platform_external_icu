@@ -9,25 +9,24 @@ package android.icu.segmenter;
  * {@code limit} indices correspond to {@code source}, the input {@code CharSequence} that was
  * originally passed to the {@code Segmenter}. {@code start} and {@code limit} are inclusive and
  * exclusive boundaries, respectively.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class Segment {
 
   /**
-   * @hide draft / provisional / internal are hidden on Android
    */
-  public final int start;
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+public final int start;
 
   /**
-   * @hide draft / provisional / internal are hidden on Android
    */
-  public final int limit;
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+public final int limit;
 
   /**
-   * @hide draft / provisional / internal are hidden on Android
    */
-  public final int ruleStatus = 0;
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+public final int ruleStatus = 0;
 
   private final CharSequence source;
 
@@ -41,9 +40,9 @@ public class Segment {
    * Returns the subsequence represented by this {@code Segment}
    * @return a new {@code CharSequence} object that is the subsequence represented by this
    * {@code Segment}.
-   * @hide draft / provisional / internal are hidden on Android
    */
-  public CharSequence getSubSequence() {
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+public CharSequence getSubSequence() {
     return source.subSequence(start, limit);
   }
 }

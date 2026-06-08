@@ -636,9 +636,8 @@ public abstract class Trie2 implements Iterable<Trie2.Range> {
      *
      * For Java, this is read from the stream into an instance of UTrie2Header.
      * (The C version just places a struct over the raw serialized data.)
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     static class UTrie2Header {
         /** "Tri2" in big-endian US-ASCII (0x54726932) */
         int signature;
@@ -853,9 +852,8 @@ public abstract class Trie2 implements Iterable<Trie2.Range> {
      *
      *   Iteration over a Trie2 first returns all of the ranges that are indexed by code points,
      *   then returns the special alternate values for the lead surrogates
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     class Trie2Iterator implements Iterator<Range> {
         // The normal constructor that configures the iterator to cover the complete
         //   contents of the Trie2

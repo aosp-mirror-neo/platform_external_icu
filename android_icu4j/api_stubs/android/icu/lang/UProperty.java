@@ -34,7 +34,6 @@ public interface UProperty
     /**
      * Special value indicating undefined property.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated

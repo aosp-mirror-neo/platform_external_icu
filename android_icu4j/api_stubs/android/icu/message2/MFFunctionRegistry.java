@@ -30,7 +30,6 @@ import java.util.Set;
  * <p><b>NOTE:</b> all function names are normalized to NFC.
  *
  * @deprecated This API is for technology preview only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -49,8 +48,8 @@ public class MFFunctionRegistry {
      * @return the Builder.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static Builder builder() {
         return new Builder();
@@ -72,8 +71,8 @@ public class MFFunctionRegistry {
      * @return the factory creating function for {@code name}. Returns {@code null} if none is registered.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public FunctionFactory getFunction(String functionName) {
         return functionMap.get(StringUtils.toNfc(functionName));
@@ -85,8 +84,8 @@ public class MFFunctionRegistry {
      * @return a set of all the known function names.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Set<String> getFunctionNames() {
         return functionMap.keySet();
@@ -99,8 +98,8 @@ public class MFFunctionRegistry {
      * @return the name of the function class, if registered. Returns {@code null} otherwise.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public String getDefaultFunctionNameForType(Class<?> clazz) {
         // Search for the class "as is", to save time.
@@ -126,8 +125,8 @@ public class MFFunctionRegistry {
      * @return a set of all the known classes that have mapping to function names.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Set<Class<?>> getDefaultFunctionTypes() {
         return classToFunction.keySet();
@@ -137,7 +136,6 @@ public class MFFunctionRegistry {
      * A {@code Builder} used to build instances of {@link MFFunctionRegistry}.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -155,8 +153,8 @@ public class MFFunctionRegistry {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder addAll(MFFunctionRegistry functionRegistry) {
             functionMap.putAll(functionRegistry.functionMap);
@@ -172,8 +170,8 @@ public class MFFunctionRegistry {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder setFunction(String functionName, FunctionFactory functionFactory) {
             functionMap.put(StringUtils.toNfc(functionName), functionFactory);
@@ -187,8 +185,8 @@ public class MFFunctionRegistry {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder removeFunction(String functionName) {
             functionMap.remove(StringUtils.toNfc(functionName));
@@ -201,8 +199,8 @@ public class MFFunctionRegistry {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder clearFunctions() {
             functionMap.clear();
@@ -217,8 +215,8 @@ public class MFFunctionRegistry {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder setDefaultFunctionNameForType(Class<?> clazz, String functionName) {
             classToFunction.put(clazz, StringUtils.toNfc(functionName));
@@ -232,8 +230,8 @@ public class MFFunctionRegistry {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder removeDefaultFunctionNameForType(Class<?> clazz) {
             classToFunction.remove(clazz);
@@ -246,8 +244,8 @@ public class MFFunctionRegistry {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder clearDefaultFunctionNames() {
             classToFunction.clear();
@@ -260,8 +258,8 @@ public class MFFunctionRegistry {
          * @return the function registry created.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public MFFunctionRegistry build() {
             return new MFFunctionRegistry(this);

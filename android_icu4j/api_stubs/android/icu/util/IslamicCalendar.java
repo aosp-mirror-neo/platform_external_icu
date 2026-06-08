@@ -1138,8 +1138,8 @@ public class IslamicCalendar extends Calendar {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public final int getRelatedYear() {
@@ -1168,8 +1168,8 @@ public class IslamicCalendar extends Calendar {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public final void setRelatedYear(int year) {

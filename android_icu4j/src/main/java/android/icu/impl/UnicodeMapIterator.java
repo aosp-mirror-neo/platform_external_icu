@@ -44,8 +44,6 @@ import android.icu.text.UTF16;
  * }
  * </pre>
  * @author M. Davis
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class UnicodeMapIterator<T> {

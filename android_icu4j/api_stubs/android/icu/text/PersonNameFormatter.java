@@ -319,8 +319,8 @@ public class PersonNameFormatter {
 
     /**
      * @deprecated This API is for unit testing only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public PersonNameFormatter(Locale locale, String[] gnFirstPatterns, String[] snFirstPatterns, String[] gnFirstLocales, String[] snFirstLocales) {
         this.impl = new PersonNameFormatterImpl(locale, gnFirstPatterns, snFirstPatterns, gnFirstLocales, snFirstLocales);
@@ -328,8 +328,8 @@ public class PersonNameFormatter {
 
     /**
      * @deprecated This API is for debugging only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public String toString() {

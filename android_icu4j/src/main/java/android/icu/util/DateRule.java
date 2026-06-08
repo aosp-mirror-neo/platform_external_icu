@@ -22,7 +22,6 @@ import java.util.Date;
  * Daylight Savings Time rules, and other events such as meetings.
  *
  * @see SimpleDateRule
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface DateRule
@@ -37,8 +36,8 @@ public interface DateRule
      *              does not occur on or after the start date.
      *
      * @see #firstBetween
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     abstract public Date    firstAfter(Date start);
 
     /**
@@ -53,8 +52,8 @@ public interface DateRule
      *              does not occur between the start and end dates.
      *
      * @see #firstAfter
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     abstract public Date    firstBetween(Date start, Date end);
 
     /**
@@ -66,14 +65,14 @@ public interface DateRule
      *
      * @param date  The date to check.
      * @return      true if this event occurs on the given date.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     abstract public boolean isOn(Date date);
 
     /**
      * Check whether this event occurs at least once between the two
      * dates given.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     abstract public boolean isBetween(Date start, Date end);
 }

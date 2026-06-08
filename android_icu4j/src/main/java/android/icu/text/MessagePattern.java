@@ -295,8 +295,8 @@ public final class MessagePattern implements Cloneable, Freezable<MessagePattern
 
     /**
      * @return true if getApostropheMode() == ApostropheMode.DOUBLE_REQUIRED
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     /* package */ boolean jdkAposMode() {
         return aposMode == ApostropheMode.DOUBLE_REQUIRED;
     }
@@ -1351,9 +1351,9 @@ public final class MessagePattern implements Cloneable, Freezable<MessagePattern
     /**
      * Appends the s[start, limit[ substring to sb, but with only half of the apostrophes
      * according to JDK pattern behavior.
-     * @hide draft / provisional / internal are hidden on Android
      */
-    /* package */ static void appendReducedApostrophes(String s, int start, int limit,
+    /* package */ @android.annotation.Hide // draft / provisional / internal are hidden on Android
+    static void appendReducedApostrophes(String s, int start, int limit,
                                                        StringBuilder sb) {
         int doubleApos=-1;
         for(;;) {

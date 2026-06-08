@@ -559,8 +559,8 @@ public final class LocaleMatcher {
          * @param thresholdDistance the thresholdDistance to set, with -1 = default
          * @return this Builder object
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder internalSetThresholdDistance(int thresholdDistance) {
             if (thresholdDistance > 100) {

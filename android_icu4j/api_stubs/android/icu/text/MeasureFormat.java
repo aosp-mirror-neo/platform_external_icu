@@ -180,8 +180,8 @@ public class MeasureFormat extends UFormat {
          * (UnitWidth.SHORT) but wide for other units.
          *
          * @deprecated ICU 61 This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         DEFAULT_CURRENCY(ListFormatter.Width.SHORT, UnitWidth.FULL_NAME, UnitWidth.SHORT);
 
@@ -327,8 +327,8 @@ public class MeasureFormat extends UFormat {
      * @see java.text.Format#parseObject(java.lang.String, java.text.ParsePosition)
      * @throws UnsupportedOperationException
      *             Not supported.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public Measure parseObject(String source, ParsePosition pos) {
         throw new UnsupportedOperationException();
@@ -1023,7 +1023,6 @@ public class MeasureFormat extends UFormat {
      *            the format width
      * @return range formatter, such as "{0}–{1}"
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated

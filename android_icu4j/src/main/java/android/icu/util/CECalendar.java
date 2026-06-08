@@ -179,8 +179,8 @@ abstract class CECalendar extends Calendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected void handleComputeFields(int julianDay) {
@@ -199,16 +199,16 @@ abstract class CECalendar extends Calendar {
     /**
      * Convert extended year to era
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     abstract protected int extendedYearToEra(int eyear);
 
     /**
      * Convert extended year to year
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     abstract protected int extendedYearToYear(int eyear);
 

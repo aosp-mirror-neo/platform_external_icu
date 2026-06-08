@@ -641,8 +641,8 @@ public class SimpleTimeZone extends BasicTimeZone {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public int getOffset(int era, int year, int month, int day,
                               int dayOfWeek, int millis,

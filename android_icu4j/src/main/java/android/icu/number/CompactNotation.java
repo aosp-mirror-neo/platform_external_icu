@@ -42,8 +42,8 @@ public class CompactNotation extends Notation {
      * Create a compact notation with custom data.
      * @deprecated This API is ICU internal only.
      * @see DecimalFormatProperties#setCompactCustomData
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static CompactNotation forCustomData(Map<String, Map<String, String>> compactCustomData) {
         return new CompactNotation(compactCustomData);

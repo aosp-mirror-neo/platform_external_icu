@@ -584,8 +584,8 @@ public abstract class DecimalQuantity_AbstractBCD implements DecimalQuantity {
      * false otherwise. Used for testing.
      *
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public boolean explicitExactDouble = false;
 
@@ -1000,8 +1000,8 @@ public abstract class DecimalQuantity_AbstractBCD implements DecimalQuantity {
      *            false, append to the end like a fraction digit. If true, there must not be any fraction
      *            digits already in the number.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public void appendDigit(byte value, int leadingZeros, boolean appendAsInteger) {
         assert leadingZeros >= 0;

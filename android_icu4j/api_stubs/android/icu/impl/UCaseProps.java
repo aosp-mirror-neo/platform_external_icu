@@ -1079,8 +1079,8 @@ public final class UCaseProps {
      *
      * @see ContextIterator
      * @see #MAX_STRING_LENGTH
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public final int toFullLower(int c, ContextIterator iter, Appendable out, int caseLocale) {
         int result, props;
 
@@ -1416,9 +1416,8 @@ public final class UCaseProps {
      * It is conceivable that at some point we might use one more bit for using uppercase sharp s.
      * It is conceivable that at some point we might want the option to use only simple case foldings
      * when operating on strings.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     static final int FOLD_CASE_OPTIONS_MASK = 7;
 
     /* return the simple case folding mapping for c */

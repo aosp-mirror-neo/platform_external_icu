@@ -114,8 +114,8 @@ final public class ListFormatter {
          * serialization method resolve instances to the constant
          * ListFormatter.SpanField values
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         @Override
         protected Object readResolve() throws InvalidObjectException {
@@ -151,8 +151,8 @@ final public class ListFormatter {
          * Serialization method resolve instances to the constant Field values
          *
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         @Override
         protected Object readResolve() throws InvalidObjectException {
@@ -253,8 +253,8 @@ final public class ListFormatter {
      *            string for the end of a list items, containing {0} for the
      *            first part of the list, and {1} for the last item.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public ListFormatter(String two, String start, String middle, String end) {
         this(
@@ -541,8 +541,8 @@ final public class ListFormatter {
     /**
      * Returns the locale of this object.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public ULocale getLocale() {
         return locale;

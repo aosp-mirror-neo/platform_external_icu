@@ -15,7 +15,6 @@ import java.text.Format.Field;
 /**
  * Adds the ability to get the decimal digits
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -25,8 +24,8 @@ public class UFieldPosition extends FieldPosition {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UFieldPosition() {
         super(-1);
@@ -34,8 +33,8 @@ public class UFieldPosition extends FieldPosition {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UFieldPosition(int field) {
         super(field);
@@ -43,8 +42,8 @@ public class UFieldPosition extends FieldPosition {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UFieldPosition(Field attribute, int fieldID) {
         super(attribute, fieldID);
@@ -52,8 +51,8 @@ public class UFieldPosition extends FieldPosition {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public UFieldPosition(Field attribute) {
         super(attribute);
@@ -61,8 +60,8 @@ public class UFieldPosition extends FieldPosition {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public void setFractionDigits(int countVisibleFractionDigits, long fractionDigits ) {
         this.countVisibleFractionDigits = countVisibleFractionDigits;
@@ -71,8 +70,8 @@ public class UFieldPosition extends FieldPosition {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public int getCountVisibleFractionDigits() {
         return countVisibleFractionDigits;
@@ -80,8 +79,8 @@ public class UFieldPosition extends FieldPosition {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public long getFractionDigits() {
         return fractionDigits;

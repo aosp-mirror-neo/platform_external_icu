@@ -32,7 +32,6 @@ import java.util.stream.Stream;
  *
  * @see Segmenter
  * @see Segment
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public interface Segments {
@@ -41,9 +40,9 @@ public interface Segments {
    * Returns a {@code Stream} of the {@code CharSequence}s for all of the segments in the source
    * sequence. Start from the beginning of the sequence and iterate forwards until the end.
    * @return a {@code Stream} of all {@code Segments} in the source sequence.
-   * @hide draft / provisional / internal are hidden on Android
    */
-  default Stream<CharSequence> subSequences() {
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+default Stream<CharSequence> subSequences() {
     return segments().map(Segment::getSubSequence);
   }
 
@@ -57,9 +56,9 @@ public interface Segments {
    * @throws IndexOutOfBoundsException if {@code i} is less than 0 or greater than or equal to the
    *     length of the input {@code CharSequence} to the {@code Segmenter}
    * @return A segment that either starts at or contains index {@code i}
-   * @hide draft / provisional / internal are hidden on Android
    */
-  Segment segmentAt(int i);
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+Segment segmentAt(int i);
 
   /**
    * Returns a {@code Stream} of all {@code Segment}s in the source sequence. Start with the first
@@ -67,9 +66,9 @@ public interface Segments {
    *
    * <p>This is equivalent to {@code segmentsFrom(0)}.</p>
    * @return a {@code Stream} of all {@code Segments} in the source sequence.
-   * @hide draft / provisional / internal are hidden on Android
    */
-  default Stream<Segment> segments() {
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+default Stream<Segment> segments() {
     return segmentsFrom(0);
   }
 
@@ -89,9 +88,9 @@ public interface Segments {
    * all {@code Segment}s.</p>
    * @param i index in the input {@code CharSequence} to the {@code Segmenter}
    * @return a {@code Stream} of all {@code Segment}s at or after {@code i}
-   * @hide draft / provisional / internal are hidden on Android
    */
-  Stream<Segment> segmentsFrom(int i);
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+Stream<Segment> segmentsFrom(int i);
 
   /**
    * Returns a {@code Stream} of all {@code Segment}s in the source sequence where all segment
@@ -103,9 +102,9 @@ public interface Segments {
    * {@code l ≤ i}.</p>
    * @param i index in the input {@code CharSequence} to the {@code Segmenter}
    * @return a {@code Stream} of all {@code Segment}s before {@code i}
-   * @hide draft / provisional / internal are hidden on Android
    */
-  Stream<Segment> segmentsBefore(int i);
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+Stream<Segment> segmentsBefore(int i);
 
   /**
    * Returns whether offset {@code i} is a segmentation boundary. Throws an exception when
@@ -114,9 +113,9 @@ public interface Segments {
    * @throws IllegalArgumentException if {@code i} is less than 0 or greater than the length of the
    *     input {@code CharSequence} to the {@code Segmenter}
    * @return Returns whether offset {@code i} is a segmentation boundary.
-   * @hide draft / provisional / internal are hidden on Android
    */
-  boolean isBoundary(int i);
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+boolean isBoundary(int i);
 
   /**
    * Returns all segmentation boundaries, starting from the beginning and moving forwards.
@@ -126,9 +125,9 @@ public interface Segments {
    * and the fact that 0 is the first boundary returned from the start of an input sequence.</p>
    * @return An {@code IntStream} of all segmentation boundaries, starting at the first
    * boundary with index 0, and moving forwards in the input sequence.
-   * @hide draft / provisional / internal are hidden on Android
    */
-  default IntStream boundaries() {
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+default IntStream boundaries() {
     return boundariesAfter(-1);
   }
 
@@ -136,9 +135,9 @@ public interface Segments {
    * Returns all segmentation boundaries after the provided index.  Iteration moves forwards.
    * @param i index in the input {@code CharSequence} to the {@code Segmenter}
    * @return An {@code IntStream} of all boundaries {@code b} such that {@code b > i}
-   * @hide draft / provisional / internal are hidden on Android
    */
-  IntStream boundariesAfter(int i);
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+IntStream boundariesAfter(int i);
 
   /**
    * Returns all segmentation boundaries on or before the provided index. Iteration moves backwards.
@@ -152,27 +151,27 @@ public interface Segments {
    *     space of all boundaries.</p>
    * @param i index in the input {@code CharSequence} to the {@code Segmenter}
    * @return An {@code IntStream} of all boundaries {@code b} such that {@code b ≤ i}
-   * @hide draft / provisional / internal are hidden on Android
    */
-  IntStream boundariesBackFrom(int i);
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+IntStream boundariesBackFrom(int i);
 
   //
   // Inner enums/classes in common for other inner classes
   //
 
   /**
-   * @hide draft / provisional / internal are hidden on Android
    */
-  enum IterationDirection {
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+enum IterationDirection {
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     FORWARDS,
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     BACKWARDS,
   }
 }

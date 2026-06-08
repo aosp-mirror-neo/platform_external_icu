@@ -17,7 +17,6 @@ import java.util.Date;
  * Despite its age, is still draft API, and clients should treat it as such.
  *
  * Simple implementation of DateRule.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class SimpleDateRule implements DateRule
@@ -27,8 +26,8 @@ public class SimpleDateRule implements DateRule
      *
      * @param month         The month in which this rule occurs (0-based).
      * @param dayOfMonth    The date in that month (1-based).
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public SimpleDateRule(int month, int dayOfMonth)
     {
         this.month      = month;
@@ -54,8 +53,8 @@ public class SimpleDateRule implements DateRule
      * @param after         If true, this rule selects the first dayOfWeek
      *                      on or after dayOfMonth.  If false, the rule selects
      *                      the first dayOfWeek on or before dayOfMonth.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public SimpleDateRule(int month, int dayOfMonth, int dayOfWeek, boolean after)
     {
         this.month      = month;
@@ -73,8 +72,8 @@ public class SimpleDateRule implements DateRule
      *              does not occur on or after the start date.
      *
      * @see #firstBetween
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public Date firstAfter(Date start)
     {
@@ -93,8 +92,8 @@ public class SimpleDateRule implements DateRule
      *              does not occur between the start and end dates.
      *
      * @see #firstAfter
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public Date firstBetween(Date start, Date end)
     {
@@ -111,8 +110,8 @@ public class SimpleDateRule implements DateRule
      *
      * @param date  The date to check.
      * @return      true if this event occurs on the given date.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public boolean isOn(Date date)
     {
@@ -135,8 +134,8 @@ public class SimpleDateRule implements DateRule
     /**
      * Check whether this event occurs at least once between the two
      * dates given.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public boolean isBetween(Date start, Date end)
     {

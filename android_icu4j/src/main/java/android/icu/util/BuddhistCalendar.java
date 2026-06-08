@@ -238,8 +238,8 @@ public class BuddhistCalendar extends GregorianCalendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected boolean isEra0CountingBackward() {

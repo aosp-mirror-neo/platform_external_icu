@@ -136,8 +136,6 @@ import java.util.Map;
  *
  * <p>The complete list of valid options for each function, and how they infulence the results, can be found at
  * <a target="github" href="https://github.com/unicode-org/message-format-wg/blob/main/spec/registry.md">here</a>.<p>
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class MessageFormatter {
@@ -182,9 +180,8 @@ public class MessageFormatter {
      * Creates a builder.
      *
      * @return the Builder.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static Builder builder() {
         return new Builder();
     }
@@ -194,9 +191,8 @@ public class MessageFormatter {
      * the current {@code MessageFormatter}.
      *
      * @return the locale.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Locale getLocale() {
         return locale;
     }
@@ -206,9 +202,8 @@ public class MessageFormatter {
      * the current {@code MessageFormatter}.
      *
      * @return the error handling behavior.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public ErrorHandlingBehavior getErrorHandlingBehavior() {
         return errorHandlingBehavior;
     }
@@ -218,9 +213,8 @@ public class MessageFormatter {
      * message parts with mixed direction.
      *
      * @return the bidi isolation algorithm.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public BidiIsolation getBidiIsolation() {
         return bidiIsolation;
     }
@@ -233,9 +227,8 @@ public class MessageFormatter {
      * the this string is generated from that model.</p>
      *
      * @return the pattern.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public String getPattern() {
         return pattern;
     }
@@ -252,8 +245,8 @@ public class MessageFormatter {
      * @return the data model.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public MFDataModel.Message getDataModel() {
         return dataModel;
@@ -268,9 +261,8 @@ public class MessageFormatter {
      *
      * @throws IllegalArgumentException when something goes wrong
      *         (for example wrong argument type, or null arguments, etc.)
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public String formatToString(Map<String, Object> arguments) {
         return modelFormatter.format(arguments);
     }
@@ -283,8 +275,8 @@ public class MessageFormatter {
      * @return the {@link FormattedMessage} class representing the message with parameters replaced.
      *
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @SuppressWarnings("static-method")
     public FormattedMessage format(Map<String, Object> arguments) {
@@ -300,22 +292,18 @@ public class MessageFormatter {
      *
      * <p>Used in conjunction with the
      * {@link MessageFormatter.Builder#setErrorHandlingBehavior(MessageFormatter.ErrorHandlingBehavior)} method.</p>
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static enum ErrorHandlingBehavior {
         /**
          * Suppress errors and return best-effort output.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         BEST_EFFORT,
         /**
          * Signal all {@code MessageFormat} errors by throwing a {@link RuntimeException}.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         STRICT
     }
 
@@ -327,29 +315,23 @@ public class MessageFormatter {
      *
      * <p>Used in conjunction with the
      * {@link MessageFormatter.Builder#setBidiIsolation(MessageFormatter.BidiIsolation)} method.</p>
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static enum BidiIsolation {
         /**
          * Ignore any text direction mixture, don't introduce bidi control characters in the formatted result.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         NONE,
         /**
          * Wrap direction mixtures in bidi control characters as described in the MessageFormat 2 specification.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         DEFAULT
     }
 
     /**
      * A {@code Builder} used to build instances of {@link MessageFormatter}.
-     *
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     public static class Builder {
@@ -368,9 +350,8 @@ public class MessageFormatter {
          *
          * @param locale the locale to set.
          * @return the builder, for fluent use.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public Builder setLocale(Locale locale) {
             this.locale = locale;
             return this;
@@ -382,9 +363,8 @@ public class MessageFormatter {
          *
          * @param pattern the pattern to set.
          * @return the builder, for fluent use.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public Builder setPattern(String pattern) {
             this.pattern = pattern;
             this.dataModel = null;
@@ -398,9 +378,8 @@ public class MessageFormatter {
          *
          * @param errorHandlingBehavior the error handling behavior to use.
          * @return the builder, for fluent use.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public Builder setErrorHandlingBehavior(ErrorHandlingBehavior errorHandlingBehavior) {
             this.errorHandlingBehavior = errorHandlingBehavior;
             return this;
@@ -414,9 +393,8 @@ public class MessageFormatter {
          *
          * @param bidiIsolation the bidi isolation algorithm to use.
          * @return the builder, for fluent use.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public Builder setBidiIsolation(BidiIsolation bidiIsolation) {
             this.bidiIsolation = bidiIsolation;
             return this;
@@ -435,8 +413,8 @@ public class MessageFormatter {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder setFunctionRegistry(MFFunctionRegistry functionRegistry) {
             this.functionRegistry = functionRegistry;
@@ -451,8 +429,8 @@ public class MessageFormatter {
          * @return the builder, for fluent use.
          *
          * @deprecated This API is for technology preview only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public Builder setDataModel(MFDataModel.Message dataModel) {
             this.dataModel = dataModel;
@@ -464,9 +442,8 @@ public class MessageFormatter {
          * Builds an instance of {@link MessageFormatter}.
          *
          * @return the {@link MessageFormatter} created.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         public MessageFormatter build() {
             return new MessageFormatter(this);
         }

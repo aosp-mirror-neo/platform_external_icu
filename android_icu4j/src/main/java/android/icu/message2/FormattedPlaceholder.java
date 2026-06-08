@@ -12,7 +12,6 @@ import android.icu.text.FormattedValue;
  * Very preliminary.
  *
  * @deprecated This API is for ICU internal use only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -31,8 +30,8 @@ public class FormattedPlaceholder {
      * @param isolate true if the placeholder should be considered a bidi isolate. 
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public FormattedPlaceholder(Object inputValue, FormattedValue formattedValue, Directionality directionality, boolean isolate) {
         if (formattedValue == null) {
@@ -51,8 +50,8 @@ public class FormattedPlaceholder {
      * @param formattedValue the result of formatting the placeholder.
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public FormattedPlaceholder(Object inputValue, FormattedValue formattedValue) {
         this(inputValue, formattedValue, Directionality.LTR, false);
@@ -64,8 +63,8 @@ public class FormattedPlaceholder {
      * @return the original value to be formatted.
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Object getInput() {
         return inputValue;
@@ -77,8 +76,8 @@ public class FormattedPlaceholder {
      * @return the result of formatting the placeholder.
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public FormattedValue getFormattedValue() {
         return formattedValue;
@@ -90,8 +89,8 @@ public class FormattedPlaceholder {
      * @return the directionality.
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Directionality getDirectionality() {
         return directionality;
@@ -103,8 +102,8 @@ public class FormattedPlaceholder {
      * @return the BiDi isolate setting.
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public boolean getIsolate() {
         return isolate;
@@ -117,8 +116,8 @@ public class FormattedPlaceholder {
      * @return a string representation of the object.
      *
      * @deprecated This API is for ICU internal use only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     @Override
     public String toString() {

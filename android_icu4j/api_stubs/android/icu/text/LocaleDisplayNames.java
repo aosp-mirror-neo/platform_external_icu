@@ -205,7 +205,6 @@ public abstract class LocaleDisplayNames {
      * @param script the script code
      * @return the display name of the provided script code
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -374,7 +373,6 @@ public abstract class LocaleDisplayNames {
      * Sole constructor.  (For invocation by subclass constructors,
      * typically implicit.)
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated

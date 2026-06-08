@@ -25,7 +25,6 @@ import android.icu.impl.SimpleCache;
  * Provide information about gender in locales based on data in CLDR. Currently supplies gender of lists.
  * @author markdavis
  * @deprecated This API is ICU internal only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -36,27 +35,26 @@ public class GenderInfo {
     /**
      * Gender: OTHER means either the information is unavailable, or the person has declined to state MALE or FEMALE.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
     public enum Gender {
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         MALE,
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         FEMALE,
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         OTHER
     }
@@ -65,8 +63,8 @@ public class GenderInfo {
      * Create GenderInfo from a ULocale.
      * @param uLocale desired locale
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static GenderInfo getInstance(ULocale uLocale) {
         return genderInfoCache.get(uLocale);
@@ -76,8 +74,8 @@ public class GenderInfo {
      * Create GenderInfo from a Locale.
      * @param locale desired locale
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static GenderInfo getInstance(Locale locale) {
         return getInstance(ULocale.forLocale(locale));
@@ -88,7 +86,6 @@ public class GenderInfo {
      * This only affects gender for lists more than one. For lists of 1 item, the gender
      * of the list always equals the gender of that sole item.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // Only a subset of ICU is exposed in Android
     @Deprecated
@@ -98,8 +95,8 @@ public class GenderInfo {
          * For a single item, returns its gender;
          * Otherwise always OTHER.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         NEUTRAL,
         /**
@@ -108,8 +105,8 @@ public class GenderInfo {
          * Otherwise gender(all male) = male, gender(all female) = female, otherwise gender(list) = other.
          * So any 'other' value makes the overall gender be 'other'.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         MIXED_NEUTRAL,
         /**
@@ -118,8 +115,8 @@ public class GenderInfo {
          * Otherwise, gender(all female) = female, otherwise gender(list) = male.
          * So for more than one item, any 'other' value makes the overall gender be 'male'.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         MALE_TAINTS;
 
@@ -134,8 +131,8 @@ public class GenderInfo {
 
         /**
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public static ListGenderStyle fromName(String name) {
             ListGenderStyle result = fromNameMap.get(name);
@@ -151,8 +148,8 @@ public class GenderInfo {
      * @param genders a list of genders.
      * @return the gender of the list.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Gender getListGender(Gender... genders) {
         return getListGender(Arrays.asList(genders));
@@ -163,8 +160,8 @@ public class GenderInfo {
      * @param genders a list of genders.
      * @return the gender of the list.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public Gender getListGender(List<Gender> genders) {
         if (genders.size() == 0) {
@@ -215,8 +212,8 @@ public class GenderInfo {
      * Only for testing and use with CLDR.
      * @param genderStyle gender style
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public GenderInfo(ListGenderStyle genderStyle) {
         style = genderStyle;

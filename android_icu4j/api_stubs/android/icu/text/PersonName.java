@@ -83,8 +83,8 @@ public interface PersonName {
         /**
          * Returns the appropriate NameField for its display name.
          * @deprecated This API is for ICU internal use only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public static NameField forString(String name) {
             for (NameField field : values()) {
@@ -150,8 +150,8 @@ public interface PersonName {
          * as it existed in the original name field (e.g., "Jean-Claude" initializes into "J-C"
          * instead of "J.C.")  Has no effect if "initial" isn't also present in the list of modifiers.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         RETAIN("retain"),
 

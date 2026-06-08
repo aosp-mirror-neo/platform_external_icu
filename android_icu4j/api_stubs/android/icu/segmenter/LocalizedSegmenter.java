@@ -10,8 +10,6 @@ import java.util.Locale;
 
 /**
  * Performs segmentation according to the rules defined for the locale.
- *
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public class LocalizedSegmenter implements Segmenter {
@@ -26,18 +24,18 @@ public class LocalizedSegmenter implements Segmenter {
    *     modified while using the resulting {@code Segments} object.
    * @return A {@code Segments} object with APIs to access the results of segmentation, including
    *     APIs that return {@code Stream}s of the segments and boundaries.
-   * @hide draft / provisional / internal are hidden on Android
    */
-  @Override
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+@Override
   public Segments segment(CharSequence s) {
     return new SegmentsImpl(breakIterPrototype, s);
   }
 
   /**
    * @return a builder for constructing {@code LocalizedSegmenter}
-   * @hide draft / provisional / internal are hidden on Android
    */
-  public static Builder builder() {
+  @android.annotation.Hide // draft / provisional / internal are hidden on Android
+public static Builder builder() {
     return new Builder();
   }
 
@@ -63,35 +61,33 @@ public class LocalizedSegmenter implements Segmenter {
    * <a
    * href="https://unicode-org.github.io/icu/userguide/boundaryanalysis/#four-types-of-breakiterator">Boundary Analysis</a>
    * for further details.
-   * @hide draft / provisional / internal are hidden on Android
    */
   @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public enum SegmentationType {
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     GRAPHEME_CLUSTER,
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     WORD,
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     LINE,
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     SENTENCE,
   }
 
   /**
    * Builder for {@link LocalizedSegmenter}
-   * @hide draft / provisional / internal are hidden on Android
    */
   @android.annotation.Hide // Only a subset of ICU is exposed in Android
 public static class Builder {
@@ -105,8 +101,8 @@ public static class Builder {
     /**
      * Set the locale for which segmentation rules will be loaded
      * @param locale an ICU locale object
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Builder setLocale(ULocale locale) {
       if (locale == null) {
         throw new IllegalArgumentException("locale cannot be set to null.");
@@ -118,8 +114,8 @@ public static class Builder {
     /**
      * Set the locale for which segmentation rules will be loaded
      * @param locale a Java locale object
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Builder setLocale(Locale locale) {
       if (locale == null) {
         throw new IllegalArgumentException("locale cannot be set to null.");
@@ -131,8 +127,8 @@ public static class Builder {
     /**
      * Set the segmentation type to be performed.
      * @param segmentationType
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Builder setSegmentationType(SegmentationType segmentationType) {
       if (segmentationType == null) {
         throw new IllegalArgumentException("segmentationType cannot be set to null.");
@@ -144,8 +140,8 @@ public static class Builder {
     /**
      * Builds the {@code Segmenter}
      * @return the constructed {@code Segmenter} instance
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public Segmenter build() {
       if (segmentationType == null) {
         throw new IllegalArgumentException("segmentationType is null and must be set to a specific value.");

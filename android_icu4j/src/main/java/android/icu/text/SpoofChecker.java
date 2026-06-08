@@ -1080,8 +1080,8 @@ public class SpoofChecker {
      *
      * @return The restriction level
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public RestrictionLevel getRestrictionLevel() {
         return fRestrictionLevel;

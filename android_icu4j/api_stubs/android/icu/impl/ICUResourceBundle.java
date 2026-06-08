@@ -111,8 +111,8 @@ public  class ICUResourceBundle extends UResourceBundle {
      * @param omitDefault  if true, omit keyword and value if default.
      * 'de_DE\@collation=standard' -> 'de_DE'
      * @return the locale
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final ULocale getFunctionalEquivalent(String baseName, ClassLoader loader,
             String resName, String keyword, ULocale locID,
             boolean isAvailable[], boolean omitDefault) {
@@ -252,8 +252,8 @@ public  class ICUResourceBundle extends UResourceBundle {
      * @param baseName resource specifier
      * @param keyword a particular keyword to consider, must match a top level resource name
      * within the tree. (i.e. "collations")
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static final String[] getKeywordValues(String baseName, String keyword) {
         Set<String> keywords = new HashSet<>();
         ULocale locales[] = getAvailEntry(baseName, ICU_DATA_CLASS_LOADER)
@@ -1781,8 +1781,8 @@ public  class ICUResourceBundle extends UResourceBundle {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final Set<String> getTopLevelKeySet() {
         return wholeBundle.topLevelKeys;
@@ -1790,8 +1790,8 @@ public  class ICUResourceBundle extends UResourceBundle {
 
     /**
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final void setTopLevelKeySet(Set<String> keySet) {
         wholeBundle.topLevelKeys = keySet;

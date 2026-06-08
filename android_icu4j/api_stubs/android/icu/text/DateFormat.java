@@ -413,8 +413,8 @@ public abstract class DateFormat extends UFormat {
      * of the *related* calendar which may be different than the
      * one used by the DateFormat.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     final static int RELATED_YEAR = 34;
 
@@ -437,8 +437,8 @@ public abstract class DateFormat extends UFormat {
      * no related Calendar field. No pattern character is currently
      * defined for this.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public final static int TIME_SEPARATOR = 37;
 
@@ -484,8 +484,8 @@ public abstract class DateFormat extends UFormat {
         /**
          * alias of PARSE_PARTIAL_LITERAL_MATCH
          * @deprecated
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         PARSE_PARTIAL_MATCH
     };
@@ -1067,7 +1067,6 @@ public abstract class DateFormat extends UFormat {
      * List of all of the date skeleton constants for iteration.
      * Note that this is fragile; be sure to add any values that are added above.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1159,7 +1158,6 @@ public abstract class DateFormat extends UFormat {
      * List of all of the time skeleton constants for iteration.
      * Note that this is fragile; be sure to add any values that are added above.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1230,7 +1228,6 @@ public abstract class DateFormat extends UFormat {
      * List of all of the zone skeleton constants for iteration.
      * Note that this is fragile; be sure to add any values that are added above.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -1298,8 +1295,8 @@ public abstract class DateFormat extends UFormat {
      * Constant for Unicode string name of new (in 2019) Japanese calendar era,
      * root/English abbreviated version (ASCII-range characters).
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static final String JP_ERA_2019_ROOT = "Reiwa";
 
@@ -1307,8 +1304,8 @@ public abstract class DateFormat extends UFormat {
      * Constant for Unicode string name of new (in 2019) Japanese calendar era,
      * Japanese abbreviated version (Han, or fullwidth Latin for testing).
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static final String JP_ERA_2019_JA = "\u4EE4\u548C";
 
@@ -1316,8 +1313,8 @@ public abstract class DateFormat extends UFormat {
      * Constant for Unicode string name of new (in 2019) Japanese calendar era,
      * root and Japanese narrow version (ASCII-range characters).
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static final String JP_ERA_2019_NARROW = "R";
 
@@ -1530,8 +1527,8 @@ public abstract class DateFormat extends UFormat {
     /**
      * <strong>[icu]</strong> Returns the set of locales for which DateFormats are installed.
      * @return the set of locales for which DateFormats are installed.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static ULocale[] getAvailableULocales()
     {
         return ICUResourceBundle.getAvailableULocales();
@@ -2375,8 +2372,8 @@ public abstract class DateFormat extends UFormat {
         /**
          * Constant identifying the related year field.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public static final Field RELATED_YEAR = new Field("related year", -1);
 
@@ -2393,8 +2390,8 @@ public abstract class DateFormat extends UFormat {
         /**
          * Constant identifying the time separator field.
          * @deprecated This API is ICU internal only.
-         * @hide draft / provisional / internal are hidden on Android
          */
+        @android.annotation.Hide // draft / provisional / internal are hidden on Android
         @Deprecated
         public static final Field TIME_SEPARATOR = new Field("time separator", -1);
 

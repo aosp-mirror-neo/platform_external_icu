@@ -315,8 +315,8 @@ public final class UCharacterProperty
      * [^\p{space}\p{gc=Control}\p{gc=Surrogate}\p{gc=Unassigned}]
      * with space=\p{Whitespace} and Control=Cc.
      * Implements UCHAR_POSIX_GRAPH.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     private static final boolean isgraphPOSIX(int c) {
         /* \p{space}\p{gc=Control} == \p{gc=Z}\p{Control} */
         /* comparing ==0 returns false for the categories mentioned */

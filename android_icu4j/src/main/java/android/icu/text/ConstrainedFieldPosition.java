@@ -183,8 +183,8 @@ public class ConstrainedFieldPosition {
      * @param field The field to fix when iterating.
      * @param fieldValue The field value to fix when iterating.
      * @deprecated This API is for technology preview and might be changed or removed in a future release.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public void constrainFieldAndValue(Field field, Object fieldValue) {
         fConstraint = ConstraintType.VALUE;

@@ -10,7 +10,6 @@ import java.text.ParseException;
  * Used to report parsing errors in {@link MessageFormatter}.
  *
  * @deprecated This API is for technology preview only.
- * @hide draft / provisional / internal are hidden on Android
  */
 @android.annotation.Hide // Only a subset of ICU is exposed in Android
 @Deprecated
@@ -23,8 +22,8 @@ public class MFParseException extends ParseException {
      * @param message the message
      * @param errorOffset the position where the error is found while parsing.
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public MFParseException(String message, int errorOffset) {
         super(message, errorOffset);
@@ -32,8 +31,8 @@ public class MFParseException extends ParseException {
 
     /**
      * @deprecated This API is for technology preview only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public String getMessage() {

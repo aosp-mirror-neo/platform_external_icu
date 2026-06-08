@@ -840,7 +840,6 @@ public abstract class BreakIterator implements Cloneable
      * Returns a particular kind of BreakIterator for a locale.
      * Avoids writing a switch statement with getXYZInstance(where) calls.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Deprecated
@@ -882,8 +881,8 @@ public abstract class BreakIterator implements Cloneable
      * <strong>[icu]</strong> Returns a list of locales for which BreakIterators can be used.
      * @return An array of Locales.  All of the locales in the array can
      * be used when creating a BreakIterator.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public static synchronized ULocale[] getAvailableULocales()
     {
         // to avoid linking ICULocaleData
@@ -965,8 +964,8 @@ public abstract class BreakIterator implements Cloneable
      * @see android.icu.util.ULocale
      * @see android.icu.util.ULocale#VALID_LOCALE
      * @see android.icu.util.ULocale#ACTUAL_LOCALE
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     public final ULocale getLocale(ULocale.Type type) {
         return type == ULocale.ACTUAL_LOCALE ?
             this.actualLocale : this.validLocale;

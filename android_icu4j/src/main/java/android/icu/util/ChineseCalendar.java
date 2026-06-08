@@ -313,8 +313,8 @@ public class ChineseCalendar extends Calendar {
      * with the given time zone, the locale, the epoch year and the time zone
      * used for astronomical calculation.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     protected ChineseCalendar(TimeZone zone, ULocale locale, TimeZone zoneAstroCalc) {
         super(zone, locale);
@@ -1007,7 +1007,6 @@ public class ChineseCalendar extends Calendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
     @android.annotation.Hide // original deprecated declaration
     @Override
@@ -1114,8 +1113,8 @@ public class ChineseCalendar extends Calendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected int internalGetMonth()
@@ -1138,8 +1137,8 @@ public class ChineseCalendar extends Calendar {
     /**
      * {@inheritDoc}
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     protected int internalGetMonth(int defaultValue)

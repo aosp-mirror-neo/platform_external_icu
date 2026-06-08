@@ -309,8 +309,8 @@ class CompoundTransliterator extends Transliterator {
     }
 
     /**
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public void addSourceTargetSet(UnicodeSet filter, UnicodeSet sourceSet, UnicodeSet targetSet) {
         UnicodeSet myFilter = new UnicodeSet(getFilterAsUnicodeSet(filter));

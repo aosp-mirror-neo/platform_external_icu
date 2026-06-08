@@ -762,8 +762,8 @@ public final class BytesTrie implements Cloneable, Iterable<BytesTrie.Entry> {
     /**
      * Reads a jump delta and jumps.
      * @deprecated This API is ICU internal only.
-     * @hide draft / provisional / internal are hidden on Android
      */
+    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Deprecated
     public static int jumpByDelta(byte[] bytes, int pos) {
         int delta=bytes[pos++]&0xff;
