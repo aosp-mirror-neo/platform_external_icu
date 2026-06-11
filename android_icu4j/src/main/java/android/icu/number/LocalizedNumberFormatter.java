@@ -121,7 +121,6 @@ public class LocalizedNumberFormatter extends NumberFormatterSettings<LocalizedN
      *
      * @return The fluent chain.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public UnlocalizedNumberFormatter withoutLocale() {
         return new UnlocalizedNumberFormatter(this, KEY_LOCALE, null);
     }

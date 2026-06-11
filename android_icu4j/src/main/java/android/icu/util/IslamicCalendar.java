@@ -1233,7 +1233,6 @@ public class IslamicCalendar extends Calendar {
      * @return true if the date in the fields is in a Temporal proposal
      *               defined leap year. False otherwise.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     @Override
     public boolean inTemporalLeapYear() {
         return getActualMaximum(DAY_OF_YEAR) == 355;

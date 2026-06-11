@@ -1044,7 +1044,6 @@ public class ChineseCalendar extends Calendar {
      * @return true if the date in the fields is in a Temporal proposal
      *               defined leap year. False otherwise.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     @Override
     public boolean inTemporalLeapYear() {
         return getActualMaximum(DAY_OF_YEAR) > 360;
@@ -1065,7 +1064,6 @@ public class ChineseCalendar extends Calendar {
      *
      * @return       One of 24 possible strings in {"M01".."M12", "M01L".."M12L"}.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     @Override
     public String getTemporalMonthCode() {
         // We need to call get, not internalGet, to force the calculation
@@ -1088,7 +1086,6 @@ public class ChineseCalendar extends Calendar {
      * @param temporalMonth One of 25 possible strings in {"M01".. "M12", "M13", "M01L",
      *  "M12L"}.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     @Override
     public void setTemporalMonthCode( String temporalMonth ) {
         if (temporalMonth.length() != 4 || temporalMonth.charAt(0) != 'M' || temporalMonth.charAt(3) != 'L') {

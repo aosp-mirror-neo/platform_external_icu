@@ -84,7 +84,6 @@ public class LocalizedNumberRangeFormatter extends NumberRangeFormatterSettings<
      *
      * @return The fluent chain.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public UnlocalizedNumberRangeFormatter withoutLocale() {
         return new UnlocalizedNumberRangeFormatter(this, KEY_LOCALE, null);
     }
