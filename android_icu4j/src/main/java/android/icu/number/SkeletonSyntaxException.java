@@ -8,7 +8,6 @@ package android.icu.number;
  *
  * @see NumberFormatter
  */
-@android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
 public class SkeletonSyntaxException extends IllegalArgumentException {
     private static final long serialVersionUID = 7733971331648360554L;
 

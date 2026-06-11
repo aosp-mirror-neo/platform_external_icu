@@ -610,7 +610,6 @@ public abstract class NumberFormatterSettings<T extends NumberFormatterSettings<
      * @throws UnsupportedOperationException
      *             If the number formatter has an option that cannot be represented in a skeleton string.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public String toSkeleton() {
         return NumberSkeletonImpl.generate(resolve());
     }
