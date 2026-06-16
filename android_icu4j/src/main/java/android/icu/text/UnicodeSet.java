@@ -3881,7 +3881,6 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
      * constructors, applyPattern(), and closeOver().
      * It can be ORed together with other, unrelated options.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public static final int SIMPLE_CASE_INSENSITIVE = 6;
 
     private static final int CASE_MASK = CASE_INSENSITIVE | ADD_CASE_MAPPINGS;

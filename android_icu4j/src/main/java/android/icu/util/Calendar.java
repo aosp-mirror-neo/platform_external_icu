@@ -954,7 +954,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * and there is an extra "Leap Month 5" which associated with ORDINAL_MONTH
      * value 5 before "Month 6" of year 4664.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public static final int ORDINAL_MONTH = 23;
 
     // Android patch: Soft removal the BASE_FIELD_COUNT API on Android.
@@ -2004,7 +2003,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * @return true if the date in the fields is in a Temporal proposal
      *               defined leap year. False otherwise.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public boolean inTemporalLeapYear() {
         // Default to Gregorian based leap year rule.
         return getActualMaximum(DAY_OF_YEAR) == 366;
@@ -2030,7 +2028,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      *
      * @return       One of 25 possible strings in {"M01".."M13", "M01L".."M12L"}.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public String getTemporalMonthCode() {
         int month = get(MONTH);
         assert(month < 12);
@@ -2054,7 +2051,6 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      * @param temporalMonth One of 25 possible strings in {"M01".. "M12", "M13", "M01L",
      *  "M12L"}.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public void setTemporalMonthCode( String temporalMonth ) {
         if (temporalMonth.length() == 3 && temporalMonth.charAt(0) == 'M') {
             for (int m = 0; m < gTemporalMonthCodes.length; m++) {
