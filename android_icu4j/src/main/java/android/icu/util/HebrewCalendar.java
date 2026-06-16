@@ -901,7 +901,6 @@ public class HebrewCalendar extends Calendar {
     /**
      * {@inheritDoc}
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     @Override
     public boolean inTemporalLeapYear() {
         return isLeapYear(get(EXTENDED_YEAR));
@@ -923,7 +922,6 @@ public class HebrewCalendar extends Calendar {
      *
      * @return       One of 13 possible strings in {"M01".. "M05", "M05L", "M06" .. "M12"}.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     @Override
     public String getTemporalMonthCode() {
         return gTemporalMonthCodesForHebrew[get(MONTH)];
@@ -939,7 +937,6 @@ public class HebrewCalendar extends Calendar {
      * .. "M12" for leap year.
      * @param temporalMonth The value to be set for temporal monthCode.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     @Override
     public void setTemporalMonthCode( String temporalMonth ) {
         if (temporalMonth.length() == 3 || temporalMonth.length() == 4) {

@@ -169,7 +169,6 @@ public abstract class Normalizer2 {
      * Returns an unmodifiable singleton instance.
      * @return the requested Normalizer2, if successful
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public static Normalizer2 getNFKCSimpleCasefoldInstance() {
         return Norm2AllModes.getNFKC_SCFInstance().comp;
     }

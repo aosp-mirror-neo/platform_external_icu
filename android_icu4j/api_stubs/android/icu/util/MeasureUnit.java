@@ -1868,7 +1868,6 @@ public class MeasureUnit implements Serializable {
     /**
      * Constant for unit of pressure: gasoline-energy-density
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public static final MeasureUnit GASOLINE_ENERGY_DENSITY = MeasureUnit.internalGetInstance("pressure", "gasoline-energy-density");
 
     /**
@@ -1923,7 +1922,6 @@ public class MeasureUnit implements Serializable {
     /**
      * Constant for unit of speed: beaufort
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_25Q2_API)
     public static final MeasureUnit BEAUFORT = MeasureUnit.internalGetInstance("speed", "beaufort");
 
     /**
