@@ -34,7 +34,6 @@ import com.google.currysrc.api.process.ast.BodyDeclarationLocators;
 import com.google.currysrc.api.process.ast.TypeLocator;
 import com.google.currysrc.processors.AddAnnotation;
 import com.google.currysrc.processors.AddDefaultConstructor;
-import com.google.currysrc.processors.AnnotationInfo;
 import com.google.currysrc.processors.HidePublicClasses;
 import com.google.currysrc.processors.InsertHeader;
 import com.google.currysrc.processors.ModifyQualifiedNames;
@@ -1035,8 +1034,8 @@ public class Icu4jTransform {
           createMarkElementsWithDeprecatedAnnotationRule(),
           createMarkElementsWithDeprecatedJavadocTagRule(),
 
-          // AST change: Add @removed doc to removed API in Android
-          createMarkElementsWithRemovedJavadocTagRule(),
+          // AST change: Add @RemovedFromApi annotation to remove API in Android
+          createMarkElementsWithRemovedFromApiAnnotationRule(),
 
 
           // AST change: Remove JavaDoc tags that Android has no need of:
@@ -1121,11 +1120,16 @@ public class Icu4jTransform {
       return createOptionalRule(new TagMatchingDeclarations(locatorTags));
     }
 
-    private static Rule createMarkElementsWithRemovedJavadocTagRule() {
+    private static Rule createMarkElementsWithRemovedFromApiAnnotationRule() {
       List<BodyDeclarationLocator> locators =
           BodyDeclarationLocators.createLocatorsFromStrings(ANDROID_REMOVED_SET);
-      return createOptionalRule(new TagMatchingDeclarations(locators,
-          "@removed on Android but @stable in ICU"));
+      return createOptionalRule(
+          AddAnnotation.markerAnnotationFromLocators(
+              "android.annotation.RemovedFromApi",
+              locators,
+              "removed on Android but @stable in ICU"
+          )
+      );
     }
 
     private static Rule createHideBlocklistedDeclarationsRule() {
