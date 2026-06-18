@@ -689,7 +689,6 @@ public abstract class DateFormat extends UFormat {
      *
      * @return the formatted date/time string.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public StringBuffer format(Temporal date, StringBuffer toAppendTo,
             FieldPosition fieldPosition) {
         return format(JavaTimeConverters.temporalToCalendar(date), toAppendTo, fieldPosition);
@@ -701,7 +700,6 @@ public abstract class DateFormat extends UFormat {
      * @param date the time value to be formatted into a time string.
      * @return the formatted time string.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public final String format(Temporal date)
     {
         return format(date, new StringBuffer(64),new FieldPosition(0)).toString();
