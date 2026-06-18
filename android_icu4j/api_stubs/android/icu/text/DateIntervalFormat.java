@@ -975,7 +975,6 @@ public class DateIntervalFormat extends UFormat {
      * @return                  Reference to 'appendTo' parameter.
      * @throws    IllegalArgumentException  if the two calendars are not equivalent.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public final StringBuffer format(Temporal fromTemporal,
             Temporal toTemporal,
             StringBuffer appendTo,
@@ -1021,7 +1020,6 @@ public class DateIntervalFormat extends UFormat {
      *                          to be formatted into a string
      * @return                  A FormattedDateInterval containing the format result.
      */
-    @android.annotation.FlaggedApi(com.android.icu.Flags.FLAG_ICU_26Q2_API)
     public FormattedDateInterval formatToValue(Temporal fromTemporal, Temporal toTemporal) {
         Calendar fromCalendar = JavaTimeConverters.temporalToCalendar(fromTemporal);
         Calendar toCalendar = JavaTimeConverters.temporalToCalendar(toTemporal);
