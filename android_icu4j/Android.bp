@@ -276,9 +276,6 @@ java_sdk_library {
         ":android_icu4j_api_stubs_files",
         ":framework-api-annotations",
     ],
-    stub_only_libs: [
-        "stub-annotations",
-    ],
     visibility: [
         "//libcore:__subpackages__",
         "//packages/modules/RuntimeI18n/apex",
