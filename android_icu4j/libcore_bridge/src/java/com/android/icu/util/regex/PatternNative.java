@@ -27,8 +27,10 @@ import libcore.util.NativeAllocationRegistry;
 @libcore.api.IntraCoreApi
 public class PatternNative {
 
-    private static final NativeAllocationRegistry REGISTRY = NativeAllocationRegistry
-        .createMalloced(PatternNative.class.getClassLoader(), getNativeFinalizer());
+    private static class RegistryHolder {
+        private static final NativeAllocationRegistry REGISTRY = NativeAllocationRegistry
+            .createMalloced(PatternNative.class.getClassLoader(), getNativeFinalizer());
+    }
 
     @dalvik.annotation.optimization.ReachabilitySensitive
     private final long address;
@@ -51,7 +53,7 @@ public class PatternNative {
 
     private PatternNative(String pattern, int flags) {
         address = compileImpl(pattern, flags);
-        REGISTRY.registerNativeAllocation(this, address);
+        RegistryHolder.REGISTRY.registerNativeAllocation(this, address);
     }
 
     /* package */ int getMatchedGroupIndex(String groupName) {

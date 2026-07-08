@@ -27,6 +27,7 @@ import org.junit.Test;
 import android.icu.platform.AndroidDataFiles;
 import android.icu.text.TimeZoneNames;
 import android.icu.util.VersionInfo;
+import android.platform.test.annotations.DisabledOnRavenwood;
 import android.system.Os;
 
 import com.android.icu.util.ExtendedTimeZone;
@@ -263,6 +264,7 @@ public class TimeZoneIntegrationTest {
      * expectations.
      */
     @Test
+    @DisabledOnRavenwood(reason = "Asserts device-specific environment variables")
     public void testTimeZoneDebugInfo() throws Exception {
         DebugInfo debugInfo = I18nModuleDebug.getDebugInfo();
 

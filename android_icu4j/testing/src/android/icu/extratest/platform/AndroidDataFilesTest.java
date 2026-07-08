@@ -25,6 +25,7 @@ import static java.util.stream.Collectors.toSet;
 import android.icu.platform.AndroidDataFiles;
 import android.icu.testsharding.MainTestShard;
 import android.icu.util.VersionInfo;
+import android.platform.test.annotations.DisabledOnRavenwood;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -45,6 +46,8 @@ import java.util.stream.Stream;
 
 @MainTestShard
 @RunWith(JUnit4.class)
+@DisabledOnRavenwood(reason = "Asserts device-specific APEX paths "
+        + "(e.g. /apex/.../etc/...) which do not exist on host")
 public class AndroidDataFilesTest {
 
     private static final Set<String> TZDATA_RES_FILES =

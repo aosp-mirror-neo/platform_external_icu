@@ -50,19 +50,29 @@ filegroup {
     path: "src/main/java",
 }
 
+// Ravenwood specific ICU sources
+filegroup {
+    name: "icu-ravenwood-sources",
+    srcs: ["libcore_bridge/src/java/**/*_ravenwood.java"],
+    visibility: [
+        "//frameworks/base/ravenwood",
+    ],
+}
+
 // The files contains Android-specific codes to expose intra-core APIs
 // from ICU4J/ICU4C to libcore or core platform APIs to the framework.
 // The package is com.android.icu.* and should not expose any public APIs.
 filegroup {
     name: "libcore_icu_bridge_src_files",
     srcs: ["libcore_bridge/src/java/**/*.java"],
+    exclude_srcs: [":icu-ravenwood-sources"],
     path: "libcore_bridge/src/java",
 }
 
 java_defaults {
     name: "libcore_icu_bridge_defaults",
     srcs: [
-        "libcore_bridge/src/java/**/*.java",
+        ":libcore_icu_bridge_src_files",
         ":app-compat-annotations-source",
     ],
     jarjar_rules: "jarjar-rules.txt",
@@ -541,6 +551,7 @@ java_test {
         "//cts/tests/tests/icu",
     ],
     srcs: [
+        ":ravenwood-test-annotations",
         "src/main/tests/**/*.java",
         "testing/src/**/*.java",
     ],
@@ -554,30 +565,6 @@ java_test {
         "junit",
         "platform-parametric-runner-lib",
         "platform-test-annotations",
-    ],
-}
-
-// Equivalent to android-icu4j-tests, excluding the tests under testing/.
-// We run this as ICU CTS on Ravenwood, where the testing/ tests won't pass due to lack of
-// libcore.
-java_test {
-    name: "android-icu4j-tests-core-only",
-    defaults: ["android-icu4j-tests-default"],
-    visibility: [
-        "//cts/tests/tests/icu",
-    ],
-    srcs: [
-        "src/main/tests/**/*.java",
-        "testing/src/android/icu/testsharding/**/*.java",
-    ],
-    // TODO(b/340889954) Un-excluide the excluded tests.
-    exclude_srcs: [
-        // This class has a "known-failure", which we can't exclude on Ravenwood without
-        // modifying this file, so let's just exclude the whole class for now.
-        "src/main/tests/android/icu/dev/test/format/NumberFormatRegressionTest.java",
-
-        // This test takes too much time and hits the timeout.
-        "src/main/tests/android/icu/dev/test/rbbi/RBBIMonkeyTest.java",
     ],
 }
 

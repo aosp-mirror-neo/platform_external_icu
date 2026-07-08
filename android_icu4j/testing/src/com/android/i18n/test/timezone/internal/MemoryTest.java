@@ -18,12 +18,15 @@
 package com.android.i18n.test.timezone.internal;
 
 import android.icu.testsharding.MainTestShard;
+import android.platform.test.annotations.DisabledOnRavenwood;
+
 import com.android.i18n.timezone.internal.Memory;
 import dalvik.system.VMRuntime;
 import java.util.Arrays;
 import junit.framework.TestCase;
 
 @MainTestShard
+@DisabledOnRavenwood(reason = "VMRuntime.addressOf is fake on Ravenwood")
 public class MemoryTest extends TestCase {
     public void testSetIntArray() {
         int[] values = { 3, 7, 31, 127, 8191, 131071, 524287, 2147483647 };

@@ -29,8 +29,10 @@ import libcore.util.NativeAllocationRegistry;
 @IntraCoreApi
 public class MatcherNative {
 
-    private static final NativeAllocationRegistry REGISTRY = NativeAllocationRegistry
-        .createMalloced(MatcherNative.class.getClassLoader(), getNativeFinalizer());
+    private static class RegistryHolder {
+        private static final NativeAllocationRegistry REGISTRY = NativeAllocationRegistry
+            .createMalloced(MatcherNative.class.getClassLoader(), getNativeFinalizer());
+    }
 
     private final PatternNative nativePattern;
     @dalvik.annotation.optimization.ReachabilitySensitive
@@ -48,7 +50,7 @@ public class MatcherNative {
     private MatcherNative(PatternNative pattern) {
         nativePattern = pattern;
         address = pattern.openMatcher();
-        REGISTRY.registerNativeAllocation(this, address);
+        RegistryHolder.REGISTRY.registerNativeAllocation(this, address);
     }
 
     /**

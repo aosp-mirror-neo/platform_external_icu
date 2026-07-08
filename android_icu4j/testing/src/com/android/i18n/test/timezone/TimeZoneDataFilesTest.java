@@ -22,9 +22,11 @@ import static org.junit.Assert.assertTrue;
 
 import android.icu.platform.AndroidDataFiles;
 import android.icu.testsharding.MainTestShard;
+import android.platform.test.annotations.DisabledOnRavenwood;
 import com.android.i18n.timezone.TimeZoneDataFiles;
 import org.junit.Test;
 
+@DisabledOnRavenwood(reason = "Asserts device-specific environment variables")
 @MainTestShard
 public class TimeZoneDataFilesTest {
 

@@ -14,6 +14,10 @@
  */
 package com.android.icu.charset;
 
+import android.ravenwood.annotation.RavenwoodKeepWholeClass;
+import android.ravenwood.annotation.RavenwoodRedirect;
+import android.ravenwood.annotation.RavenwoodRedirectionClass;
+
 import dalvik.annotation.optimization.ReachabilitySensitive;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -24,6 +28,8 @@ import java.nio.charset.CodingErrorAction;
 import java.util.HashMap;
 import java.util.Map;
 
+@RavenwoodKeepWholeClass
+@RavenwoodRedirectionClass("CharsetICU_ravenwood")
 final class CharsetEncoderICU extends CharsetEncoder {
     private static final Map<String, byte[]> DEFAULT_REPLACEMENTS = new HashMap<String, byte[]>();
     static {
@@ -105,6 +111,7 @@ final class CharsetEncoderICU extends CharsetEncoder {
         this.converterHandle = address;
     }
 
+    @RavenwoodRedirect(reason = "To ignore calls made from constructor")
     @Override protected void implReplaceWith(byte[] newReplacement) {
         updateCallback();
     }
@@ -117,7 +124,7 @@ final class CharsetEncoderICU extends CharsetEncoder {
         updateCallback();
     }
 
-    private void updateCallback() {
+    void updateCallback() {
         NativeConverter.setCallbackEncode(converterHandle, this);
     }
 
