@@ -815,6 +815,8 @@ public class Icu4jTransform {
    */
   private static final String[] ANDROID_REMOVED_SET = {
       /* ASCII order please. */
+      // Soft removal the BASE_FIELD_COUNT API on Android.
+      "field:android.icu.util.Calendar#BASE_FIELD_COUNT",
       // Unstable "constant" value - different values in different API levels. http://b/77850660.
       "field:android.icu.util.JapaneseCalendar#CURRENT_ERA",
   };
