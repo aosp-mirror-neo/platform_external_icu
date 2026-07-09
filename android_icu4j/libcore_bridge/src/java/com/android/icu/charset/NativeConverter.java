@@ -21,8 +21,10 @@ import java.nio.charset.CodingErrorAction;
 @Hide
 public final class NativeConverter {
 
-    private static final NativeAllocationRegistry registry = NativeAllocationRegistry
-        .createMalloced(NativeConverter.class.getClassLoader(), getNativeFinalizer());
+    private static class RegistryHolder {
+        private static final NativeAllocationRegistry registry = NativeAllocationRegistry
+            .createMalloced(NativeConverter.class.getClassLoader(), getNativeFinalizer());
+    }
 
     /** All methods are static, no need to instantiate. */
     private NativeConverter() {}
@@ -37,7 +39,7 @@ public final class NativeConverter {
     /* package */ static native void closeConverter(long converterHandle);
 
     /* package */ static void registerConverter(Object referrent, long converterHandle) {
-        registry.registerNativeAllocation(referrent, converterHandle);
+        RegistryHolder.registry.registerNativeAllocation(referrent, converterHandle);
     }
 
     /* package */ static native void resetByteToChar(long converterHandle);

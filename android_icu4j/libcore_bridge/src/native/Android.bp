@@ -26,22 +26,15 @@ package {
     default_applicable_licenses: ["external_icu_license"],
 }
 
-cc_library_shared {
-    name: "libicu_jni",
+cc_defaults {
+    name: "libicu_defaults",
     defaults: ["icu_common_cflags"],
-    host_supported: true,
-    visibility: [
-        "//art/tools/ahat",
-        "//art/test",
-        "//packages/modules/RuntimeI18n/apex",
-    ],
     header_libs: ["jni_headers"],
     shared_libs: [
         "libbase",
         "libicuuc",
         "libicui18n",
         "liblog",
-        "libnativehelper",
     ],
     static_libs: ["libcutils"],
     srcs: [
@@ -62,7 +55,33 @@ cc_library_shared {
             ],
         },
     },
+}
+
+cc_library_shared {
+    name: "libicu_jni",
+    defaults: ["libicu_defaults"],
+    host_supported: true,
+    visibility: [
+        "//art/tools/ahat",
+        "//art/test",
+        "//packages/modules/RuntimeI18n/apex",
+    ],
+    shared_libs: [
+        "libnativehelper",
+    ],
     apex_available: [
         "com.android.i18n",
     ],
+}
+
+cc_library_host_shared {
+    name: "libicu_jni-ravenwood",
+    defaults: ["libicu_defaults"],
+    visibility: ["//frameworks/base/ravenwood"],
+    static_libs: [
+        // Ravenwood version of libicu_jni needs to link against
+        // libnativehelper_jvm instead of libnativehelper
+        "libnativehelper_jvm",
+    ],
+    cppflags: ["-DRAVENWOOD"],
 }

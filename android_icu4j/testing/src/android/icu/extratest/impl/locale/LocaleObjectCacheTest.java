@@ -19,6 +19,7 @@ package android.icu.extratest.impl.locale;
 import android.icu.impl.locale.BaseLocale;
 import android.icu.impl.locale.LocaleObjectCache;
 import android.icu.testsharding.MainTestShard;
+import android.platform.test.annotations.DisabledOnRavenwood;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -51,6 +52,7 @@ public class LocaleObjectCacheTest {
      * unnecessary extra test methods in the production code.
      */
     @Test
+    @DisabledOnRavenwood(reason = "ZygoteHooks.gcAndFinalize() is not supported on Ravenwood")
     public void testGcAndFinalize_verifyClearReferenceQueue() throws Exception {
         invokeGcAndFinalize();
         assertEquals(0, getBaseLocaleCountAndClear());

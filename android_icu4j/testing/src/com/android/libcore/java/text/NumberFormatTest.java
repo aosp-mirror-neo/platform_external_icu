@@ -20,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 
 import android.icu.testsharding.MainTestShard;
 import android.icu.util.VersionInfo;
+import android.platform.test.annotations.DisabledOnRavenwood;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,6 +43,8 @@ public class NumberFormatTest {
     // Prior to Android U, DecimalFormat should use the normal grouping separator.
     // See http://b/162744366.
     @Test
+    @DisabledOnRavenwood(reason = "Uses host JRE's DecimalFormatSymbols which has "
+            + "different locale data for en-BE compared to Android's ICU")
     public void testMonetarySeparator() {
         // Skip this test on U or lower due to a change in j.t.DecimalFormat. b/346454577
         if (VersionInfo.ICU_VERSION.getMajor() < 75) {

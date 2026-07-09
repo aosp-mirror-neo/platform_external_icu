@@ -24,15 +24,7 @@
 
 #include "JniConstants.h"
 
-// ART calls this on startup, so we can statically register all our native methods.
-jint JNI_OnLoad(JavaVM* vm, void*) {
-    ALOGV("libicu_jni JNI_OnLoad");
-    JNIEnv* env;
-    if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
-        ALOGE("JavaVM::GetEnv() failed");
-        abort();
-    }
-
+void register_libicu_jni(JNIEnv* env) {
     ScopedLocalFrame localFrame(env);
 
     // Failures to find the ICU data tend to be somewhat obscure because ICU loads
@@ -61,6 +53,19 @@ jint JNI_OnLoad(JavaVM* vm, void*) {
 #undef REGISTER
 
     JniConstants::Initialize(env);
+}
+
+#ifndef RAVENWOOD
+
+// ART calls this on startup, so we can statically register all our native methods.
+jint JNI_OnLoad(JavaVM* vm, void*) {
+    ALOGV("libicu_jni JNI_OnLoad");
+    JNIEnv* env;
+    if (vm->GetEnv(reinterpret_cast<void**>(&env), JNI_VERSION_1_6) != JNI_OK) {
+        ALOGE("JavaVM::GetEnv() failed");
+        abort();
+    }
+    register_libicu_jni(env);
     return JNI_VERSION_1_6;
 }
 
@@ -75,3 +80,5 @@ void JNI_OnUnload(JavaVM*, void*) {
     // De-init ICU. Do the opposite of the above u_init() function.
     u_cleanup();
 }
+
+#endif  // !RAVENWOOD

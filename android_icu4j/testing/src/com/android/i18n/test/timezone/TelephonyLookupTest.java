@@ -25,6 +25,7 @@ import static org.junit.Assume.assumeFalse;
 import static org.junit.Assume.assumeTrue;
 
 import android.icu.testsharding.MainTestShard;
+import android.platform.test.annotations.DisabledOnRavenwood;
 import android.platform.test.annotations.RequiresFlagsDisabled;
 import android.platform.test.annotations.RequiresFlagsEnabled;
 import android.platform.test.flag.junit.CheckFlagsRule;
@@ -770,6 +771,7 @@ public class TelephonyLookupTest {
     }
 
     @Test
+    @DisabledOnRavenwood(blockedBy = MccTable.class)
     public void telephonyFinder_shouldBeIdenticalToTelephonyMccTable() {
         TelephonyNetworkFinder telephonyNetworkFinder =
                 TelephonyLookup.getInstance().getTelephonyNetworkFinder();

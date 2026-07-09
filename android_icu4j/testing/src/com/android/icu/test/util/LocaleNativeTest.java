@@ -18,8 +18,9 @@ package com.android.icu.test.util;
 
 import static org.junit.Assert.assertEquals;
 
-import android.icu.util.ULocale;
 import android.icu.testsharding.MainTestShard;
+import android.icu.util.ULocale;
+import android.platform.test.annotations.DisabledOnRavenwood;
 
 import com.android.icu.util.LocaleNative;
 
@@ -55,6 +56,8 @@ public class LocaleNativeTest {
     }
 
     @Test
+    @DisabledOnRavenwood(reason = "Discrepancy between ICU4C and ICU4J for Locale.ROOT "
+            + "which is present in available locales on host JRE but not on device")
     public void testGetDisplayLanguage() {
         assertSameDisplayNames(LocaleNative::getDisplayLanguage,
                 (targetLocale, displayLocale)
