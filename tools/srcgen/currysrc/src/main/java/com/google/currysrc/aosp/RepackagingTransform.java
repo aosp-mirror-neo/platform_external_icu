@@ -102,6 +102,14 @@ public class RepackagingTransform {
             .withRequiredArg()
             .withValuesConvertedBy(PATH_CONVERTER);
 
+    OptionSpec<Path> moduleApiFileOption =
+        optionParser.accepts("module-api-file",
+            "flat file containing body declaration identifiers for those classes and members that"
+                + " form part of the module api and so require a"
+                + " SystemApi(client = MODULE_LIBRARIES) annotation to be added during transformation.")
+            .withRequiredArg()
+            .withValuesConvertedBy(PATH_CONVERTER);
+
     OptionSpec<Path> defaultConstructorsFileOption =
         optionParser.accepts("default-constructors-file",
             "flat file containing body declaration identifiers for those classes that require a"
@@ -228,6 +236,19 @@ public class RepackagingTransform {
             Enum.class,
             new AnnotationInfo.Placeholder("libcore.api.CorePlatformApi.Status.STABLE"),
             stableCorePlatformApiFile);
+        processor.setListener(changeLog.asAddAnnotationListener());
+        ruleBuilder.add(createOptionalRule(processor));
+      }
+
+      Path moduleApiFile = optionSet.valueOf(moduleApiFileOption);
+      if (moduleApiFile != null) {
+        // AST change: Add SystemApi(client = MODULE_LIBRARIES) to specified classes and members
+        AddAnnotation processor = AddAnnotation.markerAnnotationWithPropertyFromFlatFile(
+            "android.annotation.SystemApi",
+            "client",
+            Enum.class,
+            new AnnotationInfo.Placeholder("android.annotation.SystemApi.Client.MODULE_LIBRARIES"),
+            moduleApiFile);
         processor.setListener(changeLog.asAddAnnotationListener());
         ruleBuilder.add(createOptionalRule(processor));
       }
