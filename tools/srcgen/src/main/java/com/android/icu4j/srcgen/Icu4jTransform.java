@@ -624,7 +624,6 @@ public class Icu4jTransform {
       "method:android.icu.util.CopticCalendar#handleGetExtendedYear()",
       "method:android.icu.util.Currency#parse(ULocale,String,int,ParsePosition)",
       "method:android.icu.util.HebrewCalendar#isLeapYear(int)",
-      "method:android.icu.util.HebrewCalendar#validateField(int)",
       "method:android.icu.util.JapaneseCalendar#haveDefaultCentury()",
       "method:android.icu.util.MeasureUnit#MeasureUnit(String,String)",
       "method:android.icu.util.MeasureUnit#addUnit(String,String,Factory)",
