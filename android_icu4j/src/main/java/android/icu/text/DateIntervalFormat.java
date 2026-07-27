@@ -1294,7 +1294,6 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      *                  on failure.
      * @deprecated This API is ICU internal only.
      */
-    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     public Object parseObject(String source, ParsePosition parse_pos)

@@ -343,7 +343,6 @@ public class MeasureFormat extends UFormat {
      * @see java.text.Format#parseObject(java.lang.String, java.text.ParsePosition)
      * @throws UnsupportedOperationException
      *             Not supported.
-     * @draft ICU 53 (Retain)
      */
     @Override
     public Measure parseObject(String source, ParsePosition pos) {
