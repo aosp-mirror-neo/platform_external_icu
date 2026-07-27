@@ -745,7 +745,6 @@ public class HebrewCalendar extends Calendar {
      * special handling for month validation for Hebrew calendar.
      * @deprecated This API is ICU internal only.
      */
-    @android.annotation.Hide // original deprecated declaration
     @Override
     @Deprecated
     protected void validateField(int field) {
