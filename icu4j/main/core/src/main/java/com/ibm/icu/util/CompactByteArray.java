@@ -327,7 +327,6 @@ public final class CompactByteArray implements Cloneable {
      * @param obj the compact array object to be compared with this.
      * @return true if the current compact array object is the same
      * as the compact array object obj; false otherwise.
-     * @internal
      * @deprecated This API is ICU internal only.
      */
     @Override
@@ -349,7 +348,6 @@ public final class CompactByteArray implements Cloneable {
 
     /**
      * Generates the hash code for the compact array object
-     * @internal
      * @deprecated This API is ICU internal only.
      */
     @Override

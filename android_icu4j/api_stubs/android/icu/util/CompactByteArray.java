@@ -330,7 +330,6 @@ public final class CompactByteArray implements Cloneable {
      * as the compact array object obj; false otherwise.
      * @deprecated This API is ICU internal only.
      */
-    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public boolean equals(Object obj) {
@@ -352,7 +351,6 @@ public final class CompactByteArray implements Cloneable {
      * Generates the hash code for the compact array object
      * @deprecated This API is ICU internal only.
      */
-    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     @Deprecated
     public int hashCode() {
