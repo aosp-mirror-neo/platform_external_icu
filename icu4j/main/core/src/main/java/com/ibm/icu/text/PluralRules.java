@@ -937,7 +937,6 @@ public class PluralRules implements Serializable {
         }
 
         /**
-         * @internal CLDR
          * @deprecated This API is ICU internal only.
          */
         @Deprecated
@@ -958,7 +957,6 @@ public class PluralRules implements Serializable {
         }
 
         /**
-         * @internal CLDR
          * @deprecated This API is ICU internal only.
          */
         @Deprecated

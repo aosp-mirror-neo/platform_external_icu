@@ -129,7 +129,6 @@ public class StringPrepParseException extends ParseException {
      * value. When Java assertion is enabled, this method triggers an assertion failure.
      * @return a hash code value for this object.
      */
-    @android.annotation.Hide // original deprecated declaration
     @Override
     public int hashCode() {
         assert false : "hashCode not designed";

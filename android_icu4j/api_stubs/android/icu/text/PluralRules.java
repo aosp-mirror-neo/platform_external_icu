@@ -934,7 +934,6 @@ public class PluralRules implements Serializable {
         /**
          * @deprecated This API is ICU internal only.
          */
-        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public boolean equals(Object arg0) {
@@ -955,7 +954,6 @@ public class PluralRules implements Serializable {
         /**
          * @deprecated This API is ICU internal only.
          */
-        @android.annotation.Hide // original deprecated declaration
         @Deprecated
         @Override
         public int hashCode() {
@@ -2164,7 +2162,6 @@ public class PluralRules implements Serializable {
     /**
      * {@inheritDoc}
      */
-    @android.annotation.Hide // original deprecated declaration
     @Override
     public int hashCode() {
         return rules.hashCode();
