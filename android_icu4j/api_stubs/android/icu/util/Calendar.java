@@ -956,12 +956,11 @@ public abstract class Calendar implements Serializable, Cloneable, Comparable<Ca
      */
     public static final int ORDINAL_MONTH = 23;
 
-    // Android patch: Soft removal the BASE_FIELD_COUNT API on Android.
     /**
      * The number of fields defined by this class.  Subclasses may define
      * addition fields starting with this number.
      */
-    @android.annotation.RemovedFromApi
+    @android.annotation.RemovedFromApi // removed on Android but @stable in ICU
     @Deprecated
     protected static final int BASE_FIELD_COUNT;
     static {
