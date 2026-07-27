@@ -388,7 +388,6 @@ public class Icu4jTransform {
       "method:android.icu.text.DateIntervalFormat#DateIntervalFormat(String,DateIntervalInfo,SimpleDateFormat)",
       "method:android.icu.text.DateIntervalFormat#getPatterns(Calendar,Calendar,Output<String>)",
       "method:android.icu.text.DateIntervalFormat#getRawPatterns()",
-      "method:android.icu.text.DateIntervalFormat#parseObject(String,ParsePosition)",
       "method:android.icu.text.DateIntervalInfo#DateIntervalInfo()",
       "method:android.icu.text.DateIntervalInfo#genPatternInfo(String,boolean)",
       "method:android.icu.text.DateIntervalInfo#getPatterns()",

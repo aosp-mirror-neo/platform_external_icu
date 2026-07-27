@@ -1320,7 +1320,6 @@ public class DateIntervalFormat extends UFormat implements Cloneable {
      *                  is supported, upon return this param is unchanged.
      * @return          A newly created {@code Formattable} object, or NULL
      *                  on failure.
-     * @internal
      * @deprecated This API is ICU internal only.
      */
     @Override

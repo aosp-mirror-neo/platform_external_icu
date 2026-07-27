@@ -328,7 +328,6 @@ public class MeasureFormat extends UFormat {
      * @throws UnsupportedOperationException
      *             Not supported.
      */
-    @android.annotation.Hide // draft / provisional / internal are hidden on Android
     @Override
     public Measure parseObject(String source, ParsePosition pos) {
         throw new UnsupportedOperationException();
