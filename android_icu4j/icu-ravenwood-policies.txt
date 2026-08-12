@@ -1,3 +1,2 @@
 package android.icu keepclass
 package com.android.icu keepclass
-package com.android.i18n keepclass
